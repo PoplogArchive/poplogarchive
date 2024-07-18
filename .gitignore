@@ -1,0 +1,8 @@
+# Sub-repositories
+**/.git/
+
+# Projects
+examples/
+paradigms_lectures/
+popracer/
+Scheme/
