@@ -1,0 +1,3790 @@
+<HTML>
+<HEAD> <TITLE>FREE POPLOG/POP11/LISP/PROLOG/ML/AI-TOOLS</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:730px">
+<FONT color="#000000">
+<CENTER>
+<h2>
+<B>
+This is "The Free Poplog Portal"
+</B>
+</h2>
+<b><a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a></b>
+<p>
+
+<a href="http://www.cs.bham.ac.uk/"> School of Computer Science</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/"> The University of Birmingham</a>
+<br>
+In collaboration with The University of Sussex,
+<br>
+where Poplog was originally developed:
+<br>
+<a href="http://www.sussex.ac.uk/informatics/">Informatics Department</a>
+and
+<br>
+<a href="http://www.sussex.ac.uk/cogs">Centre for Research in Cognitive Science</a>
+<br>
+See the <a href="#origins">"origins"</a> section below.
+<h3>
+NEWS: January 2020
+<br>
+A new 64 bit version of Linux poplog
+<br>
+for AMD64/X86-64 architectures,
+<br>
+based on a complete rewrite of Poplog internals
+<br>
+by Waldek Hebisch, is now available as Poplog Version 16.
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+<p>
+<small>
+The current installation process combines information from Waldek's github
+poplog and a collection of additional poplog libraries (with code and
+documentation, including much teaching material) at the University of
+Birmingham.
+</small>
+<p>
+<b>NOTE: November 2021</b>
+<br>
+<small>
+A newly packaged version of Poplog aimed at easy download and installation for a
+wide range of users has been prepared by Steve Leach and Will Price. Information
+about it will be added here.
+</small>
+</h3>
+
+<h3>
+NEWS Provided by Andrew Ritz, October 2021
+<br>
+<small>
+Blog post about Slitaz Poplog
+<br>
+SliTaz: "A secure and high performance operating system using
+the Linux Kernel and GNU software, providing a fast and low resource Linux OS
+for servers and desktops"
+<br>
+<small>
+<a href="https://languageandthought.com/2021/10/26/poplog-teaching-research-and-development/">https://languageandthought.com/2021/10/26/poplog-teaching-research-and-development/</a>
+</small>
+<br>
+Andrew writes: "I've upgraded the Slitaz POPLOG VM and added a few new
+features. Slitaz is no longer a fully functioning operating system because the
+browser doesn't work anymore. However ssh does work so POPLOG can be used
+effectively.
+<br>
+The latest Slitaz Poplog can be downloaded from here:
+<br>
+<a href="https://languageandthoughtcom.files.wordpress.com/2021/10/poplog2014vm_release.zip">https://languageandthoughtcom.files.wordpress.com/2021/10/poplog2014vm_release.zip</a>
+</small>
+</h3>
+
+</CENTER>
+<hr>
+<CENTER>
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:660px">
+<font color="blue">
+Several sections below are now out of date, but retained as evidence of the
+history of Poplog and various past contributions. The latest version: 64-bit
+Poplog (V16) is available here (including download/install information):
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+<br>
+It is intended that the installation process described
+<br>
+there will be replaced by a github-based installation.
+<p>
+Some of the details below are still relevant and some only of historical
+interest. Anything referring to dates before July 2019 <font color="blue">may</font>
+be irrelevant to the latest Poplog, though many of the features and benefits are
+unchanged.
+</font>
+
+<p>
+<a name="poplog-v16"></a>
+</div>
+<P>
+<b>PREVIOUS INFORMATION RETAINED BELOW</b>
+<br>
+Free Versions Of POPLOG, including POP-11, LISP, PROLOG, ML
+<br>Popvision Library, SimAgent Toolkit....
+<p>
+Warning The www.poplog.org web site is defunct (June 2009)
+<br>
+<hr>
+<h3><b>
+JUMP TO:
+<br/>
+<a href="examples/">Teaching Resources</a>;
+<br/>
+<a href="#downloadversions">Downloads</a>;
+<br/>
+<a href="#contents">Contents List</a>;
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/video-tutorials.html">Video Tutorials on YouTube.</a>
+</b></h3>
+<hr>
+<table style="width: 100%;
+            height: 0px; text-align: left; margin-left: auto;
+    margin-right: auto;" cellpadding="0" cellspacing="10">
+<tbody>
+<hr>
+<tr>
+<td>
+
+<a href="figs/jpg/smart-poplog-5million.jpg">
+        <img alt="Poplog Plaque" width="230" border="1"
+            src="figs/jpg/smart-poplog-5million.jpg" />
+</a>
+</td>
+<td>
+<div style="margin-left:0px; margin-top:3px; margin-bottom:0px; width:495px">
+Integral Solutions Ltd (ISL) and Sussex University
+won this ICP award in 1992, for having achieved
+Poplog sales of five million dollars. It was a UK Government
+<a href="http://www.ft.com/cms/s/2/3233daaa-2189-11e1-a19f-00144feabdc0.html#axzz26N58lLms">SMART award.</a>
+<br>
+See bottom of page 3 of
+<small>
+<a href="http://www.sussex.ac.uk/internal/bulletin/downloads/1990-1999/1992/May/19920520.pdf">this 1992 Sussex Bulletin</a>
+</small>
+<br>
+Also copied
+<a href="isl-docs/poplog-sussex-bulletin">here</a> with image extracts.
+</div>
+</td>
+
+</tr>
+</tbody>
+</table>
+
+<hr>
+<a name="copyright"></a>
+<h4>
+Once an expensive product, Poplog is now Free Open Source.
+<br/>
+<a href="copyright.html">The Copyright Notice</a> is very
+simple. It is based on the MIT/XFree86 licence and imposes
+no restrictions on what can be done with the system.
+<p>
+NB: Poplog is made available "as is" with no warranty of any kind, and no
+acceptance of liability for any consequences of use.
+</h4>
+<a name="updates"></a>
+<hr/>
+<h3><b>
+Dec 2019/Jan 2020: NEWLY PACKAGED POPLOG VERSION 16(64 bit)
+</b></h3>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+<br>
+Thanks to massive conversion of poplog to 64bit by Waldek Hebisch.
+<p>
+References to 64 bit Poplog on linux below are likely
+to be out of date, unless they mention V16.
+<br>
+(The older versions of 64 bit poplog for Sparc, MIPS, Dec Alpha
+and other 64 bit Unix systems are no longer available, as far as I know.)
+<p>
+He also has a draft port of Poplog to 32 Bit ARM available for testing
+<br>
+<a href="http://www.math.uni.wroc.pl/~hebisch/poplog/poplog_arm.tar.bz2">http://www.math.uni.wroc.pl/~hebisch/poplog/poplog_arm.tar.bz2</a>
+<br>
+His work on Poplog is based on Github:
+<a href="https://github.com/hebisch/poplog">https://github.com/hebisch/poplog</a>
+<hr/>
+<h3><b>
+Talk by Steven Leach at ECOOP London 2019
+</b></h3>
+In July 2019 Steven Leach, who originally encountered Pop-11 and Poplog as an
+industrial user working for GEC then Hewlett Packard research centre, and made
+several important contributions to poplog, including the Objectclass (Object
+Oriented Programming) package, gave an invited talk on Poplog at ECOOP in London
+(contrary to the web site claiming that it was in Reims):
+<br>
+<a href="https://2019.ecoop.org/details/ecoop-2019-summer-school/3/POPLOG-a-pioneering-multi-language-multi-paradigm-development-toolkit-born-in-the-">https://2019.ecoop.org/details/ecoop-2019-summer-school/3/POPLOG-a-pioneering-multi-language-multi-paradigm-development-toolkit-born-in-the-</a>
+<br>
+His web site includes more information
+<a href="http://steelypip.wikidot.com/">http://steelypip.wikidot.com/</a>
+
+<hr/>
+<h3><b>
+<font color="red">
+14 Oct 2015: INSTALLATION OF 32 BIT POPLOG
+<br>
+(Now 'frozen')
+</font>
+<br>
+There are downloadable scripts for installing 32-bit Linux Poplog on either 32-bit or 64-bit linux
+<br>
+(e.g. Ubuntu, Fedora, Scientific Linux, CentOs).
+<br/>
+<small>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog#ubuntu">http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog#ubuntu</a>
+<br/>and on 32 bit
+Fedora (and other 'rpm'-based systems):
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog#fedora">http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog#fedora</a>
+</small>
+</b></h3>
+<p>
+The download package and installation scripts (which include an executable
+'basepop11' and build a standard set of 'saved images' that can be run) should
+work on either 32-bit linux or 64-bit linux, provided that you have installed
+the packages (listed below) required for linking and running 32-bit
+applications, and have the required 32-bit X window libraries, including
+'development' versions of libX11, libXt, libXext and (open)motif or failing that
+lesstif.
+<br/>
+The 'development' versions of libraries, as they are required
+for dynamic-linking to work.
+<h3><b>
+OLDER UPDATES
+</b></h3>
+<a href="v15.65">27 Dec 2011: Linux Poplog version 15.65 (32 bit)</a>
+<br/>
+<a href="v15.65/#installing">Available for download</a>
+<br>
+<a href="v15.65/news-and-changes.html">Recorded changes</a>
+<br/>
+<small>
+Previously the editor Ved worked reliably only in xterm and PuTTy
+windows. Other console programs claiming to emulate xterm (vt100) screen
+handling, failed to cope properly with the window update optimisations,
+e.g. when scrolling part of a screen. Disabling the screen optimisations
+by default now enables Ved to be used in a wider range of console
+windows including gnome-terminal and urxvt (and related programs).
+<br/>
+The change requires more refreshing of the whole screen, but does not
+seem to be noticable with current computing and networking speeds.
+<br/>
+The change does not affect Poplog's graphical multi-window editor, XVed.
+</small>
+<hr/>
+<h3><b>
+<a href="cas-ai">17 Oct 2011: CAS-AI</a>:
+<br>
+Poplog/Pop11 resources for Computing at School (CAS)
+</b></h3>
+<hr/>
+<h3><b>
+29 Jun 2011: (Now out of date)
+</b></h3>
+Full Linux Poplog, including graphics, available in a
+Virtual Box Package for Windows, MAC and Linux.
+<br/>
+This supersedes the 'andLinux' recommendation <a href="winpop/andl">here.</a>
+<hr/>
+<a name="ved"></a>
+<h3><b>
+29 Sep 2010: <a href="ved-docs">Introductions to use of Ved/XVed; the poplog
+text editor and programming interface</a> (in other files)
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/video-tutorials.html#editor">
+Video tutorials on the editor now on Youtube.</a>
+</b></h3>
+<hr/>
+<h3><b>
+26 Jun 2009 -- 10 Aug 2009
+</b></h3>
+This file has been much reorganised.
+There is now a <a href="#whatspoplog">high level overview of Poplog</a>
+and a summary of the types of <a href="examples">teaching
+materials</a> available. Please see the <a href="#contents">Table of
+Contents</a> for more information, regarding systems available, and
+downloads.
+<br/> Suggestions for further improvements (and offers of help
+welcome). Write to A.Sloman@cs.bham.ac.uk please.
+<p>
+<hr>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<a href="#news"><b>Older News Items</b></a>
+<br/>
+<a href="examples/">Information About Teaching</a>
+
+<hr>
+<a name="whatspoplog"></a>
+<h3><b>
+WHAT IS POPLOG?
+</b></h3>
+
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px;">
+<b>Links to information about Poplog/Pop11/Prolog/Lisp on Wikipedia</b>
+<br/>
+Poplog is an integrated toolkit providing a highly extendable
+collection of languages and tools for teaching, research and
+development. It is described on Wikipedia
+<a href="http://en.wikipedia.org/wiki/Poplog">here.</a>
+By default it includes
+<a href="http://en.wikipedia.org/wiki/Incremental_compiler">incremental compilers</a>
+for three powerful AI programming languages which can be used
+interactively both when learning to program and when developing
+software:
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/POP-11">Pop-11</a>--the core
+language -- used to implement itself and the others;
+<li>
+<a href="http://en.wikipedia.org/wiki/Common_lisp">Common Lisp;</a>
+and
+<li>
+<a href="http://en.wikipedia.org/wiki/Prolog">Prolog;</a>
+</ul>
+as well as
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/ML_(programming_language)">Standard ML,</a>
+a widely used functional language.
+</ul>
+<p>
+Other languages have been developed in Poplog by users, but are not
+part of the default
+system. There are also extensions to Pop-11, providing language
+features that are not part of the core language, but are immediately
+available to users, including
+<ul>
+<li>
+<a href="doc/objectclassteach/objectclass_example">Objectclass</a>,
+an Object-Oriented programming extension, with multiple inheritance,
+described in more detail <a href="doc/objectclasshelp/objectclass">here.</a>
+<li>
+<a href="packages/current/prb/teach/rulebase">Poprulebase</a>, an
+interpreter for rule based systems, useful for "knowledge-based"
+programming (described in more detail
+<a href="packages/current/prb/help/poprulebase">here</a>),
+<li>
+The
+<a href="packages/current/rclib/help/rclib">RCLIB</a> package,
+using objectclass, to provide a variety of 2-D graphical programming
+<a href="figs/rclib/rc_graphic.html">tutorials</a> and tools, and
+including
+<a href="figs/rclib/graphplot">a library for drawing graphs generated in different
+ways.</a>
+
+<li>
+The
+<a href="packages/current/sim/help/simagent">SimAgent</a> toolkit,
+for building scenarios with interacting agents integrated with a 2-D
+display.
+<li>
+<a href="packages/current/popvision/help/popvision">Popvision</a>.
+a collection of tutorials and utilities for image analysis and
+manipulation, produced by David Young at Sussex University.
+<li>
+<a href="teach/super_example">The SUPER library,</a> a
+'superdatabase' package that provides much of the functionality of
+Prolog but smoothly integrated with Pop-11's syntax and pattern
+matching facilities.
+</ul>
+<p>
+Most of Poplog is implemented in
+<a href="http://en.wikipedia.org/wiki/POP-11">Pop-11</a>, including
+the incremental compilers for all four languages and the integrated
+programmable editor.
+<p>
+Because the core language, Pop-11,
+makes use of
+<a href="http://en.wikipedia.org/wiki/Dynamic_compilation">incremental
+compilation</a>, Pop-11 provides most of the flexibility of an
+interpreter and most of the speed of a compiler. (The main
+disadvantage is the general difficulty
+of porting an incremental compiler to a new platform.)
+<p>
+Poplog was already a well engineered, robust and highly successful
+commercial product in the 1990s, developed jointly by Sussex
+University and ISL (Integral Solutions Ltd),
+and marketed by ISL, who used it to develop the
+widely used <a href="isl-docs/clementine.html">Clementine</a>
+data-mining system, until 1998, when ISL was bought by
+<a href="http://www.spss.com/uk">SPSS</a> (for Clementine -- later
+extended and re-named <a href="http://www.spss.com/software/modeling/modeler/">PASW</a>).
+<p>
+SPSS were later taken over by IBM, who still seem to have have parts of
+Clementine in their Business software:
+<br>
+<a href="https://www-356.ibm.com/partnerworld/gsd/solutiondetails.do?&solution=53501">https://www-356.ibm.com/partnerworld/gsd/solutiondetails.do?&solution=53501</a>
+<br>
+<a href="https://spss-clementine.software.informer.com/">https://spss-clementine.software.informer.com/</a>
+<p>
+Poplog Prolog was used to develop the original version of the SPARK toolkit by
+Praxis Systems, though they now use Sicstus Prolog, as that has
+features not in Poplog Prolog. (There is now a free Open Source
+version of the toolset
+<a href="http://libre.adacore.com/libre/tools/spark-gpl-edition/">here.</a>)
+<p>
+Some information about academic and commercial customers and
+products based on Poplog can be found
+<a href="isl-docs">here.</a> After the take-over by SPSS, Poplog
+became free and open source. Unfortunately, by then academic usage
+had dropped, partly because of the high price of Poplog during the
+mid 1990s, partly because the full system (including graphics) was
+available only on expensive servers and workstations, and only a
+subset was available on PCs running Windows. (ISL found that the
+costs of sales and supports to academics were not worth the
+benefits, so they focused on commercial customers. In those days it
+was not possible to sell and support such software via the
+internet.)
+<p>
+The Linux version of poplog, ported in his own time by Julian Clinton
+while still working for ISL, did not become available until after
+SPSS bought ISL, and this website was started for Free Poplog.
+(Initially the port was somewhat incomplete and had a few bugs, but
+these were soon identified and fixed. However, changes in Linux and
+the C language specification, led to requirements for some further
+changes in Linux poplog including
+<a href="oldcontents.html#fedoraprob">some problems caused by Selinux</a>.)
+<p>
+<b>Note added 17 May 2019</b>
+<br>
+The above paragraph wrongly credited Clark Morton, not Julian Clinton, with the
+work on Linux poplog. This has now been corrected.
+
+<a name="size"></a>
+<p>
+<b>Size (needs to be revised for 64bit Poplog V16)</b>
+<br/>
+Considering that Poplog includes incremental compilers for four languages
+(Pop-11, Prolog, Common Lisp and ML), along with an integrated programmable
+editor, and a host of additional libraries and documentation, including teaching
+materials, the size of the system is surprisingly small: the complete 32-bit
+Linux download package is a little over 17MB (including all system sources,
+documentation and libraries, with a number of add-ons). The size was reduced for
+<a href="v15.63">Version 15.63</a>, partly by moving the 'contrib' package to
+<a href="contrib">a separate location</a> (also
+<a href="contrib.zip">in a zip file).</a>
+<blockquote>
+<small>
+(The packaged self-installing <a href="#pcwinversion">windows version of Poplog
+V15.5 described
+below</a> is even smaller.)
+</small>
+</blockquote>
+The uncompressed Poplog installation directory, after relinking
+poplog and building saved
+images, requires about 79MB on Linux (since Version 15.63, of
+which a large subset can be
+removed if not needed). The normal minimum process startup size for
+Pop-11 including the editor and incremental compiler, is around
+11MB. That can be reduced by using a version linked without some of
+the default components, e.g. without indefinite precision
+arithmetic, the editor, the X window interface.
+<p>
+The run-time startup size goes up of course if Prolog, or Lisp, or
+ML (or a combination) is included, though not by much because a
+great deal is shared between the four compilers.
+<p>
+<b>Size of Poplog V.16</b>
+<br/>
+The system installed at Birmingham in January 2020, including all system sources
+and the Poplog Packages tree, and various *.o and *.w files in src directories
+that could be deleted is around 105MB. Deleting the *.o and *.w files saves
+about 8MB.
+<p>
+<b>Speed</b>
+<br/>
+Partly because of its compactness Pop-11 and the other Poplog
+languages are comparatively fast when running user code,
+out-performing interpreted versions of the languages, though not as
+fast as batch-compiled languages. (The versatility in supporting
+Pop-11, Common Lisp, Prolog and ML adds a small speed penalty
+compared with separate dedicated compilers.) The internals of poplog
+run very fast because they are implemented in <a href="sysdoc/">a
+special dialect of Pop-11</a> with C-like extensions. For example,
+code compilation is very fast though this is partly because
+the compiler does not do a vast amount of optimisation. Moreover, at
+least one researcher at HP Research labs switched from using Lisp on
+a dedicated Lisp machine, to using Poplog Lisp on a general purpose
+unix workstation, because he found the poplog garbage collector so
+much faster. However, machines have speeded up so much since then
+that the difference would no longer be so noticeable!
+
+</div>
+<hr/>
+<p>
+<a name="teaching"></a>
+<h3><b>
+NOTE: 24 Jan 2010 This section on teaching has been moved to
+<a href="examples">a separate directory</a> and expanded/improved.
+<br/>
+All the contents of the section on teaching that used to be here
+are included in the new directory.
+</b></h3>
+<hr>
+<a name="origins"></a>
+<h3><b>
+Origins of poplog
+</b></h3>
+
+<blockquote>
+Note: "POPLOG" is a trade mark of the University of Sussex.
+<p>
+Poplog was developed in the
+<a href="http://www.cogs.sussex.ac.uk">
+School of Cognitive and Computing Sciences</a>
+at the University of Sussex and at
+<a href="http://www.isl.co.uk"> ISL</a> (now part of
+<a href="http://www.spss.com">SPSS</a>),
+and is distributed free of charge by courtesy of both organisations.
+Between 1983 and 1998 Poplog was an expensive commercial product,
+sold first by Systems Designers Ltd., then ISL, though always with
+large discounts for academic users. Examples of commercial and
+academic customers, and some of the products produced using Poplog
+can be found in this directory
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/isl-docs">http://www.cs.bham.ac.uk/research/projects/poplog/isl-docs</a>
+<P>
+Additional code and documentation listed below were produced by members
+of the University of Birmingham and other organisations. All of it is
+now free of charge with open source.
+</blockquote>
+<P>
+<a name="overxxx"></a>
+<p>
+<h3><B>Overview of available systems and information</B></h3>
+<blockquote>
+The remainder of this
+file contains pointers (1) to a number of complete Poplog systems
+for various combinations of machine and operating system, (2) to
+sources, (3) to documentation about Poplog and Pop-11, (4) to
+various add-ons supporting teaching and research in AI and Cognitive
+Science, developed at Sussex, Birmingham, and elsewhere, including a
+package for research and teaching in vision, a powerful and flexible
+X window-based GUI package implemented in Pop-11, the SimAgent toolkit
+for developing sophisticated agent architectures, and Robin
+Popplestone's Scheme in Pop library. There are also
+(5) some "easy" to install
+complete packages containing the add-ons.
+<p>
+Readers who know nothing about the Poplog system or its languages may
+find it useful to look at this introductory overview
+<a href="poplog.info.html">http://www.cs.bham.ac.uk/research/poplog/poplog.info.html</a>
+and also the comp.lang.pop newsgroup informal FAQ.
+<a href="comp.lang.pop.faq.html">http://www.cs.bham.ac.uk/research/poplog/comp.lang.pop.faq.html</a>
+<P>
+Experts may find it useful to look at the draft
+<a href="#userguide">User Guide</a> to get a feel for the variety of
+facilities available in poplog.
+<p>
+The web site at
+http://www.poplog.org
+was set up by two experienced users of Poplog and Pop-11.
+It includes archives of postings to comp.lang.pop, code libraries,
+and a partial mirror of this site, among other things.
+<b>
+Unfortunately the web site is now defunct.
+</b>
+</blockquote>
+<hr>
+<a name="contents"></a>
+<p>
+<h3><B>
+CONTENTS
+<br/>
+<small>
+Some of these entries point to separate files
+</small>
+</B></h3>
+<ul>
+<li>
+<a href="#general"><b>GENERAL INFORMATION</b></a>
+<li>
+<a href="#downloadversions"><b>DOWNLOADABLE VERSIONS OF POPLOG</b></a>
+<li>
+<a href="#updates"><b>RECENT NEWS and Updates</b></a>
+<li>
+<a href="#whatspoplog"><b>WHAT IS POPLOG?</b></a>
+<li>
+<a href="examples/">
+<b>Information about Teaching materials</b>
+<br/>
+(Now in separate web pages.)
+</a>
+<ul>
+<li>
+<a href="examples/#interactive">
+<b>Types of interactive programming exercises</b>
+</a>
+<li>
+<a href="examples/#contents">
+<b>Sample Teaching Materials for General programming, AI,
+Graphics, Use of
+Editor, etc.</b>
+</a>
+<li><a href="examples/#whypop"><b>Why Pop-11?</b>
+</a>
+<li>
+<a href="examples/#editor">
+<b>Editor, documentation and libraries</b> (In Examples directory.)
+</a>
+<li>
+<a href="#ved">Poplog's Ved/XVed text editor and programming interface</a>
+<li>
+<a href="examples#additional">
+<b>Additional Information about Poplog and Pop-11</b>
+</a>
+<li>
+<a href="examples/#Packages">
+<b>The Poplog (extendable) Package Structure</b>
+</a>
+<li>
+<a href="#commercial">
+<b>Poplog/Pop-11 as a commercial product (1983-1998)</b>
+</a>
+<li>
+<a href="examples#contents"><b>More detailed contents list for teaching
+materials</b></a>
+</ul>
+<li>
+<a href="#overxxx">
+<b>Overview of available systems and information</b>
+</a>
+<li><a href="#copyright"><b>Copyright notice</b></a>
+<br>
+<li><a href="#contents">
+<b>This contents list</b></a> <b>[You are here!]</b>
+<br>
+<li><a href="#google">
+<b>Use Google to find information about Poplog/Pop-11/Ved</b>
+</a>
+<br>
+<li><a href="#general">
+<b>More Information about Poplog and Pop-11 and this directory</b>
+</a>
+<li>
+<a href="ved-docs"><b>Introduction to use of Ved/XVed the poplog editor</b></a>
+<br>
+(In a separate file.)
+<li>
+<a href="#install"><b>System documentation</b></a>
+<br>
+<li><a href="#news"><b>Older News Items</b></a>
+<br>
+<li>
+<a href="#hebisch"><b>POP-11 VERSION OF "HOW TO THINK LIKE A COMPUTER SCIENTIST"</b></a>
+<p>
+<a name=versiontable></a>
+<li>
+<b>
+<a href="#downloadversions">DOWNLOADABLE VERSIONS OF POPLOG</a>
+</b>
+<br>
+[Note 15 Dec 2019: This 64-bit version is out of date now. See <a href="#poplog-v16">new version above </a>.]
+<P>
+<ul>
+<li>
+<b>
+<a href="#currentversions">Current Versions for Linux and Unix </a>
+</b>
+<ul>
+<li><a href="#pclinuxpoplog">PC Linux Poplog</a>,
+(also usable on
+<a href="winpop/andl">Windows using andLinux</a>,
+or <a href="ova">VirtualBox (probably best option for windows
+users)</a>)
+
+<ul>
+<li>32 bit and 64 bit Linux:
+<br/>
+Poplog for use with or without Motif on PC Linux (packaged with
+Birmingham and Sussex extras).
+</ul>
+<li>
+<a href="#latestversion">Latest version</a>
+<li>
+<a href="#amd64poplog">64 Bit Poplog</a>
+<li>
+<a href="#debian">Instructions for Debian/Ubuntu users</a>
+
+<li>
+<a href="#freebsdinfo">Installing Poplog in FreeBSD</a>
+<br>
+<li><a href="#minilinux">A reduced version of Poplog for mini-linux </a>
+<br>
+
+<li><a href="#solaris"> Sparc Solaris Poplog </a>
+<br>
+
+<li><a href="#alpha53"> Alpha Unix Poplog V15.53</a>
+<br>
+
+<li><a href="#hppa"> HP Unix Poplog V15.53</a>
+<p>
+<hr>
+</ul>
+<li>
+SOURCES FOR SOME OLD VERSIONS
+<ul>
+<li>
+<a href="src.systems/iris-src.tar.gz">A
+tar file with source for the Iris version of poplog</a>
+is here for download, if anyone wishes to try to get it working (which
+will require a <a href="sysdoc/ppg">running version of poplog</a>).
+<p>
+<li>
+A tar file with
+<a href="src.systems/S.vaxvms.tar.gz">
+sources for the Vax VMS
+version of poplog
+(S.vaxvms.tar.gz)
+</a>
+is here for download, if anyone wishes to try to get it working (which
+will require a <a href="sysdoc/ppg">running version of poplog</a>).
+</ul>
+<hr>
+<li>
+<a href="#olderversions">OLDER VERSIONS FOR UNIX-LIKE SYSTEMS</a>
+<br>
+<ul>
+<li><a href="#pcsolaris"> Intel Solaris Poplog </a>
+<br>
+<li><a href="#alpha"> Alpha Unix Poplog V15.5</a>
+<br>
+<li><a href="#powaix"> Poplog for AIX on Power PC</a>
+<br>
+</ul>
+<P>
+<li>
+<a href="#pcwinversion">PC POPLOG FOR WINDOWS 95/98/2000, NT, XP
+etc.</a>
+<ul>
+<li><a href="#pcwinversion">Poplog Version 15.5 for Windows</a>
+<li><a href="#pcwin1553">Poplog Version 15.53 for Windows</a>
+<li><a href="#pcwinutil">Additional utilities supplied by PCwin users</a>
+<li><a href="#pcbhamextras">Bham extras PCwin Poplog users</a>
+<li><a href="#pcwinsources">Source files for PC Windows/NT Poplog</a>
+</ul>
+<p>
+<li>
+<a href="#portsinprogress"><B>PORTS IN PROGRESS</B></a>
+<ul>
+<li>
+<a href="#helping">
+<b>Helping with ports</b>
+</a>
+<li>
+<a href="#osxport">
+<b>Poplog port to Apple Mac+OSX on PPC</b>
+</a>
+</ul>
+<hr>
+</ul>
+<P>
+
+<ul>
+<li>
+<a href="oldcontents.html#bhamteach">BIRMINGHAM
+EXTENSIONS, FOR TEACHING AND
+RESEARCH</a>
+<br/>
+Now described in a separate file. These are now parts of standard
+poplog.
+<p>
+<li><a href="#emacsstuff">VED-LIKE INTERFACE FOR EMACS USERS</a>
+<hr>
+</ul>
+
+<li>
+<a href="#poppackages">
+THE POPLOG PACKAGE STRUCTURE INTRODUCED IN VERSION 15.6 (2005)
+</a>
+<li><a href="#bugfixes">BUGREPORTS AND BUGFIXES DIRECTORY</a>
+<p>
+<li>
+<a href="#documentation">DOCUMENTATION DIRECTORIES</a>
+<ul>
+<li><a href="#docfiles">Browsable Poplog Documentation (Pop-11, Prolog,
+Lisp, ML)</a>
+<br>
+<li><a href="#manfiles"> MAN files,  startup scripts and User Guide</a>
+<br>
+<li><a href="#porting">Porting and rebuilding information</a>
+<br>
+<li><a href="#primer">The browsable Pop-11 Primer (and other
+versions)</a>
+<hr/>
+</ul>
+<li>
+<a href="#lisppackages">LISP PACKAGES THAT WORK IN POPLOG</a>
+<hr/>
+<p>
+<li>
+<a href="#packages">PACKAGES AND AI TEACHING MATERIALS</a>
+<ul>
+<li><a href="#rclibfiles">The
+RCLIB and RCMENU X-based user-extendable graphical
+interface tools</a>
+<br>
+<li><a href="#sim">The SimAgent toolkit, including Poprulebase</a>
+<br>
+<li><a href="#popvision">David Young's "Popvision" Library including
+neural net, array manipulation, and linear algebra utilities.</a>
+<br>
+<li>
+<a href="#popyoung">David Young's Poplog page at Sussex</a>
+<br>
+<li><a href="#neural">An older collection of neural net utilities.
+</a>
+<br>
+<li><a href="#simworld">Matthias Scheutz' Simworld package</a>
+<br>
+<li>
+<a href="#popplestone">Contributions by Robin Popplestone</a>
+<ul>
+<li><a href="#popbook">Book on Pop-11 (Paradigms of Programming)</a>
+<li><a href="#scheme">The Scheme in Pop system</a>
+<li><a href="#paradigms">Lecture Notes on Paradigms of Programming</a>
+</ul>
+<br>
+<li><a href="#nonlin">Austin Tate's Nonlin planning system</a>
+<br>
+<li><a href="#teacheliza">An Eliza Chatbot in Pop-11</a>
+<br>
+<li>
+<a href="#morepackages">
+Additional utilities (e.g. patterns, news, latex email)</a>
+<li>
+<a href="#browsable">Browsable code and documentation/teaching directories</a>
+<li>The book <a href="contrib/pop11/ct_book">Computers and Thought</a>
+by Mike Sharples and others is available online here:
+<br>
+<a ref="poplog.info.html#ctbook">http://www.cs.bham.ac.uk/research/poplog/poplog.info.html#ctbook</a>
+<P>
+<hr>
+</ul>
+<P>
+<li>
+<a href="#gosplsite">GLOBAL OPEN SOURCE POPLOG LIBRARY (GOSPL) DEFUNCT?)</a>
+<P>
+</a>
+<li>
+<a href="#popcontrib">THE CONTRIB DIRECTORY</a>
+<p>
+<li><a href="oldcontents.html#bhambundle">
+A bundle of teaching and library files added after Poplog came to
+Birmingham. (Now in current Linux Poplog)
+<br/>
+Described in a separate file.
+<p>
+<li>
+<a href="#popsites">RELATED POPLOG SITES</a>
+<ul>
+<li><a href="#poplogorg">The www.poplog.org site (now defunct)</a>
+<li><a href="#openpoplog">OpenPoplog at Sourceforge</a>
+<P>
+<li>
+<a href="#linksites">Other Free Software Sites</a>
+</ul>
+<li>
+<a href="#lesstifproblems">
+Lesstif Problems (Now fixed)
+</a>
+<p>
+</ul>
+<p>
+<hr>
+<a name="google"></a>
+<h3><B>
+Use Google to search for information about Poplog or Pop-11
+</B></h3>
+If you include in your search terms "poplog" or "pop-11" or "pop11" or
+"ved" or "xved" or some combination of those, the chances are that you
+will find what you want faster than finding it by browsing this or any
+other site!
+<P>
+<!-- Search Google -->
+<center>
+<FORM method=GET action="http://www.google.com/search">
+<TABLE bgcolor="#FFFFFF"><tr><td>
+<A HREF="http://www.google.com/">
+<IMG SRC="http://www.google.com/logos/Logo_40wht.gif" border="0" ALT="Google" align="absmiddle"></A>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<INPUT type=submit name=btnG VALUE="Google Search">
+</td></tr></TABLE> </FORM>
+</center>
+<!-- Search Google -->
+<P>
+<hr>
+<p>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<p>
+<a name="general"></a>
+<h2><B>
+GENERAL INFORMATION
+</B></h2>
+<a name="info"></a>
+<h3><B>More information about Poplog and Pop-11</B></h3>
+<a href="#downloadversions">Jump to downloads section</a>
+<blockquote>
+<p>
+Poplog version 15.53 was the first version of poplog to be made
+generally available free of charge, including all sources, since about
+1982, the year when commercial sales were taken over by Systems
+Designers Ltd.
+<P>
+Some older versions for other platforms
+<a href=#versiontable>listed below</a> are also now available free of
+charge.
+<br/>
+(They may be brought up to date later if facilities and resources
+become available for rebuilding them.)
+<p>
+V15.53 (produced in July 1999) included some additions to support
+recent versions of Linux, and a few minor bugfixes. Apart from that it
+was the same as the commercial version, used world-wide in the
+<a href="isl-docs/clementine.html">Clementine data-mining system.
+</a>
+<P>
+Since then Poplog has undergone development and bug-fixes. New
+versions have been made available at the Birmingham Poplog site, and
+are announced elsewhere in this file. An older version,
+<a href="#pcwinversion">Poplog Version 15.5</a> was made available
+for use on Windows, but lacking the graphical capabilities available
+in poplog on Linux, Unix and VMS systems. The
+<a href="#openpoplog">OpenPoplog project at Sourceforge </a> aims
+to remove the difference.
+<P>
+Reduced versions
+supporting Pop-11 as a scripting language may become available later,
+e.g. at www.poplog.org.
+(June 2009: This site is now defunct.)
+<p>
+As explained below,
+<a href="#bugfixes">A directory for bugreports and "bugfixes"</a>
+has been set up for corrections to library and documentation files as
+well as system sources.
+<p>
+Coordination of further development work is managed through the
+<a href="#faqinfo">comp.lang.pop newsgroup</a> and
+the
+<a href="http://www.cs.bham.ac.uk/research/poplog/comp.lang.pop.faq.html#EMAIL">pop-forum
+email list</a>. There is also a more specialised email list (poplog-dev)
+for those who wish to be involved in detailed technical discussions of
+development work. If you wish to join the poplog-dev email list write to
+A.Sloman@cs.bham.ac.uk.
+<p>
+A (rarely updated!) table summarising available versions of poplog
+is available here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog-versions.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog-versions.html</a>
+<p>
+For more background information about poplog see the
+<a href="#whatspoplog">WHAT IS POPLOG?</a> section.
+</blockquote>
+<p>
+<a name="location"></a>
+<h3><B>
+The free Poplog distribution directory
+</B></h3>
+<blockquote>
+When Poplog version 15.53 first became available free and open source
+the main location for bundled versions was
+the
+<a href="new/">http://www.cs.bham.ac.uk/research/poplog/new/</a> directory. The contents are described
+<a href="#versiontable">below.</a>
+Since then new bundled versions have also become available, not stored
+there. Go to the 'new' directory only if there is not another bundle
+(e.g. the standard Linux Poplog bundle) that suits your requirements.
+<P>
+There is a
+<a href="freepoplog.html#latestversion">specially
+packaged, easy install version of Poplog for
+PC+Linux</a>.
+<P>
+<a href="#pcwinversion">Information about Poplog for Windows is available.</a>
+<p>
+A mirror site for Poplog, with some additional packages used to be
+at http://www.poplog.org.
+(Now defunct, alas.)
+</blockquote>
+<p>
+<a name="install"></a>
+<h3><B>System Documentation:</B></h3>
+<blockquote>
+Detailed instructions for installing Unix and Linux poplog, were originally in
+<a href="new/install.txt">install.txt</a>. Most users can now ignore that as
+there are special instructions for the packaged versions of linux poplog
+described below.
+<p>
+Instructions for the Windows version of Poplog V15.5 are included in the
+windows poplog package (below), and separately available in the file
+<a href="new/pcwinpoplog.txt"> new/pcwinpoplog.txt</a>
+<br>(Windows poplog
+V15.53 is only for experts. For more details see
+<a href="#pcwin1553">this section below</a>, or this directory
+<a href="winpop/">http://www.cs.bham.ac.uk/research/poplog/winpop/</a>
+).
+<p>
+A <a href="#userguide">User Guide</a> is available, included
+with all the current bundled versions of poplog.
+<p>
+Documentation on rebuilding poplog can be found in
+<a href="sysdoc/rebuilding"> sysdoc/rebuilding</a>. Scripts for
+installing and re-linking are included with poplog.
+<p>
+Utilities to help with re-linking or rebuilding will go in the
+<a href="tools/"> tools/</a>
+subdirectory, including a script which will be useful if you have
+difficulties re-linking unix versions of poplog. (Improved version now
+included in PC linux poplog since Version 15.6).
+<p>
+Documentation on Porting poplog can be found in
+<a href="sysdoc/ppg"> sysdoc/ppg (Poplog Porting Guide)</a>.
+<p>
+Most of poplog is implemented in
+<a href="sysdoc/syspop11">an extended dialect of pop-11
+(SysPop-11),</a>
+so porting poplog requires a
+running version of poplog to do the cross-compilation.
+<P>
+<b>Obsolete package installation mechanism.</b>
+<br/>
+A shell script for installing "local extensions" received as gzipped tar
+files was previously available here:
+<a href="com/install_package">http://www.cs.bham.ac.uk/research/poplog/com/install_package</a>
+and documented here
+<a href="tools/install_package/install_package.txt">http://www.cs.bham.ac.uk/research/poplog/tools/install_package/install_package.txt</a>
+<p>
+Since version V15.6 This mechanism is now replaced by <a href="#poppackages">a new package
+structure</a> in the Poplog directory tree.
+</blockquote>
+<p>
+
+<hr>
+<p>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<a name="news"></a>
+<h2><B>
+OLDER NEWS ITEMS (More recent news is <a href="#updates">above</a>.)
+</B></h2>
+<ul>
+<li>
+<h3><b>
+12 Aug 2010: <a href="v15.6.4">Poplog version 15.6.4 available</a>
+<small>
+<br/>
+<a href="lisp-mods/AREADME.html">There are some bugfixes in Poplog
+Common Lisp</a>
+</small>
+</b></h3>
+<hr/>
+<a name="winpop"></a>
+<li>
+<h3><b>
+1 Oct 2009: THE LATEST LINUX POPLOG CAN BE MADE TO RUN ON WINDOWS
+<br/>
+<a href="winpop/andl">How to run the latest Linux Poplog on
+Microsoft Windows
+using andLinux</a>
+<br/>
+With Thanks to Christopher Martin
+<br/>
+(Now superseded by
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/ova/">Virtual Box
+option</a>).
+</b></h3>
+<hr>
+<li>
+<h3><b>
+16 Aug 2009
+</b></h3>
+The <a href="#teaching">section on teaching</a> has been
+considerably expanded, and moved (Jan 2010) out to a
+<a href="examples/">separate directory</a>.
+There is some background information to poplog as a teaching system
+<a href="examples/#background">here.</a>
+
+
+<li>
+
+<h3><b>
+NEWS 1 Sep 2009 (<a href="v15.63/">Version 15.6301</a>)
+</b></h3>
+
+<ul>
+<li>
+    Hakan Kjellerstrand has started producing online information
+    about Poplog, especially Pop-11, including new tutorial examples.
+    <br/>
+    See
+    <br/>
+      "The Pop-11 programming language and Poplog environment"
+    <br/>
+      <a href="http://www.hakank.org/webblogg/archives/001320.html">http://www.hakank.org/webblogg/archives/001320.html</a>
+<p>
+      "Off topic: The Pop-11 programming language and Poplog environment"
+    <br/>
+      <a href="http://www.hakank.org/constraint_programming_blog/2009/08/off_topic_the_pop11_programmin_1.html">http://www.hakank.org/constraint_programming_blog/2009/08/off_topic_the_pop11_programmin_1.html</a>
+<p>
+        <a href="http://www.hakank.org/poplog/">http://www.hakank.org/poplog/</a>
+    <br/>
+            Includes Pop-11 examples.
+<p>
+<li>
+Some missing files added and minor bugfixes, described in
+<a href="latest-poplog/CHANGES.txt">Top Level Changes summary.</a>
+<p>
+<li>
+Additional changes in packages, especially teaching packages,
+described in
+<a href="latest-poplog/CHANGES-PACKAGES.txt">Packages Changes summary.</a>
+</ul>
+
+<hr>
+<li>
+<h3><b>
+NEWS 5 Aug 2009 (<a href="v15.63/">Version 15.6301</a>): Minor rationalisation and Ved error fixed
+</b></h3>
+<ul>
+<li>
+New minor version introduced: v15.6301
+<li>
+Old procedure that used to attempt to trap syntactic error messages
+going to status line in Ved removed.
+<li>
+Error messages now by default do not go to Ved's status line. You
+can change this by making ved_errs_on_status true. (Default is
+false).
+<li>
+Installation script now modified: it is no longer necessary to
+mention 'bham' when running it.
+</ul>
+<hr>
+<h3><b>
+NEWS 4 Jul 2009 (<a href="v15.63/">Version 15.63</a>): Some rationalisation and reduction in system size
+</b></h3>
+<ul>
+<li>
+Moved <a href="#popcontrib">the 'contrib' directory</a> out of the
+default package and removed some old redundant files. As a result
+the compressed tar file for
+32-bit Linux poplog (v15.63) is about 3MB smaller, i.e. about 16MB.
+Likewise the expanded poplog system is about 10 MB smaller.
+<br/>
+The contrib directory is now browsable
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/contrib">here,</a>
+and can be downloaded as
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/contrib.tar.gz">a gzipped tar file</a>
+or as a zip file <a href="packages/contrib.zip">contrib.zip</a>
+(e.g. for use with Windows Poplog).
+<li>
+All Poplog documentation has been stripped of special Ved/XVed
+characters, so that all files can now be read in any editor, and
+also in any Web browser.
+The stripped documentation is now browsable
+<a href="docs">here (about 26 MB)</a>
+<br>
+A browsable version of the original documentation (immediately
+before stripping, i.e. between v15.62 and v15.63) including special
+Ved characters can be found
+<a href="unstripped-docs">here (about 27MB).</a>
+<li>
+Anyone wishing to download the documentation on its own for local
+viewing can get the version including the special ved characters
+(the unstripped documentation -- only of use to Ved users)
+<a href="unstripped-docs.tar.gz">in this gzipped tar file
+(about 6MB)</a> and the stripped documentation
+<a href="docs.tar.gz">in this gzipped tar file (under 6MB)</a>.
+<li>
+For more detailed descriptions of changes see this
+<a href="latest-poplog/">latest-poplog</a> contents.
+<li>
+Downloading the new version (32bit Linux poplog)
+<br/>
+    There are two shell scripts provided for conveniently downloading and installing
+    poplog v15.63. After fetching the script you want to use, make sure it is executable
+    (using 'chmod ugo+x'), then run it
+    <ul>
+    <li><a href="v15.63/get-and-install-v15.63-poplog">get-and-install-v15.63-poplog</a>
+<br/>
+    Fetches additional scripts, downloads the tar file, and installs
+    in /usr/local/poplog, with links from /usr/local/bin/poplog and
+    'man' files in /usr/local/man/man1
+    You will probably need to run that script as superuser (root) or
+    using 'sudo', since it needs to use 'system' directories.
+
+    <li><a href="v15.63/get-and-install-v15.63-poplog-here">get-and-install-v15.63-poplog-here</a>
+<br/>
+Fetches additional scripts, downloads the tar file, and installs
+    in a directory <i>below</i> the directory in which it is run,
+i.e. not /usr/local/poplog. So superuser access is not required.
+<br/>
+    The 'poplog' and 'poplog.sh' startup scripts are installed in
+    a directory below the one used to run the get-and-install
+    script, namely in v15.63/pop/v15.63/bin/
+</ul>
+<p>
+</ul>
+<hr>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<h3><b>
+NEWS 21 Jun 2009
+</b></h3>
+<ul>
+<li>
+<a href="http://www.j-paine.org/dobbs/poplog.html">Jocelyn
+Paine's Blog on
+Poplog Continuations Eliza AI education and Prolog
+</a>
+in Dr Dobb's CodeTalk Mar 11 2009
+<p>
+<li>
+<a href="poplog-versions.html">List of Poplog Versions updated</a>
+<br>
+(Not complete. The
+<a href="http://openpoplog.sourceforge.net/versions.html">table on the openpoplog web site</a>
+is <i>very</i> out of date and should be ignored.)
+<p>
+<a name="popvisbug"></a>
+<li>
+Bug in updater of sunrasterfile in Popvision library <a href="bugfixes/BUGREPORTS">fixed</a>
+<br/>
+<small>
+(Thanks to Jack Hollingworth at Reading University,
+it is now possible to save popvision images to hard drive on
+Linux.
+<br>
+Previously there was a problem with 'endian-ness'.)
+</small>
+</ul>
+
+<hr/>
+<a name="livecd"></a>
+<h3><b>
+NEWS 28 May 2009:
+<a href="livecd">Poplog on a SliTaz LiveCD</a>
+</b></h3>
+<blockquote>
+    Andrew Rydz has produced a LiveCD containing SliTaz with poplog ready to run.
+    For more details look <a href="livecd">here.</a>
+</blockquote>
+<hr>
+<a name="popracer"></a>
+<h3><b>
+NEWS 28 May 2009: <a href="popracer">The Popracer package</a>
+<br/>
+has been enhanced with a
+PDF copy of the project report.
+</b></h3>
+<blockquote>
+Popracer was a second year undergraduate team project in 2005, using Pop-11,
+including its graphical tools, to design a package to evolve simulated racing
+cars with neural net controllers, able to compete and win on a circuit
+designed by the user. A graphical tool for designing new circuits was provided.
+For details see <a href="popracer/popracerreport.pdf">the project report (PDF)</a> and
+<a href="http://www.tamias.co.uk/popracer">the report by Mark Rowan</a> in the
+Networks magazine.
+<br>
+There is a <a href="popracer.tar.gz">gzipped tar file</a> containing the contents of the popracer directory.
+<br>
+<b>Update 18 Jan 2020</b>
+<br>
+Here is a video showing (speeded up) evolution and training
+of the racing cars.
+<a href="https://m.youtube.com/watch?v=tt-e5biErrQ">https://m.youtube.com/watch?v=tt-e5biErrQ</a>
+</blockquote>
+
+
+
+<li>
+<a name="v15.62"></a>
+<h4><b>
+NEWS 3 Dec 2008:
+<a href="v15.62">Version V15.62 of PC Linux Poplog available</a>
+<br/>
+with <a href="oldcontents.html#sysctl">'setarch' problem</a> fixed'.
+<br/>
+Now superseded by <a href="latest-poplog">latest-poplog</a> (for
+32bit linux poplog only).
+</b></h4>
+<li>
+<h4><b>
+NEWS 9 Jun 2008:
+<a href="v15.61-amd64">Version of 64 bit PC Linux Poplog
+version 15.6102 available.</a>
+<br>
+With new instructions and new simplified 'fetch and install'
+scripts.
+<br/>
+Now superseded by <a href="latest-64bit-poplog">latest-64bit-poplog.</a>
+</b></h4>
+<p>
+<li>
+<h4><b>
+NEWS 7th Feb 2008:
+<a href="v15.61">New Version of 32 bit PC Linux Poplog
+version 15.6102 available.
+</a>
+<br>
+With new instructions and new simplified 'fetch and install'
+scripts.
+<br/>
+Now superseded by <a href="latest-poplog">latest-poplog.</a>
+</b></h4>
+<li>
+<h4><b>
+NEWS 31 Jan 2008 Packages that work in Poplog Common Lisp
+</b></h4>
+<blockquote>
+Added a separate section for
+<a href="#lisppackages">Lisp Packages that work in Poplog</a>
+<br>
+Currently refers to <a href="#screamer">Screamer</a>
+and
+<a href="#spartns">Spartns</a>
+</blockquote>
+<li>
+<a name="hebisch"></a>
+<h4><b>
+NEWS 25 Jan 2008 Draft Pop-11 Book
+</b></h4>
+<blockquote>
+<a href="http://www.math.uni.wroc.pl/~hebisch/">Waldek Hebisch</a>
+(Mathematical Institute University of Wroclaw, Poland)
+has made available a draft Pop-11 version of the book
+<br/>
+<a href="http://www.greenteapress.com/thinkapjava/"><i>How to think like a computer scientist</i></a>
+written by Allen B. Downey.
+<p>
+The Pop11 version should be a very useful supplement to the old
+<a href="primer">Pop-11 primer.</a>
+<br/>
+The Pop-11 version of the book is available in PDF format at
+<blockquote>
+<a href="http://www.math.uni.wroc.pl/~p-wyk4/thinkCS/thinkCS_1-19.pdf">http://www.math.uni.wroc.pl/~p-wyk4/thinkCS/thinkCS_1-19.pdf</a>
+<p>
+Latex source, figures, etc.:
+<a href="http://www.math.uni.wroc.pl/~p-wyk4/thinkCS/thinkCSpop11_0.7.1-19.tar.gz">http://www.math.uni.wroc.pl/~p-wyk4/thinkCS/thinkCSpop11_0.7.1-19.tar.gz</a>
+</blockquote>
+
+This is a somewhat incomplete version, containing only the first 19
+chapters and chapter 14 is very incomplete.
+<br>
+(on 25 Jan 2008)
+<p>
+Note: Robin Popplestone's draft book on Pop-11 and his
+lecture notes on Programming Paradigms are also available
+<a href="#popplestone">
+below.</a>
+</blockquote>
+<li>
+<h4><b>
+NEWS 12 Dec 2007
+</b></h4>
+<blockquote>
+Instructions for installing <a href="#pcwinversion">Windows
+Poplog</a> (including installation on Vista) can be found
+<a
+href="http://www.cs.bham.ac.uk/internal/courses/ai-prog-a/howto_poplog_vista.php">here.</a>
+</blockquote>
+
+<li>
+<h4><b>
+NEWS 23 Nov 2007
+</b></h4>
+<blockquote>
+    Added simple pop-11 syntax highlighting command for VED, in
+<pre>
+        $usepop/pop/lib/ved/ved_highlight.p
+</pre>
+    The command
+<pre>
+        ENTER highlight
+</pre>
+    will underline all syntax words, apart from those included in
+    the list assigned to global variable
+<pre>
+        highlight_exceptions
+</pre>
+    To see what the exceptions are do
+<pre>
+        ENTER showlib highlight_exceptions
+</pre>
+
+    If you don't want to fetch a complete poplog system, the file
+    can be downloaded on its own from
+    <br/>
+        <a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.61/v15.61/pop/lib/ved/ved_highlight.p">http://www.cs.bham.ac.uk/research/projects/poplog/v15.61/v15.61/pop/lib/ved/ved_highlight.p</a>
+    <br/>
+    Simply install it in the directory $usepop/pop/lib/ved/ in your
+    current poplog system.
+    <br/>It will then be autoloadable.
+    Undo highlighting with
+<pre>
+        ENTER strip
+</pre>
+</blockquote>
+
+<li>
+<h4><b>
+NEWS 5 Oct 2007: Updated version of Poplog v15.6101
+</b></h4>
+<blockquote>
+The main latest change alters the directory mechanism in
+$popsrc/unix_dir.p thanks to help from Waldek Hebish. This
+fixes a bug in pop-11 reported as bug 32 in
+
+<blockquote>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/bugfixes/BUGREPORTS">http://www.cs.bham.ac.uk/research/projects/poplog/bugfixes/BUGREPORTS</a>
+</blockquote>
+
+And also overcomes a problem determining current directory when the
+SELinux security mechanisms are active.
+</blockquote>
+
+<li>
+<h4><B>
+4 Apr 2007: (Superseded use:
+<a href="http://tinyurl.com/PopLog/latest-poplog">http://tinyurl.com/PopLog/latest-poplog</a>)
+</B></h4>
+There are instructions for installing Poplog version
+15.61 on Debian/Ubuntu in
+<a href="v15.61">http://www.cs.bham.ac.uk/research/poplog/v15.61</a>
+<blockquote>
+Students in Birmingham who are
+Ubuntu users should look at
+<a href="ubuntu/djb/install_poplog_on_ubuntu.html">David Brooks' instructions page</a>
+and then fetch <a href="#currentversions">the latest version.</a>
+<p>
+</blockquote>
+<li>
+<h4><b>
+16 Sep 2006:
+</b></h4>
+Improved the presentation of
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/eliza">Pop11 Eliza</a>
+and made it stand-alone, so that it should work on many PC+linux
+web servers running php. Tar file is
+<a href="eliza.tar.gz">here.</a>
+<li>
+<h4><b>
+9 Sep 2006:
+</b></h4>
+Made Robin Popplestone's Magnum Opus on Pop-11 and related
+topics more easily available <a href="#popplestone">here</a>.
+<li>
+<h4><b>
+9 Sep 2006:
+</b></h4>
+Moved some of the previous contents of this file into
+<a href="old/superseded.html">the 'Superseded' file.</a>
+<li>
+<h4><B>
+9 Sep 2006:
+</B></h4>
+The Pop11 Eliza broke mid July 2006 when the web server was
+reorganised. Now fixed, including counter.
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/eliza">Try it here</a> but don't expect too much.
+<br>
+Assertions generally produce better results than questions. Use only
+single sentences. There is no grammar, only pattern matching.
+<li>
+<h4><B>
+17 Apr 2006:
+</B></h4>
+64-bit Poplog for AMD64 has been repackaged.
+<br>
+For further details look
+<a href="#amd64poplog">here</a>
+<li>
+<h4><B>
+10 May 2005:
+</B></h4>
+There is now <a href="#pdfprimer">a PDF version of the
+Pop11 primer</a>
+<li>
+<h4><B>
+15 Mar 2005:
+</B></h4>
+Test version of Poplog for 64-bit linux on AMD64 (Opteron) CPU
+For further details look
+<a href="#amd64poplog">here</a>
+<li>
+<h4><B>
+15 Mar 2005:
+</B></h4>
+Improvements to <a href="#emacsstuff">Emacs for poplog package.</a>
+<li>
+<h4><B>
+20 Feb 2005:
+</B></h4>
+Newly bundled Poplog Version 15.6 (PC Linux Poplog only). Now
+superseded by
+<a href="#latestversion">a later version. </a>.
+<br>
+Version 15.6
+is available, rationalised and reorganised.
+<P>
+<li>
+<h4><B>
+5 Feb 2005:
+</B></h4>
+Added
+section on <a href="#portsinprogress">Ports in Progress.</a>
+<P>
+<li>
+<h4><B>
+6 Jan 2005:
+</B></h4>
+Single float external function results work in linux poplog
+It was found recently that in Linux Poplog calling external functions
+(e.g. C or Fortran) that produced single float results did not work
+properly: the wrong results were returned. This problem has now
+<a href="bugfixes/BUGREPORTS">been fixed</a>. As a result of this all
+the new features of the Popvision library now work, including the large
+new
+<a href="#lapop">'matlab-like' package.</a>
+(The packages also work in Sparc/Solaris poplog, which did not have the
+external function problem.)
+<li>
+<h4><B>
+1 Jan 2005:
+</B></h4>
+Some new problems fixed and change notes updated. Many users have had problems
+with function keys not working in linux poplog as packaged for Birmingham users
+in the bham-linux-poplog.tar.gz file. The problem has been tracked down to a
+mistake in the file
+<br>
+    $poplocal/local/setup/Poplib/vedinit.p
+A revised version can be fetched from
+<a href="setup/Poplib/vedinit.p">http://www.cs.bham.ac.uk/research/poplog/setup/Poplib/vedinit.p</a>
+<P>
+The pop-11 sockets library does not work on systems where the C library
+no longer supports 'errno'. The core of poplog was fixed to deal with
+this in July 2003, but a new version of the socket library was not
+installed to make use of this fix until today. It can be fetched from
+<br>
+<a href="bugfixes/pop/lib/lib/unix_sockets.p">http://www.cs.bham.ac.uk/research/poplog/bugfixes/pop/lib/lib/unix_sockets.p</a>
+<br>
+and installed in
+<br>
+    $usepop/pop/lib/lib/unix_sockets.p
+<br>
+This is now included in the <a href="#latest">standard</a>linux poplog package.
+
+<P>
+Descriptions of various bugs and bugfixes, including the above two, have
+now been included in
+<a href="bugfixes/BUGREPORTS">http://www.cs.bham.ac.uk/research/poplog/bugfixes/BUGREPORTS</a>
+<P>
+<li>
+<h4><B>
+24 Dec 2004:
+</B></h4>
+Installation scripts generalised, and Linux Poplog
+re-packaged
+The scripts for installing Linux poplog have been modified so
+as to cope better with more problems, e.g. gcc missing, or linking
+a new binary failed for some reason. In particular, short-cut
+installation procedures
+<a href="linux-cd/SHORT-CUT-INSTALLATION.txt">described here</a>
+should work in more circumstances. (Thanks to Andrew Starling for
+reporting in detail problems experienced installing Poplog on SuSe 9.2).
+<P>
+In addition, the rpms for Ctwm and Openmotif previously included in the
+package for the benefit of Birmingham students are no longer included
+since both are readily available on the internet and a later version of
+Openmotif is included in many Linux distributions. This has reduced the
+size of
+<a href="#bhamlinuxpoplog">the integrated Birmingham Linux Poplog package</a>
+from about 21Mbytes to about 19Mbytes.
+<P>
+<li>
+<h4><B>
+24 Dec 2004:
+</B></h4>
+External linker bug fixed (Linux PC Poplog)
+After a new version of the popvision library (see 7 Dec 2004 news
+item) was installed a bug in the linux version of Pop11's external
+linker was discovered: it did not treat symbols in external libraries as
+global. Thanks to help from David Young and Jeff Best, the source of the
+problem has been identified and a fix installed. The latest versions
+(version 15.53 and version 15.6) of
+<a href="#latestversion">Linux
+Poplog packaged with Birmingham and Sussex extras </a>
+includes the fix.
+<P>
+<li>
+<h4><B>
+24 Dec 2004:
+Script for Checking Linux installations
+</B></h4>
+As many people have recently had problems installing poplog on linux
+installations that did not include development tools by default (e.g.
+SuSe version 9.2) a <a href="#checklinux">script has now been provided</a>
+for checking (and if possible) fixing Linux installations before installing Poplog.
+<li>
+<h4><B>
+7 Dec 2004:
+</B></h4>
+New version of David Young's Popvision library available.
+<br>
+<a href="popvision.tar.gz">popvision.tar.gz</a>
+<br>
+<a href="popvision">Browsable directory</a>
+<br>
+New features all described in
+<a href="help/popvision.txt">the HELP POPVISION file</a> and
+<a href="http://popvision/help/popvision/">other documentation files,</a>
+include:
+<ul>
+<li>
+Linear algebra package
+<br>
+<a href="popvision/help/lapack">LAPACK</a>
+gives a direct interface to the Lapack linear algebra package,
+(and BLAS library) which has very wide scope.
+<br>
+<a href="popvision/help/lapop">LAPOP</a>
+gives a simpler, higher-level interface to some common linear
+algebra functions, including matrix multiplication, linear equations,
+least-squares problems, eigenvalue and singular value decompositions.
+<li>
+<a href="popvision/help/arrpack">ARRPACK</a>
+provides procedures for arithmetic and
+logical operations on
+arrays, using external procedures for efficiency. (Largely supersedes
+the
+<a href="popvision/help/float_arrayprocs">FLOAT_ARRAYPROCS</a>
+library).
+<li>
+New Array operations include
+<br>
+* newintarray creates packed integer arrays.
+<br>
+* newdfloatarray creates double-precision packed floating-point arrays.
+<br>
+* newrfloatarray creates packed floating-point arrays with precision
+depending on popdprecision.
+<br>
+* newcfloatarray creates complex single-precision packed floating-point
+arrays with alternating real and imaginary parts.
+<br>
+* newzfloatarray creates complex double-precision packed floating-point
+arrays with alternating real and imaginary parts.
+
+<li>
+Image structure operations extended, including
+<br>
+* corners_hs implements the Harris-Stephens corner detector.
+<br>
+* snakes implements very simple adaptive contours.
+<li>
+External language interface
+<br>
+* excall allows external functions to be passed the addresses of
+arbitrary elements of vectors.
+<P>
+NOTE: the popvision library was re-built on 24th December 2004,
+following fixing of the external linker bug mentioned above.
+If you have installed the latest core linux Poplog version (24 December
+2004 or later) with the linker bug mentioned above fixed,
+and you obtained popvision before then, you are advised to fetch the
+latest
+<a href="popvision.tar.gz">version of popvision</a> and install it.
+To take full advantage of some parts of it you will need to have
+the Lapack and Blas libraries installed, available from
+<a href="http://ftp.pld.org.pl/dists/ac/ready/">http://ftp.pld.org.pl/dists/ac/ready/</a>
+
+</ul>
+<li>
+<h4><B>
+26 Nov 2004: <a href="freebsd/poplog-on-freebsd.txt">Poplog for FreeBSD
+</a>
+</B></h4>
+Andrew Rydz has provided a port of Poplog for FreeBSD, and John Duncan
+has provided
+a Note on DragonFly BSD.
+<li>
+<h4><B>
+25 Oct 2004:<a href="#nonlin">
+1976 Technical report on Austin Tate's Nonlin Planner (using
+Pop-11) now
+available</a>
+</B></h4>
+<li>
+<h4>
+24 Oct 2004/Updated 26 May 2006
+</h4>
+<a href="#teacheliza">Eliza in Pop-11</a> passed the 10,000 questions
+mark during October 2004, about two years after it was installed.
+<br>
+It passed the 20,000 mark in May 2006, less than two years after passing
+10,000.
+<br>
+A short example:
+<blockquote>
+You: do you get enough users
+<br>
+Eliza: FIRST TELL ME WHY YOU HAVE COME HERE?
+<hr>
+You: to find out whether you
+get enough users
+<br>
+Eliza: COULD A MACHINE FIND OUT WHETHER ME GET ENOUGH USERS ?
+<hr>
+You: maybe
+a machine could do better than I can
+<br>
+Eliza: COULD A PC ACQUIRE A WISH TO GO TO UNIVERSITY?
+<hr>
+You: a really
+intelligent one could
+<br>
+Eliza: MOST COMPUTERS ARE AS STUPID AS THEIR PROGRAMMERS
+<hr>
+You: That's
+enough for now
+<br>
+Eliza: DO GO ON
+</blockquote>
+<li>
+<h4><B>
+20 Oct 2004 Poplog for MAC+OSX
+</B></h4>
+As announced on the comp.lang.pop news group, Linux Poplog was
+(partially) ported to Apple Mac+OSX. Most things work, but not
+X11/Graphical facilities. <a href="#osxport">Details here.</a>
+<li>
+<h4><B>
+10 Oct 2004
+</B></h4>
+Added
+<a href="#gazdarmellish">links to online version of Gazdar and Mellish books</a>
+on
+Natural Language Processing (in Pop11, Prolog and Lisp).
+<li>
+<h4><B>
+<a href="#freebsdinfo">17 May 2004 Instructions added for Installing
+Poplog in FreeBSD</a>
+</B></h4>
+<li>
+<h4><B>
+<a href="#debian">24 Apr 2004 Poplog packaged for Debian users</a>
+(Now Superseded: See latest linux version)
+</B></h4>
+<li>
+<h4><B>
+20 Apr 2004: Additional movie demo
+</B></h4>
+<a
+href="figs/simagent">http://www.cs.bham.ac.uk/research/poplog/figs/simagent</a>
+<li>
+<h4>
+16 Mar 2004: Linux Poplog no longer requires termcap.
+</h4>
+Following discussion on comp.lang.pop of problems installing Poplog on
+linux distributions that do not include termcap, the Linux version of
+Poplog has been revised to remove reliance on
+<a href="http://www.delorie.com/gnu/docs/termcap/termcap.html">termcap</a>.
+Consequently,
+<a href="#bhamlinuxpoplog">the easy install version of PC Linux Poplog</a>
+with Birmingham extensions should now be much simpler to install on
+recent versions of systems that do not include termcap e.g.
+Mandrake, SuSe.
+<li>
+<h4>
+15 Feb 2004:
+<a href="#popyoung">Added pointer to David Young's Poplog page at
+Sussex.</a>
+</h4>
+<li>
+<h4>
+7 Feb 2004:
+</h4>
+<a href="#teacheliza">The Online Eliza
+Chatbot in Pop-11</a> had answered
+over 6000 questions by early February 2004.
+<li>
+<h4>
+30 Jan 2004:
+</h4>
+<a href="figs/simagent/">New movies showing SimAgent capabilities now available.</a>
+<li>
+<h4>
+17 Jan 2004: <a href="#openpoplog">Information about OpenPoplog
+at Sourceforge</a>
+</h4>
+<li>
+<h4>
+16 Nov 2003:
+</h4>
+<a href="#hppa">HP Unix Poplog V15.53</a> provided by Waldek Hebisch
+</ul>
+<p>
+<hr>
+<h4><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h4>
+<hr>
+<a name="downloadversions"></a>
+<h3><B>
+DOWNLOADABLE VERSIONS OF POPLOG
+</B></h3>
+<blockquote>
+<a name="currentversions"></a>
+<a name="pclinuxpoplog"></a>
+<h3><B>Current versions of Poplog for Linux and Unix:</B></h3>
+Information on how to use Linux poplog on Windows can be found
+<a href="winpop/andl/">here</a>.
+<p>
+The latest versions of 64 bit and 32 bit poplog, packaged for PC+Linux.
+<br>
+(For use on Windows see <a href="winpop/andl">below</a>)
+
+<ul>
+<b>
+<li>
+Version 16 (64 bit)
+<br>
+<a href="V16/AREADME.html">64 BIT LINUX POPLOG (Jan, 2020)</a>
+<p>
+<li>
+Version 15.65 (32 bit) [Out of date now]
+<br>
+<a href="latest-poplog/">DOWNLOAD INSTRUCTIONS FOR 32 BIT LINUX POPLOG</a>
+<br/>
+(E.g. for fedora, ubuntu, debian and others.)
+</b>
+<p>
+NOTE: 32-bit poplog will run on 64-bit linux if the appropriate extra libraries
+are provided. See the information <a href="latest-poplog/">here.</a>
+<p>
+Both versions provide 'get-and-install' scripts, which can be
+downloaded and run to fetch and install everything else, either in
+the 'standard' location (/usr/local/poplog) or in the current
+directory.
+</ul>
+A (possibly out of date) table
+summarising available versions of poplog is available here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog-versions.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog-versions.html</a>
+<p>
+Linux Poplog is provided in gzipped tar file format, for
+installation on PC (Intel or AMD). 32-bit Versions of Linux Poplog
+have been tested on RedHat Linux 6.0, 6.1, 6.2, 7.1, 7.2, 7.3, 8.0, 9.0,
+RedHat Enterprise Linux, Fedora core 1, 2, 3, 4, 5, and various versions
+of Debian, Ubuntu, Slackware, Mandrake, Suse Linux, and freeBSD but
+it probably works on several more. However, non-backward compatible
+changes in versions of linux sometimes cause problems.
+<p>
+Some of the downloadable versions are "current" whereas others
+are older because we have not had access to machines on which
+to update them.
+<p>
+</blockquote>
+
+<blockquote>
+<B>Graphical extras, and use of Motif/Lesstif</B>
+<br>
+Poplog has a wide range of 2D graphical facilities that work in
+connection with the X window system on linux and unix platforms. These
+can be enhanced by the use of Motif though it is not essential for
+poplog. Motif provides a collection of additional graphical tools used
+by menus and scroll-bars in the poplog X-based editor XVed, though XVed
+can be used without menus and scroll-bars.
+<P>
+However many other Poplog graphical facilities can also work without
+motif. The Birmingham graphical toolkit,
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib">RCLIB,</a>
+available as an add-on to poplog (described below) does not require
+motif, and provides menus, sliders, dials, and other GUI facilities.
+Because it is implemented in Pop-11 it is much easier to modify or
+extend than motif. It is also used for graphical displays in
+the SimAgent toolkit, demonstrated
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent">here.</a>
+<P>
+If your linux system does not include motif, you should, if you wish, be
+able to use poplog with the free Openmotif version, now available from
+<a href="http://www.openmotif.org/">http://www.openmotif.org/</a>
+and also included in many linux distributions, since several
+commercial packages based on linux and unix make use of Motif.
+<p>
+If that link
+fails try giving www.google.com or some other search engine the key
+"linux motif", or "openmotif".
+<P>
+The latest version of Lesstif, distributed with many versions of Linux,
+can also be used as an alternative to Motif, though there are some
+minor discrepancies.
+<P>
+Previously, two versions of Poplog for linux+PC were made available, one
+linked for use with motif and one linked for use without. Linux Poplog
+is now distributed in a new format, as described below, with fewer
+pre-compiled binaries, reducing download time. Installation scripts are
+provided which configure poplog to run with or without motif, as
+required.
+</blockquote>
+
+<P>
+
+<a name="pclinuxversions"></a>
+<h3><B>Poplog downloads for PC+Linux, Debian and
+instructions for FreeBSD follow.</B></h3>
+
+<ul>
+<a name="latestversion"> </a>
+<a name="bhamlinuxpoplog"> </a>
+<P>
+<li>
+<B>Recommended 32 Bit PC Linux Poplog Package</B>
+<br/>
+The currently recommended version of Linux Poplog is
+<a href="latest-poplog">here.</a>
+<br/>
+Follow that link for information on fetching and installing the
+latest version (32bit).
+<br/>
+(64 bit version <a href="#amd64poplog">below.)</a>
+<p>
+
+<hr/>
+<P>
+<li>
+<a name="amd64poplog"></a>
+<b> Linux Poplog on AMD64 or Intel 64 bit</b>
+<blockquote>
+Thanks to porting work by Waldek Hebisch, a port of Linux Poplog for 64-bit
+Intel/AMD CPUs can be found here:
+<br>
+</blockquote>
+<P>
+Note that pre-linked 32-bit linux poplog can run fine on a 64-bit
+linux installation, with 32-bit support included.
+<hr>
+<P>
+<li>
+<B>Previous recommended Linux Poplog Packages (Superseded)</B>
+<br>
+See
+<a href="old/superseded.html">The superseded file</a>
+e.g. for the last version of Linux Poplog V15.53
+<p>
+<hr>
+
+<a name="debian"></a>
+<P>
+<li>
+<B>Poplog on Debian/Ubuntu:</B>
+<br>
+Latest instructions are now at
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/#ubuntu">http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/#ubuntu</a>
+
+<blockquote>
+<b>Out of date instructions -- may be of interest/use</b>
+<br/>
+Since version 15.61 (April 2007) it is recommended that users of
+Debian/Ubuntu simply follow the instructions for
+<a href="#currentversions">the latest version of PC Linux poplog.</a>
+<blockquote>
+<a href="ubuntu/djb/install_poplog_on_ubuntu.html">David Brooks' instructions page</a>
+is useful if you need to fetch some of the prerequisites for poplog.
+<p>
+</blockquote>
+</blockquote>
+<b>Older instructions!</b>
+<blockquote>
+A version of the PC+Linux Poplog with Birmingham extras was
+packaged for Debian users by Brent Fulgham. However it now turns out
+that there are simple instructions for making the standard Poplog
+distribution work on Debian, using the standard installation script.
+See
+<a href="#currentversions">instructions for current versions of
+Linux Poplog</a>.
+
+<P>
+
+For further
+information see
+<a href="debian">http://www.cs.bham.ac.uk/research/poplog/debian</a>
+</blockquote>
+
+<P>
+<li>
+<a name="freebsdinfo"></a>
+<B>Installing Poplog in FreeBSD</B>
+<br>
+John Duncan has provided instructions on installing the linux poplog
+package on a PC running FreeBSD. See
+<br>
+<a href="freebsd">http://www.cs.bham.ac.uk/research/poplog/freebsd</a>
+
+<P>
+<li>
+<a name="minilinux"></a>
+<a href="mini-linux-pop/">
+A reduced version of Poplog for mini-linux on Intel or AMD (x86) PCs
+</a>
+produced by Stephen Isard in
+Edinburgh. (Updated November 2003).
+<br>
+The file on this site gives information about the system, but the ftp
+site for the system is in Edinburgh.
+<P>
+</ul>
+<P>
+<li>
+<h3><B>
+Non linux versions
+</B></h3>
+<ul>
+<a name="solaris"></a>
+<li>
+<H4><B>
+<a href="new/solaris1553.tar.gz"> for Solaris on Sparc.</a>
+</B></H4>
+This works on Solaris 2.6, and, Solaris 7 and Solaris 8, and probably
+also on older versions. It does not (yet) support 64bit addresses.
+<a name="alpha53"></a>
+<P>
+<li>
+<H4><B>
+<a href="new/alphaunix-15.53.tar.gz">Poplog version 15.53 for Digital Unix on Alpha (64-bit version)</a>
+</B></H4>
+This file includes binaries that work on recent versions of Digital unix
+(e.g. V4.0E (rev 1091)). It should also work on older versions of
+Digital Unix. For later versions re-linking may be necessary.
+<a name="hppa"></a>
+<P>
+<li>
+<H4><B>
+<a href="hp-poplog/hp-poplog.html">Poplog for HP Architecture running HP Unix, i.e. HP 712 running HP-UX 9.05</a>
+</B></H4>
+This package was built by
+<a href="http://www.math.uni.wroc.pl/~hebisch/">Waldek Hebisch</a>
+at the
+<a href="http://www.math.uni.wroc.pl/english.html">Institute of Mathematics in Wrocaw Poland</a>
+by cross-compiling poplog from the pc+linux version.
+<br>
+It was copied by A.Sloman from
+<a href="http://www.math.uni.wroc.pl/~hebisch/poplog/">Waldek Hebisch's Poplog page.</a>
+<P>
+<li>
+<H4><B>Other versions</B></H4>
+See the section on
+<a href="#portsinprogress">ports in progress </a>
+<p>
+</ul>
+</ul>
+<p>
+<a name="olderversions"></a>
+<h3><B>Older versions of Poplog:for unix-like systems</B></h3>
+Additional (slightly older) implementations for other platforms
+are available for download, as follows:
+<ul>
+<li>
+<a name="pcsolaris"></a>
+<a href="new/pcsolaris1552.tar.gz">
+Poplog version 15.52 for Solaris on Intel (tar.gz)</a>.
+<li>
+<a name="alpha"></a>
+<a href="new/alphaunix1550.tar.gz">Poplog version 15.50 for
+Digital Unix on Alpha (64-bit version) (tar.gz)</a>
+<li>
+<a name="powaix"></a>
+<a href="new/powaix-15.52.tar.gz">
+Poplog version 15.52 for AIX on Power Pc (tar.gz)</a>.
+</ul>
+<p>
+<a name="winvista"></a>
+<a name="pcwinversion"></a>
+<h3><B>
+PC NT/XP/Windows versions of Poplog:
+</B></h3>
+This section is probably out of date!
+<blockquote>
+At present (January 2010) the implementations
+of Poplog for Windows do not provide all the facilities of
+Linux/Unix poplog.
+In particular, they do not provide the Poplog graphical facilities that
+work on the X window system on Unix and Linux.
+<p>
+However it is possible to run Linux poplog within Windows using
+VirtualBox, as described <a href="ova">here.</a>
+<p>
+It is also possible to run linux poplog on Windows by using the free
+trial version of VMWARE
+<a href="http://www.vmware.com/">http://www.vmware.com/</a>.
+For instance the
+hybrid-sheepdog demonstration here
+<a href="figs/simagent/">http://www.cs.bham.ac.uk/research/poplog/figs/simagent/</a>
+was produced by an MSc student using Linux PC poplog, under Vmware on a
+laptop running Windows XP.
+<p/>
+It can also be made to work with the free 'andLinux' package along with
+Xming, as described <a href="winpop/andl/">here</a>. (This information may be
+out of date. If so please let A.S. know.)
+<p>
+It is likely that increasing development of 'virtualisation' tools
+will make it much easier to run programs developed in one operating
+system on another.
+<p>
+<a href="openpoplog.html">The Open Poplog project</a> aims to
+re-engineer poplog in a more platform-independent form eventually.
+However, that project seems to have been hit by the financial crash around
+2008-2010.
+<P>
+For those users of Microsoft Windows who do not wish to use andLinux
+or VirtualBox or Vmware the following options are available -- but there is no
+guarantee that they still work (in 2020).
+</blockquote>
+<ul>
+<li>
+<h3><B>
+1. A version of Windows Poplog 15.5 packaged for easy installation
+<br>with
+a
+split-screen version of the Ved editor.
+</B></h3>
+This is available packaged in three formats:
+<ul>
+<li>
+<a href="new/pcwin15.5.zip"> pcwin15.5.zip (zip archive)</a>
+<li>
+<a href="new/pcwin-15.5.tar.gz"> pcwin-15.5.tar.gz (gzipped tar
+file)</a>
+<li>
+<a href="new/pcwin-15.5.tar"> pcwin-15.5.tar (tar file)</a>
+These are all the same version of Poplog Version 15.5 for Intel PC
+running NT or Windows 95/98/2000, packaged slightly differently for
+downloading. The source files for Windows Poplog version 15.5 are
+available here:
+<a href="new/pcwnt-sources.tar.gz">http://www.cs.bham.ac.uk/research/poplog/new/pcwnt-sources.tar.gz</a>
+<P>
+This version of Poplog has no graphics, no support for X, and only the
+"dumb-terminal" version of the editor VED (allowing split-window use).
+It was designed primarily for use with NT, but can work with
+Win95/98/2000, and probably later versions of windows (e.g. XP).
+<P>
+The installation instructions are in the README
+file, included in the package, and
+<a href="new/pcwinpoplog.txt"> copied here. </a>
+<br/>
+David Brooks has provided instructions
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/winpop/howto_poplog_vista.html">
+on how to install it on
+Windows (including Vista) here:
+</a>
+<P>
+It is hoped that eventually this version of Windows poplog will be
+replaced by a system being developed in the <a href="openpoplog.html">OpenPoplog Project</a>.
+<br>
+(Now defunct, apparently.)
+</ul>
+<P>
+<li>
+<a name="pcwin1553"></a>
+<h3><B>
+2. A later version of Poplog for windows, version 15.53
+</B></h3>
+<ul>
+<li>
+    <a href="winpop/pop15-53.zip">http://www.cs.bham.ac.uk/research/poplog/winpop/pop15-53.zip</a>
+    A zip file containing the whole system.
+<li>
+    <a href="winpop/pop15-53/">http://www.cs.bham.ac.uk/research/poplog/winpop/pop15-53/</a>
+    The browsable unzipped directory.
+</ul>
+<P>
+Novices may find the more conveniently packaged version 15.5 windows
+poplog (listed above) easier to install and use.
+<P>
+The V15.53 poplog package for windows includes all the sources and I
+believe the "stubs" that were used in the
+<a href="http://www.spss.com">Clementine data mining package</a>
+to link to an X window emulation running
+windows NT. Perhaps a windows expert can use this to add graphics to
+windows poplog, or even make XVed work under windows?
+<P>
+This newer version of windows poplog does not include a
+self-installation file providing a desktop shortcut that starts up the
+Ved editor. If anyone is able to package it so that it can be used by
+novices, like the older version above, please inform A.Sloman AT
+cs.bham.ac.uk
+<P>
+<a href="openpoplog.html">The Open Poplog project</a> was intended to
+make all the X window facilities in linux/unix Poplog available also
+under Windows. Financial disruptions undermined that projct.
+<P>
+<a name="pcwinutil"></a>
+<li>
+<h3><B>
+3. Additional utilities supplied by PC Windows Poplog users
+</B></h3>
+for the benefit of users of Windows on PC, Poplog can be found in
+this
+directory
+    <a href="winpop">http://www.cs.bham.ac.uk/research/poplog/winpop</a>
+<P>
+<P>
+<a name="pcbhamextras"></a>
+<li>
+<h3><B>
+4. Bham extras packaged for Windows users
+</B></h3>
+Additional Pop-11 and Ved utilities and AI teaching materials
+developed at Birmingham and packaged for Windows/NT users in a zip file:
+<a href="bhamteach.zip">bhamteach.zip</a>
+<br>
+This contains AI tutorial files, help files and supporting libraries
+produced mainly at Birmingham for teaching programming and elementary
+AI, including some Ved tutorials. Some of these are updated versions of
+the teach files and libraries distributed with Poplog.
+Additional information about this collection is
+<a href="oldcontents.html#bhamteach">in a separate file.</a>
+<P>
+<a name="pcwinsources"></a>
+<li>
+<h3><B>
+5. Source files for PC NT/Windows version of Poplog
+</B></h3>
+The sources for the older PC Windows/NT Poplog version 15.5 are
+available separately:
+<a href="new/pcwnt-sources.tar.gz">
+http://www.cs.bham.ac.uk/research/poplog/new/pcwnt-sources.tar.gz
+</a>
+<br>
+The sources for PC Windows/NT Poplog version 15.53 are
+included in the windows poplog version 15.53 files here
+<a href="winpop/">http://www.cs.bham.ac.uk/research/poplog/winpop/</a>
+<br>
+NB: Windows Poplog was originally developed for NT and not
+all features are fully supported on Win95/98.
+</ul>
+<P>
+<hr>
+<p>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<a name="portsinprogress"></a>
+<h3><B>
+PORTS IN PROGRESS
+</B></h3>
+
+<p>
+<ul>
+<a name="helping"></a>
+<li>
+<h4><b>Helping with ports</b></h4>
+
+If you would like to help with testing and porting write to
+<blockquote>
+<small>
+pop-forum AT cs.bham.ac.uk
+</small> .
+</blockquote>
+You may also find it useful to look at the
+<blockquote>
+<small>
+<a href="comp.lang.pop.faq.html">comp.lang.pop net news group</a>
+</small>
+</blockquote>
+<br>
+See also the
+<a href="openpoplog.html">OpenPoplog initiative</a>
+
+<P>
+<a name="osxport"></a>
+<li>
+<h4><b>
+Porting Poplog to Mac+OSX on PPC
+</b></h4>
+
+<blockquote>
+<b>Poplog on Intel Mac</b>
+<br>
+(Probably out of date!)
+<br>
+Although there is a partial port of Poplog for Mac OSX on PPC,
+there isn't one for Intel-based Macs. For those, the best way to run
+poplog is now to install a version of linux (e.g. some have used
+'archlinux because it is small) in a virtual operating system (e.g.
+using VMWare) and then to install and run the latest Linux poplog.
+<p>
+<b>Poplog on OSX</b>
+<br>
+As a first step towards the OSX port, Poplog was ported to Darwin
+on PC. Testers and helpers are invited to look at the files here
+<a href="http://www.cs.bham.ac.uk/research/poplog/darwin+pc/">http://www.cs.bham.ac.uk/research/poplog/darwin+pc/</a>
+<P>
+Later a nearly working system for OSX was provided, which is accessible
+in
+<a href="http://www.cs.bham.ac.uk/research/poplog/osx/">http://www.cs.bham.ac.uk/research/poplog/osx/</a>
+<br>
+It was tested by a non-Mac user here and found to work, but the X window
+graphical facilities do not yet work. Perhaps this has something to do
+with dynamic libraries, and can be fixed by an OSX expert.
+<p>
+Everything else seems to work. However the facilities for
+automatically rebuilding poplog have not been updated to run on OSX yet.
+<p>
+An alternative is for an OSX user with X11 installed to run Poplog
+remotely on a linux or solaris machine running Poplog. For further
+information see
+<a href="http://www.cs.bham.ac.uk/research/poplog/osx/AREADME.txt"> this
+file.</a>
+
+</blockquote>
+<li>
+Poplog has also been ported to Linux on AMD 64-bit PC, but the old
+port has been replaced by the new 64-bit Poplog available here:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+</ul>
+
+
+<P>
+<hr>
+<a name="emacsstuff"></a>
+<h3><B>
+VED-LIKE INTERFACE FOR EMACS USERS
+</B></h3>
+<blockquote>
+The Poplog system was built around the integrated editor Ved
+(implemented in Pop-11), which includes facilities for rapidly accessing
+help files, teaching documentation and library sources
+through "hypertext links", and for transferring commands to the
+incremental compiler(s) and reading output from the compilers into an
+editor buffer. This makes learning, development and testing very easy,
+especially for novice programmers.
+<P>
+A number of Emacs users have developed a package that supports similar
+use of Pop-11 and other Poplog languages from Emacs, and includes
+utilities for reading the Ved "graphics enhanced" documentation files.
+The package can be downloaded here:
+<a href="emacs.tar.gz">emacs.tar.gz</a>
+or browsed online here
+<a href="emacs/">
+http://www.cs.bham.ac.uk/research/poplog/emacs/</a>
+<br>
+This is already included in the larger "complete" packages.
+</blockquote>
+<P>
+<hr>
+<a name="poppackages"></a>
+<h3><b>
+THE POPLOG PACKAGE STRUCTURE INTRODUCED IN VERSION 15.6 (2005)
+</b></h3>
+<blockquote>
+Around January 2005 Poplog was reorganised. A sub-directory was
+introduced $usepop/pop/packages (with environment variable
+$poppackages to allow for its location to be changed).
+<br>
+Many of the extensions that had been available as special packages
+from Birmingham University, Sussex University, or elsewhere that had
+previously been separately down-loadable packages were moved into
+that directory, and some of the AI tutorial material that had been
+part of the core Pop-11 code and documentation libraries was moved
+into
+<a href="packages/current/teaching/">a 'teaching' package.</a>
+<p>
+Each package has a top level directory containing a
+pop-11 program to extend the poplog search lists (popautolist,
+popuseslist, vedhelplist, vedteachlist, etc.) and subdirectories
+such as auto/, lib/, teach/, help/, ref/, data/ and others, if
+needed.
+<p>
+Some parts of poplog that were deemed not to be suitable for
+inclusion in the core of the system, e.g. items concerned with
+teaching AI rather than teaching programming in Pop-11 or Prolog,
+etc. were moved into the 'teaching' package.
+<blockquote>
+<small>
+<b>NOTE:</b> This process is not yet complete. The reorganisation
+will be continued, depending on available time.
+</small>
+</blockquote>
+<p>
+The current default list of contents (in April 2007) is
+<blockquote>
+<small>
+<b>lib:</b>
+A directory containing links to the startup pop-11 file for each of
+the packages.
+<br/>
+<b>bhamlib:</b>
+Extensions from the Birmingham $poplocal/local/directory
+<br/>
+(Currently very little, as most of the original contents
+are now in other
+packages).
+<br/>
+<b>brait:</b> A braitenberg simulator based on SimAgent
+<br/>
+<b>com:</b> Some shell scripts used for poplog
+<br/>
+<b>contrib:</b> Programs and documentation contributed over the years
+include portions of published books, e.g. the Computers and Thought
+book, and the Natural Language Processing books by Gazdar and
+Mellish. (No longer included: <a href="#popcontrib">available separately.</a>)
+<br/>
+<b>emacs:</b>Utilities to make Emacs talk to the Poplog compilers,
+emulating the poplog Ved editor
+<br/>
+<b>lockfile:</b>
+programs for locking and unlocking files
+<br/>
+<b>master:</b> Relics of the Sussex mechanisms for managing file headers
+and footers.
+<br/>
+<b>neural:</b> The poplog neural library, providing some neural net
+functions implemented in C and invoked from Pop-11
+<br/>
+<b>newc_dec:</b> Information provided by Anthony Worrall about extensions
+to the mechanisms for loading external libraries written in C.
+<br/>
+<b>newkit:</b>
+<a href="simagent.html">The Birmingham SimAgent toolkit,</a>
+containing Poprulebase and
+SimAgent libraries, and also making heavy use of RCLIB for graphics.
+<br/>
+package_template: Template directory for constructing a new package.
+<br/>
+<b>popmatlab:</b>
+A 'virtual' package which makes visible a subset of the
+facilities included in the popvision package, providing general purpose
+mathematical tools that are not restricted to being used for vision,
+including the well known BLAS and LAPACK toolkits, which are here
+made available from Pop-11.
+<br/>
+<b>popvision:</b> David Young's Popvision library (including many C
+programs for image manipulation invoked from
+Pop-11). This includes the 'popmatlab' library.
+<br/>
+<b>prb:</b> The Poprulebase subset of SimAgent, which can be used on its
+own, e.g. for expert systems.
+<br/>
+<b>rclib:</b> The RCLIB graphical extension to Pop-11 illustrated
+<a href="figs/rclib/">here.</a>
+<br/>
+<b>rcmenu:</b> An extension to RCLIB providing the 'recursive hypermenu'
+package.
+<br/>
+<b>sim:</b> The sim_agent library extensions, to be added to Poprulebase to
+provide the SimAgent toolkit.
+<br/>
+<b>teaching:</b> AI teaching materials -- programs and documentation.
+<br/>
+<b>vedgn:</b> An extension to the Ved editor for reading news (usenet).
+<br/>
+<b>vedlatex:</b> Extensions to the Ved editor for use with LaTex.
+<br/>
+<b>vedmail:</b> Programs for reading mail in a standard unix mail file, for
+sending mail, replying, unpacking attachments, creating and sending
+attachments, etc. All written in pop-11.
+<br/>
+<b>vedutils:</b> Extensions to the Ved editor used in Birmingham.
+<br/>
+<hr/>
+OTHER THINGS IN THE SAME DIRECTORY
+<br/>
+<b>gz:</b>
+A directory for tar files containing packages supplied in compressed
+form only.
+<br/>
+<b>install_package:</b> A shell script for unpacking and installing
+packages from tar files of the form package.tar.gz into a directory
+package
+<br/>
+<b>make_tarfiles:</b> Shell script for creating tar files from the
+currently installed packages.
+<br/>
+<b>setup:</b> various startup scrips
+</small>
+</blockquote>
+</blockquote>
+
+<hr>
+
+<a name="bugfixes"></a>
+<h3><B>
+BUGREPORTS AND BUGFIXES
+</B></h3>
+<blockquote>
+Bugfixes are recorded in this directory tree.
+<a href="bugfixes">
+http://www.cs.bham.ac.uk/research/poplog/bugfixes/
+</a>
+<br>
+The <a href="bugfixes/BUGREPORTS">BUGREPORTS</a> file lists bugs and
+fixes (where available) in reverse chronological order. The file
+<a href="bugfixes/ALLFILES"> ALLFILES</a> file lists all the files in
+the bugfixes directory, in reverse chronological order.
+<p>
+Other changes are listed in the
+<a href="latest-poplog/v15.62/CHANGES.txt">CHANGES.txt</a>
+file now included with
+poplog, along with revision notes included source code and library
+files.
+</blockquote>
+<p>
+<a name="faqinfo"></a>
+<h3><B>
+Asking for help or submitting bug reports
+</B></h3>
+<blockquote>
+Please submit bugreports to the
+<a href="http://www.cs.bham.ac.uk/research/poplog/comp.lang.pop.faq.html">comp.lang.pop</a>
+newsgroup or the
+<a href="http://www.cs.bham.ac.uk/research/poplog/comp.lang.pop.faq.html#EMAIL">pop-forum
+email list</a>, not to any individual. Before submitting a report on a
+problem it is worth looking at
+<a href="BUGFORM.txt">this form for bugreports</a>. Following the
+instructions will make it more likely that someone can help you.
+</blockquote>
+<p>
+<hr>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<a name="documentation"></a>
+<h3><B>
+DOCUMENTATION DIRECTORIES
+</B></h3>
+<a name="docfiles"></a>
+<h3><B>
+Browsable Poplog Documentation
+<br>
+<small>
+(Pop-11, Prolog, Lisp, ML, AI teaching materials, and Rebuilding poplog)
+</small>
+</B></h3>
+<p>
+<ul>
+<li>
+The downloadable Poplog system includes several documentation
+directories, for Pop-11, for Prolog, for Common Lisp, for ML, for
+teaching, and also documentation directories associated with each of
+<a href="#poppackages">the packages in $usepop/pop/packages.</a>
+<p>
+<li>
+Most of the detailed
+system documentation for Poplog, Pop-11 and the other Poplog
+languages (Prolog, Common Lisp, and Standard ML), can also be found in
+the browsable
+<a href="doc/">doc/ subdirectory</a> on this web site.
+<p>
+<li>
+All the contents of this directory are also available in
+<a href="docdirs.tar.gz"> a gzipped tar file</a>
+<br/>
+See especially the system documentation directory for Poplog and Pop-11
+<a href="doc/popref"> doc/popref/.</a>
+<br/> The documentation files in the doc/ subdirectory have had all the
+special VED graphic characters removed, so they should be readable in
+any browser.
+<p>
+<li>
+<a href="http://www.poplog.cs.rdg.ac.uk/poplog/">The Reading
+Poplog Online</a> web site contains much of that material conveniently
+accessible in html format, maintained at Reading University by
+<a href="http://www.reading.ac.uk/sse/about/Staff/a-d-worrall.asp">Anthony Worrall.</a>
+Anthony's code for converting Poplog documentation to html is
+<a href="poponline">here.</a>  (I have not tried using it.)
+<p>
+<li>
+<a
+href="http://dobbscodetalk.com/index.php?option=com_myblog&show=Poplog-continuations-Eliza-AI-education-and-Prolog.html&Itemid=29">
+Musings on Dr Dobb's CodeTalk Mar 11 2009
+</a>
+about Poplog, continuations, Pop-11, Eliza, AI education, and Prolog.
+by <a href="http://www.j-paine.org/index.html">Jocelyn Paine (Oxford)</a>.
+Also available
+<a href="http://www.j-paine.org/dobbs/poplog.html"> here.</a>
+
+<p>
+<li>
+<a href="doc/lispref/">The Poplog implementation of Common Lisp</a> with
+additional documentation
+<a href="doc/lisphelp">here</a>, is compatible with most of ANSI Common
+Lisp documented in
+<a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html">Guy
+L. Steele's book <i>Common Lisp The Language</i> (CLTL2)</a>
+For missing ANSI Lisp features
+see
+    <a href="doc/lisphelp/bugs">
+    doc/lisphelp/bugs
+    </a>
+<p>
+<li>
+<a href="doc/prologhelp">Documentation on the Poplog Prolog
+subsystem</a> with
+<a href="doc/prologteach/">additional prolog teaching material</a>
+<p>
+<li>
+<a href="doc/pmlhelp">Documentation on the Poplog Standard ML subsystem</a>
+includes a file of
+<a href="doc/pmlhelp/examples">introductory examples illustrating the language.</a>
+<p>
+<li>
+The Birmingham local directories included in the doc/ directory
+<a href="teach">
+(bhamteach</a> and
+<a href="help/">
+bhamhelp)</a>
+contain some online teaching material for an introductory AI
+programming course, and other things. The
+<a href="#bhamteach">bhamteach.tar.gz</a> file
+mentioned below includes code and documentation. (For windows users it
+is
+<a href="bhamteach.zip">bhamteach.zip</a>)
+<p>
+<a name="manfiles"></a>
+<li>
+<b>
+MAN Files, Startup Scripts and User Guide
+</b>
+In the browsable directory
+<a href="setup"> http://www.cs.bham.ac.uk/research/poplog/setup/</a>
+there are various documents, shell scripts, and poplog startup
+scripts (for pop-11 and Ved), which can be copied and installed
+on a system where Poplog is made available. These are included in the
+bham poplog packages. (Some of the scripts and documentation files in
+the distribution packages will be more up to date.)
+<a name="userguide"></a>
+<P>
+<a href="setup/man/man1/poplog.html">The Draft Abbreviated User Guide</a>
+(in something like the format of a Unix/Linux "man file"), also included
+with the downloadable packages, will give experienced programmers an
+idea of the contents of Poplog. It shows how to start up Poplog running
+one or more language compilers possibly with additional saved images,
+either starting in the editor or talking directly to a compiler. It is
+partly derived from the "man" file originally distributed with Poplog,
+and is now the basis for the recommended man file for local
+installation. The User Guide can be inspected here:
+<a href="setup/man/man1/poplog.html">
+http://www.cs.bham.ac.uk/research/poplog/setup/man/man1/poplog.html</a>
+<br/>
+The default linux Poplog installation script installs the corresponding
+man file in /usr/local/man/man1/poplog.1 with several names, so that it
+can be invoked by any of
+<pre>
+    man poplog
+    man pop11
+    man pop_prolog
+    man clisp (or man pop_lisp)
+    man pml
+    man ved
+    man xved
+</pre>
+<br/>
+This may grow partly out of date.
+<P>
+The whole "setup" directory, including User Guide, man files, sample
+user startup scripts and copyright notice can be fetched in this file:
+<a href="setup.tar.gz">
+http://www.cs.bham.ac.uk/research/poplog/setup.tar.gz</a>
+<p>
+<a name="readingdoc"></a>
+<li>
+<a href="http://www.poplog.cs.reading.ac.uk/poplog/"><b>Poplog
+documentation at the University of Reading</b></a>
+<br/>
+Kindly made available by Anthony Worrall. His web site was created
+by converting all the documentation from an earlier version of
+poplog to html. Most of it will still be up to date, but many things
+have been updated on the Birmingham site in the last few years.
+<p>
+<a name="porting"></a>
+<li>
+<B>Porting and rebuilding information</B>
+<br/>
+<li>
+For people interested in rebuilding Poplog after installing new source
+files, or porting to new platforms, the information in
+<a href="sysdoc">the sysdoc directory</a> may be useful. In particular,
+there is a (draft) guide to rebuilding poplog in the
+<a href="sysdoc/rebuilding">sysdoc/rebuilding</a> file.
+<p>
+The complete sysdoc directory is available as a gzipped tar file
+<a href="sysdoc.tar.gz"> http://www.cs.bham.ac.uk/research/poplog/sysdoc.tar.gz</a>
+<p>
+<a name="primer"></a>
+<li>
+<B>The browsable Pop-11 Primer (and other versions)</B>
+<br/>
+A browsable primer for Pop-11 is in
+<a href="primer">primer </a>
+<br>
+This will generally be the most up to date version, from which other
+versions are derived.
+<br>
+It can also be fetched as a gzipped tar file for local
+installation.
+<a href="pophtmlprimer.tar.gz">pophtmlprimer.tar.gz</a>
+<P>
+Or a
+<a href="pophtmlprimer2.chm">chm file</a>
+for reading in a microsoft windows help browser, kindly converted by
+Michael Malien in June 2003 (since when there have been some changes to
+the html version).
+<blockquote>
+CHM files (Compiled HTML files) are explained at
+<a href="http://www.techscribe.co.uk/techw/compiled_html.htm">http://www.techscribe.co.uk/techw/compiled_html.htm</a>
+and
+<a href="http://www.microsoft.com/office/ork/xp/two/admd03.htm">at this
+Microsoft web site</a>
+<br>
+Nils Valentin kindly informed me that a tool for extracting html
+files from a chm file is obtainable here
+<a href="http://66.93.236.84/~jedwin/projects/chmlib/">http://66.93.236.84/~jedwin/projects/chmlib/</a>
+<br>
+Instructions for compiling and using the chmlib package are available
+here:
+<a href="http://www.linux-magazine.com/issue/31/OpenOfficeConverters.pdf">http://www.linux-magazine.com/issue/31/OpenOfficeConverters.pdf</a>
+<br>
+However, for users of linux/unix systems it will normally be more
+convenient to fetch one of the other packaged versions of the primer.
+</blockquote>
+<P>
+There are also other versions of the primer available:
+<ul>
+<li>
+    <a href="primer.gz"> primer.gz</a>
+<br>
+Plain text version Pop-11 Primer (Included as teach file with
+Poplog since version 15.53)
+<li>
+    <a name="pdfprimer"></a>
+    <a href="primer.pdf">primer.pdf</a>
+<br>
+    PDF version of Pop-11 primer (294 pages)
+<li>
+    <a href="primer2.pdf">primer2.pdf</a>
+<br>
+    PDF version of Pop-11 primer printing two pages per sheet (about 145
+    sheets)
+<li>
+    <a href="primer.ps.gz">primer.ps.gz </a>
+<br>
+    Postscript version of Pop-11 primer.
+<li>
+    <a href="primer2.ps.gz">primer2.ps.gz</a>
+<br>
+    Postscript version of primer printing two pages per A4 sheet.
+    (You may have to switch to 'seascape' mode to view this.)
+<li>
+    <a href="primer2.pdf">primer2.pdf</a>
+<br>
+    PDF version of primer printing two pages per A4 sheet.
+<li>
+    <a href="primer.tex.gz">primer.tex.gz</a> (Out of date).
+<br>
+Latex source of postscript version of primer, used to produce the
+postscript and pdf versions. The latex version also requires
+two graphical files for a diagram of the Poplog virtual machine, and a
+diagram showing how poplog fits into the operating system,
+available
+here:
+<br>
+    <a href="popmodel.eps">http://www.cs.bham.ac.uk/research/poplog/popmodel.eps</a>
+<br>
+    <a href="poplog.unix.medium.eps">http://www.cs.bham.ac.uk/research/poplog/poplog.unix.medium.eps</a>
+<br> Here are GIF versions of those files:
+<ul>
+<li>
+    <a href="popmodel.gif">The Pop11 virtual machine</a>
+<li>
+    <a href="poplog.unix.medium.gif">How poplog fits into the operating
+system (simplified)</a>
+</ul>
+<li> Robin Popplestone's 528 page book on Pop-11 (discussing many computational
+concepts in the light of Pop-11 and <i>vice versa</i>)
+going into far more detail about Pop-11 is also
+available
+<a href="popbook/popbook.html">here</a>.
+(There is also a more elementary primer
+<a href="#primer">here, in various formats.</a>)
+</ul>
+</ul>
+<hr/>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+<hr>
+<a name="lisppackages"></a>
+<h3><b>
+LISP PACKAGES THAT WORK IN POPLOG
+</b></h3>
+Lisp packages available that have been tested in Poplog Common Lisp
+<ul>
+<a name="spartns"></a>
+<li>
+<a href="packages/spartns.html">Spartns (including Benchmark
+Results)</a>
+<br>
+Spartns is a SPARse TeNSor representation library, by
+Jeronimo Pellegrini
+<br/>(think of a tensor as a matrix with any number of
+dimensions).
+<br>
+Spartns is distributed under the LLGPL
+license.
+Also available at the Spartns home:
+<a href="http://aleph0.info/spartns/">http://aleph0.info/spartns/</a>
+<p>
+<a name="screamer"></a>
+<li>
+SCREAMER
+<br/>
+Screamer is an extension of Common Lisp (by <a
+href="http://www.ecn.purdue.edu/~qobi">Jeffrey Siskind</a>)
+that adds support for
+nondeterministic programming and provides a constraint programming
+language.
+<blockquote>
+Screamer downloads:
+<br/>
+<small>
+<ul>
+<li>
+<a href="packages/screamer.tar.gz">Screamer in 2001 gzipped tar file</a>
+<li>
+<a href="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/screamer/0.html">CMU AI repository</a>
+<li>
+<a href="ftp://ftp.ecn.purdue.edu/qobi/screamer.tar.Z">Older version (1994) at Purdue Compressed Tar</a>
+</ul>
+</small>
+It is very likely that many more Lisp packages will work in Poplog
+Common Lisp.
+</blockquote>
+<p>
+<li>
+<a href="#gazdarmellish">Programs for The Gazdar and Mellish
+Book on NLP</a> are available in
+<a href="#popcontrib">the Poplog 'contrib' directory</a>
+</ul>
+
+<hr>
+<a name="packages"></a>
+
+<h3><B>
+PACKAGES AND AI TEACHING MATERIALS
+</B></h3>
+
+
+<hr>
+<a name="rclibfiles"></a>
+<p>
+<h3><B>
+The RCLIB and RCMENU X-based user-extendable graphical
+interface tools.
+<br>
+<small>
+NB: This is already included in
+<a href="#pclinuxpoplog">the latest Poplog package for linux on PC.</a>
+</small>
+</B></h3>
+<blockquote>
+RCLIB provides powerful object oriented tools for building graphical
+interfaces, including control panels with sliders, dials, scrolling text
+panels, etc. It supports interactive graphical interfaces to the Agent
+toolkit described below. Some examples can be viewed in
+<a href="figs/rclib">http://www.cs.bham.ac.uk/research/poplog/figs/rclib</a>
+<P>
+<ul>
+<li>
+<a href="rclib">The RCLIB (relative coordinates) extension to Pop-11 X window based graphics,</a>
+using the Poplog widget set to provide tools for graphical
+    interfaces without
+    using Motif. This can be used with all X window based versions of
+    Poplog, including the Linux version, whether Motif is or is not
+    available.
+<a href="rclib.tar.gz">rclib.tar.gz</a>
+<P>
+    RCLIB files can be browsed online:
+    See the <a href="rclib/help/">help/</a> and
+    <a href="rclib/teach/">teach/</a> subdirectories, especially
+    <a href="rclib/help/rclib">help/rclib.</a>
+<P>
+    Examples of displays produced by the "RCLIB" Graphic Library can be
+    found in
+    <a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib/">http://www.cs.bham.ac.uk/research/poplog/figs/rclib/</a>
+
+<p>
+<li>
+<a href="rcmenu">The RCMENU (recursive hypermenu) package</a>
+    provides Pop-11 utilities based on RCLIB, for creating
+    autoloadable "stay up" and "pop up" menus and control panels, (Does
+    not use any motif facilities, and does not require the Pop-11
+    "propsheet" mechanisms to work.)
+    <br> This package is basically tailored to provide help for students
+    in Birmingham, especially when learning to use the editor. However
+    it is very easily modified to suit different sites, or users.
+    <p>
+    Examples shown, including screenshot
+        <a href="figs/rclib/index.html#rcmenu">here.</a>
+    <P>
+    The default set of autoloadable menus can be browsed in the
+    <a href="rcmenu/menus">rcmenu/menus/</a>
+    subdirectory. These menu-definition files show the syntax available
+    for specifying environments.
+    <br/>
+    <a href="rcmenu.tar.gz">rcmenu.tar.gz</a>
+    <P>
+    An earlier, less versatile, version of this package, based on
+    propsheet and motif, is in the menu.tar.gz file listed below.
+</ul>
+</blockquote>
+<P>
+
+<hr>
+<a name="sim"></a>
+<h3><B>
+The SimAgent toolkit, including Poprulebase
+<br>
+<small>
+NB: This is already included in
+<a href="#pclinuxpoplog">the latest Poplog package for linux on PC.</a>
+</small>
+</B></h3>
+<blockquote>
+The SimAgent is a very general and flexible toolkit for exploring agent
+architectures, with graphical display facilities based on
+<a href="#rclibfiles">RCLIB</a>
+described above. The core of SimAgent is a
+powerful forward chaining production system interpreter, Poprulebase,
+described <a href="prb/help/poprulebase">here,</a> which
+supports integration of symbolic and subsymbolic
+mechanisms (e.g. neural
+nets). Multiple concurrent instantiations of Poprulebase define a
+processing architecture for an agent. The SimAgent toolkit supports
+development of systems in which multiple such agents can co-exist and
+interact. SimAgent was described in the March 1999 issue of
+<a href="http://www.acm.org/cacm/">Communications</a>
+of the
+<a href="http://www.acm.org">ACM.</a>
+<P>
+Some movies showing some of the features of SimAgent are here (with
+thanks to Mike Lees at Nottingham for the Boids and Tileworld examples):
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent/">http://www.cs.bham.ac.uk/research/poplog/figs/simagent/</a>
+<P>
+For a detailed overview of the toolkit see
+<a
+href="http://www.cs.bham.ac.uk/~axs/cogaff/simagent.html">
+http://www.cs.bham.ac.uk/~axs/cogaff/simagent.html</a>
+and the slide presentation using PDF or Postscript at:
+<a href="http://www.cs.bham.ac.uk/~axs/misc/draft/toolkit.pdf">http://www.cs.bham.ac.uk/~axs/misc/draft/toolkit.pdf</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/misc/draft/toolkit.ps">http://www.cs.bham.ac.uk/~axs/misc/draft/toolkit.ps</a>
+<P>
+The toolkit is now included in the standard
+Birmingham Linux Poplog packages, but can
+also be downloaded separately:
+<P>
+<ul>
+<li>
+    <a href="newkit.tar.gz">The SimAgent Toolkit</a> as described in
+    <a href="http://www.cs.bham.ac.uk/~axs/cogaff/simagent.html">http://www.cs.bham.ac.uk/~axs/cogaff/simagent.html</a>
+    including Poprulebase and Sim_agent libraries. Needs
+    <a href="#rclibfiles">RCLIB (above).</a>
+  <br> Can be installed using the
+  <a href="com/install_package">install_package</a> script
+<P>
+    <B>Poprulebase</B>
+    is a highly extendable production system interpreter
+    used in the <B>SimAgent</B> toolkit, including support for interactions
+    between symbolic and sub-symbolic mechanisms. It can also be
+    used alone as an Expert System Shell.
+    <P>
+    Poprulebase code and documentation can be browsed online in
+    subdirectories of
+    <a href="newkit/prb"> the newkit/prb/</a> directory,
+    e.g. tutorial and reference documentation is in the
+    <a href="newkit/prb/teach/">teach/</a>
+    and
+    <a href="newkit/prb/help/">help/</a>
+    subdirectories.
+    <P> The SimAgent specific code and documentation files can be
+    browsed in
+    <a href="newkit/sim">the newkit/sim/</a> directory.
+    Tutorial and reference documentation is in the
+    <a href="newkit/sim/teach/">teach/</a> and
+    <a href="newkit/sim/help/">help/</a> subdirectories.
+    <br>
+    A summary of the main changes to SimAgent (and Poprulebase)
+    introduced in the summer of 1999 can be found in the
+    <a href="help/newkit"> help/newkit file</a>
+    <br>
+    An example SimAgent tutorial file is
+    <a href="newkit/sim/teach/sim_feelings">
+        newkit/sim/teach/sim_feelings</a>
+<li>
+    <a href="oldprb.tar.gz">oldprb.tar.gz</a>
+        Poprulebase (version 4.0),
+
+<li>
+    <a href="oldsim.tar.gz">oldsim.tar.gz</a>
+    The SimAgent toolkit (version 4.0) (requires old version
+    of poprulebase and also RCLIB).
+</ul>
+</blockquote>
+<p>
+<hr>
+<a name="popvision"></a>
+<h3><B>
+David Young's Popvision library
+<br>
+<small>
+NB: This is already included in
+<a href="#pclinuxpoplog">the latest Poplog package for linux on PC.</a>
+</small>
+</B></h3>
+<blockquote>
+David Young at the
+<a href="http://www.cogs.sussex.ac.uk"> University of Sussex</a>
+has produced some excellent
+teaching materials and tools for image processing and AI vision, and
+has given permission for these to be distributed. A large collection of
+mathematical tools and array manipulation tools, including interfaces to
+the BLAS and LAPACK packages, has been added, constituting a matlab-like
+facility in Poplog, which is free and open source.
+<P>
+An overview of the
+teaching materials in the popvision package is available here
+<a href="http://www.cogs.susx.ac.uk/users/davidy/teachvision/vision0.html">
+http://www.cogs.susx.ac.uk/users/davidy/teachvision/vision0.html</a>
+<br>
+The programs work fast because there's a mixture of Pop-11 and C. The
+package includes scripts for compiling the C sources on solaris, linux
+and alpha Unix systems. The programs and documentation can be browsed
+online in
+<a href="popvision">http://www.cs.bham.ac.uk/research/poplog/popvision</a>
+<br>
+(See especially the
+<a href="popvision/help"> popvision/help/*</a>
+files -- though you may have slight
+problems with the "VED graphic" characters in a Web browser.)
+<p>
+The whole package can be fetched from
+    <a href="popvision.tar.gz">http://www.cs.bham.ac.uk/research/poplog/popvision.tar.gz</a>
+<p>
+This also includes David Young's teaching material on on multi-layer
+perceptrons.
+<P>
+<a name="lapop"></a>
+<h3><B>
+The Array manipulation and Linear Algebra Packages in Popvision
+</B></h3>
+<blockquote>
+The Popvision package includes three new libraries (added in 2004) that
+make available a very rich collection of array manipulation facilities
+and mathematical facilities including the BLAS and LAPACK linear algebra
+packages, all now accessible interactively from pop-11.
+
+<ul>
+<li>
+<h3><B>
+<a href="popvision/help/arrpack">The ARRPACK package</a>
+</B></h3>
+This provides an array processing package for Pop-11. It includes
+efficient procedures (implemented in C) to
+carry out arithmetic and logical operations
+    on elements of real and complex arrays. A whole array or a subset of
+    its elements may be processed in a single procedure call. ARRPACK is
+    restricted to operations in which each array element is treated
+    separately from other elements of the same array, such as the
+    element-by-element addition of two arrays. (Operations where each
+    element is processed along with its neighbours, such as convolution,
+    Fourier transforms and matrix operations, are provided by other
+    libraries.) A higher-level interface to these procedures may be
+    provided in future.
+
+<li>
+<h3><B>
+The LAPACK and LAPOP libraries
+</B></h3>
+These libraries provide Pop11 interfaces to BLAS and LAPACK
+
+<ul>
+<li>
+<B>
+    <a href="http://www.netlib.org/blas/faq.html">http://www.netlib.org/blas/faq.html</a>
+</B>
+<br>
+    The BLAS (Basic Linear Algebra Subprograms) are high quality
+    "building block" routines for performing basic vector and matrix
+    operations. Level 1 BLAS do vector-vector operations, Level 2 BLAS
+    do matrix-vector operations, and Level 3 BLAS do matrix-matrix
+    operations. Because the BLAS are efficient, portable, and widely
+    available, they're commonly used in the development of high quality
+    linear algebra software, LINPACK and LAPACK for example.
+
+<P>
+<li>
+<B>
+    <a href="http://www.netlib.org/lapack/">http://www.netlib.org/lapack/</a>
+</B>
+<br>
+    LAPACK is written in Fortran77 and provides routines for solving
+    systems of simultaneous linear equations, least-squares solutions of
+    linear systems of equations, eigenvalue problems, and singular value
+    problems. The associated matrix factorizations (LU, Cholesky, QR, SVD,
+    Schur, generalized Schur) are also provided, as are related computations
+    such as reordering of the Schur factorizations and estimating condition
+    numbers. Dense and banded matrices are handled, but not general sparse
+    matrices. In all areas, similar functionality is provided for real and
+    complex matrices, in both single and double precision.
+</ul>
+
+Anyone who wants all this but does not have blas and lapack for linux
+(apparently included in some linux distributions --e.g. redhat 9) can
+get rpms for various architectures from
+
+<a href="http://ftp.pld.org.pl/dists/ac/ready/">http://ftp.pld.org.pl/dists/ac/ready/</a>
+</ul>
+
+</blockquote>
+
+<P>
+The popvision tar file can be installed using the
+  <a href="com/install_package">install_package</a> script, which will
+untar the package into the directory
+<B>$poplocal/local/</B> where it will create $poplocal/local/popvision/
+with appropriate sub-directories, and also
+$poplocal/local/lib/popvision.p for easy access using the Pop-11 command
+<b>uses popvision;</b>
+</blockquote>
+<p>
+<hr>
+<a name="popyoung"></a>
+<h3><B>
+David Young's Pop11 Libraries at Sussex
+</B></h3>
+<blockquote>
+<a href="http://www.cogs.susx.ac.uk/users/davidy/poplog/">David Young's poplog web page</a>
+at Sussex University includes some additional facilities that may be
+found useful, including
+
+<ul>
+    <li> External function call with vector-offset arguments.
+      (excall: library - now included in
+<a href="#popvision">the popvision package.</a>)
+    <li> Extensions to Ved to speed up editing HTML (not an HTML previewer
+- but able to save you a lot of keystrokes if you edit HTML source)
+    <li> A Boyer-Moore-type algorithm for fast string searching. Sometimes
+very much faster than standard string searching, though not in fact
+optimal.
+    <li> A permutation generator.
+</ul>
+</blockquote>
+
+<P>
+<hr>
+<a name="neural"></a>
+<h3><B>
+An older neural net library
+</B></h3>
+<blockquote>
+David Young at the
+<a href="http://www.cogs.sussex.ac.uk"> University of Sussex</a>
+previously produced some neural net facilities which were considerably
+extended by Julian Clinton. A slightly modified version of the resulting
+package is available here. The system can be browsed online in
+    <a href="neural">
+http://www.cs.bham.ac.uk/research/poplog/neural</a>
+<br>
+(See especially the
+<a href="neural/help"> neural/help/*</a> files -- though you may have
+slight problems with the "VED graphic" characters in a Web browser.)
+<p>
+The package is now automatically included with linux poplog (32 bit
+and 64 bit).
+<br/>
+However, it can also be fetched from
+    <a href="neural.tar.gz">http://www.cs.bham.ac.uk/research/projects/poplog/neural.tar.gz</a>
+  <br> It can be installed using the
+  <a href="com/install_package">install_package</a> script
+</blockquote>
+<p>
+<hr>
+<a name="simworld"></a>
+<h3><B>
+The Simworld package
+</B></h3>
+<blockquote>
+<a href="simworld.tar.gz">http://www.cs.bham.ac.uk/research/poplog/linux-cd/simworld.tar.gz</a>
+<br>
+is a demonstration package by
+<a href="http://www.informatics.indiana.edu/people/profiles.asp?u=mscheutz">Matthias Scheutz</a>
+showing how to use sim_agent to explore evolutionary processes in fairly
+simple agents.
+Requires <a href="#sim">the SimAgent toolkit</a> (included in the latest
+linux
+poplog package).
+<br>
+Introductory documentation can be found
+<a href="http://www.cs.bham.ac.uk/research/poplog/simworld/teach">in this directory.</a>
+<br> The tar file can be installed (in unix or linux poplog) using the
+<a href="http://www.cs.bham.ac.uk/research/poplog/com/install_package">install_package</a>
+script.
+<P>
+See also
+<a href="http://mypage.iu.edu/~mscheutz/">http://mypage.iu.edu/~mscheutz/</a>
+
+</blockquote>
+<p>
+<hr>
+<p>
+<a name="popplestone"></a>
+<h3><b>
+Contributions by Robin Popplestone
+</b></h3>
+<blockquote>
+Robin was the designer of the language "COWSEL" which was redesigned
+and extended and first became widely known as
+<a href="http://en.wikipedia.org/wiki/POP-2">POP-2,</a> around 1971.
+Pop-11, the core language of Poplog, is a derivative of POP-2.
+<p>
+For many years he worked in the Artificial Intelligence laboratory
+at the University of Edinburgh, including making major contributions
+to the Edinburgh robot
+<a href="http://en.wikipedia.org/wiki/Freddy_II">Freddy_II</a>, the
+Alvey-funded Edinburgh DESIGNER system (which used Poplog), and
+other projects.
+<p>
+In 1985 he moved to <a href="http://www.umas.edu">The University of
+Massachusetts at Amherst</a> where he continued doing research and
+teaching and making contributions at a distance to the development
+of Pop-11 and poplog.
+<p>
+He retired from UMASS around 2003(?) and moved back to Scotland,
+where he died in 2004.
+<p>
+There is a memorial web site for him at Umass<small>
+<ul>
+<li>
+<a href="http://www.cs.umass.edu/csinfo/announce/robinpopplestone.html">http://www.cs.umass.edu/csinfo/announce/robinpopplestone.html</a>
+<br>
+<li>
+<a href="http://www.cs.umass.edu/csinfo/announce/popplestone_endowment.html">http://www.cs.umass.edu/csinfo/announce/popplestone_endowment.html</a>
+<br>
+<li>
+<a href="http://www.cs.umass.edu/csinfo/announce/popplestonefellow2006.html">http://www.cs.umass.edu/csinfo/announce/popplestonefellow2006.html</a>
+<br/>
+<li>
+<a href="http://www-robotics.cs.umass.edu/Popplestone/home.html">
+older file
+</a>.
+<li>
+and
+<a href="http://www.inf.ed.ac.uk/events/robinp.html">another one in Edinburgh.</a>
+</ul>
+</small>
+
+<p>
+<a name="popbook"></a>
+<h3><b>
+Book on Pop-11 and Programming
+</b></h3>
+<blockquote>
+While at UMASS Robin Popplestone wrote a large draft book on Pop-11
+<i>Paradigms of Programming</i>. Unfortunately he died before completing it.
+The latest version is available
+<a href="popbook/popbook.html">here</a>, including a review by a
+reader, installed 11 Sep 2008.
+</blockquote>
+<p>
+<a name="scheme"></a>
+<h3><B>
+The PopScheme System
+<br/>
+<small>
+(Scheme implemented in Pop-11)
+</small>
+</B></h3>
+<blockquote>
+This system, providing an incremental compiler for Scheme, was
+developed by Robin Popplestone at UMASS, and used there for teaching
+for several years. It became freely available online in October
+1999. A copy is available which has been re-packaged to make
+it more portable (the original tar file had absolute path names, for
+instance). This has not been fully checked, though it does work with
+the examples.scm test file provided in the package.
+<P>
+<blockquote>
+There are two formats for downloading,
+<ul>
+<li>
+<a href="Scheme.tar.gz">Scheme.tar.gz</a>
+<li>
+<a href="Scheme.zip">Scheme.zip</a>
+</ul>
+The second one will probably be easier to install on Windows, but I have
+not checked that this package works in
+<a href="#pcwinversion">Windows poplog</a>.
+</blockquote>
+<P>
+If in doubt
+check out the version at Umass, described in
+    <a href="ftp://www-edlab.cs.umass.edu/pub/cs287/README">
+    ftp://www-edlab.cs.umass.edu/pub/cs287/README</a>
+</blockquote>
+<p>
+<a name="paradigms"></a>
+<h3><b>
+Paradigms
+</b></h3>
+<blockquote>
+Robin Popplestone's lecture notes on programming paradigms are
+available and  browsable <a href="paradigms_lectures">here,</a> and
+downloadable
+<a href="paradigms.tar.gz"> here (gzipped tar file about 1MB)</a>,
+</blockquote>
+</blockquote>
+<hr>
+<p>
+<a name="nonlin"></a>
+<h3><B>
+Austin Tate's Nonlin planning system
+</B></h3>
+<blockquote>
+The influential Nonlin hierarchical partial order planning system,
+developed by
+<a href="http://www.aiai.ed.ac.uk/~bat/bat.html">Austin Tate</a>
+in the University of Edinburgh is available in a browsable and
+downloadable from here:
+<a href="nonlin">http://www.cs.bham.ac.uk/research/poplog/nonlin</a>
+and also from the Edinburgh Nonlin Web site:
+    <a href="http://www.aiai.ed.ac.uk/project/nonlin/">http://www.aiai.ed.ac.uk/project/nonlin/</a>
+<P>
+
+Austin has put a lot of effort into making it run as it used to in a
+much earlier version of Poplog, so that it works in both Windows poplog
+and Linux/Unix poplog (but not yet in the Poplog editor Ved, as it
+expects to interact directly with the terminal).
+<P>
+Further information is here
+<a href="nonlin/AREADME.txt">http://www.cs.bham.ac.uk/research/poplog/nonlin/AREADME.txt</a>
+<P>
+If you wish to play with Nonlin, fetch the
+<a href="nonlin/nonlin-2002-11-28.zip">zip file</a>.
+Instructions and historical information regarding Nonlin, including a
+review of
+the package, are in the
+<a href="nonlin/readme.txt">http://www.cs.bham.ac.uk/research/poplog/nonlin/readme.txt</a>
+file.
+<P>
+Further information, including sample problem domain definitions using
+the Nonlin task formalism (TF) can be found in these directories:
+<br>
+<a href="nonlin/nonlin">http://www.cs.bham.ac.uk/research/poplog/nonlin/nonlin</a>
+<br>
+<a
+href="nonlin/nonlin/tf/">http://www.cs.bham.ac.uk/research/poplog/nonlin/nonlin/tf/</a>
+<P>
+Nonlin is also available in Edinburgh here:
+<a href="http://www.aiai.ed.ac.uk/project/nonlin/">http://www.aiai.ed.ac.uk/project/nonlin/</a>
+<P>
+The original 1976 technical report defining Nonlin has been scanned in
+and is now
+<a href="http://www.aiai.ed.ac.uk/project/nonlin/1976-tate-nonlin-dai-memo-25.pdf">available as a PDF
+file (6.75Mbytes).</a>
+<blockquote>
+Tate, A. (1976) "Project Planning Using a Hierarchic Non-linear
+Planner", D.A.I. Research Report No. 25, August 1976, Department of
+Artificial Intelligence, University of Edinburgh.
+</blockquote>
+It is also available
+<a href="nonlin/1976-tate-nonlin-dai-memo-25.pdf">from the Birmingham
+site.</a>
+
+<P>
+Further information can be found by giving "nonlin+planner" to
+<a href="http://www.google.com">google.</a>
+</blockquote>
+<p>
+<hr>
+<a name="teacheliza"></a>
+<P>
+<h3><B>
+An Online Eliza Chatbot in Pop-11 (Now with audio output.)
+</B></h3>
+<blockquote>
+Eliza is a very famous very old AI program simulating a non-directive
+psychotherapist originally created as a demonstration of AI
+programming by
+<a href="http://www.cpsr.org/cpsr/weiz.html">Joseph Weizenbaum.</a>
+(See
+<a href="http://en.wikipedia.org/wiki/Joseph_Weizenbaum">this short
+Biography</a>).
+A simplified version of Eliza, (a kind of <I>Chatbot Eliza</I>)
+implemented in Pop-11 is now
+online here
+    <a href="http://www.cs.bham.ac.uk/research/poplog/eliza/">http://www.cs.bham.ac.uk/research/poplog/eliza/</a>
+<br>
+Between September 2002 and February 2005 this on-line Pop-11 Eliza
+had answered about 17,100 questions. It is just a toy, but is less
+repetitive than many of the
+online versions of Eliza (partly because of the variety of rules and
+partly because of the way rules are randomised on each cycle) and it has
+been of considerable educational value in introductory AI courses.
+<a href="http://www.cs.bham.ac.uk/research/poplog/lib/elizaprog.p">A
+slightly simpler version of the
+code for
+the Pop-11 eliza</a>
+is available for use with poplog.
+<p>
+A slightly revised version is used for the Poplog Eliza web site,
+available here:
+<a href="http://www.cs.bham.ac.uk/research/poplog/lib/eliza2.p">here</a>).
+<p>
+NOTE: since the speak_espeak program was added to Pop-11, you can
+make Eliza speak as well as type responses to the user, provided you
+have the linux espeak package installed. Use google to find it for
+your system. On Fedora 10 it was installed simply by using the
+command:
+<pre>
+    yum install espeak</pre>
+
+A teach file introducing students to the task of building their own
+version of Eliza in Pop-11 can be found here
+<a href="doc/popteach/respond">http://www.cs.bham.ac.uk/research/poplog/doc/popteach/respond</a>
+<P>
+A different design, produced by Riccardo Poli, for a potentially much
+more sophisticated Eliza, because it can maintain and manipulate
+arbitrary memories of its interactions in the Poprulebase database, can
+be found in the middle of this introduction to Poprulebase
+<a href="http://www.cs.bham.ac.uk/research/poplog/newkit/prb/teach/rulebase">http://www.cs.bham.ac.uk/research/poplog/newkit/prb/teach/rulebase</a>
+</blockquote>
+<hr>
+<a name="browsable"></a>
+<h3><B>
+SOME ADDITIONAL BROWSABLE DIRECTORIES
+</B></h3>
+<P>
+The Pop-11 and AI teaching and documentation files previously included
+in the
+<a href="oldcontents.html#bhamteach">bhamteach tar package</a> and now
+part of the
+standard Poplog distribution,
+can be browsed online in these directories:
+<ul>
+<li><a href="teach/">teach/</a> (Teach files)
+<li><a href="help/">help/</a> (Help files)
+<li><a href="auto/">auto/</a> (Autoloadable libraries)
+<li><a href="lib/">lib/</a> (Non-autoloadable libraries)
+</ul>
+Not all the files in those directories are included in the "bhamteach"
+package. Not all of them are concerned with Poplog and Pop-11. E.g.
+some are introductions to Unix facilities, such as
+<a href="teach/Unix.intro">teach/Unix.intro</a>.
+<P>
+There are other online browsable files included in various packages
+some of which, though not all, are mentioned
+elsewhere in this file. E.g.
+<ul>
+<li>
+<a href="doc/">The
+http://www.cs.bham.ac.uk/research/projects/poplog/doc/ directory</a>
+<br>
+This contains copies of documentation directories in poplog, since
+version v15.63.
+<li><a href="rclib/">rclib/</a> the RCLIB teach, help, auto
+and lib files, illustrated here
+<li> <a href="rcmenu/">rcmenu</a> the RCMENU extension to RCLIB,
+which makes possible the autoloadable "menu" definitions in this
+directory
+<a href="rcmenu/menus/">rcmenu/menus/</a>.
+<li> <a href="newkit/prb/">newkit/prb/</a> the Poprulebase
+teach, help, auto and lib files.
+<li> <a href="newkit/sim/">newkit/sim/</a> the SimAgent
+teach, help, auto and lib files.
+<li> <a href="popvision/">popvision/</a> the Popvision libraries
+(from David Young at Sussex University)
+<li> <a href="neural/">neural/</a> some neural net facilities (includes
+C programs linked to pop-11)
+<li> <a href="string_ops/">string_ops/</a> String manipulation utilities
+provided by Steve Leach.
+<li> <a href="ved_latex/">ved_latex/</a> Latex tutorial and some
+utilities for producing and previewing latex files in Ved.
+<li> <a href="xml-dist/">xml-dist/</a> Package by Steve Leach which
+he says "..allows you to seamlessly interleave Pop11 and XML.
+The combination is really quite powerful.  Using it I am able to
+get results in a few minutes where people using Perl/CPAN are
+taking weeks". The whole package is also downloadable in
+a gzipped tar file <a href="xml-dist.tar.gz">xml-dist.tar.gz</a>
+</ul>
+<P>
+<hr>
+<a name="morepackages"></a>
+<h3><B>
+ADDITIONAL UTILITIES (E.G. PATTERNS, NEWS, LATEX, EMAIL)
+<br>
+<small>
+NB: These are already included in
+<a href="#pclinuxpoplog">the latest Poplog package for linux on PC.</a>
+</small>
+</B></h3>
+<blockquote>
+Several additional "packages" are available, mostly developed in the
+University of Birmingham. All these are compressed tar files,
+or simply tar files.
+These should be
+unpacked in the <B>$poplocal/local/</B>
+directory in order to be conveniently
+accessible. You can put them in a different place if you understand how
+to manipulate the search lists used by Ved and the Poplog compilers.
+<p>
+<b>
+Do not install them if you have Poplog version 15.6,
+15.62, or later, as they are already included.
+</b>
+<ul>
+<li>
+    <a href="pattern.tar.gz"> pattern.tar.gz</a>
+<br>
+    An extension to the Pop-11 pattern matcher to support lexically scoped
+    pattern variables. (This is included in the bham.teach.tar.gz file,
+    and in the poprulebase package.)
+<li>
+    <a href="ved_latex.tar.gz">ved_latex.tar.gz</a>
+<br>
+    Latex tutorial and utilities (for driving Latex from inside Ved)
+<li>
+    <a href="vedgn.tar.gz">vedgn.tar.gz</a>
+<br>
+    Ved-based utilities for reading and posting net news.
+<li>
+    <a href="vedmail.tar.gz">vedmail.tar.gz</a>
+<br>
+    Ved-based utilities for sending, reading and replying to email.
+<li>
+<a href="old/superseded.html#packages">Other superseded packages</a>
+</ul>
+</blockquote>
+<p>
+<hr>
+<a name="easyinstall"></a>
+<a name="popextras"></a>
+<h3><B>
+<a href="old/superseded.html#popextras">THE POPEXTRAS PACKAGE (superseded)</a>
+<br>
+</B></h3>
+(All of this is in the latest linux poplog package.)
+<P>
+<hr/>
+<a name="gosplsite"></a>
+<h3><B>
+GLOBAL OPEN SOURCE POPLOG LIBRARY (GOSPL) SITE (DEFUNCT?)
+<br/>
+(The web site www.poplog.org is now defunct.)
+</B></h3>
+<blockquote>
+Steve Leach and Graham Higgins once developed a
+Global Open Source Poplog Library (GOSPL) site, at
+http://www.poplog.org/gospl/ (currently not working - Aug 2009)</a>
+<P>
+This contains some contributed programs not available elsewhere,
+provided by Steve Leach and Graham Higgins. However the 'gospl' code
+is available as a gzipped tar file
+<a href="gospl_1_2_0.tar.gz">here</a> and as a browsable directory
+<a href="gospl">here</a>.
+</blockquote>
+<P>
+<hr/>
+<a name="popcontrib"></a>
+<h3><B>
+THE CONTRIB DIRECTORY
+</B></h3>
+<blockquote>
+The <a href="contrib/">browsable contrib directory</a>
+contains a number of packages and utilities made available to Poplog
+users.
+<p>
+The complete contents of the contrib directory are available in
+a gzipped tar file: <a href="contrib.tar.gz">contrib.tar.gz</a>.
+<p>
+This includes source code from
+various books, including
+<a name="gazdarmellish"></a>
+<ul>
+<li>Code examples the book by Gerald Gazdar and Chris Mellish on
+<a href="contrib/nlp_book">Natural Language Processing</a>
+(including the Pop-11, Prolog and Common Lisp versions)
+<br>
+The Original of the book is also online here, in three versions.
+<ul>
+<li>
+<a href="http://www.informatics.sussex.ac.uk/research/nlp/gazdar/nlp-in-pop11/">http://www.informatics.sussex.ac.uk/research/nlp/gazdar/nlp-in-pop11/</a>
+<li>
+<a href="http://www.informatics.sussex.ac.uk/research/nlp/gazdar/nlp-in-prolog/">http://www.informatics.sussex.ac.uk/research/nlp/gazdar/nlp-in-prolog/</a>
+<li>
+<a href="http://www.informatics.sussex.ac.uk/research/nlp/gazdar/nlp-in-lisp/">http://www.informatics.sussex.ac.uk/research/nlp/gazdar/nlp-in-lisp/</a>
+</ul>
+<li>Pop-11 program examples from the book
+<a href="contrib/pop11/ct_book">Computers and Thought</a>
+by Mike Sharples and others. The full text of the book,
+though without the pictures is available online here:
+<br>
+<a href="poplog.info.html#ctbook">http://www.cs.bham.ac.uk/research/poplog/poplog.info.html#ctbook</a>
+<li>Larry Paulson's book
+<a href="contrib/pml/WorkingProgrammer">ML for the Working
+Programmer</a>,
+along with some other ML programs.
+<li>The book
+<a href="contrib/ai_through_search">Artificial Intelligence Through Search</a>
+by Chris Thornton and Benedict du Boulay.
+</ul>
+<p>
+See also the materials developed at the University of Amherst by
+<a href="#popplestone">Robin Popplestone</a>
+</blockquote>
+<p>
+<hr>
+<p>
+<hr/>
+<a name="popsites"></a>
+<h3><B>
+RELATED POPLOG SITES
+</B></h3>
+<blockquote>
+It is expected that a number of mirror sites will be developed.
+<P>
+<a name="poplogorg"></a>
+<h3><B>
+www.poplog.org is now defunct.
+</B></h3>
+is the first of these. It duplicates some of the contents of this
+directory and also includes the
+<a href="#gosplsite">GOSPL site</a> described above.
+<br>
+WARNING: downloads of versions of poplog at other sides  may be out of
+date. It is best to use the downloads from this site, if at all
+possible.
+<P>
+<a name="mirrors"></a>
+<h3><B>
+Information for mirror sites
+</B></h3>
+To facilitate this there was previously
+a directory containing links to material in
+this directory which is suitable for fetching to a mirror site.
+This no longer seems to be necessary, given current internet speeds.
+
+<P>
+<a name="openpoplog"></a>
+<h3><B>
+OpenPoplog at Sourceforge
+</B></h3>
+<blockquote>
+See
+<a href="openpoplog.html">http://www.cs.bham.ac.uk/research/poplog/openpoplog.html</a>
+<P>
+<hr>
+<a name="linksites"></a>
+</blockquote>
+<h3><B>
+OTHER FREE SOFTWARE SITES
+</B></h3>
+<ul>
+<li>
+<a href="http://www.thefreecountry.com/">thefreecountry.com: Free
+Programmers' Resources:
+free compilers, source code, programming tools, tutorials, and many
+other things.</a>
+<br>
+<a href="http://www.thefreecountry.com/">
+<img src="figs/gifs/tfc88x31.gif" border="0"
+width="88" height="31" alt="thefreecountry.com: Free Programmers'
+Resources, Free Webmasters' Resources, Free Security Resources, Free
+Software" /></a>
+<P>
+More to be added ....
+</ul>
+<hr>
+
+<a name="lesstifproblems"></a>
+<h3><b>
+Lesstif Problems (Now fixed)
+</b></h3>
+[Out of date text removed.]
+<blockquote>
+It is not necessary to link poplog with motif or lesstif in order to use
+most of its graphical facilities. In particular <a href="#rclibfiles">the RCLIB graphical tools</a>
+do not depend on motif functionality.
+</blockquote>
+<hr/>
+<p>
+<h3><B>
+<a href="#contents">JUMP TO CONTENTS LIST</a>
+</B></h3>
+
+<hr>
+<h3><B>
+Chronological Record of Contents
+<br>
+[OUT OF DATE]
+</B></h3>
+In order to help those developing mirror sites determine what is new in
+the Free Poplog directory, there is a file created using
+<PRE>
+
+    ls -FglRt | gzip
+
+</PRE>
+which gives a reverse
+chronological listing of the complete free poplog directory.
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/.ls-lrt.gz">This file</a>
+is updated after all major changes.
+<p>
+
+<hr/>
+<p>
+<a name="cc"></a>
+The poplog system, i.e. the tar packages and the corresponding code and
+documentation files on this web site, is licensed as described <a
+href="#copyright">above</a>.
+<p>
+Everything else written by A.Sloman, e.g. this file is licenced as follows:
+<br>
+<a rel="license" href="http://creativecommons.org/licenses/by/2.5/">
+    <img alt="Creative Commons License"
+        src="http://creativecommons.org/images/public/somerights20.png"/>
+</a>
+<p>
+This page, and everything else on the Poplog website, that is not part of the
+Poplog package is licensed under a
+    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
+<br>
+If in doubt, just assume the Poplog licence applies.
+<br>
+If you use or comment on any of the ideas, tools or documentation,
+please include a URL if possible, so that readers can see the
+original (or the latest version thereof).
+</p>
+<hr>
+<p>
+<h3><B>
+Suggestions for improvement are welcome.
+</B></h3>
+<p>
+This file maintained by:
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+http://www.cs.bham.ac.uk/~axs/
+<br>
+Last Updated: 7 Jan 2020 (more cleaning up needed);
+16 Oct 2009; 1 Jan 2010; 19 Jan 2010; 24 Jan 2010;
+7 Feb 2010; 12 Aug 2010; 5 May 2012; 4 Sep 2012; 12 Sep 2012;
+13 Dec 2017; 27 Jan 2019; 1 Jan 2020
+
+</FONT>
+</div>
+</BODY>
+</HTML>
