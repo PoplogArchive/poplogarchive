@@ -1,8 +1,0 @@
-<head>
-<title>A Template</title>
-<body>
-{{if hasSuffix ".md" .OriginalReq.URL.Path}}
-{{include .OriginalReq.URL.Path | markdown}}
-{{end}}
-</body>
-</html>
