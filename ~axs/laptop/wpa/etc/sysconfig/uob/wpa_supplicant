@@ -1,0 +1,3 @@
+INTERFACES="-ieth1"
+# DRIVERS="-Dndiswrapper -Dprism -Dipw"
+DRIVERS="-Dwext"

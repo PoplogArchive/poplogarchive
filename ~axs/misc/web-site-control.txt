@@ -1,0 +1,90 @@
+18 Mar 2004
+
+
+A belated response to this message from a colleague
+
+> "University bans staff websites after anti-semitism row
+>
+> Academics at Birmingham University have condemned moves by the university
+> authorities to ban 300 of their personal websites."
+>
+> Story at http://www.guardian.co.uk/uk_news/story/0,3604,1166611,00.html
+>
+> See also the campaign by colleagues to stop the University's ban
+> http://web.bham.ac.uk/web_campaign/
+>
+> I must admit it all seems a bit of a storm in a teacup, but perhaps I am
+> missing something?
+
+[[
+Note added 11 Nov 2004. The above web site no longer exists
+    http://web.bham.ac.uk/web_campaign/
+
+However this one addresses the issues:
+    http://www.sue.be/web_campaign/
+]]
+
+To me it is just one facet of a large picture in which I see
+managers and administrators pushing the university of Birmingham
+away from being a world class university towards being a local
+technology supermarket.
+
+Look at how Buzz and the Campus web site crow about being the best
+'in the region'.
+
+I've always been working towards making us one of the best in the
+*world*!
+
+A really good university would be a hot-bed of creative ideas of all
+sorts, freely made available to the public at large and not constrained
+by some narrow managerial notion of what we are supposed to be doing.
+
+If we have really good people in the university, then some important
+subset of those ideas, not recognized now, will be seen fifty or a
+hundred years from now as major break-throughs: and they need not have
+anything to do with the job the originator was hired to do.
+
+Of course actions have to be taken to ensure that if laws get broken
+that is detected and dealt with, preferably by the police. But taking
+too much defensive, protective, action turns the place from a collection
+of high-flying free-thinkers into a collection of creeps looking over
+their shoulders to make sure they don't offend their bosses.
+
+If our selection processes are any good then the people we employ in all
+kinds of jobs should be among the most creative and intelligent in the
+population and since we cannot pay them salaries that are competitive
+with what such people could earn elsewhere we should give them some
+compensating advantages relevant to the sort of place a university
+should be.
+
+So for example, a computer officer who, working mostly in his spare time
+produces a world-renown website on Henry James should not be told that
+it has nothing to do with his job and should therefore be moved off the
+campus machines. E.g. give google "Henry james" and this one comes up as
+about number 8 of over 6 million:
+    http://web.bham.ac.uk/doveral/james/
+
+That's the sort of university I want to be in. And you can meet the
+author over lunch in the staff canteen.
+
+[[
+Note added 11 Nov 2004: but now you can't see his web page on the
+Birmingham University web site any more because of university
+management policies.
+
+See also  http://www.sue.be/web_campaign/
+]]
+
+And if some people go a bit over the top in some of their political
+views no doubt others will go over the top in the opposite direction, if
+the university really has the kind of diversity and creativity that it
+should have.
+
+But only the legal system, and a reasonable upper bound on resource
+usage should be the criterion for constraint, as long as people actually
+do their jobs OK.
+
+I think I'll put this on my web site.
+
+Aaron
+http://www.cs.bham.ac.uk/~axs/

@@ -1,0 +1,55 @@
+#!/bin/bash
+## do-hibernate
+##
+## Aaron Sloman http://www.cs.bham.ac.uk/~axs
+## Modified 23 Sep 2012 because using maxcpus=1 flag not acpi=off
+## 31 May 2012
+##
+## This is used to hibernate after saving grub.cfg and copying
+## grub.cfg-resume to grub.cfg, so that when resuming after hibernate
+## the flag 'maxcpus=1' (previously 'acpi=off') will be used, inserted into
+## grub.cfg-resume by the edit-grub script
+##
+## After successful resume, the saved version of grub.cfg is restored
+##
+## The use of killall plugin-container is not essential, but I noticed
+## that with firefox running the size of plugin-container could grow very large
+## and it seemed unnecessary to include that in the hibernate image, since it
+## is automatically restarted on demand.
+
+cd /boot/grub2
+
+if  [ -f grub.cfg-resume ]; then
+
+    echo "killall plugin-container"
+    killall plugin-container
+
+    ##
+    ## Make sure windows partitions are unmounted
+
+    ## If you sometimes mount windows partitions on the hard drive in
+    ## linux it's a good idea to unmount them all before hibernating,
+    ## in case you do something in windows inconsistent with the information
+    ## saved in linux: This is an example -- edit or remove, as needed:
+
+    ##echo "unmounting /win7c"
+    umount /win7c
+
+
+    echo "Ready to hibernate"
+    echo "Saving grub.cfg"
+    mv grub.cfg grub.cfg-saved
+    echo "Set up grub.cfg-resume as grub.cfg"
+    cp -p grub.cfg-resume grub.cfg
+    sleep 2
+    /usr/sbin/pm-hibernate
+    echo "Restore grub.cfg-saved"
+    mv grub.cfg-saved grub.cfg
+
+else
+
+    echo "Cannot find grub.cfg-resume"
+
+    exit
+
+fi

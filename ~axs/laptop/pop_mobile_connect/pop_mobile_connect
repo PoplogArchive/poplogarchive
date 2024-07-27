@@ -1,0 +1,175 @@
+HELP POP_MOBILE_CONNECT                         Aaron Sloman, April 2010
+
+LIB POP_MOBILE_CONNECT
+
+-- Introduction
+
+This is a collection of Pop-11 commands for use on linux with the
+Huawei/T-mobile USB Web-n-walk stick based on Huawei E220 device.
+
+These commands provide only a small subset of the full functionality of
+the vodafone-mobile-connect utility, and everything here is text based.
+
+Despite the limitations I have found the mechanism useful for sending
+text messages, including purchasing a 7-day or 30-day pass, which
+requires a text message to be sent via the device. As far as I know
+tmobile do not provide a way to purchase the passes via the web
+interface that can be used for pre-payment, inspecting usage records,
+etc.
+
+The package been tested ONLY on a t-mobile web-n-walk mobile broadband
+USB stick bought in 2008. Some changes will be required for other
+mobile-broadband devices.
+
+This assumes that you have set up /etc/wvdial.conf appropriately and run
+wvdial to make a connection to the tmobile service.
+
+The procedure pmc_send takes a string, prepares a Ved file buffer (by default
+it uses output.p -- edit the code to change this). It then reads any responses
+from the modem channel until the end of response character sequence.
+Everything read in is included in the Ved file buffer.
+
+
+CONTENTS - (Use <ENTER> g to access required sections)
+
+ -- Introduction
+ -- Making the commands available
+ -- pmc_send(message);
+ -- pmc_clear();
+ -- pmc_network();
+ -- pmc_getimsi();
+ -- pmc_getmanufacturer();
+ -- pmc_service_centre();
+ -- SWITCHING MODES
+ -- -- pmc_textmode();
+ -- -- pmc_nontextmode();
+ -- SETTING CONNECTION PREFERENCES (3G/GPRS)
+ -- -- pmc_3g_pref();
+ -- -- pmc_3g_only();
+ -- -- pmc_gprs_pref();
+ -- -- pmc_gprs_only();
+ -- MESSAGE HANDLING PROCEDURES
+ -- -- pmc_all_messages();
+ -- -- pmc_get_message(n);
+ -- -- pmc_del_message(n);
+ -- -- pmc_send_message(number, text);
+ -- MESSAGES REQUESTING PASSES
+ -- -- pmc_7_day_pass();
+ -- -- pmc_30_day_pass();
+
+-- Making the commands available
+
+Unfortunately, at present you are required to run this as superuser.
+
+From Pop-11 or Ved give the following command to make all the procedures
+listed below available.
+
+    uses pop_mobile_connect
+
+-- pmc_send(message);
+
+The message must be text constituting one of the allowed formats for
+communicating with the service.
+
+-- pmc_clear();
+
+Sends an empty string.
+
+-- pmc_network();
+
+pmc_network();
+
+Produces something like this (after a lot of other stuff) in the Ved
+file bufffer:
+
++COPS: (1,"T-Mobile UK","TMO UK","23430",2),(2,"T-Mobile UK","TMO UK","23430",0),,(0,1,2,3,4),(0,1,2)
+
+-- pmc_getimsi();
+
+Get IMSI Number
+
+-- pmc_getmanufacturer();
+
+-- pmc_service_centre();
+
+-- SWITCHING MODES
+
+-- -- pmc_textmode();
+-- -- pmc_nontextmode();
+
+-- SETTING CONNECTION PREFERENCES (3G/GPRS)
+
+These have not been tested. It is not clear how useful they are.
+Where the 3g quality is low it may be preferable to settle for
+gprs only.
+
+-- -- pmc_3g_pref();
+-- -- pmc_3g_only();
+-- -- pmc_gprs_pref();
+-- -- pmc_gprs_only();
+
+-- MESSAGE HANDLING PROCEDURES
+
+Before trying to send or receive messages run
+
+    pmc_textmode();
+
+It does not seem to be necessary to run
+    pmc_nontextmode();
+
+before using internet services.
+
+-- -- pmc_all_messages();
+
+Retrieves all current messages which have not been deleted.
+
+-- -- pmc_get_message(n);
+
+Fetch message number n (0 is first message).
+
+-- -- pmc_del_message(n);
+
+Delete message number n (0 is first message).
+
+-- -- pmc_send_message(number, text);
+
+Send the text to the phone number.
+
+The text should be a pop-11 string of characters suitable for an SMS
+message. (e.g. avoid character sequences that function as modem control
+signals!)
+
+Number should be a text string containing the full phone number, e.g.
+
+    pmc_send_message('+441214144775', 'Hi Aaron does your office phone accept text?');
+
+(NB that example will not work!)
+
+-- MESSAGES REQUESTING PASSES
+-- -- pmc_7_day_pass();
+
+This will send the message
+    7 DAY
+to tmobile number
+    441
+
+NB
+    The charge for a 7 day pass will be deducted from your account!
+
+At the time of writing, the cost is GBP 7 (i.e. half price, saving 7)
+
+
+-- -- pmc_30_day_pass();
+
+This will send the message
+    30 DAY
+to tmobile number
+    441
+
+NB
+    The charge for a 30 day pass will be deducted from your account!
+
+At the time of writing, the cost is GBP 15 (i.e. half price, saving GBP 45)
+
+--- $usepop/pop/packages/vedutils/help/pop_mobile_connect
+--- Copyright University of Birmingham 2010. All rights reserved.

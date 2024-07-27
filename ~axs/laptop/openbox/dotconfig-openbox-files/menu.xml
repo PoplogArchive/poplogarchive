@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+<menu id="applications-menu" label="Applications" execute="/usr/share/openbox/xdg-menu applications"/>
+<menu id="preferences-menu" label="Preferences" execute="/usr/share/openbox/xdg-menu preferences"/>
+<menu id="administration-menu" label="Administration" execute="/usr/share/openbox/xdg-menu system-settings"/>
+
+<menu id="apps-term-menu" label="Terminals">
+  <item label="Rxvt Unicode">
+    <action name="Execute">
+      <command>urxvt</command>
+    </action>
+  </item>
+  <item label="Gnome Terminal">
+    <action name="Execute">
+      <command>gnome-terminal</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <!-- I don't have the next two terminals, so should remove them -->
+  <item label="Xfce Terminal">
+    <action name="Execute">
+      <command>xfce4-terminal</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <item label="Konsole">
+    <action name="Execute">
+      <command>konsole</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+      </startupnotify>
+    </action>
+  </item>
+  <!-- AS. moved xterm option -->
+</menu>
+
+<menu id="root-menu" label="Openbox 3">
+  <!-- AS. Make it very easy to launch a program. See ~/.gmrunrc -->
+  <item label="gmrun">
+    <action name="Execute"><command>gmrun</command></action>
+  </item>
+  <!-- AS. Use xterm as a 'persistent' gmrun -->
+  <item label="xtermrun">
+    <action name="Execute"><command>xterm -fn 8x13 -geom 105x2+5+5 -ls</command></action>
+  </item>
+  <!-- AS. Make it very easy to run top -->
+  <item label="xtermTop">
+    <action name="Execute"><command>xterm -fn 10x20 -geom 90x49+5+5 -ls -e top</command></action>
+  </item>
+  <!-- AS. Make it very easy to invoke full size xterm -->
+  <item label="Xterm">
+    <action name="Execute"><command>xterm -fn 10x20 -geom 90x49+5+5 -ls</command></action>
+  </item>
+  <separator label="Openbox"/>
+  <menu id="applications-menu"/>
+  <menu id="preferences-menu"/>
+  <menu id="administration-menu"/>
+  <separator/>
+  <menu id="apps-term-menu"/>
+  <separator label="FileManager"/>
+  <!-- AS. Make it very easy to invoke a file manager -->
+  <item label="pcmanfm">
+    <action name="Execute"><command>/usr/bin/pcmanfm</command></action>
+  </item>
+  <separator/>
+  <item label="Reconfigure">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Wins+Icons">
+    <!-- AS. Not yet very useful: brings up display, but it can't be used -->
+    <action name="NextWindow"/>
+  </item>
+  <item label="Exit">
+    <action name="Exit">
+      <prompt>yes</prompt>
+    </action>
+  </item>
+  <separator/>
+  <item label="Log Out">
+    <action name="SessionLogout">
+      <prompt>yes</prompt>
+    </action>
+  </item>
+</menu>
+
+</openbox_menu>

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Wireless access using Wpa_supplicant</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+
+<h2><b>
+Using Nokia handset with Birmingham Campus WIFI (Eduroam) system
+<br/>
+<small>
+(should work with all symbian 60 3d edition OSes)
+<br>
+Thanks to: Emilis Prascienius
+</small>
+</b></h2>
+
+<b>(Supplement to <a
+href="http://www.cs.bham.ac.uk/~axs/laptop/wpa">A.Sloman's
+web site on using wpa on the Birmingham campus Wifi Network</a>)</b>
+<br>
+(Part of my
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">Linux on Dell d600/d610 laptop</a>
+web site)
+<hr/>
+<b>NOTE:</b>
+<blockquote>
+I have inserted the information below without having an opportunity
+to test it.
+<br/>
+Inclusion here should not be interpreted as an
+endorsement of the contents.
+<p>
+Both the original author and I hope this will be of use to others.
+<p>
+The instructions are for use of the 'eduroam' network. I presume
+that some minor variant will work for 'uobwlan'.
+<p>
+Aaron Sloman
+<br/>
+7 May 2008
+<p>
+<hr/>
+If anyone finds that these instructions work for a device not
+mentioned below, please email me, and I'll add the information, so
+that more users can be helped.
+</blockquote>
+<hr/>
+<h3><b>
+UPDATES
+</b></h3>
+<b>17 Feb 2009 (Nokia E65)</b>
+<blockquote>
+<small>
+Message from
+<a href="http://www.chem.bham.ac.uk/staff/Fossey.shtml">John Fossey</a>
+<br/>
+He used the instructions below
+to set up a Nokia E65 for both Eduroam and UOBWLAN.
+<br/>
+Some menus had very
+slightly different names but everything was in the right place.
+<br/>
+There was a problem with <a href="#certificate"> the link
+to the GTECybertrust certificate</a>
+below, but he was able to download it to
+his desktop then email it to the phone.
+</small>
+</blockquote>
+<b>10 Feb 2009 (Noke 5800)</b>
+<blockquote>
+<small>
+Message from Nick Shrine:
+<br/>
+Having just bought a Nokia 5800 I can confirm that the instructions here
+http://www.cs.bham.ac.uk/~axs/laptop/wpa/nokia.html
+work for both eduroam and UOBWLAN on this device which runs Symbian S60
+5th edition.
+</small>
+</blockquote>
+<b>9 May 2008 (Nokia E61)</b>
+<blockquote>
+<small>
+Alan Sexton writes:
+<br>
+I can confirm that these settings worked for me on my Nokia E61: some
+of the settings were in slightly different places but once I had set
+all of them, it worked.
+<br/>
+Thanks!
+</small>
+</blockquote>
+<hr/>
+<p>
+<b>Using Nokia handset N82 V11.0.117 with Birmingham Campus WIFI system</b>
+<a name="certificate"></a>
+<pre>
+1. Download a root certificate using 3G from
+<a href="http://www.wireless.bham.ac.uk/certificates/GTECybertrustGlobalRoot.cer">http://www.wireless.bham.ac.uk/certificates/GTECybertrustGlobalRoot.cer</a>
+and install it
+
+2. Go to Menu -> Tools -> Setting -> Connection -> Access Points
+
+3. Press Options -> New Access Point and set the following
+
+    Connection name: Education Roaming
+
+    Data bearer: Wireless LAN
+
+    WLAN netrok name: eduroam
+
+    Network status: Public
+
+    WLAN mode: Infrastructure
+
+    WLAN security mode: 802.1x
+
+4. Go to WLAN security settings
+
+    WPA/WPA2: EAP
+
+5. Go to EAP plug-in settings  and enable just EAP-PEAP
+
+6. Go to option and enable the fallowing
+
+    Personal certificate: Not defined
+
+    Authority certificate: Cypertrust Educational
+
+    User name in use: User defined
+
+    User name: YOURUSERNAME
+
+    Real in use: User defined
+
+    Realm: bham.ac.uk
+
+    Allow all PEAP versions
+
+7. Press right and select EAP-MCHAPv2 authentication method,
+
+8. Go to options and enable the fallowing
+
+    User name: YOURUSERNAME
+
+    Prompt password: No
+
+    Password: YOURPASSWORD
+
+9. Exit your settings manager and enjoy free wireless on most of the
+European university campuses
+
+Emilis Prascienius
+Computer Science student
+</pre>
+
+<p>
+<hr>
+<small>
+Installed: 7 May 2008
+<br/>
+Last updated: 17 Feb 2009
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Dell E6410 9 Cell batteries</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+
+<h3><b>
+COMPARISON OF THREE 9-CELL BATTERIES ON DELL
+Latitude E6410
+<br/>
+<small>
+(This is a supplement to: <a href="http://www.cs.bham.ac.uk/~axs/laptop/">my Linux laptop web
+page</a>.)
+<br/>
+DATE INSTALLED: 16 Jul 2010
+<br/>
+<small>
+LAST UPDATE: 3 Aug 2010 (Now three battery makers)
+</small>
+</small>
+</b></h3>
+At the end of May, I ordered a Dell Latitude E6410 with two
+9 Cell Batteries. I received the laptop and two batteries on 4th
+June. Both batteries were labelled as having 90Whr capacity. One was
+made by Samsung, and one by Simplo, as revealed by the linux
+command:
+<pre>
+    cat /proc/acpi/battery/BAT0/info
+</pre>
+<p>
+On 1st July I reported to Dell Support that the Simplo battery
+appeared to have a fault insofar as its performance was
+significantly different from the Samsung's.
+If the charger was connected when the battery was not fully
+charged it did not always start recharging: the charge level had to
+drop to around 95% before recharging was possible. It also did not
+last as long without AC power as the Samsung battery.
+<p>
+<b>The Simplo battery was replaced on 14th July: another Simplo
+battery was delivered and the old one collected</b>
+<p>
+Unfortunately, testing showed that the replacement battery had the
+same charging fault as the original (and that it was also made by
+Simplo).
+<p>
+I charged the battery fully and found that it could keep the E6410
+going for 6 hours 18 minutes while running with a very low CPU load,
+screen brightness on minimum, and wireless on but not used much,
+before the charge level dropped to about 7% with the warning light
+flashing. In contrast the Samsung lasted 7 hours 34 minutes before
+dropping to 7%.
+<p>
+I reported the charging fault and the discrepancy in capacity. I was
+then promised another replacement, which was to be a Dell Battery
+made by Samsung. A new battery was delivered on 22nd July, but
+turned out to be another Simplo, with the same charging fault as
+before, i.e. not recharging if the charge level had dropped only a
+few percent from full charge when the charger was connected. So I
+reported this. However when I tested its endurance I found it better
+than the previous Simplo, though not as good as the Samsung (as
+shown on the graph below).
+<p>
+I was then promised yet another replacement, which was at first
+going to be another Samsung-made battery. However, for some reason
+they decided to send me a battery made by Sanyo, delivered (after
+some confusion about dates) on 29th July. It turned out to have the
+same fault as the Simplo: if the charge level has not dropped below
+about 96% it cannot be recharged to 100%. When I gave it the
+endurance test it did not do as well as the Simplo that had been
+delivered on 29th July, though it was much better than the Simplo
+delivered on 14th July.
+<p>
+Right now (2 Aug 2010) I have three batteries: the Samsung ordered
+and delivered with the laptop on 4th June, the replacement Simplo
+battery delivered on 22nd July and the replacement Sanyo delivered
+on 29th July. Only the Samsung does not have the charging fault.
+<p>
+I have also tested all three batteries
+to see how long they last under light load. The results are
+summarised <a href="three-batteries.pdf">in this pdf file,</a> and also shown
+in the graph below.
+<p>
+<h3><b>
+<b>Getting information about batteries:</b>
+</b></h3>
+On linux (Fedora 13) the command
+<pre>
+    cat /proc/acpi/battery/BAT0/info
+</pre>
+displays mostly static information about the batteries, as follows.
+
+
+<h3><b>
+Results of command: 'cat /proc/acpi/battery/BAT0/info'
+</b></h3>
+<p>
+<b>Sanyo</b>
+<pre>
+    present:                 yes
+    design capacity:         8400 mAh
+    last full capacity:      8400 mAh
+    battery technology:      rechargeable
+    design voltage:          11100 mV
+    design capacity warning: 840 mAh
+    design capacity low:     254 mAh
+    capacity granularity 1:  84 mAh
+    capacity granularity 2:  84 mAh
+    model number:            DELL WG35104
+    serial number:           44
+    battery type:            LION
+    OEM info:                Sanyo
+</pre>
+
+<b>Samsung:</b>
+<pre>
+    present:                 yes
+    design capacity:         8400 mAh
+    last full capacity:      8763 mAh
+    battery technology:      rechargeable
+    design voltage:          11250 mV
+    design capacity warning: 840 mAh
+    design capacity low:     254 mAh
+    capacity granularity 1:  84 mAh
+    capacity granularity 2:  84 mAh
+    model number:            DELL C207204
+    serial number:           36755
+    battery type:            LION
+    OEM info:                Samsung SDI
+</pre>
+<P>
+<b>Simplo</b>
+<pre>
+    present:                 yes
+    design capacity:         8400 mAh
+    last full capacity:      8363 mAh
+    battery technology:      rechargeable
+    design voltage:          11100 mV
+    design capacity warning: 840 mAh
+    design capacity low:     254 mAh
+    capacity granularity 1:  84 mAh
+    capacity granularity 2:  84 mAh
+    model number:            DELL HJ59004
+    serial number:           45
+    battery type:            LION
+    OEM info:                SMP
+</pre>
+I believe 'SMP' indicates batteries made by Simplo.
+<p>
+<h3><b>
+Results of command: 'cat /proc/acpi/battery/BAT0/state'
+</b></h3>
+This command can be used to get information about the current state
+of the battery, both when it is charging and when it is discharging.
+<p>
+For example when the charger is connected and the battery is fully
+charged this sort of information is shown:
+<pre>
+    present:                 yes
+    capacity state:          ok
+    charging state:          charged
+    present rate:            1 mA
+    remaining capacity:      8400 mAh
+    present voltage:         12793 mV
+</pre>
+Sometimes the above is also displayed, on the Simplo and the Sanyo,
+when the battery is not fully charged, and nevertheless is not
+charging.
+<p>
+After the AC power plug is removed, it can change to something like
+this:
+<pre>
+    present:                 yes
+    capacity state:          ok
+    charging state:          discharging
+    present rate:            1470 mA
+    remaining capacity:      8400 mAh
+    present voltage:         12645 mV
+</pre>
+
+When charging, the information looks like this:
+
+<pre>
+    present:                 yes
+    capacity state:          ok
+    charging state:          charging
+    present rate:            724 mA
+    remaining capacity:      7833 mAh
+    present voltage:         12586 mV
+</pre>
+
+
+<h3><b>
+Comparing usable times with the three batteries, when fully charged.
+</b></h3>
+I charged each battery fully, then removed the plug, and used a
+program to record the values every two minutes for
+<pre>
+    remaining capacity:
+    present voltage:
+</pre>
+
+The computer was not doing much. It was running a lightweight window
+manager, with a few xterm windows open, a clock and for a short
+proportion of the time firefox with a few web sites displayed.
+During the test I kept the brightness level as low as possible.
+<p>
+Wireless was connected and I used the connection
+both to log through to a departmental machine at the university, and
+also to log through from my desktop machine to the laptop
+occasionally.
+<p>
+I let the batteries run down until they were registering about 7% of
+maximum charge.
+<p>
+<b>Results of endurance test</b>
+<br/>
+These are the times taken to drop to about 7% of maximum charge:
+
+<blockquote>
+<b>Samsung Battery (delivered 4th June, tested on 15th July,
+after significant use)</b>
+<pre>
+    Total survival time: 454 mins  = 7 hours 34 mins
+</pre>
+<b>Simplo Battery (delivered 15th July, tested on 31st July, having
+been used a few times)</b>
+<pre>
+    Total survival time: 436 mins = 7 hours 16 minutes
+</pre>
+<b>Sanyo Battery (delivered 29th July, tested 31st July,
+hardly used at all)</b>
+<pre>
+    Total survival time: 410 mins = 6 hours 50 minutes
+</pre>
+</blockquote>
+The following graph shows the rates of decay and lifetimes running
+without charger in a more useful way:
+<p>
+<img alt="Three batteries" src="three-batteries.jpg"/>
+<p>
+The bottom graph is for the Sanyo, the middle one for the Simplo,
+and the top one for the Samsung. The Sanyo and Simplo were both very
+new at the time of the test, whereas the Samsung had been used
+intermittently between 4th June and the test date 15th July.
+
+<p>
+X values (horizontal axis) are minutes since the beginning of the
+test.
+<p>
+The Y values (vertical axis)  were the result of multiplying
+"remaining capacity" and "present voltage" measures and dividing by 1000000 then rounding.
+<p>
+The graphs indicate two sorts of difference between the batteries
+<ul>
+<li>
+Capacity when fully charged (indicated by maximum value on curve at
+beginning of graph)
+<li>
+Rate of decay while in use (indicated by steepness of slope of the
+curve).
+</ul>
+Of course I cannot guarantee that the loads
+were exactly similar: I was running linux in both cases, but doing
+very little work on the machine though it was connected to my
+wireless network. Linux can run various programs automatically at
+certain times of the day, but I did not attempt to disable that.
+<p>
+However, there are clear differences in maximum charge levels that
+would not depend on the test conditions (but will change with age
+and usage of the battery). There also seem to be slight differences
+in the rate at which charge is lost during the test, with the Sanyo
+decaying slightly faster than the other two, in addition to having
+the lowest maximum charge. Of course, this was a very small sample,
+and I have no way of knowing whether there are random differences
+between batteries of the same sort.
+<p>
+The one factor that is clearly based on design seems to be the
+inability of the Simplo (both batteries tested) and Sanyo batteries
+to accept any charge when they they are are still about 96% charged
+after having been fully charged and then used for some time. They
+cannot be recharged fully until after the charge level has dropped
+further (e.g. about 95% or lower). The Samsung battery does not have
+this fault.
+<p>
+<b>Graph-drawing program</b>
+<br/>
+The Pop-11
+graph drawing program
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/figs/rclib/graphplot/">(rc_graphplot)</a>
+was used to draw the graphs.
+
+<p>
+<hr/>
+<p>
+<b>Conclusion</b>
+<br/>
+On the basis of my experience, the Samsung battery is clearly
+superior to the other two, though of course I cannot tell whether it
+would be better over its lifetime.
+<p>
+The Sanyo battery is much better than the Simplo battery sent on
+14th July (not shown on the graph), but a little worse than the
+Simplo battery sent on 22nd July.
+<p>
+I don't know whether the
+performance difference I observed between the Simplo and the Sanyo
+is just a matter of random differences between samples of each, or
+possibly some difference in the testing environments (the seven hour
+tests were run on different days). When I tested the original Simplo
+battery its performance was even worse than the Sanyo performance
+shown above, but when I tested it I had already been using it
+intermittently for about five weeks.
+<p>
+When I tested the second Simplo battery it was brand new, but also
+had a relatively poor performance, lasting only 6 hours 18 minutes.
+I don't know whether that relatively short time was a result of
+my not having fully charged the battery (because of the charging
+fault), or something about the conditions of testing.
+<p>
+The third Simplo was significantly better, and exceeded the
+performance of the Sanyo. But it was not as good as the Samsung had
+been when tested after five weeks. Since then the maximum charge
+capacity of the Samsung seems to have dropped by about 2.3% (over
+five weeks -- not shown in the diagram.)
+<p>
+John Cordiner at Dell
+UK support has been very helpful in dealing
+with my complaints, though there have been unexplained discrepancies
+between what he asked the courier service used by Dell
+<a href="http://www.echoltd.com/">(Echo)</a> to do, and what they
+actually did.
+<p>
+<hr/>
+<p>
+<b>Disclaimer</b>
+<br/>
+I am not an expert on battery technology. I do not know what the
+expected range of variation should be between batteries designed and
+sold for the same specification. I do not know whether there was
+some feature of my testing process that invalidated the results
+obtained.
+<p>
+If anyone has more detailed information or corrections, please let
+me know, if possible with links to sources of information.
+<p>
+Thanks
+
+<p>
+A.Sloman [AT] cs.bham.ac.uk
+
+<P>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+This web site was first created: 15 July 2010
+<br>
+Last updated: 16 Jul 2010; 17 Jul 2010; 3 Aug 2010
+<br>
+</body></html>

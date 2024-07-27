@@ -1,0 +1,3046 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>LINUX ON MY DELL LATITUDE D600/D610
+LAPTOP</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<p>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+<a href="http://tuxmobil.org/dell.html">
+<img alt="tuxmobil"
+src="http://www.cs.bham.ac.uk/~axs/images/tuxmobil_sticker.png"/>
+</a>
+</p>
+<h2><b>
+OLD UPDATES FROM MY LINUX LAPTOP WEB SITE
+<br/>
+This part of my <a href="d600-linux.html">linux laptop web site</a>
+</b></h2>
+
+<b>UPDATE: 27 Jun 2010: Moved more stuff from main file to here, below.</b>
+<br/>
+
+<h3><b>
+CONTENTS-- FEDORA (5, 7, 8, 9)
+</b>
+<br/>
+<small>
+(Latest first.)
+</small>
+</h3>
+<ul>
+<li>
+<a href="#fedora9">
+<b>UPDATE 22 Jun 2008: Installing Fedora 9 on my desktop</b>
+</a>
+<ul>
+<li>
+<a href="#firefox3">
+<b>Nasty interaction between Firefox3 and Network Manager</b>
+</a>
+<br/>
+(Added 25 Jun 2008)
+<li>
+<a href="#pulseagain">
+<b>Pulse Audio problems again Fedora 8 and 9</b>
+</a>
+<li>
+<a href="#mplayer">
+<b>Reinstalling mplayer after removing pulseaudio</b>
+</a>
+<li>
+<a href="#nvidia">
+<b>Nvidia driver for F9</b>
+</a>
+<li>
+<a href="#gripes">
+<b>F9 Gripes (nothing's perfect)</b>
+</a>
+<li>
+<a href="#titlebar">
+<b>Title bar puzzle in F9</b>
+</a>
+<li>
+<a href="#hwconf">
+<b>Both kudzu and hwconf not in F9</b>
+</a>
+</ul>
+<p>
+<a href="#fedora8">
+<b>15 Apr 2008: Installed Fedora 8 (F8) on my Dell D610</b>
+</a>
+<ul>
+<li>
+<a href="#f8suspend">
+<b>UPDATE 27 May 2008: F 8 Suspend/Resume problems</b>
+<br/>
+(using swsusp2/tuxonice on Fedora 8)
+</a>
+<li>
+<a href="#wlassistant">
+<b>UPDATE 11 May 2008: found wlassistant on Fedora 8</b>
+</a>
+<li>
+<a href="#15april">
+<b>UPDATE 15 Apr 2008: Installing Fedora 8 (F8) on my Dell D610</b>
+</a>
+<li>
+<a href="#fiddle">
+<b>Installation fiddle</b>
+</a>
+<li>
+<a href="#descriptions">
+<b>Poor descriptions in installation menus</b>
+</a>
+<li>
+<a href="#audio">
+<b>A serious problem with (pulse) audio after upgrading to F8</b>
+</a>
+<li>
+<a href="#solution">
+<b>The solution</b>
+</a>
+<li>
+<a href="#kernel-related">
+<b>ADDED 16 Apr 2008</b>
+</a>
+<li>
+<a href="#record">
+<b>Added 16 Apr 2008:
+Problems on Fedora 8 with record, play and aumix in F8</b>
+</a>
+<li>
+<a href="#aumix">
+<b>Using aumix</b>
+</a>
+<li>
+<a href="#swsusp2f8">
+<b>The SWSUSP2 Kernels Provided by Matthias Hensler</b>
+</a>
+<li>
+<a href="#synaptic">
+<b>And now we have the 'synaptic' package manager on Fedora</b>
+</a>
+<li>
+<a href="#console">
+<b>Booting to text console, not graphics</b>
+</ul>
+<p>
+<li>
+<a href="#growisofs">
+<b>UPDATE 21 Dec 2007: Tips on burning DVDs</b>
+</a>
+<br/>
+(Modifies previous update of 7 Aug 2007).
+<p>
+<li>
+<a href="http://zeth.net/Uobwlan">
+<b>UPDATE 13 Nov 2007: Bham wifi+wpa for Ubuntu users</b>
+</a>
+<blockquote>
+Zeth Green has provided instructions for accessing the BHAM Campus
+wireless network,
+for Ubuntu linux users,
+here
+<a href="http://zeth.net/Uobwlan">http://zeth.net/Uobwlan</a>
+<br>
+or here if that doesn't work:
+<a href="http://82.36.234.82:7070/Uobwlan">http://82.36.234.82:7070/Uobwlan</a>
+</blockquote>
+<li>
+<a href="skype.html">
+<b>UPDATE 3 Nov 2007: Avoiding echo problem on Skype</b>
+</a>
+<p>
+<li>
+<a href="#fedora7">
+<b>UPDATE 1 Aug 2007: installing Fedora 7 (F7) on the Dell D610 (long)</b>
+</a>
+<ul>
+<li>
+<a href="#installf7">
+<b>Installing F7 on the D610</b>
+</a>
+<li>
+<a href="#ipw2200firmware">
+<b>Firmware for ipw2200 wireless card installed automatically in F7</b>
+</a>
+<li>
+<a href="#radeon">
+<b>Improved radeon graphic driver in X.org in F7</b>
+</a>
+<li>
+<a href="#grub">
+<b>Fixing problem booting with grub (my mistake)</b>
+</a>
+<li>
+<a href="#developers">
+<b>NOTE FOR FEDORA DEVELOPERS:</b>
+</a>
+<li>
+<a href="#freshrpms">
+<b>Serious problem with freshrpms for F7 users</b>
+</a>
+<li>
+<a href="#swsusp2f7">
+<b>Installing swsusp2 in F7</b>
+</a>
+<li>
+<a href="#suspend">
+<b>Suspend to disk 'hibernate' works in F7 but not suspend to RAM
+(pm-suspend)</b>
+</a>
+<li>
+<a href="#batteryf7">
+<b>Battery life using F7</b>
+</a>
+<li>
+<a href="#lsformat">
+<b>New default date format for 'ls' command in F7</b>
+</a>
+<li>
+<a href="#javaf7">
+<b>Problem with java on F7</b>
+</a>
+</ul>
+
+<hr>
+<p>
+<a name="before-7"></a>
+<li>
+<a href="#prior7">
+ITEMS PRIOR TO INSTALLING FEDORA 7
+</a>
+<p>
+<li>
+<a href="#wacky">
+UPDATE 18 Jan 2007: problem with swsusp2 (using FC5) -- and a workaround
+</a>
+<li><a href="#install">
+New install, not upgrade
+</a>
+<li><a href="#post-install">
+Post installation automatic kernel update
+</a>
+<li><a href="#wireless-tools">
+Wireless driver for IPW2200 wireless card and wireless-tools
+</a>
+<li><a href="#fc5-webcam-pwc">
+Webcam problem in FC5: updated PWC driver (fixed in F7)
+</a>
+<li><a href="#install-ati">
+Install ATI drivers for the video card (Not needed for F7)
+</a>
+<li><a href="#swsusp">
+Software Suspend in Linux Kernel:
+Mostly fine, but a bit slow, and missing
+option before resume
+</a>
+<li><a href="#swsusp2">
+Going back to SWSUSP2 solved two problems
+</a>
+<li><a href="#ati-driver">
+Problem suspending with ATI driver fglrx [Not a problem in F7]
+</a>
+<li><a href="#pre-fc5">
+Entries before installation of FC5 on D610
+</a>
+<li><a href="#firewall">
+Firewall scripts
+</a>
+<li>
+<a href="#d610">
+UPDATE 8 Oct 2005:  Acquired Dell D610
+</a>
+<p>
+<a name="before-5"></a>
+<li><a href="#pre-fc5">
+CONTENTS PRIOR TO INSTALLATION OF Fedora Core 5
+</a>
+</ul>
+<p>
+
+<a name="fedora9"></a>
+<h3><b>
+UPDATE 22 Jun 2008: Fedora 9 on my desktop
+</b></h3>
+<blockquote>
+My desktop PC had lagged behind the laptop, and was still running
+FC6, so I decided to install F9, though usually I don't like to use
+a distribution that is so new. I did not wish to try F8 because the
+problems caused by Pulse Audio made that a nightmare on my laptop
+(see below).
+<p>
+F9 installed very easily from a DVD except for my typing the wrong
+DNS server address, and foolishly clicking on the optin to install
+some items over the internet. So everything froze when it tried to
+use the connection and got no response. I think there should be a
+button giving the option to abort the use of the internet or to
+change the settings, if it tries two or three repositories and fails
+to connect. That would have saved me the hassle of having to start
+from scratch again. (Including the very tiresome and slow process of
+selecting among the options available on the DVD. -- Partly made
+worse by the fact that many of the rpms are simply described by the
+<i>name</i> of the utility they provide, saying nothing about their
+functions -- eg. Tomcat, Smolt, ... so, in order to decide, you have
+to look them up on the internet using another machine.)
+<p>
+Apart from that I think everything installed more smoothly than
+using F8 (e.g. I did not have to add the "acpi=off" boot parameter
+to stop the installation freezing).
+<p>
+Added 1 Aug 2008:
+<blockquote>
+There's a very useful collection of tips and links
+relating to Fedora 9, by Gregory R. Kriehn here<br/>
+<a href="http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f9/f9.html">http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f9/f9.html</a>
+<br/>
+Heed especially his advice on repositories:
+<br/>
+<a href="http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f9/howto/repositories.html">http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f9/howto/repositories.html</a>
+<br/>
+His own Fedora 9 repository is here:
+<br/>
+<a href="http://optics.csufresno.edu/fedora/9/">http://optics.csufresno.edu/fedora/9/</a>
+</blockquote>
+<p>
+<a name="firefox3"></a>
+<b>Nasty interaction between Firefox3 and Network Manager</b>
+<br/>
+(Added 25 Jun 2008)
+<br/>
+I had recently started using Firefox 3. After switching to Fedora 9,
+a very nasty thing happened. I often use windows and tabs too keep
+hold my working memory (papers partly read, things still to be read,
+etc.). Normally I hibernate (using SWSUSP 2) and resume instead of
+shutting down and rebooting, so Firefox keeps its state. However if
+doing experiments, e.g. with a new graphic driver I have to kill X11
+and that means killing Firefox. But the wonderful ability to restore
+all its windows and tabs meant that was not a problem. It worked
+well while I was running FC 6, and works with Fedora 8 on my laptop.
+<p>
+But after I converted my desktop to Fedora 9, Firefox3 always
+restarted in offline mode. I had to go to the 'File' menu to set it
+online, and then laboriously click on the 'reload' button on every
+tab. I did find a very nasty workaround: instead of starting
+Firefox3, just start Firefox2 (which I still have available). Then
+kill it and start Firefox3. That opened all the windows, but was not
+a satisfactory procedure. So I used bugzilla to report a bug in
+Firefox, and learnt that lots of people were suffering from this,
+and there were various theories about what was going on. Eventually
+I found a page explaining that it was due to Firefox3 interrogating
+Network Manager (if running) to determine whether the system was
+online or not, and if, as in my case, the network connection was
+static, Network Manager gave wrong information, since I was not
+using it. So I disabled Network Manager and since then Firefox3
+always starts up properly. So beware if you run F9 and don't use
+Network Manager: it will run anyway by default and may screw some
+things up.
+<blockquote>
+<small>
+For further information see the buzilla page
+<br/>
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=424626">https://bugzilla.mozilla.org/show_bug.cgi?id=424626</a>
+</small>
+</blockquote>
+<p>
+<a name="pulseagain"></a>
+<b>Pulse Audio problems again</b>
+<br/>
+Unfortunately, as with <a href="#audio">F8 on my laptop</a>,
+I found I could not get sound to work at all (using an old but
+adequate Soundblaster card). There seemed to be permissions problem
+associated with Pulse Audio.
+<p>
+Having struggled once in vain, I decided not to trawl through web
+pages with suggestions that did not work, and went straight to the
+final solution that had worked in F8, namely
+<ul>
+<li>
+Fetch 'synaptic' for F9 (using 'yum install synaptic').
+<li>
+Run synaptic and ask it to identify all packages containing 'pulse'.
+<li>
+Mark them for removal.
+<li>
+Apply, and say yes to removal of things that depend on pulseadio
+(including, alarmingly, mplayer, which I had already installed, but
+gave no sound).
+<p>
+<b>NB</b>: I later found that I could use the 'yumex' program
+instead of synaptic.
+</ul>
+<a name="mplayer"></a>
+<b>Reinstalling mplayer after removing pulseaudio</b>
+<br/>
+After removing pulseadio packages and rebooting, I re-installed
+mplayer (and its gui and skins).
+<br/>
+I was alarmed to find that that required one pulseaudio package to
+be installed,
+<pre>    pulseaudio-libs-0.9.10-1.fc9.i386</pre>
+but I typed 'y' and the installation went ahead.
+<br/>
+This time, after rebooting, sound worked for everything except
+skype, which I can now run only as root.
+<br/>
+Other things that work include BBC iplayer, flash videos with sound,
+realplay and mplayer.
+<p>
+For mplayer I found a useful tip: start mplayer, then right click.
+Select Preferences in the menu, then click on Audio. It lists
+available sound drivers.
+<br/>
+Click on 'Configure driver'. You'll get options for Device, Mixer
+and Mixer Channel. I ended up with 'default driver' for the first
+two and 'pcm' for the third, without understanding anything about
+what I was doing. But that works fine on the videos I have
+tried so far.
+<p>
+I have found that there are several web sites complaining about
+problems with pulseaudio, and in particular skype users are bitter.
+<p>
+The fedora installation process should provide the option to use
+pulseaudio or not, with a warning that it does not work with skype
+and can cause problems for other packages requiring sound. Having
+the same serious problem in two releases (F8 and F9) is inexcusable.
+<p>
+
+<a name="nvidia"></a>
+<b>Nvidia driver for F9</b>
+<br>
+My desktop uses an NVidia VGA graphic card (GeForce 6200). I
+normally download the latest driver from the nvidia web site and run
+the script to compile and install a module. However, unusually, this
+failed on Fedora 9, presumably because I had the wrong version of
+gcc or some other library. (I assume nvidia will fix that). However
+I then discovered that there is an nvidia package, which I fetched
+using 'yum install kmod-nvidia'.
+<p>
+<a name="gripes"></a>
+<b>F9 Gripes (nothing's perfect)</b>
+<blockquote>
+I was amazed to find that 'xterm' is not included in the F9 rpms.
+However I was able to fetch one (xterm-235-1.fc9.i386). I do most of
+my editing, reading mail, programming in xterm windows. (The
+vt100/xterm emulation of gnome-terminal is seriously buggy,
+making it unusable for the purpose. 'rxvt' is also inadequate as a
+substitute, though useful for saving memory.)
+<p>
+I don't like running gnome or kde (the ctwm window manager is very
+small, robust, tailorable, and does exactly what I want). So I was
+annoyed when editing /etc/inittab to specify "id:3:initdefault:"
+failed to make F9 boot up in console mode.
+<p>
+For some reason that worked after I fetched the 'hensler' swsusp2
+kernels
+<blockquote>
+<small>
+(I much prefer the 'tuxonice' hibernate to the default in linux:
+e.g. with SWSUP2 you get a simple graphical indication of what is
+happening, and I think it is faster. Also it seems to be better at
+restoring wireless connections and other things after resume than
+the default pm-hibernate.)
+</small>
+</blockquote>
+<b>Missing pdftk</b>
+<br/>
+I could not get pdftk to compile on F9. However, it turns out that
+there's an rpm for Fedora 9, provided by Gregory R. Kriehn:
+<blockquote>
+<a href="http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f9/howto/pdftk.html">http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f9/howto/pdftk.html</a>
+<br/>
+<a href="http://optics.csufresno.edu/fedora/9/i386/pdftk-1.41-5.fc9.i386.rpm">http://optics.csufresno.edu/fedora/9/i386/pdftk-1.41-5.fc9.i386.rpm</a>
+</blockquote>
+
+</blockquote>
+<a name="titlebar"></a>
+<b>Title bar puzzle in F9</b>
+<blockquote>
+For some reason, in Fedora 9 title bars of windows when running the
+ctwm or twm window manager, were much deeper than
+previously, so they waste a lot of space. The same was true for the
+entries in the iconmanager.
+<p>
+On a hunch I altered the file /etc/sysconfig/i18n to contain the
+following, which I had in an earlier version of linux:
+
+<pre>
+   LANG="en_GB"
+   SUPPORTED="en_GB.UTF-8:en_GB:en:en_US.UTF-8:en_US:en"
+   SYSFONT="lat0-sun16"
+   SYSFONTACM="iso01"
+</pre>
+
+instead of the default contents inserted  by the F9 installer:
+<pre>
+   LANG="en_US.UTF-8"
+   SYSFONT="latarcyrheb-sun16"
+</pre>
+I don't really know why that fixed the problem.
+<p>
+<b>Note added 25 Jun 2008: tgif problem</b>
+<br>
+Even more puzzling: I was having font troubles with tgif
+<blockquote>
+<small>
+Fatal Error in OpenFont(): Cannot open the RulerFont
+'-*-courier-medium-r-normal-*-10-*-*-*-*-*-iso8859-1'.
+Tgif aborted.
+</small>
+</blockquote>
+despite having all the required fonts installed.
+<p>
+In desperation I tried reinstating the i18n default, in case the
+tgif problem had something to do with that.
+<p>
+To my surprise
+the titlebar problem did not recur with the restored i18n file, but
+it did not fix the tgif font problem. It must be an X11 problem not
+a tgif problem, because
+I can log in to this machine from my laptop running Fedora 8 and run
+tgif OK. But if I log in to the laptop from the Fedora 9 machine and
+run tgif I get the same error message.
+<p>
+<b>A workaround to fix tgif(4 Jul 2008)</b>
+<br/>
+I fetched the sources for tgif-QPL-4.1.45 (available
+<a href="http://bourbon.usc.edu/tgif/hgviewer.html">here</a>), and
+changed one line in the file font.c. Namely
+I replaced
+<pre>
+    ruler_font_size = 10;
+</pre>
+with
+<pre>
+    ruler_font_size = 11;
+</pre>
+and then followed the standard instructions ('xmkmf; make').
+<p>
+The resulting executable works, and is available here as a gzipped
+binary file:
+<a href="tgif.gz">tgif.gz</a>
+<p>
+Since doing that I have written to Bill Cheng, the author of
+tgif, who pointed out that I could, instead, have put this in my
+.Xdefaults file:
+<pre>
+    Tgif.RulerFontSize: 11
+</pre>
+<p>
+</blockquote>
+<a name="hwconf"></a>
+<b>Both kudzu and hwconf not in F9</b>
+<blockquote>
+There must be a new mechanism for detecting changed hardware: kudzu
+is no longer available, and the file /etc/sysconfig/hwconf no longer
+exists. (Apparently HAL has made kudzu redundant.)
+<p>
+A partial replacement is in the two commands 'lspci' and 'dmidecode'
+(the latter requires root privilege).
+</blockquote>
+<hr/>
+</blockquote>
+
+<a name="fedora8">
+</a>
+<h3>
+<b>15 Apr 2008: Installed Fedora 8 (F8) on my Dell D610</b>
+</h3>
+<blockquote>
+<a name="f8suspend"></a>
+<b>
+UPDATE 27 May 2008: Suspend/Resume problems
+<br/>
+(using swsusp2/tuxonice on Fedora 8)
+</b>
+<blockquote>
+Using the latest 2.6.24.7-92_1.cubbi_tuxonice.fc8 kernel (with
+SWSUSP2 included) I found that hibernate/resume works once, but
+after that the resume does not complete properly and there are error
+messages, apparently relating to the ipw2200 device. I had found the
+same problem with 2.6.24.5-85, so I abandoned using that.
+<p>
+Going back to the earlier kernel 2.6.24.7-92_1.cubbi_tuxonice.fc8
+avoids the problem, but I have also found that doing this seems to
+fix the problem:
+<pre>
+    Put this line (or uncomment it):
+
+        ProcSetting full_pageset2 1
+
+    in the file
+
+        /etc/hibernate/suspend2.conf
+</pre>
+
+I had previously had to use this fix in an earlier version, namely
+2.6.18-1.2869_1.fc6.cubbi_suspend2.
+<p>
+I don't know what this is about. Can someone enlighten me?
+
+</blockquote>
+<p>
+<a name="wlassistant"></a>
+<b>UPDATE 11 May 2008: found wlassistant on F8</b>
+<blockquote>
+Discovered that Fedora 8 on my laptop included a new (to me) utility
+<a href="http://www.kde-apps.org/content/show.php?content=21832&forumpage=19&PHPSESSID=ad60910425a96e9bf82c4a7294ad4584">'wlassistant',</a>
+which has proved very useful for temporary wireless
+connections while travelling. For my regular WPA access I prefer to
+use scripts as described <a href="wpa">here</a>.
+<p>
+Although 'wlassistant' is a kde tool it does not require kde to be
+running. I use 'ctwm' as my window manager and ran 'wlassistant' (as
+root') in an xterm window.
+</blockquote>
+<p>
+<a name="15april"></a>
+<b>UPDATE 15 Apr 2008: Fedora 8 (F8) on my Dell D610</b>
+<blockquote>
+I'll add more details later, but here's the summary
+<ul>
+<li>
+<a name="fiddle"></a>
+<b>Installation fiddle</b>
+<br>
+Basic installation from DVD worked well -- except for the
+design defect that
+makes it necessary to deal with the problem described
+clearly by 'nerdgirl' in
+<a href="http://www.nerdgirl.dk/linux/fc8/installation.php">http://www.nerdgirl.dk/linux/fc8/installation.php</a>
+<blockquote>
+I quote, with slight modifications:
+<p>
+<small>
+When running the installation in graphical mode, the installer may
+hang at sbin/loader (this is a known bug).
+<br/>To fix this add
+"acpi=off" with the grub boot loader, like this:
+<br/>
+Insert the installation DVD and start the computer.
+<br/>
+When the first
+menu appears, press [tab] and add "acpi=off" at the end of the
+command prompt. It should look something like this:
+<pre>
+     vmlinuz initrd=initrd.img acpi=off
+</pre>
+</small>
+<p>
+If the above is a known bug, why don't they fix it? That's exactly
+the sort of thing that can turn first timers off linux.
+<br/>
+After that, installation is just a matter of answering a lot of
+questions. If you have a good internet connection it may be best to
+go for a minimal install then later use 'synaptic' to upgrade your
+system. (See below).
+<p>
+Once your system is installed, as superuser you will need to edit
+/boot/grub/grub.conf to remove the 'acpi=off' from the boot
+parameters, as otherwise various things like cpu-throttling will not
+work (I think).
+<p>
+</small>
+</blockquote>
+<li>
+<a name="descriptions"></a>
+<b>Poor descriptions in installation menus</b>
+As usual with linux (and other things) if
+you do a custom install (which I did) many of
+the things offered are NOT described well in the menus; so it is too
+easy to add things you don't need or leave out things you do need
+but do not recognise from the terribly short explanations on the
+install screen. If you have lots of spare space on your hard drive
+(unlike me) you can just install everything, then later use
+'synaptic' to remove things you don't need.
+<p>
+<li>
+<a name="audio"></a>
+<b>A serious problem with (pulse) audio after upgrading to F8</b>
+<br/>
+After installation, everything seemed to work OK, including
+gmplayer, realplayer (with BBC News in Firefox), and flash, etc.
+<br/>
+However, I then decided to let it do its default upgrade over
+the internet
+<p>
+Unfortunately, after Fedora 8 upgrades had finished I found that the
+sound system had been screwed up. Apparently a lot of stuff
+concerned with 'PulseAudio' had been added, and gmplayer had stopped
+working, along with everything else to do with sound, except
+system-config-soundcard which includes a test that worked fine,
+showing that the hardware had been recognised OK.
+<p>
+I then wasted many hours chasing up suggestions found on the
+internet, because many other people had also had their
+sound screwed up after upgrading, with problems about not being able
+to access the audio device, not being able to run mplayer, xine,
+alsamixer, etc.
+<p>
+Like several others I came to the conclusion that this was due to
+premature release of pulseaudio with bugs, or at least inadequate
+instructions/warnings on how to make things work with pulseaudio.
+<p>
+Eventually, after failing with that approach, like some others
+reporting this problem on the internet, I used 'synaptic' to remove
+everything to do with pulseaudio and mplayer then just reinstalled
+mplayer. Still no luck.
+<p>
+Other people suggested that the problem might be selinux, so I used
+system-config-selinux to turn selinux off completely. That did not
+help.
+<p>
+<a name="solution"></a>
+<b>The solution</b>
+<br/>
+Then I had an idea that I should have had much earlier -- I checked
+permissions in /dev.
+<p>
+I discovered that the problem was very simple (which did not make it
+any less annoying): Something in the upgrade after installing Fedora
+8 had changed permissions on the sound devices so that ordinary
+users could not access them, namely these:
+<pre>
+    /dev/audio*
+    /dev/snd/*
+</pre>
+So I used 'chmod go+rw' to change the permissions on all those
+devices and then everything worked again. I could have saved myself
+several hours.
+<p>
+I wonder who changed the system so that so many people would be
+clobbered after upgrading, and why?
+<p>
+I then remembered that some of the messages I had received when
+sound was failing referred to privileges and a group connected with
+audio. I tried adding myself to the group (why should that be
+necessary?) but it did not solve the problem.
+<p>
+There really should be better diagnostics to help naive users deal
+with such problems without wasting many hours.
+<blockquote>
+<small>
+<a name="kernel-related"></a>
+<b>ADDED 16 Apr 2008</b>
+<br>
+Found this in <a href="https://bugzilla.redhat.com/show_bug.cgi?id=299991">https://bugzilla.redhat.com/show_bug.cgi?id=299991</a>
+
+<pre>
+    Comment #8 From Douglas Campbell    on 2008-03-22 17:04 EST
+
+    Same problem, but with Intel 82801G on x86-64 (HP dv9033cl laptop).
+
+    My current kernels for which problem occurs are 2.6.24.3-12.fc8 and
+    2.6.21.7-2.fc8xen.
+
+    Sound works properly under the 2.6.23.1-42.fc8 kernel.
+
+    Problem appears therefore to be kernel related.
+</pre>
+</small>
+</blockquote>
+<p>
+<li>
+<a name="record"></a>
+<b>Added 16 Apr 2008:
+Problems on Fedora 8 with record, play and aumix in F8</b>
+<blockquote>
+After I got sound coming out as explained above, I later tried
+recording from a microphone and using skype and could not get sound
+to go in! I ran 'audacity' for testing, and eventually after a lot
+of messing about found that under 'edit' it has a 'preferences'
+button that gives options for sound devices. (A shortcut is CTRL-P).
+There were five options for sound input and for some reason it was
+on option 3. However experimenting I found that option 1 (OSS)
+option 2 (ALSA) both worked but not the remaining options.
+After I selected option 2 and exited audacity, I could get skype to
+work, and also 'record' and 'arecord'. See below.
+<p>
+There are three programs for sound I have been using for some time
+which stopped working on Fedora 8 on my laptop.
+<p>
+<b>record</b>
+<blockquote>
+<small>
+I much prefer 'record'  (by Gerd Knorr) to 'arecord' as it shows
+recording levels in an xterm window and makes it easy to start and
+stop recording. This was not available in F 8, so I copied over an
+old (2003) version of record, which at first complained about
+requiring /dev/dsp and /dev/mixer, neither of which existed on my
+machine (although both were present in Fedora 7).
+<p>
+The solution was to define an alias
+<pre>
+    alias record 'record -d /dev/dsp3 -m /dev/mixer3'
+</pre>
+That works fine now.
+</small>
+</blockquote>
+<b>play</b>
+<blockquote>
+<small>
+This does not have similar advantages over aplay, but in any case I
+got it working by means of an alias
+<pre>
+    alias play 'play -d /dev/dsp3'
+</pre>
+</small>
+</blockquote>
+<a name="aumix"></a>
+<b>Using aumix</b>
+<blockquote>
+<small>
+I have the fedora 8 version for this. It is a handy tool which can
+be run in an xterm window and allows keyboard control of playing
+volume and recording level.
+<p>
+However, it requires access to /dev/dsp and /dev/mixer, and as
+explained above neither existed after the upgrade
+to F 8. Also I could not find a combination of flags that would make
+it use /dev/dsp3 and /dev/mixer3 (Perhaps I did not understand the
+'man' file.)
+<p>
+So in desperation I just made /dev/dsp and /dev/mixer symbolic links
+to dsp3 and mixer3. And now aumix works.
+<p>
+(I guess I no longer need
+the aliases for 'play' and 'record'!)
+</small>
+
+</blockquote>
+</blockquote>
+<p>
+<li>
+<a name="swsusp2f8"></a>
+<b>The SWSUSP2 Kernels Provided by Matthias Hensler</b>
+<br>
+After installing the appropriate 'repo' file
+<pre>
+    <a href="http://mhensler.de/swsusp/download/suspend2.repo">http://mhensler.de/swsusp/download/suspend2.repo</a>
+</pre>
+I used 'yum install kernel-tuxonice kernel-tuxonice-devel' to
+install the latest Hensler kernel
+that includes Software Suspend 2
+(SWSUSP2), along with all the prerequisites.
+<br>
+This provides
+faster hibernate and resume:
+<pre>
+    <a href="http://mhensler.de/swsusp/download_en.php">http://mhensler.de/swsusp/download_en.php</a>
+</pre>
+That just works. I now have:
+<pre>
+    2.6.24.4-64_1.cubbi_tuxonice.fc8 #1 SMP Thu Apr 3 11:15:44 CEST 2008
+</pre>
+<li>
+ I checked that NetworkManager works as indicated by Nerdgirl.dk,
+but since I don't use gnome or kde, but ctwm, which doesn't support
+the NetworkManager applet, I stuck with
+<a href="wpa">my scripts for running wpa_supplicant</a>
+which I find more convenient than a graphical interface anyway.
+Fedora 8 still does not include wpa_gui, alas, but it is still
+available <a href="wpa#wpa_gui">here.</a>
+<p>
+<li>
+<a name="synaptic"></a>
+<b>And now we have the 'synaptic' package manager on Fedora</b>
+<blockquote>
+I have always thought the Redhat/Fedora upgrade manager 'pup'
+totally dreadful, since it makes it very hard to checkout
+information about available upgrades and to select what you want.
+<p>
+In contrast, Debian/Ubuntu users have had 'synaptic' which is far
+superior. So I was delighted to discover (I forget how) that
+synaptic has been converted for use on non-Debian systems that use
+rpm, and it made my life very much easier. For people who have not
+used it, it is worth exploring all the buttons including using right
+click and mark/unmark on selected items. It doesn't do anything
+until you click on 'Apply'.
+</blockquote>
+<li>
+<a name="console"></a>
+<b>Booting to text console, not graphics</b>
+<br/>
+As usual I edited /etc/inittab to change
+<pre>
+    id:5:initdefault:
+</pre>
+to
+<pre>
+    id:3:initdefault:
+</pre>
+so that I get text console on startup, not the graphical login.
+I use 'startx' after logging in to start the X window system
+controlled by this script ~/.xinitrc which specifies window manager
+menu options and programs to be launched at startup, e.g.
+thunderbird, xterm windows, clocks, etc.
+<p>
+The <a href="http://ctwm.free.lp.se/">CTWM</a> window manager works
+in F8 as it always has (very fast, very light on memory, very
+tailorable, and very robust), though for some reason they don't
+include it in the distribution nor on the fedora repositories.
+<p>
+Using ctwm I don't have to use gnome or kde or even fvwm to get all
+the functionality I want, since I do a lot of things with scripts or
+commands invoked from ctwm menus or the command line or keyboard
+instructions, rather than buttons on the screen that other people
+seem to like. (E.g. I set F1, when mouse is in the root window, to
+give me a new xterm window, and F2 to give me one with a smaller
+font taking up less space.) There is more on ctwm
+<a href="#ctwm">below.</a>
+<p>
+<b>Summary: Fedora 8 seems to be a great operating system</b>
+</ul>
+</blockquote>
+
+
+<hr/>
+<a name="growisofs"></a>
+<h3><b>
+UPDATE 21 Dec 2007: Tips on burning DVDs (use growisofs)
+</b></h3>
+<blockquote>
+There are various tools for burning CDs on Linux including cdrecord,
+xcdroast and others. Burning a DVD is another matter.
+<p>
+<b>Note Added 21 Dec 2007</b>
+<blockquote>
+I have now found that the program 'k3b' makes it very easy.
+<p>
+I have been using xcdroast to burn CDs but found that in order to
+use it for burning a DVD I would need to fetch a new version of
+cdrecord which includes the utility cdrecord.prodvd. Using k3b did
+not require that: <a href="http://www.k3b.org/">http://www.k3b.org/</a>
+</blockquote>
+I previously wrote (7 Aug 2007):
+<br>
+I had much
+grief trying to do it until I discovered that this command could be
+used to burn an isofile called 'file.iso' onto a DVD+R:
+<pre>
+    growisofs -use-the-force-luke=dao -dvd-compat -speed=4 -Z /dev/dvd=file.iso
+</pre>
+Alternatively, put that in a shell script replacing 'file.iso' with
+'$1'.
+<p>
+The source of my information was this very helpful web site:
+<br>
+<a href="http://www.troubleshooters.com/linux/coasterless_dvd.htm">http://www.troubleshooters.com/linux/coasterless_dvd.htm</a>
+</blockquote>
+<hr>
+<a name="fedora7"></a>
+<h3><b>
+UPDATE 1 Aug 2007: installing Fedora 7 (F7) on the Dell
+Latitude D610 (long)
+</b></h3>
+Before installing Fedora 7 it is a good idea to look at
+<blockquote>
+o <a
+href="http://fedoraproject.org/relnotes.html">the release notes</a>
+<br>
+o <a
+href="http://docs.fedoraproject.org/install-guide/">the installation guide.</a>
+<br>
+o <a href="http://fedoraproject.org/wiki/Fedora7/FAQ">The F7 FAQ
+list.</a>
+<br>
+Additional documentation can be found at
+<br>
+o <a href="http://docs.fedoraproject.org/">http://docs.fedoraproject.org/</a>
+</blockquote>
+<b>HOW I INSTALLED F7</b>
+<blockquote>
+<ul>
+<li>
+<a href="#installf7">
+<b>Installing F7 on the D610</b>
+</a>
+<li>
+<a href="#ipw2200firmware">
+<b>Firmware for ipw2200 wireless card installed automatically in F7</b>
+</a>
+<li>
+<a href="#radeon">
+<b>Improved radeon graphic driver in X.org in F7</b>
+</a>
+<li>
+<a href="#grub">
+<b>Fixing problem booting with grub (my mistake)</b>
+</a>
+<li>
+<a href="#developers">
+<b>NOTE FOR FEDORA DEVELOPERS:</b>
+</a>
+<li>
+<a href="#freshrpms">
+<b>Serious problem with freshrpms for F7 users</b>
+</a>
+<li>
+<a href="#swsusp2f7">
+<b>Installing swsusp2 in F7</b>
+</a>
+<li>
+<a href="#suspend">
+<b>Suspend to disk 'hibernate' works in F7 but not suspend to RAM
+(pm-suspend)</b>
+</a>
+<li>
+<a href="#batteryf7">
+<b>Battery life using F7</b>
+</a>
+<li>
+<a href="#lsformat">
+<b>New default date format for 'ls' command in F7</b>
+</a>
+<li>
+<a href="#javaf7">
+<b>Problem with java on F7</b>
+</a>
+<li>
+<a href="#neutral">
+<b>Operating-system Neutral Items (realplayer, wpa, vpn, email)</b>
+</a>
+</ul>
+</blockquote>
+<blockquote>
+<b>Installing F7 while leaving /home and /usr/local untouched</b>
+<br>
+I had previously installed FC5 about a year ago
+using
+<a href="#swsusp2">
+the FC5 kernel with software suspend 2
+</a>
+prepared by Matthias Hensler, and was fairly happy with that
+configuration, except that occasionally I had problems with wireless
+connections.
+<p>
+Instead of attempting either an upgrade, or a full installation, I
+decided to do a pseudo upgrade by keeping my /home partition,
+which included /usr/local intact and installing everything in the
+old root partition, after making backup tar files of several key
+directories, especially /etc.
+<p>
+<a name="installf7"></a>
+<b>Installing F7 on the D610</b>
+<blockquote>
+I downloaded the DVD Iso Image for Fedora 7, and the live rescue CD,
+from
+<a href="http://fedoraproject.org/wiki/Distribution/Download">http://fedoraproject.org/wiki/Distribution/Download</a>
+and burnt a DVD and CD respectively. Installation was in some ways
+easier than any other system I had tried.
+<p>
+I had five partitions on the 60GB drive,
+<small>
+<ol>
+<li>
+a 6GB NTFS partition for Microsoft XP which I hardly ever use, apart
+from testing hardware and getting pictures off a NEC E540 phone.
+<br>
+(If anyone knows how to do this using linux please tell me: it is
+not a standard USB drive interface.)
+<li>
+a 2GB swap partition,
+<li>
+a small (about 140 MB) linux ext3 /boot partition (using grub),
+<li>
+a 8.5 GB
+linux ext3 root (/) partition,
+<li>
+and a 40 GB ext3 partition used for /home and
+also /usr/local and a few other things.
+<br>
+I.e. I mount /home/usrlocal as /usr/local, using this entry in
+/etc/fstab
+
+<pre>
+    /home/usrlocal       /usr/local               none   rw,bind 0 0
+</pre>
+
+This enables the /usr/local directory and the /home directory to
+share a large partition while appearing to be separate.
+</ol>
+</small>
+
+So I allowed the Fedora installer to take over the the boot and root
+partitions leaving everything else untouched. I could later then
+remount the other partitions, once F7 was running.
+<blockquote>
+<small>
+Another option would have been to tell the installer not to touch
+the /boot partition, and to install everything in the root
+partition.
+<br>
+After installation, I could then have copied the new
+kernels and grub.conf entries from the new /boot to the temporarily
+mounted old /boot then removed the new /boot or renamed it as
+/fc7boot temporarily, before deletion. I could then create a new
+mount point
+<pre>
+    mkdir /boot
+</pre>
+with an entry in /etc/fstab to mount the separate /boot
+partition:
+<pre>
+    LABEL=/boot1            /boot               ext3    defaults      1 2
+</pre>
+I would still have had to tell grub to use the old boot partition
+instead of the root partition. See
+<a href="#developers">note to Fedora developers,</a> below.
+</small>
+</blockquote>
+<p>
+I chose to install a basic workstation system to be upgraded later
+across the internet (in Ubuntu fashion), instead of choosing
+everything I needed from the DVD. It all worked very well, especially
+as getting wireless working was so easy, as explained below.
+</blockquote>
+<p>
+<a name="ipw2200firmware"></a>
+<b>Firmware for ipw2200 wireless card installed automatically
+in F7</b>
+<blockquote>
+One of the earliest pleasant surprises was finding that the latest
+firmware for my Intel IPW2200 wireless card was automatically
+installed with F7, whereas with earlier versions after every
+installation I had to use a cable connection until I had manually
+fetched the firmware and set up the wireless card. (I still had to
+copy over saved settings from the old
+/etc/sysconfig/network-scripts/ifcfg-eth1 file and the WEP key
+stored in etc/sysconfig/network-scripts/keys-eth1.
+<p>
+This time, although I started off using an ethernet cable connected
+to the router I quickly disconnected it and continued the
+installation using wireless.
+<p>
+(I eventually changed to using WPA2 for my wireless connection at
+home late in 2007).
+</blockquote>
+<p>
+<a name="radeon"></a>
+<b>Improved radeon graphic driver in X.org in F7</b>
+<blockquote>
+Another surprise was that I did not have to bother getting the
+graphics driver from ATI for my 1400x1050 display (using ATI
+Technologies Inc M22 [Radeon Mobility M300] graphic card). The
+'radeon' driver installed by F7 and referenced in the default
+/etc/X11/xorg.conf works very well, even allowing the 3-D glxgears
+demo to run, which was not possible with the previous radeon driver
+provided by X.org. However I had to download and install RPMs for
+openmotif and openmotif-devel because these are no longer provided
+with Fedora, and Lesstif still has some bugs.
+</blockquote>
+<p>
+<a name="grub"></a>
+<b>Fixing problem booting with grub (my mistake)</b>
+<blockquote>
+There was a small (or big, depending on your viewpoint?) blip
+because during installation I somehow chose the wrong option
+regarding booting, so that after installation grub had not been
+properly installed on /boot and the machine would not boot.
+<blockquote>
+<b>The Fedora installer should not have allowed me to do that without any warnings.</b>
+<br>
+(See note for Fedora developers, below.)
+</blockquote>
+So I booted up the F7 rescue CD, and gave grub commands to set up
+booting from the /boot partition, using suggestions helpfully
+provided here:
+<pre>
+  <a href="http://www.sorgonet.com/linux/grubrestore/">http://www.sorgonet.com/linux/grubrestore/</a>
+</pre>
+I hand-edited
+the /boot/grub/grub.conf file (linked to menu.lst) so that it gave
+me the options of booting either F7 or XP. I had previously saved
+the contents of /boot before the upgrade, just as I had saved the
+contents of /etc and various other things, so it was easy to copy
+over some of the text from the old grub.conf.
+<br>
+<small>
+More information on fixing booting is available here
+<br>
+<a href="http://blog.abmas.biz/2007/05/06/howto-reinstall-the-grub-boot-loader/">http://blog.abmas.biz/2007/05/06/howto-reinstall-the-grub-boot-loader/</a>
+<br>
+<a href="http://forums.fedoraforum.org/showthread.php?s=9c03bc957e7651afa7fa1ad0fe7cd08a&t=119361">http://forums.fedoraforum.org/showthread.php?s=9c03bc957e7651afa7fa1ad0fe7cd08a&t=119361</a>
+</small>
+<p>
+<a name="developers"></a>
+<b>NOTE FOR FEDORA DEVELOPERS:</b>
+<blockquote>
+<small>
+The on-screen installation instructions about booting options should
+be made much clearer for people who really don't know anything
+about boot loaders, MBR, grub, etc.
+<p>
+The instructions could separate different cases that are likely to
+arise, described at a high level (e.g. which partitions are used for
+which operating systems, etc.) and provide instructions to select
+one of the cases, and perhaps fill in a few options, such as whether
+the new OS should be made the default boot option in grub.conf or
+not.
+<p>
+E.g. one of the important cases that should be handled explicitly
+would support people who not only have a windows installation but
+also want to run more than one linux installation (e.g. Fedora and
+Ubuntu, for testing). This would specify use of a separate /boot
+partition that should be USED for the new installation but NOT
+completely overwritten. I.e. the new kernel files should be
+installed there along with the old ones (which might be used for
+another linux installation, using a different root partition) and
+instead of the grub.conf file being totally replaced, the installer
+should merely insert (at the top, as the new default) an entry for
+the newly installed kernel. That's what kernel upgrade RPMs do
+anyway, so the code for editing grub.conf must already exist.
+<p>
+Of course, if there is an existing entry for a windows partition
+that would also be left untouched.
+<p>
+Specifying an option at that level of functionality like that would
+be much better than asking people what they want to do about MBR,
+grub, etc. I suspect it would prevent a lot of grief (expressed in
+many online pleas for help with booting problems after a new linux
+installation which is why there are web sites like
+<a href="http://blog.abmas.biz/2007/05/06/howto-reinstall-the-grub-boot-loader/">http://blog.abmas.biz/2007/05/06/howto-reinstall-the-grub-boot-loader/</a>
+).
+<p>
+It would be particularly useful to ask whether you want the old
+grub.conf to be used with a new entry for the latest installation.
+<p>
+For most people the instructions here in the Fedora installation
+guide will not tell them what to do as it presupposes far too much
+low-level technical knowledge:
+<a href="http://docs.fedoraproject.org/install-guide/f7/en_US/sn-bootloader-advanced.html">http://docs.fedoraproject.org/install-guide/f7/en_US/sn-bootloader-advanced.html</a>
+</small>
+</blockquote>
+</blockquote>
+
+<p>
+<a name="freshrpms"></a>
+<b>Serious problem with freshrpms for F7 users</b>
+<blockquote>
+Another, more serious, blip came a few hours later. I had added the
+livna repository as recommended for installing mplayer using yum:
+<pre>
+    yum install mplayer mplayer-gui mplayer-fonts mplayer-skins
+</pre>
+
+That worked fine. However, at a later stage gmplayer stopped working
+and further attempts to upgrade or install software by using 'yum'
+or 'pup' kept generating errors, including
+
+<pre>
+    "Error: Missing Dependency: libdts.so.0 is needed by package mplayer"
+</pre>
+
+I soon discovered that there were lots of users reporting this
+problem. Eventually I read that the cause was an inconsistency
+between the F7 packages provided by freshrpms and by the livna
+respository. The freshrpms site had provided an upgrade for the lib
+libdca which both overrode the one previously installed from livna
+and moreover broke many things because it did not include the
+required libdts.so.0 library. So
+
+<ol>
+<li>
+I used 'rpm -e' to remove mplayer, mplayer-gui, mplayer-fonts and
+mplayer-skins
+<li>
+then used 'rpm -e' to remove the newer version of libdca
+<li>
+fetched from the livna site this package, and installed it:
+<pre>
+    libdca-0.0.2-3.lvn7.i386.rpm
+</pre>
+<li>
+Then used yum to reinstall the four mplayer packages.
+</ol>
+After that everything worked again, including yum and pup. However I
+fear that some automatic upgrade may reinstall the buggy libdca from
+freshrpms. I must find a way to prevent that. (I have to watch
+carefully what the automatic update program 'pup' offers for
+update. and always say no to libdca from freshrpms).
+<p>
+The people responsible for the freshrpms web site should remove
+their version of libdca: it causes many problems.
+<blockquote>
+<small>
+<b>NOTE (9 Aug 2007):</b>
+<br>
+I have found an inconclusive discussion of some of the
+incompatibilities
+here:
+<br>
+<a href="http://lists.mplayerhq.hu/pipermail/mplayer-dev-eng/2007-May/051370.html">http://lists.mplayerhq.hu/pipermail/mplayer-dev-eng/2007-May/051370.html</a>
+<p>
+That web page refers to a project to merge the different
+RedHat/Fedora 'third-party' respositories:
+<br>
+<a href="http://www.rpmfusion.net/">http://www.rpmfusion.net/</a>
+</small>
+</blockquote>
+</blockquote>
+<p>
+<a name="swsusp2f7"></a>
+<b>Installing swsusp2 in F7</b>
+<blockquote>
+I installed the kernels with Software Suspend 2 available from
+<a href="http://mhensler.de/swsusp/">Matthias Hensler's web site</a>
+by following his instructions. To make yum work follow instructions
+in this file
+<a href="http://mhensler.de/swsusp/repository_en.php">http://mhensler.de/swsusp/repository_en.php</a>
+<br>
+In particular you can copy this file
+    <a href="http://mhensler.de/swsusp/download/suspend2.repo">http://mhensler.de/swsusp/download/suspend2.repo</a>
+edit out the 'developers'
+section at the end (unless you want to test development versions)
+then install the file in
+<pre>
+    /etc/yum.repos.d/
+</pre>
+You can then do
+<pre>
+    yum install kernel-suspend2 kernel-suspend2-devel
+</pre>
+(Sometimes installing a package that has to be
+compiled requires the kernel '-devel' extension to have been
+installed even though it is not needed for running the kernel.)
+</blockquote>
+<p>
+<a name="suspend"></a>
+<b>Suspend to disk 'hibernate' works in F7 but not suspend to RAM
+(pm-suspend)</b>
+<blockquote>
+Suspend to disk (hibernate and presumably also pm-hibernate, which
+I have not tried) works fine.
+(I had to put an entry in /etc/sudoers
+to make it possible to run hibernate without becoming superuser.)
+
+<p>
+When I tried 'suspend to RAM' (pm-suspend), the machine would not
+resume and I had to reboot. There is probably a fix that involves
+changing a configuration file somewhere. However that is of less
+importance for me than suspend to disk, which works very well.
+<blockquote>
+<small>
+One of several web sites suggesting things to try to get suspend to
+RAM to work is here
+<a href="http://people.freedesktop.org/~hughsient/quirk/quirk-suspend-debug.html">http://people.freedesktop.org/~hughsient/quirk/quirk-suspend-debug.html</a>
+<p>
+Unfortunately, it did not help me. With some of the suggested
+commands I managed to get pm-suspend to work once, but after it
+resumed, the next time I suspended to RAM it would not resume.
+
+<p>
+However since suspend to disk works I can shut down the machine at
+night, and then wake it up in the morning with all the previous
+windows open. My virtual desktop is an extension of my memory, with
+various partly completed tasks in different windows.
+</small>
+</blockquote>
+</blockquote>
+<p>
+<a name="batteryf7"></a>
+<b>Battery life using F7</b>
+<blockquote>
+With FC5 I had good battery life (with a second battery replacing
+the removable CD/DVD drive). For several years, one of my reasons
+for using the Hensler kernels with SWSUSP2 included was that in
+addition to suspend and resume being noticeably faster, I also found
+that batteries lasted longer without AC power.
+<p>
+After installing F7, I did my
+usual test: removing external power with both batteries
+fully charged and
+screen brightness set to the minimal level, and the wireless card
+turned off. I then left the machine doing nothing. The time was
+14:33. At intervals I checked, and eventually found the battery
+warning light flashing at 20:41, with a total of 568 mAh left. So it
+can run for over six hours, without recharging, a record for this
+machine. That was using two-year old batteries. Of course, if I had
+been using the machine to do any work, the time would have been
+considerably shortened. Leaving the wireless connection running, and
+having more daemons running, could also add to battery consumption.
+<p>
+On previous tests I got under 6 hours, usually closer to 5.5 hours.
+<br>
+<small>
+During the test I was running the X window system with the ctwm
+window manager, which is small and fast (I don't like either gnome
+or KDE, though I use some of their utilities). I had three xterm
+windows open, one of them running the poplog editor Ved, but not
+doing anything.
+</small>
+</blockquote>
+<p>
+<a name="lsformat"></a>
+<b>New default date format for 'ls' command in F7</b>
+<blockquote>
+I found I could no longer compare output of ls -lt in xterm windows
+logged in to different machines because in F7 the default format for
+date and time has changed.
+OLD FORMAT
+<pre>
+    drwxr-xr-x 2 root root 4096 Dec 26  2006 cbq
+    -rw-r--r-- 1 root root  177 Dec  3  2006 clock
+    drwxr-xr-x 2 root root 4096 Nov 28  2006 console
+    -rw-r--r-- 1 root root  512 Feb 26 16:32 crond
+</pre>
+NEW FORMAT (Fedora 7) (Also in more recent versions, e.g. Fedora 9)
+<pre>
+    drwxr-xr-x 2 root root 4096 2007-07-31 17:35 cbq
+    -rw-r--r-- 1 root root  178 2007-08-02 21:57 clock
+    drwxr-xr-x 2 root root 4096 2007-06-25 17:57 console
+    -rw-r--r-- 1 root root  512 2005-02-25 18:41 crond
+</pre>
+There has apparently been much discussion of the change, e.g. here
+<br>
+<a href="http://help.lockergnome.com/linux/output-ls-command-change-ftopict482678.html">http://help.lockergnome.com/linux/output-ls-command-change-ftopict482678.html</a>
+<br>
+It turns out that you can easily get the old format restored in F7
+globally or temporarily by setting the environment variable LC_TIME
+E.g.
+
+<pre>
+    for csh/tcsh shell: setenv LC_TIME POSIX
+    for bash/sh  shell: export LC_TIME=POSIX
+</pre>
+<p>
+</blockquote>
+<a name="javaf7"></a>
+<b>Problem with java on F7</b>
+<blockquote>
+Even after fetching the latest Java from Sun I could not get java to
+work. I noticed there were complaints about missing libstdc++.so.5
+<p>
+I found these installed
+<pre>
+    /usr/lib/libstdc++.so.6.0.8
+    /usr/lib/libstdc++.so.6
+</pre>
+
+But not the required version. So I looked at a machine running FC6,
+and found these two (the second is a link to the first):
+<pre>
+    /usr/lib/libstdc++.so.5.0.7
+    /usr/lib/libstdc++.so.5
+</pre>
+I copied those across to the laptop, and after that Java worked,
+including the java applet test here:
+<br>
+    <a href="http://java.com/en/download/installed.jsp?detect=jre&try=1">http://java.com/en/download/installed.jsp?detect=jre&try=1</a>
+<p>
+If anyone needs those two files I have made them available in a tar
+file here
+<a href="libstdc++.so.5.tar.gz">libstdc++.so.5.tar.gz</a>
+<p>
+To install, just untar that and move the file and link to /usr/lib.
+<p>
+You will have to restart browsers like firefox before they can use
+this.
+<br>
+[There is probably a more principled solution! I did not try
+'yum install libstdc++.so.5']
+<p>
+For more information regarding Java on Fedora 7 see
+<pre>
+    <a href="http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f7/howto/java.html">http://optics.csufresno.edu/~kriehn/fedora/fedora_files/f7/howto/java.html</a>
+</pre>
+</blockquote>
+<p>
+[TO BE CONTINUED]
+</blockquote>
+<hr/>
+
+<hr>
+<a name="prior7"></a>
+<h2><b>
+PRIOR TO FEDORA 7
+</b></h2>
+What follows is a collection of items mainly relevant to older
+systems (RedHat 9, Fedora Core 3, Fedora Core 5).
+Some of the items are OS independent and I have moved them higher up
+the file.
+
+<a name="wacky"></a>
+<h3><b>
+UPDATE 18 Jan 2007: problem with swsusp2 (using FC5) -- and a workaround
+</b></h3>
+<blockquote>
+After I upgraded the kernel on my desktop PC to
+2.6.18-1.2869_1.fc6.cubbi_suspend2 (a Fedora core kernel packaged
+with sofware suspend 2 available from
+<a href="http://mhensler.de/swsusp/">Matthias Hensler's web site</a>)
+the hibernate command stopped
+working. It complained about a wacky driver, and told me to read
+the dmesg file. But nothing made sense. Fortunately a colleague
+had read the answer somewhere, so I am posting it here:
+<pre>
+> Put this line into your /etc/hibernate/suspend2.conf
+>
+>   ProcSetting full_pageset2 1
+>
+> to prevent the "clearing" of pages
+</pre>
+<small>
+Here's some googlebait to help people searching for a solution:
+<pre>
+ - Suspend was aborted (see dmesg).
+ - Freezing processes failed. Wacky driver problems :( (see dmesg)
+ Couldn't extract useful information from dmesg. Not logging here.
+</pre>
+</small>
+
+</blockquote>
+<h3><b>
+UPDATE 20 Aug 2006: Moving to FC 5
+</b></h3>
+<b>
+Notes on upgrading to Fedora Core 5 (with Software Suspend) on
+my Dell Latitude D610
+</b>
+<br>
+I installed FC5 (using the DVD iso) and had good results, though some
+additional work was required to restore my previous environment and get
+everything working, as described below.
+<small>
+<p>
+<ul>
+<a name="install"></a>
+<li>
+<b>
+New install of FC 5, not upgrade
+</b>
+<br>
+I had previously found that using the 'upgrade' option when installing
+linux produced unsatisfactory results, because the upgrade software is
+not sufficiently intelligent at deciding what exactly needs to be
+upgraded, especially after many extras have been installed. So I decided
+to do the following.
+<blockquote>
+Leave unchanged the
+hard drive partition /dev/sda6 on which I had installed
+the /home directory and also /usr/local ---
+though I backed them up as a precaution, and also the
+contents of /etc and /root.
+<p>
+Inform the installation process
+that it should ignore that partition and the XP partition on my
+hard drive,
+and install FC5 using <i>only</i> the root, boot, and swap partitions.
+It completely over-wrote those partitions.
+After
+the installation I remounted the saved /home and /usr/local partitions.
+It did not take long to restore the bulk of my previous environment.
+<p>
+This was more feasible on a laptop with a 60GB drive than on my previous
+laptops with much smaller hard drives.
+</blockquote>
+<p>
+After that I went through the following steps.
+<p>
+<a name="post-install"></a>
+<li>
+<b>
+Post-install automatic kernel update on FC 5
+</b>
+<br>
+The kernel installed from the dvd was version
+2.6.15-1.2054_FC5. After installation 'yum
+update' installed a newer kernel 2.6.17-1.2157_FC5. Later I needed
+kernel header files, and found they were not included. So I used yum to
+install the kernel-devel package, and then found an incompatibility: yum
+had foolishly got the latest version of kernel-devel instead of the
+version matching my current kernel. So I had to uninstall (rpm -e) the
+kernel-devel package, and explicitly fetch the rpm for
+kernel-devel-2.6.17-1.2157_FC5 myself and install it.
+<p>
+Almost everything worked after the installation. I was even surprised to
+find that 'suspend to ram' worked (invoked by 'pm-suspend'). But not for
+long. After I got wireless working, suspend to ram ('pm-suspend')
+stopped working. The resume process just froze. But software suspend
+works and does not use up battery power. Video was slow so I fetched and
+installed the ATI fglrx driver for my video card as described <a
+href="#ati-driver">below</a>.
+(No longer required for F7).
+<p>
+<a name="wireless-tools"></a>
+<li>
+<b>
+Wireless driver for IPW2200 wireless card and wireless-tools
+</b>
+<br>
+I found from warning messages printed by 'iwconfig' and 'iwlist' that
+the latest FC5 kernel has a driver for the Intel IPW2200 wireless card
+that was compiled against a later version of of the wireless-tools than
+that supplied with FC5, which indicates inadequate version management.
+<p>
+Fortunately google quickly led me to the solution. I fetched,
+compiled and installed
+<a href="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.29.pre10.tar.gz">the latest
+version (29-pre10 Beta)</a>
+of wireless tools
+from
+<a href="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html">http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html</a>
+<p>
+Simply untar the file, then, as root, type 'make' and 'make install'.
+By default it installs the tools (<i>ifrename
+iwconfig  iwevent  iwgetid  iwlist  iwpriv  iwspy</i>) in /usr/local/sbin.
+To prevent clashes with the old versions I removed them from /usr/sbin
+and installed symbolic links to the versions in /usr/local/sbin. You may
+prefer to change the Makefile instead, to make it install in /usr/sbin.
+I prefer the symbolic links as a reminder that those files came via a
+non-standard route.
+<p>
+That change seemed to remove some problems attaching to wireless
+networks. The wireless card now works perfectly.
+<p>
+I've noticed that instead of wep keys going into this file
+<pre>
+    /etc/sysconfig/network-scripts/ifcfg-eth1
+</pre>
+there is now a separate file keys-eth1 in the same directory, containing
+keys in this format:
+<pre>
+    KEY=............
+</pre>
+I have also got wpa_supplicant working as described <a href="wpa">here</a>
+for the University of Birmingham wireless network.
+<p>
+<a name="fc5-webcam-pwc"></a>
+<li>
+<b>
+Webcam problem in FC5: updated PWC driver (fixed in F7)
+</b>
+<br>
+There is a version of the pwc driver (for Philips Web Cam and
+compatibles, e.g. several Logitech webcams) included with FC5, but it
+did not work with my logitech webcam. Google soon led me to the latest
+version of the driver on
+<a href="http://www.saillard.org/linux/pwc/">Luc Saillard's website</a>
+from which I went to the 'snapshots' directory and downloaded
+<a href="http://www.saillard.org/linux/pwc/snapshots/pwc-v4l2-20060815-042701.tar.bz2">pwc-v4l2-20060815-042701.tar.bz2</a>
+(now superseded by later snapshots!). I untarred the file, ran 'make'
+then 'make install' and everything worked.
+It works well with spcaview and
+setpwc, for example.
+<p>
+The installation had to be repeated when I upgraded the kernel to get
+swsusp2, as described below.
+<pre>
+    make clean
+    make
+    make install
+</pre>
+<p>
+<a name="install-ati"></a>
+<li>
+<b>
+Install ATI drivers for the video card (Not needed for F7)
+</b>
+<br>
+My D610 has the Radeon Mobility M300 video card. After upgrading to
+FC5 I found that it was much slower at playing videos than it had been
+when I was using FC3. So I decided to fetch the ATI linux driver (which
+I had probably done previously and forgotten).
+<p>
+Go to
+<a href="https://support.ati.com/">https://support.ati.com/</a>
+or
+<a
+href="http://ati.amd.com/support/driver.html">http://ati.amd.com/support/driver.html</a>.
+<p>
+Select 'Drivers and Software', then choose the Linux option, then
+'Notebooks
+with ATI Graphics' or 'Mobility Radeon' if available.
+<p>
+Then follow the 'New installer instructions'
+link (perhaps in a new tab or new browser window)
+for installation instructions: read them carefully, and note the
+Custom installation options.
+<p>
+Then go back to the drivers page and select this option:
+
+<pre>
+    ATI Driver Installer Download    52.7    08/18/06    Version: 8.28.8
+</pre>
+
+That fetches a script that you can download then run. When  you run it,
+it gives you the option to build and install a 'Custom Driver'. Choose
+the custom option, follow the 'custom driver' installation options,
+and select the X.org option rather than the XFree86 options. (Unless you
+still have XFree86.)
+<p>
+After installing the driver and rebooting, and fixing the xorg.conf file
+in /etc/X11 before starting X, I found things much improved. E.g. using
+mplayer to show videos worked much better. The 'glxgears' test also
+worked fine: use arrow keys to control it. Kill with 'Ctrl C' in the
+invoking command line window.
+<br>
+(My xorg.conf file as of 19 Aug 2006 is <a href="xorg.conf">here.</a>
+Do not use it without checking all the details: not everything may be
+appropriate for your machine.)
+<p>
+However using the ATI driver (fglrx) caused problems with SWSUSP2. See
+how that was fixed <a href="#swsusp2">below</a>. (Not needed in F7)
+<p>
+NOTE: the downloaded ATI driver installation file is worth saving as
+it needs to be re-run after any kernel upgrade. Users of Nvidia
+graphic cards can also get files from the Nvidia web site that
+install proprietary high speed drivers for those cards. Those also
+have to be reinstalled after any kernel upgrade.
+<p>
+<a name="swsusp"></a>
+<li>
+<b>
+Software Suspend in FC5 Linux Kernel:
+Mostly fine, but a bit slow, and missing
+option before resume
+</b>
+<br>
+Using FC5 I found that software suspend (suspend to disc), invoked by
+the command 'pm-hibernate' worked very well. I could reliably suspend
+and resume. However there were two problems.
+<ol>
+<li>
+I was used to the speed of SWSUSP2, which I had been using with FC3, and
+the new SWSUSP was slower, though still bearable. The second problem was
+much more serious.
+<p>
+<li>
+Unfortunately the authors of SWSUSP decided that they should make the
+suspend process change grub.conf so that you get no option to boot
+anything else. This is presumably because booting any other version of
+linux could cause unpredictable corruption of your files.
+<p>
+However, it does not allow for the possibility that someone has another
+operating system that does not share any disc partitions with linux,
+e.g. windows. The removal of the boot option will stop such people
+suspending linux, starting windows, and then later resuming linux. (I
+have seen several messages on the web complaining about this.)
+<p>
+I hardly ever use XP, though occasionally if I want to check hardware or
+if I have some software package that works only on windows (e.g. the
+utility to download photographs from my NEC mobile phone!) I need XP,
+alas. It is very annoying not to be able suspend linux, run XP, then
+resume linux, so as to restore my linux state (e.g. open browser pages,
+open editor pages, etc. after). (I often go for months using only
+suspend and resume without rebooting linux -- not only to save time, but
+more importantly to save state: I suspend with browser pages open,
+editor files open etc. so that the suspended process is an extension of
+my own memory.)
+<p>
+I had not had that annoying restriction when I used SWSUSP2, so I
+reverted to that, as described in the next section. (I might have been
+able to solve the problem by editing or bypassing the 'pm-hibernate'
+script, but did not wish to waste time finding out how to do that.)
+</ol>
+<p>
+<a name="swsusp2"></a>
+<li>
+<b>
+Going back to SWSUSP2 solved two problems (using FC5)
+</b>
+<br>
+For several years I have been very happily using SWSUSP2 available from
+<a href="http://mhensler.de/swsusp/">Matthias Hensler's web site</a> as
+described in my
+<a href="dell-d600-fc3.html">notes on using FC3 on a Dell D600</a>. So I
+tried installing his latest kernel for FC5 and SWSUSP2, namely
+version 2.6.17-1.2174_1.rhfc5.cubbi_suspend2.
+<p>
+The new
+installation process using 'yum' as described on his web site worked
+very smoothly. I edited my /boot/grub/grub.conf file so as to specify
+the swap drive 'resume2=swap:/dev/sda3' like this (the kernel line is
+one long line in the file)
+<pre>
+title Fedora Core (2.6.17-1.2174_1.rhfc5.cubbi_suspend2)
+        root (hd0,1)
+        kernel /vmlinuz-2.6.17-1.2174_1.rhfc5.cubbi_suspend2
+            ro root=LABEL=/1 rhgb quiet vga=0x31B resume2=swap:/dev/sda3
+        initrd /initrd-2.6.17-1.2174_1.rhfc5.cubbi_suspend2.img
+</pre>
+
+The 'vga=0x31B' bit makes it boot up using the full resolution of the
+screen (1440x1050), which is very convenient when doing work in console
+mode.
+
+<p>
+The 'hibernate' command just did what I expected, namely shut everything
+down very quickly,
+and on rebooting gave me the option to resume linux
+or run XP. It worked significantly faster than 'pm-hibernate', though I
+have not done precise measurements.
+<p>
+After installing that kernel I had to reinstall the PWC driver for the
+new kernel, as described <a href="#fc5-webcam-pwc">above</a>, and also
+the ATI video driver, as described <a href="#ati-driver">below</a>.
+(Both will always need to be reinstalled after any further kernel
+upgrades: No longer required for F7).
+
+<p>
+<a name="ati-driver"></a>
+<b>
+Problem suspending with ATI driver fglrx [Not a problem in F7]
+</b>
+<br>
+Everything worked fine until I decided that the graphic performance was
+too slow and installed the ATI driver as described
+<a href="#install-ati">above</a>. The graphic driver worked very well,
+but the hibernate command stopped working. It would get as far as the
+'atomic copy' output and then freeze, requiring power off and
+full reboot.
+<p>
+<b>
+Problem suspending with ATI driver Solved
+</b>
+<br>
+Fortunately others had reported this problem and I found the solution
+<a
+href="http://article.gmane.org/gmane.linux.hardware.thinkpad/27336">here</a>
+(thanks google), namely to add the following line to
+/etc/hibernate/suspend2.conf:
+<pre>
+    ProcSetting extra_pages_allowance 8000
+</pre>
+I have no idea what's going on but offer my thanks
+to Niel Lambrechts. His
+message was dated 2006-08-12, i.e. only 7 days ago.
+<p>
+All of this helps to illustrate yet again the wonderful amount of mutual
+support available for open source systems enabling problems with new
+software to be fixed very quickly, and the fixes found easily by those
+who need them, with the help of google! (Even though the ATI software
+causing the problem was proprietary.)
+<p>
+<b>
+SWSUSP2/hibernate bonus: '-r' flag
+</b>
+<br>
+Using the 'hibernate' command of SWSUSP2 instead of 'pm-hibernate'
+produced another bonus. You can use the '-r' flag with the former to
+cause an immediate reboot after suspend. This is useful both when
+testing the configuration and also if you wish to switch to another
+operating system before resuming linux. It saves waiting for the system
+to power down so that you can switch it on again.
+<p>
+I could not find any way to tell 'pm-hibernate' to reboot after
+suspending. In fact as a mere user who has used both systems, my
+impression is that the SWSUP2 kernels and hibernate scripts from
+<a href="http://mhensler.de/swsusp/">Matthias Hensler's web site</a>
+provide a much more mature and well thought out package than the
+pm-hibernate facility that comes with FC5, in addition to being
+faster. I have the impression that the linux kernel people have
+chosen to standardise on the wrong version of software suspend.
+<p>
+<b>
+Residual 'hibernate' mystery.
+</b>
+<br>
+There is a remaining mystery. After 'hibernate' has finished I get this
+message displayed (only with FC5):
+<pre>
+/usr/share/hibernate/scriptlets.d/suspend2: line 529:
+    /sys/power/suspend2/last_result: Permission denied
+</pre>
+I have looked at the suspend2 script mentioned in the message and and
+not found any way of preventing that occurring. However it does not seem
+to have any effect on the behaviour of suspending or resuming.
+<p>
+</ul>
+</small>
+<p>
+
+<hr>
+<a name="pre-fc5"></a>
+<h2><b>
+Entries before installation of FC5 on D610
+<br>
+<small>
+The rest of this file is concerned with earlier linux releases.
+</small>
+</b></h2>
+<HR>
+<a name="firewall"></a>
+<H3><B>
+UPDATE 30 Jul 2006: Firewall scripts added
+</B></H3>
+Although this has nothing specific to do with the laptop, I've
+added two files containing firewall scripts originally given me
+by Simon Thompson, which can be used in a linux machine acting as an
+internet gateway separating a private network from a connection to the
+external world (e.g. via cable modem). The files are
+<ul>
+<li>
+<a href="iptables">Iptables service script</a>
+<br>
+This should normally go in /etc/rc.d/init.d/iptables
+<br>
+Commands like 'service iptables start' 'service iptables stop' use this
+script.
+<p>
+<li>
+<a href="firewall">Firewall configuration script used by the iptables script.</a>
+<br>
+Unless the iptables script is edited, this should go in
+/etc/sysconfig/firewall
+<br>
+You may wish to edit it to suit your configuration.
+</ul>
+I put those on my laptop as a precaution, since I sometimes use it while
+travelling and connecting to hotels (remember to edit the firewall
+script if using eth1 as your interface to the internet e.g. via
+wireless).
+<p>
+<hr>
+<H3><B>
+UPDATE 19 Mar 2006: problems with saved images on Fedora Core 4 and 5
+</B></H3>
+
+Problems due to Poplog saved images randomly not starting up on FC 4
+and FC 5 as
+a result of security measures added by RedHat have a solution described
+<a href="fc4.html">here</a>
+<p>
+<hr>
+
+<H3><B>
+UPDATE 14 Nov 2005:
+<a href="liz-hays-d600.html">Comments from Liz Hays</a>
+on various problems with
+2.6.12-1.1380_FC3 on D600.
+<br>
+<small>
+Problems with mouse pointer lost and wireless not working after
+hibernate on FC3 with SUSP2.
+
+</small>
+</B></H3>
+<hr>
+<a name="d610"></a>
+<H3><B>
+UPDATE 8 Oct 2005:  Acquired Dell D610
+</B></H3>
+<blockquote>
+I have acquired a Dell Latitude D610 with 2ghz
+Pentium M, ATI X300 Graphics, 1400x1050 screen, 2x512GB SDRAM, 60GB
+5400rpm drive, Intel ProWireless 2200 802.11b/g mini PCI card.
+Because I was buying through a university account Dell were able to sell
+it without an operating system. So I installed FC3
+<a href="dell-d600-fc3.html">as described for the D600,</a>
+and everything has worked perfectly including Software
+Suspend, USB connection to external hard drive (see Freecom problem
+using D600 <a href="#freecom">below</a>).
+<P>
+On the D610 with the more recent ATI card, the radeon driver worked
+perfectly and whereas I never managed to get more than three resolutions
+on linux with the D600 (1400x1050  1152x864  640x640), I get about
+12 different resolutions on the D610
+(1400x1050,
+1280x1024,
+1280x960,
+1152x864,
+1152x768,
+1024x768,
+832x624,
+800x600,
+720x400,
+640x480,
+640x350,
+640x400) and I can switch between them instantly using
+<a href="http://www.tucows.com/preview/10308">xvidmode</a>
+(with commands mapped to a mouse menu in ctwm).
+
+<P>
+The only (nasty) problem in the D610 [Now fixed in Fedora 7] is that
+the two mouse buttons <i>above</i> the touch pad do not work
+(whether in windows XP or linux), though the two below the touch pad
+work, albeit rather clunkily. All four buttons worked on the D600. I
+have taken to using a Microsoft cordless USB mouse, which works very
+well. (Microsoft seem to be much better at making hardware than
+software.) I think the problem with the D610 mouse buttons above the
+touch pad is that they work only if pressed hard. It seems to be a
+hardware problem, not a software problem.
+<P>
+In general I would say that the D610 is the machine Dell were <I>trying</I>
+to produce when they produced the D600!
+</blockquote>
+<P>
+<HR>
+<H3><B>
+UPDATE 19 Jun 2005: Created web file with information on how to deal
+with problems copying, reading or writing ISO CDs.
+<a href="fc3-cdstuff">here.</a>
+</B></H3>
+<P>
+<H3><B>
+UPDATE 30 May 2005: Now using Fedora Core 3 with Software Suspend.
+</B></H3>
+Suspend and resume now work fine with a pre-packaged 2.6.11 kernel
+including the software suspend mechanisms.
+<a href="dell-d600-fc3.html">FULL DETAILS HERE</a>
+
+<HR>
+<H3><B>
+UPDATE 22 May 2005: Web Cams
+</B></H3>
+The following reports my experience with three webcams, drivers and
+other tools
+<a href="../threecams">http://www.cs.bham.ac.uk/~axs/threecams</a>
+
+<HR>
+<H3><B>
+UPDATE 29 Mar 2005: Shell script to check battery status regularly
+</B></H3>
+
+<blockquote>
+Having lost work more than once because I forgot to plug in the AC
+adaptor
+when starting up the laptop I decided to write a little script
+that occasionally checks the battery status and issues warnings or
+reminders as appropriate, and if either battery is critical and lid is
+shut, then invokes hibernate.
+<P>
+A first draft version of the script is in
+<a href="batt-crit.txt">this file</a>
+
+</blockquote>
+
+<P>
+<a name="freecom"></a>
+<HR>
+<H3><B>
+UPDATE 5 Mar 2005: Use of Freecom FHD-2 Pro 60GB USB-2 Drive
+</B></H3>
+<blockquote>
+The combination of the 2.4.26 kernel and SWSUSP 2.0 described below
+has served me well since about October 2004. I hardly ever reboot
+the D600 now: I merely suspend and resume.
+<P>
+Having previously discovered using a USB pen drive how easy it was to
+replace the Windows file system on a drive with linux ext3 filesystem, I
+bought the compact (127x79x15mm) Freecom FHD-2 Pro 60GB external USB-2
+drive. On my desktop linux machine I deleted the windows (FAT32)
+partition supplied, and replaced it with two linux ext3 partitions (30GB
+and 25Gb) leaving just under 5GB for a FAT32 partition for compatibility
+with windows users. Having found how well this worked on my desktop
+machine, I was very disappointed to find that the USB power supply on
+the Dell D600 was unable to get it working, even with the extra cable
+supplied to provide power from an additional USB port.
+<P>
+The documentation claims that a free AC adaptor
+is available, and I've
+written to claim one, but that will reduce the usefulness of this drive
+in connection with a laptop. However USB memory sticks/pen-drives work
+perfectly so most of the time one of those will suffice (e.g. I recently
+bought a 1GB lexar USB pendrive for under GBP 50 and converted it to use
+ext3 filesystem.)
+<P>
+I would be interested to learn if anyone else has the same problem with
+the Freecom external drives using the D600.
+
+<H3><B>
+Note added 8 Oct 2005: Freecom drive works on D610
+</B></H3>
+
+Freecom have still not sent me the promised AC adaptor.
+I shall never buy anything from them again.
+<P>
+I recently tried the Freecom on a Dell Latitude D610, and it worked
+perfectly. I conclude that Dell screwed up with the USB ports on the
+D600. Is there any redress? I have been informed by another D600 user
+that even with an AC-powered external drive in an Nspire encloser the
+D600 could not cope (running windows XP). More evidence that the problem
+is a buggy USB interface on the Dell D600?
+
+</blockquote>
+<HR>
+<H3><B>
+UPDATE Sep 2004 (modified 7 Oct 2004) [Out of date]
+</B></H3>
+<blockquote>
+Installed the latest stable version of XFree86, namely V4.4
+<BR>
+This was downloaded from the web site, and cured a number of
+resume/suspend problems described below.
+<OL>
+<LI>
+I can now use the latest version of Firefox, which, for some reason did
+not work previously.
+<P>
+<LI>
+Screenblank now turns off the backlight. E.g. the command
+<br>
+<B>
+xset dpms 0 0 300
+</B>
+<br>
+makes the screen go blank after 5 minutes without activity,
+including turning off the backlight, saving a significant amount of
+battery power. I have set my window manager to make it easy for me
+to change the time before it blanks, so that I can prevent it blanking
+during presentations.
+<P>
+NB: for that to work, the /etc/X11/XF86Config file has to include,
+in
+<br>
+ Section "Monitor"
+<br>
+the line
+<pre>
+     Option "DPMS"
+</pre>
+<LI> Playing videos (e.g. Xine) now almost always works after
+resume/suspend. If it doesn't, another resume/suspend fixes it
+without re-booting.
+<P>
+<LI> Other problems requiring rebooting after resume have gone away.
+
+</OL>
+
+More information is available at
+   <a href="http://www.xfree86.org/">http://www.xfree86.org/</a>.
+<P>
+Pre-compiled binaries suitable for linux on PC are available as
+described here
+    <a href="http://www.xfree86.org/releases/rel440.html">http://www.xfree86.org/releases/rel440.html</a>
+<P>
+After running the 'check' test provided I fetched binaries from
+here
+    <a href="ftp://ftp.xfree86.org/pub/XFree86/4.4.0/binaries/Linux-ix86-glibc23/">ftp://ftp.xfree86.org/pub/XFree86/4.4.0/binaries/Linux-ix86-glibc23/</a>
+<BR>
+(I fetched all the compulsory files and some of the optional files).
+<P>
+Then, after making backup tar files for the directories involved, I ran
+the install script, which asked me various questions, to which I always
+answered yes.
+
+It installed the new system and the whole process took only a few
+minutes, and went very smoothly. The only minor glitch was that it could
+not insert a symbolic link in /usr/include/GL because the directory
+existed, so I subsequently renamed the directory and made the link.
+<P>
+I had to update the font settings in XF86Config, namely, replacing
+<pre>
+    FontPath     "unix/:7100"
+</pre>
+
+with
+
+<pre>
+        FontPath     "/usr/X11R6/lib/X11/fonts/misc/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/TTF/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/Speedo/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/Type1/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/CID/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/75dpi/"
+        FontPath     "/usr/X11R6/lib/X11/fonts/100dpi/"
+</pre>
+</blockquote>
+<HR>
+<P>
+<a name="outofdate"></a>
+<HR>
+<B>
+OUT OF DATE CONTENTS (Dell D600 using RH9 FC3 and FC4)
+</B></H2>
+
+<UL>
+<LI>
+<a href="#intro">
+<B>
+Introduction: my Dell D600
+</B></a>
+<LI>
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/updates.html">Superseded Updates</a>
+<br>
+(Reporting problems cured by upgrading kernel, or version of XFree86 or,
+version of SWSUSP.)
+<LI>
+<a href="#sysspec">
+<B>
+System Specification
+</B></a>
+<LI>
+<a href="#initial">
+<B>
+Initial installation of RedHat 9 mostly worked
+</B></a>
+<LI>
+<a href="#problems">
+<B>
+Problems remaining after installation:
+</B></a>
+<LI>
+<a href="#solving">
+<B>
+Solving the problems:
+</B>
+</a>
+<UL>
+<LI>
+<a href="#swsusp">
+<B>Software suspend (suspend to disk) now seems
+to work (almost) perfectly.</B>
+</a>
+<LI>
+<a href="#driverloader">
+<B>
+The Linuxant 'Driverloader' solved the wireless card problem.
+</B>
+</a>
+<LI>
+<a href="#winmodem">
+<B>
+Linuxant winmodem package now allows me to use dial-up
+</B>
+</a>
+<LI>
+<a href="#batterylife">
+<B>
+Extending battery life using RH 9
+</B>
+</a>
+<a href="#screenblank">
+<LI>
+<B>
+Screenblank Problem -- finally fixed in XFree86 version 4.4.
+</B>
+</a>
+</UL>
+<LI>
+<a href="#media">
+<B>
+Playing CDs and DVDs
+</B>
+</a>
+<LI>
+<a href="#unsolved">
+<B>
+Still unsolved problems
+</B>
+</a>
+</UL>
+<a name="intro"></a>
+<H2><B>
+Introduction: my Dell D600
+</B></H2>
+<blockquote>
+My first laptop, bought in October 1999, was a Dell Latitude Cpt with
+400 mhz celeron CPU. At that time it was the fastest machine in my
+office. It mostly worked well, using first RedHat 6.2, then 7.2, then
+7.3, then 8.0 then 9, each version giving noticeable improvements (e.g.
+Suspend to RAM became more reliable). When it developed an obscure
+hardware fault about a year ago, which eventually became intolerable, I
+looked for a replacement, and after reading many reviews concerning
+laptops running linux decided on the Dell Latitude D600, which was still
+a new model, and offered the promise of high performance along with good
+battery consumption, as it was based on the Intel Pentium M (as in
+'Centrino', though this is not a true centrino model because it uses a
+Dell wireless card (TrueMobile 1300)).
+<P>
+At that time there were very few Pentium M systems
+with a 14inch screen and higher resolution than 1024x768. Most with
+so-called SXGA displays were 15 inch models, which I did not want. The
+only other 14 inch model was IBM's centrino thinkpad. However, that was
+ruled out by its cost, despite excellent reviews.
+<P>
+The D600 was acquired in August 2003 from Dell Outlet UK who claimed
+to be giving a &#163;450 'promotion' discount, which I later
+discovered was much exaggerated, by comparing prices with normal
+Dell sales.
+</blockquote>
+<P>
+<a name="sysspec"></a>
+<H2><B>
+System Specification
+</B></H2>
+<blockquote>
+<B>
+<a href="http://commerce.euro.dell.com/dellstore/config/frameset.asp?s=ukpub&l=en&m=gbp&c=807&n=4443&cu=ukpub&v=d&cc=&ogn=&kcd=&ad=&mc=&rs=&cuid=&cg=&pch=1&pn=-1&demo=&gc=&sbc=none&co=&b=41460">Dell Latitude D600</a>
+</B>
+<br>
+[Note: since reporting this I have obtained a Dell Latitude D610,
+mentioned above, which is superior in several ways, except that that
+the two mouse buttons above the touch pad do not work unless
+pressed very hard.]
+<PRE>
+
+CPU: Intel Pentium M 1.4GHz (1MB on-die L2 cache)
+Memory:    512MB DDR, 266MHz [1X512MB DIMM]
+Hard Disk Drive:   30GB IDE Hard Drive (4200 rpm)
+SCREEN: 14.1inch TFT SXGA (1400x1050)
+ATI RADEON 9000 High performance graphics controller with 4x AGP support
+    Video Memory - 32Mb DDR Video SDRAM
+
+Integrated DualPoint - TouchPad & PointStick pointing devices
+    (Two 'mouse' buttons below keyboard, and two buttons below touch pad)
+    [I would have preferred a third button, though 3-button emulation
+    works with linux: pressing both buttons emulates middle  button.
+    I need to increase the default delay from 30ms to about 200ms to
+    make it usable without mistakes.]
+
+10/100/1000 Ethernet LAN on Motherboard (Broadcom)
+Modem:     Internal 56K V.92 Modem on Motherboard (winmodem)
+
+Installed operating System:  Microsoft. Windows. XP Professional (SP1)
+    (using NTFS file system) [Not used by me. See below.]
+
+DVD Drive:     8x DVD Drive (Media Bay Module)
+'Smart' Advanced Lithium Ion 6 cell battery pack with ExpressCharge
+Dell TrueMobile 1300 Wireless 802.11 b/g Mini-PCI card
+    (Based on Broadcom)
+Ports: Parallel, Serial, VGA, S-video out, 2 x USB 2.0,
+    IR (IrDa v.1.1), RJ-11, RJ-45
+
+Second battery: replaces DVD drive while travelling
+D-Family Classic Nylon Carrying Case
+3 years International Next Business Day On-Site service
+(Free Second 65W A/C power adaptor provided in Dell outlet package)
+
+Other combinations are available for D600, including faster cpu,
+larger hard drive, more memory etc.
+</PRE>
+</blockquote>
+<P>
+<a name="initial"></a>
+<H2><B>
+Initial installation of RedHat 9 mostly worked
+</B></H2>
+<blockquote>
+I have no use for the Windows XP operating system except occasionally to
+check hardware and initially also for occasional use of the dial-up
+modem. So using 'partition magic' I reduced the XP partition to 6Gb
+leaving the rest for linux. I made a 1Gb linux swap partition, in case I
+later added more memory.
+<P>
+Installing RedHat 9 was easy, and basically I then had a usable
+linux laptop, including a Gbit ethernet card. I could get only three
+screen resolutions to work, but they were fine for me:
+<pre>
+    1400x1050  1152x864  640x640
+</pre>
+(With maximum resolution, most projectors seem to cope, slightly
+shrinking the display, but a few older ones complain that the scan
+frequency is too high.)
+<P>
+The machine was then usable, and surprisingly fast (the 1.4Ghz Pentium M
+cpu seemed to be approximately comparable to a 2.4Ghz pentium 4).
+However I had some disappointments most of which were eventually
+overcome as explained below.
+</blockquote>
+<P>
+<a name="problems"></a>
+<H2><B>
+Problems remaining after installation:
+</B></H2>
+<UL>
+<LI>No 'suspend' facility for Latitude D600 in RH 9
+<BR>
+My previous laptop had suspend to RAM, allowing the battery to keep
+only memory alive with everything else shut down, for several days.
+This is not supported on the D600 apparently.
+<LI>
+I could use an external wireless card (pcmcia) but not the internal
+wireless card, as no linux driver was available. (This was fixed later,
+using the linuxant driverloader).
+<LI>
+I could not use the dial-up modem, as no linux driver was available.
+This was not needed often, but it could be useful occasionally, e.g.
+when travelling. This was also fixed later, using a modem driver from
+linuxant.
+<LI>
+Battery life was not as good as I had expected: 5-6 hours with two
+batteries: not enough for a working constantly on a two-stage flight
+from Birmingham to California without time to re-charge in the middle.
+<BR>
+(Fortunately I don't do that often!)
+<LI>
+The power lead provided on the charger was much shorter than on the
+older model. A standard power lead could not be used because Dell have
+their own socket geometry. The short lead can often be very inconvenient
+when the only power socket is not close by. (I believe Dell also sell a
+much bigger and heavier AC adaptor with a longer lead. All I want is the
+longer lead!).
+<LI>
+<P>
+One problem I had was that shutting the lid with X running made
+the screen blank completely, and opening it did not undo that. However,
+CTRL+Alt+F2 took me to a text-only console mode and shutting and opening
+in that mode worked. After that CTRL+ALT+F7 restored the X display.
+<BR>
+This was a minor inconvenience that went away after I upgraded the
+kernel to 2.4.22 and added ACPI patches as part of my effort to get
+suspend working. However, after that I could never get the screen to
+blank completely -- until I added the patches mentioned below.
+See comments about battery life below.
+<BR>
+Current kernel is 2.4.26. I also tried 2.6.6 and found that I could boot
+but various things did work. So I abandoned that. May try 2.6 again
+later.
+</UL>
+<P>
+<a name="solving"></a>
+<H2><B>
+Solving the problems:
+</B></H2>
+<blockquote>
+Addressing these problems required a lot of web browsing.
+I discovered that Owen Cliffe at Bath University had an almost identical
+Dell D600 and found his web page very useful:
+<a href="http://www.cs.bath.ac.uk/~occ/laptop/">http://www.cs.bath.ac.uk/~occ/laptop/</a>
+<P>
+He also kindly answered some of my questions, including telling me how
+to upgrade a kernel and install the SWSUSP package to provide 'Suspend
+to Disk'. He had additional requirements (3-D graphics) that were not
+relevant to my needs. As a result of his help and other things found on
+the web I now have the following very satisfactory situation.
+</blockquote>
+<P>
+<H2><B>
+Most of the problems are now solved
+</B></H2>
+As a result of steps that I'll later put into a separate file (watch
+this space) I know have a working version of Redhat 9, upgraded with
+the 2.4.26 Linux kernel (which Alan Cox assures me includes all of his
+patches often referred to as the 'ac' patches on web sites). On top of
+that kernel I installed the CPU Frequency Scaling patches (CPUFREQ), to
+improve power management when running batteries,
+and the Software Suspend (SWSUSP) patches. The config file used (not
+claimed to be perfect) is here
+<a href="config.2.4.26.txt">http://www.cs.bham.ac.uk/~axs/laptop/config.2.4.26.txt</a>
+(last updated 13 Jun 2004). It's possible that you will have to change
+this if you have a different wireless card, or some other hardware
+difference.
+<UL>
+<a name="swsusp"></a>
+<LI><B>Software suspend (suspend to disk) now seems
+to work (almost) perfectly.</B>
+<BR>
+This writes information about the current state to the swap area.
+When you next reboot it detects that the system was suspended and
+restores the current state, including all applications that were
+running. (Do not restore a different Linux kernel after suspending: you
+risk corrupting files, though the ext3 journalling file system seems
+to recover quickly from all such disasters.)
+<P>
+This suspend facility is excellent for saving work in progress, allowing
+you to continue later without a full reboot. I also use it for preparing
+a presentation and then having it ready without having to boot up and
+start everything.
+<P>
+Unlike suspend to RAM, the state can be saved indefinitely -- even when
+the battery level is low, e.g. after a long journey. Also if you
+suspend, then run XP, then return to linux, you get back the linux
+state, which would not be possible with suspend to RAM.
+<P>
+However, software suspend is significantly slower than suspend to RAM.
+Software suspend takes about 8-10 seconds, and restore takes about 20-25
+seconds on the configuration I have tested. Times probably depend on
+what is running when you suspend. A faster CPU or a faster hard drive
+might speed up suspend and resume. Having more programs active could
+slow it down.
+<P>
+Of course, these times are considerably less than the time required to
+reboot and manually get back to a configuration with X and several
+applications running.
+<P>
+I use
+    <a href="http://ctwm.free.lp.se/">ctwm</a> as my window manager
+rather than Gnome or KDE which seem to be huge and slow by comparison.
+Maybe that's why suspend and restore are reasonably fast for me.
+I could save some time by reducing the number of
+services restarted when travelling (e.g. network and sendmail need not
+usually be restarted on every suspend/restore).
+<P>
+There was a frustrating period where not everything worked after
+suspend. E.g. for a while, USB devices (mouse, memory stick) did not
+work, and also I could not get the wireless card to work after a
+suspend, unless I rebooted. However, after several upgrades, each adding
+some improvements, I eventually installed the 2.4.24 kernel [now using
+2.4.26] and the latest SWSUSP package to go with it and then everything
+was fine, including restoring the X graphical display, all USB devices
+working after suspend, wireless card and modem also working. Some of
+this required careful editing of /etc/suspend.conf to ensure that
+various modules (e.g. concerned with USB devices) were unloaded before
+suspend and restored after. My suspend.conf file is here:
+<a href="suspendconf.txt">http://www.cs.bham.ac.uk/~axs/laptop/ suspendconf.txt</a>
+It is a bit messy, I am afraid.
+<P>
+<B> Warning:</B> after a suspend, do not shut the lid while restoring.
+This seems to stop the graphics working properly.
+<P>
+<B> Battery life:</B>
+<BR>When almost everything was working with the 2.4.24 kernel, I did not
+get the expected improvements in battery life, which some web sites
+suggested required the 'ac' kernel patches. So I switched to 2.4.26 when
+there were SWSUSP patches for that. That kernel seems to work very well,
+though I still do not get the battery life that I expected.
+(More details on power
+saving below).
+<P>
+Note: SWSUSP requires two patches to the kernel, one specific to
+your kernel version and one general, applied after that. Both sorts can
+be found at
+<a href=" http://swsusp.sourceforge.net/">http://swsusp.sourceforge.net/</a>. In
+my case the most recent patches installed were:
+<PRE>
+    software-suspend-linux-2.4.26-rev1-whole.bz2
+    software-suspend-core-2.0-whole.bz2
+</PRE>
+<P>
+<a name="driverloader"></a>
+<LI>
+<B>
+The Linuxant 'Driverloader' solved the wireless card problem.
+</B>
+<BR>
+Linuxant
+<a href="http://www.linuxant.com">www.linuxant.com</a>
+provide a package called 'driverloader' which uses configuration files
+for the Dell Mini-PCI wireless card that are available in the XP
+software installed, or can be fetched from the web. Linuxant's package
+can be tested free for a month. I tried it and found it produced
+excellent results with the internal Dell TrueMobile wireless card
+(mini-PCI), so I was happy to pay $19.00 for a permanent licence,
+allowing me to download upgrades indefinitely.
+<BR>
+NOTE: because I had an upgraded kernel I downloaded the tar.gz version
+of driverloader rather than an rpm version. Instructions were simple
+and worked.
+<P>
+Having paid once I can apparently download the latest version at any
+time. I have recently installed this:
+driverloader-1.71.tar.gz
+<P>
+At one point, after installing the latest upgrade from linuxant I
+got this a warning message from 'iwconfig' of this form:
+
+<PRE>
+    Warning: Driver for device XXXX has been compiled with version XX
+</PRE>
+
+I reported this to linuxant who suggested that I use Wireless Tools
+version 27 or later, which fixes this, available here
+<a href="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html">http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html</a>
+<BR>
+'Linux/wireless_tools.27.pre22.tar.gz'
+
+<P>
+Other wireless cards for which linux drivers are not available are
+also supported by Linuxant, including the Intel 'centrino' integrated
+wireless chip. See the Linuxant web site. The web-site explains why they
+have to charge for their software. I have found their responses to
+email queries very prompt and useful.
+<P>
+I have been told that there is also a free driver loader, but someone
+who had tried it on the D600 did not have success. It may have improved
+since then.
+<P>
+<a name="winmodem"></a>
+<LI>
+<B>
+Linuxant winmodem package now allows me to use dial-up
+</B>
+<BR>
+Linuxant (<a href="http://www.linuxant.com">www.linuxant.com</a>)
+provide two varieties of modem driver software (HCF 'controllerless' and
+HSF 'softmodem') for Conexant winmodems for Linux. Apparently many
+on-board modems use the Conexant technology. Both the Linuxant
+drivers are available free of charge indefinitely for trial use, but
+work only at 14.4kbd
+in that form. By paying $14.00 you get a 'key' which
+can be used to upgrade the installation to work at full speed.
+<BR>
+NOTE: because I had an upgraded kernel I downloaded the tar.gz version
+of driverloader rather than the rpm version. Instructions were simple
+and worked.
+<P>
+Linuxant
+provide a tool ('listmodem') to help you identify the type of modem
+on your system. It failed to recognize mine, but I downloaded and tried
+the free HSF driver and it worked at 14.4kbd (using WVDIAL to make the
+dial-up connections). So I was happy to upgrade to get the maximum speed
+dial-up access (56kbd) + FAX (which I am unlikely to need.) Their
+website states:
+<blockquote>
+<font size="-1">
+This package contains Linux drivers for the Conexant (formerly Rockwell)
+HSF Softmodem family.
+<P>
+The drivers should work on most current Linux distributions, with the
+2.4 or 2.6 kernels. A Pentium processor with the MMX enhancements is
+required. Some systems may require kernel recompilation with special
+ACPI patches.
+<BR>
+[I think all the ACPI facilities I needed were already in
+the 2.4.24 and 2.4.26 kernels.]
+</font>
+</blockquote>
+
+NOTE: There are graphical tools for dialling up, specifying possible
+ISPs, etc.  but I use a light-weight window manager (<a
+href="http://ctwm.free.lp.se/">CTWM</a>), and, where possible, I prefer
+command line and text editor, for simple tasks. E.g. to configure the
+system to use the winmodem, I ran wvdialconf, which set up a template
+text file /etc/wvdial.conf which is very easy to edit to provide the
+phone number, user name and password for several different dial-up
+accounts. Each one is given a name which can be used as a 'flag' for the
+wvdial command to specify which ISP to dial.
+<P>
+Before dialling up, I used these two commands to disable the
+current network service:
+<blockquote>
+<font size="-1">
+ifdown lo
+<BR>
+ifdown eth0
+</font>
+</blockquote>
+After plugging the modem cable in, making the laptop
+dial up merely required running wvdial with a
+flag to indicate which specification to select from wvdial.conf: e.g.
+<blockquote>
+<font size="-1">
+wvdial isp1
+<br>
+wvdial isp2
+</font>
+</blockquote>
+CTRL-C makes wvdial disconnect gracefully: no fancy menus needed.
+<P>
+This worked perfectly for two ISPs but not for dialling up
+Freeserve.com.
+It made a connection and then claimed that the host dropped the
+connection. I don't know why: maybe because the account has not been
+accessed for months, or maybe because I used a cable phone service
+rather a BT line.
+<P>
+Anyhow, the modem worked perfectly dialling up britishlibrary.net,
+www.names.co.uk and quickdial.co.uk.
+<P>
+I noticed in the /var/log/messages file that there was a warning about
+a missing module: "Can't locate module ppp-compress-21". With help
+from google I learnt that I needed to enable "CONFIG_PPP_BSDCOMP=m"
+in the kernel config file, and then in /etc/modules.conf insert
+<PREV>
+    alias ppp-compress-21   bsd_comp
+</PREV>
+
+since ppp-compress-21 is apparently another name for bsd_comp.
+<P>
+<H3><B>
+Getting nameserver properly configured after dialling up
+</B></H3>
+I found that after a ppp connection had been set up, the nameservers
+provided by the dial-up site are to be found in /etc/ppp/resolv.conf
+So I created a little script which is run before attempting to use
+wvdial
+to connect by phone. The script uses ifdown to turn off eth0 and lo
+(loopback) network connections as above and then does,
+<PRE>
+    cd /etc/
+    rm resolv.conf
+    ln -s ppp/resolv.conf .
+</PRE>
+There is probably a cleaner mechanism, but this works on my machine.
+The script for restoring my normal network configuration removes the
+symbolic link.
+<P>
+<H3><B>
+Residual problem with modem:
+</B></H3>
+I have not been able to get software suspend configured in such a way
+that the dial-up modem works after suspend/resume. I don't know if
+this is a software problem, concerned with loading and unloading
+modules, for instance, or a hardware/bios problem. The symptom is that
+after resume, the sound of dialling is wrong, and the connection is
+unsuccessful.
+<P>
+Fortunately, I very rarely need to use the modem facility.
+<P>
+<a name="batterylife"></a>
+<LI>
+<B>
+Extending battery life using RH 9
+</B>
+<BR>
+I tried the cpufreq and cpudyn packages
+without success at first, but with the 4.2.26 kernel
+I seem to have a successful solution. I think cpudyn is the preferable
+option.
+<P>
+After adding the <a href="http://www.brodo.de/cpufreq/">CPUFREQ</a>
+extensions to the kernel, I tried installing
+<a href="http://sourceforge.net/projects/cpufreqd/">cpufreqd</a>
+to allow me to change the cpu speed in the hope that running more slowly
+would enable the batteries to last longer.
+<P>
+In some sense it worked: cpufreqd was certainly able to slow down the
+CPU when I disconnected the AC power supply, but it made no difference
+to battery consumption, even though programs ran about 4-5 times more
+slowly.
+<P>
+I also tried the cpudyn package, available here
+<a href="http://mnm.uib.es/~gallir/cpudyn/">http://mnm.uib.es/~gallir/cpudyn/</a>
+        (dated 30 May 2004)
+<BR>
+Perhaps the most useful instructions for use can be found here
+<a href="http://web.ics.purdue.edu/~nino/Linux/cpudyn.html">http://web.ics.purdue.edu/~nino/Linux/cpudyn.html</a>
+<P>
+It compiled, installed and started itself off without complaint and
+claims to control the drive as well as cpu. Yet although I noticed
+reduced processing speeds, I did not notice any increase in battery
+life, until I upgraded to the 2.4.26 kernel (with the CPUFREQ and SWSUSP
+patches added).
+<P>
+Now that power control seems to be working I have yet to decide  between
+cpufreqd and cpudyn and other power-management utilities. I don't yet
+know how to optimise the parameters they are given. One problem with
+cpudyn is that it seems to switch between only two cpu speeds.
+<P>
+There are links here that I have not had time to look at carefully:
+<a href="http://mrl.nyu.edu/~danielk/linux/cpufreq.html">http://mrl.nyu.edu/~danielk/linux/cpufreq.html</a>
+<P>
+Apparently reducing power consumption on this machine requires
+the use of some Centrino specific 'speedstep' mechanism which presumably
+requires specific software.
+<P>
+Some web pages suggest that the 'ac' kernel extensions are
+needed, but they never say where to get them. I finally tracked
+that down to this web site
+<a href="http://www.kernel.org/pub/linux/kernel/people/alan/">http://www.kernel.org/pub/linux/kernel/people/alan/</a>
+but the patches seem to be
+bundled only for versions of 2.4 up to 2.4.22 and I was using 2.4.24 for
+long time.
+(The
+<a href="http://www.kernel.org">www.kernel.org</a>
+web page should be more informative about what is
+available in the depths of the web site.)
+<P>
+Some packages work only with the 2.6 kernel, which is reported to have
+superior power-management support to 2.4. However I will not switch to
+2.6 (e.g. SuSE 9.1, or Fedora Core 2) until I hear that SWSUSP works
+perfectly on 2.6, which it apparently does not yet, at least not on all
+platforms.
+<P>
+I wrote to Alan Cox who informed me that all the 'ac' patches were in
+versions 2.4.25 and later. So I have now installed 2.4.26, as explained
+above, and some preliminary tests using that kernel, combined with the
+use of mechanisms to completely blank the display (described below), and
+cpudynd appears to make a difference to battery consumption, when
+the machine is not in use. It doesn't seem to make a big difference,
+alas. That may be because cpu power consumption is a small proportion
+of the total (screen, hard drive powering up and down controlled by
+daemons, memory, wireless and ethernet cards, fan, ....).
+However with
+two batteries I can get between 5 and 5.5 hours uptime, or possibly a
+bit more if the screen brightness is kept low.
+<P>
+<a name="hdparm"></a>
+<b>Update: /etc/sysconfig/harddisks no longer used</b>
+<br/>
+The following information was inserted when I was still using
+RedHat9. Since Fedora Core 4 or 5, the file /etc/sysconfig/harddisks
+is no longer used. So anyone wanting to use the powersaving options
+described here should instead insert commands using 'hdparm' in the
+file /etc/rc.local
+<br/>
+The original information was:
+<blockquote>
+Alan Cox also mentioned to me the powersaving options provided by the
+'hdparm' command. So I edited
+<blockquote>
+    /etc/sysconfig/harddisks
+</blockquote>
+inserting at the end
+<blockquote>
+    EXTRA_PARAMS="-B32 -W1 -u1 -S12"
+</blockquote>
+Where the parameters are as explained in the man file for hdparm:
+
+<UL>
+<LI>
+<B>
+-B
+</B>
+<BR>
+Turns on advanced power management and the numeric parameter
+specifies the balance between performance and power saving (maximum
+performance is 255).
+<LI>
+<B>
+-W
+</B>
+<BR>
+Disable/enable  the  IDE  drive's write-caching feature.
+(1 turns it on).
+<LI>
+<B>
+-u
+</B>
+<BR>
+Get/set interrupt-unmask flag for the drive.   A  setting  of  1
+permits  the driver to unmask other interrupts during processing
+of a disk interrupt, which greatly improves Linux's
+responsive-ness and eliminates "serial port overrun" errors. (To be used
+with caution: see the man file.)
+<LI>
+<B>
+-S
+</B>
+<BR>
+Set the standby (spindown) timeout for the drive.  This value is
+              used  by  the  drive to determine how long to wait (with no disk
+              activity) before turning off the spindle motor  to  save
+power.
+A value of zero means "off".  Values from  1  to  240
+specify  multiples  of 5 seconds, for timeouts from 5 seconds to
+20 minutes. There's more in the man file. So -S12 should
+make it time out if not used for 60 seconds.
+</UL>
+I shall have to experiment with the parameters. The timeout seems to be
+working as I now often notice a very slight delay when accessing
+the drive after a gap in use.
+<P>
+With all those measures, the battery discharge rate seems to have
+dropped from about 17000 mW (or more) to around 10300 mW when the
+machine is doing nothing and the screen is blank.
+<P>
+However on most linux machines there are log files and journalled file
+system updates very frequently, so nothing is gained by powering down
+the hard drive. Experts can find ways to reduce the amount of logging,
+and then the disk power management tools can save battery power.
+</blockquote>
+<P>
+<a name="screenblank"></a>
+<LI>
+<B>
+Screenblank Problem -- finally fixed in XFree86 version 4.4.
+</B>
+<BR>
+THE FOLLOWING DESCRIPTION IS NOW OUT OF DATE: IT APPLIED TO EARLIER
+VERSIONS OF XFree86
+<br>
+Owing to a defect in the radeon drivers provided in the XFree86 package,
+the X11 screenblank does not actually turn off the power consumption of
+the screen: it goes dark, but the back-light remains on, continuing to
+drain the battery. However by using the 'Fn' plus up and down arrows I
+can vary the brightness and use lower levels do make the batteries last
+longer. But complete screen blanking requires more.
+<P>
+I tried installing the radeon driver from ATI, available at
+<a href="http://mirror.ati.com/support/drivers/linux/radeon-linux.html">http://mirror.ati.com/support/drivers/linux/radeon-linux.html</a>
+but that does not help anything and does not appear to work with SWSUSP.
+<P>
+I tried following a tip on Volker Braun's web page on the IBM T41:
+<a href="http://www.sas.upenn.edu/~vbraun/computing/T41/power.html">http://www.sas.upenn.edu/~vbraun/computing/T41/power.html</a>
+which provides two pre-compiled files
+<a href="http://www.sas.upenn.edu/~vbraun/computing/T41/radeon_drv.o">http://www.sas.upenn.edu/~vbraun/computing/T41/radeon_drv.o</a>
+and
+<a href="http://www.sas.upenn.edu/~vbraun/computing/T41/ati_drv.o">http://www.sas.upenn.edu/~vbraun/computing/T41/ati_drv.o</a>
+which provide radeon_drv.o and ati_drv.o which you can put in
+/usr/X11R6/lib/modules/drivers/ (after saving the originals somewhere).
+Then edit your /etc/X11/XF86Config file. In the section headed
+<P>
+<pre>
+    Section "Device"
+</pre>
+which includes the line
+<P>
+<pre>
+    Driver      "radeon"
+</pre>
+Insert another line:
+<pre>
+    Option      "DynamicPM" "True"
+</pre>
+Then in your startup file, or in some menu options, you can insert
+commands to make the screen go completely blank after a certain
+number of seconds, e.g. commands to blank after 1, 5, or 10 minutes:
+<PRE>
+    xset dpms 0 0 60
+    xset dpms 0 0 300
+    xset dpms 0 0 600
+</PRE>
+instead of using the 'xset s 60' format. See the 'xset' man file.
+<P>
+All of that worked fine --- until I tried running gxine or gmplayer.
+These crashed the X server completely with the message:
+<PRE>
+    Symbol miRegionEqual from module /usr/X11R6/lib/modules/drivers/radeon_drv.o
+        is unresolved!
+</PRE>
+I had to remove the two driver files and restore the originals. (Maybe
+they were compiled for 2.6, or a different version of X).
+<br>
+So I had to go back to incomplete screenblank, though the 'radeontool'
+still worked, as follows [Until I upgraded XFree86 making all this
+unnecessary.]
+<P>
+<B>
+Radeontool [No longer used, since installing XFree86 version 4.4]
+</B>
+<BR>
+The radeontool program available at
+<a href="http://fdd.com/software/radeon/radeontool-1.5.tar.gz">http://fdd.com/software/radeon/radeontool-1.5.tar.gz</a>
+here, can be used to force the backlight off or on.
+Commands to turn back-light on and off are
+<pre>
+    radeontool light on
+    radeontool light off
+</pre>
+A brief experiment shows that after turning it off, switching between
+the X display and a text console turns it on (e.g. CTRL+Alt+F2, or
+CTRL+Alt+F7.
+<P>
+Utilities to link invocation of radeontool to screenblank are mentioned
+here
+<a href="http://fdd.com/software/radeon/">http://fdd.com/software/radeon/</a>
+but I have not tried them.
+<BR>
+
+
+<P>
+<B>
+NOTE on screen blanking
+</B>
+<BR>
+Curiously, the default configuration when I first installed redhat 9 did
+allow the screen to be completely blanked when the lid was closed. But,
+as indicated above, that behaviour disappeared after I upgraded the
+kernel and installed ACPI and SWSUSP patches.
+<P>
+<P>
+<br> For comparisons of drivers for radeon cards see
+<a href="http://homepage.hispeed.ch/rscheidegger/atilinux/ati_linux_comp.html">http://homepage.hispeed.ch/rscheidegger/atilinux/ati_linux_comp.html</a>
+However this says nothing about laptops with 1400x1050 resolution, and
+is not concerned with power-saving, only performance, e.g. in 3-D games.
+</UL>
+
+<P>
+<a name="media">
+</a>
+
+<H2><B>
+Playing CDs and DVDs
+</B></H2>
+<blockquote>
+Playing audio CDs worked fine with the 'cdp' command, though it required
+a symbolic link from /dev/cdrom to /dev/hdc
+<P>
+In order to get dvds to play I had to make a link from /dev/dvd to the
+same device
+<PRE>
+    ln -s /dev/hdc /dev/dvd
+</PRE>
+
+After that, I inserted a dvd, ran gmplayer, used the right button menu
+to select dvd, and it just worked. ('f' toggles full screen mode).
+The sound is not too bad for such a tiny machine. I have not tried
+earphones or external speakers.
+
+</blockquote>
+<P>
+<a name="unsolved"></a>
+<H2><B>
+Still unsolved problems
+</B></H2>
+
+<UL>
+<LI>
+The volume control buttons near the power button are ignored when Linux
+is running. I expect there is some software fix for this, but I've not
+found it. Tools like xine and gmplayer provide graphical volume controls
+that work. It would be a bit more convenient to use the buttons on the
+machine.
+<br>
+NOTE added 5 Mar 2005: the aumix utility allows simple command line
+commands to vary volume and other sound settings. This means that since
+the X window system recognises pressing and releasing of volume keys, it
+is easy to map them onto aumix commands.
+<P>
+<LI>
+The Fn+Setup key and Fn+Battery key do nothing.
+<BR>
+When I first installed Redhat 9, Fn+Battery key gave me a battery
+display, after which ALT+P cycled me through the other bios displays.
+<P>
+After I upgraded the kernel to get software suspend to work, even
+Fn+Battery stopped working. However I can interrogate the battery
+levels from software now using
+<PRE>
+    /proc/acpi/battery/*/info
+</PRE>
+<LI>
+The Fn+F2 key does not seem to do anything
+<BR>
+That combination is apparently supposed to turn wireless facilities on
+or off. My simple tests (with iwconfig) suggest that it works, though it
+would be useful to have an indicator of the state, other than running
+iwconfig!
+</UL>
+Installing a version of 2.6 with full support for software suspend
+and power management can wait. Later I'll switch, perhaps using
+Fedora Core 2, or SuSE 9.1 as a base, though some friends strongly
+recommend Mandrake!
+<P>
+I believe there are patches available to make the volume control buttons
+work, and I may try them later.
+<P>
+<H2><B>
+Things to be added
+</B></H2>
+<blockquote>
+I use grub rather than lilo and having changed (I installed RH 9: which
+did everything for me) now prefer grub. There are a few funnies about
+what has to be specified in the boot configuration file.
+<P>
+On one occasion had a mysterious kernel panic ('no init found'), when
+trying to boot a new kernel. The cause turned out to be as follows:
+<UL>
+<LI>
+I use EXT3 journalling file systems
+<br/>
+(Switched to EXT 4 in Fedora 12 and 13, 2010).
+<LI>
+My kernel config file had
+    'CONFIG_EXT3_FS=m'
+instead of
+    'CONFIG_EXT3_FS=y'.
+I.e. the 'ext3' package was not in the kernel itself but in a loadable
+module.
+</UL>
+This meant that the mechanisms for reading the startup files where not
+available when the kernel was booting. While trying to fix this I
+searched google and found that many people had reported this sort of
+kernel panic and asked for help, causing lengthy discussions about
+possible causes on mailing lists, most of which had nothing to do with
+the solution I eventually found (following one of the comments about
+journalling file systems). Maybe whoever is responsible for the 'panic'
+message should make it print out more suggestions, including the
+suggestion to check whether a journalling file system package (ext3,
+reiserfs, xfs) should be in the kernel not in a module.
+
+</blockquote>
+<hr/>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+Created: 14 May 2010
+<br>
+Last updated: 14 May 2010; 27 Jun 2010
+<br>
+</body></html>

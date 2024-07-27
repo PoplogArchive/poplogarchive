@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>DVB-TV USB Stick on Linux (Fedora 10)
+</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<p>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+</p>
+<H1><B>
+DVB-TV USB Stick on Linux (Fedora 10)
+<br/>
+on a Dell Latitude D610 Laptop
+<br/>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs">Aaron Sloman</a>
+<br/>
+Running Fedora 10.
+</small>
+<br>
+<small>
+(Kernel: 2.6.27.30-170.2.82_1.cubbi_tuxonice.fc10.i686)
+</small>
+</B></H1>
+(This is a supplement to <a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on a Dell d600/d610 laptop</a>)</b>
+<HR>
+<h3><b>
+What I did:
+</b></h3>
+
+On a whim I bought a "Pinnacle DVB-T stick ultimate"
+<p>
+I managed, after some false starts, to get it working on my laptop
+running fedora 10.
+<p>
+<b>Crucial steps:</b>
+<ul>
+<li>
+Get the firmware
+<pre>
+    wget http://www.wi-bw.tfh-wildau.de/~pboettch/home/linux-dvb-firmware/dvb-usb-dib0700-1.10.fw
+</pre>
+<li>
+copy into /lib/firmware
+<li>
+Plug in usb stick, and check that it is recognized, in
+        /var/log/messages
+<p>
+This is what I got in
+/var/log/messages, minus stuff at the beginning of each line:
+
+<small>
+<pre>
+    usb 1-5: new high speed USB device using ehci_hcd and address 6
+    usb 1-5: configuration #1 chosen from 1 choice
+    dvb-usb: found a 'Pinnacle PCTV 72e' in cold state, will try to load a firmware
+    firmware: requesting dvb-usb-dib0700-1.10.fw
+    dvb-usb: downloading firmware from file 'dvb-usb-dib0700-1.10.fw'
+    dib0700: firmware started successfully.
+    dvb-usb: found a 'Pinnacle PCTV 72e' in warm state.
+    dvb-usb: will pass the complete MPEG2 transport stream to the software demuxer.
+    DVB: registering new adapter (Pinnacle PCTV 72e)
+    DVB: registering frontend 0 (DiBcom 7000PC)...
+    DiB0070: successfully identified
+    input: IR-receiver inside an USB DVB receiver as /devices/pci0000:00/0000:00:1d.7/usb1/1-5/input/input12
+    dvb-usb: schedule remote query interval to 150 msecs.
+    dvb-usb: Pinnacle PCTV 72e successfully initialized and connected.
+    usb 1-5: New USB device found, idVendor=2304, idProduct=0236
+    usb 1-5: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    usb 1-5: Product: Pinnacle 72e
+    usb 1-5: Manufacturer: LITEON
+    usb 1-5: SerialNumber: 8UQ
+</pre>
+</small>
+<li>
+Do scanning to get the channels avaiable:
+
+<pre>
+        w_scan -f t -A 1 -c GB -X > channels.conf
+</pre>
+
+It took a long time (about 8 minutes??) but
+found 64 channels (TV and radio), using rooftop tv aerial
+rather than the indoor aerial that came in the box.
+
+<li>
+Run vlc, using the channels list:
+<pre>
+        vlc channels.conf
+</pre>
+</ul>
+
+I was amazed at how well it worked, on my Dell Latitude D610, running
+Fedora 10.
+<p>
+I had actually installed mythtv, thinking I might need it, but that
+turned out to be unnecessary.
+<p>
+I have not yet tried using the remote control that came with it.
+I don't know whether there's any hope of it working without the
+manufacturer's windows software.
+<p>
+Next I tried plugging in the little indoor aerial supplied with the
+stick, in my study upstairs instead of the external aerial cable
+available only downstairs.
+<p>
+I could get it to work upstairs, but only near a window with the aerial
+suspended in a very specific location near the top of the window!
+<p>
+(w_scan worked there too.)
+<p>
+However not all the listed channels seemed to work.
+<p>
+I shall try with an amplified indoor aerial, later.
+
+<HR>
+<P>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+First Created: 17 Oct 2009
+<br>
+Last Updated: 17 Oct 2009
+<br>
+</body></html>

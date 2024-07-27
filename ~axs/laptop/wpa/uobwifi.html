@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Wireless access using Wpa_supplicant</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+
+<h2><b>
+WARNING (Aug 2013):
+The instructions below are out of date, as linux systems,
+<br/>
+including NetworkManager now handle wifi security differently.
+<br/>
+please see <a href="wpa.html#nm-fixed">more recent instructions.</a>
+</b></h2>
+
+<br/><b>__________________________________________________________________________________________</b><p>
+
+
+<h3><b>
+Using wpa_supplicant on Linux to Connect to the
+<br>University of Birmingham
+(Bham)
+Campus Wireless Network
+<br/>
+using the UOBwifi access points, started in March 2010.
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+</small>
+</b></h3>
+
+<b>(Supplement to <a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on Dell d600/d610 laptop</a>)</b>
+<blockquote>
+<b>NB</b>
+<br/>
+These notes assume that you already have a working wireless card, which
+you have tested on some other wireless network.
+<br>
+If your wireless card is not working, try to configure it using
+'system-config-network' or some other tool that works on your system, or
+ask a friend for help. Come back when the card works and has been tested
+on another more easily accessible wireless network, so that you are sure
+that you have the right drivers for your wireless card and it has been
+properly recognised by your operating system.
+</blockquote>
+<hr/>
+<a name="disclaimer"></a>
+<h3><b>
+NOTE:
+THIS IS NOT AN OFFICIAL DOCUMENT OF THE UNIVERSITY OF BIRMINGHAM
+OR THE SCHOOL OF COMPUTER SCIENCE. NEITHER THE UNIVERSITY NOR THE
+SCHOOL NOR THE AUTHOR OF THIS DOCUMENT CAN ACCEPT ANY RESPONSIBILITY
+FOR ANY CONSEQUENCES OF FOLLOWING THE ADVICE OFFERED HERE.
+<BR>
+(In other words: the normal conditions of mutual-help for Linux users
+apply!)
+</b>
+</h3>
+<blockquote>
+In addition, please note that some of the helpdesk staff in Information
+Services are able to help users who wish to use a linux laptop to access
+the campus wireless service, but they
+will not physically change settings on
+user machines. That is the responsibility of users.
+<p>
+However, the Information Services web site now does give advice for
+linux users, and you should try their instructions, using
+NetworkManager, before trying mine. See:
+<blockquote>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/">http://www.wireless.bham.ac.uk/start/configuration/</a>
+<br/>
+General information about configuration for use of UOBwifi
+
+</blockquote>
+
+Information about the old service is here
+<blockquote>
+<a href="http://www.helpdesk.bham.ac.uk/laptopsurgery/linux.shtml">http://www.helpdesk.bham.ac.uk/laptopsurgery/linux.shtml</a>
+<br/>
+DO NOT use the certificate mentioned there for the new service.
+</blockquote>
+<hr/>
+</blockquote>
+<p>
+<h3><b>
+Introduction: UOBwifi with new certificate, Starting March 2010
+</b></h3>
+<blockquote>
+The following information was provided by Chris Lea in Information
+Services on 26 Mar 2010.
+<p>
+He agreed that I could pass it on, after
+testing the new service.
+<p>
+The campus WIFI certificate is changing because JANET(UK) have
+changed the certifying authority for their certificate service.
+<br/>
+Details here
+<a href="http://www.ja.net/services/scs/">http://www.ja.net/services/scs/</a>
+<p>
+The Globalsign certificates are due to expire this summer so we need
+to replace with new and get everyone validating authentications
+against the new certificate.
+<p>
+It has been decided by someone that the best (least painful)
+approach is to run a new wireless SSID: UOBwifi against the new cert
+whilst running the current service UOBWLAN to expiration. This will
+give people time to migrate to the new service before the old one is
+phased out.
+</blockquote>
+<h3><b>
+Changes and Actions Required
+</b></h3>
+<ol>
+<li>
+The name of the service (SSID) is changing from <b>UOBWLAN</b> to
+<b>UOBwifi</b>.
+<br/>
+So network settings will have to be altered to accommodate this.
+<p>
+<li>
+<b>WARNING Added 12 Jun 2013</b>
+<br/>
+The certificate specified below stopped working for me in June 2013.
+<br/>
+I had to convert it from the .pem form to the .der form, as described
+<a href="wpa.html#certificate">here</a> (another file).
+<br/>
+The .pem  certificate used is available from
+<a href="http://webdev1.bham.ac.uk/uob_root_linux.pem">webdev1.bham.ac.uk/uob_root_linux.pem</a>
+<p>
+E.g. linux users can fetch it using this command, or something
+similar:
+<pre>
+    wget webdev1.bham.ac.uk/uob_root_linux.pem
+</pre>
+<p>
+<li>
+Install the certificate in /etc/cert or wherever you put your
+certificates.
+<p>
+<li>
+Update your system's information about the new service name and the
+location of the new certificate.
+<p>
+This can be done in different ways, depending on the system you use.
+<ul>
+<li>
+If you use Ubuntu or a similar system, or use network-manager or
+wicd, look at this web site
+<br/>
+<small>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/linux.shtml">http://www.wireless.bham.ac.uk/start/configuration/linux.shtml</a>
+</small>
+<p>
+If you use Fedora or something similar you may find my script and
+files for profiling useful. They are available in this package
+<small>
+<pre>
+    <a href="uobwifi.tar.gz">uobwifi.tar.gz</a>
+</pre>
+</small>
+whose contents can be browsed online here:
+<small>
+<pre>
+    <a href="uobwifi">uobwifi/</a>
+    (Note added 12 Jun 2013: Superseded by new versions of wicd and NetworkManager)
+</pre>
+</small>
+In particular the wpa_supplicant.conf file:
+<small>
+<pre>
+    <a href="uobwifi/etc/wpa_supplicant/uobwifi/wpa_supplicant.conf">wpa_supplicant.conf</a>
+</pre>
+</small>
+This contains
+<ol>
+<li>
+a script to run to start the service, namely
+<a href="uobwifi/startUOBwifi">startUOBwifi</a>
+<p>
+<li>
+various <a href="uobwifi/etc">subdirectories</a>
+of the /etc directory, containing files to be used with UOUBwifi,
+namely:
+</ol>
+<small>
+<pre>
+<b>Certificate:</b>
+
+DIR /etc/cert/
+    containing
+        /etc/cert/uob_root_linux.pem
+
+<b>Text files specifying the profile (most optional)</b>
+
+DIR /etc/uobwifi/
+    containing
+        /etc/uobwifi/hosts
+        /etc/uobwifi/hosts.allow
+        /etc/uobwifi/hosts.deny
+        /etc/uobwifi/resolv.conf
+
+DIR /etc/wpa_supplicant/
+    containing
+        /etc/wpa_supplicant/uobwifi/
+            containing <b>(essential)</b>
+            /etc/wpa_supplicant/uobwifi/wpa_supplicant.conf
+
+DIR /etc/sysconfig/
+    containing
+        /etc/sysconfig/uobwifi/
+        containing (optionally) scripts
+            /etc/sysconfig/uobwifi/firewall
+            /etc/sysconfig/uobwifi/network
+            <b>Essential for telling wpa_supplicant what to do</b>
+            /etc/sysconfig/uobwifi/wpa_supplicant
+
+DIR /etc/sysconfig/network-scripts
+    containing
+        /etc/sysconfig/network-scripts/uobwifi/
+        containing
+            /etc/sysconfig/network-scripts/uobwifi/ifcfg-eth1
+
+            and optionally
+            /etc/sysconfig/network-scripts/uobwifi/ifcfg-eth0
+</pre>
+</small>
+
+<p>
+Those files are copied into place by the startUOBwifi script, above,
+which then restarts the network service and wpa_supplicant service,
+then calls dhclient to obtain a dhcp connection for eth1.
+<p>
+You should make sure that you have previous versions of those files
+saved for use with other network services or local use.
+</ul>
+
+</ol>
+
+
+
+<hr/>
+<small>
+Installed: 26 Mar 2010
+<br>
+Last updated: 26 Mar 2010; 13 Jul 2010; 12 Jun 2013
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+
+</BODY>
+</HTML>

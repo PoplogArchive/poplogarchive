@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Problems with Security Settings
+in Fedora Core</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+</head>
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+
+<h2><b>
+PROBLEM WITH SAVED IMAGES AND OTHER THINGS ON FC4 AND  FC5
+<br>
+CAUSED BY DEFAULT SECURITY SETTINGS
+</b></h2>
+
+<h3><b>
+News: 11 Aug 2006
+</b></h3>
+<blockquote>
+Problems turned up in Fedora Core 4 due to the RedHat security
+modifications (selinux ?) to Linux. The same problems were found in FC
+5. So I present a summary here, and a solution.
+<p>
+<blockquote>
+The summary, extracted from
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">
+the Free Poplog website</a> is
+<ul>
+<li>
+For a temporary solution:
+<br>
+To turn off randomization in memory allocator 'malloc' temporarily give
+this command as super-user:
+<blockquote>
+     sysctl -w kernel.randomize_va_space=0
+</blockquote>
+To temporarily turn off
+Exec-shield (a security modification to the Linux
+kernel that makes large parts of specially-marked programs -- including
+their stack -- not executable) give this command as super-user
+<blockquote>
+    sysctl -w kernel.exec-shield=0
+</blockquote>
+<li>
+For a <b>permanent</b> solution turn both off as follows
+<br>
+As super-user edit your /etc/sysctl.conf file to contain these lines:
+<blockquote>
+
+    kernel.randomize_va_space=0
+<br>
+    kernel.exec-shield=0
+</blockquote>
+</ul>
+</blockquote>
+
+I have heard that the problems don't arise on 64bit FC5.
+</blockquote>
+
+<hr>
+<h3><b>
+Background information and further details
+</b></h3>
+This file is an extension to the web site reporting my experiences with
+Dell Latitude Laptops using linux:
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">http://www.cs.bham.ac.uk/~axs/laptop/</a>
+<p>
+A message, describing a problem and a partial solution, was
+posted to the comp.lang.pop news group and pop-forum email list on 19
+Mar 2006
+
+<blockquote>
+I previously reported a mysterious problem with saved images on fedora
+core 4 and also some
+of the more recent FC 3 kernels with SWSUSP available
+here:
+<p>
+<blockquote>
+    <a href="http://mhensler.de/swsusp/download_en.php">http://mhensler.de/swsusp/download_en.php</a>
+</blockquote>
+<p>
+The problem was that running saved images did not work: e.g. the 'pop11'
+command, which is equivalent to
+<p>
+<pre>
+    basepop11 +startup
+</pre>
+<p>
+worked only randomly.
+<p>
+Later when I tried a machine running FC4, I thought the problem had been
+solved, but when a colleague installed FC4 he reported the same problem
+with saved images, though he could run basepop11 and compile the code
+for the saved images, losing a little time whenever he started. Chris
+Dollin also reported the problem.
+<p>
+Last June John Duncan wrote
+<p>
+<pre>
+> Have you seen this,
+>
+>     <a href="http://dag.wieers.com/howto/compatibility/">http://dag.wieers.com/howto/compatibility/</a>
+>
+> Seems like many of the security enhancements in Fedora Core
+> might well interfere with Poplog. You could try turning them off one
+> by one using these instructions and see what happens.
+</pre>
+<p>
+Today I finally tried using the information there, but was not
+able to fix the problem until I made a lucky guess that worked.
+<p>
+That file states:
+<p>
+<pre>
+> Exec-shield randomizes VM mappings, this may confuse programs that do
+> not expect this behaviour (and for that reason alone are considered
+> broken).
+>
+> To disable it permanently system-wide, add the following to
+> /etc/sysctl.conf:
+>     kernel.exec-shield-randomize = 0
+> And make it effective by running:
+>     sysctl -w kernel.exec-shield-randomize=0
+</pre>
+<p>
+However when I tried that I got
+<p>
+<pre>
+    kernel.exec-shield-randomize' is an unknown key
+</pre>
+<p>
+After searching for other things, I had the idea of reading the
+man file for sysctl, where I found that '-a' shows the available
+values. So I did
+<pre>
+    sysctl -a | grep rand
+</pre>
+<p>
+and got this as one of the outputs:
+<pre>
+    kernel.randomize_va_space = 1
+</pre>
+<p>
+So I tried (nervously)
+<pre>
+    sysctl -w kernel.randomize_va_space=0
+</pre>
+<p>
+and after that the saved images started every time!
+<p>
+So I have inserted the following in /etc/sysctl.conf
+<p>
+<pre>
+   # Prevent problems starting saved images
+   kernel.randomize_va_space=0
+</pre>
+<p>
+I also later found this online discussion of the issue:
+<pre>
+    <a href="http://www.ussg.iu.edu/hypermail/linux/kernel/0504.3/1451.html">http://www.ussg.iu.edu/hypermail/linux/kernel/0504.3/1451.html</a>
+</pre>
+<p>
+which is part of quite a long inconclusive thread about how to do
+this on a per program basis instead of globally.
+<p>
+It seems that the randomize_va_space mechanism is designed to thwart
+some viruses. My understanding is that other linux distributions do not
+use it. It does not seem to be a good security mechanism for a general
+linux installation if it can break random programs and there is no
+easy way to turn it off for programs known to be 'safe'. (People
+reported trying to use 'setarch' without success.)
+<p>
+Anyhow, this information should help users of recent Fedora Core or
+Redhat systems who wish to use Poplog (and other systems defeated by the
+security settings) and are willing to turn off a security measure that
+is not included in other linux distributions.
+
+</blockquote>
+
+<HR>
+<P>
+<small>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+
+<img alt="Frames-free web site" width="120"
+src="http://www.cs.bham.ac.uk/%7Eaxs/fig/noframes.gif">
+<br>
+Last updated: 20 Aug 2006 Aug 2006
+</small>
+</body></html>

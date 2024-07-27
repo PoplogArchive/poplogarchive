@@ -1,0 +1,893 @@
+This file is:
+    http://www.cs.bham.ac.uk/~axs/misc/pride
+    Last updated 25 Jan 1999
+    Aaron Sloman
+    http://www.cs.bham.ac.uk/~axs/
+
+THIS FILE HAS BEEN SUPERSEDED: THE NEW VERSION IS
+
+    http://www.cs.bham.ac.uk/research/projects/cogaff/pride.html
+
+===================================================================
+There's a lot more on emotions in
+    http://www.cs.bham.ac.uk/research/cogaff/talks/
+        Presentations in PDF and Postscript
+
+    http://www.cs.bham.ac.uk/research/cogaff/
+        Papers in PDF and postscript.
+
+
+NOTES ON PRIDE
+
+Correspondence with a journalist who was given the
+task of preparing an article on pride.
+
+Some time in 1998.
+
+Name replaced with "Journalist" throughout
+
+================================================================
+NOTE:
+Some of this is superseded by more recent papers in
+    http://www.cs.bham.ac.uk/research/cogaff/
+
+Especially this paper (postscript and pdf formats):
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.kd.pdf
+
+================================================================
+
+From Journalist
+Subject: Flying a kite...
+To: A.Sloman
+
+I'm busy reading through the papers on your website as I write. I
+I haven't got to pride yet--perhaps it's not there--but I would love
+to discuss the idea of looking at how one might make a proud
+machine/agent. If you have addressed this subject, we may be able to
+use your thoughts as a way into discussing your entire approach to
+consciousness.
+
+
+From Aaron Sloman Wed Feb  4 00:42:39 GMT 1998
+To: Journalist.
+Subject: Re: Flying a kite (proudly?)...
+
+Dear Journalist
+
+> DDD suggested that we should look at "pride" in terms of the
+> structures that might be needed to support such a complex emotion. He
+> thought that you may have given some thought to how pride might be
+> instilled in a machine/agent.
+
+I haven't thought much about pride, though I have thought about grief,
+shame, embarrasment, guilt, anger, irritation, regret, excited
+anticipation, carelessness, and several others.
+
+> I'm busy reading through the papers on your website as I write.
+
+That could take you an awfully long time.
+
+I've just added some new ones to the Cognition and Affect project
+directory.
+    http://www.cs.bham.ac.uk/research/cogaff/
+
+I'll be discussing related topics (robots in love?) at a literary
+society meeting I have (foolishly?) agreed to give a talk to on 21st Feb
+at the RFH. See
+
+    http://www.sbc.org.uk/literate.htm
+This talk eventually led to a paper on love being published.
+    http://www.cs.bham.ac.uk/research/cogaff/0-INDEX96-99.html#48
+
+> I haven't got to pride yet--perhaps it's not there--but I would love
+> to discuss the idea of looking at how one might make a proud
+> machine/agent. If you have addressed this subject, we may be able to
+> use your thoughts as a way into discussing your entire approach to
+> consciousness.
+
+The approach is based on the assumption that everything depends on the
+underlying architecture -- to be more precise the information processing
+architecture.
+
+(This is not necessarily a physical architecture: just as a complex
+software system can have an architecture which is not a physical
+architecture, though it is *implemented* in physical mechanisms).
+
+When you know what sort of architecture is implemented in the brain
+of an animal or machine you can (if you have a good theory) work out the
+possible states and processes that can be supported by that
+architecture.
+
+(E.g. think of how the periodic table of the elements, based on a theory
+of the architecture of matter, generates a systematic collection of
+types of "elementary" stuff, which when combined with more architectural
+detail, a theory of valency and chemical bonds, generates an even larger
+variety of types of chemical compounds, and processes in which compounds
+get transformed.)
+
+At present we have only fragments of a theory of types of architectures
+and the processes they can generate. We can make progress by
+simultaneously working top down trying to "unpack" familiar types of
+mental states and processes (e.g. using philosophical methods of
+conceptual analysis, and some kinds of psychological research) and also
+bottom up trying to work out what sorts of architectures are implemented
+in brains and other mechanisms and what they can do. (This needs to be
+related to the evolution of human-like brains: our architecture reflects
+much of our evolutionary history.)
+
+If we are lucky, the top down and bottom up approaches will meet up in a
+fruitful way (as I am already beginning to find in discussions with
+brain scientists).
+
+A few thoughts on pride, provoked by your message.
+
+Pride is a fairly sophisticated and subtle collection of states and
+processes involving
+
+o long term attitudes (taking a pride in one's work, being proud of
+  being a Brum),
+
+o relatively short term moods (sharing the pride of one's football team,
+  or nation, or family during a day of celebration of some triumph or
+  recognition),
+
+o emotional states (a thrill of pride when your child wins a race, or
+  your team beats another more famous team, or a distinguished person
+  praises your achievement...).
+
+These all involve some kind of high valuation of oneself or something
+one is associated with or associates oneself with. It's a valuation both
+in relation to how one values others, and also how one thinks others
+evaluate one.
+
+In some cases this evaluation can be distorted, e.g. people value their
+family or their class or their skin colour or their achievements more
+highly than those of others and wrongly think that that evaluation is
+justified and should be shared by everyone.
+
+Then there's a more active kind of pride which has to do with reasons
+for taking decisions or performing actions, e.g. refusing help,
+rejecting pity, not wanting to show your fear or other weaknesses, or
+being too proud to admit that....
+
+What all this implies is that having the full range of varieties of
+pride involves a very sophisticated cognitive and motivational
+architecture including lots of beliefs about achievements of oneself and
+others, the qualities of oneself and others, the appreciation or
+recognition of those qualities and achievements by others, and beliefs
+about sorts of actions or happenings which can affect that recognition.
+
+Alongside beliefs it also requires desires of various sorts, including a
+desire to achieve or preserve that recognition (= fear of losing it),
+desires to take actions which will enhance it, or draw attention to it.
+
+It usually also involves not just the belief that others value one's
+qualities and achievements but also pleasure in the fact that they do.
+
+These combinations of beliefs and desires (and other things) can
+interact with all sorts of other information in forming attitudes and
+and decisions in various more or less subtle ways.
+
+Some of this can happen relatively unselfconsciously.
+
+However, the human architecture also includes various abilities to be
+aware of internal states and processes and to experience pleasure and
+pain (things which I don't think have yet been adequately analysed). So
+some kinds of pride include these additional self-reflective states and
+processes.
+
+Some emotional states involve partial loss of control of attention and
+thought processes, e.g. the person who wallows in the pride of his
+achievement and cannot put it out of his mind in order to get on with
+his work, or a task of thinking about someone else's needs.
+
+(That presupposes an architecture in which one is sometimes in control
+of ones attention and thought processes: you can't lose control if you
+never have it. I don't think that's possible for a rat, or a newborn
+baby, or the simplest sorts or robots of the future.)
+
+I think all of the kinds of pride (or most of them?) involve some kind
+of awareness of other agents with values related to ones own.
+
+Without that relation to a social group, one could feel pleased with
+oneself, relieved at having achieved a difficult and possibly dangerous
+goal, self-approving in various ways, etc. but I don't know that we'd
+regard those states as examples of "pride".
+
+However these questions about the boundaries of pre-theoretical concepts
+are often unanswerable: the concepts are inherently indeterminate (like
+the concepts of "water" and "air" prior to the development of the atomic
+theory of matter.)
+
+The upshot of all this in relation to questions such as whether pride
+could occur in a machine is that it would require a whole lot of other
+things to be in place in the architecture before there's any chance of
+pride occurring. The requirements for perception, belief, and desire are
+much simpler.
+
+E.g. I suspect that many animals have quite complex mental states and
+processes without being capable of most of the above kinds of pride, if
+any, e.g. ants, dragonflies, rats, birds. I am not sure about chimps and
+gorillas: it's very hard to tell what sorts of categories they use in
+their thinking especially their self-evaluations.
+
+I am fairly sure that a newborn human infant is incapable of pride,
+whereas within a couple of years the architecture and the conceptual
+framework has developed sufficiently for certain kinds of pride (a two
+year old can, in a simple way, be proud of his/her appearance or
+achievements, but not proud of one's nation, for instance!).
+
+Further analysis could perhaps point to kinds of brain damage which
+would remove the capacity for various kinds of pride by removing some of
+the kinds of capabilities on which they depend: e.g. the ability to
+consider how one is evaluated by others.
+
+The architectural requirements for the ability to have or experience
+pride are closely related to requirements for shame, humiliation, guilt,
+embarrassment, and other things. Most mental states come in elaborate
+families and cannot occur in isolation.
+
+Well enough of my rambling. That's just a brief sketch from a "top
+down" point of view. A lot more would have to be said about the kinds of
+information processing architectures which could do all that. But that's
+a very long story, involving a lot of ongoing research with only partial
+and provisional results.
+
+Is this relevant to what you wanted? Feel free to phone me at home in
+the morning if you wish.
+
+
+Aaron
+
+
+From Aaron Sloman Fri Feb 13 03:36:49 GMT 1998
+To: Journalist
+Subject: Monday
+
+Dear Journalist,
+
+It occurs to me that if you wish to regard pride as one of the sins,
+that would rule out reasonable or justifiable pride, such as
+
+    Taking pride in one's work, because it is well done.
+
+The cases where pride can be foolish, wicked, unjustified, or counter
+productive include things like.
+
+1. Being too proud to ask for help, e.g. for fear of humiliation
+
+2. Concealing one's needs, afflictions, inadequacies, poor performance,
+out of pride, e.g. for fear of being exposed, or thought ill of
+
+3. Being proud, haughty, condescending to others, e.g. because they are
+thought to be (or they are) inferior.
+
+4. Over-valuing oneself, one's family, one's country, etc.
+
+5. Taking credit for something one has no right to be proud of because
+it was all done by others, or a result of luck, etc.
+
+6. Being unwilling to admit error, apologise, accept blame, make the
+first move in a reconciliation. (Too pround to...)
+
+Some of these states depend on awareness of one's own vulnerability.
+
+Most involve the ability to think about how others think of oneself, and
+wanting to be rated highly.
+
+Most/all involve the notion of some kind of social ranking, or ranking
+in levels of approval by society, colleagues, acquaintances, etc.
+
+And maybe more.
+
+I once, as a child, had a dog: a black and white mongrel called Spotty.
+I remember an occasion when we were out walking. A much smaller dog came
+rushing out of the garden of a house we were passing, barking furiously
+at Spotty, causing Spotty to run away with his tail between his legs.
+The other dog then stopped and strutted back. I thought the episode
+extremely funny and stood laughing loudly. Spotty turned, looked at me,
+then walked off limping, as if he had been hurt. But the other dog had
+not got near him. A short time later something distracted him and he
+stopped limping.
+
+I don't really know what was going on, but at the time I thought he had
+felt humiliated by my laughing at him (a blow to his pride???) and he
+had tried to regain my sympathy by feigning injury.
+
+Who knows what was actually going on in that brain?
+
+I see the current issue of New Scientist has an article on deception by
+animals.
+
+Aaron
+
+
+
+From Aaron Sloman Tue Feb 17 18:49:24 GMT 1998
+To: Journalist
+Subject: Reply to: Thanks for your time
+
+Journalist,
+
+Thanks for your message, and also for putting so much effort into this.
+
+> My understanding now is that you do not "plug emotions into your
+> model" but that emotions arise out of your model--they are emergent
+> properties.
+
+This is NOT true of all emotions, but is true of the (evolutionarily
+new) sorts of characteristically human emotions that interest me (grief,
+infatuation, jealousy, excited anticipation, apprehension,
+embarrassment, shame, etc. etc.).
+
+    [[Note: I now call these tertiary emotions. There are also
+    primary and secondary emotions. (A.S.)]]
+
+As you have probably already grasped these all require:
+
+    1. Sophisticated cognitive capabilities, including
+
+       1.a. deliberative capabilities
+            the ability to create and consider and evaluate
+            new possibilities, e.g. for what might happen, for
+            actions, for things to say, etc.
+
+       1.b metamanagement capabilities
+            the ability to monitor one's own state, to evaluate it,
+            to (attempt to) change it.
+
+    2. Various control mechanisms which run independently of high
+       level decisions.
+
+Some of them also require awareness of being part of a social system.
+
+Some of them require acceptance of an external system of values, going
+beyond one's own personal desires, preferences, etc.
+
+Remember that the word "emotion" is multiply ambiguous (57 varieties?)
+and is used by different people to refer to different things. Most
+psychologists who study emotions do not focus on the above. Poets and
+playwrights and some sorts of therapists do.
+
+I allow that the word "emotion" also refers to evolutionarily older
+states and reactions, e.g. nausea produced by a horrible smell,
+paralysing terror, being startled, sexual reactions, and perhaps others
+which we may share with rats and other animals which are not capable of
+the sophisticated "new" emotions.
+
+What I say about these *older* emotions is different from what I say
+about the *newer* human emotions. In particular a subset of the older
+ones may be pre-programmed genetically via patterns and reactions in the
+limbic system and perhaps other mechanisms. I.e. they may depend on
+specific "emotional" mechanisms as opposed to emerging from the
+interactions of a variety of other mechanisms required for intelligence.
+
+Another important point which we did not discuss is that there's a
+difference between *having* an emotion (being in an emotional state) and
+*feeling* the emotion, though most people unthinkingly assume that if
+you have one you feel one.
+
+That's not so: a person can be angry or infatuated or envious without
+realising it. It can be very clear to all their colleagues or friends
+however. This is commonplace in plays and novels because it is
+commonplace in life.
+
+> So, just as a file server gets into a spin when it is
+> overloaded and becomes useless to its users, so your nursemaid MIGHT
+> "feel hassled" by having too many babies to care for and it cannot
+   ^^^^
+> plan its next action. (Overload could be equivalent to being hassled.)
+
+Yes, but it could *be* hassled without *feeling* hassled.
+
+That requires the meta-management (self-monitoring) facilities to detect
+the state. The state could occur and go undetected. In fact part of the
+emotional education of humans is helping them to detect and classify
+some of their emotional states, so that they can begin to manage them
+better.
+
+The simulated nursemaid I showed you was not capable of *feeling*
+hassled even when it *was* hassled (i.e. when it could not cope with the
+flood of new motives, when there were too many babies all getting into
+trouble at once).
+
+(Incidentally the nursery scenario allows more kinds of troubles than I
+showed you: e.g. in an over-crowded room thuggery can develop!
+However the implementation of this is still very shallow).
+
+Ian Wright's more sophisticated nursemaid, which I did not show you,
+could *detect* that it was hassled and react by raising its attention
+filter threshold.
+
+You could regard that as a primitive form of "feeling hassled" going
+beyond merely being hassled.
+
+But it had no capacity to find that state unpleasant: it merely reacted
+by taking pre-programmed action to remedy the state. Experiencing
+something as pleasant or unpleasant requires more sophisticated
+mechanisms than those we discussed, and my ideas on that are still very
+vague.
+
+
+So, I'd rephrase what you wrote, without the word "feel" as:
+> the nursemaid might
+> "become hassled" by having too many babies to care for, so that
+> it never completes any planning process because it is constantly
+> interrupted by being forced to attend to a new goal.
+> (Overload could be equivalent to being hassled.)
+
+OK?
+
+> The class of emergent properties that you have done most work on is
+> the perturbant emotions--shame, grief, guilt etc--which intrude by
+> continually generating motivators of a higher insistence than the
+> agent's attention filter.
+
+Yes, but that's just one facet of what's going on. The other facets
+include
+
+1. The motivations, the beliefs, the perceptions, the decisions, which
+lead up to that state.
+
+2. Further facets which arise from the agent detecting the state,
+evaluating it, and possibly trying (often in vain) to do something about
+it. This in turn can escalate into yet more frustration, annoyance, etc.
+about *oneself*. (E.g. you notice that your mind is constantly drawn
+back to that humiliating episode and decide to resist it because it is
+interfering with other things. But despite trying to resist it you fail,
+and continue to dwell on it. Then you notice that that is happening and
+you get annoyed with your self for not coping better. Emotions can
+pile-up.)
+
+Summary:
+
+Some "OLD" emotions may have genetically programmed emotion mechanisms,
+e.g. freezing in terror. I have mostly ignored those, not because they
+are uninteresting but because I thought enough had been said about them
+by other people (e.g. Joe le Doux)
+
+The "NEW" emotions are far more complex and in at least some cases are
+not direct consequences of explicit emotion mechanisms but rather emerge
+from interactions of multiple subsystems concerned with motivation,
+deliberation, attention, evaluation, etc.
+
+What the "new" and "old" emotions have in common is that there's some
+(possibly partial) loss of control.
+
+(The loss can be dispositional: it doesn't manifest itself unless
+certain circumstances occur, e.g. being reminded of one's dead child.)
+
+> Then, pride in one's work might be a state that emerges once, say,
+> the nursemaid has an understanding of what a good job is compared to a
+> bad job.
+
+There may be different sorts of pride in one's work, accessible to
+different sorts of animals (or artifical agents) of varying
+sophistication.
+
+For a non-social animal there may be awareness of the fact that jobs can
+be done well or badly, one in time to meet some need or too late to meet
+the need, done with a lot of effort or with little effort, etc.
+
+If those cases can be recognized and discriminated, then on completion
+of a job which has been done well, in time, with little effort, etc.
+there may be a period of assessment when the quality of the achievement
+is recognized. This is one form of taking pride in one's achievements.
+
+(This assessment of a job as well or badly done could be part of an
+adaptive mechanism feeding back into weights which will affect choices
+in future activities, for instance. I.e. it's a pre-requisite for
+certian kinds of learning.)
+
+A further level of sophistication would be the ability to remember the
+evaluation of *previous* performances and the ability to detect whether
+things are getting better or worse. An animal which could detect that
+there is a steady improvement over several tasks may get additional
+satisfaction from a job well done, over the simple recognition that it
+was well done. I have no idea which animals other than humans can do
+this comparison with past performances.
+
+For a social agent an additional factor may be comparison with how
+*others* perform on similar tasks. I.e. one can evaluate one's
+performance in relation to how well others are perceived to perform on
+similar tasks.
+
+Where the performance involves direct competition (competing for
+a mate or fighting over some food) the recognising achievement of the
+task itself involves the comparative assessment (I got it, he didn't).
+
+In other cases more sophisticated cognitive abilities are required if
+one's own performance is to be compared with others. Do birds consider
+whether the nest they have built is better than the one built in the
+next tree? Do they consider whether their chicks are bigger, or more
+numerous, than those in the next nest? I doubt it.
+
+Yet another level of sophistication involves thinking about how *others*
+evaluate one's performance, and how they rank it. I may be able to tell
+that I am doing better than another individual without having the
+conceptual sophistication required to think about whether other people
+think I am doing better than that individual. For agents which have that
+conceptual sophistication there may be a recognition that others in the
+group rank them highly.
+
+This recognition may or may not lead to further internal processes, e.g.
+a glow of satisfaction. This requires not only detection of the fact
+that one is ranked high, but also evaluation of that fact as good or
+bad.
+
+So, depending on its cognitive sophistication, an agent may be able to:
+
+    evaluate a current performance
+    compare the current performance with previous performances
+    compare its own performance with those of other agents
+    think about how other agents compare/rank its performance
+
+and so on... These would constitute different forms of pride in one's
+performance.
+
+> Would it need the metamanagement layer to say "you should
+> feel good about yourself", or could it emerge just from the management
+> layer?
+
+You are forcing me to try to design very complex explanatory mechanisms
+in a short time, and I am very likely to make mistakes!
+
+However I hope my comments above help to show that there are different
+types of recognition of how well one has done, involving different kinds
+of cognitive and evaluative capabilities, and in complex cases these
+interact in intricate ways.
+
+I don't think instructions to oneself to feel good could achieve
+anything directly. However there are explicit evaluations of states as
+good or bad, and that is part of what it is to feel good or bad about
+those states.
+
+(Self evaluation is a complex phenomenon on which I am still not very
+clear.)
+
+If you are finding some of this hard to understand, it's not your fault,
+because
+    (a) the theory is complex and difficult
+    (b) it is still patchy and unclear in many places
+
+
+> Then there are the emotions that require a knowledge of self and
+> status within a social group--such as being too proud to talk to
+> someone.
+
+That in turn subdivides into various different cases, e.g.
+
+    You don't want to admit to that person that you were wrong
+        even though you now realise you were
+
+    You don't want to talk to someone you think is of very low
+        status and with whom any sort of contact would be
+        degrading, or somehow contaminating. (The ability to think
+        like this may depend on living in a culture with certain
+        sorts of norms. I suspect you and I could not possibly be
+        in this sort of state.)
+
+    You don't want to be seen by others to be talking to a person
+        of low status, etc. because etc etc.
+
+and more besides.
+
+> With the exception of grief, which you go into in one of your
+> papers, do you have a clear idea of what kind of state an agent would
+> have to get into to feel any of the other emotions?
+                      ^^^^
+
+If we replace the word "feel" above with "have", the question is about
+what sorts of states are involved in having other emotions. Yes, I have
+thought about and discussed a number of other cases with colleagues and
+students.
+
+In general it is unprofitable simply to think about a particular
+emotion. Rather, in order to understand any particular case you have to
+think about a range of cases and how they are similar and how they are
+different.
+
+For example, I might ask a student to analyse and compare these:
+
+    X is angry with Y
+    X is irritated with Y
+    X regrets what Y did
+    X wishes Y had not done that
+    X is angry/irritated etc. with himself
+
+or
+    X regrets doing A
+    X is embarrassed about having done A
+    X is ashamed of having done A
+    X feels guilty about doing A
+
+or
+    X admires Y's house
+    X would like to have a house like Y's
+    X is envious of Y because of Y's house
+    X is obsessively envious of Y
+
+or
+    X loves his children, wife, family, etc
+    X loves his country
+    X loves his job
+    X loves ice cream
+    X loves skiing
+    X is in love with Y
+    X is infatuated with Y
+
+or
+    X is afraid that Y will happen
+    X is terrified that Y will happen
+    X is apprehensive about Y
+    X is nervous about Y
+    X is cautious because Y may happen
+    ....
+
+or
+    X likes/enjoys looking at Y
+    X finds Y beautiful
+    X finds Y impressive
+    X finds Y awe-inspiring
+    X finds Y sexually attractive
+    X finds Y interesting, unforgettable, ...
+    X cannot help staring at Y (even though Y is horrible) ...
+
+Not all of these are emotions.
+
+I could try to dig up some old notes on anger and related emotions, i
+if you are interested.
+
+[[ Now in
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.emot.gram.ps
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.emot.gram.pdf
+]]
+
+> Perturbant emotions and (possibly) hassle both emerge because of
+> resource limitations. Is it your contention that all emotions are
+> bound up with resource limitations,
+
+No.
+
+> or will some emerge through other
+> quirks of your model?
+
+quirks???
+
+The "old" primeval emotions come not from mechanisms with resource
+limits but from rapid global effects of powerful "alarm" mechanisms
+(e.g. the limbic system). Emotions involving global interrupts are the
+ones most studied by psychologists and brain scientists, I think.
+
+In humans it looks as if this mechanism can be trained to produce new
+kinds of reactions and to do so in relation to new kinds of things. (I
+think a lot of religious indoctrination is based on this.)
+
+So the architecture supports different sorts of states which are called
+"emotions" in ordinary language. It's only a subset of those states
+which involve perturbance i.e. actual or potential loss of control of
+attention. I happen to be interested in those partly because I want to
+know what it is to be in control of thought processes. (Which I assume
+chickens and new born babies are not).
+
+I.e. the perturbant emotions are specially interesting to me not as
+emotions but as something that has to be explained by a theory of the
+high level control mechanisms in a human mental architecture.
+
+
+> Of course labelling a state that an agent gets into as an emotion
+> is one thing. The big question, then, is can an agent feel an emotion?
+> Does it need sensory actuators to generate pain or malaise when the
+> agent is feeling sad?
+
+When you *feel* sad, angry, hassled, excited about your friend's
+arrival, infatuated, that's because your self-monitoring mechanisms have
+detected and classified your state.
+
+In most cases this does not involve sensory actuators and it need not
+involve pleasure or pain apart from the evaluation that is already there
+in the state detected.
+
+In some cases sensory actuators are involved. When grief makes you cry
+you will experience the physical/physiological processes involved in
+crying. But there is far, far more to grief than crying or any other
+physical manifestation which may be detected by physical sensors.
+
+
+> One final point. Have you any idea how the most basic emotions,
+> such as startle, fright etc, emerge from the workings of the reactive
+> layer? Or is the reactive layer designed specifically to emit such
+> emotional signals? (I realise that these emotions are not your primary
+> interest. I just wondered whether you had thought about them?}
+
+I hope my comments about the old emotions answer that. I don't know
+details, but I presume the limbic system has various global control
+capabilities which account for some of the things you are talking about.
+
+There may be other more subtle things like reactive mechanisms which for
+some reason keep intruding on the deliberative layer. E.g. if there's a
+rumbling noise in the background it may be of no concern to you and you
+may be able to shut it out. But under some circumstances you keep
+finding your attention drawn back to it as something needing
+explanation. This might go via some sort of anomaly detector which is
+not part of the global control system (required to make you freeze,
+flee, change direction, etc. etc.), but still has the ability to attract
+attention.
+
+I think itches and various bodily desires work like that. As they grow
+more and more intense they gain in their ability to attract attention
+(interrupt the deliberative mechanism). I.e. they acquire higher
+insistence in my terminology. I don't see any need for them to go
+through any global alarm system (the limbic system) unless states are
+detected which are potentially life threatening, or whatever.
+
+Whether these should or should not be called emotions is a matter of
+taste. Some people would and some wouldn't.
+
+I don't care either way: the labels are not important, only what the
+phenomena are like in detail and how they fit into the explanatory
+framework provided by the architecture.
+
+I have a suspicion that I have answered at too much length to be of any
+use to you. Does it help?
+
+Aaron
+
+
+From Aaron Sloman Fri Mar  6 19:46:34 GMT 1998
+To: Journalist
+Subject: Re: Pride... at last
+
+Thanks for letting me see your draft. I am sorry I could not respond
+earlier: I have had a visitor today.
+
+I have some comments on your questions, and some suggested changes
+to your draft.
+
+>  a) How do you respond to Rodney Brooks' suggestions that evolution
+>  would have created less rigid structures and connections in the mind
+>  than you propose?
+
+I don't think Rodney Brooks has read my proposals.
+
+Anyhow there's nothing particularly rigid about my
+structures as far as I know -- the whole point is to
+provide increased flexibility. The remarks you quote
+from him sound as if they were based on his seeing a very
+short summary.
+
+Most of the main features I postulate
+correspond only to well documented human abilities
+(e.g. we definitely do have long term associative
+memories, we do have motives and desires, e.g.
+you really do want to write this paper (I think),
+we definitely do make plans (e.g. you planned in
+advance to write the draft then send it to me for
+comments). We can notice things about our thinking
+(e.g. you have expressed a negative judgement about
+your thoughts expressed in your final paragraph.)
+
+And of course we have reactive mechanisms, including
+well known reflexes of many kinds and
+startles, etc.
+
+So when I talk about evolution having produced such
+things I am not going far beyond common knowledge,
+and I am not saying that evolution is *constrained*
+to produce these things (e.g. it solved the survival
+problems differently in bees and termites).
+
+Moreover, my papers have been so *vague*
+about the interactions between the layers that I
+can't see how they *constrain* evolution.
+
+That's a serious weakness in my work: the vagueness
+still needs to be removed. Until then, it's just a
+very schematic and incomplete specification of one
+region of design space.
+
+Some of Rod's followers make a different point.
+I am suggesting that animal brains implement a
+fairly *modular* structure combining a variety
+of identifiable functionally distinct components.
+
+The alternative view (strongly represented
+at Sussex University) is that evolution produces
+an unintelligble mish-mash of relatively simple
+reactive behaviours, which works nevertheless.
+
+The first thing to say is that nobody knows, and
+the people who are dogmatic on one side or the other
+of this issue are just that: dogmatic. We have to
+keep an open mind.
+
+I say in many papers that my proposed architecture
+is merely one sort of possibility in a space of
+designs and we have to understand what that
+space is like, what alternative possibilities there
+are and what sorts of trajectories can occur
+through the space.
+
+Secondly I have suggested that contrary to the
+Sussex/Brooks view there may be reasons why
+evolution would favour a modular structure rather
+than an unintelligible mish-mash when it is
+creating something with a very large collection
+of capabilities.
+
+That's because (a) in some cases the un-modular
+system would require far more storage than
+something composed of re-usable re-combinable modules;
+and (b) the ability to do without deliberation, planning,
+etc. (the functionality of my second layer) would
+require a far longer period of evolution to create
+explicit solutions to the need to cope with the
+same variety of contexts.
+
+This is a very short summary of a more complex
+argument, which still needs to be spelled out
+more fully than I have managed so far. The
+argument may have flaws, but as far as I know
+it has not even been considered by the defenders
+of the Sussex/Brooks position (excellent researchers,
+friends of mine, etc. but sometimes too narrow and
+dogmatic!!!)
+
+The Sussex position is based partly on their own
+very interesting evolutionary experiments in which
+they evolved circuits capable of performing rather
+simple tasks. The circuits worked but were very
+hard to understand, and did not seem to have any
+clearly identifiable modules with well defined
+functions. They extrapolate from this to the claim
+that animal brains may be similarly unstructed and
+unmodular.
+
+But that's a totally unjustified leap from very
+simple systems to far more complex systems. My
+arguments for the evolutionary value of modularity
+depend on the complexity and the variety of
+capabilities in diverse situations.
+
+>  b) If you managed to create a community of agents sophisticated enough
+>  to feel pride in all its forms, do you think they could evolve a
+>  feeling that excessive pride is a bad thing?
+
+I think it is usually not helpful to ask:
+
+    Could machines etc. do so and so?
+
+Instead always ask:
+
+    How could they do so and so?
+
+The first question is an invitation to undisciplined and premature
+speculation. The second is a request for reasoned arguments and
+explanations.
+
+As far as your question is concerned my undisciplined, wild speculative
+answer is: I don't see why not, since (some) humans did and we are
+therefore an existence proof of possibility.
+
+As to HOW it happened, that's a far more interesting question, and it is
+part of a more general question about how values evolve. I don't have
+any kind of nice short answer to that. I suspect it's another one of
+those simple looking questions which have a very complicated answer.
+
+>  Thanks for your help on this. It's certainly given me a deeper
+>  understanding of AI.
+
+I hope that this sort of work will give people a deeper understanding of
+what we are!
+
+You've had a hard task, and I am impressed that you've managed to
+compress so much into such a short space. I think the compression
+has produced some minor infelicities and inaccuracies so in what
+follows I've suggested a changes which I hope are helpful.
+I've also added explanatory comments for you in parentheses, not for
+inclusion in the text.
+
+I hope it all makes sense.
+
+Best wishes.
+Aaron

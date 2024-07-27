@@ -1,0 +1,916 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Ubuntu and WPA</title>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/ub4.png"/>
+</a>
+
+<h2><b>
+Some Experiences with Ubuntu Gutsy and Wireless WPA
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+Updated: 12 Jan 2008
+<p>
+I have discovered how to get a wireless card based on the ralink
+2500 driver working by preventing loading of the ra2500pci module
+and starting up wireless using the latest version of the rutilt
+tool.
+<p>
+Most of this may be equally relevant to other wireless devices
+using ralink chipsets.
+<p>
+Instead of fetching the updated legacy rt2500
+driver, as I did, you can try one of the other enhanced legacy
+drivers listed here:
+<br>
+    <a href="http://rt2x00.serialmonkey.com/wiki/index.php?title=Downloads">http://rt2x00.serialmonkey.com/wiki/index.php?title=Downloads</a>
+</small>
+</b></h2>
+
+<h3><b>
+The problem -- As of 5 Jan 2008
+</b></h3>
+<blockquote>
+<pre>
+The current situation regarding use of wireless on linux seems to be
+a real mess, with new kernels using redesigned mechanisms for
+wireless, and many (but not all) existing readily available drivers
+only working with older kernels. This appears especially to have
+clobbered people who installed the latest version of Ubuntu (Gutsy,
+version 7.10) in the last few months, though it may also affect
+users of some other versions of linux and perhaps users with older
+installations running new kernels.
+
+Because the situation is so messy and things are changing so
+quickly, I have to warn readers that it may be hard for them to tell
+whether the solution that worked for me will work for them, even if
+they are using Ubuntu Gutsy version 7.10.
+
+In my case, the problems described below, and the solution provided
+below, concern this kernel on Ubuntu Gutsy:
+
+    2.6.22-14-generic #1 SMP Tue Dec 18 08:02:57 UTC 2007
+
+[To find out what kernel you are using you can search for command to
+open a 'console window' (e.g. xterm) which, stupidly, is not one of
+the defaults on the Ubuntu panel when it starts up. Having opened
+such a window you can type 'uname -rv' to get something like the
+above. If the date of your kernel is earlier than Dec 18th, or if
+the third number is below 22 or the fourth is below 14 it is very
+likely none of this will work for you. If the numbers are higher, it
+may or may not work. If you configured and compiled the kernel
+sources yourself instead of using a 'standard' Ubuntu Gutsy kernel,
+that can change many things.]
+
+I found several web sites offering advice saying 'doing so and so
+worked for me', followed by comments from grateful readers for whom
+it worked and others for whom it did not work.
+
+One problem is that there are many people (including me) who find it
+difficult to know what the dependencies are so that they cannot
+decide what to specify regarding the system on which something
+worked. E.g. they may specify 'Ubuntu Gutsy', but not know that the
+kernel in use, or some other feature of their installation, can make
+a difference to what works.
+
+In contrast there are experts who know a lot about what is going on,
+but have no idea what it is like to be a 'newbie'. So they tell
+enquirers to do things that many newcomers will not be able to make
+any sense of. E.g. saying 'use man to get more information' to
+someone who recently converted from Windows will not normally convey
+any useful information.
+
+No doubt everything will catch up in a few months but, judging by
+the number of complaints/confusion/out of date advice etc. that I
+have found on the web, this is likely to do the reputation of linux
+a lot of harm. Already I've seen a number of messages from
+disgruntled users saying they are going back to windows, alas.
+
+Of course, this does not affect people who are still using older
+versions of debian, ubuntu, fedora, etc.
+
+And it does not seem to affect users of intel integrated wireless
+systems, presumably because of all the help Intel give the linux
+community (they see a potentially large market, especially for
+education in poorer countries, I think). E.g. my Dell Latitude D610
+with Intel ipw2200 wireless card works perfectly with different
+flavours of WPA, on Fedora 7 as described <a href="wpa">here</a>
+
+The rationale behind this mess is explained here
+    <a href="http://kernelnewbies.org/Linux_2_6_24#head-62e9ebf067c978bbf70898986c0aa3904d1a3543">http://kernelnewbies.org/Linux_2_6_24#head-62e9ebf067c978bbf70898986c0aa3904d1a3543</a>
+The technical aims seem to be excellent, and the public-relations a
+serious disaster.
+</pre>
+</blockquote>
+
+<h3><b>
+My configuration - and problem history with Ubuntu Gutsy
+</b></h3>
+<blockquote>
+<pre>
+<b>Hardware for Ubuntu PC:</b>
+    2001 vintage PC with AMD Duron 750 Mhz cpu, 780MH RAM
+
+    Belkin F5D7000 Wireless G PCI card (up to 54Mb/sec rating)
+    With chipset: RaLink RT2500 802.11g Cardbus/mini-PCI (rev 01)
+
+<b>I also use two other machines:</b>
+I normally use Fedora for my work at home: Fedora 6 on my desktop PC
+and Fedora 7 on my Dell Laptop, both of which work fine, as
+described <a href="index.html">here</a>
+
+<b>Wireless router</b>
+At home I have a Dlink DI512 wireless router, connected to a Virgin
+media (blueyonder) cable modem providing a 20Mbit/sec download
+connection (only 750Kbit/sec upload).
+
+This is one floor up in a front room of the house. It has four
+ethernet sockets, currently used to enable two PCs to be permanently
+connected using cable (mine running Linux, close to the router, and
+my wife's, unfortunately, running Windows XP at the end of a long
+cable running to the back of the house, on the ground floor). Both
+connections work very well all the time. I can also temporarily
+connect one or two other machines using the two spare sockets on the
+router.
+
+The router is set to use WPA-PSK and my laptop connects to it by
+wireless, using wpa_supplicant. Wpa_supplicant automatically
+switches between two different modes for home and university use.
+It works well anywhere in the house and in the garden.
+
+<b>Transfer speeds</b>
+Of course, I cannot normally achieve 20Mbit/sec downloads, because
+of limitations of other portions of the route, but occasionally
+download speeds do peak very close to that speed.
+
+Even my laptop manages to get close to 17Mbit/sec downloads using a
+wireless connection, when it is in the same room as the router. At
+the back of the house (where the Ubuntu PC is) the maximum speed can
+drop to about 14Mbit/sec.
+
+<b>Why the Ubuntu machine?</b>
+I wanted experience using Ubuntu, in order to decide whether to
+switch from Fedora (as recommended by several colleagues), so, since
+I am not superstitious and Christmas is of no interest to me, and
+25th December was a nice peaceful day here, I used it to install the
+latest version of Ubuntu on an old PC previously used by my wife,
+located in a back bedroom, with no cable connection available.
+Instead it has a wireless PCI card (details belwow).
+
+<b>Problems getting wireless working on Gutsy</b>
+During and after the Ubuntu Gutsy installation from CD, the wireless
+connection did not work, so I moved the PC temporarily to the room
+with the router, connected it using a cable, and managed to complete
+the installation, including upgrading the kernel and various other
+things.
+
+At that point the wireless card worked, but not with WPA, only with
+a 128 bit WEP key, which does not provide adequate protection. So I
+returned it to the back room. However, it was terribly slow, never
+achieving transfer speeds of more than about 750 Kbit/sec, whereas
+the laptop could go more than 10 times as fast, even when sitting
+next to it in the back room.
+
+Eventually, after trying various remedies suggested on the <a href="http://sb.lug.org.uk/">local
+linux user group</a> and many more found by reading 'how to' files
+found with google's help, or answers offered in online forum
+messages, mostly concerned with problems reported by Ubuntu users, I
+found a configuration that worked with WPA, provided that I set the
+router not to conceal its ESSID. But speed was not improved at all.
+
+The first version of this web site (28th December 2007) reported how
+I had used wpa_supplicant to set up the connection on the ubuntu
+machine. That worked for a couple of days, then one morning when I
+booted up the machine I could no longer get wireless to work, either
+with WEP or WPA, no matter what I did. I still have no idea what I
+had changed to produce that effect.
+
+Only several days later (early morning on 5th Jan 2008), after very
+carefully reading web sites concerning changes to wireless support
+on linux, did I manage to find a way to get the connection working
+again, as described below, and this time at a much better speed,
+though not quite as fast as the laptop, possibly because the PCI
+card has its aerial very close to the case, with a number of cables
+nearby.
+
+The solution, described below, is specific to wireless cards using
+the same chipset as mine. Some aspects of the solution may
+generalise to other wireless adapters, however.
+</pre>
+</blockquote>
+
+<h3><b>
+The solution, using latest ralink rt2500 linux driver
+</b></h3>
+<blockquote>
+<pre>
+
+I did all the following in an 'xterm' window, as superuser, by
+typing into the window:
+
+    sudo su
+<small><ol><li>I used the 'synaptic' command run directly in the xterm window to
+invoke the package manager, and used that to deinstall 'network-manager'.
+
+(You may prefer to invoke it from a menu.)
+
+<li>Compiling the legacy module:
+
+I followed the instructions on the serialmonkey web site:
+
+    http://rt2x00.serialmonkey.com/wiki/index.php?title=Downloads
+
+in the 'Enhanced legacy drivers' web site to fetch the latest
+'tarball'
+    http://rt2x00.serialmonkey.com/rt2500-cvs-daily.tar.gz
+
+I saved that in /usr/local/src/rt2500 and untarred it
+    tar xfz rt2500-cvs-daily.tar.gz
+
+That produced a directory rt2500-cvs-2008010203. One of the
+subdirectories was 'Module'. I used 'cd' to enter that subdirectory,
+and read the README and TESTING files. 'make' and 'make install'
+worked OK, but the instruction to go to the Utility directory
+(actually called 'Utilitys') to make RaConfig2500 proved to be
+out of date: there was nothing there to make.
+
+NOTE: I did not use the  Next-generation rt2x00 drivers because the
+instructions suggested that in order to use them it would be
+necesary to fetch and compile the latest kernel, which I did not
+wish to do.
+
+<li>Checking the module installation:
+
+I then found that 'make install' had copied the file rt2500.ko in
+the directory
+    /lib/modules/2.6.22-14-generic/extra
+
+leaving the old version in this directory, which was rather silly:
+
+    /lib/modules/2.6.22-14-generic/kernel/drivers/net/wireless
+
+So I renamed the version in the latter directory as
+    old-rt2500.ko
+
+and copied the version from the 'extra' directory
+
+    cp -p rt2500.ko /lib/modules/2.6.22-14-generic/kernel/drivers/net/wireless
+
+(I wonder how many Ubuntu users found that the instructions they had
+followed failed because the old module was left in place?)
+
+<li>I then fetched compiled and installed the RutilT utility which
+replaces the no longer supported RaConfig2500 file. I downloaded it
+from here
+    http://cbbk.free.fr/bonrom/
+
+The latest version is:
+    http://cbbk.free.fr/bonrom/?download=RutilTv0.16.tar.gz
+
+That was unpacked as usual
+
+    tar xfz RutilTv0.16.tar.gz
+
+produced a directory RutilTv0.16. I used 'cd' to enter it, and tried
+to follow the instructions.
+
+Running ./configure.sh as instructed produced an error message
+
+    'Please install (or upgrade to) GTK+ 2.6.0, at least.'
+
+Eventually, after wasting a lot of time trying to upgrade a package
+that did not need upgrading I decided that the syntax in the
+config.sh file was wrong, so I used a text editor to comment out
+these lines, using '#':
+
+    # if ! pkg-config  --print-errors --exists 'gtk+-2.0 >= 2.6.0'; then
+    #     echo 'Please install (or upgrade to) GTK+ 2.6.0, at least.'
+    #     exit 1
+    # fi
+
+    (I don't know enough to change the syntax to make it do what it is
+    supposed to do. But I ran
+
+        pkg-config --modversion gtk+-2.0
+
+    and that printed out
+
+        2.12.0
+
+    so I clearly had a more up to date version than 2.6.0.)
+
+After that, 'config.sh' ran perfectly, creating Makefile_cst
+
+<b>NOTE ADDED 12 Jan 2008</b>
+    After correspndence with the author of RutilT I've investigated
+    the above and cannot replicate the problem with configure.sh
+    There may have been some temporary problem with configuration of
+    libraries on my machine. The problem may not afffect anyone
+    else.
+
+After that I ran 'make' and 'make install' to compile and install
+the files. It informed me what it was doing:
+
+    Installing rutilt in /usr/local/bin/
+    Installing rutilt_helper in /usr/local/bin/
+    Installing set_ip.sh in /usr/local/share/apps/rutilt/
+    Installing arts
+    Installing rutilt.desktop in /usr/local/share/applications/
+    Installing manual pages in /usr/local/share/man/man1
+
+I read the man file using
+    'man rutilt'
+
+<li>Following advice I had read somewere I blacklisted a no longer
+required module. Using a text editor, I added
+
+    blacklist rt2500pci
+
+at the end of this fil:
+
+    /etc/modprobe.d/blacklist
+
+<li>Various failed experiments showed me that 'wpa-supplicant' would
+not work with this configuration, so I edited the file
+
+    /etc/network/interfaces
+
+so that it contained only
+<small>
+    iface lo inet loopback
+    auto lo
+
+    iface eth1 inet static
+    address 192.168.1.8
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+
+    iface wlan0 inet dhcp
+    mode managed
+    wireless-essid default
+</small>
+I did not include either 'auto eth1' or 'auto wlan0', to give me the
+option to bring up either the cable connection or the wireless
+connection.
+
+<li>Setting the router.
+
+I set the router to use WPA-PSK and typed a key that did not contain
+any common words of English. I also set it to recognise the MAC
+address of my wireless interface and use dhcp always to give it the
+address 192.168.1.8 (so that other machines could always use the
+same abbreviation for it).
+
+<li>Rebooting and restarting:
+
+After all that I rebooted the PC. Because I had set ubuntu to start
+up in non graphical mode I could see warning messages and found that
+the firewall complained about not finding wlan0, but it turned out
+that that did not matter.
+
+You may prefer to follow the instructions in 'man rutilt' to do
+something different from what I did, but this is what worked for me.
+I am sure there is a more elegant way to proceed.
+
+After rebooting I started my window manager (ctwm, which I much
+prefer to gnome or kde) and in that opened an xterm window (which
+you can do in any linux window manager).
+
+I then did the following to restart the networking and bring up the
+wireless interface:
+
+    /etc/init.d/networking restart
+
+Then bring up the wireless interface.
+
+    ifup wlan0
+
+This attempts to connect to the wireless access point but fails.
+In another xterm window I typed
+
+    sudo rutilt
+
+This brings up the rutilt graphical tool. One of the buttons is
+'site survey'. I clicked on that. It showed my access point and
+a couple of neighbouring access points. It showed that my access
+point used WPAPSK and TKIP.
+
+I selected that access point and clicked on 'Add profile' That
+brought up a window into which I could type a name for the profile,
+and the WPA key. Fortunately it allows you to see what you are
+typing. After I clicked 'ok' that profile was also shown if I
+clicked on the 'Profiles' button.
+
+Selecting the profile and clicking on 'connect' started up the
+connection, and everything worked after that.
+
+However, there is NO button to save the profile. (Why not??)
+
+So after much experimentation I found that by giving the command
+
+    sudo killall -q rutilt
+
+I killed the window (though the wireless connection remained
+working) and I had a profile saved in this directory
+
+    ~/.config/rutilt/
+
+Actually two files were created there. The one with the profiles is
+called: RutilT_profiles.xml
+
+<li>Using the saved profile.
+
+I did not want to have to bring up the graphical tool every time to
+start the network, and found that there is a shell command to do it
+
+    rutilt wlan0 -d -p <profilename> -e
+
+(Read 'man rutilt' to find out more.)
+
+However I could not find a way to run a shell script a boot time to
+start the network, run 'ifup wlan0' and run rutilt.
+
+If someone can tell me how, I'll add the information here.
+
+The previous method of starting up the wireless connection using
+wpa_supplicant, described below, was much simpler, but with that
+wireless card I could not get it to work at a reasonable speed.
+</ol></small></pre>
+</blockquote>
+
+<hr/>
+<h3><b>
+Earlier version of this file -- indicating confusions
+<br>
+Left here in case the information is useful to someone.
+</b></h3>
+<p>
+Update: 31 Dec 2007
+<br>
+<p>
+<pre>
+Note: Since I started this web site I have discovered that the main
+cause of the speed problems described below is not so much Ubuntu
+Gutsy as the use of a particular wireless card whose linux driver is
+still under development and which is not totally compatible with
+most recent kernels. This could therefore affect other
+distributions.
+</pre>
+<p>
+<pre>
+This is a modified version of a message sent to the <a href="https://mailman.lug.org.uk/mailman/listinfo/sb">Birmingham Linux
+User Group</a> on Fri, 28 Dec 2007 reporting on my attempts to a WPA
+wireless connection working on the latest Ubuntu (Gutsy, version 7.10).
+
+I normally run Fedora (version 6 on my PC, version 7 on my laptop), as
+described <a href="http://www.cs.bham.ac.uk/~axs/laptop">here</a>.
+
+I have elsewhere described how I got my laptop to <a href="wpa">work with a
+WPA wireless connection.</a>
+
+But I wanted to test Fedora 8, and also to try out Ubuntu, so I used an
+old 2001 vintage PC with 750 mhz AMD Duron CPU. It is kept in a room
+that is too far for a wireless connection to my router, so I wanted it
+to work with its wireless card:
+
+    Belkin F5D7000
+
+Reported by lspci as using this controller:
+
+    Network controller: RaLink RT2500 802.11g Cardbus/mini-PCI (rev 01)
+
+For which which many ubuntu users have reported problems recently, e.g.
+here
+
+    <a href="https://bugs.launchpad.net/ubuntu/+source/linux-ubuntu-modules-2.6.22/+bug/134660">https://bugs.launchpad.net/ubuntu/+source/linux-ubuntu-modules-2.6.22/+bug/134660</a>
+
+I did eventually get this working, as described below, but my laptop
+runs the same wireless connection 10 times as fast (using the Intel
+IPW2200 wireless device, which is now very well supported on linux).
+
+Using the Belkin wireless card, I get a transmission speed of about
+1.5 mb/sec within a couple of meters of the access point, and the
+laptop does about 16 mb/sec. In the remote room the laptop drops to
+about 14mb/sec and the Belkin card drops to about 770kb/sec, a 50%
+reduction, which is just about tolerable for web browsing but very
+slow for downloading upgrades, etc. I got the same speed with Fedora
+8, so I assume the problem is the wireless card not the drivers.
+(Note this: is download file transfer speed. This speed problem is
+different from a problem some other Ubuntu users have reported
+regarding slow internet contact when using a browser, because of
+NDS problems.)
+
+<b>Getting the card working at all</b>
+Anyhow the rest of this message reports the saga of getting it working
+with Ubuntu. None of this difficulty occurred with Fedora 8: I just
+typed in the essid, the passphrase, told it to use WPA-PSK, and it
+worked, but very slowly (by comparison with the laptop nearby).
+But getting it to work at all with WPA on Ubuntu required much more
+work, partly because I was led up several false trails.
+
+<b>WPA on UBUNTU: my journey</b>
+I found many people on ubuntu web sites complaining about problems with
+WPA in recent releases of Ubuntu, and many suggestions as to how to deal
+with the problems. Most of them proved a complete waste of time for me.
+
+E.g. One of them suggested deinstalling and blacklisting the current
+driver:
+
+    rt2500pci
+
+and installing an older one
+
+    rt2500
+
+which I had to fetch and compile. However that did not work for me, and
+seemed to be incompatible with the other modules needed, as shown by
+
+    $ lsmod | grep rt2500
+    rt2500pci              19072  0
+    rt2x00pci              11520  1 rt2500pci
+    rt2x00lib              19584  2 rt2500pci,rt2x00pci
+    mac80211              171016  4
+    rc80211_simple,rt2500pci,rt2x00pci,rt2x00lib
+    eeprom_93cx6            3200  1 rt2500pci
+
+The other required modules could not be installed using only the
+rt2500 module, and I could not use the wireless connection at all.
+
+So I reverted to the rt2500pci module and explored other avenues.
+
+One respondent to my message to the Birminghum LUG suggsted a change to
+the file: /etc/modprobe.d/blacklist
+
+    blacklist ipv6
+
+But that proved unnecessary for my problems.
+
+I can't remember all the things I tried -- in vain. I wasted many hours
+following tips from many sources (not one of my more productive
+experiences with google).
+
+That included getting rid of network-manager and installing WICD. The
+latter looks nice, but proved useless in my situation.
+
+In fact I found both WICD and the nm-applet less useful than wpa_gui, as
+<a href="#wpagui">explained below.</a>
+
+<b>Passphrase? Which passphrase?</b>
+One of the problems I had in my long journey was unclear instructions
+regarding the difference between the user's passphrase, and the
+passphrase generated by the command
+
+    wpa_passphrase <i>essid</i> <i>passphrase</i>
+
+In some contexts you need the *original* passphrase (e.g. typing into
+GUI interfaces or in the wpa_supplicant config file entry
+
+     psk="myverycleverpassphrase"
+
+In other contexts, e.g. if you leave out the quote marks in the above
+entry you need the *generated* passphrase which might look like this
+
+    psk=53996a9fbb45ed78bd0be12616bb1f7ff34e27bcd8cd4c04f240a64ce17d52c8
+
+Some people don't bother to tell you such things when they write their
+'how to' files.
+
+The solution I adopted below did not use the generated passphrase.
+
+Another thing not usually mentioned is that if you choose a
+passphrase for your wireless access point using WPA it should be as
+long as possible, up to maximum of 63 characters, and should be as
+random as possible. Steve Gibson provides a good generator of random
+passphrases:
+    <a href="https://www.grc.com/passwords.htm">https://www.grc.com/passwords.htm</a>
+
+If you wish to use a WPA passphrase that is short enough for you to
+memorise, do some research on current 'cracking' technology. I
+believe that at present (December 2007) a passphrase whose length is
+in the high 20s and is not composed of words in a dictionary is
+likely to be safe for a while. I've built a memorable passphrase
+made of place names with some numbers interspersed, which is
+probably OK for now.
+
+The requirement for security is probably lower if you live in a low
+density area -- e.g. single occupancy houses with large gardens and
+wide streets. If you live in an apartment block or in a city centre,
+with lots of cars parked nearby, take more care.
+
+<b>Making the Access Point's ESSID visible</b>
+It turns out that some systems find it hard to connect to WPA wireless
+services that don't make the ESSID visible. One of the things I had to
+do was make mine visible. Only after doing that could I find out that
+the wireless card had detected the access point, using this command:
+
+    iwlist scanning
+
+or, specifying my wireless card
+
+    iwlist wlan0 scanning
+
+[Making the ESSID visible was not necessary for Fedora 8 to make the WPA
+connection.]
+
+<b>Making the Wireless card work with WPA on Ubuntu</b>
+Anyhow, eventually, after many detours and wasted hours I found a
+*very* simple solution that works very well, <a href="http://comphobby.org/archives/14-More-Ubuntu-WPA-PSK-From-A-Joe-Sixpack-Perspective.html">on this web page.</a>
+
+My version of the advice found there is as follows.
+
+STEP 1
+    In the file (which <i>could</i> be located elsewhere -- see below):
+
+        /etc/wpa_supplicant/wpa_supplicant.conf
+
+    create something like this:
+
+        ctrl_interface=/var/run/wpa_supplicant
+
+        ap_scan=1
+
+        network={
+             ssid="default"
+             scan_ssid=1
+             key_mgmt=WPA-EAP WPA-PSK IEEE8021X
+             pairwise=CCMP TKIP
+             psk="yourchosenpassphraseinoriginalform"
+        }
+
+    In fact the key_mgmt line could probably be shortened to use
+    just the WPA-PSK option if that's what your access point provides.
+
+    Note: the wpa_supplicant.conf file can have different entries for
+    different networks using WPA, identified using different 'ssid' names.
+
+    E.g. on my laptop running fedora 7 I use one wpa_supplicant.conf
+    file and include entries for my home network and for the campus
+    network.
+        <a href="http://www.cs.bham.ac.uk/~axs/laptop/wpa">http://www.cs.bham.ac.uk/~axs/laptop/wpa</a>
+
+STEP 2
+
+    In the file
+
+        /etc/network/interfaces
+
+    insert something like this (excluding my comments), modified to fit your
+    context. Note that 'iface <name>' starts an entry for an interface.
+    A separate line 'auto <name>' specifies whether the interface should
+    be started up when networking starts. The 'iface' line can end with
+    'static' for fixed address interfaces or 'dhcp' for others.
+
+    ## Part 1 of file:
+    ## I think this bit may be unnecessary
+
+        iface lo inet loopback
+        auto lo
+
+    ## Part 2 of file for wired connection: eth1 in my case
+    ## Something like this tells the system that you have a wired
+    ## connection (eth1 here). In my case I can't use it most of the time,
+    ## so I don't include the line 'auto eth1'.
+    ## If I move the machine closer to my router I can connect a cable and
+    ## use 'ifup eth1' instead of the wireless connection, which is how I got
+    ## started setting the machine up
+
+        iface eth1 inet static
+        address 192.168.1.8
+        netmask 255.255.255.0
+        gateway 192.168.1.1
+    ### (or whatever your addresses are)
+
+    ## Part 3 of file, for wireless connection, using wlan0
+    ## While experimenting I commented out the 'auto wlan0'
+    ## so that I could switch easily between the two interfaces.
+    ## But reinstated it for the final version, as follows:
+
+        auto wlan0
+
+        iface wlan0 inet dhcp
+        wpa-ssid default
+        wpa-ap-scan 1
+        pre-up /sbin/wpa_supplicant -Bw -Dwext -iwlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
+        post-down killall -q wpa_supplicant
+
+
+    ### Note that the 'pre-up' line runs wpa_supplicant using the 'wext'
+    ### driver, and specifies the config file. So you can locate it
+    ### in a different place if you wish.
+
+    ### Note that for a different wireless device you may have to replace
+    ### -Dwext with -D<something else> to fit your driver, and you may have
+    ### to replace -iwlan0 with -i<something else>
+
+    ### End of contents of 'interfaces' file
+
+STEP 3: setup up access point
+
+    I told my Wireless router (DLINK DI-524) the mac address of wlan0 and
+    specified under static dhcp connectoins that it should use the same IP
+    address for this PC as when the machine is connected by wire, so that
+    the rest of the network recognises it as the same machine, whether I use
+    the wire connection or the wireless connection.
+
+STEP 4: TESTING
+
+    Test the system, with 'auto wlan0' commented out, to allow better
+    observation of what's going on. In my case I had temporarily moved
+    the computer so that I could use a cable connection, and was switching
+    between wlan0 and eth1 using ifup and ifdown, until I had everything
+    working.
+
+    If you are not already typing as root, prefix everything with
+    'sudo'. (I prefer to do 'sudo su' then work as root.)
+
+    Turn networking off then on again with this command
+
+        /etc/init.d/networking restart
+
+    Turn on wireless device (needed because 'auto' line removed):
+
+        /sbin/ifup wlan
+
+    You'll get quite a lot of stuff printed out.
+
+    In my case I got this, though some of the detail is there only because I
+    had previously run wpa_supplicant:
+
+    > root@ubuntu:/etc/network# ifup wlan0
+    > ioctl[SIOCSIWAUTH]: Operation not supported
+    > WEXT auth param 4 value 0x0 - ioctl[SIOCSIWAUTH]: Operation not supported
+    > WEXT auth param 5 value 0x1 - ctrl_iface exists and seems to be in use -
+    > cannot override it
+    > Delete '/var/run/wpa_supplicant/wlan0' manually if it is not used anymore
+    > Failed to initialize control interface '/var/run/wpa_supplicant'.
+    > You may have another wpa_supplicant process already running or the file was
+    > left by an unclean termination of wpa_supplicant in which case you will need
+    > to manually remove this file before starting wpa_supplicant again.
+    >
+    > ioctl[SIOCSIWAUTH]: Operation not supported
+    > WEXT auth param 5 value 0x0 - ioctl[SIOCSIWAUTH]: Operation not supported
+    > WEXT auth param 4 value 0x0 - wpa_supplicant: /sbin/wpa_supplicant daemon
+    > failed to start
+    > run-parts: /etc/network/if-pre-up.d/wpasupplicant exited with return code 1
+    > There is already a pid file /var/run/dhclient.wlan0.pid with pid 134519120
+    > Internet Systems Consortium DHCP Client V3.0.5
+    > Copyright 2004-2006 Internet Systems Consortium.
+    > All rights reserved.
+    > For info, please visit http://www.isc.org/sw/dhcp/
+    >
+    > wmaster0: unknown hardware address type 801
+    > wmaster0: unknown hardware address type 801
+    > Listening on LPF/wlan0/00:11:50:13:d9:92
+    > Sending on   LPF/wlan0/00:11:50:13:d9:92
+    > Sending on   Socket/fallback
+    > DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 4
+    > DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 7
+    > DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 10
+    > DHCPOFFER from 192.168.1.1
+    > DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+    > DHCPACK from 192.168.1.1
+    > bound to 192.168.1.8 -- renewal in 476966 seconds.
+    > root@ubuntu:/etc/network#
+
+    I have not been able to get any useful information about the
+    ioctl 'Operation not supported' report. But it does not seem to matter.
+
+    If you don't get the DHCPDISCOVER lines, it may be necessary in another
+    window to type:
+
+        dhclient wlan0
+
+    Anyhow the crucial indication of success is the line
+
+    > bound to 192.168.1.8 -- renewal in 476966 seconds.
+
+    Running wpa_gui shows the state of the connection. If you don't
+    get a connection, you may find it useful to explore what's going on.
+
+    (I think 'apt-get wpa_gui' should fetch and install it: I don't know
+    why it is not included automatically, as wpa_cli is).
+
+STEP 5: finalise configuration
+
+    If everything works, uncomment the line 'auto wlan0', and check that
+    the wireless connection starts up OK when the network starts
+
+        /etc/init.d/networking restart
+
+    That worked for me first time with the above configuration of
+    these two files
+
+        /etc/network/interfaces
+        /etc/wpa_supplicant/wpa_supplicant.conf
+
+    Then to make sure, I tried rebooting, and when Ubuntu came up
+    the wireless connection was working fine. No need to mess around with
+    network manager or other obscure tools.
+
+    Incidentally, I've defined an alias in /root/.bashrc
+
+        alias network='/etc/init.d/networking'
+
+    So I can just type things like
+
+        networking restart
+
+    (or 'stop', 'start').
+
+    I still have not worked out how to configure the firewall, but I guess
+    that's somewhere in the system-->administration menu.
+
+<b>Ubuntu vs Fedora</b>
+This has been a long and very tedious learning experience. I still don't
+know whether I should switch from Fedora to Ubuntu on my main machines.
+
+I have now found out how to make Ubuntu come up in text mode, and to
+show me what it is doing while booting up or shutting down, which I
+much prefer to watching a horizontal line grow:
+
+    Remove 'quiet' and 'splash' from the kernel line after End Default
+    Options in /boot/grub/menu.lst
+
+Also to get a text login prompt rather than a graphical login window
+do this as root, or using 'sudo'
+
+    update-rc.d -f gdm remove
+
+After logging in you can start x manually using 'startx', and
+control what happens using the file ~/.xinitrc if you don't want the
+default window manager. (That's what I also do on Fedora, CentOS,
+etc.)
+
+As far as I can see the main advantage in Ubuntu is that it makes it
+slightly easier to install things that are not part of the core,
+e.g. mplayer. But Fedora has also improved a lot.
+
+Also the Debian 'synaptic' package manager is streets ahead of the
+redhat/fedora 'pup' (at least when I last tried it).
+
+That may be the single thing that persuades me to convert!
+
+However, I have the impression that when I need advice on Fedora
+it is easier to find useful and authorative answers to the
+questions on the web.
+
+Moreover, when I tried hibernate on Ubuntu it did not work, for
+still unknown reasons, whereas I've got hibernate working perfectly
+(and fast) using the 'Hensler' SWSUSP2 kernels with Fedora on my
+laptop and desktop machines.
+
+<a name="wpagui"></a>
+<b>Digression on wpa_gui</b>
+For graphical configuration the wpa_gui tool, which does not come by
+default with ubuntu but can be fetched, seems to be more useful (as I
+had previously found when setting up WPA on Fedora a couple of years
+ago). It works only when wpa_supplicant has started up, but then gives
+lots of useful information, and makes it easy to experiment with
+different configurations. There are some screenshots here:
+
+    <a href="http://hostap.epitest.fi/wpa_supplicant/wpa_gui.html">http://hostap.epitest.fi/wpa_supplicant/wpa_gui.html</a>
+
+The main panel reports progress on the currently selected or default
+connection. It can be used to bring up a scan panel showing available
+networks. Double clicking on one of those brings up an 'edit' panel
+enabling you to edit the configuration. You can also use File-->edit to
+edit the currently selected configuration. You can easily create
+different configurations for the same access point and flip between them
+while finding out what works, etc. I found this more useful when I was
+simply getting WEP to run than WPA.
+
+The main use of wpa_gui in my case was informing me what stage had been
+reached when things were not working.
+END DIGRESSION]
+
+</pre>
+
+<p>
+<hr>
+<small>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+</body>
+</html>

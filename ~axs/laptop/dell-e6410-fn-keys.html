@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Dell E6410 Function Keys</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+
+<h3><b>
+USE OF Fn+KEY TO CONTROL DISPLAY AND BACKLIT KEYBOARD ON DELL Latitude E6410
+<br/>
+<small>
+(This is a supplement to: <a href="http://www.cs.bham.ac.uk/~axs/laptop/">my Linux laptop web
+page</a>.)
+</small>
+</b></h3>
+<b>UPDATES 31 Dec 2014:</b>
+<br/>
+Now running Fedora 20
+<br/>
+3.17.6-200.fc20.x86_64 #1 SMP Mon Dec 8 15:21:05 UTC 2014
+<p>
+
+<br/><b>__________________________________________________________________________________________</b><p>
+
+I am grateful to Matthew Saltzman for sending me information about the effect of
+<br/>
+function keys on back-lighting of the keyboard, the brightness of the screen and
+<br/>
+whether the ambient light sensor is on or not.
+<p>
+The information below is based partly on the information he sent me and my own
+<br/>
+experimentation on linux and windows.
+<br/>
+(Any errors here are my fault. I welcome corrections.)
+<p>
+In what follows 'Fn' refers to the function key next to Ctrl on the left.
+<br/>
+'Fn-Left' refers to the action of:
+<br/>
+&nbsp;&nbsp; holding down the Fn key, then pressing the Left Arrow key
+<br/>
+&nbsp;&nbsp; (on right of keyboard.)
+
+
+<pre>
+<b>REVISED INFORMATION (13 Jul 2010):</b>
+
+    <b>Fn-Left</b>: toggle ambient light sensor On-Off
+
+        INTENDED behaviour (as found in windows 7)
+
+            When On it controls screen brightness
+
+            When Off it lets user determine screen brightness as below.
+
+        ACTUAL behaviour (at least on my machine with Fedora 13 up to Fedora 18):
+
+            When ON the ambient light sensor controls display brightness,
+            and the user can also control brightness, but sometimes the
+            user's setting is overridden by changes in sensed ambient light.
+            This can be very annoying.
+
+        <b>BUG:</b>
+            When OFF the brightness is set at a fixed value.
+            possibly a setting I selected for the bios), and in that state
+            neither the light sensor nor the Up/Down key actions  cause
+            screen brightness to change.
+            THIS IS A SERIOUS BUG (Seems to have been fixed, some time before F18)
+
+    <b>Fn-Down</b>: dim the screen
+
+        Works only when ambient light sensor is ON ? state (toggled by Fn-Left)
+        (See bug above)
+
+    <b>Fn-Up</b>: brighten the screen
+
+        Works only when ambient light sensor is in the On state (toggled by Fn-Left)
+        (See bug above)
+
+    <b>Fn-Right</b>: toggle keyboard backlight setting
+
+        This switches between three states:
+
+        1. Backlighting off (whatever the ambient light level)
+
+        2. Backlighting controlled by ambient light level and whether typing is in progress.
+
+           Backlighting comes on when typing starts, if the ambient light level is low.
+            Backlight goes off after no typing for some interval.
+
+        3. Backlighting stays on (whatever the ambient light level)
+
+        (In Windows 7 it is also possible to set the brightness level for the
+        backlighting. I have not found a way to do this on linux, apart from
+        using the bios.)
+
+<b>OTHER BUTTONS (Mostly Windows only, but see linux below)</b>
+
+    <b>Fn-8</b>: cycle through display devices
+
+        As far as I know this does not work on linux.
+
+        On Linux:
+        Try using the <b>lxrandr</b> tool for much more precise control, including selecting
+        resolution of laptop and external display. (For me it usually works perfectly.)
+
+    <b>Fn-7</b>: launch DCP
+            Dell Control Point (Windows only)
+            May not be installed: included in one of the Dell CDs.
+            If present this is also in the TaskBar tray.
+            Useful for setting brightness levels, keyboard backlighting, and
+            ambient light sensor behaviour (among other things).
+            <small>The Dell manual for users of the 'Dell Control Point' package is <a href="http://support.dell.com/support/edocs/software/dcp/SysMgr.pdf">here (PDF)</a>.</small>
+
+    <b>Fn-F3</b>: display battery state
+
+            Works on windows only
+
+    <b>LINUX</b>
+        <b>Older Linux only</b>
+            For older versions of linux (e.g. before Fedora 18)
+
+            Do
+                cat /proc/acpi/battery/BATT0/state
+
+                or try the gnome power controls.
+
+            Unchanging information about the battery:
+                cat /proc/acpi/battery/BATT0/info
+
+                In GNOME, this pops up a status window?
+
+        <a name="update-battery"></a>
+        <b>Update: 27 Sep 2013</b>
+        <b>Newer Linux</b> (e.g. Fedora 18 with kernel 3.10.12 64 bit)
+
+            The command
+                cat /sys/class/power_supply/BAT0/uevent
+
+            now prints out information in this form:
+
+            <b>With AC adapter plugged in:</b>
+
+                POWER_SUPPLY_NAME=BAT0
+                POWER_SUPPLY_STATUS=Full
+                POWER_SUPPLY_PRESENT=1
+                POWER_SUPPLY_TECHNOLOGY=Li-ion
+                POWER_SUPPLY_CYCLE_COUNT=0
+                POWER_SUPPLY_VOLTAGE_MIN_DESIGN=11250000
+                POWER_SUPPLY_VOLTAGE_NOW=12689000
+                POWER_SUPPLY_CURRENT_NOW=1000
+                POWER_SUPPLY_CHARGE_FULL_DESIGN=8400000
+                POWER_SUPPLY_CHARGE_FULL=7586000
+                POWER_SUPPLY_CHARGE_NOW=8400000
+                POWER_SUPPLY_CAPACITY=110
+                POWER_SUPPLY_MODEL_NAME=DELL C207204
+                POWER_SUPPLY_MANUFACTURER=Samsung SDI
+                POWER_SUPPLY_SERIAL_NUMBER=xxxxxx
+
+            <b>With AC adapter out, and discharging:</b>
+                POWER_SUPPLY_NAME=BAT0
+                POWER_SUPPLY_STATUS=Discharging
+                POWER_SUPPLY_PRESENT=1
+                POWER_SUPPLY_TECHNOLOGY=Li-ion
+                POWER_SUPPLY_CYCLE_COUNT=0
+                POWER_SUPPLY_VOLTAGE_MIN_DESIGN=11250000
+                POWER_SUPPLY_VOLTAGE_NOW=12584000
+                POWER_SUPPLY_CURRENT_NOW=656000
+                POWER_SUPPLY_CHARGE_FULL_DESIGN=8400000
+                POWER_SUPPLY_CHARGE_FULL=7586000
+                POWER_SUPPLY_CHARGE_NOW=7426000
+                POWER_SUPPLY_CAPACITY=97
+                POWER_SUPPLY_MODEL_NAME=DELL C207204
+                POWER_SUPPLY_MANUFACTURER=Samsung SDI
+                POWER_SUPPLY_SERIAL_NUMBER=xxxxxx
+
+  (That information can be read into a program and displayed in some other
+   way as I do in the Ved editor)
+     Fri Sep 27 20:46:01 BST 2013
+     STATE: Discharging  Voltage: 12.54  Current: 678.0 POWER_SUPPLY_CAPACITY=97
+     Manufacturer: Samsung SDI
+     [voltage_now 12.54 charge_now 7.38 charge_full_design 8.4]
+     % Power left: 87.89
+     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@87.89%--------
+     TOTAL 5.71 hours, 7.38 mWh left
+     NOW :-  Fri Sep 27 20:46:01 BST 2013
+
+
+    <b>Fn-F2</b>: toggle battery charging control
+
+        Works on windows only (but can be set in BIOS):
+
+        There are two states that can be controlled in the bios settings. This may
+        give access to those states while windows is running:
+
+            When charging toggle 'Express charge' On or Off
+
+            When AC power is connected, toggle battery charging On or Off
+
+    <b>Fn-F1</b>: Sleep
+        Does not work for me on linux, unless programmed separately, e.g.
+        via window manager settings. (Works in Gnome.)
+
+        <b>Update 27 Sep 2013:</b>
+        works for me on Fedora 18 with kernel: 3.10.12-100.fc18.x86_64
+        Also F20
+<hr/>
+
+If you have more detailed information or corrections, please let me know, if possible
+<br/>
+with links to sources of information.
+
+Thanks
+
+A.Sloman [AT] cs.bham.ac.uk
+</pre>
+<hr/>
+<h3><b>
+OLD ITEMS
+</b></h3>
+<b>UPDATES 27 Sep 2013:</b>
+<br/>
+I am now using Fedora 18, with kernel 3.10.12-100.fc18.x86_64
+<p>
+I've had a message from "maxigas" ( http://research.metatron.sh/ ) saying
+
+<pre>
+    "...just read your page at http://www.cs.bham.ac.uk/~axs/laptop/dell-e6410-fn-keys.html
+    i just got an e6400 xfr, installed debian, and i have similar behaviour, except one:
+    the fn+f1 key works as expected, e.g. puts computer to sleep."
+</pre>
+As a result I tried fn+f1 with F18 on my e6410 and it also suspends
+<br/>
+(as in pm-suspend, not pm-hibernate).
+<br/>
+Moreover, shutting the lid also invokes suspend, which can be a nuisance.
+<br/>
+I expect there's a way to turn that off, possibly in Bios. I'll investigate.
+<br/>
+Also, the information about /proc/acpi/battery below is now out of date.
+<br/>
+In newer kernels a different structure is used. See <a href="#update-battery">battery update</a> below.
+
+<p>
+<b>NOTE ADDED 13 Jul 2010:</b>
+<blockquote>
+On Matthew's suggestion I checked out behaviour in Windows 7 and
+found that I had previously misdescribed the situation.
+<p>
+I now think there is a bug in the linux software handling
+the fn+key combinations on E6410 (and perhaps other machines).
+</blockquote>
+
+<hr/>
+<P>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+This web site was first created in July 2010
+<br>
+Last updated:13 Jul 2010; 27 Sep 2013
+<br>
+</body></html>

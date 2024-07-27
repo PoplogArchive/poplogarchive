@@ -1,0 +1,198 @@
+
+Notes on ontology for perceiver/manipulators as in
+    http://www.cs.bham.ac.uk/research/projects/cosy/PlayMate-start.html
+
+Aaron Sloman
+13 Feb 2005
+
+
+While still working on the draft PlayMate ontology (for things that can
+be seen, thought about, manipulated, on a table-top) I did some
+searching on the web.
+
+In particular we need an ontology that includes 'interesting' parts of
+objects, parts of surfaces, relations between surfaces, etc. Here
+'interesting' means potentially relevant to some possibly useful action.
+
+E.g. it could include dents, grooves or furrows, bumps, creases,
+wrinkles and other protrusions, the boundary of a dent or protrusion
+(rim in the case of dent?), the wall of a furrow, the bottom of a
+furrow, the four 'corner' shapes formed where two furrows cross, or the
+shapes formed where two long thin ridges on a surface cross etc.
+
+Most visible surface fragments potentially relevant for action seem to
+have no names. E.g. as far as I know there is no name for the curved
+surface shape formed where two furrow walls meet (a sort of 3-D curved
+cusp), yet we probably all know about that shape and I probably
+managed to make you imagine it even though I can't name it.
+
+Likewise there are no names for the shapes formed by the two surfaces
+where one flexible tube lies across another --- yet we have all seen
+such shapes in knots, and you have probably used that perception in
+unravelling a knot, e.g. sticking a pointed object or knife-edge or
+finger nail into the curved wedge-like space.
+
+Has anyone seen any attempt at an ontology for such 3-D surface
+sub-structures, apart from the sketchy fragments in the 1978 and 1981
+papers of Barrow and Tenenbaum (not presented as a systematic ontology)?
+
+I expect a mathematician would probably try to describe all these shapes
+using differential equations and other such things but those techniques
+presuppose a level and kind of precision that we can't expect a robot or
+child to have or need: imprecise representations can be much more
+general, and may be quite good enough for actions with continuous
+feedback where there is a visible difference between getting nearer to a
+desired state and not getting nearer to it.
+
+Notice the subtle relation between 'uncertainty' and 'generality': what
+is uncertain relative to a very precise form of representation may be
+certain relative to a more general and imprecise form of represenation.
+
+The approach velocity in cm/sec may be uncertain, while 'getting closer'
+is very certain. Likewise acceleration, deceleration. I suspect that a
+lot of AI mechanisms for handling uncertainty can be replaced by a shift
+to mechanisms for handling less precise (more general) descriptions that
+are certain: if we can find a powerful ontology of such imprecise
+features and relationships.
+
+(Probably control engineers know all about this sort of thing and use it
+in hierarchical control systems: a simple speed governer on a steam
+engine is an old example of a qualitative reasoning mechanism???)
+
+The importance of imprecise qualitative representations seems to be a
+major assumption in a lot of work on qualitative representations, but
+they don't seem to use the ontology we need. The papers on qualitative
+representations by Tony Cohn and his collaborators don't seem to capture
+visible 3-D relationships in a way that could, for instance, help a
+robot think about where to grasp something to pick it up, or where to
+push it to make it rotate, or to prise two things apart, etc.
+
+So far, searching for explicit ontologies, I have only been able to find
+ontologies that either refer to types of whole objects, or parts of
+objects that themselves can be treated as whole objects with names,
+attributes and relationships.
+
+An example is this online ontology for describing bicycles and their
+parts (usling lisp syntax to express logical structures):
+
+    http://www.ksl.stanford.edu/htw/dme/thermal-kb-tour/bike-domain.lisp.html
+
+E.g.
+
+(define-class BICYCLE (?b)
+  :def (and (bike-component ?b)
+        (has-subpart ?b bike.front-wheel)
+            (front-wheel (bike.front-wheel ?b))
+
+        (has-subpart ?b bike.rear-wheel)
+        (rear-wheel (bike.rear-wheel ?b))
+
+        (has-subpart ?b bike.transmission)
+        (transmission (bike.transmission ?b))
+
+etc. etc. followed by things like
+
+(define-class TRANSMISSION (?x)
+  :def (and (bike-component ?x)
+        (has-attribute ?x number-of-speeds)
+        (positive-integer (number-of-speeds ?x))
+
+        (has-subpart ?x transmission.bottom-bracket)
+        (has-subpart ?x transmission.chain)
+        (has-subpart ?x transmission.freewheel)
+        (has-subpart ?x transmission.crankset)
+        (has-subpart ?x transmission.pedals)))
+
+(define-class CRANKSET (?x)
+  "Crankset includes chain rings."
+  :def (and (bike-component ?x)
+        (has-attribute ?x model-id)
+        (has-attribute ?x number-of-rings)))
+
+All that seems typical of what ontologists do nowadays, I think.
+
+(Similar things were in OpenCyc when I last looked.)
+
+I.e. that sort of ontology may be useful for managing a bicycle
+manufacturer's stock room, but not so useful for a robot that looks at
+bicycles, fixes chains that have come loose, oils the bicycle, picks up
+the bicycle to carry it, etc.
+
+
+E.g. as far as I can tell the authors have not tried to say anying about
+the relations that can hold between a chain link and a sprocket on a
+gear wheel, or how the relation changes as the pedals operate.
+
+    (relation sprocket link insertion full)
+    (relation sprocket link insertion decreasing)
+    (relation sprocket link insertion false)
+    (relation sprocket link separation increasing)
+
+Perhaps lots of such descriptions (using a better ontology) could
+be constantly projected into different parts of a spatial map
+of a perceived scene. Instead of 'separation increasing' it might
+have 'separation <vector>' where a vector indicates (imprecisely)
+direction and magnitue of the separation velocity?
+
+When the link is too far from the sprocket for the relation to be
+relevant to the task (e.g. getting the chain onto the gearwheel, or
+checking that it is properly on) the description could just fade away.
+(One of many attention mechanisms.)
+
+Has anyone seen any attempt to devise an ontology more appropriate for a
+robot that sees, manipulates, and understands preceived structure,
+processes and causal relationships, as opposed to just recognizing
+objects and talking about them?
+
+Sometimes dictionary entries contain more information, e.g. indicating
+(too briefly for us) how a process can produce a structure, like this:
+
+http://www.wordreference.com/definition/groove
+groove [grv]
+  A noun
+    1   groove, channel
+        a long narrow furrow cut either by a natural process (such as
+        erosion) or by a tool (as e.g. a groove in a phonograph record)
+        Category Tree:
+            abstraction
+              attribute
+                shape; form
+                  solid
+                    concave_shape; concavity; incurvation; incurvature
+                      depression; impression; imprint
+                        groove, channel
+                          washout
+                          stria; striation
+                          rut
+                          track
+                          rabbet; rebate
+                          quirk
+                          flute; fluting
+                          dado
+
+It would be interesting to know how many kinds of surface features
+a 1 year old, 2 year old, 3 year old child can see and relate
+actions to, and how that competence develops.
+
+Presumably nest-building birds need quite a rich repertoire
+related to various sub-tasks including finding, detaching,
+transporting, inserting, adjusting, repairing, climbing into, etc.
+
+I *hope* we can define a subset of objects and tasks where the ontology
+required will turn out to be managable. If we can hand-code a first
+draft we may be in a better position to understand requirements for the
+robot to learn or extend such an ontology without being programmed
+explicitly, perhaps using the
+
+    play/chunk/explore/recombine/re-use
+
+strategy that we have been discussing, which I have been told is very
+close to what Piaget wrote in 'The Construction of Reality in the Child'
+
+Anyhow, if anyone knows of any work already done that can help with the
+3-D structure/process ontology for PlayMate, please let me know.
+
+I guess I'll have to re-read Piaget... I have found the last chapter of
+his book online:
+
+http://www.marxists.org/reference/subject/philosophy/works/fr/piaget2.htm

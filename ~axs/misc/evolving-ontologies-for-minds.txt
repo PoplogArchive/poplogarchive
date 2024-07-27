@@ -1,0 +1,206 @@
+This is
+    http://www.cs.bham.ac.uk/~axs/misc/evolving-ontologies-for-minds.txt
+
+Article Posted 23 Oct 1999 to comp.ai.philosophy on
+
+    why some animals need an ontology which includes mental states
+    of other animals (beliefs, desires, intentions, emotions, etc.)
+
+I believe this is closely related to JJ Gibson's ideas about
+perception and affordances.
+
+Several related papers can be found here:
+    http://www.cs.bham.ac.uk/research/cogaff/
+
+=======================================================================
+Newsgroups: comp.ai.philosophy
+Message-ID: <7ut8v3$fmo$1@soapbox.cs.bham.ac.uk>
+References: <37E4F3FB.7CE9@paradise.net.nz> <37E78EC8.3B9F@paradise.net.nz> <c7NF3.192$1C.4100@sea-read.news.verio.net> <7tstkj$fm5@edrn.newsguy.com> <ZJqM3.519$7J6.18912@sea-read.news.verio.net> <380267be.735006@news.gte.net> <TOICOOyRoldLpHiA2WIZY6cD1dbj@4ax.com> <7u252v$mji@edrn.newsguy.com>
+NNTP-Posting-Host: gromit.cs.bham.ac.uk
+Date: 23 Oct 1999 21:22:43 GMT
+Organization: School of Computer Science, University of Birmingham, UK
+Subject: Re: Chalmers and reductive explanation (again)
+From: Aaron.Sloman.XX@cs.bham.ac.uk (Aaron Sloman See text for reply address)
+
+[To reply replace "Aaron.Sloman.XX" with "A.Sloman"]
+
+daryl@cogentex.com (Daryl McCullough) writes:
+
+> Date: 13 Oct 1999 07:30:55 -0700
+>
+> Oliver says...
+>
+> >....we do in fact create a set of behaviours which
+> >require the concept of consciousness: we act as though others are aware.
+> >Thus, irrespective of whether they are or not (and whether we are or not)
+> >we have properties as a culture that requires the idea of consciousness to
+> >be evoked. Fine, so the best we can do is label a possible delusion and
+> >work back from this!
+>
+[DMcC]
+> I think that it is important to make a distinction here. When you say
+> that we "act as though others are aware", you could mean two different
+> things.
+>
+> First, you might mean that others can be usefully described
+> n psychological terms ("folk" psychological). We assume that
+> people have beliefs, that they modify their beliefs through
+> experience, that they have desires, and that their actions
+> are influenced by their beliefs and desires.
+>
+> Second, you might mean that others *really* experience
+> sensations, pain, emotions, in the same way that we do.
+>
+> The second interpretation is a philosophical issue
+> that I think has little to do with the way we act towards
+> others. The first interpretation has very little in
+> the way of ontological commitment, it seems to me.
+
+
+I'd like to propose an alternative way of thinking about this, which
+I think is consistent with what I know about Daryl's views in
+general, thought it's not what he has actually written, so perhaps he
+simply hasn't considered this possibility. Or maybe he really will
+disagree.
+
+I'll argue that having and using an ontology in which the environment
+contains other agents with mental as well as physical states and
+processes is a natural and common biological phenomenon, for some types
+of organisms.
+
+In the very simplest organisms behaviours are produced by bundles of
+reactive connections between sensory stimuli and motor signals.
+
+In describing and explaining the behaviour of such an animal we may say
+that it detects the presence of food and moves towards it. But we are
+not implying that the animal has anything like the concept of food,
+edible objects or even eating: it's just useful for us to describe it
+that way. In that sense we say that plants may seek light, moisture,
+etc.
+
+More complex organisms need to analyse and interpret sensory input to
+form some kind of categorisation of things in the environment, since how
+to behave should be determined by what is out there (e.g. an edible
+object, a predator, a shelter, an obstruction) plus the current state
+(e.g. current needs and goals) rather than simply being determined by
+current sensory stimulus patterns.
+
+The relevant associations and principles could in principle all be
+encoded in massive mappings between combinations of vectors of sensory
+data and vectors of output signals.
+
+But it will generally be more economical to learn and re-use
+associations between more abstract, object-centred or
+environment-centred phenomena, which can be explicitly encoded and
+possibly retained as invariant while patterns of sensory stimuli
+change: e.g. while moving round prey.
+
+(Not everyone will find it obvious that something more than stored
+input-output mappings will be needed for some organisms. But I won't
+rehearse the arguments here: anyhow it is an empirical question, not
+something to be be settled by an ideological commitment to a particular
+view of AI or cognitive science.)
+
+The latter more sophisticated type of organism requires the use of some
+sort of ontology of objects, their properties, their relations, their
+possible behaviours, possible actions that can be performed in
+dealing with them, etc.
+
+The ontology is implemented in the collection of possible internal
+"invariants" referred to above. It will also include laws of behaviour
+of those things: e.g. an unsupported object falls, a frightened rabbit
+runs away, etc. How those laws are encoded and used in decision making
+may vary enormously between different species.
+
+In some animals (precocial species) the full ontology that the organism
+needs to survive seems to be genetically determined and is available
+from birth or hatching. Such animals are relatively independent from the
+beginning. E.g. a newly hatched chick can peck for food (unlike a
+newly hatched eagle), a newborn foal can find its way to the udder and
+start sucking within hours, and most insects, many fish, etc. are
+not looked after by parents, but feed themselves, find mates, etc.
+
+In other animals (altricial species) it seems that the appropriate
+ontology has to be built up by interacting with the environment:
+possibly a long and slow process (hunting birds and mammals, animals
+that climb and leap through  trees and need a rich grasp of spatial
+structure and motion).
+
+For the more sophisticated social animals the ontology used in dealing
+with the environment can be quite abstract: i.e it is not simply a
+matter of perceiving and acting in an environment with physical objects
+and physical properties and relations. In addition there are *social*
+relations (e.g. pecking orders, dominance hierarchies) and also mental
+states of others. E.g. thinking about what another animal can see, or
+what it is afraid of, may be helpful in determining how you stalk it if
+you want to catch and eat it.
+
+When we SEE someone else as happy, or sad, or angry, or submissive, we
+are using the ability of our visual system to use an ontology including
+such states. (People can LOOK happy or sad, etc. It's not just that we
+see a curved mouth then reason that he must have such and such a
+mental state.)
+
+From this viewpoint, many animals need to use an ontology in which some
+entities in the environment are edible, some dangerous, some rigid, some
+flexible, etc. (think of JJ Gibson's "affordances").
+
+Other animals have an even richer ontology in which there are other
+"agents", i.e. organisms that can see, have desires, get angry etc.
+
+In other words, for such animals, regarding others as having mental
+states is NOT the result of some sort of philosophical argument, using
+some kind of extrapolation "from myself to others".
+
+Rather having an ontology which includes mental states of others is a
+natural product of biological processes which produce biologically
+competent organisms, and this is no different from having an ontology
+which regards objects in the environment as having various causal
+powers, such as rigidity, danger, graspability, etc.
+
+This use of an ontology of mental states in OTHERS may even precede
+being able to categorise one's OWN mental states and processes and
+recognise their existence. E.g. it may be more important for an
+individual to notice that someone else is easily made angry than to be
+aware that it can also sometimes be angry.
+
+Not all organisms will be like that: there are many trade-offs explored
+by evolution, and very many different solutions to the problem of
+survival and reproductive success. E.g. it seems that social insects,
+such as ants and termites use much shallower ontologies suited to rather
+rigid collections of reactive behaviours. But this could turn out to be
+wrong: it's an empirical question.
+
+If we build robots with human-like capabilities we shall probably have
+to give them, or design into them the ability to develop, appropriate
+ontologies including mental states of others, otherwise they will simply
+be ineffective in an environment containing human beings and other
+intelligent robots.
+
+When such robots have suitably rich ontologies, and know how to apply
+them both in thinking about others and in thinking about themselves, the
+question whether they *really* have mental states will just be a silly
+one.
+
+By the way, I suspect that newborn human babies don't have the sort of
+mentalistic ontology I've described. Instead they are born extremely
+immature and are genetically pre-programmed with reactive behaviours
+(e.g. reactions to human faces) which fool parents into thinking their
+little darlings care about them. This is crucial in triggering the
+appropriate nurturing and protective behaviour in adults which will help
+the infant bootstrap an appropriate ontology while its brain is growing.
+
+It's a delicate process and can go wrong in many ways.
+
+I hope that makes sense.
+
+Some of the ideas are developed further in papers in the Cognition and
+Affect project directory, though there's a lot more work still to be
+done.
+
+Aaron
+--
+Aaron Sloman, ( http://www.cs.bham.ac.uk/~axs/ )
+School of Computer Science, The University of Birmingham, B15 2TT, UK
+EMAIL A.Sloman AT cs.bham.ac.uk   (NB: Anti Spam address)
+PAPERS: http://www.cs.bham.ac.uk/research/cogaff/

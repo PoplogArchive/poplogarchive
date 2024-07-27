@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>THREE WEBCAMS</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="£000080" alink="£0000ff" link="£000080" text="£000000" bgcolor="£ffffff">
+
+<h2><b>
+NOTE: 19 Aug 2006
+</b></h2>
+<blockquote>
+The information below was mostly written in May-June 2005. I have
+recently upgraded my Dell D610 to use Fedora Core 5. What I had to do to
+get the webcam to work is documented
+<a href="../laptop/#fc5-webcam">here</a>.
+</blockquote>
+
+<H2><B>
+EXPERIMENTS WITH THREE WEBCAMS
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+</B></H2>
+
+I have been trying to find a cheap webcam that works with linux, in
+order to be able to do experiments
+on vision (related to our work on
+<a href="http://www.cs.bham.ac.uk/research/projects/cosy/PlayMate-start.html">the CoSy PlayMate scenario</a>) while working at home or travelling.
+<P>
+Our
+robotics teaching lab uses the egg-shaped Philips cameras (PWC) that
+work by default on many linux systems with a very low resolution
+(160x120), and for higher resolution require a driver that is the
+subject of some
+<a href="http://www.smcc.demon.nl/webcam/">controversy</a>.
+<P>
+I could not get the proprietary driver to work on my laptop or desktop
+machine running redhat 9. However after installing Fedora core 3, I
+found that the Philips web cam worked up to the full VGA resolution
+(640x480), provided I used the right tool (spcagui -- see below) to
+interact with it.
+<br>
+See NOTE below about new pwc driver, in the tools section.
+
+<P>
+I also tried two cheap USB webcams available at PCWorld,
+
+<UL>
+<LI>
+The Trust 150 Spacecam Portable
+<br>
+    <a href="http://www.trust.com/products/product.aspx?artnr=13405">http://www.trust.com/products/product.aspx?artnr=13405</a>
+<BR>
+    <a href="http://www.dabs.com/uk/shopbybrand/trust/webcams/ProductView.htm?quicklinx=2FJ9">http://www.dabs.com/uk/shopbybrand/trust/webcams/ProductView.htm?quicklinx=2FJ9</a>
+<BR>
+This cost £14.99 at PCWorld.
+<P>
+This is recognized by software as being a Sonix sn9c10x webcam. I found
+a project to provide a driver for sn9c10x (search for
+sn9c102-1.24.tar.gz) but could not get it to work. However the Trust
+webcam, like the PCline webcam, works with the spca5xx driver -- which
+supports multiple cameras (see below).
+
+<P>
+
+<LI>
+The PCline W310 Webcam (USB VGA Webcam), with built-in microphone.
+<br>
+This is apparently a PCline-branded variant on the
+    Mustek Wcam300a Zc0301
+    <a href="http://www.epcbuyer.com/products.asp?partno=webcam_mustek300a">http://www.epcbuyer.com/products.asp?partno=webcam_mustek300a</a>
+
+which seems to be available from various suppliers.
+<BR>
+It also cost £14.99
+at PCWorld (I may have taken the last one from the selly oak PCworld)
+</UL>
+
+<H2><B>
+Sample pictures
+</B></H2>
+The 'dim light' pictures were taken using only artificial light with a
+ceiling lamp (shown in some of the pictures) and an upward pointing
+standard lamp set well below its maximum level.
+<UL>
+<LI>
+<a href="pcline">Pictures taken by the PCline webcam</a>
+
+<LI>
+<a href="pcline-dim">Pictures taken by the PCline webcam in dim light</a>
+
+<P>
+<LI>
+<a href="trust">Pictures taken by the Trust webcam</a>
+<LI>
+<a href="trust-dim">Pictures taken by the Trust webcam in dim light</a>
+
+<P>
+<LI>
+<a href="pwc">Pictures taken by the Philips webcam</a>
+<LI>
+<a href="pwc-dim">Pictures taken by the Philips webcam in dim light</a>
+<BR>
+It may be hard to believe but the last set of pictures, produced by the
+Philips webcam, was taken in the same location using the same lighting
+as the PCline and Trust pictures in dim light.
+<P>
+<a href="pwc/pwc-fc3-dell-spcagui.jpg">This picture</a> was taken
+using the Philips webcam on my Dell D600 laptop after I upgraded the
+operating system from Redhat 9 to Fedora Core 3, and then added a
+further kernel upgrade to get the latest version of 'Software suspend
+(SWSUSP). I used the latest pwc driver version pwc-10.0.6a, kindly sent
+to me by Ales Stimec. The picture shows the spcagui interface to the
+camera, along with a portion of the current picture being displayed to
+the right of the interface. The picture was taken by clicking on the
+gui. It is also possible to start and stop a movie, and also to
+change the resolution displayed, by clicking on the gui.
+</UL>
+
+For more on movies, see below.
+
+<H2><B>
+Summary evaluation (static pictures)
+</B></H2>
+The Trust webcam is generally not as good as the PCLine webcam in good
+light. The Trust works with the spca5xx driver though only at a lower
+resolution than the PCline webcam. However the Trust takes better
+pictures than the PCline in dim light.
+<P>
+Also in some circumstances which I have not pinned down, but may be
+connected with the brightness of the ambient light, when the pcline
+camera is used in large window (VGA) mode the display sometimes goes
+crazy. When it is used with spcagui, this can be stopped by using the
+contrast slider to reduce the contrast. When it used with spcaview there
+does not seem to be any parameter or interactive control that suppresses
+the problem, unfortunately.
+
+<P>
+The PCline webcam is quite good in good light, but neither the Trust or
+PCline can compete with the Philips Webcam (which also costs more,
+though I don't have a recent price). There are probably newer models
+which supersede and will work with the same pwc driver.
+<P>
+
+<H2><B>
+Tools used
+</B></H2>
+The Philips webcam required the pwc driver that came with Fedora Core 3
+and in a less useful form in Redhat 9.
+<BR>
+<B>NOTE</B> After I upgraded to the 2.6.11 kernel with software suspend
+as described in
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/dell-d600-fc3.html">http://www.cs.bham.ac.uk/~axs/laptop/dell-d600-fc3.html</a>
+I had to use a newer version of the PWC driver, namely
+pwc-10.0.6a, e.g. available here
+<a href="http://grubald.free.fr/linux3114a/raoul/pwc-10.0.6a.tar.bz2.tar">http://grubald.free.fr/linux3114a/raoul/pwc-10.0.6a.tar.bz2.tar</a>
+
+<P>
+For the PCline and Trust webcams I used the spca5xx driver which
+compiled and installed very easily on both my desktop PC running FC 3,
+and my Dell Latitude D600 laptop running RedHat 9 (soon to be upgraded
+to FC3).
+<P>
+The spca5xx driver is available from
+<a href="http://mxhaard.free.fr/apropos.html">Michel Xhaard's</a>
+Open Source web site, on the download page
+<a href="http://mxhaard.free.fr/download.html">http://mxhaard.free.fr/download.html</a>
+
+<P>
+I fetched the spca5xx driver, which I compiled and installed (using just
+two commands 'make' followed by 'make install', the latter as root) on
+both my desktop machine running FC3 and my Dell laptop running redhat 9
+<a href="http://mxhaard.free.fr/spca50x/Download/spca5xx-20050501.tar.gz">http://mxhaard.free.fr/spca50x/Download/spca5xx-20050501.tar.gz</a>
+<BR>
+Michel's programs simply compiled and ran first time. All the
+configuration checking (e.g. whether running on a 2.4 or 2.6 linux
+kernel) was done in the makefiles and the C source code.
+
+<P>
+I was very
+impressed, especially in view of the variety of cameras supported.
+<P>
+I also fetched two more excellent tools, namely spcaview, described in
+<a href="http://mxhaard.free.fr/sview.html">http://mxhaard.free.fr/sview.html</a>
+downloadable from
+<a href="http://mxhaard.free.fr/spca50x/Download/spcaview-20050501.tar.gz">http://mxhaard.free.fr/spca50x/Download/spcaview-20050501.tar.gz</a>
+
+<P>
+and spcagui, downloadable from
+<a href="http://mxhaard.free.fr/spca50x/Download/spcagui20050108.tar.gz">http://mxhaard.free.fr/spca50x/Download/spcagui20050108.tar.gz</a>
+<P>
+NOTE: there are pointers to newer versions of these tools below.
+<P>
+
+The spcagui program provides a control panel with sliders and buttons
+that make it easy to select different display formats (e.g. different
+display resolutions), different output formats (JPG, YUV, and others),
+adjust brightness, contrast and colour, take snapshots in the chosen
+output format, or make .avi movies (which are very large files).
+<P>
+The spcaview program can also be used to display what the camera sees,
+to take snapshots, to take a sequence of snapshots at 1 second intervals
+or greater, to take a sequence output into a single .avi file, or to
+make .avi movies (use -z for compression, since otherwise the files are
+huge).
+
+<P>
+<H2><B>
+MOVIES
+</B></H2>
+The following two commands, used with the Philips webcam, produced
+compressed pseudo-movies using 20 frames at 1 second intervals, where
+the '-z' option causes compression and the '-l' option increases the
+display size to VGA (and therefore also increases the file size)
+
+<UL>
+<LI> spcaview -N 20 -z -g -o pwc-movie1.avi
+<BR>
+produced
+    <a href="pwc-movies/pwc-movie1.avi">pwc-movie1.avi 206742 bytes</a>
+
+<P>
+<LI> spcaview -l -N 20 -z -g -o pwc-movie2.avi
+<BR>
+produced
+    <a href="pwc-movies/pwc-movie2.avi">pwc-movie2.avi 604200 bytes</a>
+</UL>
+
+The '-g' option (grab instead of using mmap) did not seem to make any
+difference that I could detect. (On 2ghz AMD Athlon64 using Fedora Core
+3).
+
+<P>
+Two more 'real' movies (i.e. 'continous recording') were created using
+spcaview and spcagui. The first was compressed by giving spcaview the -z
+flag. The second was recorded using spcagui by clicking on the video
+record icon to start and to stop recording (I don't know if there is a
+compress option) It is about 16 Mbytes in size, so I have compressed it
+using bzip2. Download then uncompress with 'bunzip2 file.bz2'
+
+These movies made by spcagui and spcaview cannot be played using my
+installed versions of xine and mplayer, but they can be played using
+
+<PRE>
+    spcaview -i file.avi
+</PRE>
+
+<P>
+<UL>
+<LI>
+<a href="pwc-movies/pwc-movie3.avi"> pwc-movie3.avi 3321784 bytes (small display)</a>
+
+<LI>
+<a href="pwc-movies/pwc-movie4.avi.bz2">pwc-movie4.avi.bz2 6335533 bytes compressed (large display)</a>
+</UL>
+
+
+<H2><B>
+Also available
+</B></H2>
+These tools, which I have not investigated yet
+<a href="http://mxhaard.free.fr/spca50x/Download/spcatools.tar.gz">http://mxhaard.free.fr/spca50x/Download/spcatools.tar.gz</a>
+<P>
+A list of cameras supported by scpa5xx
+<a href="http://mxhaard.free.fr/spca5xx.html">http://mxhaard.free.fr/spca5xx.html</a>
+
+<H2><B>
+Compatibility with xawtv
+</B></H2>
+The PCline works with spcaview and spcagui, but not with xawtv.
+<P>
+The Trust works with xawtv, provided it is given the right arguments
+<PRE>
+xawtv -nogl -nodga
+</PRE>
+and and also works with spcagui, though you have to select the right
+input mode. It works with spcaview only if given a size argument:
+<PRE>
+    spcaview -s 352x288
+</PRE>
+<P>
+The Philips works with spcaview and spcagui, but not with xawtv.
+<P>
+I know nothing about camera technology, and nothing about image or video
+file formats, so I don't understand any of this. Perhaps I was not
+giving the right arguments in the cases where the cameras did not work.
+<P>
+The documentation for spcagui is very sparse. Even the '-h' flag gives
+very little information, though this is compensated for by the almost
+self-explanatory GUI controls.
+<P>
+On the other hand 'spcaview -h' gives quite a lot of information.
+<P>
+<HR>
+<H2><B>
+NOTE
+</B></H2>
+At the time of writing (22 May 2005) there are new (test?) versions of
+spca5xx, spcagui and spcaview in
+<a href="http://mxhaard.free.fr/spca50x/Doc/allinone/">http://mxhaard.free.fr/spca50x/Doc/allinone/</a>
+<BR>
+I have fetched them and they all seem fine.
+<P>
+
+<HR>
+Last updated: 19 Aug 2006
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+</body></html>

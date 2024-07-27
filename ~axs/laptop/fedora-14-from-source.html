@@ -1,0 +1,135 @@
+<html>
+<body>
+<h3><b>
+Notes on building a 2.6.36 kernel for Fedora 14
+<br/>
+<small>
+This is a supplement to the file on using my Dell Latitude E6410 with Fedora:
+<a href="laptop-linux">here.</a>
+</small>
+</b></h3>
+I had previously installed F14, and had tried a 2.6.35 kernel (with
+and without tuxonice) and could not get the graphic card to work
+properly -- symptoms described below, e.g. booting with blank screen
+unless I used nomodeset and the 'vesa' graphic driver in xorg.conf.
+<p>
+So
+I downloaded the 2.6.36 kernel source (linux-2.6.36.tar.bz2)
+<br/>
+You may wish to use a newer one from
+<a href="http://www.kernel.org/pub/linux/kernel/v2.6/">http://www.kernel.org/pub/linux/kernel/v2.6/</a>
+<p>
+Untar the file (e.g. tar xjvf linux-2.6.36.tar.bz2)
+<br/>
+Get rid of the architectures you don't want, by putting this in a
+bash script file and running it (I forget where I found it):
+
+<pre>
+  #!/bin/bash
+
+  ## get rid of all but x86 architecture (alter for your system):
+  ARCHDIRS="alpha blackfin h8300 m68knommu mn10300 s390 arm \
+  cris m32r microblaze parisc sh avr32 frv ia64 m68k mips \
+  powerpc sparc xtensa score"
+
+  echo -n "deleting"
+  for DIR in $ARCHDIRS; do
+      echo -n " $DIR"
+      rm -rf arch/$DIR
+  done
+
+  echo " Documentation"
+  rm -rf Documentation
+
+  echo ""
+  echo "creating Documentation Kbuild"
+  mkdir -p Documentation/DocBook
+  touch Documentation/Kbuild Documentation/DocBook/Kbuild
+</pre>
+
+Fetch my config file from here
+ <a href="config-2.6.36-f14-new">config-2.6.36-f14-new</a>
+<p>
+then create your own .config file in the kernel directory:
+
+<pre>
+    cp config-2.6.36-f14-new .config
+</pre>
+
+Edit it to alter this line, which defines the kernel suffix, if you wish:
+<pre>
+    CONFIG_LOCALVERSION="f14-new"
+</pre>
+
+Then do this (which can take a long time and compile far more
+modules than you need!)
+<pre>
+    make oldconfig
+    ## alternatively 'make menuconfig' or 'make xconfig'
+    ## as explained in the README file.
+    make
+    make modules_install
+    make install
+</pre>
+This should create a new vmlinuz and other files in /boot (using the
+suffix you provided in the .config file).
+<p>
+It wll also edit the /boot/grub/grub.conf (or menu.lst) file.
+<p>
+Check that file very carefully to make sure you know what it does.
+<br>
+If it contains a 'hiddenmenu' command, remove it so that you always
+see the boot options.
+<br/>
+(The default in fedora is to hide the boot menu which is UTTERLY
+stupid, especially for newcomers who wish to have fedora and a
+previous installation of windows available.)
+<p>
+The 'default' line in grub.conf or menu.lst specifies which kernel
+to boot into by default. E.g. 'default 0' means use the first one in
+the list.
+<p>
+You might wish to make sure that the default is one that you know
+works, until you have tried the new kernel to make sure it is
+usable.
+<p>
+At the end of the kernel line starting:
+<pre>
+    kernel /vmlinuz-2.6.36f14-new
+</pre>
+
+I added these options, though I don't know if the last one is
+necessary:
+<pre>
+    KEYTABLE=uk i915.modeset=1 video=card0-HDMI
+</pre>
+
+I also removed this file in the previously created /etc/X11
+directory:
+<pre>
+    /etc/X11/xorg.conf
+</pre>
+This system now seems to work fine using my preferred mode of
+operation, namely booting into a text console, then using 'startx'
+to go into graphic mode.
+<p>
+I can attach a monitor and run 'xrandr', but for some reason
+'lxrandr' has stopped working in this configuration.
+<p>
+So to make the system detect and use an external display I use this
+command:
+<pre>
+    xrandr --auto
+</pre>
+This kernel also allows me to use the SDHC card reader built into
+the E5410, which I could not do with Fedora 13, using the
+configuration described below.
+<p>
+This kernel does not include tuxonice (software suspend 2) but the
+'pm-hibernate' command seems to work ok, though the display while
+suspending and resuming is not as nice as tuxonice. When a tuxonice
+kernel 2.6.37 or later for Fedora 14 becomes available, I'll
+try that.
+
+</body>
+</html>

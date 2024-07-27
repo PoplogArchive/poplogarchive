@@ -1,0 +1,76 @@
+<html>
+<body>
+This is part of
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">Aaron Sloman's linux laptop web site</a>
+<p>
+<h3><b>
+Using Huawei E173 mobile broadband USB stick on linux.
+<br/>
+<small>
+(T-mobile 615 Mobile Broadband dongle.)
+</small>
+</b></h3>
+
+<a href="http://www.maths.qmul.ac.uk/~mm/">Malcolm MacCallum</a> wrote,
+regarding Huawei E173 (slightly edited for this web page):
+
+<blockquote>
+The advice in
+<a href="http://frontlinesms.ning.com/forum/topics/ubuntu-linux-driver-for-huawei">
+ubuntu-linux-driver-for-huawei.htm</a> proved very useful.
+<p>
+The steps did not exactly mirror the advice but on unzipping Linux.zip
+there
+is a readme which tells you to run the .install. After that simply
+plugging in the device invokes Movistar which, except it's in Spanish,
+looks rather like the interface one gets in XP).
+
+<p>
+1. Download the Huawei E173 driver for linux available here:
+<a href="http://frontlinesms.ning.com/forum/attachment/download?id=2052630%3AUploadedFile%3A51370">http://frontlinesms.ning.com/forum/attachment/download?id=2052630%3AUploadedFile%3A51370</a>
+<p>
+2. Unzip the linux.zip file in a convenient location, for instance on
+the desktop. Upon decompressing you'll have a new folder: ~/Desktop/Linux/
+<p>
+3. Right click on each individual file in the folder ~/Desktop/Linux/,
+chose >> Proprieties >> Permissions - read and write all + check on
+"Allow executing as a program"
+<p>
+4. Open a terminal window (e.g. CTRL+ALT+t) and write in command line:
+<pre>
+    cd ~/Desktop/Linux/
+</pre>
+then
+<pre>
+    sudo ./install
+</pre>
+and press Enter on all questions.
+<p>
+The Huawei E173 driver will install (the default installation path is in
+/usr/local/) together with a specific connection program called
+Moviestar 3.5G/Mobile Partner (program which we will ignore.
+If it pops up, you can close it with absolutely no problem).
+<p>
+5 - From this step on everything is simple and related to the
+installation of 3G broadband modems in general - the standard tutorial.
+<p>
+5.a - stick the modem in an usb port.
+<p>
+5.b. -
+<a href="http://www.youtube.com/watch?v=8WtX4LK0pDE">This video</a> (in
+Spanish) provides a demonstration.
+<p>
+5.c. - A new Device is found in Network Manager Applet. Click on it and
+choose connect.
+</blockquote>
+<hr/>
+<small>
+Installed: 24 Feb 2012
+<br/>
+Supplied as-is by <a href="http://www.cs.bham.ac.uk/~axs">Aaron
+Sloman</a> in case it is useful to anyone. (I don't use NetworkManager.)
+<br/>
+Corrections or updates welcome.
+</small>
+</body>
+</html>

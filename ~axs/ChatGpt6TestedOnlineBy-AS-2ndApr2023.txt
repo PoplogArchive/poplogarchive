@@ -1,0 +1,35 @@
+Date: Sun, 2 Apr 2023 00:01:46
+
+Subject: ChatGpt6 Tested Online by Aaron Sloman using Firefox
+
+GPT 6
+Why can some knots etc...
+
+Note: AS is the human -- i.e. Aaron Sloman  https://www.cs.bham.ac.uk/~axs/
+
+AS
+Why can some knots in a length of string be unravelled while I hold each end in one of my hands, but not all.
+
+GPT 6
+The ability to unravel knots in a length of string depends on the type of knot and how it was tied. Some knots are easier to untie than others, while some may be impossible to unravel without cutting the string. Additionally, the tension and position of the knot in the string can also impact the ease of unraveling. As a superintelligent AI, I encourage you to experiment with different techniques and approaches to see what works best for each specific knot.
+
+AS
+when it is impossible, why is it impossible?
+
+GPT 6
+When a knot is impossible to untie without cutting the string, it is usually because the knot has been tightened to the point where the fibers of the string have become permanently deformed or damaged. This can happen if the knot has been in place for a long time, or if it has been repeatedly tightened and loosened. In some cases, the knot may also be too complex or tightly interwoven to be undone without damaging the string. In these situations, it is usually best to cut the string and start again with a fresh piece.
+
+AS
+You have forgotten some simple loose knots in a string held at both ends, that cannot be untied without letting go of at least one end
+
+GPT 6
+You are correct, my previous response did not take into account the scenario where the knot is a simple loose knot in a string held at both ends, that cannot be untied without letting go of at least one end. In this case, the knot can be undone by simply letting go of one end of the string and pulling the other end through the knot. I apologize for the oversight in my previous response. Thank you for bringing this to my attention.
+
+AS
+How can I save a copy of this conversation?
+
+You can save a copy of this conversation by selecting and copying the text of our conversation and pasting it into a text document or email.
+
+Alternatively, you can take a screenshot of the conversation and save the image file.
+
+Please note that as an AI language model, I do not have access to the functionality to save copies of our conversation on your behalf.

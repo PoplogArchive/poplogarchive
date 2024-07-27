@@ -1,0 +1,139 @@
+This file is
+    http://www.cs.bham.ac.uk/~axs/misc/interview.emotions.sept.99.txt
+Aaron Sloman
+27 Sep 1999
+
+I was asked the following questions by an interviewer preparing an
+interview for the Japanese Open University. The actual interview was a
+few weeks later. The questions and answers may be of some interest.
+The following published interview in the EACE quarterly is related
+
+http://www.cs.bham.ac.uk/research/cogaff/Sloman.eace-interview.html
+
+=======================================================================
+
+From Aaron Sloman Sun Sep  5 17:12:41 BST 1999
+
+I've been very busy, so I've produced some very rushed
+first-draft answers to your questions (typed in about 25 minutes):
+
+> In what respects, do you think researches in emotion reveal
+> important/interesting aspects of the human mind.
+
+It's hard to give a short answer to this: I have been writing about it
+since about 1981 and the issues are very complex. However here is one
+facet of the answer:
+
+There are many disputes among philosophers, psychologists, social
+scientists, and others regarding what emotions are, and large numbers of
+different incompatible definitions have been proposed. I believe that
+this confusion can be explained and removed by investigating the kind of
+information processing architecture required to explain how human minds
+work and the studying the kinds of states and processes which can be
+generated in such an architecture.
+
+We may then find that there are large numbers of interesting but
+*different* sorts of states which have been called "emotions" by people
+with different interests. So none of them are right and none of them are
+wrong in their definitions: they are merely referring to different
+phenomena.
+
+As a result of such investigations (taking account of work in
+philosophy, psychology, brain science, evolution, and AI) I have claimed
+that there are at least three importantly different sorts of emotions,
+which in my papers have been referred to as primary, secondary and
+tertiary emotions.
+
+The first two correspond roughly to what Damasio called primary and
+secondary emotions. The tertiary emotions depend on an evolutionarily
+new architectural layer and are of greatest interest to poets,
+novelists, social scientists and ordinary people in their social
+interactions.
+
+This process of generating architecture-based concepts to refine and
+extend our pre-theoretical concepts is similar to what happened in
+physics as more became known about the architecture of matter. However
+there's only one architecture for matter, whereas different organisms,
+newborn babies, people with genetic brain malfunctions, may have
+different information processing architectures. So different
+architecture-based collections of mental concepts will be applicable to
+them.
+
+Researches in emotion do not *in themselves* necessarily reveal very
+important/interesting aspects of the human mind, because so much
+research is confused and shallow. However if research on emotions is
+combined with research on a wide range of aspects of mind, and related
+to attempts to design explanatory architectures, we can hope to acquire
+a far deeper understanding of what we are, how we evolved, how we
+differ from other animals, how individual humans can vary, and how
+things can go wrong.
+
+This answer is elaborated a little in my LMPS99 abstract on architecture
+based concepts of mind:
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.lmps99.pdf
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.lmps99.ps
+
+>
+> How do you evaluate the role of computation in emotion research.
+
+Much of it is very shallow: people tend to label some trivial kind of
+behaviour "emotional" and design a system to produce that behaviour. It
+may be entertaining and useful in a specific context, but it does not
+teach us anything deep.
+
+However, that is a passing fashion, and may be an unavoidable part of
+the learning process in the AI and computational cognitive science
+community. As more and more people attempt to understand the deeper
+issues, the computational models will become more sophisticated, and by
+relating them to research in psychology, brain science, philosophy,
+ethology, etc., we can hope to gain important new insights.
+
+Actually building working computational models is an essential part of
+the process of learning how our ideas are ill-specified or do not work
+as expected.
+
+> Do you think implementing a "feeling machine" is as valuable as a "thinking
+> machine" ?
+
+Valuable for whom?
+
+A philosopher trying to understand what minds are? A psychologist
+testing out a theory about some aspect of mind? An engineer trying to
+build a useful plant-control system, or trying to build an intelligent
+mathematics tutor? An entertainment company building new computer games?
+
+For many purposes it is of no value to include spurious and shallow
+processes labelled "emotions". For entertainment purposes, or elementary
+AI programming classes it may have some use.
+
+There is now a wide-spread belief, based on a fallacious argument by
+Damasio, that emotions are required for intelligence. I have refuted
+this argument in papers in our FTP site, but I expect many people will
+go on believing it because they like the idea, and will therefore build
+spurious "feelings" or "emotions" into their software.
+
+Or they will build interesting and useful control mechanisms and
+spuriously label them "emotion" mechanisms.
+
+A different question is whether intelligent systems interacting with
+humans will need to have some knowledge of human emotions. Indeed
+they will, in some contexts  -- as I've argued in a paper in 1992
+    http://www.cs.bham.ac.uk/research/cogaff/Aaron.Sloman_Prolegomena.ps
+    http://www.cs.bham.ac.uk/research/cogaff/Aaron.Sloman_Prolegomena.pdf
+
+Moreover, if we understand how it came about that mechanisms evolved in
+humans and other animals that produce states that we call emotions, then
+we may come to see that such side effects are to be expected in many
+intelligent systems, e.g. because of mechanisms required to overcome
+resource limits.
+
+So if emotions are likely to occur whether we design them in or not, we
+should try to understand how they occur and what the implications are.
+This was the gist of my 1981 IJCAI paper with Monica Croucher "Why
+robots will have emotions":
+    http://www.cs.bham.ac.uk/research/cogaff/Aaron.Sloman_why_robot_emotions.ps
+    http://www.cs.bham.ac.uk/research/cogaff/Aaron.Sloman_why_robot_emotions.pdf
+
+I hope that helps.
+
+Aaron

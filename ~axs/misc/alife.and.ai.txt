@@ -1,0 +1,687 @@
+                              AI AND ALIFE
+       NOTES IN RESPONSE TO A JOURNALIST'S REQUEST FOR AN OVERVIEW
+
+                              Aaron Sloman
+                       School of Computer Science
+                      The University of Birmingham
+                      http://www.cs.bham.ac.uk/~axs
+
+DRAFT: Comments Welcome
+Last updated:
+10 Aug 1998
+    Added more about needs and niche space and further
+    cross-references
+
+20 Dec 1997
+    (Added more on trajectories in niche space and
+    refs at end to McCarthy & Minsky)
+
+This is one of many half(or less)-baked papers and discussion notes in
+    http://www.cs.bham.ac.uk/~axs/misc/
+
+CONTENTS
+
+ -- WHAT IS ALIFE?
+ -- -- AI and Alife abstract away  from details
+ -- -- AI and Alife subsume each other
+ -- -- . Alife subsumes AI
+ -- -- . AI subsumes Alife
+ -- -- Silly disputes
+ -- TRAJECTORIES IN DESIGN SPACE AND NICHE SPACE
+ -- -- Design space
+ -- -- Niche space: explicit and implicit niches
+ -- -- Changing niches
+ -- -- . Niches changed by the individual
+ -- -- . Niches defined by the needs of others
+ -- -- . Niches changed extraneously
+ -- -- . Self-induced niche changes
+ -- -- Niches for artificial and social systems
+ -- -- Individual trajectories in design space
+ -- -- Population trajectories in design space
+ -- -- "Repair" trajectories
+ -- NATURAL, ARTIFICIAL OR BOTH
+ -- -- Modularity aids intelligibility
+ -- IS IT REAL LIFE, REAL INTELLIGENCE, REAL CONSCIOUSNESS?
+ -- See also:
+
+-- WHAT IS ALIFE?
+
+Alife and AI each can be seen as a superset of the other. I shall
+explain why.
+
+AI explores mechanisms and architectures for systems able to perform
+many sorts of tasks, including tasks previously performed only by people
+and animals. These include perception, learning, planning, problem
+solving, language understanding and generation, game playing, artistic
+creativity, and many more.
+
+AI investigates the general principles required to explain and model
+both how people and animals work and also possible designs for new types
+of systems. So the field includes the study of principles relevant to
+organisms which have not yet evolved but might evolve in principle and
+machines (both hardware and software) which might be developed in the
+future.
+
+This includes the study of natural and artificial mechanisms that modify
+themselves, through learning, adaptation and development of various
+sorts.
+
+Alife extends these studies by exploring ways in which POPULATIONS of
+systems with reproductive capabilities can modify themselves. This
+includes investigating the dynamics of coexisting, competing and
+collaborating populations, and the processes by which successive
+generations develop.
+
+-- -- AI and Alife abstract away  from details
+
+In both AI and Alife, the study of general principles involves
+abstracting away from various details, for instance:
+
+  o Both ignore the differences between naturally occurring and
+    artificially developed systems (e.g. even something without a
+    designer can be thought of as a design which could be thought up by
+    different possible designers.)
+
+  o Both ignore the differences between different sorts of underlying
+    mechanisms (e.g. organic matter vs wires and transistors)
+
+  o Both ignore the differences between materially embodied systems and
+    those that exist only as "virtual" or "abstract" machines in
+    software systems. (Not all researchers ignore this difference: there
+    are some whose focus of interest is only in embodied mechanisms, but
+    that is simply one type of focus.)
+
+  o Both ignore the differences between systems that have been directly
+    designed and implemented and those that have somehow produced their
+    own capabilities by evolving or adapting or learning: if the end
+    result is the same we can investigate its properties without
+    bothering about differences in origins.
+
+(Note that in this context "virtual" does not contrast with "real" --
+virtual machines in computers, e.g. word processors, are real and
+perform really useful tasks, including causing physical events to occur
+such as displaying and printing formatted pages of text and images.)
+
+
+-- -- AI and Alife subsume each other
+
+-- -- . Alife subsumes AI
+Alife subsumes AI insofar as the processes studied in Alife include the
+evolution of various kinds of more or less intelligent systems. So far,
+despite much hyperbole in the Alife camp, only extremely simple systems
+have been evolved, generally very much simpler than the more
+sophisticated systems designed by people working in AI.
+
+However it is to be expected that Alife researchers will go on and study
+the evolution of far more complex systems. This will require enormous
+amounts of computer power if, for instance, thousands of millions of
+years of evolution of multiple coexisting species need to be simulated.
+
+-- -- . AI subsumes Alife
+
+AI subsumes Alife insofar as AI researchers are beginning to explore
+ways of including evolutionary mechanisms within a single problem
+solving system (e.g. a package that uses genetic algorithms to produce a
+design for a circuit).
+
+It seems that something like evolutionary mechanisms are used by our
+immune system, which is a kind of problem solving system. So perhaps
+other aspects of the development of intelligence in individuals can use
+evolutionary mechanisms.
+
+-- -- Silly disputes
+
+This mutual subsumption means that AI and Alife are essentially studying
+the same thing, but people in the two research communities have
+different viewpoints, different centres of attention.
+
+Many of them are unaware of how their work fits into this broad picture,
+so they waste time on silly disputes and pronouncements. E.g. it is not
+uncommon for Alife researchers to pronounce AI to be doomed to failure.
+This silliness can in part be attributed to blinkered vision, and in
+part to the pressures of competition for increasingly scarce research
+funds.
+
+Even though each of AI and Alife subsumes the other, the differences in
+emphasis, and in level of description are real enough. For instance,
+they tend to explore different sorts of trajectories in design space and
+niche space, which I'll now explain.
+
+Within each field there are also silly disputes, e.g. within AI there
+are silly disputes concerning:
+
+    o the use of logical vs non-logical forms of representation,
+
+    o the use of connectionist vs symbolic mechanisms
+
+    o top-down vs bottom-up or middle out approaches,
+
+    o the use of simplied "toy" worlds vs more complex "realistic"
+      problems
+
+    o the development of explicitly designed systems vs development
+      of self-modifying systems
+
+It is sometimes not clearly understood that alternative, complementary
+approaches are needed if we are to gain a deep understanding of
+complementary phenomena.
+
+As the field of Alife develops it will probably also generate a rich
+collection of silly internal disputes, including for instance disputes
+regarding whether evolutionary mechanisms can produce complex systems
+with modular, intelligible designs, or only unstructured messy
+solutions to problems.
+
+(For more on silly disputes see Minsky's article listed at the end.)
+
+I turn now to some of the deep features common to both AI and Alife.
+
+
+-- TRAJECTORIES IN DESIGN SPACE AND NICHE SPACE
+
+Many people study systems that learn, adapt, develop, or evolve across
+generations. I see all of these as part of a larger study of possible
+"trajectories" in design space and niche space. I'll explain briefly
+what these spaces are.
+
+-- -- Design space
+
+"Design space" refers to the class of possible mechanisms and
+architectures that can in principle exist, including:
+
+  o *naturally* occurring biological systems, such as plants, many kinds
+    of animals, ecosystems
+
+  o *artificially* created, explicitly designed systems such as
+    computers, robots, word processors, the internet, office management
+    software, social organisations, the united nations, etc.
+
+Design space includes all possible future systems that have not yet
+evolved and not yet been thought of by anybody, just as the principles
+of geometry apply to all possible shapes including those that have never
+been instantiated in physical objects. (That's the main reason why the
+general notion of a design does not require designs to have designers,
+just as mathematical facts and concepts do not require mathematicians:
+many such facts and concepts have not yet been discovered by any
+mathematicians, and perhaps some of them never will be. Likewise some
+classes of designs.)
+
+In studying *general* principles, we can ignore irrelevant differences
+between systems that were explicitly designed by a conscious designer,
+systems produced by evolution, and systems that occur by chance.
+
+Two identical systems produced in different ways have the same
+properties as far as their inclusion in design space is concerned, even
+though people may, for instance, have sentimental attachments to, or
+copyright claims on, one and not the other.
+
+-- -- Niche space: explicit and implicit niches
+
+"Niche space" is a more subtle and complex notion derived both from the
+biologist's conception of the niche into which a plant or animal fits
+and from the engineer's conception of a set of requirements specifying
+what a design is for.
+
+Two sorts of insects in the same place can have very different niches
+(in the sense used by biologists). So a nich is not a geographical
+location but something more abstract: namely what an engineer might call
+a collection of requirements and constraints. E.g. for one insect the
+niche might involve a requirement be able to locate sources of nectar in
+certain plants, while for another it involve a requirement to be able to
+catch and eat smaller insects. One may require the ability to fly, and
+the other the ability to crawl or climb.
+
+The niches considered by engineers are explicitly described and can be
+used to guide and evaluate designs. By contrast, the niches that occur
+naturally are implicit in the evolutionary pressures that operate on
+evolving species, and generally depend on a combination of:
+
+    o the physical properties of the environment
+    o the properties and behaviour of other species that exist in
+        that environment
+    o each organism's own needs.
+
+-- -- Changing niches
+
+Previously we noted that designs embodied in animals or machines can
+change over time, through evolution, or individual development and
+learning. Similarly the niches instantiated in a geographical location
+can change over time, in different ways.
+
+-- -- . Niches changed by the individual
+
+For an individual organism the niche can change significantly during its
+lifetime. For instance if initially it is fed and cared for by adults
+and later has to fend for itself, its niche, that is the requirements
+that its design must meet, will change. Likewise if an organism has
+different needs at different stages in its development, e.g. requiring
+different kinds of food or shelter at different times, or if it passes
+through one or more phases when it has a drive to mate, or to achieve
+supremacy in a group, then its niche changes accordingly.
+
+So some aspects of the niche depend primarily on external opportunities,
+dangers, and constraints, while others depend on the organism's needs,
+which may develop as the organism's design changes, through innately
+programmed development or learning.
+
+(How to define the notion of "an organism's need" is a tricky
+philosophical question. Some of the needs may be more realistically
+attributed to the gene pool propagated through the organism than to the
+organism itself. Some needs make sense only in the context of prior
+commitment to design solutions for other needs: e.g. you need a liver
+because you already have other design features, not because a liver is
+an absolute requirement for any successful organism with your
+capabilities. Likewise you may need other things in part because you
+have a liver. Needs are justified by circular networks of mutual
+support.)
+
+
+-- -- . Niches defined by the needs of others
+
+In some cases, if the organism is used by something else we can consider
+the needs of the USER as also forming part of a niche against which the
+organism (and more abstractly the design which it shares with other
+similar organisms) can be evaluated.
+
+For example the needs of a farming community or their customers form
+part of the niche of cattle and crops, and have played a role in their
+evolution, through selective breeding.
+
+Most artificially evolved machines and software systems at present do
+not have needs of their own: their niche is defined entirely by
+requirements of users. However, in future we can expect increasingly
+autonomous agents to develop.
+
+(Some social systems seem to have outlasted the needs they were
+originally set up to serve, and have developed to serve their own needs,
+not the needs of any of their members.)
+
+-- -- . Niches changed extraneously
+
+Changes in climate, number and type of predators and parasites, amount
+and type of available food, availability of locations for nests or
+burrows, etc. can all change the requirements on an organism for both
+individual survival and successful reproduction.
+
+Thus some changes in niches of organisms arise simply from contingent
+changes in the environment which may have nothing specific to do with
+those organisms: e.g. they are not produced by users of the organisms.
+
+However, some of the changes in the niche of a class of organisms C may
+be produced by reactions of other organisms which prey on or are preyed
+on by, or are otherwise affected by members of C. I.e. the design of C
+partially determines the niche of another class of organisms C', which
+may change to fit that niche better, thereby changing the niche of C,
+causing C to change. Such causal changes linking designs and niches may
+include both positive and negative feedback loops.
+
+-- -- . Self-induced niche changes
+
+Some intelligent organisms (and some unintelligent ones) may change
+their environments in ways that affect their niches. E.g. walking
+through a jungle leaving footprints may make it easier for you to find
+your way home if you develop the ability to recognize your footprints.
+
+Building shelters for use in very cold weather or developing the ability
+to make clothing will alter the requirements for skin covering grown by
+an animal.
+
+Not all self-induced niche changes are beneficial: over-grazing may
+seriously reduce a food source for instance. More complex and indirect
+irreversible effects can also occur, e.g erosion of soil from
+over-grazing.
+
+Human self-induced niche changes are the most obvious and spectacular
+but there are many examples of different kinds, including an enormous
+variety of nest-building capabilities in insects, birds, mammals and
+other animals.
+
+-- -- Niches for artificial and social systems
+
+All the remarks about interactions between organisms and their niches
+are equally applicable to artificially produced hardware and software
+machines, social and political systems, ecosystems, etc.
+
+In other words, a larger structure with a design and a niche may be made
+up of smaller systems with their own designs and niches.
+
+Thus all the above developments in niches and designs may occur
+simultaneously at different levels within a single complex system.
+
+-- -- Individual trajectories in design space
+
+Because a niche can change during an individual's lifetime many
+organisms and artificial systems have designs which allow them to
+develop new capabilities, thereby changing their "location" in design
+space. Thus there are both naturally occurring and and artificially
+produced trajectories in design space.
+
+In biological organisms we have barely begun to understand the variety
+of forms of self modification, through many forms of growth, learning,
+adaptation, and cultural influences.
+
+Examples are the development of a newly hatched chick into a fully
+grown hen, a human infant into an adult, a novice musician to a concert
+performer, a bright teenager into an expert mathematician, and the
+learning of languages or sporting skills.
+
+(Should we include the development of an egg into a chick? There is no
+sharp boundary between the process of production of a new individual
+from the genetic material provided by parents and the process of
+development of the individual with changing needs. There are also cases
+where the niche doesn't change, only the degree of fit: as in the
+continuing growth of a tree over many years.)
+
+Thus there is a class of trajectories that an individual can follow
+through design space, with corresponding trajectories in niche space.
+Call these i-trajectories.
+
+Increasingly, nowadays, there are also artefacts that adapt or learn,
+e.g. adaptive plant control systems, information networks that adapt
+their routing decisions as loads change, data-mining systems that
+develop new forms of classification, interfaces that adapt to users, and
+self tuning software for operating systems.
+
+Techniques for doing this in AI include the use of inductive learning,
+automatic debugging, neural nets, and various forms of evolutionary
+computation. These are all important long term research topics in AI.
+
+-- -- Population trajectories in design space
+
+But not all trajectories in design space are possible for an individual.
+An egg that is capable of developing into a chicken or an egg that is
+capable of developing into a dinosaur may be incapable of developing
+into an eagle or a giraffe, no matter how much the environment is
+altered to pressurise it in that direction.
+
+If instead of focusing on individuals we consider POPULATIONS of
+individuals with reproductive capabilities then we find a much broader
+class of possible trajectories. Biological evolution provides many
+examples of trajectories followed by a population across several
+generations which cannot be traversed by individuals. Populations rush
+in where individuals cannot tread.
+
+We can use "e-trajectories" to refer to trajectories that require
+evolution of a population. (An e-trajectory will generally be a little
+like a "smeared" trail in design space compared with an i-trajectory.)
+
+The study of these population trajectories is what Alife is primarily
+about. It attempts to explore all possible mechanisms by which
+populations can change themselves in response to environmental
+pressures.
+
+This requires a notion of what makes one individual better than another.
+In Darwinian evolution this is simply reproductive fitness, which can be
+achieved in different ways by different sorts of organisms.
+
+This can be generalised to include all sorts of fitness measures,
+for instance fitness in solving a particular engineering goal, or
+winning competitions at agricultural shows or dog shows, using the
+simple expedient of letting a researcher or farmer or dog breeder decide
+which individuals in each generation are allowed to produce offspring.
+In other words, reproductive fitness may be externally manipulated to
+guide the evolutionary process. This is why Alife is relevant to
+engineering as well as to the study of naturally occurring and
+theoretically interesting examples of evolution.
+
+-- -- "Repair" trajectories
+
+Some kinds of changes in an individual's design are not possible for an
+individual nor for an evolving population, but are possible if some
+external agent intervenes, e.g. by "repairing" a faulty machine or
+software system, or organism (perhaps using surgery, or chemical
+treatment). For want of a better label let's call the class of
+trajectories which are not i-trajectories or e-trajectories but can be
+produced by external intervention "r-trajectories".
+
+-- NATURAL, ARTIFICIAL OR BOTH
+
+In both AI and Alife researchers can either restrict themselves to
+studying and modelling the naturally occurring mechanisms and processes,
+or, as suggested by the use of the word "artificial", they they can
+restrict themselves to the study of artificial systems including complex
+electronic circuits, software systems, more or less autonomous robots,
+etc.
+
+Better still, they can be really broad minded and attempt a
+general study, looking for principles that cover both natural and
+artificial systems, just as general principles of aerodynamics are
+equally relevant to the design of flying insects, birds and aeroplanes.
+
+Sometimes the study of artificial systems may give us clues as to
+features of the naturally occurring system that we had not previously
+noticed. E.g. my colleague Riccardo Poli works on forms of evolutionary
+computing that do not use simple linear structures or tree structures to
+represent a genetic specification but rather networks of genetic
+material. These can sometimes be far more efficient at solving
+particular problems than the simpler bit strings used in genetic
+algorithms. Perhaps one day we'll find that natural evolution also uses
+"higher level" structures as genetic building blocks, for the same
+reasons as engineers do, i.e. to constrain and speed up the search for
+good solutions. This is a particular example of the general
+investigation of classes of evolutionary mechanisms to find out which
+are most efficient at solving problems.
+
+One of the problems in studying very complex systems which have evolved
+over thousands of millions of years is whether human minds are capable
+of understanding that degree of complexity. Some have argued that we
+cannot hope to. I find this an unconvincing form of defeatism, possibly
+based in part on a desire to divert resources from those who want to
+investigate explicit design techniques.
+
+How might it be possible for human minds to understand very complex
+systems produced by evolutionary processes without a designer, including
+for instance human brains?
+
+An interesting conjecture is that in order to overcome problems of
+searching through combinations too numerous even to be explored in
+evolutionary time, the evolutionary system has been forced to use design
+principles which are to some extent modular and structured. If so, the
+results could turn out to be more intelligible than a huge mish-mash
+of tiny components which just happen to work together to produce an
+effect.
+
+Thus it is hoped that even if we cannot understand all the fine details
+of the structure of any particular brain, or any particular evolutionary
+trajectory, there may be large scale developments, at a higher level of
+abstraction, that we can understand, and explain, and perhaps one day
+model in artificial systems.
+
+-- -- Modularity aids intelligibility
+
+An example might be the development of different architectural layers in
+human-like intelligent systems, corresponding to recent ideas emerging
+from work in AI and brain science, namely the notion that human like
+intelligence depends on at least three different coexisting sub-systems
+namely
+
+  o An evolutionarily old reactive system, to be found in many
+    animals (including some forms in insects)
+
+  o A more recently evolved deliberative system capable of creating
+    internal plans and other complex objects and comparing them and
+    selecting them in advance of executing them.
+
+  o A still more recent and rare ability to turn deliberative mechanisms
+    inwards and base them on information about internal states and
+    processes, including intermediate perceptual processes
+    (corresponding to the notion of qualia).
+
+We can use AI techniques to explore the design principles for such
+multi-layered systems (as we are doing at Birmingham), and we can
+explore the consequences of those layers, e.g. showing how the three
+layers generate three different sorts of emotional states, and also how
+illusory philosophical problems of consciousness will arise for any
+system that has the third layer.
+
+And we can use Alife techniques to investigate how the layers might
+evolve (since it is unlikely that fossil records will ever give
+sufficient information about the evolution of brain structures and
+information processing functionality).
+
+Perhaps by considering what is evolvable we can refine our attempts to
+understand what has evolved, and by considering what has evolved we can
+refine our attempts to understand the mechanisms and principles of
+evolution. I find this synthesis more exciting and challenging than
+either the defeatist view that it is all too difficult or the exclusive
+view that everything has to be done in a particular way, e.g. either
+using explicit design or letting systems design themselves.
+
+-- IS IT REAL LIFE, REAL INTELLIGENCE, REAL CONSCIOUSNESS?
+
+Some people would object to the attempt, in both AI and Alife, to ignore
+the differences between the natural and the artificial, or between
+physically embodied systems and systems simulated entirely in software.
+
+They would claim that the attempt to find common general principles
+linking the natural and the artificial is misguided, because the
+artificially produced or evolved will not be the REAL thing, or perhaps
+the software-only versions will not be the REAL thing.
+
+It won't be REAL life, REAL intelligence, REAL perception, REAL
+planning, REAL consciousness.
+
+Likewise, some claim that a system inhabiting only a virtual machine
+environment implemented in software cannot be an example of REAL life,
+REAL intelligence, REAL perception, REAL consciousness, etc.
+
+The problem with this sort of objection is that it is based on
+dichotomous thinking. The assumption is that we have concepts like
+"alive", "conscious" "intelligent" which divide things up into two
+classes, those which the concept applies to and those which it doesn't
+apply to. So the assumption is that everything either is alive or it
+isn't.
+
+This is obviously silly with concepts like "house". A house is something
+that has a collection of features that make it a useful enclosure for
+its occupants. But there's no well defined subset of those features that
+form a minimal requirement for something to be a house, so that
+everything that has those features is a house, and everything else
+isn't. Rather, "house" is a cluster concept. It corresponds to a cluster
+of features which in various combinations can make something a house,
+but with no well defined boundary between the cases that are houses and
+those that are not, even if there are clear examples of both.
+
+Maybe under some conditions you'd regard a rectangular sheet of metal
+supported by four poles as a house, maybe not. Maybe under some
+conditions you would call Buckingham palace a house, maybe not. But
+arguing about over whether something is a REAL house if it doesn't have
+any walls, or any doors, or if it is as big and complex as a palace, is
+just silly.
+
+The important thing is not to draw boundaries, but to understand that
+there is a large variety of cases with different combinations of
+features. We can study the implications of the presence or absence of
+various features, without worrying whether they make something a REAL
+house or not. We could, if we wish, give them different names, coined
+for the purpose of making new distinctions that we have found useful,
+e.g. "wallfree-house", "palatial-house", etc.
+
+The same goes for concepts like "alive", "conscious", etc. These are
+also cluster concepts, which refer in a partially indeterminate way to
+collections of features which can be present or absent in different
+combinations.
+
+Some subsets (e.g. the features found in a chicken, or a giraffe)
+definitely make something alive and other subsets (e.g. the features of
+a rock) definitely don't. But there are many combinations which we have
+never previously encountered, and therefore our language has not needed
+to take decisions about whether they do or do not suffice for being
+alive.
+
+Some of those combinations are found in artificial systems. In
+particular, over many years AI researchers have been examining ways of
+implementing artificial systems with combinations of various kinds of
+abilities, including visual perception, auditory perception, tactile
+perception, motor control, learning, planning, remembering, discovering
+new concepts, solving mathematical problems, painting pictures,
+composing poems and stories, communicating with other natural or
+artificial systems, acquiring new goals or interests, emotional
+capabilities, and many more.
+
+Arguing over whether such systems, whether they are tangible robot like
+entities, or software agents in virtual reality environments, REALLY are
+alive or not, REALLY have mental states or not, is a complete waste of
+time, for there can be no answer.
+
+But we can explore the implications of having different combinations of
+features and, for some combinations that recur often and are of
+interest, we can coin new unambiguous names: alive1, alive2, alive3,
+conscious1, conscious2, conscious3, etc., just as, when we discovered
+that a chemical element such as carbon could have two isotopes we did
+not need to waste time arguing over which is REALLY carbon. Instead we
+call one carbon12 and the other carbon14 (or whatever), and then study
+their similarities and differences.
+
+So instead of arguing over whether the entities studied in Alife, or in
+AI, are alive or conscious or intelligent, or worrying about where to
+draw the boundaries between those which REALLY are and those which are
+not, we can simply note that different more refined versions of our old
+indefinite concepts can be defined, with different boundaries.
+
+Then we can explore the implications of each case, e.g. which
+regions of niche space it can fit, what the implications of its design
+are. And we can go on to explore more global processes in which such
+systems interact with one another and either individuallym or in groups,
+or across many generations, follow intricate trajectories in design
+space and niche space.
+
+This replaces fruitless philosophical (or theological) debates with
+productive investigation. Let's get on with the job. There's lots to do.
+
+=======================================================================
+
+-- See also: ----------------------------------------------------------
+
+John McCarthy
+    What is Artificial Intelligence?
+    http://www-formal.stanford.edu/jmc/whatisai/whatisai.html
+    McCarthy shares the view of AI as science, not just engineering,
+    but has a more sharply focused range of interests, with an emphasis
+    on the use of logic. However, that can be seen as a component of
+    the research programme sketched above, not something in opposition
+    to it.
+    See also his main web page: http://www-formal.stanford.edu/jmc/
+
+Marvin Minsky
+    "Logical vs. Analogical or Symbolic vs. Connectionist or Neat vs.
+    Scruffy", in Artificial Intelligence at MIT., Expanding
+    Frontiers, Patrick H. Winston (Ed.), Vol 1, MIT Press, 1990.
+    Reprinted in AI Magazine, 1991
+    ftp://ftp.ai.mit.edu/pub/minsky/SymbolicVs.Connectionist.txt
+
+    This is one of many papers by Minsky emphasising the need to combine
+    different approaches to the study of mind. See his web page for
+    further pointers:
+        http://www.ai.mit.edu/~minsky/
+
+I have a loosely relevant, half-baked, still growing paper on the
+evolution of consciousness located in the Cognition and Affect project
+directory
+
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect
+
+The paper is in postscript and compresssed postscript format in two
+files:
+        Sloman.consciousness.evolution.ps
+        Sloman.consciousness.evolution.ps.gz
+
+Related mostly DRAFT discussion papers attempt to explain the
+connections between the philosopher's concept of "supervenience" and the
+engineer's concept of "implementation", and other issues mentioned
+above:
+
+ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman_iberamia.ps
+    The ``Semantics'' of Evolution: Trajectories and Trade-offs in
+    Design Space and Niche Space.
+
+ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.supervenience.and.implementation.ps
+    Supervenience and Implementation: Virtual and Physical Machines
+
+ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.design.and.niche.spaces.ps
+    Design Spaces, Niche Spaces and the ``Hard'' Problem
+
+http://www.cs.bham.ac.uk/~axs/misc/aiforschools.html
+    An introduction to AI for school leavers and careers advisers.
+
+[end]

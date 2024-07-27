@@ -1,0 +1,521 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Hibernate on Linux (Fedora)</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<p>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+<H2><B>
+Getting hibernate (pm-hibernate) to work on linux (Fedora
+16 and Fedora 17)
+<br/>
+<small>
+Aaron Sloman
+<br/>
+<a href="http://www.cs.bham.ac.uk/~axs">http://www.cs.bham.ac.uk/~axs</a>
+<p>
+This is part of my linux-laptop web site:
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">http://www.cs.bham.ac.uk/~axs/laptop</a>
+</small>
+</B></H2>
+<hr/>
+<hr/>
+<h3><b>
+NEWS
+</b></h3>
+<a name="update"></a>
+<h3><b>
+Update 10 Dec 2014:
+Everything works on my laptop using Fedora 20 (F20, FC20)
+<br/>
+I should have updated this file some time ago. Hibernate and suspend have been
+working fine for months. I use pm-hibernate and pm-suspend. I stopped using
+tuxonice months ago, as I could not get it to work, and it did not seem to have
+any advantages apart from a slightly prettier display during hibernate and thaw.
+<p>
+I also use hibernate and suspend without problems on my Desktop PC running
+Fedora 19 (F19).
+</b></h3>
+<hr/>
+<h3><b>
+Update 20 Oct 2012:
+Improved solution using Tuxonice with Fedora 17 (FC17) on Laptop
+</b></h3>
+Thanks to help from Matthias Hensler
+(<a href="http://mhensler.de/swsusp/download_en.php">http://mhensler.de/swsusp/download_en.php</a>)
+I now have a much better solution on my Dell Latitude E6410 than the
+one described in the <a href="#workaround">workaround below</a>.
+<p>
+The new method uses the latest
+Fedora 17 (FC17) Tuxonice kernel, with the hibernate-tuxonice and
+dracut-tuxonice utilities, all downloadable from:
+<a href="http://mhensler.de/swsusp/download_en.php">http://mhensler.de/swsusp/download_en.php</a>
+and available in his yum repository:
+<br/>
+<a href="http://mhensler.de/swsusp/repository_en.php">http://mhensler.de/swsusp/repository_en.php</a>
+<p>
+However, it requires editing /etc/hibernate/tuxonice.conf to set
+<pre>
+    UseTuxOnIce "no"
+</pre>
+and thereafter hibernating with the 'hibernate' command, not
+'pm-hibernate'. The edit in tuxonice.conf only needs to be done
+once, after installing hibernate-tuxonice.
+<p>
+Exactly why that is required to allow resume/thaw after hibernate
+always to succeed remains a mystery to be investigated.
+<p>
+The great advantage of this method, compared with the best
+alternative described below, is that it does not require a copy of
+grub.cfg to be edited after each kernel upgrade, and it does not
+require hibernate to be run with a special script that temporarily
+replaces grub.cfg, and restores the old value after resume.
+<p>
+It also does not require the boot flag 'maxcpus=1' for resume, which
+could presumably affect speed.
+<p>
+See also <a href="https://bugzilla.redhat.com/show_bug.cgi?id=862475">https://bugzilla.redhat.com/show_bug.cgi?id=862475</a>
+comment 47.
+<hr/>
+<a name="20121014"></a>
+<h3><b>
+Update 14 Oct 2012:
+Fedora 16 (FC16) on Desktop, Fedora 17 (FC17) on Laptop
+</b></h3>
+<ul>
+<li>
+Using Fedora version 16 on Viglen Genie Desktop PC with Intel Core i5
+<br/>
+<b>Kernel</b> 3.3.7-1.fc16.i686 #1 SMP Tue May 22 14:14:30 UTC 2012
+<br/>
+pm-hibernate (to swap partition) and resume working perfectly provided
+that for resume I alter grub.cfg to include maxcpus=1, as described
+<a href="#workaround">below.</a>
+<br/>
+No reboot on PC needed
+since 8th June. Over 150 hibernate/resume cycles since last reboot.
+<br/>
+I could have used this stable solution on the laptop but instead have
+been trying different F17 kernels to see if I can help track down
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=862475">
+the resume bug.</a>
+<p>
+<li>
+Using Fedora version 17 on Dell Latitude E6410 laptop with Intel Core i5
+<br/>
+<b>Kernel</b> 3.6.1-1.fc17.i686 (October 2012)
+<br/>
+pm-hibernate (to swap partition) and resume working perfectly provided
+that for resume I alter grub.cfg to include maxcpus=1.
+<br/>
+Experiments to find out exactly why maxcpus=1 helps by temporarily
+adding debug print commands to the kernel are reported from comment #22
+(thanks to much help from Bojan Smojver):
+<br/>
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=862475">https://bugzilla.redhat.com/show_bug.cgi?id=862475</a>
+<br/>
+Upshot so far: resume from hibernate sometimes succeeds and sometimes
+fails, after successfully decompressing the saved image from swap
+partition. My tests ruled out a possible bug in multi-threaded
+decompression.
+<p>
+So the problem is still a mystery, but a totally reliable
+work-around seems to be use of boot parameter 'maxcpus=1' in grub.cfg
+before resuming. At present this requires two versions of grub.cfg, one
+for full reboot, and one for resume. Only the latter has the extra boot
+parameter included. (There should be a way to make it unnecessary to use
+different grub.cfg files for booting and resuming.)
+<p>
+A usable but messy way to automate this is described in
+<a href="#workaround">the work around section</a>
+below.
+</ul>
+<hr/>
+<a name="contents"></a>
+<h3><b>
+CONTENTS
+</b></h3>
+<ul>
+<li>
+<a href="#update">
+Latest update: Fedora 16 (FC16) on Desktop, Fedora 17 (FC17) on Laptop
+(above)
+</a>
+<li>
+<a href="#introduction">
+Introduction: Suspend and Hibernate
+</a>
+<li>
+<a href="#problems">
+Two problems
+</a>
+<li>
+<a href="#workaround">
+A work-around I can live with till the bug is fixed
+</a>
+</ul>
+<hr/>
+<a name="introduction"></a>
+<h3><b>
+Introduction: Suspend and Hibernate
+</b></h3>
+Linux provides two ways of saving the process state on a computer and
+then restoring it later on, with the computer powered down (mostly) in
+the intervening period:
+<ul>
+<li>
+suspend (state saved in RAM)
+<li>
+hibernate (state saved on hard drive).
+</ul>
+<p>
+I shall describe command-line utilities since those are what I use. Your
+system may give you menu options to activate suspend or hibernate. In
+order to use my method described below you will need either to use the
+command line or change one of your menus to invoke the commands
+described here.
+<p>
+The two options for saving the state are:
+
+<ul>
+<li>
+<b>Suspend (to RAM):</b> The current state of the machine is frozen in
+memory but everything else is turned off, so that the amount of power
+required is very small. In this mode, a laptop might take several days
+to drain its battery instead of taking several hours as might be the
+case with the machine running normally.
+<p>
+The command 'pm-suspend' is the default command for initiating a suspend
+(to RAM) process . Whether this works for you on linux can depend on the
+hardware you are using as explained in
+<a href="http://www.brighthub.com/environment/green-computing/articles/9738.aspx">http://www.brighthub.com/environment/green-computing/articles/9738.aspx</a>
+<p>
+I shall say no more about use of pm-suspend as I use only the
+next alternative: suspend to hard drive.
+<p>
+<li>
+<b>Suspend to hard drive (often called Hibernate):</b>
+The current state of the machine is saved on a hard drive, usually in
+the swap area. Then the machine powers down completely, so that the
+state can be saved without using any power for
+weeks or months.
+<p>
+The default command for achieving this is 'pm-hibernate'. However, if
+you install tuxonice on your machine, as described in
+<a href="http://tuxonice.net/">http://tuxonice.net/</a>,
+the command is replaced by 'hibernate'. I used tuxonice for several
+years on a succession of Dell laptops but after I acquired a Dell
+Latitude E6410 in June 2010, with integrated intel graphics I started
+having difficulties concerned with the Video module i915 (and its
+predecessor), required for use with the intel graphics card.
+<p>
+Later I switched to pm-hibernate which I eventually got to work as
+described below. Many users have reported problems with i915 and either
+(pm-)hibernate or suspend. The solution I have found now seems to work
+very reliably for me. I am describing it here in the hope that others
+may find this useful. It is not ideal, but it does seem to be reliable.
+<p>
+As explained above, on the laptop I have also tried running without this
+workaround on an experimental kernel, to try to locate the bug.
+<p>
+</ul>
+<a name="problems"></a>
+<h3><b>
+Two problems
+</b></h3>
+For a while there were two problems with attempts to use pm-hibernate on
+machines with Intel integrated graphics and the i915 graphical module.
+<ul>
+<li>
+<b>Problem 1 - hibernating sometimes freezing (now fixed):</b>
+<br/>
+For several months during 2011 and the early part of 2012 the hibernate
+process had a serious bug that intermittently prevented the hibernation
+process from completing: Instead the machine would start to hibernate,
+and then go into a frozen state and a forced reboot was then necessary
+(holding down the power button for a few seconds).
+<p>
+<b>
+The hibernate failing problem was
+fixed, at least for users of Fedora 16, by the end of March 2012, in
+kernel 3.3. See
+<br/>
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=785384">https://bugzilla.redhat.com/show_bug.cgi?id=785384</a>
+</b>
+<p>
+Since then hibernation has been very reliable and very fast on my 4-core
+Intel core-i5 cpu, on both laptop and desktop PC.
+<br/>
+The process takes advantage of multiple CPUs to do
+the compression of the image being written to the hard drive in several
+parallel streams. I have not encountered hibernate freezing since the
+end of March 2012.
+<p>
+However, the other problem, resume failing, remains.
+<p>
+<a name="restart"></a>
+<b>23 Jul 2012 Warning about dual-boot installations:</b>
+<br/>
+if you switch between linux and windows, don't use 're-start' or
+'re-boot' in windows to return to linux as that stops hibernate
+working. Instead shut down completely from windows, then power up, then
+select linux.
+<br/>
+<b>Update 14 Oct 2012:</b> This turned out to be a side effect of using
+'acpi=off' in grub.cfg to allow resume from pm-hibernate. I have not
+checked whether that problem remains since switching to use of
+'maxcpus=1' instead.
+<p>
+<li>
+<b>Problem 2 - resuming sometimes causes rebooting (temporary workaround
+available):</b>
+<br/>
+Many linux users (and some Windows users!) have
+reported that the resume process does not complete after
+hibernate (suspend to hard drive). See, for example:
+<br/>
+<small>
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=806315">https://bugzilla.redhat.com/show_bug.cgi?id=806315</a>
+<br/>
+<a href="http://forums.opensuse.org/english/get-technical-help-here/laptop/466301-failing-resume-hibernation.html">http://forums.opensuse.org/english/get-technical-help-here/laptop/466301-failing-resume-hibernation.html</a>
+<br/>
+<a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/878592">https://bugs.launchpad.net/ubuntu/+source/linux/+bug/878592</a>
+<br/>
+<a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=654181">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=654181</a>
+<br/>
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=788433">https://bugzilla.redhat.com/show_bug.cgi?id=788433</a>
+</small>
+<p>
+In my case the process gets very close to completion, but just as the
+display should switch to the mode it was in before hibernating occurred,
+the machine crashes and initiates a reboot.
+<p>
+This does not happen every time. When I try using pm-hibernate several
+times in succession, resume may or may not complete successfully.
+<p>
+The rest of this file describes a workaround.
+</ul>
+<a name="workaround"></a>
+<h3><b>
+A work-around I can live with till the bug is fixed
+</b></h3>
+Searching for reports from fellow-sufferers I found several tips for
+coping with hibernate problems, none of which helped except the
+suggestion to add 'acpi=off' to the boot flags in the grub.cfg file.
+Doing that allowed hibernate and resume to work, but it was not an
+acceptable solution since too many things did not work, including screen
+brightness adjustment.
+<br/>
+I later found that the problems were
+reduced by using 'maxcpus=1' instead. But including that in grub.cfg
+for normal boot was too restrictive as it prevented use of all four
+cpus.
+<p>
+So I tried inserting two menu entries in the grub.cfg file, identical
+except that one had maxcpus=1 and one did not. I used the one without for
+booting the machine, but after hibernating I used the menu entry with
+maxcpus=1 (which I set as the default grub menu option, since I very
+rarely reboot).
+<p>
+That works very reliably both on my Viglen Genie desktop PC running
+Fedora 16, with intel integrated graphics and my Dell Latitude E6410,
+also with intel integrated graphics. Both machines use the i915 module
+(required for intel graphics) which some people suspect is the cause of
+the problems.
+<p>
+This solution required me to remember to edit the grub.cfg file after a
+kernel update, making a copy of the new entry without the special flag,
+to be used for booting and one with the special flag, for resuming from
+hibernate. Doing the hibernates by hand was error-prone (and a mistake
+could produce an unbootable machine requiring rescue by using a Live-CD,
+to fix the edit). Also, the kernel update process (on Fedora) uses a
+program called 'grubby' which copies the kernel settings from the
+running kernel for the new kernel, which meant that by default I had
+maxcpus=1 set for the new kernel. So if I forgot to edit the grub.cfg
+file before rebooting after an update I booted in an unsatisfactory
+mode.
+<p>
+My messy but working solution is to create two simple shell scripts
+called
+<ul>
+<li>
+'edit-grub'
+(to create a copy of grub.cfg suitable for use when resuming)
+and
+<li>
+'do-hibernate' (to save grub.cfg and replace it with the
+edited version, just before calling pm-hibernate).
+<br/>
+Invoke this instead of 'pm-hibernate' to use the mechanism.
+</ul>
+Both are available here:
+<a href="edit-grub">edit-grub</a> and
+<a href="do-hibernate">do-hibernate</a>
+
+<ul>
+<li>
+<a href="edit-grub"><b>edit-grub</b></a>
+<small>
+<pre>
+#!/bin/bash
+
+## edit-grub
+## Aaron Sloman http://www.cs.bham.ac.uk/~axs
+## 31 May 2012
+## This is used after a new kernel is installed. It makes a copy of
+## grub.cfg called grub.cfg-resume which it edits so as to insert 'maxcpus=1'
+## as a boot flag in the kernel line.
+##
+## It also alters the menu heading to show RESUME so that after
+## hibernate when the machine is next booted there is a reminder that
+## hibernate, not shut-down, was used.
+##
+## This program uses 'ed'. It would probably be better to use 'sed',
+## but I am unfamiliar with it, and can't be bothered to learn just now.
+
+## go to directory containing grub.cfg
+cd /boot/grub2
+
+## save the old version of grub.cfg-resume
+mv grub.cfg-resume grub.cg-resume-bak
+
+## make a copy of the latest grub.cfg, called grub.cfg-resume
+## and edit it as described above.
+cp grub.cfg grub.cfg-resume
+
+ed grub.cfg-resume <<  \\\\
+1p
+/menuentry/p
+s/i686)/i686)RESUME/p
+/vmlinuz/p
+s/$/ maxcpus=1/p
+w
+q
+\\
+</pre>
+</small>
+<p>
+<li>
+<a href="do-hibernate"><b>do-hibernate</b></a>
+<small>
+<pre>
+#!/bin/bash
+## do-hibernate
+##
+## Aaron Sloman http://www.cs.bham.ac.uk/~axs
+## 31 May 2012
+##
+## This is used to hibernate after saving grub.cfg and copying
+## grub.cfg-resume to grub.cfg, so that when resuming after hibernate
+## the flag 'maxcpus=1' will be used, inserted into grub.cfg-resume by
+## the edit-grub script
+##
+## After successful resume, the saved version of grub.cfg is restored
+##
+## The use of killall plugin-container is not essential, but I noticed
+## that with firefox running the size of plugin-container could grow very large
+## and it seemed unnecessary to include that in the hibernate image, since it
+## is automatically restarted on demand.
+
+cd /boot/grub2
+
+if  [ -f grub.cfg-resume ]; then
+
+    echo "killall plugin-container"
+    killall plugin-container
+
+    ## Make sure windows partitions are unmounted
+
+    ## If you sometimes mount windows partitions on the hard drive in
+    ## linux it's a good idea to unmount them all before hibernating,
+    ## in case you do something in windows inconsistent with the information
+    ## saved in linux.
+    ## This is an example -- edit or remove, as needed:
+
+    ##echo "unmounting /win7c"
+    umount /win7c
+
+    echo "Ready to hibernate"
+    echo "Saving grub.cfg"
+    mv grub.cfg grub.cfg-saved
+    echo "Set up grub.cfg-resume as grub.cfg"
+    cp -p grub.cfg-resume grub.cfg
+    sleep 2
+    /usr/sbin/pm-hibernate
+    echo "Restore grub.cfg-saved"
+    mv grub.cfg-saved grub.cfg
+
+else
+
+    echo "Cannot find grub.cfg-resume"
+
+    exit
+
+fi
+</pre>
+</small>
+</ul>
+So all I have to do now is remember to run 'edit-grub' after a kernel
+update, and before I first attempt to hibernate. Then instead of using
+the 'pm-hibernate' command I invoke 'do-hibernate'.
+<p>
+A minor risk is that if the resume ever does not complete I shall have
+the wrong version of grub.cfg and will have to restore grub.cfg-saved
+manually. If I forget to do that the next boot will present me with the
+'RESUME' option showing, and I can edit the grub command from the boot
+menu to remove the maxcpus=1 portion. Then after booting I can restore
+the grub.cfg-saved file. However, since resume now works very reliably I
+don't expect to have that problem.
+<p>
+I have been using this solution now since early May 2012. I was
+offered the option of editing scripts used by grub2 but that was
+unacceptably obscure and messy.
+<p>
+Ideally the kernel code invoked by pm-hibernate should be changed so
+that during the resume process, if it detects that the i915 module is
+being used, it should turn off acpi before the last stage of resuming.
+Then when the saved image is restored the state will have acpi on again
+as it was when the last pm-hibernate command was given.
+<P>
+<b>REMINDER:</b> see the warning about re-starting/re-booting from
+inside windows <a href="#restart">above</a>.
+<p>
+<b>NOTE added 15 Jun 2012 -- revised 14 Oct 2012:</b>
+<br/>
+I noticed that when I resume with the acpi=off or the maxcpus=1 switch
+set in grub.cfg (which always resumes perfectly) it reports using only 1
+thread for decompression (though it still goes very fast). If I resume
+without that setting then it reports using 3 threads for decompression.
+<p>
+In both cases pm-hibernate uses 3 threads for compression.
+<p>
+So I wondered whether the crash+reboot on resume could be connected with
+use of 3 threads for
+decompression. With help from Bojan Smojver I managed to rule out
+a decompression bug as cause of the resume failure. Details in this
+bugreport (between comments 22 and 28):
+<br/>
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=862475">https://bugzilla.redhat.com/show_bug.cgi?id=862475</a>
+<hr>
+<P>
+<b>Installed:</b> 29 May 2012
+<br>
+<b>Last updated:</b> 31 May 2012; 15 Jun 2012; 23 Jul 2012; 14 Oct
+2012; 20 Oct 2012
+<hr/>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+</body></html>

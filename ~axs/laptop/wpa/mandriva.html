@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<HTML>
+<HEAD>
+<TITLE>
+UoBWlan using Mandriva
+</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+<br/>
+<b>NOTE</b>
+<br>
+<small>
+This file is part of Aaron Sloman's linux on a Dell Laptop site
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">here</a>
+<br>
+which includes more detailed information on using wpa_supplicant <a href="wpa.html">here</a>.
+<br>
+Please see <a href="wpa.html#disclaimer">the disclaimer.</a>
+<p>
+The contents of this file, apart from this header, were provided by
+<a href="http://www.cs.bham.ac.uk/~tmw/">Tim Williams</a> on 12 Jul 2007
+</small>
+<p>
+<hr/>
+<p>
+<h2><b>
+Using Bham Campus Wireless Network with Mandriva
+<br>
++ Workaround for
+atheros/madwifi driver bug
+<br>
+<small>
+(Information provided by <a href="http://www.cs.bham.ac.uk/~tmw/">Tim Williams</a>)
+</small>
+</b></h2>
+
+<h3><b>
+Problems connecting to the campus network
+<br>
+Using instructions in
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/wpa/">http://www.cs.bham.ac.uk/~axs/laptop/wpa/</a>
+
+</b></h3>
+<p>
+<b>Symptoms before the cure</b>
+
+<blockquote>
+I've been watching the output of wpa_gui.
+It appears to manage to connect
+and then immediately drop the connection again after a few seconds:
+<p>
+
+I keep getting 'Disconnect events'. As far as I can tell I never get
+an IP address. However if I leave the username/password out of the
+config it never asks me for them, so I suspect it's not getting this
+far.
+<p>
+According to /var/log/messages dhcp requests are being made.
+<p>
+If I try to start up wpa_supplicant manually (my system usually starts it
+automatically for any interface configured to use WPA), I get the
+following error message amongst the connection attempts :
+<pre>
+    ioctl[IEEE80211_IOCTL_SETMLME]: Invalid argument
+    Association request to driver failed
+</pre>
+</blockquote>
+<p>
+<b>A partial solution found</b>
+<br/>
+<blockquote>
+I did some digging and eventually found this thread on the madwifi driver
+home page
+<a href="http://madwifi.org/ticket/539">http://madwifi.org/ticket/539</a>
+<p>
+It would appear that there is
+bug in the linux atheros/madwifi driver that prevents it from
+working in wireless g mode with WPA-Enterprise encryption (I use WPA2-PSK
+at home with no problems).
+<p>
+The bug has yet to be resolved (the last post
+was on the thread was 25th june if you don't count my addition), but it
+can be worked around by downgrading to wireless b mode by typing the
+following as root and then restarting the network interface :
+
+<pre>
+    iwpriv ath0 mode 11b
+</pre>
+
+I've managed to connect to both UOBWLAN and eduroam after using this
+workaround. I am still experiencing some intermittent
+connection problems,
+but I think this is down to the low signal strength.
+<p>
+I'm not sure how common the atheros chipset is, but it is used in a lot of
+wireless devices, so I can see other people here having this problem.
+<p>
+Finally the mystery has been solved. Hopefully the driver will be fixed
+soon. Wireless g would be nice, but at least it's working.
+<p>
+Aaron, feel free to add a digest of this bug problem information to
+your connection help page.
+I'm writing a set up procedure for Mandriva 2007.1 which you can add
+to this page and I'll send it to you separately for inclusion.
+</blockquote>
+<p>
+<hr/>
+
+<h3><b>
+Setup instructions for Mandriva 2007.1
+</b></h3>
+<blockquote>
+<pre>
+<pre>
+1) Using the Mandriva control centre go to the Network & Internet section
+and, create a new network profile for UOBWLAN.
+
+2) Activate the UOBWLAN profile (this may temporarily hang the system if
+you haven't copied a currently working profile).
+
+3) Use the 'Set up a new network interface' function to set up a
+wireless connection. When prompted, choose UOBWLAN from the list of
+networks, or enter it manually if it hasn't been detected.
+
+4) Choose WPA Pre-Shared Key as the encryption mode (I know this is wrong,
+but the config interface doesn't support WPA-Enterprise yet, see note
+below). Leave the encryption key blank and continue.
+
+5) On the following screens make sure you set the interface to use
+Automatic IP and to get the DNS servers from DHCP.
+
+6) When prompted if you want to start the connection now, say no.
+
+7) As root, open up /etc/wpa_supplicant.conf file
+
+You should find a section in the config file which looks like this :
+
+  network={
+     psk=""
+     scan_ssid=1
+     ssid="UOBWLAN"
+  }
+
+Delete this and replace it with Aaron's sample wpa_supplicant.conf,
+available <a href="etc/wpa_supplicant/wpa_supplicant.conf">here,</a>
+making sure you put in your own username and password. If you want
+you can add a second block at this point using the eduroam SSID, but
+all other details the same. Alternatively, you can repeat these
+steps if you would prefer eduroam to be configured as a separate
+profile.
+
+8) Save the changes and restart your network interface
+('service network restart' if you are at the root command prompt).
+
+9) It should now work. If it doesn't and you have a wireless card with the
+atheros chipset/madwifi driver, then there is a bug in this driver which
+prevents connection to WPA-Enterprise networks when using wireless g speeds.
+
+This can be worked around by forcing the wireless card to downgrade to
+wireless b speeds.
+
+  a) Go back to the Mandriva control centre network section and click
+     reconfigure a network interface.
+  b) Ensure the wireless device is selected from the drop down box at the
+     top (it should be ath0).
+  c) Enter
+        mode 11b
+     into the 'iwpriv command extra arguments' box and apply.
+  d) It should now work at the slower speed. Hopefully this bug will be
+     fixed soon. The bug is described here <a href="http://madwifi.org/ticket/539">http://madwifi.org/ticket/539</a>
+
+Note: Full support for WPA enterprise encryption in the Mandriva configuration
+GUI is slated for the Mandriva 2008 release due in September 2007 (???),
+so the manual editing of wpa_supplicant.conf shouldn't be necessary with this
+release.
+</pre>
+</pre>
+</blockquote>
+<br/>
+<hr/>
+<small>
+<p>
+Installed 12 Jul 2007
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+Using text provided by
+<a href="http://www.cs.bham.ac.uk/~tmw/">Tim Williams.</a>
+</small>
+</body>
+</html>

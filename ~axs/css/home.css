@@ -1,0 +1,278 @@
+
+body {
+     margin:0px 0px 0px 0px;
+     padding:0px;
+     font-family:verdana, arial, helvetica, sans-serif;
+     color:black;
+     background-color:#d000d0;
+     background: url(http://www.cs.bham.ac.uk/~axs/images/wind_paper.gif);
+     }
+
+
+
+h1 {
+    text-align:center;
+   margin:0px 10px 10px 0px;
+   padding:0px;
+   font-size:29px;
+    line-height:32px;
+/*   line-height:42px; */
+   font-weight:900;
+   color:#222;
+   background-color:#eff;
+   }
+
+h2 {
+   margin:0px 0px 10px 0px;
+   padding:0px;
+   font-size:22px;
+   line-height:25px;
+   font-weight:900;
+   color:#222;
+   background-color:#bbb;
+   }
+
+h3 {
+   margin:0px 0px 10px 0px;
+   padding:0px;
+   font-size:19px;
+   line-height:21px;
+   font-weight:900;
+   color:#222;
+   background-color:#ff6;
+   }
+
+h4 {
+   margin:0px 10px 10px 10px;
+   padding:0px;
+   font-size:18px;
+   line-height:18px;
+   font-weight:900;
+   color:#222;
+   background-color:#ccc;
+   }
+
+/* old h5
+h5 {
+   margin:0px 0px 0px 0px;
+   padding:0px;
+   font-size:20px;
+   line-height:23px;
+   font-weight:900;
+   color:#fff;
+   background-color:#66d;
+   }
+
+*/
+
+h5 {
+   margin:0px 10px 10px 10px;
+   padding:0px;
+      font-weight:900;
+      text-align:left;
+      margin:0px 0px 0px 0px;
+      font-size:14px;
+      line-height:16px;
+      padding:0px;
+   color:#222;
+   background-color:#ccc;
+    }
+
+
+h6 {
+   margin:0px 10px 10px 10px;
+   padding:0px;
+   font-size:14px;
+   line-height:14px;
+   font-weight:900;
+   color:#222;
+   background-color:#ccc;
+    }
+
+p {
+  /*font:11px/20px verdana, arial, helvetica, sans-serif;*/
+  font-family:verdana, arial, helvetica, sans-serif;
+  margin:0px 0px 0px 0px;
+  padding:0px;
+  }
+
+ul
+{
+  padding: 0px 0px 0px 15px;
+  list-style-type: square
+}
+
+li {
+  padding: 0px 0px 10px 0px;
+  font:16px/20px verdana, arial, helvetica, sans-serif;
+}
+
+.content>p {margin:0px;}
+.content>p+p {padding-top:10px;}
+/*.content>p+p {text-indent:30px;}*/
+
+/*  color:#16314A; */
+a {
+    color:#332211;
+/*  font-size:11px; */
+/*  text-decoration:none; */
+/*  font-weight:600; */
+  font-family:verdana, arial, helvetica, sans-serif;
+  }
+
+a:link {color:#332211;}
+
+/* a:visited {color:#3D668B;} */
+
+a:visited {color:#222666;}
+
+a:hover {background-color:#dee;}
+
+.imglink {
+border: 0;
+}
+
+#Header {
+        background: url(../logo.jpg) no-repeat top right;
+        margin: 10px 0px 10px 0px;
+        padding:0px 0px 0px 20px;
+        /* For IE5/Win's benefit height = [correct height] + [top
+        padding] + [top and bottom border widths] */
+        height:83px; /* 14px + 17px + 2px = 33px */
+        border-style:solid;
+        border-color:black;
+    color:black;
+        border-width:1px 0px; /* top and bottom borders: 1px; left and
+        right borders: 0px */
+        line-height:81px;
+        background-color:#eee; /*#16314A; #eee; #3D668B;*/
+
+/* Here is the ugly brilliant hack that protects IE5/Win from its own stupidity.
+Thanks to Tantek Celik for the hack and to Eric Costello for publicizing it.
+IE5/Win incorrectly parses the "\"}"" value, prematurely closing the style
+declaration. The incorrect IE5/Win value is above, while the correct value is
+below. See http://glish.com/css/hacks.asp for details. */
+       voice-family: "\"}\"";
+       voice-family:inherit;
+       height:81px; /* the correct height */
+       }
+
+
+
+
+/* I've heard this called the "be nice to Opera 5" rule. Basically, it
+feeds correct length values to user agents that exhibit the parsing error exploited
+above yet get the CSS box model right and understand the CSS2 parent-child
+selector. ALWAYS includea "be nice to Opera 5" rule every time you use the Tantek Celik hack
+(above). */
+body>#Header {height:81px;}
+
+
+
+.content {
+   margin:5px 10px 10px 10px;
+   padding:10px;
+   border:1px solid;
+   border-color:black;
+   font-size:19px;
+/*   line-height:22px; */
+   font-weight:500;
+   color:black;
+   background-color:white;
+}
+
+.boxed {
+   margin:5px 10px 10px 10px;
+   padding:10px;
+   border:2px solid;
+/*   border-color:#16314A; */
+   border-color:black;
+   font-size:19px;
+/*   line-height:22px; */
+   font-weight:500;
+   color:black;
+   background-color:#eee;
+}
+
+.dense {
+   margin:5px 10px 10px 10px;
+   padding:10px;
+   background-color:white;
+   border:1px solid;
+   border-color:black;
+   font-size:16px;
+   line-height:19px;
+   font-weight:500;
+   color:black;
+}
+
+.smalldense {
+   margin:5px 10px 10px 10px;
+   padding:10px;
+   background-color:white;
+   border:1px solid;
+   border-color:black;
+   font-size:14px;
+   line-height:16px;
+   font-weight:500;
+   color:black;
+}
+
+.indented {
+   margin:0px 0px 2px 20px;
+   padding:0px;
+   background-color:white;
+   font-size:16px;
+   line-height:18px;
+}
+
+.footerimg {
+             margin:0px 50px 0px 200px;
+         padding:10px;
+/*         border:1px solid black;*/
+border:1px dashed #3D668B;
+         background-color:white;
+         text-align:center;
+}
+
+.footertext {
+   margin:0px 50px 10px 200px;
+   color:#ccc;
+   font-size:8px;
+   padding:0px;
+   border:none;
+   background-color:white;
+   text-align:right;
+}
+
+div.spottybox {
+  background-color:#eef;
+   margin:5px 5px 5px 5px;
+  border: 3px dashed #3D668B;
+  padding:22px;
+  vertical-align:top;
+ }
+
+div.logobox {
+  padding:10px;
+  text-align:center;
+}
+
+
+#Menu {
+
+      position:absolute;
+      top:103px;
+      left:20px;
+      width:172px;
+      padding:0px;
+      background-color:#fff;
+      border:none;
+      line-height:17px;
+/* Again, the ugly brilliant hack. */
+   voice-family: "\"}\"";
+   voice-family:inherit;
+   width:150px;
+   }
+/* Again, "be nice to Opera 5". */
+body>#Menu {width:150px;}

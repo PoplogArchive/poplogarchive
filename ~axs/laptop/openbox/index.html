@@ -1,0 +1,621 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Openbox on My Linux Laptop</title>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/ub4.png"/>
+</a>
+<h2><b>
+Using Openbox as window-manager on linux
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<p>
+<b>(This is a supplement to <a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on various Dell laptops</a>)</b>
+</small>
+</b></h2>
+
+<b>____________________________________________________________________________</b><p>
+
+<b>NOTE:</b>
+<br/>
+After trying Openbox I reverted to using CTWM on all my machines early in 2012.
+<br/>
+Here's more information about CTWM (with screenshots):
+<br/>
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/ctwm"> http://www.cs.bham.ac.uk/~axs/laptop/ctwm</a>
+<br/>
+<b>____________________________________________________________________________</b><p>
+
+Installed: 20 Jan 2009
+<br/>
+Last updated: 5 Jul 2009; 9 May 2010; 22 May 2011; 15 Aug 2012; 26 Apr 2014
+<hr/>
+<p>
+<a name="disclaimer"></a>
+<b>
+<small>
+NOTE:
+</b>
+THIS IS NOT AN OFFICIAL DOCUMENT OF THE UNIVERSITY OF BIRMINGHAM
+OR THE SCHOOL OF COMPUTER SCIENCE.
+<br/>
+NEITHER THE UNIVERSITY NOR THE
+SCHOOL NOR THE AUTHOR OF THIS DOCUMENT CAN ACCEPT ANY RESPONSIBILITY
+FOR ANY CONSEQUENCES OF FOLLOWING THE ADVICE OFFERED HERE.
+<BR>
+(In other words: the normal conditions of mutual-help for Linux users
+apply!)
+</small>
+<hr/>
+<a name="updates"></a>
+<h3><b>
+UPDATES
+</b></h3>
+<ul>
+<li>
+<b>14 Feb 2009:</b>
+<a href="ob-figs/">Some screen shots.</a>
+<p>
+<li> <b>14 Feb 2009:</b>
+Another convert from CTWM to Openbox
+<br/>
+<a href="http://johan.vromans.org/articles/MyDesktop/">http://johan.vromans.org/articles/MyDesktop/</a>
+<br/>
+Johan Vromans has also switched to Openbox, after using CTWM for
+many years.
+<br/>
+He switched in 2008. I switched in January 2009. It's curious that we were
+both also using Fedora 10.
+<ul>
+<li>
+<a href="http://www.vromans.org/johan/articles/MyDesktop/ctwm.html">His CTWM setup</a>
+<li>
+<a href="http://www.vromans.org/johan/articles/MyDesktop/ob.html">His
+Openbox setup</a> (including startup/configuration files).
+</ul>
+<br/>
+<b>NOTE:</b> I switched back to CTWM in 2012 as indicated <a href="../ctwm">here.</a>
+<p>
+<li> <b>13 Feb 2009:</b> Use of mouse scroll wheel to switch
+desktops.
+<br>
+I have just discovered the mouse wheel enables scrolling through
+desktops, if the mouse  pointer is in the root window. That can be
+very useful (instead of my use of CTRL+Left and CTRL+Right), though
+if the mouse ends up in a window when a desktop comes up, my
+focus-follows mouse setting stops that use of scroll wheel working
+until the mouse pointer is moved onto the root window.
+<p>
+<a name="fbpanel"></a>
+<li>
+<b>14 Feb 2009:</b> fbpanel task bar for use with OpenBox
+<br/>
+I am not sure I really need this, but it can be useful: fbpanel can
+either be invoked automatically when you start up Openbox, like any
+other program, e.g. using
+<pre>
+    ~/.config/openbox/autostart.sh
+</pre>
+or you can invoke it from a menu, or you can just run it.
+<p>
+I have it installed and it seems to work, but mostly I run Openbox
+without it. The only slight disadvantage is that I then don't have a
+constant indication of the name of the current desktop.
+<p>
+The configuration file for fbpanel goes in
+<pre>
+    ~/.fbpanel/default
+</pre>
+and I have included my own current version here <a
+href="dot-fbpanel-default">here</a>.
+<p>
+For more detailed documentation see
+<a href="http://fbpanel.sourceforge.net/docs.html">http://fbpanel.sourceforge.net/docs.html</a>
+<p>
+In Fedora 10 it can be installed using 'yum install fbpanel'.
+
+</ul>
+
+
+<hr/>
+<h3><b>
+CONTENTS
+</b></h3>
+<ul>
+<li>
+<a href="#updates">Updates</a>
+<p>
+<li>
+<a href="#intro">Introduction</a>
+<p>
+<li>
+<a href="ob-figs/">Some screen shots.</a> (Opens new web file.)
+<p>
+<li>
+<a href="#getting">Getting started with Openbox</a>
+<p>
+<li>
+<a href="#samples">Tar file with sample config files</a>
+<p>
+<li>
+Others To be added
+</ul>
+<hr/>
+
+<a name="intro"></a>
+<h3><b>
+Introduction
+</b></h3>
+<p>
+For many years I have used <a href="http://ctwm.free.lp.se/">ctwm</a>
+as my window manager on linux: it is very fast, very robust, and
+very tailorable. However recently it has been unable to provide some
+of the required functionality, e.g. allowing the 'fullscreen'
+option to work with flash.
+<p>
+After some investigation I decided to try openbox, and am now using
+it as my default window manager on a desktop PC running Fedora 10,
+and a Dell Latitude D610 laptop running Fedora 8. It works well both
+with the gnome session manager (choose openbox from the session menu
+when you log in) and without the session manager (using just the
+'startx' command and a startup file in '~/.xinitrc' to start up the
+windowmanager and a few clients -- available below).
+<p>
+For information about Openbox see
+<ul>
+<li>
+<a href="http://icculus.org/openbox/">http://icculus.org/openbox/</a>
+<p>
+This slightly out of date web site may also be useful, though it
+does not mention the latest versions of Openbox:
+<br/>
+<a href="http://icculus.org/openbox/2/">http://icculus.org/openbox/2/</a>
+<p>
+<li>
+<a href="http://en.wikipedia.org/wiki/Openbox">http://en.wikipedia.org/wiki/Openbox</a>
+<br/>
+Wikipedia description
+<p>
+<li>
+Search google for themes, tutorials, etc.
+</ul>
+
+<p>
+Openbox seems to be about as fast as CTWM, and it is very
+extendable, though not as tailorable, for my purposes, as CTWM.
+Later I'll produce a list of deficiencies. Some are on the openbox
+bugzilla site.
+<br/>
+<p>
+I don't find Openbox as easily tailorable as CTWM using a text
+editor. The configuration files use bulky xml, and not all the
+options I want are provided, e.g. ability to restrict keyboard
+actions to root context, and the ability to give a key (e.g. F1) a
+function (with mouse in root window) without
+having to use a modifier as well.
+<p>
+At first I thought it did not allow users to specify border
+width for windows, and I found the default of 1 pixel too small when
+using the left or right edge of a window for re-sizing. However, I
+later discovered that this could be done using themes. I can see the
+usefulness of themes but personally I would rather have everything
+in one configuration file, at least as an option.
+<p>
+I have also not found any way to assign different xterm windows,
+with different titles, to different desktops in the startup file,
+rc.xml. However it is possible to use the window class to do that,
+so that you can make instances of a particular package come up in a
+particular desktop. Use the 'xprop' utility to discover the window
+class of an application you use. (See 'man xprop').
+<a href="dotconfig-openbox-files/rc.xml">This sample rc.xml file</a>
+shows how to make xclock and xdaliclock displays appear on all
+desktops.
+<p>
+<b>The obconf program and themes</b>
+<p>
+The 'obconf' utility allows you to do some customising using a
+graphical interface instead of editing startup files. Mostly I would
+rather edit files which I can then copy to different machines, but
+the obconf utility is useful in introducing some of the options, and
+especially displaying themes available for you to try out.
+<p>
+The most important use of obconf is
+with themes. openbox allows you to have a
+collection of different themes one of which is specified as the
+default in your rc.xml file.
+Once you understand what themes are and how they vary you can choose
+one, make a local copy and edit its configuration file.
+<p>
+A collection of themes is provided in
+/usr/share/themes (in Fedora, and possibly other versions of
+linux?) and
+you can have other themes in your own ~/.themes
+directory. The obconf reads in all the theme definitions available
+and gives you a summary display of what they look like. You can
+rapidly switch between them to see which one you like. If you want
+to customise one of the themes provided you can copy it to your
+~/.themes directory and rename it.
+<p>
+A theme has a directory corresponding to its name, and for each
+application using that theme a subdirectory with the name of the
+application. For openbox the subdirectory is called 'openbox-3' at
+present, and it contains one file 'themerc'. That's the one you
+edit. Other things are possible, e.g. extra bitmaps for the theme.
+<p>
+I copied a theme called 'Clearlook-Olive and edited it, renaming it
+as 'CLO' (for 'ClearLookOther) , available <a href="CLO">here</a>.
+<p>
+The CLO directory has a subdirectory openbox-3 which contains
+<a href="CLO/openbox-3/themerc">the 'themesrc' file.</a>
+After copying I added a number of comments to the file, though a lot
+more could be added. If you wish to try this copy the directory CLO
+and its contents (included in the tar file below) to your ~/.themes
+directory. My CLO theme uses 4 pixel widths for left and right edges
+of windows, which makes them easier to grap for re-sizing, but that
+width can easily be changed.
+
+<p>
+<small>
+For more on themes see:
+<br/>
+<a href="http://icculus.org/openbox/index.php/Openbox:Themes">http://icculus.org/openbox/index.php/Openbox:Themes</a>
+<p>
+and the complete specification for the 'themesrc' file format:
+<br/>
+<a href="http://icculus.org/openbox/index.php/Help:Themes">http://icculus.org/openbox/index.php/Help:Themes</a>
+</small>
+<p>
+<b>Alternatives to Openbox</b>
+<p>
+Blackbox and Fluxbox are alternative window managers partly similar
+in spirit to OpenBox.
+<p>
+I have tried fluxbox, and found it just as lightweight as Openbox,
+but much easier to configure in a text
+editor.
+<p>
+Unfortunately, like CTWM, Fluxbox does not seem to support
+fullscreen in flash. So I assume it is out of date. It does not seem
+to be under development.
+<p>
+I also tried Blackbox, which is partly similar to Fluxbox and
+Openbox. It seems to be very light weight and does support
+fullscreen flash, but seems to be very hard to tailor, and has some
+serious limitations. E.g. left and right sides of window frames are
+not draggable for re-sizing, only the titlebar and the bottom
+corners.
+<p>
+So I have provisionally chosen Openbox as the successor to CTWM and
+will try tofind out how to add the missing functionality.
+<br>
+For comparisons of this family of window managers, see
+<blockquote>
+<small>
+<a href="http://www.neowin.net/forum/lofiversion/index.php/t414348.html">http://www.neowin.net/forum/lofiversion/index.php/t414348.html</a>
+<br/>
+<a href="http://ubuntuforums.org/archive/index.php/t-345193.html">http://ubuntuforums.org/archive/index.php/t-345193.html</a>
+</small>
+</blockquote>
+
+<p>
+<b>Current situation (Early Feb 2009)</b>
+<p>
+Despite the limitations of Openbox, I am learning to live with it,
+as it provides me with as many desktops as I want (8 for my desktop
+PC and 10 for laptop use, to easily support pre-prepared demos for
+presentations) and it allows rapid switching between desktops using
+the keyboard (in my case CTRL+Left and CTRL+Right) in addition to
+wrapping at the left and right ends,
+unlike the stupid gnome window manager.
+<p>
+Openbox
+seems to be under active development, and there is a bugzilla
+reporting site for it, though I have no idea whether anyone is
+reading my suggestions in there.
+<p>
+So I have provided brief instructions and my own configuration files
+here. There are many different themes and sets of configuration
+files available on the web. I have not yet learnt how to use themes.
+In any case, I prefer a simple, very uncluttered, interface -- no
+fancy pictures or transparent editor windows to distract me from
+real work.
+<p>
+I have discovered that 'gmrun' is a useful utility for launching
+commands without having to run an xterm window, and invoke this from
+one of the editors.
+<p>
+I have also made the openbox main menu invoke the file manager
+'pcmanfm', described here:
+<pre>
+    <a href="http://pcmanfm.sourceforge.net/">http://pcmanfm.sourceforge.net/</a>
+</pre>
+
+It is possible to use the gnu 'nautilus' file manager, at the cost
+of losing the Openbox mouse menu until you kill nautilus!
+<br/>
+John Lockard kindly informed me that this problem can be avoided if
+nautilus is started with this commnd
+<pre>
+    nautilus --no-desktop
+</pre>
+<p>
+There is a package called bbkeys which, I believe can extend the use
+of the keyboard with Openbox, but I have not figured out how to get
+it to do any of the things I want.
+<p>
+<a name="getting"></a>
+<h3><b>
+Getting started with Openbox
+</b></h3>
+<blockquote>
+<b>Get the packages</b>
+<br/>
+First install the main package, and any or none of the three
+optional extra utilities.
+<p>
+In Fedora do:
+<pre>
+## required installation:
+
+    yum install openbox
+
+## optional installation:
+
+    yum install obconf gmrun pcmanfm
+</pre>
+
+In other linux installations you can probably use 'apt-get' instead
+of 'yum'.
+<p>
+I found xterm, xdaliclock, and other things I use were not
+automatically provided by Fedora 10, but 'yum install' managed to
+get them all. My sample files invoke xterm in various places, but
+you could choose another terminal window, eg. gnome-terminal. I find
+that several of them provide extra menus and options, but fail to
+support the full xterm functionality. You may find that 'aterm' is a
+good alternative: it has a much nicer scroll bar than xterm, but
+it sets the $TERM variable to 'rxvt', which may need to be
+overridden.
+<p>
+
+There is a package called 'bbkeys' that can be used to extend the
+keyboard functionality of Openbox, but I found it hard to configure
+and have temporarily abandoned it.
+
+<p>
+<b>No desktop manager or icon mananger on the screen</b>
+<p>
+Most people who use multiple desktops (whose absence on Microsoft
+Windows is one of many things that makes me intensely dislike using
+that operating system
+see <a href="http://www.cs.bham.ac.uk/~axs#whyput">"Why do they
+put up with it?"</a>) are accustomed to having a panel somewhere on
+the window that shows the collection of available desktops, and
+indicates the one that is active. In CTWM you also get a little map
+of what is on each desktop and you can use the mouse to move things
+from one desktop to another. Often there is also a place where
+minimised (or as they used to say 'iconised') windows are shown, so
+that you can 'maximise' them by clicking on their icons.
+<p>
+Neither a desktop mananger nor an iconised window manager is on the
+Openbox desktop by default. There are probably add-ons that  provide
+them, but the default is a very uncluttered desktop. However, there
+are various tools linked to mouse or key actions that compensate,
+and you can set things up so that if you move from one desktop to
+another you get shown a little map of the desktops with an
+indication of which one you have landed on.
+<p>
+Perhaps the most useful is the mapping of the middle mouse button
+(anywhere on the root window) onto a function that brings up a list
+of all the desktops and all their contents (including minimised
+contents), so that you can then click and go to whatever you are
+looking for. Also ALT+tab allows you to cycle through all the items
+on the current desktop, visible or not. There is a keyboard function
+that allows you to jump to a specified desktop or to cycle forwards
+or backwards through all of them, which I map onth CTRL+Right and
+CTRL+Left. With the mouse cursor in the root window you can also
+cycle through desktops. However I set input focus to follow mouse,
+so I have to be careful in case the focus lands on something that is
+sensitive to mouse wheel. (One of many reasons why OB needs to be
+extended to allow keyboard functions to be defined only to work in
+the root context.)
+<p>
+So everything remains
+accessible even while totally invisible.
+There are other things to
+find in the configuration files and online documentation.
+<p>
+
+<b>Set up your configuration</b>
+<br/>
+Installing openbox will get you a set of default system wide
+configuration files in
+<pre>
+    /etc/xdg/openbox
+</pre>
+
+You can copy them to your own directory, where you can edit them:
+
+<pre>
+    mkdir -p ~/.config/openbox
+
+    cp -p /etc/xdg/openbox/* ~/.config/openbox
+</pre>
+
+There are three files required for a minimal configuration
+
+<pre>
+    autostart.sh
+        run once just before openbox starts up
+        Use a delay to launch X11 windows, and background them,
+        so that the don't come up until openbox has started.
+        I have some example commands in <a href="dotconfig-openbox-files/autostart.sh">here</a>
+
+
+    menu.xml
+        You can define exactly one menu to be invoked in the root
+        window, using the right mouse button. I have modified this
+        to make it very easy to invoke gmrun, to launch a command,
+        and to start an xterm window.
+        My modified version of the default is <a href="dotconfig-openbox-files/menu.xml">here</a>
+
+    rc.xml
+        This is the main configuration file in which you can define
+        how menus should look, how many virtual desktops you want,
+        which keyboard actions you want, etc. My version defines two
+        ways of launching an xterm window, one big and one small, using
+        CTRL+F1 and CTRL+F2 respectively. I also cycle left and
+        right through desktops using CTRL+Left and CTRL+Right.
+        I have included an option to run 'gmrun' using CTRL+F4
+        My modified version of the default is <a href="dotconfig-openbox-files/rc.xml">here</a>
+</pre>
+<blockquote>
+<small>
+<b>PERMISSION AND WARNING</b>
+<br/>
+Anyone who so desires has my permission to copy and use any of the
+example files provided here, most of which are themselves slightly
+edited versions of files that came with OpenBox.
+<p>
+Please check the executable files before you use them, especially
+autostart.sh and the .xinitrc file mentioned below.
+</small>
+</blockquote>
+
+<b>Using gmrun</b>
+<br/>
+One of the nice things about using gmrun is that it maintains a
+history of commands. It also supports tab completion, and if you
+give it a url it will launch firefox, etc.
+
+I have slightly modified the default initialisation file, which is
+<pre>
+    ~/.gmrunrc
+</pre>
+
+to specify a location for the panel and wider default text-box
+width. My version, based on the default version, is <a
+href="dot-gmrunrc-sample">here</a>. Later I shall document them.
+<p>
+I previously wrote:
+<blockquote>
+<small>
+A serious flaw in the design of the gmrun program.
+is that there is no simple way
+to get rid of it if you bring it up by mistake -- you <i>have</i> to
+give it a command to run. I shall probably replace it with a one
+line xterm window, which can be dismissed by typing CTRL-D into it,
+and which doesn't disappear every time you use it, so you can
+repeatedly give commands and it also supports history and tab
+completion.
+</small>
+</blockquote>
+I am grateful to <a href="http://www.jaredprins.com">Jared Prins</a>
+who informed me that gmrun can be dismissed
+by pressing the ESC key. So my objection was based on lack of
+information. ('gmrun' needs either a 'man' file or a 'help' option.)
+<br/>
+(Added: 5 Feb 2009)
+<p>
+<b>Sample .xinitrc</b>
+<p>
+A sample ~/.xinitrc file invoked when you start X from a console, is
+<a href="dotxinitrc">here.</a> If you fetch it make it executable
+and remove the comments at the top.
+<p>
+<a name="samples"></a>
+<h3><b>
+Tar file with sample config files
+</b></h3>
+<p>
+A tar file containing my tailored extensions to Openbox and a sample
+.xinitrc file is available here:
+<a href="configfiles.tar.gz">configfiles.tar.gz</a>
+<p>
+Current contents
+<blockquote>
+<small>
+
+<pre>
+-rwxr-xr-x    2087 2009-01-22 17:57:34 dotxinitrc
+drwxr-xr-x       0 2009-01-22 04:11:41 dotconfig-openbox-files/
+-rw-r--r--    1768 2009-01-20 09:46:33 dotconfig-openbox-files/autostart.sh
+-rw-r--r--    2861 2009-01-22 03:55:14 dotconfig-openbox-files/menu.xml
+-rw-r--r--   25571 2009-01-22 04:49:49 dotconfig-openbox-files/rc.xml
+-rw-r--r--    1391 2009-01-20 03:27:22 dot-gmrunrc-sample
+drwxr-xr-x       0 2009-01-22 15:41:34 CLO/
+drwxr-xr-x       0 2009-01-22 15:41:50 CLO/openbox-3/
+-rw-r--r--    5050 2009-01-22 15:37:54 CLO/openbox-3/themerc
+</pre>
+</small>
+</blockquote>
+I hope it is clear from the rest of this file what to do with each
+of those. But just in case, here is a summary:
+<blockquote>
+<small>
+<pre>
+# create the required directories, in case you don't have them
+
+    cd /tmp
+
+    tarxfz ..../configfiles.tar.gz
+
+    mkdir -p ~/.themes ~/.config/openbox
+
+    ## put the CLO theme in place
+
+    mv CLO ~/.themes
+
+    mv dotconfig-openbox-files/* ~/.config/openbox
+
+    ## config file for gmrun
+
+    mv dot-gmrunrc-sample ~/.gmrun
+
+    ## if you want to start up the X window system directly from
+    ## a console terminal using startx
+
+    mv dotxinitrc ~/.xinitrc
+</pre>
+</small>
+Before trying out the scripts please check all the files, in case of
+corruption, or in case they invoke utilities not available on your
+machine, especially these two 'startup' files:
+
+    ~/.xinitrc
+
+    ~/.config/openbox/autostart.sh
+
+</blockquote>
+
+<p>
+Things here will almost certainly change. Please report problems.
+</blockquote>
+<p>
+<hr>
+<small>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+</body>
+</html>

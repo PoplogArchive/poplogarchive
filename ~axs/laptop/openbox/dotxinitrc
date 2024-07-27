@@ -1,0 +1,79 @@
+Below is a sample ~/.xinitrc file, automatically read when running
+/usr/bin/startx to start up an X window session.
+
+Aaron Sloman
+http://www.cs.bham.ac.uk/~axs/
+22 Jan 2009
+
+See
+http://www.cs.bham.ac.uk/~axs/laptop/openbox
+
+===================================================================
+#!/bin/bash
+
+
+## Edit to suit your preferences
+
+
+## Start up a big general purpose xterm window with title 'XTERM'
+xterm -fn 10x20 -sb -ls  -geom 90x49+0-1 -T XTERM -n XTERM &
+
+# set bell
+xset b 0 50 50
+
+# set keyboard autorepeat delay and frequency
+xset r rate 500 30
+
+## Set mouse acceleration and movement threshold
+#xset accel threshold
+xset m 6 3
+
+# blank after 30 mins
+xset dpms 1800
+
+
+## Tell X11 to allow applications run from another pc on the network
+xhost  +mypc
+
+## Optional re-mapping of keys
+# set Alt Gr key to be linefeed
+xmodmap -e "keycode 113 = Linefeed"
+# set windows key to be ENTER (Useful on Laptops without Keypad)
+xmodmap -e "keycode 115 = KP_Enter"
+
+#swap esc and grave, to reduce RSI (Emacs and Ved users)
+
+xmodmap -e "keycode 49 = Escape"
+xmodmap -e "keycode 9 = grave"
+
+## Note I also swap CTRL and CapsLock, usually allowed by
+# X11 config files.
+
+
+## Optional clocks
+## Small digital clock with time and date, top right
+xclock -digital -chime -geom -1+1 -update 5 -font '*-lucida-bold-r-normal-sans-20-*-100-100-p-*-*-1' &
+
+## clock with big very visible time display. Don't include
+## constantly chaning seconds.
+/usr/bin/xdaliclock -builtin1 -noseconds -24 -geom -0+550 &
+
+## Light root window, to show up mouse cursor on dim screen
+xsetroot -solid 'gray95'
+
+## read your ~/.Xdefaults config file
+xrdb -merge .Xdefaults
+
+## Run openbox as window manager in the background, so that
+## it can be killed and restarted or replaced, without
+## killing the X window session
+openbox &
+
+## If you run openbox, other things can be started in
+## ~/.config/openbox/autostart.sh
+
+##Run a small Xterm window type CTRL-D into it to exit X11
+
+xterm -fn 8x13  +sb -ls -T EXIT -n EXIT -geom  30x1-0-155
+## Alternatively use the xexit widget if you have it.
+## or 'xmessage Exit'

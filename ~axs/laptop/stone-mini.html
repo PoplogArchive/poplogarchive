@@ -1,0 +1,846 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Linux on Stonebook Mini Laptop</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<div style="margin-left:10px; margin-top:0px; margin-bottom:500px; width:700px">
+
+<center>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.jpg"/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.jpg"/>
+</a>
+<a href="http://tuxmobil.org/stone_computers.html">
+<img alt="tuxmobil"
+src="http://www.cs.bham.ac.uk/~axs/images/tuxmobil_sticker.jpg"/>
+</a>
+
+<hr>
+<h2><b>
+LINUX ON STONE MINI NOTEBOOK COMPUTER
+<br>
+<small>
+<font color="red">
+Re-badged Clevo W515LU
+</font>
+<br>
+Using Fedora 25 from April 2017,
+<br>
+F27 From Feb 2018; F28 from June 2019
+<br>
+(with Windows-10 Home--Updated 2018, 2019)
+<br>
+Using Fedora XFCE installation and Ctwm window manager.
+</small>
+</b></h2>
+<h3><b>
+Aaron Sloman
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs">http://www.cs.bham.ac.uk/~axs</a>
+<br>
+School of Computer Science, University of Birmingham UK
+</b></h3>
+This is Part of my linux laptop web site: <a href="http://www.cs.bham.ac.uk/~axs/laptop">http://www.cs.bham.ac.uk/~axs/laptop</a>
+</center>
+<hr>
+<blockquote>
+<div style="margin-left:0px; margin-top:0px; margin-bottom:0px; width:650px">
+The Stonebook Mini occupies a niche where there does not seem to be any
+competition:
+
+<blockquote>
+<div style="margin-left:0px; margin-top:0px; margin-bottom:0px;">
+<font color="blue">
+11.6", 1.2Kg, 4 core Celeron N3160,
+8GB Ram, 500GB SSD, 1366 x 768 matte screen,
+VGA, hdmi, 1x USB 3, 2xUSB 2, SD card reader, wifi, ethernet
+replaceable battery. Mine runs linux: Fedora 25/27, and Windows 10 home
+<a href="#windows-10">(Updated 1 Oct 2018)</a> for occasional use.
+</font>
+<br>
+<font color="red">
+WD Hard Drive replaced with Samsung 500GB SSD 850 EVO Series 2.5.
+<br>
+Significantly improved battery life and speed (Jan 2018)
+</div>
+</font>
+</blockquote>
+
+Comparable or better performing machines of similar weight and size all cost a
+great deal more than this, without 5 year warranty. Most have fewer ports.
+<br>
+Note: Replacing HD with SSD
+required removing back and keyboard. Details in PDF service manual
+available here:
+<br>
+<a href="http://sualaptop365.edu.vn/threads/clevo-w510lu-w515lu-service-manual.1956/">http://sualaptop365.edu.vn/threads/clevo-w510lu-w515lu-service-manual.1956/</a>
+
+<hr>
+<a name="updates"></a>
+<b>Updates:</b> 1 Oct 2018: Windows 10 <a href="#windows-10">updated</a>.
+<br>
+21 Mar 2018: Fedora Kernel 4.15.10-300.fc27.x86_64 fixed problems using keyboard
+and mousepad, reported here:
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1551373#c10">https://bugzilla.redhat.com/show_bug.cgi?id=1551373#c10</a>
+<br>
+11 Feb 2018: Upgrading Fedora to V27, kernel 4.14.16-300.fc27.x86_64, provided
+much improved screen handling. But problems about losing access to the laptop
+keypad and trackpad were not fixed till 21 March.
+<br>
+1 Feb 2018: Replacing HD with SSD required the service manual, available here
+<br>
+<a href="http://sualaptop365.edu.vn/threads/clevo-w510lu-w515lu-service-manual.1956">http://sualaptop365.edu.vn/threads/clevo-w510lu-w515lu-service-manual.1956</a>
+(PDF)
+<p>
+14 May 2017; 6 Sep 2017
+<br>
+<a href="#wireless">Explained</a> how to use extra buttons on wireless mouse to invoke PageDown or
+PageUp.
+
+</div>
+</blockquote>
+<hr>
+<b>CONTENTS</b><b>
+<br>
+<a href="#updates">-- Updates (above)</a>
+<br>
+<a href="#mini">-- STONEBOOK MINI PURCHASED APRIL 2017</a>
+<br>
+<a href="#specs">-- SPECIFICATIONS</a>
+<br>
+<a href="#OS">-- OPERATING SYSTEM</a>
+<br>
+<a href="#ctwm">-- CTWM Window Manager</a>
+<br>
+<a href="#overall">-- OVERALL</a>
+<br>
+<a href="#speed">-- SPEED</a>
+<br>
+<a href="#weak">-- WEAK POINTS</a>
+<br>
+<a href="#pad">-- TOUCH PAD:</a>
+<br>
+<a href="#emulation">-- PAGE HOME/END UP/DOWN BUTTON EMULATION</a>
+<br>
+<a href="#backlight">-- NO KEYBOARD BACKLIGHT</a>
+<br>
+<a href="#windows-10">-- WINDOWS 10 UPDATE (with problems) 1 Oct 2018</a>
+<br>
+<a href="#niggles">-- MINOR NIGGLES</a>
+<br>
+<a href="#record">-- RECORDMYDESKTOP</a>
+<br>
+<a href="#screen">-- LCD SCREEN</a>
+<br>
+<a href="#lid">-- 'SNAP SHUT' HINGED LID</a>
+<br>
+<a href="#connections">-- WIFI and CABLE CONNECTIONS</a>
+<br>
+<a href="#displays">-- EXTERNAL DISPLAYS</a>
+<br>
+<a href="#keyboard">-- KEYBOARD</a>
+<br>
+<a href="#construction">-- THE GENERAL CONSTRUCTION SEEMS TO BE VERY GOOD</a>
+<br>
+<a href="#battery">-- REMOVABLE BATTERY</a>
+<br>
+<a href="#camera">-- CAMERA</a>
+<br>
+<a href="#ports">-- USB PORTS</a>
+<br>
+<a href="#wireless">-- USING A WIRELESS MOUSE</a>
+<br>
+<a href="#strengths">-- MAIN STRENGTHS</a>
+<br>
+<a href="#conclusion">-- PROVISIONAL CONCLUSION</a>
+</b>
+<hr>
+
+<pre><b>
+<a name="mini">-- STONEBOOK MINI PURCHASED APRIL 2017</a>
+
+This document is available in two formats
+    <a href="http://www.cs.bham.ac.uk/~axs/laptop/stone-mini.html">http://www.cs.bham.ac.uk/~axs/laptop/stone-mini.html</a>
+    <a href="http://www.cs.bham.ac.uk/~axs/laptop/stone-mini.pdf">http://www.cs.bham.ac.uk/~axs/laptop/stone-mini.pdf</a>
+
+This machine was supplied by Stone Computers Ltd, the main computer supplier
+for my university. <a href="https://www.stonegroup.co.uk/">https://www.stonegroup.co.uk/</a>
+
+Online specification:
+<a href="https://www.stonegroup.co.uk/hardware/notebooks/stonebook-mini/">https://www.stonegroup.co.uk/hardware/notebooks/stonebook-mini/</a>
+    Small print on the back of the machine indicates that it was made for Stone
+    by Clevo Co, in Taiwan.
+
+Overall I am very pleased with it, despite several niggles mentioned below. I
+spent a considerable amount of time looking at alternatives and could not find
+anything that matched the key features of this specification (including the
+5 year on-site warranty), and did not cost over twice as much, e.g. the
+outstanding Dell XPS13 (width 13.3 inch, with higher resolution screen, and
+more powerful CPU), but smaller storage.
+
+<a name="specs">-- SPECIFICATIONS</a>
+
+Specifications of the Stonebook Mini, based mainly on:
+<a href="https://www.stonegroup.co.uk/app/uploads/2016/02/Stonebook-Mini-Datasheet.pdf">https://www.stonegroup.co.uk/app/uploads/2016/02/Stonebook-Mini-Datasheet.pdf</a>
+(The datasheet, but not the web page, erroneously states that there are two USB
+3 ports instead of only one. The pictures make the actual configuration clear.)
+
+Operating System Supplied         Up to Windows. 10 Pro
+
+    (Although I use linux almost all of the time, I ordered Home Windows-10
+    in a 100GB partition --probably over generous-- for occasional use, and
+    for diagnosis in case of a warranty claim for a hardware fault.)
+
+Processor                         <a href="http://ark.intel.com/products/91831/Intel-Celeron-Processor-N3160-2M-Cache-up-to-2_24-GHz">Intel. Celeron N3160 Processor (4cpu)</a>
+                                  Processor Base Frequency 1.60 GHz
+                                  Burst Frequency 2.24 GHz
+                                  Cache 2 MB L2
+                                  (Listed as Celeron N3150, on Stone Datasheet)
+
+Memory         System Memory      8GB Single Channel DDR3L 1600MHz
+               Memory Slot        1 x Slot SODIMM
+
+Display        LCD                11.6" HD (1366 x 768) Display
+                                  (Matte surface, low reflectance)
+               Graphics Processor Intel. HD Graphics
+               Graphics Memory    Intel. Dynamic Video Memory Technology
+
+Storage        Hard Drive         Western Digital Blue 500GB 7200RPM SATA 3.6Gbs
+                                    Possible alternatives include
+                                        Up to 1TB 7200rpm Hard Disk Drive
+                                        or 512GB Solid State Drive
+               Optical            Optional External DVDRW (Not in my package)
+
+Communication  Wired LAN (RJ45)   10/100/1000Mb Ethernet LAN
+               Wireless LAN       Intel Dual Band Wireless-AC 8260
+               WWAN               Optional HSDPA Module (Not in my package)
+               Bluetooth          BluetoothTM 4.2 + EDR (optional with wireless card)
+
+Multimedia     Sound              HD (High Definition) Audio
+               Speakers           2 x built-in speakers
+               Integrated Camera  1 Mega Pixel HD webcam
+
+Others         I/O Ports          LEFT side
+                                  VGA, HDMI, Phone-out, Mic-in, 1 USB 3.0
+                                    (Data sheet wrongly says 2 x USB 3.0)
+                                  RIGHT
+                                  2 x USB 2.0, 9 in 1 Card Reader
+                                  Power socket
+
+               Input              Touch Pad (Multi-Gesture, Scroll Scope, Flat Type)
+                                    (With Left/Right 'rocker' key)
+                                  QWERTY Keyboard, UK layout
+
+               Security           Stone Recovery Solution, BIOS Boot Up Password /
+                                    HDD Password, Kensington Lock Port, TPM
+
+               AC Adapter/charger 40W AC 100-240V 50-60Hz, DC Output 19V 2.1A
+               Battery            Removable 4 Cell Lithium-Ion 31WH
+                                  [[I also bought a spare battery and charger]]
+
+               Dimensions (WxDxH) 292.4(W) x 210.5(D) x 22.7(H)mm
+                                     (height excludes battery area)
+               Weight             1.2 kg
+
+<font color="blue">Warranty                          5 Year On-site Warranty</font>
+
+APPROXIMATE COST:
+The price will fluctuate with exchange rates, etc. I paid a reduced price as
+part of an arrangement between Stone Computers and the University. So these
+figures (April 2017) should be regarded as approximate guides:
+    Stonebook Mini without operating system:    GBP 315 + VAT
+        (including 5 year on site warranty)
+My options:
+    Microsoft windows 10 home edition           GBP  68 + VAT
+        (Pre-installed in 100GB partition)
+    Spare battery:                              GBP  40 + VAT
+    Spare charger:                              GBP  30 + VAT
+    TOTAL                                       GBP 453 + 20% VAT
+
+<font color="blue">No competitors?</font>
+While trying to decide what to buy I looked at lightweight offerings from all
+the main suppliers, e.g. Acer, Asus, Dell, HP, Lenovo and some others and found
+no real competitor that could meet my requirements. Nothing else came with a
+five year on site warranty, for example.
+===============================================================================
+</b></pre>
+
+<pre><b>
+<a name="OS">-- OPERATING SYSTEM</a>
+
+As I am a minimal Windows user, I asked for the Home Windows 10, in a 100GB
+partition, leaving the rest free. I suspect 100GB was too generous. But the
+machine boots off a usb stick with Gparted "live" so I can shrink the windows
+space later if required. See my complaint about Windows 10 update, below
+
+I prepared a Live XFCE Fedora 25 memory stick and booted from that to run
+Gparted to set up boot and swap partitions a root partition, a spare root
+partition for future upgrade, a small partition for encrypted stuff and
+a large partition for /home, with /usr/local mounted on that partition.
+
+After preparing the required partitions it installed Fedora 25, though as usual
+it was a minimal system and I had to use the standard facilities for updating
+the operating system and downloading many packages that I use regularly.
+
+Fedora 25 was installed in a 14GB root partition (which is larger than
+necessary, but allows a lot of temporary stuff to be saved in /var/tmp).
+
+Fedora 25 plus the CTWM window manager, works very well on this machine, though
+I had to do some experiments to find ideal settings (e.g. font sizes and default
+xterm window sizes for a smaller screen than I am used to).
+
+For a while I had an obscure text 'smearing' problem in xterm windows and some
+other contexts, but that was (mostly) fixed by putting the line
+
+    Option      "TearFree" "true"
+
+in /etc/X11/xorg.conf.d/20-intel.conf, which was already there by default in my
+desktop PC running Linux 24. That seems to fix a problem in the XWindow intel
+graphics driver for linux.
+At present (Jan 2018) this is what I have in that file
+
+Section "Device"
+   Identifier  "Intel Graphics"
+   Driver      "intel"
+   Option      "AccelMethod" "blt"
+#   Option      "AccelMethod" "uxa"
+#   Option      "AccelMethod" "sna"
+#   Option      "TearFree" "true"
+   Option      "DRI" "true"
+EndSection
+
+
+I have not done much testing using windows: I've never liked windows and need it
+only occasionally. But it may be useful for testing if a suspected hardware
+fault develops under warranty. I find that shutting down after running Linux
+gives me the option at next boot to run either linux or windows. But windows is
+not so generous and after running it I sometimes have to reset the boot options
+to run linux. (Perhaps I shut down in the wrong way, being unfamiliar with
+Windows 10)
+
+I have never had that problem on previous machines with both windows and linux
+installed. I assume it has something to do with the UEFI system now used at boot
+time.
+
+I also have the impression that things are significantly slower on Windows than
+Linux -- e.g. starting up and shutting down. But I am a very naive windows user
+and may have set some default incorrectly.
+
+<a name="ctwm">-- CTWM Window Manager</a>
+
+For details on the window manager I use, CTWM, see:
+    New home page:
+    <a href="https://launchpad.net/ctwm">https://launchpad.net/ctwm</a>
+
+    Old home page
+    <a href="https://www.ctwm.org/index.html">https://www.ctwm.org/index.html</a>
+
+<a name="overall">-- OVERALL</a>
+
+I don't think any other 11.6" Laptop/Notebook computer is available in the UK
+with comparable or better specifications, including weight and computing power,
+at or around the price I paid -- which may be out of date now. For a quotation
+contact
+
+    <a href="http://www.stonegroup.co.uk">www.stonegroup.co.uk</a>
+
+The following review is based on about 8 months of use (not full time!).
+
+<a name="speed">-- SPEED</a>
+
+Unsurprisingly, the machine is slightly slower than the Dell (with Core i5 CPU).
+
+Surprisingly it is not *much* slower most of the time, and most of the time I
+don't notice the speed difference (perhaps partly because my Stone has double
+the amount of Ram, and I think the hard drives are comparable in speed -- I put
+a new 1TB WD drive in the Dell a couple of years ago).
+
+Managing a display with fewer pixels (1400*900 = 1,260,000 on the Dell and
+1366*768 = 1,049,088 on the Stonebook) may also slightly reduce CPU load.
+
+For the kind of work I do most of the time, which involves very little 'number
+crunching' but a lot of reading and writing files (e.g. running Latex to
+generate PDF, and fetching and displaying internet files) many of the speed
+constraints are not much affected by CPU speed limits. I suspect there are many
+laptop users for whom that is true.
+
+Ignoring the reduced screen size and reduced maximum number of pixels, Web
+browsing on the Stone is very much like web browsing on the Dell, apart from the
+annoyance of a missing middle mouse button, which I use frequently to open a new
+link in a new tab.
+
+<font color="blue">Wifi download speed on the Stone (measured by speedtest.net running google-chrome)
+is significantly higher than the Dell's download speed, using our VirginMedia
+100Mbps cable service, or the even faster wifi service on campus.</font>
+
+The Stonebook's extra download speed compared with the Dell is useful for
+installing new packages and updates, though processing the updates after
+downloading is slower than on the Dell. I have not tried to measure that. I have
+not yet encountered intolerable delays installing packages or updates.
+
+Compiling the latest version of the ctwm window manager on the Stone, the Dell,
+and my desktop PC gives the following results:
+
+ Stonebook Mini: Total elapsed time 25.41 secs
+      (user)  (system) (elapsed)
+      15.387u 6.288s  0:25.41 85.2%    0+0k 63536+12528io 243pf+0w
+
+ Dell E6410:     Total elapsed time 13.63 secs
+      (user)  (system)  (elapsed)
+      7.024u  2.552s   0:13.63 70.2%     0+0k 66104+12576io 248pf+0w
+
+Desktop PC:      Total elapsed time 6.57 seconds.
+       (user) (system)  (elapsed)
+       5.064u 1.439s 0:06.57 98.7%     0+0k 0+12584io 0pf+0w
+
+For a small task, the difference between 25.4 seconds and 13.6 seconds may go
+unnoticed. For bigger tasks the time difference will increase. But I don't
+intend to use the Stone for complex, high CPU tasks!
+
+For my purposes (mostly web browsing, text processing, giving presentations,
+and occasional small amounts of programming), the speed of the machine is fine.
+The reduced speed is very noticeable when creating or converting videos, however.
+
+Some things take longer to start up than on the Dell, but I have not done
+systematic comparisons.
+
+<a name="weak">-- WEAK POINTS:</a>
+
+The Stone user manual seems to have out of date instructions regarding treatment
+of the battery. All the information I have found warns against repeated
+artificial recycling of charge, and deliberately draining all charge regularly
+on a Lithium Ion battery. The instructions recommending regular full drain and
+recharge are probably a relic of an older model with a nickel-cadmium battery?
+
+An earlier draft of this review included:
+    <font color="blue">On the other hand the warning in the manual about possibly harmful
+    radiation with wifi on is very good. More manufacturers should do this.</font>
+However, a colleague informs me that the harmful effects have never been
+reliably established. Compare
+    <a href="https://www.howtogeek.com/234817/dont-worry-wi-fi-isnt-dangerous/">https://www.howtogeek.com/234817/dont-worry-wi-fi-isnt-dangerous/</a>
+    <a href="http://www.who.int/peh-emf/publications/facts/fs304/en/">http://www.who.int/peh-emf/publications/facts/fs304/en/</a>
+
+<a name="pad">-- TOUCH PAD:</a>
+
+I really miss the 3-button touch-pad that was provided on the Dell E6410 laptop,
+since 2010 my 'workhorse' computer when travelling or giving talks.
+    <a href="http://www.cs.bham.ac.uk/~axs/laptop">http://www.cs.bham.ac.uk/~axs/laptop</a>
+
+On linux I use the middle button many times every hour (it's the quickest way to
+paste text on linux, in many contexts). But the Stonebook mini does not have a
+middle mouse button.
+
+On machines with two buttons, the effect of a middle button can be achieved in
+linux by pressing the two buttons simultaneously. But this machine has a
+slightly flexible rocker instead of two buttons, so the effect of middle button
+requires pressing both ends of the rocker. This needs far more effort than
+pressing two adjacent buttons using one finger.
+
+I can partly compensate by attaching a small three button mouse, which the Dell
+doesn't need. (The mouse increases battery drain by a small amount, as well as
+requiring additional table space.)
+
+I don't find two-finger cursor motion control on the touch pad quite as
+comfortable on the Stone as on the Dell (with Alps touch pad), but I have
+learnt to accommodate, when a mouse is not available.
+
+<a name="emulation">-- PAGE HOME/END UP/DOWN BUTTON EMULATION</a>
+
+As on many laptops the keyboard does not include space for separate keys for
+HOME, END, PageUP and PageDown, so they are 'emulated' by using the Fn key in
+combination with other keys. Despite the (unusual) provision of a second Fn key
+on the right, I found the need to use two keys uncomfortable for PageUp and
+PageDown, so I used linux facilities to map keys onto the functions I
+required, as explained below.
+
+I use PageUp/Down a lot (e.g. reading Web pages, PDF and text documents, and
+program files) and I miss having separate keys. The Stonebook mini maps Page Up
+and Down to Fn+Up and Fn+Down. But I use Page Up and Down a lot, and found that
+double key press annoying.
+
+So I used the Linux xmodmap function to set the PrtSc and Pause keys in the top
+row to do PageUp and PageDown, which works perfectly in most contexts.
+
+I also miss the Home and End keys, used less often. Fn+Left emulates the Home
+key, and Fn+Right emulates End. Fortunately that has been made slightly more
+tolerable by provision of a second Fn key on the right. I could live with that
+mainly because I don't use Home and End as frequently as PageUp/Down.
+
+However, my text editor allows me to define alternative shortcuts, i.e.
+ESC followed by PrtSc for HOME, and ESC followed by Pause for END, which I
+find more comfortable than simultaneous use of the Fn key.
+Summary:
+    I use PrtSc alone for PageUp and preceded by ESC for PageDown
+    I use PauseBreak alone for PageDown and preceded by ESC for END.
+
+As a Unix/linux user, I often use the Linefeed key, which is not provided on
+most keyboards nowadays. But since I don't use the AltGr button to the right of
+the space bar, I set that to be the Linefeed key.
+
+Different key codes may be needed on different machines. On my machine the file
+(which I have named 'keyspecs') read by xmodmap to achieve these settings
+contains:
+
+    keycode 108 = Linefeed
+    keycode 107 = Prior
+    keycode 127 = Next
+
+The linux 'xev' utility can be used to find the key codes associated with
+different physical keys.
+
+The command to set this all up using xmodmap when my machine goes into graphics
+mode takes the form (in .xinitrc, by graphical mode startup file).
+
+    xmodmap keyspecs
+
+See also the alternative solution using a wireless mouse described <a href="#wireless">below.</a>
+
+<a name="backlight">-- NO KEYBOARD BACKLIGHT</a>
+
+I miss the Dell's backlit keyboard in dim light, but I have a little usb powered
+LCD lamp that can clip on the top or side of the lid of the Stone. I don't know
+how its power consumption compares with a backlit keyboard, but it is much less
+convenient. (The extra drain recorded by the Linux battery monitor with the lamp
+plugged in seems to be about 0.26 amps, but I have not tested thoroughly.)
+
+I don't know whether the extra cost of a back-lit keyboard would be higher than
+the cost of the usb lamp, but it would certainly make the machine more
+attractive.
+
+<a name="windows-10">-- WINDOWS 10 UPDATE (with problems) 1 Oct 2018</a>
+
+Yesterday I was running Windows to check something and somehow inadvertently
+permitted an 'update' process. It said it might take over an hour, so I let it
+run. Eventually, at least eight hours later, it rebooted a few times and then
+left windows running.
+
+I then found I could not boot linux without going into the UEFI menu and
+re-setting the options.
+
+It then booted into F27 and everything seemed OK until I ran hibernate,
+since I normally shut the machine down with several things still open. It
+failed to hibernate despite the fact that there was a large swap partition
+as shown by 'top'.
+
+After a lot of checking of contents of grub.cfg, /etc/fstab and other
+things, I discovered that Windows had created a new small partition, just
+after the last Windows partition, so all my linux partition numbers had
+been increased by 1. Most things worked, but because the 'resume' entry in
+grub.cfg used '/dev/sda5', hibernate failed: the swap partition had become
+/dev/sda6 instead of /dev/sda5.
+
+(I know one should always use UUID partition names, but my choice was a
+result of something copied from somewhere, a long time ago and it had
+always worked, till Windows 10 updated itself!)
+
+I think it is terrible that the windows update process does not produce a
+warning about partitions being changed. Microsoft arrogance? Stupidity? or
+deliberate punishment of linux users?
+
+  A colleague's answer: <font color="red">"All of them"!</font>
+
+<a name="niggles">-- MINOR NIGGLES</a>
+
+I don't have fat fingers, but I find the power button very fiddly to press
+because it is long and very narrow. The length really has no benefits.
+A slightly shorter wider button would be more ergonomic, from my point of view.
+Of course the power button is not used often, so this is a trivial point.
+
+More importantly, I would prefer not to have to tilt the base up to see the LEDs
+there. Having them to the right of the power button, with more readable labels
+would be very much better -- but I don't know the internal constraints. At
+present the labels, stamped into the casing next to the LEDs, are too small to
+read and there is no space to increase their size.
+
+I would also like to have a CAPS LOCK light. Occasionally CapsLock gets left on
+when it should not be, and the result can be unintended text being typed in or
+some command not working (e.g. a password fails). On windows 10 an obtrusive
+panel comes up whenever CapsLock is turned on, which is awful when CapsLock is
+on deliberately. That mechanism is no substitute for a CapsLock indicator.
+
+<a name="record">-- RECORDMYDESKTOP</a>
+
+I can run 'recordmydesktop' in full-screen mode, including switching between
+workspaces with different contents, one of them displaying input from a usb
+video camera attached, run using the 'cheese' program.
+
+    [I may post an example recording here later.]
+
+First tests with 'recordmydesktop' to record a full screen presentation
+switching between linux workspaces (virtual desks) with different content
+(e.g. text files, images, web pages and a 'cheese' display of my face
+while talking, worked well, though processing of a recording to produce a usable
+video can take a very long time.
+
+The fact that the display resolution is only 1366x768 is an advantage for use of
+recordmydesktop. On screens with more pixels I have to invoke recordmydesktop
+with tools that restrict the recording to part of the screen, which is a lot
+more fiddly.
+
+<a name="screen">-- LCD SCREEN</a>
+
+The screen on the Stonebook mini is excellent, with a <a href="http://www.sid.org/Portals/sid/Files/pdf/Americas%20UMW/SID%202015%20TLM.pdf">matte</a> surface and usable
+brightness in all the conditions I have tried, including outside in moderate
+sunlight, where I had to set screen brightness to maximum. This seems to be
+slightly better than my Dell's (2010 vintage) screen. Presumably screen
+technology has improved in the last seven years. (I don't know whether a display
+bought seven years ago will have deteriorated.)
+
+The screen resolution (1366x768) seems to be standard across all cheaper and
+smaller laptops though the much more expensive 13.3" Dell XPS-13 provides full
+HD: 1920 x 1080 pixels (even more on the latest model?)
+
+On the basis of my experience since acquiring the Stone machine, more pixels per
+inch would shrink the display size of all my standard fonts and I would have to
+use larger fonts, going back to fewer characters per line and lines per visible
+page. I think that for my intended use (not as a full time machine) this
+resolution is an acceptable compromise.
+
+When needed I can connect an external display with much higher resolution, as
+reported below.
+
+<a name="lid">-- 'SNAP SHUT' HINGED LID</a>
+
+The lid uses friction hinges and is spring loaded to shut when only slightly
+open (a gap of about 2cm or less), so that it does not need a catch.
+
+Consequently, when lifting the front edge of the lid I have to hold the base
+down, otherwise it comes up with the lid!
+
+That spring-loading has the consequence that it is very easy to shut the lid
+unintentionally if carrying the machine slightly open, e.g. for use in another
+room. On my configuration shutting the lid causes the operating system to
+suspend, which can be useful for saving use of battery. But it may interfere
+with some pre-prepared demonstrations.
+
+I have mapped invocations of the linux function brightnessctl to keyboard keys,
+for increasing and decreasing brightness.
+
+<a name="connections">-- WIFI and CABLE CONNECTIONS</a>
+
+Wifi download speed is very good -- better than the 7 year old Dell.
+
+Cable (ethernet) communication works as expected.
+
+<a name="displays">-- EXTERNAL DISPLAYS</a>
+
+I have tested the Stone's VGA and HDMI ports on a projector in our department,
+and both ports work perfectly.
+
+I also tried plugging in a 23" High definition 1920 x 1080 monitor using
+the VGA port and that worked perfectly for my purposes.
+
+(The linux lxrandr tool works like magic with projectors and external
+monitors.)
+
+We have many visitors and some colleagues with lightweight laptops that need
+adapters for VGA and HDMI. Often this can be a nuisance.
+<font color="blue">Having both built in is a great advantage.</font>
+
+<a name="keyboard">-- KEYBOARD</a>
+
+Although the small size is slightly inconvenient the keyboard feels good and I
+am learning to adjust to it. The unusual angles for finger actions seem to
+produce the illusion that keys are slightly harder to press than on other
+keyboards, but only when touch-typing with both hands (in my case).
+
+As usual on small laptops, the shortage of space for additional keys is
+compensated for by using the Fn Key to provide extra functionality. This can be
+very tedious for actions used often. On this keyboard that is somewhat mitigated
+by having a second Fn key on the right, as discussed above.
+
+For a linux user there is further mitigation by re-mapping two of the unused top
+row keys to PageUp and PageDown (using xmodmap), also explained above. So I
+don't need to use Fn for those two frequently used keys.
+
+As explained above, the keyboard emulates Home and End keys by combinations
+Fn+Left and F+Right, respectively. The provision of the second Fn key on right,
+adjacent to the Left and Right arrow keys makes this tolerable.
+
+I don't know whether any other 11.6" laptop makes better use of the limited
+keyboard space.
+
+<b>A minor nuisance:</b>
+The four arrow keys and the second Fn key at the bottom right corner of the
+keyboard are slightly thinner than the main keys. At first I found that they did
+not always respond when tapped, and I thought they might have a fault.
+
+Eventually I realised that as long as I tap the key on or below its centre it
+works. If I tap slightly above the center that seems to prevent the electrical
+contact working. It has been fairly easy to adjust my typing on those keys so
+that I no longer have the problem, but it could lead some users to report faulty
+keys.<font color="blue">(Added 12 May 2017)</font>
+
+<a name="construction">-- THE GENERAL CONSTRUCTION SEEMS TO BE VERY GOOD</a>
+
+Everything feels very solid and robust.
+
+There are four small rubber tipped feet on the base, keeping the air vents
+clear, and preventing the speakers being muffled.
+
+<a name="battery">-- REMOVABLE BATTERY</a>
+<font color="blue">
+A removable battery is a great advantage -- I have heard colleagues complain
+about laptops with inaccessible batteries that need replacing after a few years.
+
+The ability to swap in a spare battery can sometimes also be very useful on
+long journeys or in long meetings without access to a charger. The spare battery
+is very much smaller and lighter than the spare battery for the Dell.</font>
+
+Removing a battery is easy: two sliders release the catches at either end, as on
+the Dell. But the Dell's batteries are much larger and heavier.
+
+Alternating between two batteries bought with my Dell E6410 seems to have kept
+both of them highly functional (around 70% capacity) after 7 years -- though
+that is partly because the machine has external power when used at my desk.
+
+Battery life from full charge will depend enormously on a combination of factors
+including screen brightness, wifi usage, disk usage, and cpu usage. My
+impression is that with screen close to lowest brightness and no 'heavy'
+computation, and no attached mouse or other device, the machine could be used
+for editing and browsing for 7hours or more. It easily goes beyond 5 hours.
+
+NOTE: 6 Sep 2017
+I've installed the 'tlp' package for power management, including setting
+
+    DISK_SPINDOWN_TIMEOUT_ON_BAT="30"
+
+in /etc/default/tlp as advised in the 'man' file. (Power down hard drive if
+unused for 30 secs). This seems to have extended battery life to about 7.5 hours
+with display on a low (indoors) setting, and not much cpu activity, though
+running firefox, wifi connected, and several windows open.
+
+'upower --monitor-detail' now shows lower levels of discharge rate when
+inactive. Replacing hard drive with Samsung SSD further improved battery life.
+
+<a name="camera">-- CAMERA</a>
+
+I tried using both the built in camera and an external Logitek C270 usb camera,
+which is more flexible for recording lectures and discussions at meetings.
+
+The 'cheese' program (for snapshots and videos) starts up within a few seconds
+when using only the Stone's built in Webcam. If I plug in the Logitek before
+running cheese, it takes much longer to start, then allows me to choose between
+the internal and external cameras.
+
+I am fairly certain the machine would struggle if I used the full camera
+resolution for recording videos (the Dell E6410 also struggles), but I have not
+tried that on the Stone.
+
+I have used both Skype and https://appear.in. I prefer the
+latter.
+
+<a name="ports">-- USB PORTS</a>
+
+Having the two usb sockets in the middle of the right edge is a disadvantage for
+a right-handed user when a mouse has been plugged in to one of them: the usb
+plug on my mouse cable sticks out about 3cm, and gets in the way of the mouse in
+situations with a restricted flat surface.
+
+At first I solved that by plugging my mouse in on the opposite side, but that
+uses the only USB3 socket. An excellent alternative solution uses a wireless
+mouse with a tiny usb adapter.
+
+<a name="wireless">-- USING A WIRELESS MOUSE</a>
+(Added: 14 May 2017. Modified 6 Sep 2017)
+
+I bought a wireless mouse to avoid the problem of dealing with the mouse cable.
+The mouse I bought (Advent AMWLWH16 -- cost &pound;7.50 at PCWorld) uses a tiny
+wireless dongle with a usb plug that hardly protrudes at all. The mouse has two
+extra buttons on the left side. Using the 'xev' command I identified them as
+Button 8 and Button 9. In order to get them to invoke PageUp and PageDown, I
+installed Fedora packages <font color="blue">xbindkeys</font> and <font color="blue">xautomation</font>.
+
+To use the functionality, create a file .xbindkeysrc by running 'xbindkeys -d'
+
+    $ xbindkeys -d > ~/.xbindkeysrc
+
+This file is used when xbindkeys starts up. After using Xev to find the labels
+for the extra mouse buttons (8 and 9 in my case) edit .xbindkeys at the end to
+invoke the 'xte' command, provided by the xautomation package, to create the
+two new bindings.
+
+Each setting requires two lines in the .xbindkeysrc file. I used:
+
+    "xte 'key Page_Down'"
+        b:8
+
+    "xte 'key Page_Up'"
+        b:9
+
+The first line of each xte command specifies the required functionality. The
+second line specifies the mouse button to invoke it. After editing the file,
+kill the xbindkeys process if it is already running (killall xbindkeys) then
+restart it. It will then read your new .xbindkeysrc file.
+
+If using .xinitrc to control the start up of graphics on your system, add a line
+to invoke xbindkeys. Different start up files are likely to be required by
+different window managers.
+
+A side-benefit is that the wireless mouse can then be used during presentations
+to operate the pointer and the screen and to invoke Next or Previous page.
+
+For more information see
+    <a href="http://dev-random.net/make-your-own-keybindings-in-linux-using-xbindkeys/">http://dev-random.net/make-your-own-keybindings-in-linux-using-xbindkeys/</a>
+
+    TIP: On the Advent AMWL WH16, mouse resolution can be rotated through
+    through 800, 1200 and 1600 DPI. To get next resolution press and hold
+    Left mouse button and scroll wheel together for 3 seconds.
+
+<a name="strengths">-- MAIN STRENGTHS</a>
+
+There does not seem to be any other 11.6" laptop on the market that is so well
+configured at around this price or lower -- many are Chromebooks with much less
+file storage and other disadvantages for linux -- e.g. simpler keyboards.
+
+Dell has more sophisticated offerings, but at a much higher price (even with
+less storage than this).
+
+Much cheaper consumer-targeted 15 inch laptops are available at lower prices,
+including a Dell Inspiron provided with linux pre-installed (Ubuntu).
+
+But the price seems to go up as machine size goes down.
+
+<a name="conclusion">-- PROVISIONAL CONCLUSION</a>
+
+I could not find anything comparable in configuration, namely size, weight, RAM,
+filespace, external ports (USBx3, SD card, VGA, HDMI, Ethernet, separate audio
+in and out ports), plus high quality screen and exchangeable battery, for a
+price that was less than twice as high. The machine also works well with linux
+and has a 5 year on-site warranty. (This may depend on having a site-wide
+arrangement with Stone.)
+
+So I am pleased with the purchase. Stone sales staff were very helpful and
+patient during the time I was undecided.
+
+As far as I can tell this machine fills a niche that is ignored by other
+manufacturers, and if it were on sale more visibly there could be many more
+buyers. I studied offerings from several other manufacturers and inspected a
+variety of examples at a PCWorld in Birmingham. I found nothing that came so
+close to meeting my needs and constraints.
+</pre>
+</b>
+<hr>
+Maintained by
+<br>
+Aaron Sloman
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">http://www.cs.bham.ac.uk/~axs/</a>
+<br>
+a.sloman [at] cs.bham.ac.uk
+<br>
+Created: 1 May 2017
+<br>
+Revised: Fedora Bugreport 15 Mar 2018; 21 Mar 2018
+<br>
+6 Sep 2017; 5 Jan 2018 (mostly reformatting); 1 Feb 2018 (Adding SSD)
+<br>
+8 May 2017; 9 May 2017; 12 May 2017; 14 May 2017; 26 May 2017
+</div>
+</body></html>

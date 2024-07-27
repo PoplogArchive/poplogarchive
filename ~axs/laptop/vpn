@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Accessing SoCS using vpn</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+
+<h2><b>
+Connecting to the School of Computer Science using VPN
+</b></h2>
+
+<h3><b>
+This file is part of my linux on a Dell Laptop site
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">here</a>.
+</b></h3>
+
+<h3><b>
+Note added: 30 Nov 2006
+</b>
+</h3>
+Martin Escardo has informed me that VPN also works under NetWorkManager
+which he previously recommended
+<a href="../wpa/nm-applet.html">for wpa connections.</a>
+<p>
+He writes
+
+<pre>
+It is rather simple - if anyone would like to know, see
+
+    <a href="https://help.ubuntu.com/community/WifiDocs/NetworkManager">https://help.ubuntu.com/community/WifiDocs/NetworkManager</a>
+
+and search for "VPN".
+
+The alternative described below using pptpconfig may suit some people
+better.
+</pre>
+
+<hr>
+
+<h3><b>
+Using pptpconfig to connect using vpn
+</b></h3>
+
+<PRE>
+At home I have a desktop machine using FC4 and a laptop using FC5
+both connected to blueyonder cable modem via DLINK router/wireless
+access point.
+
+I've just got vpn working on both of them by following the instructions
+on this page (which are rather terse)
+
+    <a href="http://supportweb.cs.bham.ac.uk/remote_access/vpn/linux.php">http://supportweb.cs.bham.ac.uk/remote_access/vpn/linux.php</a>
+
+I tested MPPE support
+
+    # modprobe ppp-compress-18 && echo Success
+
+That printed 'Success'
+
+For other things I had to go to this page
+
+    <a href="http://sourceforge.net/project/showfiles.php?group_id=33063">http://sourceforge.net/project/showfiles.php?group_id=33063</a>
+
+and fetch and install ('rpm -ivh *.rpm') these files:
+
+    php4-pcntl-gtk-1.0.2-2.i386.rpm
+    php4-pcntl-4.4.1-2.i386.rpm
+    pptp-1.7.1-3.i386.rpm
+    pptpconfig-20060821-1.noarch.rpm
+
+replacing three of them for the machine running fc5
+
+    php4-pcntl-4.4.1-2.fc5.i386.rpm
+    php4-pcntl-gtk-1.0.2-2.fc5.i386.rpm
+    pptpconfig-20060821-1.fc5.noarch.rpm
+
+and I also had to use 'yum install' to fetch a couple of other things
+which were reported as missing, e.g. libglade, whatever that is.
+
+After that I could install the downloaded files using 'rpm -ivh'
+
+Then I followed the instructions:
+
+    run pptpconfig  (as root)
+
+This brings up a window containing a main blank window and some
+tabs below.
+
+Click on the 'Server' tab.
+
+On the 'Server' tab enter:
+    * a name for your VPN connection (e.g. SoCSvpn)
+    * the server address vpn.cs.bham.ac.uk
+    * your username  (school login name)
+    * your password
+
+Select the 'Routing' tab:
+
+    * Select:
+        'All to Tunnel'
+
+    * de-select everything else
+        (It does not say that, but the screenshot shows nothing
+        else selected.)
+
+Select the 'Encryption' tab:
+
+    * Select require-mppe
+
+Click 'Add'
+    That produces an entry for the vpn connection in the
+    window.
+
+Select the new VPN entry
+
+    click Start
+
+The connection then starts.
+
+After that all attempts to connect to the internet go via the
+school. So in the browser you have to set your proxy server to
+use the school proxy server
+
+    Automatic proxy configuration:
+    http://www.cs.bham.ac.uk/configure/proxy.pac
+
+    Manual proxy configuration:
+    webcache.cs.bham.ac.uk port 3128
+
+Because everything goes via the school, sendmail and fetchmail stopped
+working on my machine. They normally work via the blueyonder connection.
+
+I am no expert on any of this. I just followed the instructions blindly.
+</PRE>
+
+<p>
+<hr>
+<small>
+Last updated: 30 Nov 2006
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+
+</BODY>
+</HTML>

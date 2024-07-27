@@ -1,0 +1,166 @@
+#!/bin/bash
+# Aaron Sloman
+# http://www.cs.bham.ac.uk/~axs/
+# 30 Mar 2005
+# Designed and tested on Dell latitude D600
+# Simple script to check battery and charging status at varying intervals
+# Hibernates if necessary
+# Uses xmessage to display warnings/reminders.
+# Could also be made to vary cpu state.
+
+## Users may wish to alter these times
+# sleep intervals when power is off
+tinysleep=60  # 1  minutes
+shortsleep=120 # 2  minutes
+medsleep=300   # 5 minutes  (not used)
+longsleep=600 # 10 minutes
+
+# sleep interval when power is on
+powersleep=600 # 10 minutes
+
+## STRATEGY
+# If AC power is on then do nothing, and check again after $powersleep seconds
+# If power is off, find out if battery 0 is present, and if so whether it is
+#   in a critical low power state, and do the same for battery 1
+# Also check whether the lid is shut or not.
+#
+# If AC power is off then
+#  If both batteries are out or critical give a warning and then hibernate
+#
+#  If both batteries are present, neither is critical, just
+#       briefly display that AC power is off and sleep for $longsleep seconds
+#
+#  If either battery is not installed or critical and lid is down hibernate (suspend to disk)
+#
+#  If main battery out or critical and battery 1 OK give warning and sleep $tinysleep
+#
+#  If main battery OK and battery 1 out give short reminder then $shortsleep
+#  If main battery OK and battery 1 crticial give longer reminder then $shortsleep
+
+
+while [ 1 ];
+do
+    # check if AC charger off
+    acoff=`grep -o off /proc/acpi/ac_adapter/AC/state`
+
+    # echo "acoff   $acoff"
+
+    # Is AC charger on
+    if  [ "x$acoff" == "x" ] ;
+    then
+
+        # not off, so must be on == charging
+        # echo 'online'
+        # Used for testing
+        # xmessage -timeout 1 -title "battery" -font 9x15bold -geom +5+5 "power online "
+        # wait for 60 minutes and repeat
+        sleep $powersleep ;
+
+    else
+        # No AC power. Do various checks
+
+        # Check if primary battery out or critical
+        batt0out=`grep -hi " no" /proc/acpi/battery/BAT0/state|grep present`
+        #echo "battery 0 in?: $batt0out"
+
+        crit0=`grep -hi critical /proc/acpi/battery/BAT0/state`
+        #echo "Battery 0 critical?: $crit0 "
+
+        # check if secondary battery out or critical
+        batt1out=`grep -hi " no" /proc/acpi/battery/BAT1/state|grep present`
+        #echo "battery 1 in?: $batt1out"
+
+        crit1=`grep -hi critical /proc/acpi/battery/BAT1/state`
+        #echo "Battery 1 critical?: $crit1 "
+
+        # Check if lid closed
+        lid=`grep -o closed /proc/acpi/button/lid/LID/state`
+        #echo "Lid closed?: $lid "
+
+        # Now deal with various cases
+
+        if [[  "x$crit0" != "x"  || "x$batt0out" != "x"  ]] ;
+        then
+            batt0crit=true
+        else
+            batt0crit=false
+        fi;
+
+        if [[  "x$crit1" != "x"  || "x$batt1out" != "x"  ]] ;
+        then
+            batt1crit=true
+        else
+            batt1crit=false
+        fi;
+
+        #Are BOTH batteries out or critical?
+        if [[  "$batt0crit" = "true" && $batt1crit = "true" ]] ;
+        then
+            # MUST hibernate. Give 30 second warning
+            xmessage -timeout 30 -title "battery" -font 10x20 -geom +5+5 "BATTERIES OUT OR CRITICAL HIBERNATING"
+            # Before hibernating check power has not been restored
+            acoff=`grep -o off /proc/acpi/ac_adapter/AC/state`
+
+            if  [ "x$acoff" == "x" ] ;
+            then
+                # power still off
+                sudo /usr/local/sbin/hibernate
+                # on waking sleep for a minute before re-checking
+                sleep 60
+            fi
+
+        #Are BOTH batteries OK?
+        elif [[  "$batt0crit" = "false" && $batt1crit = "false" ]] ;
+        then
+            # Both batteries OK but power off
+            # give short reminder, then sleep
+            xmessage -timeout 5 -title "battery" -font 9x15bold -geom +5+5 "POWER OFF"
+            # check again later
+            sleep $longsleep ;
+
+        #Is something out or critical while lid closed?
+        elif [[ "$batt0crit" = "true" || $batt1crit = "true" && "x$lid" = "xclosed" ]] ;
+        then
+            # lid is closed and one of the batteries is out or critical
+            # Might as well hibernate.
+            # Use message for debugging
+            #xmessage -timeout 30 -title "battery" -font 10x20 -geom +5+5 "BATTERIES OUT OR CRITICAL HIBERNATING"
+            sudo /usr/local/sbin/hibernate
+            # on waking sleep for a minute before re-checking
+            sleep 60
+
+        #Is battery 0 out, or critical?
+        elif [[  "$batt0crit" = "true"  ]] ;
+        then
+            ## Battery 0 (main battery) is critical or not installed, but Batt 1 is OK
+            #Lid open, so give warnings, but don't hibernate,
+
+            xmessage -timeout 10 -title "battery" -font 12x24 -geom +5+5 "BATTERY 0 CRITICAL or OUT"
+            sleep $tinysleep ;
+
+        #Is battery 1 out, or critical?
+        elif [[  "$batt1crit" = "true"  ]] ;
+        then
+            ## Battery 1 is critical or not installed, but Batt 0 is OK
+            #Lid open, so give warnings, but don't hibernate,
+
+            if [[  "x$batt1out" != "x"  ]] ;
+            then
+                #Battery 1 is out. Give short reminder
+                xmessage -timeout 10 -title "battery" -font 10x20 -geom +5+5 "BATTERY 1 OUT"
+                sleep $shortsleep ;
+            else
+                #Battery 1 is in and critical, Give longer warning
+                xmessage -timeout 20 -title "battery" -font 12x24 -geom +5+5 "BATTERY 1 CRITICAL"
+                sleep $shortsleep ;
+            fi
+
+        else
+            # should never get here
+            xmessage -timeout 30 -title "battery" -font 12x25 -geom +5+5 "A.Sloman: SHOULD NOT GET THIS MESSAGE"
+            sleep $medsleep ;
+        fi
+
+    fi
+
+done

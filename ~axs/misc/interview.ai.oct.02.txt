@@ -1,0 +1,430 @@
+From Aaron Sloman Mon Oct 21 23:53:51 BST 2002
+Subject: Re: -- interview --
+
+Dear Lori and friends.
+
+Thanks for your questions. The problem with interactions like this is
+that almost all the questions can provide long researches and extensive
+reports, for which I don't have the time and you'd not wish to read.
+
+So please bear in mind that everything I say is impressionistic, based
+on my feeble memory, only a first draft that I might need to revise if I
+re-read it carefully, and at best a suggestion for you to think about
+and perhaps check by doing your own research.
+
+I can give you no authoritative answers. Probably nobody can, as AI is
+now done in so many different ways by so many people in so many
+countries that almost any answer to any question about is likely to be
+incomplete.
+
+I'll intersperse my comments with your text.
+
+> Thank you so much for allowing my group to interview you.  It is much
+> appreciated.  I wanted to become familiar with your research so I read up on
+> the links that were sent to me to learn more about you and your projects.  I
+> am very impressed.
+>
+> Our group is from an Engineering Class at the University of Texas at
+> Arlington.  The Class has many students who are just taking their first
+> engineering classes and thus are beginning to learn programming and coding.
+> Our class is actually named "Introduction to Computer Science."  Hence, we
+> are not getting to detailed in our presentations.  Our group is presenting
+> this on the 25th to faculty and students. We are presenting it as, "This is
+> an introduction to what AI is and what it does.  I was very interested in
+> your research of AI including emotions because we are presenting AI as
+> machine language mimicking human thinking and how close can a machine come
+> to thinking and acting human.
+
+Well I am a machine (albeit made of meat, and bones and blood, etc.) and
+I am a human, so machines can come as close to mimicking humans as
+humans can.
+
+Of course humans vary, so a what they can do and who they can mimic
+varies. There's no way I could mimic Madonna, for instance.
+(Nor would I wish to.)
+
+She probably could not mimic me either. (Send her the questions, and see
+what you get back.)
+
+To be more precise, there are forms of behaviour of which each of us is
+capable that the others cannot mimic.
+
+Of course, if Madonna counts up to twenty I can mimic that, and so could
+many computers.
+
+The moral of all that is that simple looking questions can have multiple
+interpretations.
+
+It's never a good idea to ask what a machine can do without specifying
+which sort of machine you are talking about.
+
+The computers of 2002 can do all sorts of things that the computers of
+1952 could not do, and the computers of 2052 will probably be able to do
+a lot more.
+
+Some of this is simply a consequence of CPUs being very much faster and
+computers having much larger memories. But there may be other
+differences that can have profound importance. E.g. nowadays you can get
+fast and powerful electronic cameras that can be connected to computers
+providing visual input of a speed and richness that was previously
+impossible.
+
+It's a pity AI vision researchers don't know yet how to get machines to
+process that visual input, except in rather shallow ways.
+
+> So for your answers, please feel free to give
+> us the basics, we don't want to talk beyond the students knowledge of AI
+> since many of them are just learning about it or have not heard much about
+> it.
+
+
+> Q1. While doing this project, we've found many companies that used to have
+> AI research teams, have abandoned these teams or projects.
+
+That's probably in part because it's a bad idea for companies to do AI
+separately from working on specific problems, whether it's oil
+prospecting, medical diagnosis, selling life insurance, diagnosing
+machine faults, making new computer games, etc.
+
+Instead the people working on particular projects need to learn AI
+techniques and concepts so that they can decide when they are
+appropriate.
+
+Also some companies jumped on an AI bandwagon thinking that if they
+hired AI developers a lot of magical results would follow. But they got
+that wrong. You can't just produce great designs simply by knowing about
+AI, if you don't know anything about the application domain. So if AI is
+to be useful it is normally best to teach the domain experts how to do
+some relevant bits of AI, then let them find out what they need to know.
+
+
+> In  your "What
+> is Artificial Intelligence Report" , you've stated that "{AI} is steadily
+> growing in academe and industry, though the work is not always labeled as
+> "Artificial Intelligence.  That is because some of the important ideas and
+> techniques have been absorbed into software engineering."  Could you please
+> give us some examples of how they are absorbed into software engineering?
+
+I have not done detailed research on this and don't remember all the
+examples I've previously heard about. But two examples are design of web
+interfaces and computer games.
+
+Many of the kinds of techniques that were being developed in AI 20 and
+30 years ago, involving the use of rules to take in information and then
+take appropriate action are now just taken for granted in designing
+interfaces that ask a lot of questions and then perform some action,
+e.g. showing you products or services you amy be interested in buying.
+
+And software developers working on games who previously had to give the
+game characters vast collections of instructions to handle every
+situation that can arise are now trying to give syntheic characters the
+ability to decide for themselves what to do, e.g. using AI planning
+techniques.
+
+If you use a time-sharing computer you may not be aware that it was AI
+researchers (e.g. in MIT and in Edinburgh) who first felt the need for
+time-sharing because they had to work on programs and development tools
+that were interactive.
+
+There are lots of speech recognition and handwriting recognition
+packages available: many of these grew out of early work on AI.
+
+There are many mathematical software tools that grew out of AI research
+30 and 40 years ago (e.g. Matlab I expect).
+
+Spelling checkers and grammar checkers in word processors use AI
+techniques.
+
+> Q2. Do you find it hard for AI researchers to receive grants or financial
+> backing for AI research?
+
+As far as I know they don't find it harder than other people who work in
+computing, at least in the UK.
+
+In the USA DARPA has just set up a project to fund research in cognitive
+systems. See     http://www.darpa.mil/ipto/
+
+Whether AI researchers find it hard or easy to get funds will depend on
+the nature of their research and how expensive it is. Most of my own
+grant proposals get turned down: yet I am sometimes surprised by people
+just offer to fund my research. That has happened a few times.
+
+> If so or if not please explain who funds some
+> research and why? (i.e.: Do companies want to get a competitive edge on AI
+> or do some feel it's not a field to benefit from?)
+
+You can't generalise. There are myriad companies and some are interested
+in AI some not. Most are interested in solutions to problems and just
+don't care where the tools and solutions come from, as long as they
+work. So there are probably companies funding solutions that use AI
+without realising it.
+
+Much of the funding comes from government agencies and research councils
+(including things like NSF, DARPA and NIH in the USA).
+
+
+> Q3. In your slides under "False Hopes"  You've mentioned that early AI
+> researchers were over-optimistic because "people did not understand the
+> difficulty, complexity and variety of tasks."
+
+The problem is that they did not understand people, or other animals.
+
+They thought that the things humans do can be analysed, built in to
+programs, and thereby replicated, without much effort. They did not
+realise how much vision, or speech understanding, or learning depended
+on very complex unconscious processes that nobody understands yet.
+
+
+> Do you think in todays time
+> that society is computer literate
+
+That covers a multitude of things. Huge numbers of people can use a
+mouse and select information on the internet.
+
+Hardly any people know what a virtual machine is. (Do you?)
+
+Vast numbers of computer users have had their brains corrupted into
+thinking that a computer necessarily means a machine running windows.
+
+(I never use windows or any other microsoft software, only linux and
+free or open source software.)
+
+> or can understand AI
+
+Most people know very little about programing, about design, testing,
+debugging or analysing complex software systems.
+
+Our educational system tends to teach people that youare computer
+literate if you can use packages that other people have designed.
+
+> now or do you think
+> it is too complex for the non-engineer, scientist, behaviorist, etc to
+> understand or use"
+
+It's not that AI is too complex. Society is not "literate" regarding the
+nature of these problems, nor the possibilities for computers to be used
+in addressing them.
+
+In short: The problem is that AI researchers are trying to understand
+people and other animals and all such animals are very complex
+systems, with a kind of complexity that most people have never studied,
+and never will.
+
+So if you want to use AI to produce realistic models of people and or
+squirrels or magpies building their nests in treetops, it's very
+difficult.
+
+There are many simpler AI tasks that are much easier, e.g. making an AI
+program that beats most humans at checkers or chess is quite easy.
+
+Flight control programs are probably smarter and landing airliners
+safely than you or I could be.
+
+
+> Q4. In your same report you mentioned, "the study of emotions has been
+> growing in the importance of AI" Do you believe that we can or will in the
+> future be able to program machines to have emotions? If so or if not why?
+
+Programming them to have emotions suggests that you have to put in some
+special procedures or rules that will produce emotions when they run.
+
+That's the wrong model. Rather emotions "emerge" out of the interaction
+of other things, e.g. motivation, attention, protective reactions,
+personality traits, may of which we don't know how to program, but may
+understand in future.
+
+Some human emotions are a result of programming. E.g people who feel
+sinful have usually been programmed by religious indoctrination.
+
+I never had such programming so I am incapable of feeling sinful.
+(Having ethical principles is another matter.)
+
+Think of fear:
+If we build robots that are capable of being damaged in certain
+situations then it will be useful to give them the ability to detect
+imminent situations like that, and, if appropriate, take rapid avoidance
+action. That would be a simple form of fear.
+
+Some insect emotions should be quite easy to put into artificial
+machines.
+
+Giving machines the ability to be moved by a Beethoven string quartet as
+some humans can be, or the ability to grieve when their colleagues are
+destroyed, or the ability to be awe-struck by the depth and complexity
+of the physical universe, will require much more complex advances in our
+understanding.
+
+Don't expect it to happen next year.
+
+> Q5. I've read in your project and slides that you are working with CogAff -
+> that has to do with emotions, rationalizing and performing tasks?  Could you
+> please explain.
+
+CogAff is just a short name for the "Cognition and Affect project",
+descibed here:
+    http://www.cs.bham.ac.uk/~axs/cogaff.html
+
+within which we have been trying to develop a framework for thinking
+about a variety of architectures (information processing architectures)
+capable of supporting different kinds of mental states and processes.
+We sometimes use "CogAff" as a label for the general framework
+specifying possible components of architectures.
+
+If you don't yet know what architectures are you'll have to read my
+answer again later on.
+
+Different architectures are capable of supporting different kinds of
+emotions. But that's still a topic of ongoing research.
+
+> Q6. Could you please explain a latté bit more what SimAgent is and how it
+> works?
+
+It's just a bunch of programs that make it easier to develop and test
+programs for simulated agents with quite complex architectures -- easier
+than programming it all yourself in a conventional programming language,
+e.g. C++, or Java or Lisp. There is more information about it here:
+    http://www.cs.bham.ac.uk/~axs/cogaff/simagent.html
+
+If you ever choose to do an AI agent project you can fetch poplog and
+the simagent toolkit which runs on poplog and try it out. It's all free
+and open source. Runs best on Linux or Unix.
+
+> Q7. Is Pop-11 and SimAgent toolkit what you feel works best for AI?  What
+> are the pros and cons of using these?
+
+Pop-11 is just a multi-paradigm programming language, very similar in
+power to Common Lisp. Some people prefer common lisp , and it use used
+by a lot more people (especially in academic AI departments in the USA).
+However pop-11 has a different syntax which many people prefer.
+
+There are other AI languages, notably prolog, which is based on logic.
+
+SimAgent is just one of many AI toolkits, which are good for different
+purposes. E.g. if all you want is to build a neural net then there are
+much better tools than SimAgent. however if you want to design an  agent
+(intelligent program) which combines neural nets and other things, then
+you may find simagent useful because it is designed to enable different
+kinds of sub-mechanisms to work together.
+
+Nothing will ever simply be best for AI. AI covers a very diverse
+collection of problems and techniques. E.g. some people find that Prolog
+is a very good language for their purposes.
+
+
+> Q8. Do you think it is ethical or not for people to rely on machine AI vs.
+> human thinking?
+
+Humans are machines anyway, so I don't see any difference.
+
+If you are asking whether it is ethical to rely on machines that have
+been programmed by people: well when you get advice from a person you
+may well be given biased advice because that person was in a sense
+prgorammed by priests, schooltechers, parents, friends, etc.
+
+For some purposes it may be much better to rely on artificial machines.
+E.g. there are kinds of complex control of modern airoplanes that are
+too difficult for humans. Likewise adding up large collections of
+numbers: I'd rather relay on a result worked out by a computer than a
+result worked out by a human.
+
+For other purposes it may be more tricky. I know someone whose doctor
+failed to diagnose cancer for about five months, and then it was
+incurable. Maybe a medical diagnosis program would have done a better
+job at linking the symptoms to known patterns of evidence than the human
+doctor.
+
+There are robots that shear sheep in Australia. For all I know they hurt
+the sheep less than the human shearers.
+
+On the other hand right now I would not trust any computer to teach
+philosophy nearly as well as a good human teacher.
+
+It may be easier to get a computer to teach mathematics.
+
+> Q9. Do you think AI can be smarter than human thinking - why or why not?
+
+
+AI itself is not smart or smarter or less smart. It's just a field of
+investigation, like mathematics, physics, biology.
+
+The products of AI may be more or less smart. Already some programs are
+much smarter than I am at specific tasks, e.g. playing chess, solving
+differential equations, detecting similarties of style in collections of
+text written by humans, etc.
+
+
+> If
+> you think that AI can be smarter than humans, please explain how since
+> humans design AI (many in our class pondered that).
+
+About 50 years ago Arthur Samuel programmed a computer to play checkers
+(we call the game draughts in this country). He not only gave the
+program the ability to make legal moves: it also learnt from its
+successes and mistakes and modified itself accordingly.
+Here's a web site I found using google. It also points out that some
+of the machine language instructions for non-numerical computation
+were put into IBM machines because Samuel had found that they would
+be useful in AI programs. They turned out to be useful for other
+non-numerical programs too. That's just one of many ways AI influences
+mainstream computing.
+
+Anyhow many programs designed by humans end up smarter than the humans
+because the humans give the programs the ability to improve themselves.
+
+Of course they are smarter only in very restricted domains. Samuel's
+checkers program could not cook dinner or teach a child to talk, or
+clear up dirty dishes from a table and wash them at a sink.
+
+Maybe that will happen in your life time. Maybe not.
+
+More importantly machines designed by some humans may be much nicer than
+most humans: less selfish, less ambitious, less jealous, less cruel,
+less self-centred, less prejudiced, less easily idoctrinated.
+
+The thinks humans do to other humans, e.g. dropping bombs on them,
+electrocuting them, strangling, murdering torturing raping them, are so
+awful that it's not a good idea to think of humans as some kind of
+superior species whose status should be protected.
+
+
+> Please add anything more that you would like to explain about AI.
+
+I could go on for weeks, but I don't have time, and you'd get bored, if
+you are not already.
+
+have fun.
+
+Aaron
+PS
+the editor of a journal once sent me a bunch of questions which I tried
+to answer. The result is here:
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.eace-interview.html
+
+From Aaron Sloman Thu Oct 24 22:18:29 BST 2002
+Subject: Re: -- interview -- (Post script to one question)
+
+Lori,
+
+You asked
+
+> In  your "What
+> is Artificial Intelligence Report" , you've stated that "{AI} is steadily
+> growing in academe and industry, though the work is not always labeled as
+> "Artificial Intelligence.  That is because some of the important ideas and
+> techniques have been absorbed into software engineering."  Could you please
+> give us some examples of how they are absorbed into software engineering?
+
+I've just discovered google news: http://news.google.com/
+
+This site continuously scans, analyses, groups and selects news articles
+for display.
+
+It doesn't mention AI, but the technology required to do what they do is
+definitely the sort of thing that would come under a general definition
+of AI bcause of the extent to which the process is automated, as
+described here:
+    http://news.google.com/help/about_news_search.html
+
+The same thing must be true of the main google site: www.google.com
+
+Aaron

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Linux Desk Top Environments
+</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/ub4.png"/>
+</a>
+<h2><b>
+Linux Desk-Top Environments (DTEs) and Window Managers (WMs)
+<br/>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+</small>
+</b></h2>
+<small>
+Installed : 22 May 2011
+<br/>
+Last updated: 22 May 2011; 2 Jul 2012; 23 Jul 2012; 15 Aug 2012
+<br>
+</small>
+</b></h2>
+<b>(This is a supplement to <a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on various Dell laptops</a>)</b>
+<hr/>
+<p>
+<a name="disclaimer"></a>
+<b>
+<small>
+NOTE:
+</b>
+THIS IS NOT AN OFFICIAL DOCUMENT OF THE UNIVERSITY OF BIRMINGHAM
+OR THE SCHOOL OF COMPUTER SCIENCE.
+<br/>
+NEITHER THE UNIVERSITY NOR THE
+SCHOOL NOR THE AUTHOR OF THIS DOCUMENT CAN ACCEPT ANY RESPONSIBILITY
+FOR ANY CONSEQUENCES OF FOLLOWING THE ADVICE OFFERED HERE.
+<BR>
+(In other words: the normal conditions of mutual-help for Linux users
+apply!)
+</small>
+<h3><b>
+UPDATE 15 Aug 2012: A screenshot of CTWM, taken on a 1920x1080 screen is
+<a href="ctwm/ctwm-full-screen.jpg">here</a>.
+<br/>
+<small>
+It shows a latex file being edited in an Xterm window, and the preview
+xdvi window showing the formatted output of latex.
+</small>
+</b></h3>
+<blockquote>
+<pre>
+I use focus follows mouse without raising the input window, so I can type into the source
+window while the formatted output overlaps part of it.
+
+There are also other things visible, including a small xclock window, showing date and
+time, a larger xdaliclock window, a small xload window, the CTWM display of windows on
+that desktop, some visible some not, and on the bottom right the map of my ten current desktops.
+
+(That's my style, but many others are possible.)
+</pre>
+</blockquote>
+<hr/>
+<h3><b>
+UPDATE 2 Jul 2012: Back to using Ctwm on all three machines
+</b></h3>
+<blockquote>
+<pre>
+For several months I have been using Ctwm on all my machines, having found Openbox
+not flexible enough for my needs. I use
+
+ 1. ctwm-3.8a-27.1.x86_64 on a 5 year old desktop PC in my department at
+ Birmingham University using Scientific Linux 6, with kernel
+ 2.6.32-220.13.1.el6.x86_64
+
+    <a href="ctwmrc-cs">Using this version of .ctmrc</a>
+
+ 2. ctwm v 3.8.1 on a 1 year old Viglen desktop PC running Fedora 16
+ currently kernel 3.3.7-1.fc16.i686
+ (My main machine at home)
+
+    <a href="ctwmrc-vig">Using this version of .ctmrc</a>
+
+ 3. ctwm v 3.6.1 on a 2 year old Dell Latitude E5410 running Fedora 16
+ with kernel 3.4.4-4.fc16.i686
+
+    <a href="ctwmrc-lape">Using this version of .ctmrc</a>
+
+The .ctwmrc files reference a directory "~/.ctwm-themes/glows:~/icons", which is
+copied here, which extends the pixmap files:
+    <a href=".ctwm-themes">.ctwm-themes</a>
+</pre>
+</blockquote>
+<hr/>
+<h3><b>
+Why I don't use things like Gnome and KDE
+<br/>
+And prefer to use things like CTWM and Openbox
+</b></h3>
+<blockquote>
+<pre>
+I have been using computers, originally for research in AI, Cognitive Science and
+philosophy since about 1972 (on various research computers available in the UK), and
+since about 1975 for teaching, initially at Sussex University using the cental
+mainframe computer (ICL1904 running the George3 operating system), then using a DEC
+PDP11/40, first using DEC's operating system RSX-11D, then from about 1976 Unix.
+
+Around 1981 the university bought DEC Vax computers running VMS to replace the ICL
+mainframe and for a while I used the local Vax service, first on VMS, then later on
+Unix.
+
+Since then I have mostly used variants of Unix, including first of all Sun
+Microsystem's (Berkeley) Unix then Solaris (various versions) on workstations and
+shared compute servers, of various kinds (including Sequent Symmetry and the GEC-63
+disaster).
+
+After coming to Birmingham in 1991 I mostly used Suns running Solaris, either on
+desktop workstations or via X-terminals (also used for teaching for several years),
+then, from about 1999 I started using linux (Redhat 6 I think) on a Dell Latitude
+C400, then later on more powerful machines, both accessed remotely, or on desktop
+PCs, or on laptops.
+
+I have had a sequence of Dell latitude laptops, the C400, then D600, D610, and since
+June 2010 E6410. The last three came with Microsoft windows, which I shrank to a
+small partition before instlling linux. I occasionally use windows for testing
+hardware or checking out how something works on windows (e.g. because I have to help
+my wife manage her windows PC).
+</pre>
+<blockquote>
+<small>
+I truly hate using MS windows, including even the best version so
+far Win7, for
+reasons explained in :
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html">http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html</a>
+<p>
+Some of those reasons apply also to the linux DTEs that I dislike, e.g.
+Gnome and KDE.
+</small>
+</blockquote>
+</blockquote>
+<a name="kde"></a>
+<h3><b>
+Attempted using KDE4 on desktop PC after upgrading to F15, using preupgrade
+</b></h3>
+<blockquote>
+<pre>
+I decided to upgrade my desktop PC to Fedora 15, so as not to have different versions
+on the PC and Laptop. For the first time ever I used the fedora 'preupgrade' package
+that analysed my installation and created information about requirements to upgrade.
+It gave me the option to skip the upgrade to F14 and go straight to F15.
+
+Once Fedora 15 was working on the PC, I tested gnome again and hated it as usual,
+e.g. because it makes it so hard to specify the various forms of tailoring that I
+wanted, and it did not allow me to to set a keyboard shortcut to a way of moving
+through desktops that allows "wrapping" from the first or last desktop directly to
+the other -- I flip through desktops several times a day, so it's important for me
+that they form a "ring", not a chain.
+
+I then tried KDE and hated it too. Like Gnome it was incredibly difficult to find
+where to specify various preferences (linux designers seem to have become more and
+more dictatorial about how everyone should work), and then it allowed only tedious
+use of mouse and menus, instead of providing a file (or set of grouped files) that I
+could edit to specify my requirements (as is easily done in CTWM or Openbox). But
+KDE did eventually allow me to specify a keyboard shortcut to cycle forward or back
+through virtual desktops, and it did allow me to "wrap" when cycling through
+desktops. However it was very hard to find a way to add a command to the standard
+root menu, e.g a command to launch 'xterm'.
+
+But what finally killed my interest in KDE is that it fails to resume from hibernate.
+It partially resumes but displays a corrupted screen and then freezes.
+This is apparently a problem others have complained about: e.g. these two:
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=704905">https://bugzilla.redhat.com/show_bug.cgi?id=704905</a>
+<a href="http://www.jlacroix.me/?p=1975">http://www.jlacroix.me/?p=1975</a>
+
+So I went back to using <a href="openbox">Openbox</a> on my machines at home, and CTWM on my desktop PC
+on campus. More recently I've reverted to CTWM on all three machines.
+
+<a href="http://ctwm.free.lp.se/">CTWM</a> is no longer being actively maintained, though the mailing
+list is used and occasionally there are updates, as explained above.
+
+CTWM is very usable: small, very fast, very robust, and very tailorable -- also see <a href="http://www.trovish.org/~rm55/ctwm/">this</a>)
+</pre>
+</blockquote>
+<P>
+<hr/>
+<small>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+</small>
+
+</body></html>

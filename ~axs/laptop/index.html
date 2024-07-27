@@ -1,0 +1,5180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Linux on my Dell Latitude
+(Now E6410)
+Laptop</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:700px">
+
+<center>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+<a href="http://tuxmobil.org/dell.html">
+<img alt="tuxmobil"
+src="http://www.cs.bham.ac.uk/~axs/images/tuxmobil_sticker.png"/>
+</a>
+</p>
+<hr>
+<a href="#newcontents">Contents List</a>
+<hr>
+<H2><B>
+LINUX ON DELL LAPTOP/NOTEBOOK COMPUTER
+<br>
+LATITUDE E6410 (Since 2010)
+<br/>
+Also Desktop PC
+<br/>
+4 Apr 2018:
+Now also Stonebook Mini
+<br>
+(Re-badged Clevo W515LU) <a href="stone-mini.html">stone-mini.html HERE</a>
+<br>
+<small>
+Running Fedora 27 (XFCE version)
+<br>
+with CTWM window manager, now flourishing
+at
+<a href="http://www.ctwm.org/">http://www.ctwm.org/</a>
+<br/>
+</small>
+</B></H2>
+</center>
+<p>
+<a href="#newcontents">
+Jump to main table of contents.
+</a>
+<hr/>
+</center>
+<a name="stone"></a>
+<h3><b>
+Added 5 May 2017:
+<br>
+<a href="stone-mini.html">Review of Stonebook Mini 11.6" laptop<br>
+running Fedora 25 and Windows 10 Home edition.</a>
+</b></h3>
+<hr>
+<a name="gparted-live"></a>
+<h3><b>
+4 Apr 2018: Getting Firefox text search box to top of page
+</b></h3>
+With information gratefully obtained here:
+<br>
+<a href="https://support.mozilla.org/en-US/questions/1197650">https://support.mozilla.org/en-US/questions/1197650</a>
+<br>
+Which links to this:
+<br>
+<a href="https://www.userchrome.org/how-create-userchrome-css.html">https://www.userchrome.org/how-create-userchrome-css.html</a>
+<blockquote>
+Copy this directory <a href="chrome">chrome</a>, including the file it contains
+<a href="chrome/userChrome.css">userChrome.css</a>
+with contents
+<pre>
+     /* Move Find Bar above the page*/
+     .browserContainer > findbar {
+     -moz-box-ordinal-group: 0;
+     }
+</pre>
+into the directory of your current Firefox installation,
+i.e. something like this location, with lots of other files and subdirectories,
+used by firefox.
+<pre>
+    ~/.mozilla/firefox/xyzxyzxyz/ (or whatever)
+</pre>
+To test it quit and restart firefox.
+<br>
+Then, in some window type CTRL-F.
+<br>
+The search box should be top left in the current tab, instead of bottom left.
+<br>
+See also
+<br>
+<a href="https://www.userchrome.org/adding-style-recipes-userchrome-css.html">https://www.userchrome.org/adding-style-recipes-userchrome-css.html</a>
+<br>
+<b>WHY DIDN'T FIREFOX MAKE THIS A STANDARD OPTION?</b>
+<br>
+</blockquote>
+<p>
+<hr>
+<h3><b>
+<b>
+5 Apr 2017
+<br>
+Instructions for installing gparted-live on USB stick
+<a href="gparted-live-on-usb.html">here.</a>
+</b></h3>
+<hr>
+<a name="skype"></a>
+<h3><b>
+23 Mar 2017
+<br>
+Fixed horrible flickering with skype and appear.in
+</b></h3>
+I had been using a couple of logitech webcams (B500 [1.3mp] and C270 [3mp]) for
+skype or recording (using "cheese"). Both worked well with cheese, but flickered
+badly with skype.
+<p>
+Eventually I found the solution here:
+<br>
+<a href="https://github.com/linuxenko/ubuntu-skylake-i915-video-fix">https://github.com/linuxenko/ubuntu-skylake-i915-video-fix</a>
+<p>
+Namely,
+
+<pre>
+    cd /tmp
+    wget https://github.com/linuxenko/ubuntu-skylake-i915-video-fix/releases/download/v1/20-intel.conf
+</pre>
+That file has the following contents:
+
+<pre>
+   Section "Extensions"
+           Option "XVideo" "Disable"
+   EndSection
+
+   Section "Device"
+      Identifier  "Intel Graphics"
+      Driver      "intel"
+      Option      "AccelMethod" "sna"
+      Option      "TearFree" "true"
+      Option      "DRI" "true"
+   EndSection
+</pre>
+
+Copy the file (as superuser) to this directory: /usr/share/X11/xorg.conf.d
+
+<pre>
+    cp 20-intel.conf /usr/share/X11/xorg.conf.d/20-intel.conf
+</pre>
+
+Then re-start the X window system, if you have set things up to make that easy
+without rebooting. Otherwise reboot.
+
+<p>
+On the few tests I have tried both skype and appear.in now both work fine.
+<hr>
+<a name="f24"></a>
+<h3><b>
+Oct 2016:
+<br>
+Fixed text corruption on gnome panels and menus
+</b></h3>
+The solution that worked for me was to create a file
+<pre>
+    /etc/X11/xorg.conf.d/20-intel.conf
+</pre>
+
+Containing this text
+<pre>
+Section "Device"
+   Identifier  "Intel Graphics"
+   Driver      "intel"
+   Option "AccelMethod" "blt"
+EndSection
+</pre>
+as described in this bug report
+<a href="https://bugs.freedesktop.org/show_bug.cgi?id=98108">https://bugs.freedesktop.org/show_bug.cgi?id=98108</a>
+<p>
+Some people use "uxa" instead of "blt", but in my tests "blt" produced much
+faster screen handling. See
+<a href="https://bugs.freedesktop.org/show_bug.cgi?id=98108#c6">https://bugs.freedesktop.org/show_bug.cgi?id=98108#c6</a>
+
+<a name="f19"></a>
+<h3><b>
+1 Oct 2016:
+<br>
+Found out how to make non-graphical Linux start with altered
+key-map.
+</b></h3>
+
+Like many others I always work with functionality of CapsLock and CTRL
+keys (on left of keyboard) swapped. That's because I use CTRL far more often and
+it's less of a strain to use higher up the keyboard. For similar reasons I
+prefer to swap the functions of the ESC and Grave keys at top left of the
+keyboard: bringing the ESC key lower because I use it far more often, in editing
+commands.
+<p>
+Performing those two swaps after linux has started up graphical mode can usually
+be done on linux using "xmodmap" or a keyboard configuration tool. But I also
+sometimes work in plain text mode, e.g. for software maintenance, or when
+configuring a new version of linux. So I like to have the same keyswaps before
+graphical mode starts. For many years that was easily achieved by editing
+a file that is now located here (i.e. unzip it, edit it, then zip it):
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    /usr/lib/kbd/keymaps/legacy/i386/qwerty/uk.map.gz
+<p>
+But that file is now ignored when the linux systems I have been using
+(Fedora-based) start up. After searching in vain for an alternative I eventually
+discovered that this file can be edited instead:
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    /usr/lib/kbd/keymaps/xkb/gb.map.gz
+<p>
+All I had to do was unzip the file, then swap the definitions for
+keycode 1 and keycode 41 (to swap ESC and Grave keys) and swap the definitions
+for keycodes 29 and 58 (to swap CTRL and CapsLock). I then found that on booting
+into text mode the keys functioned exactly as I wanted, and that was also
+preserved in graphical mode, making the use of xmodmap unnecessary.
+<p>
+I also had to inform the linux boot mechanism that I wanted a UK keyboard. That
+was done by inserting the language label on the kernel specification
+line in the file
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    /boot/grub2/grub.cfg
+<br>
+I.e. in the line starting 'linux16 /vmlinuz', I included
+'LANG=en_GB.UTF-8' as well as the '3' to indicate that I want the system to boot
+into mode 3 (text mode) normally, though when resuming from hibernate, it will
+go back to the previous mode, which is usually graphical mode.
+<p>
+Anyone using a
+different language keyboard will have to use a different boot setting, and will
+have to edit a different file in the directory
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    /usr/lib/kbd/keymaps/xkb/
+<br>
+There are over 300 to choose from! Anyone using the standard UK/GB keyboard
+layout who wishes to use my key swaps can download a copy of my file here:
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/kb/gb.map.gz">http://www.cs.bham.ac.uk/~axs/laptop/kb/gb.map.gz</a>
+<br>
+Then use it to replace the file
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    /usr/lib/kbd/keymaps/xkb/gb.map.gz
+<p>
+Of course most linux users would want to unzip both of them and compare their
+contents. Even if you follow my instructions exactly I cannot guarantee that
+this will work on your machine. If you end up with an unusable keyboard layout
+you may have to restore the original gb.map.gz file, so keep a copy of it before
+installing my version.
+<p>
+Normally, instead of shutting down at night I hibernate the machine and when it
+is next switched on it returns to the previous state with all my editor windows,
+browser windows, etc. still in place (on up to 12 different virtual desktops).
+If a new kernel becomes available and I have reason to believe I need to install
+it, then a complete shutdown is needed and a reboot, but I avoid that by
+postponing kernel upgrades that I don't need. Fortunately I don't often need to
+use my machine(s) in non-graphical mode, but it is useful to be able to do so.
+<p>
+The great advantage of the current system is that the same keyboard layout
+configuration file is used both during the text only mode after booting (mode 3)
+and the graphical mode (mode 5). It may not work if something goes wrong early
+in a boot process and the system then defaults to a "maintenance" mode.
+<hr>
+<p>
+<br>
+15 Oct 2013: Upgraded my desktop PC (Viglen Genie with 4-core Intel i5 CPU)
+<br/>
+from 32-bit Fedora 16 to 64-bit Fedora 19,
+<br/>
+using the XFCE lightweight 'spin' CD (Fedora-Live-XFCE-x86_64-19-1.iso).
+<br/>
+This mostly went very smoothly.
+<p>
+<hr>
+<b>Summary of issues installing F19 and setting up my environment</b>
+
+<ul>
+<li>
+<a href="#glitch">
+<b>Temporary ethernet name glitch</b>
+</a>
+<li>
+<a href="#fetchmail">
+<b>Fetchmail/Sendmail problem (Solved)</b>
+</a>
+<li>
+<a href="#ctwm-f19">
+<b>Window Manager (CTWM working)</b>
+</a>
+<li>
+<a href="#grub2">
+<b>Grub2 problems after installation, update and reboot</b>
+</a>
+</ul>
+
+So far all the issues described below have been solved and I now find that both
+<br/>
+pm-hibernate (which allows me to go for months without rebooting) and pm-suspend
+<br/>
+(which I rarely use) work without any special manipulation of grub.cfg previously
+<br/>
+needed.
+<ul>
+<a name="glitch"></a>
+<li>
+<b>Temporary ethernet name glitch</b>
+<br/>
+During the installation the ethernet connection worked perfectly but the interface
+<br/>
+had a strange name ("en01" I think) that I had never previously encountered. However
+<br/>
+after the initial installation had completed and I had run 'yum update' to bring the
+<br/>
+system up to date, the network connection did not work after a reboot. It took me
+<br/>
+some time to work out that the interface name had changed to em1 as indicated by the
+<br/>
+new file
+<pre>
+    /etc/sysconfig/network-scripts/ifcfg-em1
+</pre>
+Since then networking has been perfect, though I had a bit of trouble getting the
+<br/>
+firewall to allow local machines to connect to my PC via ssh, as the latest version
+<br/>
+of system-config-firewall confused me and I somehow failed to confirm one of the
+<br/>
+options I had chosen.
+<br/>
+
+<br/>
+I think the installation process should make it clear that the network names found on
+<br/>
+first boot after installation will not survive after a full update. That warning
+<br/>
+could have saved me some effort.
+<p>
+<a name="fetchmail"></a>
+<li>
+<b>Fetchmail/Sendmail problem after installing Fedora 19 (Solved)</b>
+<br/>
+After installing sendmail I edited /etc/mail/sendmail.cf and /etc/mail/submit.cf
+<br/>
+to specify smtp.blueyonder.co.uk and created the 'auth' sub-directory with
+<br/>
+information required for SSL. Sendmail worked fine: I could post messages.
+<br/>
+Thunderbird was also able to read mail. <b>However fetchmail would not work.</b> It
+<br/>
+connected with the pop3 host and even found out how many messages were waiting,
+<br/>
+but it was unable to post them to me locally. Log file entries included:
+
+<pre>
+  fetchmail: 40 messages for recent:xxx@yyy at
+  pop3.blueyonder.co.uk (8085778 octets).
+  reading message recent:xxx@yyy@pop3.blueyonder.co.uk:1 of 40 (10516 octets) (log message incomplete)
+  Connection errors for this poll:
+  name 0: connection to localhost:smtp [127.0.0.1/25] failed: Connection refused
+  ....
+  SMTP connect to localhost failed
+  SMTP transaction error while fetching from recent:xxx@yyy@pop3.blueyonder.co.uk and delivering to SMTP host localhost
+  Query status=10 (SMTP)
+</pre>
+However, Thunderbird had no difficulty reading mail using pop3, but I dislike all the
+<br/>
+graphical email interfaces and prefer messages to be stored locally and processed in
+<br/>
+alpine or my programmable editor, Ved.
+<br/>
+
+<br/>
+Eventually I removed the directory /etc/mail and copied over the version I had had
+<br/>
+working in Fedora 16. After that both sendmail and fetchmail worked.
+<br/>
+
+<br/>
+The main differences between the broken and working sendmail.cf files in /etc/mail
+<br/>
+were as follows. The working version had these lines in it, whereas the version that
+<br/>
+did not work had different settings for the variables.
+<pre>
+ O DaemonPortOptions=Port=smtp,Addr=127.0.0.1, Name=MT
+
+ O AuthMechanisms=EXTERNAL GSSAPI KERBEROS_V4 DIGEST-MD5 CRAM-MD5 LOGIN PLAIN
+
+ # CA directory
+ O CACertPath=/etc/mail/cert
+
+ CA file
+ O CACertFile=/etc/mail/cert/server.crt
+
+ # Server Cert
+ O ServerCertFile=/etc/mail/cert/server.crt
+
+ # Server private key
+ O ServerKeyFile=/etc/mail/cert/server.key.open
+
+ # Client private key
+ O ClientKeyFile=/etc/mail/cert/server.crt
+</pre>
+
+and in /etc/mail/submit.cf
+
+<pre>
+ # location of pid file
+ O PidFile=/var/run/sm-client.pid
+</pre>
+I also had to ensure the existence of
+
+<pre>
+    /etc/mail/cert
+</pre>
+
+containing three files
+
+<pre>
+    -rw------- 1 root root 963 Apr 22  2012 server.key
+    -rw------- 1 root root 891 Apr 22  2012 server.key.open
+    -rw------- 1 root root 818 Apr 22  2012 server.crt
+</pre>
+ Instructions for creating and using those files are in
+<pre>
+<a href="http://www.cromwell-intl.com/linux/sendmail-ssl.html">http://www.cromwell-intl.com/linux/sendmail-ssl.html</a>
+</pre>
+
+Namely
+<pre>
+   1. Create a certificate directory and go there:
+
+   # mkdir /etc/mail/cert
+   # cd /etc/mail/cert
+
+   2. Create a key for the server, giving a new pass phrase when prompted:
+
+   # openssl genrsa -des3 -out server.key 1024
+   # openssl rsa -in server.key -out server.key.open
+
+   3. Create a clear-text copy of the key (so it is not pass-phrase-protected), giving
+   the pass phrase when asked:
+
+   # openssl req -new -x509 -days 3650 -key server.key.open -out server.crt
+
+   4. Answer the X.509v3 questions appropriately.
+
+   5. Make the files root-read-only:
+   # chmod 600 server.*
+
+Alternative method from that web page, using sendmail.mc, quoting:
+
+ You can modify sendmail.mc instead of sendmail.cf and have your changes persist
+ through make runs. Thanks to Dave Miller for pointing this out:
+
+ dnl #
+ define(`confCACERT_PATH', `/etc/mail/cert')dnl
+ define(`confCACERT', `/etc/mail/cert/server.crt')dnl
+ define(`confSERVER_CERT', `/etc/mail/cert/server.crt')dnl
+ define(`confSERVER_KEY', `/etc/mail/cert/server.key.open')dnl
+ define(`confCLIENT_KEY', `/etc/mail/cert/server.crt')dnl
+ dnl#
+
+</pre>
+I think I must have used that advice several years ago, and forgotten.
+<p>
+<a name="ctwm-f19"></a>
+<li>
+<b>Window Manager (CTWM working)</b>
+<br/>
+I found the XFCE installation lightweight and speedy, and it wasn't too hard to
+<br/>
+select some of my preferred configuration settings (e.g. focus follows mouse, do
+<br/>
+not raise windows if clicked inside, increase number of workspaces to 12, set my
+<br/>
+preferred keyboard actions for cycling through workspaces, and raising-lowering
+<br/>
+windows.)
+<br/>
+
+<br/>
+But I disliked always having clutter on the desktop (i.e. a panel) instead of being
+<br/>
+able to get what I wanted from a blank screen via mouse invoked menus or keyboard
+<br/>
+shortcuts. And xfce did not allow me to gain control of the 'F1' key, which it uses
+<br/>
+for 'help' functions, or to ensure that CTRL and CapsLock keys were swapped, and also
+<br/>
+ESC and Grave keys: both changes required for my sanity and avoidance of RSI as I use
+<br/>
+ESC and CTRL very frequently when editing papers, notes, email, etc. in my editor.
+<p>
+So I decided to go back to my old favourite, the CTWM window manager, which I
+have consistently found more flexible and more easily programmable than any
+other.
+The home of ctwm changed recently, thanks especially to a lot of work done by
+Matthew D. Fuller
+You can now find it here:
+<a href="http://www.ctwm.org/index.html">http://www.ctwm.org/index.html</a>
+<br>
+It may also be available as a pre-built package for your version of linux,
+though compilation from source is very simple if you have cmake.
+<p>
+For more information about Matthew Fuller go to
+<a href="http://www.over-yonder.net/~fullermd/">http://www.over-yonder.net/~fullermd/</a>.
+<p>
+Google showed me that CTWM was available for Fedora 19 here:
+<br/>
+<a href="http://pkgs.org/fedora-19/rpm-sphere-x86_64/ctwm-3.8a-30.1.x86_64.rpm.html">http://pkgs.org/fedora-19/rpm-sphere-x86_64/ctwm-3.8a-30.1.x86_64.rpm.html</a>
+To install:
+<pre>
+  1. Create the repository config file /etc/yum.repos.d/rpm-sphere.repo:
+
+    [rpm-sphere]
+    name=RPM Sphere
+    baseurl=http://download.opensuse.org/repositories/home:/zhonghuaren/Fedora_19/
+    gpgkey=http://download.opensuse.org/repositories/home:/zhonghuaren/Fedora_19/repodata/repomd.xml.key
+    enabled=1
+    gpgcheck=1
+
+  2. Install ctwm rpm package:
+
+    # yum install ctwm
+</pre>
+
+After that I could use my old .xinitrc files to start X, my .ctwmrc files to
+<br/>
+configure the window manager and the 'startx' command to go from console mode to
+<br/>
+graphical mode. I altered the boot entry to start up in console (non-graphical) mode
+<br/>
+by adding '3' at the end of the 'linux' line, and removing 'rhgb' and 'quite' so as
+<br/>
+to see the text displayed during booting. In graphical mode I find CTWM much nicer
+<br/>
+than any other graphical interface I have used, though it may not meet everyone's
+<br/>
+preferences.
+<P>
+<a name="grub2"></a>
+<li>
+<b>Grub2 problems after installation, update and reboot</b>
+<br/>
+I wished to keep my /boot partition with entries for the Fedora 16 system so that I
+<br/>
+could easily go back to an earlier version if the upgrade to F19 failed, or did not
+<br/>
+work well.
+<br/>
+
+<br/>
+But the installer got confused about what to put in the grub.cfg files defining the
+<br/>
+boot menu. I'll document that in a fedora bug report, though it seems to be a fault
+<br/>
+in 'grubby' the program apparently used to install boot information.
+</ul>
+
+<b>__________________________________________________________________________________________</b>
+
+<h3><b>
+17 Jul 2013: Upgraded the Dell E6410 laptop from Fedora 17 to Fedora 18, mid June
+2013.
+<br/>
+<small>
+pm-hibernate now seems to work perfectly without requiring me to edit grub.cfg to
+<br/>
+temporarily disable three cpus, previously required for resume from hibernate.
+<br/>
+Demo of hibernate and resume on E6410 <a href="http://youtu.be/0IS2rsgaw60">http://youtu.be/0IS2rsgaw60</a>
+<a name="nm-fixed"></a>
+<p>
+At first I was very annoyed that NetworkManager would not save passwords for
+<br/>
+Enterprise (MSCHAPv2) wifi connections, requiring me to type in the password whenever
+<br/>
+I wanted to connect or re-connect, even though passwords for home and other wifi
+<br/>
+connections using WPA worked fine with a stored password.
+<br/>
+
+<br/>
+SOLUTION:
+<br/>
+The solution was to edit these two files where XXXX is the name (ESSID) of the access
+point.
+<pre>
+    /etc/sysconfig/network-scripts/ifcfg-XXXX
+    /etc/sysconfig/network-scripts/keys-XXXX
+</pre>
+<p>
+For more details see my <a href="wpa">WPA web page.</a>
+</small>
+</b></h3>
+<hr/>
+<b>12 Jun 2013:</b>
+Erroneously changed to using .der certificate instead of .pem, for
+<br/>
+UobWifi and Eduroam, on Fedora 17, with NetworkManager,
+<br/>
+using WPA & WPAEnterprise, with PEAP and MSCHAPv2 options.
+<br/>
+At first this seemed to solve a problem connecting to Enterprise wifi, e.g. eduroam,
+<br/>
+but that proved to be illusory. It did not make a difference.
+<hr>
+<a name="webcam"></a>
+<h3><b>
+12 Jun 2013: Logitech B500 1.3MP Webcam with built in microphone works perfectly
+<br/>
+on Fedora 16. (E.g. for Skype, or recording tutorials.)
+</b></h3>
+<hr/>
+<h3><b>
+5 Aug 2012: Getting Logitech QuickCam Orbit/Sphere USB webcam to work with USB Microphone
+<br/>
+<small>
+As my laptop has an integrated webcam, this is relevant only to linux on my Desktop
+machine (then running Fedora 16).
+<br/>
+I had been having trouble using a USB Webcam with a USB microphone, e.g. when using Skype,
+both plugged into USB sockets on the front panel of the PC. Audio worked but not video.
+<p>
+Thanks to a tip found on the internet I tried instead plugging the Webcam into a USB
+extender connected to one of the back USB sockets, and that fixed the problem. It seems
+that the two front USB sockets share some hardware that cannot be used simultaneously for
+two Audio or video devices -- or something like that!
+<br>
+See also <a href="#webcam">above note</a> about Logitech B500 webcam: this has an
+integrated microphone which seems to be just as good as or possibly better than, the
+stand-alone microphone, so the need to use front and back usb sockets no longer
+exists.
+<br>
+See
+<a href="#usb-mic">
+NEWS 12 Jan 2012: Logitech
+desktop USB microphone works on F15 and F16
+</a>
+<blockquote>
+</small>
+</b></h3>
+<hr/>
+<h3><b>
+31 May 2012: Workaround for resume/thaw failing to complete after
+pm-hibernate
+<br/>
+<small>
+This problem particularly afflicts users of Intel Integrated Graphics
+hardware and the i915 kernel module required for intel graphics.
+<br/>
+An imperfect but liveable-with fix is described
+<a href="hibernate-on-linux.html">in this file.</a>
+</small>
+<p>
+<b>23 Jul 2012 Warning about dual-boot installations:</b>
+<small>
+<br/>
+if you switch between linux and windows, don't use 're-start' or
+'re-boot' in windows to return to linux as that stops hibernate
+working.
+<br/>
+Instead shut down completely from windows, then power up, then
+select linux.
+</small>
+</b></h3>
+<hr/>
+<h3><b>
+USEFUL TIP: 30 Apr 2012 Flash failed to detect USB webcam (Solved)
+</b></h3>
+<small>
+Found the solution <a
+href="http://ubuntuforums.org/showthread.php?t=1148480">here</a>:
+Before starting browser do
+<br>
+in bash
+<pre>
+    LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so
+</pre>
+in tcsh
+<pre>
+    setenv LD_PRELOAD /usr/lib/libv4l/v4l1compat.so
+</pre>
+</small>
+<h3><b>
+NEWS 12 Apr 2012: Installed Solwise PL-500AV-PIGGY Homeplug adapters
+<br/>
+<small>
+to replace 30 metre internet cable from router to my wife's PC.
+</small>
+</b></h3>
+
+<blockquote>
+Seems to work very well (including supporting full 30Mb/s broadband
+downloads from Virgin media on my linux machines, though for some reason
+my wife's PC running Windows PC gets a slightly lower speed).
+<br/>
+<a href="http://www.faculty-x.net/NET-PL-500AV-piggy.htm">http://www.faculty-x.net/NET-PL-500AV-piggy.htm</a>
+<br>
+Bought from
+<a href="http://www.faculty-x.net/">Faculty-X Brightlingsea Essex</a>
+<br/>
+Ordering process and delivery excellent.
+<br/>
+More detailed report <a href="powerline.html">here.</a>
+</blockquote>
+
+<h3><b>
+12 Apr 2012: UPDATE: WARNING ABOUT GRUB2: Problem is use of 'Grubby'
+<br/>
+31 May 2012: UPDATE: This problem seems to have been fixed
+</b></h3>
+The Fedora command 'yum install kernel' uses the 'grubby' program to
+update /boot/grub2/grub.cfg.
+<br/>
+This had a serious bug that has caused problems for me and at least one
+other user. The problem has now been diagnosed and fixed (May 2012).
+Grubby previously used the contents of /etc/fstab to identify the root
+partition to go into the grub.cfg file. An error in the root partition
+entry in the fstab file will not affect booting, since it cannot be read
+until the root partition has been mounted. But that error in grub.cfg
+can make booting impossible.
+<p>
+It turns out that at least two people
+reporting the bug had somehow inadvertently got an error in the fstab
+file, which was propagated to grub.cfg every time the kernel was
+updated, requiring grub.cfg to be edited to enable booting to occur.
+<br/>
+I have inserted a bug report
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=756559#c9">here
+-- comment 9 (typo fixed in comment 10)</a>
+<br/>
+See also
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=751875">https://bugzilla.redhat.com/show_bug.cgi?id=751875</a>
+<br/>
+Why is such a buggy package used for a task as important as kernel
+update?
+<br/>
+<b>(Now fixed.)</b>
+<h3><b>
+NEWS 12 Apr 2012: pm-hibernate freezing and resume rebooting both seem
+to have been fixed for
+Fedora 16 users in kernel 3.3.1-3.fc16.i686 (NB: THIS TURNED OUT TO BE
+FALSE)
+<br/>
+<small>
+Hibernation and resume are now very fast (compression uses 3 threads on
+my 4-core machine).
+</small>
+</b></h3>
+<p>
+<b>The following is now out of date:</b>
+<blockquote>
+<b>Update 1 Apr 2012</b>
+<br>
+I wrote earlier.
+Using the right boot flag seems to have fixed the problem of
+resume after pm-hibernate sometimes not complete the "thaw", and then rebooting.
+<br/>
+On the Dell E6410 laptop, running Fedora 16 with this special patched kernel
+<pre>
+    3.3.0-7.1.fc16.i686 #1 SMP Wed Mar 28 19:04:51 UTC 2012
+</pre>
+I seem to be able to suppress the rebooting by using acpi=noirq
+in the grub.cfg boot menu file. See <a href="#resume-problem">below</a>.
+<br/>
+But the success did not continue. Likewise with kernel 3.3.0-8.fc16.i686
+-- using acpi=noirq did not ensure that resume works. It gets near the
+end of the resume process, then screen goes blank and it reboots.
+<br/>
+My liveable-with solution to the resume failing problem is described in
+<a href="hibernate-on-linux.html">this file.</a>
+<br/>
+I tried using 'acpi_sleep=nonvs' as recommended on a web site, but it did
+not enable resume to work.
+</pre>
+</blockquote>
+<p>
+<a name="alps"></a>
+<h3><b>
+Good news about Alps touchpad on E6410:
+Scrolling now works on Alps touchpad.
+</b></h3>
+<blockquote>
+Using kernel 3.1.7-1 and 3.2 or later, and, xorg-x11-drv-intel-2.17.0-8:
+the Alps touchpad can now be used for scrolling, which is very
+convenient.
+<br/>
+See this message from Sergio M Basto
+<small>
+<pre>
+    <a href="https://bugzilla.kernel.org/show_bug.cgi?id=14660#c136">https://bugzilla.kernel.org/show_bug.cgi?id=14660#c136</a>
+</pre>
+As advised there, to set up gestures I use these commands in a shell script:
+<pre>
+    #!/bin/bash
+    synclient -l | grep -i scroll
+    synclient VertTwoFingerScroll=1
+    synclient HorizTwoFingerScroll=1
+    synclient VertEdgeScroll=1
+    synclient HorizEdgeScroll=1
+    synclient -l | grep -i scroll
+
+    synclient -l | grep -i tap
+    synclient TapButton1=1
+    synclient TapButton2=1
+    synclient TapButton3=1
+    synclient -l | grep -i tap
+</pre>
+</small>
+<b>NOTE (added 17 Nov 2012):</b>
+<br/>
+I have had terrible trouble with input focus location changing while I type, mainly
+<br/>
+when entering text in a browser, e.g. filling in forms.
+<p>
+Eventually internet searches revealed that the 'syndaemon' program
+<br>
+(see MAN syndaemon) overcomes this problem. There are various options, but I have
+<br/>
+just used the default by adding to the end of the above script:
+<pre>
+    syndaemon -d
+</pre>
+</blockquote>
+
+<p>
+<a name="proc-acpi"></a>
+<h3><b>
+Changes in /proc/acpi since kernel 3.2
+</b></h3>
+<blockquote>
+Since kernel 3.2, /proc/acpi no longer contains the wakeup file and battery
+and ac_adapter directories. Instead it now contains only /proc/wakeup and
+the directory
+<pre>
+  /proc/acpi/button/lid/LID/
+</pre>
+which has a file 'state' showing whether lid is open or closed. This
+means that my home-grown utility for checking battery levels no longer
+works. It turns out that the information is now in a different format
+under /sys. E.g. to find out whether a charger is plugged in, this
+produces '1' or '0':
+<pre>
+    cat /sys/class/power_supply/AC/online
+</pre>
+Some of the information that was previously in
+<pre>
+    /proc/acpi/battery/BAT0/state
+    /proc/acpi/battery/BAT0/info
+</pre>
+can now be found in
+<pre>
+    /sys/class/power_supply/BAT0/
+e.g.
+    /sys/class/power_supply/BAT0/uevent
+</pre>
+E.g. useful information can can be extracted from the output of
+<pre>
+    cat /sys/class/power_supply/BAT0/uevent | grep -v NAME | grep -v PRESENT \
+        | grep -v TECH |grep -v CYCLE |grep -v MODEL |grep -v MANU |grep -v SER
+</pre>
+<hr/>
+</blockquote>
+<a name="usb-mic"></a>
+<h3><b>
+NEWS 12 Jan 2012: Logitech
+desktop USB microphone works on F15 and F16
+<br/>
+<small>
+<a href="#webcam">
+See also: Getting Logitech QuickCam Orbit/Sphere USB webcam to work with USB Microphone
+</a>
+</small>
+</b></h3>
+<blockquote>
+I bought the version of the microphone offered on Amazon. When plugged in it is
+recognized as
+<pre>
+    Product: AK5370
+    Manufacturer: AKM
+</pre>
+I used 'pavucontrol' to select the AK5370 in the 'Configuration'
+tab, setting 'Analog mono input'. (It's not a stereo mic.)
+<br/>
+In the 'Input devices' tab, I use the 'Show' menu bar to select
+'All input devices'. On my machine that shows four input
+devices.
+<br/>
+I set the volume slider for 'AJ5379 I/F A/D Converter Analog Mono'
+to somewhere between 50% and maximum. (Experimentation is needed.)
+<p>
+On all the other volume sliders (all stereo with two sliders):
+<pre>
+    'Monitor source of simultaneous output to internal Audio Analog Stereo'
+    'Monitor of internal Audio Analog Stereo'
+    'Internal Audio Analog Stereo' (on Microphone 1)
+</pre>
+I select Silence (0%), with slider button on left.
+<p>
+On the 'Output Devices' tab I set the 'Show' menu bar at bottom to
+'All Output Devices'.  The set the slider for 'Simultaneous output
+to internal Audio Analog Stereo' sliders (two) to zero or muted
+(using the 'mute' button with the 'x'.
+<br>
+The other pair of sliders, labelled 'Internal Audio Analog Stereo'
+must not be muted. The appropriate level will depend on whether you
+are using headphones or speakers, with or without amplification. (I
+have twin black logitek speakers with a 'Bass' box containing on off
+switch.
+<p>
+On the 'Recording' tab, I select Show: Virtual streams. That reveals
+the level of input from the mike, but there's nothing to control.
+<p>
+On the 'Playback' tab I select Show: All streams.
+<br/>
+The Sound recorder playback stream is not shown until you actually
+play something from the sound recorder.
+<br/>
+I set the 'System' sounds (mono) volume control to about 15% (e.g.
+for Skype warnings and others.)
+<br/>
+There
+is also a pair of sliders for
+'Simultaneous output on internal Audio Analog Stereo', and a volume
+level display. I set that 'Muted'.
+<p>
+To test those settings I launch gnome-sound-recorder (which had to
+be installed using 'yum install').
+<br>
+Set the 'Record from input:' menu bar to 'Capture'. There is no
+other option for it on my machine.
+<br/>
+Set the 'Record as:' menu bar to whatever you want.
+<br/>
+I've tried 'CD
+Quality, Lossy (.ogg type)' and 'voice, Lossless (.wav type)'.
+<br/>
+I can't hear any difference, but if you save a recording the .ogg
+version is smaller.
+<br>
+If your machine has a different sound card you will probably get
+different options.
+<br/>
+Mine is integrated intel sound, on the
+motherboard. It's slightly different between my desktop machine and
+laptop, but the above explanation should work for both contexts.
+
+</blockquote>
+
+
+<h3><b>
+NEWS 4 Jan 2012: Tried out 'live' CD for Fedora 16 LXDE 'spin'.
+</b></h3>
+<small>
+Found that it worked very well, including booting up quickly, and
+handling the screen at full resolution.
+<br/>
+For the first time NetworkManager let me connect to my wireless router
+during initial boot off the CD.
+<br/>
+However, it became a nuisance after install to hard drive and initial
+upgrade, so I disabled it and installed wicd instead. But having it
+on the live CD proved very useful. I don't know why it stopped
+working after 'Install to hard drive'.
+<br/>
+Wicd is very much better and should replace NetworkManager as the
+default on Linux. Unfortunately various linux packages (e.g.
+Anaconda) assume that NetworkManager is the one and only true
+network connector. So I have had to remove Anaconda on my machine.
+It seems not to matter. Likewise I have removed Selinux, which just
+causes problems.
+<br/>
+My general impression is that this is the first version of linux
+(fedora?) that is completely usable on Dell Latitude E6410, from the
+start, including the Intel Graphics and SD card reader.
+<p>
+<h3><b>
+More on Fedora 16
+</b></h3>
+<blockquote>
+<b>The following item is defunct. I think the problem was a router setting.</b>
+
+<b>5 Jan 2012:</b>
+For some strange reason, if I run sshd using
+<small>
+<pre>
+    service sshd start
+    (or 'restart')
+</pre>
+</small>
+Then I cannot use shared keys to log in from another machine without a
+password.
+<br/>
+But if I simply run 'sshd' then it works as before. Looks like
+a temporary bug that needs to be fixed.
+<p>
+More details will be reported later.
+</blockquote>
+<p>
+<hr/>
+<p>
+Dell E6410 previously running Fedora 15 (FC15, F15), since March 2011 --
+mostly working very well,
+<br/>
+except for problems with resume after pm-hibernate, as described
+<a href="#resume-problem">below.</a> In F16 I still have to resume after
+pm-hibernate by using acpi=off in grub menu.
+<br/>
+<b>NEWS: 30 Mar 2012</b> I have now replaced "acpi=off" with
+"acpi=noirq". That seems to be a much better solution, currently
+apparently working well in F16 with kernel 3.3.0-7.1.fc16.i686
+<br/>
+Switched to F16 January 2012.
+<p>
+(My desktop PC - upgraded Aug 2011 to
+a new Viglen Genie with 4-core intel
+CPU now runs F16.)
+<p>
+(Before March 2011 the E6410 was
+previously mostly usable with <a href="#f13-intel">Fedora 13 (F13)</a>)
+<p>
+<a name="ctwm"></a>
+<a name="openbox"></a>
+I use OpenBox or Ctwm as window manager. I can't stand either Gnome or
+KDE:
+<br/>
+I find Gnome and Kde huge, clunky, and tedious to configure. (More
+details <a href="linux-desk-top-environments.html">here</a>.)
+<br/>
+<small>
+<p>
+<a href="#F12-D610">Dell Latitude D610 still running on Fedora 12 (F12).</a>
+<p>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br/>
+School of Computer Science, University of Birmingham, UK
+</small>
+<p>
+CURRENTLY BEING REVISED: APOLOGIES FOR MESS!
+</small>
+
+<h3><b>
+<ul>
+<li>
+<a href="#newcontents">
+Jump to main table of contents.
+</a>
+<li>
+<a href="#contents">Jump to Table of contents for earlier versions
+of Fedora</a>
+</ul>
+</b></h3>
+
+<hr/>
+
+<a name="f15report"></a>
+<h3><b>
+Dell Latitude E6410 with Intel Graphics Using 32bit Fedora 15
+</b></h3>
+<blockquote>
+I started using RedHat linux around 1999, then used various versions of Fedora.
+Fedora has improved enormously over the years (partly to meet the challenge of Ubuntu?)
+<p>
+When I first got the laptop in June 2010 I could not get graphics working properly in
+linux, with the Intel graphic card, though I did eventually find a configuration
+based on a particular fedora 13 kernel, which I went on using for several months, as
+described <a href="#f13-intel">here.</a>
+<p>
+In March 2011, I started using the "Alpha" version of Fedora 15, and
+have been updating from time to time since then, starting with kernel
+2.6.38, the first one to handle the intel graphics properly on the
+E6410. On F15 Alpha then Beta the intel graphic card worked perfectly
+and still does, both with and without an external monitor or display.
+<p>
+On 24th May 2011, I started using the "final" Fedora 15 release. This introduced some
+new problems.
+<small>
+<pre>
+    I chose the FXCE version of Fedora 15, which I set up to boot in text mode
+    (multi-user, run-level 3). Previously this was done by editing the file
+        /etc/inittab
+    but now that Fedora uses 'systemd', a more complex and flexible mechanism is provided.
+    <a href="http://www.freedesktop.org/wiki/Software/systemd">http://www.freedesktop.org/wiki/Software/systemd</a>
+    <a href="http://www.freedesktop.org/wiki/Software/systemd">http://www.freedesktop.org/wiki/Software/systemd</a>
+
+    I have the impression that not all the software available to Fedora users has
+    been updated properly to deal with systemd. In particular 'system-config-services'
+    no longer gives all the options it used to (e.g. specifying which services should
+    be available in different modes). I hope that will catch up later.
+</pre>
+</small>
+
+After logging in to a textual interface, which allows me occasionally to do
+maintenance work, I then use the 'startx' command, which reads ~/.xinitrc, to
+start up the graphical interface.
+<p>
+I now sometimes launch
+<a href="openbox/">Openbox</a> as window manager, though
+occasionally experiment with others. The window manager I like best is
+<a href="http://ctwm.free.lp.se/">ctwm,</a>, though it is not regularly
+maintained.
+<br/>
+<b>NOTE: 5 Jan 2012</b>: Ctwm was updated to version 3.8.1 in January
+2012. That works very well on both my laptop and my desktop machines, so
+I have given up Openbox, except for occasional comparisons or tests.
+<p>
+An example ctwm window on a 1920x1080 screen is shown
+<a href="ctwm/ctwm-full-screen.jpg">here</a>.
+<p>
+I intensely dislike Gnome and KDE as they make it
+very difficult for me to set up all my preferred features, or to copy
+them from one machine to another, because preferences are scattered all
+over the place in different files.)
+</blockquote>
+<hr/>
+<a name="cdrom"></a>
+<h3><b>
+Update 31 Aug 2011: Entry for cdrom in /etc/fstab
+</b></h3>
+<blockquote>
+For several years I have been copying an old entry in /etc/fstab
+for /dev/cdrom which no longer seems to work. I've read that no entry in
+fstab is required any more for cdrom as the insertion of a CD is
+automatically detected. However, when I removed the entry the insertion
+of a CD was not automatically detected.
+<p>
+As root I was able to mount the CD by creating /mnt/cdrom and giving the
+command
+<pre>
+    mount /dev/cdrom /mnt/cdrom
+</pre>
+But I wanted to be able to do it without using sudo or 'su'. Putting
+myself in the 'cdrom' file access group made no difference. After
+experimenting I found I could mount and unmount a CD using this line in
+/etc/fstab
+
+<pre>
+    ## device    mount point  mount type    mount mode
+    /dev/cdrom   /mnt/cdrom   auto          exec,users,noauto  0  0
+</pre>
+(Some people may prefer /media/cdrecorder to /mnt/cdrom)
+
+</blockquote>
+<hr/>
+<a name="edimax"></a>
+<h3><b>
+Update 19 Aug 2011 Converted old Desk-top PC to use Edimax USB dongle
+</b></h3>
+<blockquote>
+When I got a new desktop PC for my study (working perfectly with roughly
+the same linux configuration as my laptop, as described below --
+currently Fedora 15), I decided to try setting up my 6 year old PC as a
+spare connected by wireless in another room. I found that the amazingly
+cheap (and tiny) Edimax EW7711UTN USB dongle, with Ralink RT2870
+wireless chip, worked fine for the purpose, though the wireless speed is
+somewhat slower than my E6410 with intel wireless card, possibly because
+that has an internal antenna in the laptop lid. (In fact both wireless
+speeds increased significantly after I re-set my Dlink DIR-615 router to
+use security mode "AUTO(TKIP/AES) rather than simply "TKIP".
+<p>
+At first I thought I was going to have to fetch source code and compile
+Ralink drivers, but it turned out that fedora had a pre-built rpm.
+<pre>
+    rt3070-2.3.0.4-3.fc15.noarch
+</pre>
+So installing it was just 'yum install rt3070', and then after rebooting
+the device was recognized. The output of 'lsmod' includes:
+<pre>
+    rt2800usb              10809  0
+    rt2800lib              33638  1 rt2800usb
+    crc_ccitt               1245  1 rt2800lib
+    rt2x00usb               8700  1 rt2800usb
+    rt2x00lib              38876  3 rt2800usb,rt2800lib,rt2x00usb
+    mac80211              211975  3 rt2800lib,rt2x00usb,rt2x00lib
+</pre>
+I edited /etc/sysconfig/wpa_supplicant to use -Dwext for Driver, and put
+The usual information about my wireless router in
+<pre>
+    /etc/wpa_supplicant/wpa_supplicant.conf
+</pre>
+After I restarted wpa_supplicant it associated with the router but for
+some reason 'wicd' could not detect it and it did not connect fully
+until I ran
+<pre>
+    dhclient -v wlan0
+</pre>
+</blockquote>
+<hr>
+<a name="shrinking"></a>
+<h3><b>
+Shrinking Windows Partition -- using Partition Wizard
+</b></h3>
+<blockquote>
+When the new Viglen PC arrived the windows 7 system had been installed
+with one C: partition taking up the whole 500GB drive, instead of only
+40GB as requested when I placed the order. (I can't imagine why Viglen
+have that default: it's asking for trouble -- corrupt one partition
+and you've lost everything).
+<br/>
+I tried using the 'shrink partition' facility that came with Win7 but
+all it could do was shrink the partition to half its size: useless to me
+because I hardly ever use windows and I wanted most of the drive for
+linux.
+<p>
+After failing to find any way to make progress I found this review of
+the free Partition Wizard software:
+<br/>
+<small>
+<a href="http://download.cnet.com/Partition-Wizard-Home-Edition/3000-2094_4-10962200.html">http://download.cnet.com/Partition-Wizard-Home-Edition/3000-2094_4-10962200.html</a>
+</small>
+<br/>
+and decided to try it. It worked very well except that the user
+interface needs a lot of improving. I asked it to shrink the C:
+partition, then create a new smaller windows partition and call it the
+E: partition.
+<p>
+After shrinking the C: partition it appeared to reboot, then displayed a
+message on the screen that gave me the impression that it was still
+doing the rest of the task. A long time later I guessed that it need to
+be manually rebooted and tried. To my relief the partition had been
+reduced as requested and I could give my remaining two instructions and
+finish off the job. It should have warned me that I should not chain
+additional instructions after shrinking a partition containing the file
+downloaded to do the partition management. This may have been obvious to
+windows users, but I am not a windows user. After that I installed
+Fedora 15 and recreated my previous environment, on another machine that
+I hope will last many years. (Viglen provide a 5 year maintenance
+contract.)
+<p>
+The fact that microsoft cannot provide such a service in their partition
+shrinking utility in Win7 is yet another piece of evidence that they are
+incompetent. Several of my reasons for disliking MS Windows are here:
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html">http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html</a>
+</small>
+<p>
+I later found that my complaint posted to MiniTools, the developers of
+Partition Wizard when I was waiting for a response had been answered in
+a couple of hours, instructing me to reboot and continue. But I did not
+get the message until much later thanks to the dreadful VirginMedia
+cable broadband service breakdown between about 1am Saturday 13th August
+and midday on Wednesday 17th August. I have no apology and no refund
+from them. I shall look out for a better internet service provider,
+after 10 years of steadily increasing speed and deteriorating service,
+with a call centre full of untrained staff. I no longer advise anyone to
+use VirginMedia.
+</blockquote>
+
+<hr/>
+<a name="tuxonice"></a>
+<h3><b>
+Update 3 Aug 2011 pm-hibernate improved for kernel 2.6.40-4
+</b></h3>
+<b>Update 2 Sep 2011:</b> I now think this claim I made earlier is mistaken:
+<pre>
+    <b>I mistakenly wrote originally:</b>
+    I am pleased to report that since installing the new kernel I have found that
+    the pm-hibernate command no longer by-passes the grub menu, complained about in
+    older parts of this file. So I no longer need the hibernate-tuxonice package. I
+    have not yet tried the tuxonice version of this kernel.
+</pre>
+pm-hibernate only seems to present the menu if the hibernate-tuxonice package
+has been installed.
+<br/>
+But then pm-hibernate works fine. I don't know why.
+<p>
+<a name="resume-problem"></a>
+<b>2 Sep 2011 (problem still exists March 2012) Resume
+after pm-hibernate:
+problem and temporary solution</b>
+<blockquote>
+<pre>
+I've been finding with kernel 2.6.40-4 (and later, including 3.3.0-4.fc16.i686, March
+2012) that if I hibernate and resume more than once, resume intermittently fails to
+complete and instead reboots.
+
+For some time I used TWO menu options in my grub.conf or grub.cfg file, one, labelled
+'BOOT, for use when doing a full boot, and one labelled 'RESUME, the default option,
+for use when booting from a hibernated state. The latter included acpi=off as a
+kernel option.
+
+However, I've discovered (30 Mar 2012) that acpi=noirq is better: it seems to prevent
+resume failing in test kernel 3.3.0-7.1.fc16.i686, and does not require separate BOOT
+and RESUME entries in the grub boot menu. I'll go on testing it and report details in
+<a href="https://bugzilla.redhat.com/show_bug.cgi?id=806315">this bug report</a>
+
+I have no idea what that extra command does nor why it should suddenly become
+necessary in recent kernels. Suggestions welcome.
+</pre>
+</blockquote>
+<h3><b>
+Update 18 Jun 2011: Hibernate and Tuxonice problems using Fedora 15 on Dell E6410
+</b></h3>
+<blockquote>
+<pre>
+I normally hardly ever reboot, making use of hibernate/resume instead, so that my
+working context (including up to 10 virtual desktops) is always restored when I
+switch on the computer.
+
+The hibernate mechanism saves the state of the linux process in the swap partition
+during hibernation, and then reads the contents and restores the full context during
+the resume process. On my vintage 2006 desktop PC with a Western Digital 1TB drive
+bought in 2010 the resume is extremely fast even when there are many windows in use
+in my 10 virtual desktops. Since kernel 3.3 it is also very much faster on the Dell
+E6410 laptop. So resuming from hibernate is much faster than rebooting, and far more
+convenient than rebooting+restoring my working environment.
+
+The hibernate mechanism contrasts with the 'suspend' mechanism, which switches
+everything off except RAM, keeping the state of the process preserved and ready to
+run. On a laptop the battery (or batteries) may survive for several days in this
+state without external power. In contrast when hibernate (suspend to hard drive) is
+used, everything is switched off and the state can be preserved indefinitely.
+Suspend+resume is very much faster than hibernate+resume though after suspend the
+battery will slowly drain if power is not left connected. I also found that on the
+laptop if I alternate between hibernate and suspend (e.g. using hibernate for long
+periods off, and suspend for short periods off), then suspend sometimes fails to
+resume and I have to reboot.
+
+Two forms of 'hibernate' are provided in linux. One (pm-hibernate) uses default
+mechanisms provided in the standard linux kernel. The other method replaces the
+default hibernate mechanisms with the the 'tuxonice' mechanism (previously known as
+"Software Suspend 2"), as described here: <a href="http://tuxonice.net/">http://tuxonice.net/</a>, and <a href="https://wiki.archlinux.org/index.php/Tuxonice">here, for Arch users.</a>
+For several years, I have been a satisfied user of the pre-built tuxonice kernels for
+Fedora, and associated utilities, made available here <a href="http://mhensler.de/swsusp/download_en.php">here,</a> by Matthias Hensler.
+
+After trying the default hibernate mechanism provided in the linux kernel, invoked by
+the 'pm-hibernate' command, I switched to tuxonice, with its 'hibernate' command,
+because it has several advantages, including (a) speed, and especially (b)
+informative display during hibernate and resume, and (c) displaying the grub boot
+menu during resume.
+
+In contrast, the pm-hibernate command (until about March 2012 in Fedora 16) causes
+the machine to by-pass the boot menu on resume (until kernel 2.6.40-4), in case a
+user boots the wrong linux kernel, which can lead to loss of work and potential
+file-system corruption. Unfortunately this restrictive design of pm-hibernate makes
+it impossible to hibernate linux, then boot windows, then later resume linux: you
+don't get the choice. This is a terrible, patronising design decision by the
+developers. They should at least offer a flag to use with pm-hibernate to make it
+show the boot menu on resume.
+
+In recent versions of Fedora 16, the behaviour of pm-hibernate has been improved: it
+now always shows the boot menu if "hiddenmenu" is removed or commented out.
+
+Fortunately the tuxonice 'hibernate' script (installed using
+
+    'yum install hibernate-tuxonice'
+
+does not have that restriction, and can also be used with the standard hibernate
+mechanism. So after switching to Fedora 15, when there was no readily available
+tuxonice version, I used the default hibernate mechanism invoked using the hibernate
+script. This overcame the main flaw of pm-hibernate, namely hiding the grub menu.
+
+When a tuxonice kernel for Fedora 15 finally became available, I immediately tried
+it, and also tried each new version as it became available. So far I have been able
+to get the tuxonice kernel to hibernate, but not to resume! The resume process
+starts, indicates that it has begun unpacking the compressed image file, and then
+freezes. It's possible that this is fixed in kernel 3.3, but I no longer use
+tuxonice, so cannot tell. pm-hibernate has improved so much in the last year that the
+advantages of tuxonice are not worth the extra effort (for me). However I miss the
+'-r' flag in tuxonice hibernate, which allows hibernate to be followed by reboot,
+which is useful for testing and for switching between operating systems.
+</pre>
+<hr/>
+</blockquote>
+
+<h3><b>
+Note on Dell Latitude E6410 (Released early 2010).
+</b></h3>
+<blockquote>
+This is the updated version of the E6400.
+<br/>
+There are other 'E' latitudes laptops/notebooks from Dell, of various sizes and
+powers.
+<br/>
+A new version, E6420, was introduced in 2011, with substantial changes.
+<br>
+I do not have access to the new version, and I don't know how much of what
+follows
+<br/>
+concerning the E6410 is applicable to the E6420.
+</blockquote>
+
+<p>
+<h3><b>
+This web site also includes
+</b></h3>
+<blockquote>
+<a href="#desktop">Experiences
+Getting linux to work on my Desktop PC (Currently Fedora 13)</a>
+<br/>
+<a href="wpa">Using the Birmingham Campus wifi system via Linux</a>
+(in a separate file).
+<br/>
+<a href="#contents">And some older reports on linux on Dell Latitude D600/D610</a>
+
+</blockquote>
+<hr/>
+<a name="installing-E6410"></a>
+<h3><b>Using linux (Fedora 15 Alpha/Beta/Final release)
+on Dell Latitude E6410:
+<br/>
+and partial review of the laptop/notebook
+</b>
+</h3>
+<blockquote>
+After months of partial success with the Intel graphic card, using Fedora 13,
+<br/>
+the machine at last works almost perfectly
+using Fedora 15, starting with kernel 2.6.38,
+<br/>
+<a href="#f15Alpha"> as described below.</a>
+<br/>
+(Earlier attempts to use Ubuntu and Arch linux did not succeed, for my purposes.)
+<br/>
+However, I have not yet tried the fingerprint reader and some of the other devices.
+<br/>
+<small>
+<a href="#installation">
+See below for installation process and obstruction from Windows 7!</b>
+</blockquote>
+</a>
+<hr/>
+<a name="newcontents"></a>
+<h3><b>
+CONTENTS (Not in same order as file contents).
+</b></h3>
+<ul>
+<li>
+<a href="#f19">
+<b>
+15 Oct 2013: Upgraded my desktop PC to Fedora 19 (F19)
+</b>
+</a>
+<br/>
+Summary of issues installing F19 and setting up my environment.
+<ul>
+<li>
+<a href="#glitch">
+<b>Temporary ethernet name glitch</b>
+</a>
+<li>
+<a href="#fetchmail">
+<b>Fetchmail/Sendmail problem (Solved)</b>
+</a>
+<li>
+<a href="#ctwm-f19">
+<b>Window Manager (CTWM working)</b>
+</a>
+<li>
+<a href="#grub2">
+<b>Grub2 problems after installation, update and reboot</b>
+</a>
+</ul>
+
+<p>
+<li>
+<a href="#cdrom">
+<b>Update 31 Aug 2011: Entry for cdrom in /etc/fstab</b>
+</a>
+<p>
+<li>
+<a href="#f15report">
+<b>Dell Latitude E6410 with Intel Graphics Using 32bit Fedora 15</b>
+</a>
+<p>
+<li>
+<a href="#edimax"><b>Update 19 Aug 2011 Converted old Desk-top PC
+to use Edimax USB dongle</b></a>
+<p>
+<li>
+<a href="#tuxonice">
+<b>Hibernate and Tuxonice problems using Fedora 15 on Dell E6410</b>
+</a>
+<p>
+<li>
+<a href="#delivered">
+<b>DELL LATITUDE E6410, DELIVERED 4TH JUNE 2010</b></a>
+(Hardware Options chosen.)
+<p>
+<li>
+<b>Using linux (Fedora 13-19)
+on Dell Latitude E6410: and partial review of the laptop/notebook</b>
+<ul>
+<li>
+<a href="#f19">Installed Fedora 19 (F19) on Desktop PC October 2013</a>
+<li>
+<a href="#config">
+<b>Configuration of my E6410</b></a>
+<br>
+Hardware, operating system, and accessories.
+<li>
+<a href="#external">
+<b>Use with external 22" monitor</b>
+</a>
+<li>
+<a href="#monitor-problem">
+<b>Main problem: use of external monitor or projector with linux</b>
+</a>
+<br/>
+NB FIXED in Fedora 15 (kernel 2.6.38)
+<li>
+<a href="#workaround">
+<b>For now there is a work-around: boot into runlevel 3 and start
+X (the full graphical interface), using the 'xstart' command
+</b>
+</a>
+<li>
+<a href="#warnings">
+<b>Warnings about use of external monitor with new Intel Graphics [Fixed in Fedora 15]</b>
+</a>
+<li>
+<a href="#mobile">
+<b>Mobile Broadband Usb Dongle and Mifi</b>
+</a>
+<br/>
+The Tmobile 'web-and-walk' usb stick worked, as did the Three Huawei
+E586 Mifi device. (7 Mar 2012)
+<li>
+<a href="#ambient">
+<b>Setting the display brightness and keyboard backlighting
+using the 'Fn' key</b>
+</a>
+<li>
+<a href="#battery">
+<b>Battery Life</b>
+</a>
+<li>
+<a href="#weight">
+<b>Not really light-weight</b>
+</a>
+<li>
+<a href="#wireless">
+<b>Wireless connections</b></a>
+<br/>
+The intel wireless card that came with the machine works perfectly
+with both 802.11g and 11n access points.
+<li>
+<a href="#installation">
+<b>Installation of Linux (Fedora 12/13)
+on E6410: Obstruction from Windows 7</b>
+</a>
+</ul>
+<p>
+<li>
+<a href="Why">I don't like using Gnome or KDE linux-desk-top-environments.html</a>
+<br/>
+(Separate file.)
+<br/>
+Instead I use
+<a href="http://ctwm.free.lp.se/">CTWM</a> (no longer being kept up to date
+unfortunately, though it is still very usable:
+<br/>
+small, very fast, very robust, and
+very tailorable -- also see
+<a href="http://www.trovish.org/~rm55/ctwm/">this</a>)
+<br/>
+or <a href="openbox">Openbox</a> (almost as good as CTWM, though slightly less
+tailorable, but integrates better with
+<br/>
+more recent desktop environments;
+also see
+<a href="http://www.vromans.org/johan/articles/MyDesktop/ob.html">this.</a>)
+<p>
+<li>
+<a href="#f13-intel"><b>PARTIAL UPDATE - 21 Jan 2011
+Graphics on Fedora 13 OK only on older kernel</b></a>
+<br/>
+<small>
+Using the 1440x900 graphic display with Intel graphic card was at first problematic
+<br/>
+on Linux, though I had a partial solution that worked on Fedora 13, but only with
+<br/>
+kernel 2.6.33.5-112_1 kernel installed June 2010.
+<br/>
+All subsequent Fedora 13 and Fedora 14 kernels gave blank screen unless
+booted with "nomodeset" --
+<br/>
+no good for use with external display or
+projector.
+</small>
+However the problem is fixed in Fedora 15.
+<p>
+<li>
+<a href="#arch-37">
+<b>NOTE added 2 Feb 2011 (Arch Linux 2.6.37, 32 bit) Updated 9
+Feb 2011: 13 Feb 2011 </b>
+</a>
+<br/>
+<small>
+This works on my 32 bit linux system, but there's not yet a tuxonice
+version, and a user with 64 bit linux found problems with Arch
+2.6.37.
+<br/>
+At first, I had trouble getting pm-hibernate to work at all, now
+fixed as described <a href="#arch-37">below</a>
+</small>
+<p>
+<li>
+<a href="#xubuntu">
+<b>NOTE: 5 Feb 2011 -- Testing Xubuntu light with 2.6.38, on
+Dell Latitude E6410</b></a>
+<br/>
+OK but hibernate not working. No tuxonice.
+<p>
+<li>
+<a href="#ambient">
+<b>
+UPDATE 12 Jul 2010: Use of Fn+KEY to control display brightness and keyboard
+backlighting.
+</b>
+</a>
+<p>
+<li>
+<a href="#pulse-solved">
+<b>UPDATE 2 Jul 2010: Problem getting Pulseaudio working in
+Runlevel 3 -- Solved at last</b>
+</a>
+<p>
+<li>
+<a href="#preparing">
+30 May 2010: Installing F13 on Desktop PC:
+<br/>
+Preparing for Fedora 13 on Dell Latitude E6410
+<br/>
+(I.e. using desktop PC to practise for the laptop installation.)
+</a>
+<p>
+<li>
+<a href="wpa">
+<b>Connection to Campus 'Enterprise' Wireless Network using
+WPA_SUPPLICANT on Linux</b></a>
+<br/>
+(In separate file. Also see note <a href="#nm-fixed">above</a> about connecting to
+<br/>
+enterprise wifi.)
+<p>
+<li>
+<b>
+<a href="dvb-tv-linux.html">
+17 Oct 2009: Receiving Freeview TV using DVB-TV USB stick</b>
+</a>
+<br/>
+(In separate file.)
+<p>
+<li>
+<a href="fedora-vs-ubuntu.html">
+<b>UPDATE 17 Sep 2008: Some differences between Fedora and
+Ubuntu</b>
+</a>
+<br/>
+(In separate file.)
+
+<p>
+<li>
+<a href="#history">
+<b>Partial history of this Web Site</b>
+</a>
+<p>
+<li>
+<a href="#contents"><b>Older Contents of this file</b>
+<br/>
+Experiences with earlier Dell Latitudes (D600, D610)
+and earlier versions of Redhat and Fedora up to Fedora 12 (F12).
+</a>
+<br>
+(Some in separate files.)
+</ul>
+<hr/>
+<a name="swap"></a>
+</b></h3>
+<hr/>
+<b>NOTE ADDED 7 Apr 2011--SWAP Partition and hibernate:</b>
+<br/>
+I have recently found that after a kernel upgrade hibernate (suspend to disc) does not always
+work. The suspend appears to work, but resuming fails and linux reboots.
+<br/>
+A cure that works for me is to renew the swap partition after a kernel upgrade.
+As root (assuming swap is /dev/sda3):
+<small>
+<pre>
+    swapoff /dev/sda3
+        if this fails you may have to go into maintenance mode, at run-level 1:
+        'init 1'
+        then repeat the above command.
+
+    mkswap /dev/sda3
+
+    swapon /dev/sda3
+
+then continue as normal. e.g. 'init 5' for graphical login, or 'init  3' for text login.
+
+Also make sure that the entry for swap in /etc/fstab does not reference some out of date partition ID.
+</pre>
+</small>
+<hr/>
+<p>
+<h3><b>
+See also:
+<a href="http://www.jlacroix.me/?p=1945">Arch Linux on a Dell Latitude E6410
+(LINK BROKEN)</a>
+by Jeremy LaCroix
+</b></h3>
+(using 64 bit Arch Linux, whereas I use 32 bit Fedora).
+<br>
+<b>23 Apr 2011:</b> He now reports success (except for hibernate) with
+<a href="http://www.jlacroix.me/?p=1975">Kubuntu 11.04</a>
+<br>
+18 Jun 2011: I have just noticed this:
+<a href="http://www.jlacroix.me/?p=2028">Xubuntu 11.04 is a Pleasant Surprise</a>
+</small>
+<hr/>
+<a name="config"></a>
+<h3><b>
+Configuration of my E6410:
+</b></h3>
+<blockquote>
+<pre>
+<b>Hardware</b>
+    The machine is approximately 13" wide, with
+    Display:    WXGA+ Anti-Glare 1440x900 display (14" diagonal)
+    Memory:     4GB (2x2048MB) 1066MHz DDR3 Dual Channel
+    CPU:        Intel. CoreTM i5-540M (2.53GHz, 3M cache) with Turbo Boost Technology
+                (four core)
+    Graphics:   Intel: HD Graphics With Express Card
+                Often referred to as Intel GMA 500 (or Poulsbo)
+                <a href="http://en.wikipedia.org/wiki/Intel_GMA#GMA_500">http://en.wikipedia.org/wiki/Intel_GMA#GMA_500</a>
+        (Alternative was nvidia -- preferred by many users, though
+         linux users have had some problems on this machine.
+         I chose the intel graphic card expecting it to use less battery power.
+         The quality is excellent, for my purposes. But did not work properly on
+         linux till kernel 2.6.38.1 -- Fedora 15/Alpha)
+    Hard Drive:      500GB SATA 7,200rpm hard drive,
+    Media Bay:  8X DVD+/-RW Dri
+    Wireless:   EMEA Intel Pro Wireless 6200 (802.11a/g/Draft-n 2X2) Mini Card
+        (Alternative was Broadcom, or more expensive intel card)
+    Ethernet:   Intel Corporation 82577LM Gigabit Network Connection
+    Webcam:     Integrated HD webcam with Microphone
+    Internal UK/Irish Qwerty Backlit Keyboard
+    Alps touch pad with two buttons below, THREE above and trackpoint.
+        (Having middle button makes a huge difference on linux for pasting.)
+        Scrolling gestures do not yet work on linux versions I have tried.
+        Also tapping the trackpoint button is not yet recognised as a
+        left click, whereas tapping the touch pad is. (6 Jun 2011))
+    Integrated Ricoh SD card reader. (Works fine since 2.6.37 kernel)
+    Firewire available, but not used.
+    Bluetooth (not used)
+    Fingerprint reader included, but not yet tried.
+
+    BIOS revision: Originally A05, A06 (Jan 2011), A11 (Jan 2012) A12 (2013)
+        (Fetched and installed from Dell web site.)
+
+    For some background information on Linux and the Intel Graphics
+    card see this article (Jan 31 2009) <a href="http://www.phoronix.com/scan.php?page=news_item&px=NzAyOQ">Intel's Poulsbo Driver A Bloody Mess?</a>
+    <a href="http://www.phoronix.com/forums/showthread.php?t=15206#post60739">Follow-up comments are here.</a>
+    That may be partly out of date. The graphic card worked with vesa driver on
+    the Fedora 13 Live CD, though I had some difficulty getting it to
+    work after I had a full installation of F13, upgraded to newer
+    kernels and libraries. <a href="#livecd">More details below.</a>
+
+<b>Operating system supplied by Dell:</b>
+    Windows 7 Professional (32bit) [I mainly use linux: see below.]
+    (I was not able to purchase the machine without OS, though they
+    offer various versions of MSWindows.)
+    (<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html">Why I hate using windows.</a>)
+
+<b>Accessories:</b>
+    9-cell (90Wh) Lithium Ion high capacity battery with ExpressChargeTM
+        + 1 spare 9-cell battery.
+        For information on battery life see <a href="#battery">below.</a>
+
+    <b>NOTE:</b>
+        Inserting a battery is very easy. Removing it requires three hands
+        ideally: one on each side to hold the sliding catch and one to
+        pull out the battery.
+
+    90 watt A/C adapter
+        + 2 spare A/C adapters (with 2m power cables)
+
+<b>What Linux found on board (June 2010):</b>
+    The '/var/log/messages/' file includes this information about CPU
+    and graphics where 'lape' is the hostname:
+    <small>
+        Jun  6 14:00:33 lape kernel: Brought up 4 CPUs
+        Jun  6 14:00:33 lape kernel: Total of 4 processors activated (20215.47 BogoMIPS).
+
+    (i.e. the Intel i5 is a 4-core CPU, with the power of 4 x 2.5Ghz cpus.)
+
+        Jun  6 14:00:33 lape kernel: Linux agpgart interface v0.103
+        Jun  6 14:00:33 lape kernel: agpgart-intel 0000:00:00.0: Intel HD Graphics Chipset
+        Jun  6 14:00:33 lape kernel: agpgart-intel 0000:00:00.0: detected 32764K stolen memory
+        Jun  6 14:00:33 lape kernel: agpgart-intel 0000:00:00.0: AGP aperture is 256M @ 0xe00000
+    </small>
+    The output of lspci is <a href="e6410-lspci.txt">here</a>.
+</pre>
+</blockquote>
+<hr/>
+<a name="f15Alpha"></a>
+<b>NEWS 4 Apr 2011 -- Fedora 15 Alpha upgraded to 2.6.38.2-9.fc15.i686 (Fedora 15 Beta?)
+</b>
+<blockquote>
+Would not boot with root mounted readable until I altered grub.conf
+boot instruction to include "selinux=0"
+<br/> At first hibernate script would not complete resume, but after various
+updates seems OK.
+<br/>
+(A fix for hibernate working without resume is described <a href="#swap">above.</a>)
+<br/>
+pm-hibernate also works, but annoyingly does not let you see the boot menu on
+resume.
+<br/>
+Occasionally hibernate does not work first time, but does work if the command
+is repeated. Sometimes it seems to be necessary to kill some unused windows
+before it works.
+</blockquote>
+<b>19 Mar 2011 -- Fedora 15 Alpha (with 32-bit 2.6.38.1 kernel) working
+well on Dell Latitude E6410</b>
+
+<blockquote>
+Temporary summary -- to be revised.
+<br/>
+I started using Fedora 15 (F15, FC15) Alpha release, soon after I noticed that
+it was available, on 15th March 2011.
+<br/>
+I now (20th March) have a very usable version of Fedora. Updates are <a href="#f15Alpha">above.</a>
+<p>
+At last there's a version of Fedora that works properly with the new intel
+graphic card on Dell Latitude E6410.
+<br/>
+(I use 32-bit Fedora -- I don't know
+about 64-bit Fedora).
+<br/>
+Apart from sorely missing tuxonice and its hibernate script I seem to be back
+to my previous Fedora 13 functionality with missing bits fixed: SD card reader
+now works, and lxrandr gives full control of resolution and external monitor.
+Even the built-in microphone now works for the first time.
+<p>
+And within a few days of the Alpha release the F15 repositories had a wide
+variety of updates and application packages -- e.g. vlc, gmplayer, amarok, and
+others.
+<p>
+The configuration of my machine is given.
+<a href="#config">above.</a>
+<br/>
+<blockquote>
+<small>
+<pre>
+The Fedora 15 web site <a href="http://fedoraproject.org/en/get-prerelease">http://fedoraproject.org/en/get-prerelease</a> offers several different "Live media"
+"spins" as downloadable CD iso images, in addition to the full distributions on DVDs.
+
+I chose the F15 Lxde Fedora live CD to download, because I wanted the system to boot
+as quickly as possible. The kernel provided was 2.6.38 (almost immediately updated to
+2.6.38.1, which fixed several problems).
+
+To start an installation while the live CD is running, click on the 'install' icon,
+and follow instructions -- familiar from previous Fedora releases.
+
+Although I managed to get the version I wanted installed using the Fedora+lxde live
+CD I don't recommend it for anyone wishing to try out Fedora15. It may be best to try
+the gnome or kde live CDs. I have seen a glowing test report on the live gnome CD.
+
+However I don't like either Gnome or KDE for everyday use, for reasons explained
+<a href="linux-desk-top-environments.html">here</a>, though I dislike Microsoft Windows even more, as explained <a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html"> here</a>!
+</pre>
+<b>Using the LXDE 'live' CD to install Fedora 15 on the Dell E6410</b>
+<pre>
+The lxde 'spin' proved not to be usable as a live CD (at least not on my machine). In
+particular, terminal responses in lxterminal windows were terrible, with random
+echoing of what I typed! I never found out why.
+
+However, after installing F15 from that CD, with a cable network connection providing
+30Mb/s I used 'yum update' to bootstrap to a much better version, including a new
+kernel and some new drivers, which worked very well:
+
+    2.6.38-1.fc15.i686 #1 SMP Tue Mar 15 05:26:56 UTC 2011
+
+Since then, I have found updates appearing frequently in the Fedora 15 repos. I
+started on 15th March and a few days later the system was very usable, with a large
+and growing collection of packages in the official and unofficial fedora repos.
+
+<b>Update: 22 Mar 2011</b> As explained below, although a tuxonice kernel is not yet
+packaged for this system, the tuxonice hibernate script can be downloaded and works
+perfectly, so far: a much better 'front end' than the terribly restrictive
+pm-hibernate.
+</pre>
+</small>
+</blockquote>
+<p>
+<b>From initial install of Fedora 15 + lxde to working system</b>
+<blockquote>
+After the initial installation to hard drive, providing kernel 2.6.38, I found
+problems with the intel graphics, and had to use 'nomodeset' at boot to log in
+and then run 'yum update' in an xterminal window (as root) to get a new version
+of the kernel. That installed:
+<pre>
+    2.6.38-1.fc15.i686 #1 SMP Tue Mar 15 05:26:56 UTC 2011
+</pre>
+along with a lot of driver updates. That made a huge difference and the system
+was usable.
+<p>
+(I had a problem at first after the update, because using the "nomodeset" boot
+option earlier had put a temporary file in /etc/X11/xorg.conf invoking the
+'vesa' graphic driver, and I had forgotten to remove it before testing the new
+kernel. I managed to remove it using the Arch Linux CD as a rescue CD.)
+<p>
+I also produced an unusable system later by mistakenly including the fedora
+Rawhide repo when using the package manager 'Yumex' to add things to the
+system. That caused some early release Fedora 16 packages to be installed, and
+they screwed up other F15 things. So I went back to an earlier stage, and used
+only the standard Fedora repositories and the Atrpms and Rpm-fusion
+repositories.
+<p>
+Together they have enabled me to build a well configured system including
+multimedia tools (e.g. gmplayer, amarok, vlc, skype all working).
+<p>
+After the first update, fixing the kernel and various drivers, I could boot up
+in full graphic mode, and the system has steadily got better and more complete
+since then.
+<p>
+Instead of OpenOffice there is now Libreoffice, with similar functionality,
+except that it seems to start up much faster.
+<p>
+The default version of Firefox on Fedora 15 is now V4.0. Google-chrome is also
+available via the google repo. Firefox is now much improved (not so bulky and
+slow) and it may reverse my move towards google-chrome, which lacks important
+functionality that firefox has.
+<small>
+<pre>
+    In fact, because FF 4 is so good, and because the default firefox for fedora 13,
+    still running on my desktop PC is version 3.6.15, I fetched the tar file for
+    firefox 4 installed it (no compiling needed) and now it runs on the desktop
+    too.
+</pre>
+</small>
+<p>
+As usual, after trying NetworkManager I found it too irritating and
+unpredictable shut it down, and installed wicd instead. Wifi and ethernet
+connections now work fine.
+<p>
+My t-mobile "pay as you go" mobile broadband USB dongle (with Huawei
+technology) works <a href="huawei-220-linux.html">as before</a> as before
+using wvdial. There may also be a graphical interface tool for it, but I
+have shell commands that suffice.
+<p>
+<b>Fedora 15: /etc/inittab is now defunct</b>
+<blockquote>
+On linux, I normally alter the default run-level to 3 in /etc/inittab --
+non-graphical multi-user mode, with text-only login. I can then run 'startx' to
+go into graphical mode, controlled by my ~/.xinitrc file and ~/.config/openbox
+files for the windowmanager.
+<br/>
+However things have changed and the 'inittab' file recommends altering the
+default.target link in the system directory in /lib/systemd/. But that did not
+work for me: I still got the graphical login.
+<br/>
+However adding the parameter '3' at the end of the grub boot command works, and
+has the advantage that it can be modified at boot time if needed.
+</blockquote>
+<a name="dell_wmi"></a>
+<b>Unexplained warning: 'dell_wmi'</b>
+
+<blockquote>
+Lots of things produce 'dell_wmi: Received unknown WMI event (0x11)'
+messages, even
+though the action works -- e.g. using Fn+arrow to change brightness.  This
+appears to be a problem reported many times going several years
+back. It seems to do no harm, and I presume the cause will be removed.
+</blockquote>
+
+</blockquote>
+<a name="packages"></a>
+<h3><b>
+Current installed packages
+</b></h3>
+My current list of f16 packages installed on the laptop is available in alphabetical
+order <a href="fedora-f16-rpms.txt">here</a> (probably out of date by the time you
+read it).
+<p>
+My previous list of f15 installed packages (1,899 packages on 27th Dec
+2011) is available in alphabetical order <a href="fedora-15-rpms.txt">here.</a>
+(I am no longer using F15 on this machine.)
+<br/>
+(I am sure that a significant proportion of those packages will never be used
+by me: they come with the system, or as parts of bundles I install.)
+<p>
+I also installed some additional items that work well, including
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">
+the Poplog AI research and teaching package.</a>.
+(I use its programmable editor Ved for all my work.)
+<p>
+I am pleased that the linux world has at last caught up with all the hardware
+on the Dell Latitude E6410 -- at least as far as my needs are concerned.
+<br>
+Screen works perfectly, and the SD card reader works.
+Even the built in microphone, and scrolling on the alps
+touch pad now work.
+<hr/>
+<p>
+<b>Keeping old versions of linux available</b>
+<br/>
+When I installed F15, I used a new partition for root, but reused old /boot,
+/home /usr/local and swap partitions. After the installation, I restored
+previously saved old boot images to /boot and reinserted some old bits of
+/boot/grub/grub.conf so that I could still boot previous versions of linux in
+addition to the new version.
+<br/>
+I kept an older mostly working fedora 13, windows 7 (used very rarely), and
+Arch linux used experimentally.
+<br/>
+(Re-using boot and preserving previous installations can be tricky
+There are probably how-to guides online.)
+<p>
+<b>Sound using Pulseaudio</b>
+<br/>
+I had previously found that starting in non-graphical mode and then entering
+graphical mode did not provide sound by default, and pulseaudio had to be
+started by an explicit command. In Fedora 15 the command is:
+<pre>
+    pulseaudio --start
+</pre>
+e.g. in the ~/.xinitrc file, or openbox autostart.sh file.
+<p>
+<b>Allowing logins using SSH (and file copy, etc.)</b>
+<br/>
+At first I could not log in to F15 from other machines at home. Eventually I
+discovered this was because the iptables firewall is set by default to prevent
+anything connecting via 'ssh' or anything else. Starting sshd should fix that
+but does not. To fix the firewall I had to run system-config-firewall-tui and
+choose 'customise' to enable ssh logins. Alternatively, you can edit
+/etc/sysconfig/iptables, and add this rule, before the first line containing
+'REJECT'.
+<pre>
+     -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+</pre>
+<p>
+<b>19 Mar 2011 - TEMPORARY PROBLEMS WITH F15 Alpha:</b>
+<br/>
+After the above-mentioned upgrades everything was working well, and I could use
+pm-hibernate to suspend to hard drive and resume later.
+<br/>
+However, when I later tried a full reboot, it had acquired very annoying
+behaviour: close to finishing rebooting it would hang,
+for about 6 or 7 minutes,
+then continue and complete the boot process - after which things were normal.
+<br>
+The behaviour was the same for graphical and  non-graphical boot.
+It seemed to hang after the partitions listed in /etc/fstab are mounted.
+<p>
+While booting was stalled there was no sign of hard drive activity, but the
+wireless lamp came on and flashed, and the Dlink wireless router, indicated
+that a connection was being made, but not completed  -- e.g. I could not log in
+remotely. I also could not use CTRL+ALT+F2 to switch to a console terminal
+during the freeze. But several minutes later the  boot completed and everything
+worked normallyl.
+<br>
+After a couple of hours puzzling about this I found that the pause had
+disappeared -- perhaps a result of running "yum update" to get the
+latest updates.
+<br/>
+I really don't understand what caused it or what removed it. If it was a
+temporary bug it should not affect others but I mention it in case
+someone finds that booting hangs. Wait 5 to 10 minutes to see if it then
+completes. In that case do a full 'yum update', as I did. F15 Alpha
+worked well for me, until the final F15 became available.
+<p>
+However, now that I have found a way to boot in non-graphical mode, by
+putting '3' at the end of the boot command line in /boot/grub/grub.conf I have
+not tried booting directly in graphical mode, so I can't confirm that that
+works. I don't like booting straight into graphical mode.
+<br/>
+[UPDATE 31 Aug 2011: A couple of weeks ago I bought a new PC to replace
+my old and sometimes unreliable one, and have been using F15 on it,
+installed from the "XFCE Light" CDROM.
+Everything works fine, though because it's a very fast machine I have
+not bothered to disable the graphical boot: it starts with the login
+chooser, and I run Openbox. I then use hibernate and resume instead of
+shutdown and reboot.]
+<p>
+<b>Tuxonice not yet available in F15 repositories</b>
+<br/>
+I look forward to having tuxonice with its hibernate command provided in
+pre-built kernels. It is better than the default suspend to disc (using
+pm-hibernate) in several ways:
+<ul>
+<li>
+Tuxonice seems to resume faster.
+<li>
+It provides a nice display showing progress (using plain text graphics). This
+can be useful as a diagnostic aid if anything goes wrong.
+<li>
+The hibernate script pays attention to config files that allow the user to set
+various options (e.g. specifying actions before and after hibernating).
+<li>
+<pre>
+Very importantly, tuxonice resume from suspend lets you see the boot menu,
+whereas pm-hibernate does not, presumably on the assumption that booting any
+other installed version of linux after a suspend can corrupt files.
+
+But that feature of pm-hibernate also stops me switching conveniently between linux
+and windows (occasionally needed to test something).
+
+The arrogant linux developers rule this out in pm-hibernate because the dangers
+of misuse (accidentally booting a different version of linux from the one
+suspended in the swap area) can be serious. I have done this once or twice and
+with ext3 or ext4 file systems this has proved no more serious than crashing
+because of a power failure.
+"pm-hibernate" should be provided with a documented option to allow the
+boot menu before resume, along with dire warnings about booting the wrong
+system.
+
+Otherwise linux will only be of use for amateurs escaping from Windows.
+
+Using tuxonice, I can now use 'hibernate' to save the state of my linux system,
+including multiple desktops with unfinished work, then boot into windows if I
+need to, then shutdown windows and the result linux restoring everything very
+quickly. This mechanism could also be used to switch between two installed
+versions of linux if they use different swap partitions. However pm-hibernate
+makes this impossible, which is very annoying. I could try to build a tuxonice
+kernel, but prefer to wait until experts have provided one.
+</pre>
+
+<b>21 Mar 2011: Hibernate problem solved</b>
+<br/>
+I fetched the latest hibernate tar.gz file from here:
+<a href="http://tuxonice.net/">http://tuxonice.net/</a>
+<br>
+Currently:
+<a href="http://tuxonice.net/files/hibernate-script-2.0.tar.gz">http://tuxonice.net/files/hibernate-script-2.0.tar.gz</a>
+<pre>
+This proved very simple to install using the script provided. So far it seems to work
+perfectly, and unlike 'pm-hibernate' does not make the boot menu inaccessible on
+resume. So I have a system nearly as good as tuxonice now. I think it is a little
+slower to resume than tuxonice, but will not be able to compare until I have a
+tuxonice kernel to try out.
+</pre>
+</ul>
+<b>ADDED 21 May 2011:
+<br/>
+Using 'preupgrade', installed Fedora 15 on my Desktop PC after trying on laptop</b>
+<pre>
+I decided to upgrade my desktop PC (running Fedora 13) to Fedora 15, so as not to
+have different versions on the PC and Laptop.
+
+For the first time ever I used the fedora 'preupgrade' package that analysed my
+installation and created information about requirements to upgrade. It gave me the
+option to skip the upgrade to F14 and go straight to F15. It provides all the information
+required to upgrade and alters /boot/grub.conf to give you the option to boot into
+the upgrade process when you next reboot. It saves the hassle of downloading a
+bootable image, though you need to make sure you have everything backed up.
+
+It mostly worked, but because I had previously been using an encrypted root partition
+it failed. It asked me for the password, but seemed to be unable to use it. I have
+not understood why: normally Fedora systems simply request the password then decrypt
+the partition. In this case it requested the password, but failed. So I decided to
+run with root on an unencrypted partition. (Not ideal, since the '/etc' directory
+includes some unencrypted potentially sensitive information.)
+
+Since it is not possible to decrypt a partition in 'situ' I rebooted to a working linux,
+then created a new partition (the hard drive had plenty of spare space), copied the
+contents of the old root partition to the new one (using 'cp -au'), altered grub and
+/etc/fstab in the new partition to look for the the new root, and then rebooted.j
+
+It worked after a glitch that stopped some things running, because when I created the
+new root partition I had been logged in as a temporary user, and I forgot to make
+root the owner of the root partition! (It took some time to track down the cause of
+the symptoms.)
+
+For some reason this installation of F15 does not create or update the
+/var/log/messages file. I have not been able to understand why. However I can run
+'dmesg' from time to time and save the output.
+
+For a while I tried using Gnome and then KDE on this machine running Fedora 15, and
+disliked both, as explained <a href="linux-desk-top-environments.html">here.</a>
+</pre>
+<a name="arch"></a>
+<hr/>
+<b>Summary: Fedora vs Arch</b>
+<pre>
+As explained <a href="#arch-37">below</a>, I tried using Arch, and was impressed, especially
+by its Live CD which boots quickly into console mode, making it an ideal rescue CD.
+It also got my screen and internal SD card reader working, and provided a very
+convenient and quick update mechanism.
+
+However I found that there does not seem to be as big a community supporting it, so
+many of the things I wanted were not available unless I fetched the source from the
+Arch user repository and compiled it. That worked for a couple of things I tried, but
+was very tedious, and I could not get tuxonice to work that way. In contrast, very
+soon after the Alpha release of Fedora 15 (about 5 days) I had a full working system,
+except for the tuxonice kernel, which I assume will be available eventually prebuilt
+for Fedora users, as in the past.
+
+So my conclusion is that Arch is only for adventurous people who want total control,
+or people who want a very lightweight minimal linux system.
+</pre>
+</blockquote>
+The rest this file contains information inserted after I bought the laptop in
+June 2010.
+<hr/>
+
+<a name="reactions"></a>
+<h3><b>
+ORIGINAL SUMMARY OF REACTIONS TO E6410 (JUNE 2010)
+</b></h3>
+<blockquote>
+<pre>
+Overall this is the best laptop I have ever used. Even the speakers sound
+surprisingly good despite the machine being small and thin (compared with my previous
+laptop: Dell D610). Of course bass is lacking. But a classical music channel playing
+on Amarok while I am working is quite tolerable most of the time -- and even better
+with earphones, of course!
+
+The screen is much brighter in daylight than previous screens. I regret the fact that
+the vertical resolution is now only 900,  but I am coping -- though it needs extra
+scrolling when reading or writing documents.
+
+Unfortunately linux support for the intel graphic card has been deficient, though I
+found a specific Fedora 13 kernel that does almost all I need, as described <a href="#f13-intel">here,</a>
+except for not supporting the integrated SD card reader, and requiring special care
+when using an external monitor or projector. Since Fedora 15, both the SD card reader
+and external displays work perfectly.
+
+The keyboard feels excellent, and the backlighting is a very useful option. The Alps
+touch-pad works well,  including supporting vertical scrolling, since It's superb to
+have middle mouse key on a laptop at last -- I use it all the time for inserting
+previously selected text, and am very pleased that I no longer have to emulate middle
+key by pressing left and right simultaneously -- this previously drove me to use a
+USB mouse, which I no longer need.
+
+The intel wireless card is very well supported on linux. I disabled NetworkManager,
+and wicd provides excellent wireless service.
+(Note: 8 Sep 2012: I have reinstated NM for a trial period on Fedora 17, since Wicd
+seems to have stopped working in F17.)
+</pre>
+</blockquote>
+<a name="othernews"></a>
+<h3><b>
+OTHER NEWS
+</b></h3>
+<a name="superhub"></a>
+<blockquote>
+<pre>
+<b>13 Feb 2011: Virginmedia superhub is junk</b>
+Using new VirginMedia (Netgear) Superhub with download speed increased to 30mb/s I
+found I had frequent time-outs when using SSH. Problem description and solution <a href="http://community.virginmedia.com/t5/Up-to-50Mb-broadband/Frequent-disconnects-on-new-superhub-if-I-pause-while-logged/td-p/333445">here.</a>
+I shall add more information on use of the Superhub <a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/virgin-media-superhub.html">here.</a>
+
+<b>Summary: The Virgin Media Superhub is Junk except for a small subset of users.</b>
+It attempts to integrate cable modem and cable/wireless router in one device, but the
+design specification for the package was so dreadful that whoever led that project is
+clearly incompetent and should be sacked.
+
+The design flaws, fiercely criticised on the User forum, have been recognised and new
+firmware allowing the Superhub to be used as a fast cable modem connected to a
+separate router is promised in May 2011. I managed to partially convert it and now
+use it with my Dlink DIR-615 router (provided by Virgin Media over a year ago).
+
+Before that I discovered that although the superhub wireless mechanism
+works for a laptop in the same room or immediately below, its power was
+grossly inadequate for our medium sized 2-storey house, and it failed to
+connect anywhere outside the central half of the house. In contrast the
+Dlink reaches my laptop in all the far corners of the house, and outside
+at the back. Several other people on the user forum also reported
+grossly inadequate wireless functionality in the Superhub.
+
+Virgin Media are still advertising the Superhub as a wonderful new combined
+Cable Model and wireless router. They are lying to the public and should be
+exposed.
+<a name="support"></a>
+<b>25 Feb 2011: Excellent Dell Repair Service -- brief report</b>
+On Wednesday 23rd I dropped my laptop, bending the base. It was switched on,
+running linux. at first the wireless connection stopped and would not restart,
+until I rebooted.
+
+Thursday, after many tests to ensure that nothing was wrong except for external
+damage, I phoned Dell support, as I had 3-year accidental damage cover. I was asked
+for my express service code and routed to an expert, who asked me a lot of questions,
+then asked me to take a lot of photographs and send them in. I also mentioned a
+previously cracked lid, and a fiddly catch on DVD drive. They confirmed that this
+could be repaired on site and scheduled a repair visit.
+
+On Friday morning the Dell technician phoned and said he would come between 11 and
+1pm. Just before 12, he arrived, disassembled the laptop, replaced base plate and lid
+and DVD drive, reassembled everything, waited for me to do a few tests, and left
+shortly after 1pm.
+
+<b>Everything seems to be working perfectly, and I have the impression the speakers
+sound better than previously. I am very impressed. No talking to someone ignorant at
+a foreign Dell call centre as in the distant past.
+
+I guess it's also a tribute to the E6410 design and manufacture that falling from a
+table to a hard floor damaged only the outer case. It was running linux at the time,
+so could not have been protected by Dell's anti shock protection mechanism, which as
+far as I know works only in Windows.</b>
+
+<b>Update: 23 Mar 2011</b>
+A few days ago I found that one of the two screws holding the hard drive in place had
+come out. I reported this by email and very quickly had a bag of screws delivered by
+courier. More excellent Dell service.
+
+</pre>
+</blockquote>
+<hr/>
+<a name="delivered"></a>
+<p>
+<h3><b>
+DELL LATITUDE E6410, DELIVERED 4TH JUNE 2010
+</b></h3>
+<blockquote>
+<b>Pictures and some reviews</b>
+<br/>
+<a href="http://www.euro.dell.com/ed/en/business/Laptops/latitude-e6410/pd.aspx?refid=latitude-e6410&s=bsd&cs=edbsdt1&~ck=mn">Dell Latitude E6410</a>
+<br/>
+<a href="http://forum.notebookreview.com/dell-latitude-vostro-precision/475324-e6410-owners-thread.html">
+See the "E6410 owner's forum" on notebookreview.com </a>
+(mostly windows users, however).
+
+<pre>
+A partial review of the E6410 as a machine to run linux is below.
+
+<b>Intel vs Nvidia Graphics?</b>
+I chose the Intel HD Graphics (with Express Card) option, not NVidia. I am happy
+with this, as regards performance and power consumption.
+
+At first the linux software support for this card was seriously deficient. For a
+while I used a version of fedora 13 with which I could do everything I want as long
+as I don't have an external monitor connected when the machine goes in and out of
+graphic mode. That version is described <a href="#f13-intel">below.</a>
+
+But when I tried to use  more recent kernel (up to 2.6.36 on Fedora 14) there were
+problems with the display, whether at boot time, or if the screensaver blanks the
+display, after which it cannot be restored.
+
+So for a while I stuck with the F13 kernel from June 2010. The only disadvantage of
+going back to F13 was that I can't use the built in SD card reader, which requires a
+later kernel. So I have to mount such cards in a USB SD cardholder. Also I have to
+disconnect any external display before switching in or out of graphic mode. But all
+that has been fixed in Fedora 15.
+
+<b>NOTE:</b> I have found that with 32-bit 2.6.37 Arch Linux kernel the Intel
+graphics functionality is perfect (though apparently only 2.6.38 works with this
+Intel graphics running 64-bit linux). I have not switched to Arch because too many
+other things that I have working on Fedora seem to be much more fiddly to set up in
+Arch (e.g. tuxonice for hibernate).
+
+<hr/>
+People trying to use the E6410+Nvidia graphics with linux may find <a href="http://www.spinics.net/linux/fedora/fedora-users/msg380813.html">this web site</a>
+useful. Nvidia graphics also seem to be causing problems for Linux+E6410 machines.
+(I don't know if the problems have been solved yet. The intel graphics problems have,
+since about march 2011 e.g. in Fedora 15).
+
+<b>Added 2 Feb 2011:</b>
+Ashton Fagg's web site may help users with the nvidia graphics card: <a href="http://www.zaraphrax.net/linuxe6410.htm">http://www.zaraphrax.net/linuxe6410.htm</a>
+(He uses 64 bit Fedora).
+
+-----------------------------------------------------------------------------
+
+This website is still messy and repetitive. I'll try to improve it later.
+
+(If you have any additions email me with your suggestions. Thanks. All contributors
+will be acknowledged.)
+</pre>
+
+<p>
+</blockquote>
+<hr/>
+<a name="f13-intel"></a>
+<p>
+<h3><b>
+PARTIAL UPDATE - 21 Jan 2011 (Fedora 13 on Dell E6410 SUPERSEDED SINCE F18)
+<br/>
+Machine Details summarised <a href="#config">above.</a>
+<br/>
+Graphics on Fedora was OK only on an older Fedora 13 (fc13) kernel
+</b></h3>
+<blockquote>
+Using the 1440x900 graphic display with intel HD graphic card was found to be
+problematic until I installed the Fedora15 Alpha Release in March 2011, using
+this kernel
+<pre>
+    2.6.38-1.fc15.i686 #1 SMP Tue Mar 15 05:26:56 UTC 2011
+</pre>
+(installed by "yum update" soon after installation of FC15).
+<p>
+I found no earlier versions of the linux kernel (on Fedora or Arch or
+Ubuntu) that worked properly with this intel graphic card.
+<p>
+<b>Partial solution, using Fedora 13</b>
+<br/>
+For a time, I used a partial solution that
+works on (32-bit) Fedora 13, but only with the hard to find 2.6.33.5-112_1
+kernel -- with tuxonice (software suspend 2).
+<p>
+Just in case someone is unable to upgrade to Fedora 15, I provide details for
+getting this machine to work on Fedora 13 with this kernel:
+<pre>
+    2.6.33.5-112_1.cubbi_tuxonice.fc13.i686
+</pre>
+<a href="http://mhensler.de/swsusp/download_en.php">Matthias
+Hensler</a>, kindly retrieved the packages from his archive at my
+request. I have made them available for download
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/kernels/">here</a>
+until there is a proper long term fix.
+</blockquote>
+This works with modesetting turned on at boot time (using the
+default or "i915.modeset=1" in the boot command or perhaps just
+"modeset", or even no command specifying mode. (Not sure.)
+<p>
+In addition you need to have the Xorg 'intel' driver, and make sure
+that your file /etc/X11/xorg.conf mentions the intel driver for
+video, not 'vesa' or 'psb'.
+<p>
+This solution is imperfect for three reasons:
+<br/>
+(1) I have to make sure
+that no external display (monitor or projector) is connected when
+switching in and out of graphic mode -- otherwise it crashes.
+<p>
+(2) Using lxrandr I can select only the default screen
+resolution 1440x900, instead of the lower resolutions of which the
+display is capable.
+<p>
+(3)
+Using fedora 13 I can't use the Ricoh SDHC card reader built into
+the laptop,  so I have to use an external usb adapter for SD cards,
+which is a nuisance.
+<p>
+I was able to live with those constraints between June 2010 and March 2011,
+when FC15 Alpha became available, removing the constraints.
+<hr/>
+<p>
+<b>Other F13 and F14 pre-built kernels don't work with Intel
+graphics on E6410</b>
+<br/>
+With all other F13 or F14 kernels I could only get the laptop to start up OK
+with nomodeset and the 'vesa' driver  specified in /etc/X11/xorg.conf,
+which made using an external monitor or projector impossible.
+<p>
+<hr/>
+<a name="arch-37"></a>
+<h3><b>
+NOTE added 2 Feb 2011 (Arch Linux 2.6.37, 32 bit on Dell E6410); Updated 9 Feb; 13 Feb 2011
+</b></h3>
+My display partly worked with a 2.6.36 kernel on Arch linux, but
+getting it to boot with the display working as desired was not
+reliable, and there were problems after hibernate/resume or
+screenblank.
+<p>
+Following a suggestion by Jeremy LaCroix
+(<a href="http://www.jlacroix.me">http://www.jlacroix.me</a>) who has
+almost the same hardware configuration on his E6410 but uses a
+different wireless card and runs 64-bit linux, I tried Arch linux
+with the 2.6.37 kernel (32 bit) and things seem to be better,
+especially with recent software updates.
+<pre>
+    %uname -rv
+    2.6.37-ARCH #1 SMP PREEMPT Sat Jan 29 19:40:04 UTC 2011
+</pre>
+<p>
+On my machine the display now starts up perfectly with that kernel.
+It also works after screen blank, and after pm-suspend/resume. (That
+includes restoring previous WPA wireless connection.)
+<br/>
+At first pm-hibernate did not work at all: after hibernate: it
+re-booted instead of resuming. This was fixed as described
+<a href="https://bbs.archlinux.org/viewtopic.php?pid=73848">here.</a>
+<pre>
+    In
+        /boot/grub/menu.lst
+
+    add after root=/dev/sda14 in the boot specification:
+
+        resume=/dev/sda3
+
+    In the file /etc/mkinitcpio.conf add "resume" to this line:
+
+        HOOKS="base udev autodetect scsi sata resume filesystems"
+
+    Then run this command as root:
+
+         mkinitcpio -p kernel26
+</pre>
+Now pm-hibernate works on Arch.
+<p>
+Early problems after hibernate, with
+the display,
+and use of mouse or touch-pad after hibernate, have disappeared
+since an Arch update on (9 Feb 2011).
+<p>
+So it looks as if 2.6.37 is mostly usable running Arch on my 32-bit machine.
+<br/>
+However, I now use 2.6.38-1 on Fedora 15.
+<p>
+<p>
+If I can find a way to get tuxonice and other things I use working with Arch I
+may switch to using it at some future date. Meanwhile I prefer Fedora as so
+many things I can easily install on Fedora (or Ubuntu) are much more hassle to
+find and install on Arch. (E.g. kernel-tuxonice).
+<a name="xubuntu"></a>
+<p>
+<b>NOTE: 5 Feb 2011 -- Testing Xubuntu light with 2.6.38, on
+Dell Latitude E6410</b>
+<br/>
+I fetched the latest 32 bit Xubuntu (Natty alpha 2) "live CD" to
+try out. It uses a 2.6.38 kernel.
+<br/>
+I chose Xubuntu as that was described as the most light-weight
+version, which is what I always prefer.
+<br/>
+The Intel display worked fine, and I could connect an external
+monitor and run 'xrandr --auto' to get it working. When I added
+lxrandr I could also get the full range of display resolutions
+available on the E6410, instead of only the default 1400x900. It
+also worked with an external 1280x1024 monitor.
+<br/>
+Having got that far with the live CD, I created a partition in which
+to install it, sharing the existing boot partition. For the initial
+installation I had to use a cable connection as it did not give me
+the option set up the connection to my wireless router using WPA.
+<br/>
+The Xubuntu installer followed my instruction to use the existing /boot
+partition without reformatting it (I had saved a copy as a precaution). It
+discovered the existing boot files and managed to edit my menu.lst file to
+create a new grub.cfg file using syntax I had never seen before, for booting in
+a variety of environments. It left my previous windows 7 and fedora 13 options,
+and other experimental options available. That's impressive. Fedora has never
+offered me that option (Correction: When Fedora 15 finally appeared, it
+told it to use the pre-existing /boot partition without formatting. I
+merged the new installation with old ones successfully.)
+<p>
+Also unlike Fedora Xubuntu sensibly makes the boot menu
+visible on start up by default. Hiding it by default is completely daft when
+there is more than one boot option (e.g. linux and Windows).
+<br/>
+I spent a little while trying XUbuntu using Openbox rather than the
+other Desktop managers available. Most things worked though I did not
+find out how to disable network-manager so that I could use wicd.
+<br>
+pm-suspend worked at first with Ubuntu, but after doing it twice I had trouble
+re-connecting to the wireless network. Presumably that's a temporary problem. I
+could not run pm-hibernate, as hibernate was not included in the alpha test
+kernel.
+<br/>
+Xubuntu did not install as good a default set of X libraries as Arch
+linux did (e.g. including libXt, libXext, libX11, and motif/or
+lesstif).
+<p>
+For a while the debian x-terminal-emulator, which I had not
+previously encountered, was the only replacement for xterm that
+handled the xterm region-scrolling mechanisms properly: for example,
+gnome-terminal, and lxterminal both failed.
+<br/>
+(Correction: lxterminal in
+Arch running 2.6.37 and on Fedora 15 works OK as an Xterm emulator.)
+<p>
+<b>In Xubuntu+2.6.38 The Alps touch pad now has vertical scrolling working!</b>
+<br/>
+Not yet in Fedora 15, alas (2 Apr 2011).
+<br>
+Jeremy LaCroix reported favourably on Xubuntu 11.04
+<a href="http://www.jlacroix.me/?p=2028">in May 2011.</a>
+<p>
+<hr/>
+<a name="2.6.36-f14"></a>
+<p>
+<b>26 Jan 2011: PARTIAL UPDATE OF PREVIOUS UPDATE (<a href="#f13-intel">above</a>):</b>
+<br/>
+<b>kernel 2.6.36 on Fedora 14 with Intel GMA 500 graphics</b>
+<blockquote>
+I thought this graphic card worked on Fedora 14 with the
+2.6.36 kernel.
+<blockquote>
+<b>Alas that proved wrong. If a screensaver is allowed to blank the
+screen, nothing can get it out of the blank state, except a reboot.
+<br/>
+Moreover, sometimes resuming after hibernating does not restore the
+screen properly.
+<br/>
+So I have to go back to the Fedora 13 system described below, and
+perhaps wait for F15 and the 2.6.37 kernel?
+</b>
+</blockquote>
+<p>
+<b>Getting Fedora 14 to work:</b>
+<br/>
+At one point I tried building a new kernel on FC14 as described <a href="fedora-14-from-source.html">here.</a>
+It partially worked, but is now out of date.
+<p>
+All of this section, concerning Arch, Ubuntu, and Fedora 13 and 14 is now
+history, since I installed Fedora 15. It overcomes the problems with the screen
+and seems to be rock-solid (for me).
+</blockquote>
+<hr/>
+<p>
+<a name="external"></a>
+<b>Use with external 22" monitor</b>
+
+<blockquote>
+I bought a Dell 22" Monitor (model E2210) for use with the laptop
+but at first I found that plugging in an external monitor crashed
+linux, though it worked OK with Windows 7. That was later fixed in Fedora 15.
+<p>
+Because I could not immediately use the 22" Dell monitor, I gave it
+to my wife, to replace her 17" Samsung 1280x1024 monitor, used for
+her work, which includes making orienteering maps, using OCAD.
+<br/>
+The Dell was much better for her work, so she kept it!
+<p>
+I then bought a cheaper, 22" monitor at Comet: LG
+FLATRON W2253TQ (&pound;139.00).
+<br/>
+That has worked very
+well since, with 1920x1080 resolution, which allows me to view two
+PDF A4 documents side by side (or two pages of the same document).
+<blockquote>
+<small>
+It has DVI and VGA input sockets, much better
+switches on the panel, and a slightly higher spec (contrast and
+response time) than the W2243S.
+<br/>
+Its performance is excellent and it has so far not gone wrong.
+<br/>
+The DVI input is connected to my desktop PC for normal use.
+<br/>
+The VGA input can be connected to the laptop when required, and the
+'source'
+button used to switch inputs.
+<br/>
+<b>A highly recommended monitor.</b>
+</small>
+</blockquote>
+For now I mostly use the LG Monitor with my old desktop PC, though I
+may later move to using mainly the laptop as it is more powerful.
+<p>
+However, while connected to the PC I can log through to the laptop
+and use it across the network, very conveniently: a great benefit of
+linux and the X window system.
+</blockquote>
+<hr/>
+</blockquote>
+<a name="partial"></a>
+<h3><b>
+PARTIAL CONTENTS
+<small>
+<br/>
+More detailed contents list to be added.
+<br/>
+Meanwhile scan down looking
+for bold headings, or use your browser to search through contents.
+</small>
+</b></h3>
+<ul>
+<li>
+<a href="old-updates.html"><b>Older Entries (2007-2008 up to
+Fedora 9) now in separate file</b></a>
+<p>
+<a name="livecd"></a>
+<li>
+<b>Fedora 13 Live CD works on the Dell Latitude E6410 with Intel Graphics</b>
+<br/>
+<blockquote>
+Because of all the problems running this laptop in graphical mode
+described I thought I would see whether it works using the
+Fedora 13 Live CD Fedora-13-i686-Live.iso (about 700MB) which I had
+downloaded from the Fedora web site on 27th May 2010.
+<p>
+<b>Result:</b> everything worked perfectly. It went into graphical
+mode, allowed me to connect to a wireless network (using the
+NetworkManager applet (though I normally use wicd instead), when I
+ran firefox and tried to get the BBC News display working, it told
+me I needed flash. So I followed the instructions, installed the
+latest flash plugin, restarted firefox and BBC News worked
+perfectly, even in full screen mode.
+<p>
+The volume control buttons on the laptop worked, though I am not
+able to access them in my normal working mode (using CTWM or Openbox
+instead of gnome).
+</blockquote>
+<p>
+<hr/>
+<a name="others"></a>
+<h3><b>
+UPDATE 8 Jul 2010: experiences of other users (e.g. Ubuntu on E6410)
+</b></h3>
+<blockquote>
+I seem to have been lucky in my choice of Fedora 13. I  have found
+web sites where other users are having problems using the E6410 with
+linux, e.g. on Ubuntu
+<a href="http://www.gossamer-threads.com/lists/linux/kernel/1242035?page=last">here.</a>
+<p>
+However, there is at least one company selling these machines with
+linux pre-installed (and presumably fully working):
+<a href="http://www.emperorlinux.com/mfgr/dell/tiger/">Emperor Linux.</a>
+</blockquote>
+<hr/>
+<a name="pulse-solved"></a>
+<h3><b>
+UPDATE 2 Jul 2010: Problem getting Pulseaudio working in
+Runlevel 3 -- Solved at last
+</b></h3>
+<blockquote>
+At various stages in the creation of this document (starting several
+years ago when I had a Dell Latitude D610), I have noted problems
+with pulseaudio. From the time it first appeared up to Fedora 12,
+after trying to use it and failing, I found advice given on many
+websites and removed pulseaudio, and anything that depended on it
+completely, after which sound worked fine (based on ALSA).
+<p>
+When I installed and tested Fedora 13, initially using the default
+graphical login process, at runlevel 5, I found, for the first time,
+that sound worked perfectly, using pulseaudio, whether I tried audio
+recordings, videos with sound, or sound and video on the web (e.g.
+BBC iplayer). (I have had problems getting skype to work, unless I
+run it as root. I don't know why.)
+<p>
+However I don't like booting into runlevel 5, and as in the past
+changed /etc/inittab to boot into runlevel 3, after which I
+use the console login process, and normally run startx to enter
+graphical mode, with either CTWM or OpenBox as (light weight, but
+flexible) window manager. I then usually don't log out again for
+weeks: I simply use hibernate and resume (using the 'tuxonice'
+suspend to disk mechanism).
+<p>
+Unfortunately I was not able to get pulseaudio to work in
+that mode, and had to switch to runlevel 5 (using 'init 5' as
+superuser) if I wanted to use sound.
+<p>
+This led me to the conclusion that I should once again have to
+remove pulseaudio completely. However, comparing things
+that were running at level 3 and at level 5 as shown by
+<pre>
+    ps auxww
+</pre>
+I started to experiment. Eventually I found what seems to be the
+answer -- after noticing that gstreamer seems apparently involved.
+<br/>
+Install these packages
+
+<pre>
+    PackageKit-gstreamer-plugin-0.6.5-1.fc13.i686
+    gstreamer-0.10.29-2.fc13.i686
+    gstreamer-plugins-bad-free-0.10.19-1.fc13.i686
+    gstreamer-plugins-base-0.10.29-1.fc13.i686
+    gstreamer-plugins-good-0.10.23-1.fc13.i686
+    gstreamer-python-0.10.16-1.fc12.i686
+    gstreamer-tools-0.10.29-2.fc13.i686
+    phonon-backend-gstreamer-4.4.2-1.fc13.i686
+</pre>
+
+(I am not sure they are all needed, but have not tried
+experimenting to see which I can remove.)
+<p>
+And also make sure you have these two utilities:
+
+<pre>
+    /usr/bin/gnome-volume-control
+    /usr/bin/gnome-sound-recorder
+</pre>
+
+These are included in the following, I think.
+<pre>
+    gnome-media-2.30.0-1.fc13.i686
+    gnome-media-apps-2.30.0-1.fc13.i686
+</pre>
+
+Once all those are installed I find that after starting up graphic
+mode in runlevel 3, I can run
+
+<pre>
+    /usr/bin/gnome-volume-control
+</pre>
+
+As soon as I adjust the output level, my speakers produce a 'plop'
+and after that audio output works, though I have to experiment with
+volume levels.
+<p>
+To ensure that you can record from microphone (after making sure the
+mic plug is in the mic socket) run both of these
+
+<pre>
+    /usr/bin/gnome-volume-control
+    /usr/bin/gnome-sound-recorder
+</pre>
+
+On the volume control panel, select the 'Input' tab, and experiment
+with the 'Connector' menu options. I found "Analog
+Microphone/Microphone 1" worked. The input recording level will
+probably need to be adjusted. If it is too high all the sound
+recorded will be badly distorted.
+<p>
+Use the 'sound recorder' to test microphone input. Click the red
+button to start recording and watch the volume level at the bottom
+as you talk. Click the square to stop. Click the triangle to play
+the recording. You have the option to save your recordings as files.
+<p>
+It is quite likely that people who do not wish to use those two
+gnome tools (which work without gnome running) will find some other
+tools that are able to kick-start pulseaudio as gnome-volume-control
+seems to do. I don't know the role of 'Packagekit' in all this. I
+may have found a spurious correlation.
+<p>
+If anyone understands what is happening and writes or has written a
+tutorial on this, please contact me. I would be happy to insert a
+link.
+</blockquote>
+<hr/>
+<p>
+<b>Problem with FC15 hibernate and wicd (Now fixed 24 Mar 2012)</b>
+I have never found NetworkManager satisfactory, and use <a href="http://wicd.sourceforge.net/">wicd</a>
+to control network
+connections instead. It provides more options than NM, and makes them far more easily
+accessible at any time, and does not have to be accessed through a desktop applet.
+<p>
+However, a problem emerged after I installed Fedora 15. I found that the attempt to
+hibernate would sometimes fail, with this report:
+<small>
+<pre>
+    hibernate: [61] Executing WICDSuspend ...
+    wicd directory not found, cannot signal Wicd
+    hibernate: Aborting suspend due to errors in WICDSuspend (use --force to override).
+</pre>
+</small>
+
+After hunting around I found that that report came from the wicd script here:
+<small>
+<pre>
+    /usr/share/hibernate/scriptlets.d/wicd
+</pre>
+</small>
+That wicd script searches for another script that is part of the wicd code, and it
+was searching in the wrong place. The actual script looked for is here:
+<small>
+<pre>
+    /usr/share/wicd/daemon/autoconnect.py
+</pre>
+</small>
+whereas it was searching here:
+<small>
+<pre>
+    /usr/share/wicd/autoconnect.py
+</pre>
+</small>
+So I edited the wicd script by inserting 'daemon' in the directory name here:
+<small>
+<pre>
+    WICDFindScripts() {
+            for NAME in /usr/lib/wicd /usr/share/wicd/daemon; do
+                    if [ -f "${NAME}/autoconnect.py" ]; then
+                            WICD_DIR=${NAME}
+                    fi
+            done
+    }
+</pre>
+</small>
+That seems to work fine, and the hibernate command works.
+<p>
+The
+default hibernate is actually quite tolerable when used with 'hibernate' rather than
+'pm-hibernate'. I had to use 'yum' to install hibernate (which despite the name of
+the package works fine without tuxonice):
+<small>
+<pre>
+    yum install hibernate-tuxonice
+</pre>
+</small>
+<p>
+I assume the tuxonice bug will be fixed eventually. If so, I'll report that here.
+I suspect the bug is also due to a change in the directory structure since Fedora 15
+and kernel 2.6.38, caused by the switch from using init to using
+systemd.
+</blockquote>
+
+<hr/>
+<a name="summary"></a>
+<h3><b>
+SUMMARY:
+Using the Dell latitude E6410 with intel graphics on linux (Fedora 13)
+</b></h3>
+
+<blockquote>
+Overall, the E6410 is a very attractive and usable machine, though
+quite heavy with 9-cell 90Whr battery. (See <a href="#weight">
+weight information below.</a>)
+<p>
+As a linux user, apart from a hopefully temporary driver problem for
+new intel graphics, with a temporary workaround, I am very pleased
+with my choice of the E6410 (updated version of the Latitude E6400)
+-- having considered other Dell models and also Sony, Lenovo
+(Thinkpad)  and Toshiba.
+<br/>
+There may not be a comparable problem for users who choose the
+NVidia driver.
+<p>
+All makes seem
+to have moved over to the wide-screen low height format (e.g.
+1440x900) which I dislike. I much prefer the 1440x1050 ratio on the
+Dell D610. In most other respects the E6410 is much better.
+<p>
+<b>Warning: [Problem fixed in F15]</b>
+The new Intel graphic card will work only with very
+recent versions of linux. I had problems with Fedora 12, so switched
+to Fedora 13. There were still problems attaching an external
+monitor, as explained below, and older versions of linux may fail to
+boot. E.g. the latest Knoppix live DVD, Version 6.2, seemed to be
+unable to cope with the graphic card: it did not get as far as
+producing any user prompt. For progress on open source drivers for
+intel graphics see
+<a href="http://intellinuxgraphics.org/">http://intellinuxgraphics.org/</a>
+<br> There is a FAQ list here
+<a href="http://intellinuxgraphics.org/documentation.html">http://intellinuxgraphics.org/documentation.html</a>
+<p>
+<b>Fedora 13:</b> is a mature linux distribution, with a large
+collection of 'extra' packages available
+<a href="http://atrpms.net/dist/f13/">from the Atrpms respository.</a>
+</blockquote>
+<hr/>
+<p>
+<h3><b>
+Benefits and problems: Dell Latitude E6410 on Fedora 13
+</b></h3>
+
+<ul>
+<li>
+<b>Intel graphic card seems to have adequate performance</b>
+<br/>
+I had been a little concerned about the performance of the Intel
+Graphics, but need not have worried.
+
+<blockquote>
+Running linux (Fedora 13), the performance of the new Intel graphics
+on Dell Latitude E6410 is much better than
+performance of the ATI Radeon M300 card on Dell Latitude D610
+using the linux ati driver.
+<p>
+On the D610, the proprietary ATI driver gave problems with software
+suspend/hibernate, and did not work with xrandr when I last tried
+it. On windows both graphic cards work well, e.g. with BBC
+iPlayer full screen mode.
+<p>
+On the E6410, the combination of intel graphic card and the linux
+driver <b>mostly</b> gives excellent performance for my needs --
+playing no computer games!
+<p>
+E.g. switching to full screen on BBC iPlayer is no longer jerky,
+unlike full screen video on my desktop machine also running fedora
+13, using an nvidia graphic card (GEforce 6200).
+</blockquote>
+Except for the number of pixels vertically, the E6410 screen
+is the best I have had on a laptop, and usable in much brighter
+light than my old D610.
+<p>
+However, I badly miss the larger sized 14" display with 1440x1050
+pixels: 1440x900 is just too short top to bottom for some of the
+work and reading I do -- and requires too much scrolling. This can
+be mitigated by using an external display (like the Dell or LG 22"
+monitors mentioned above) for extended work, though connecting an
+external monitor when using current versions of linux (July 2010)
+requires disconnecting the monitor when switching in or out of
+graphic mode, as explained <a href="#monitor-problem">below.</a>
+<p>
+<li>
+Using the new Intel graphic card
+with an external monitor when booting into runlevel 5 (graphical
+login) could crash the machine when running fedora 13, as described
+<a href="#monitor-problem">below.</a>
+<p>
+<b>However this problem has been fixed since Fedora 15 and kernel 2.6.38.</b>
+<p>
+For a while I used the laptop successfully with this F13 kernel and xorg components:
+<small>
+<pre>
+    2.6.33.5-124_1.cubbi_tuxonice.fc13.i686 #1 SMP Tue Jun 22 14:49:14 CEST 2010
+
+    xorg-x11-drv-intel-2.11.0-4.fc13.i686
+    xorg-x11-server-Xorg-1.8.0-17.fc13.i686
+</pre>
+</small>
+<p>
+<p>
+<li>
+<b>Sound and pulseaudio</b>
+<br/>
+Sound on the E6410 worked OK: after installing Fedora 13, time
+pulseaudio just worked for most things (as long as I started up in
+graphical mode, at runlevel 5), so I did not have to get rid of it
+as in previous versions of Fedora.
+<p>
+When I first altered the boot configuration to start in runlevel 3, I found
+after starting the window manager that pulseaudio no longer worked.
+<br/>
+However, I managed to get sound working on both my laptop and my
+desktop machine running Fedora 13, and using pulseaudio, at runlevel
+3, as described <a href="#pulse-solved">above.</a>
+<p>
+<li>
+<b>Skype sound at first did not
+not work properly with pulseaudio -- except at runlevel 5</b>
+<br/>
+For a while I was unable to get skype to work on the E6410 at
+runlevel 3, which
+is how I normally work.
+<br/>
+<b>Update 8 Sep 2012:</b> Skype works fine on Fedora, though for a while
+I had trouble getting audio to work at run-level 3 (multi-user
+non-graphical login). In my ~/.xinitrc file I have
+<pre>
+    pulseaudio --start
+</pre>
+and audio now generally works well by default.
+<br>
+I also had problems with the skype fonts being too small, but the
+qtconfig-qt4 tool allows me to specicify font style and size, to make
+things readable. It's important to click on 'save' before exiting the
+tool, however.
+<br/>
+I am now (Sept 2012) using this version of skype:
+skype-4.0.0.8-fc16.i586, installed using an rpm file downloaded from the
+skype web site:
+<br>
+<a href="http://www.skype.com/intl/en-gb/get-skype/on-your-computer/linux/downloading.fedora">http://www.skype.com/intl/en-gb/get-skype/on-your-computer/linux/downloading.fedora</a>
+
+<p>
+<a href="#pulse-solved">
+<b>NB 2 Jul 2010: Audio problems now solved.</b>
+</a>
+<br/>
+<p>
+<li>
+<b>Volume control</b>
+<br/>
+As a volume control I mostly use 'alsamixergui -c 0' invoked either
+by command or by a menu option. That works very well.
+<br/>
+The utility
+should be part of the default installation for Fedora.
+<p>
+The gnome-volume-control utility is also useful. It allows both
+input volume and output volume to work, and seems to be able to
+start up pulseaudio, as described <a href="#pulse-solved">above.</a>
+<p>
+The volume up/down keyboard buttons also work in Fedora 13, if I use
+runlevel 5 (graphical login), but not otherwise. There's probably
+some service I need to start at runlevel 3.
+<p>
+<li>
+<b>Audio output works on both the built in speakers and the earphone outlet.</b>
+<br/>
+<p>
+The default maximum volume level is a little low, but running
+'gnome-volume-control' allows me to go above the default 100%.
+(My hearing is subnormal).
+<br/>
+However, as soon as I use alsamixergui to
+adjust the volume the maximum level reverts to its previous (lowish)
+level.
+<p>
+The sound is surprisingly good, considering the size of the speakers
+and the box they are in, with a reasonable stereo spread.
+<br/>
+However, it takes only a few sconds of a Beethoven symphony to make
+the need for much better speakers obvious.
+<p>
+<li>
+<b>Audio input - voice recording</b>
+<br/>
+'gnome-sound-recorder' allows me to record and play back speech
+using an external microphone.
+<br/>
+The sound of the recording is noisy if the input volume is
+set high, but that may partly be due to use of a poor microphone.
+(To be investigated further).
+<p>
+For recording audio, 'gnome-sound-recorder' works fine, though I had
+to experiment with level settings using alsamixergui to get
+reasonable quality voice recording.
+<p>
+When I first installed linux on this machine I could not get the
+built-in microphone to work. but it has been working fine since Fedora
+15.
+
+<p>
+<a name="monitor-problem"></a>
+<li>
+<b>Main problem: use of external monitor or projector with linux</b>
+<br/>
+<b>NB FIXED in Fedora 15 (kernel 2.6.38)</b>
+<br/>
+<br>
+I have this package installed, for the intel graphic card:
+<pre>
+    xorg-x11-drv-intel-2.11.0-5.fc13.i686
+</pre>
+<p>
+At first the machine was unusable with an external monitor with
+linux.
+<br/>
+Eventually fixed in Fedora 15
+<p>
+<a name="workaround"></a>
+<li>
+<b>For a while I used a work-around to get graphics to work:
+<br/>
+(No longer needed since Fedora 15)
+<br/>
+boot into runlevel 3 and start
+X (the full graphical interface), using the 'xstart' command
+<br/>
+before plugging monitor in, then use lxrandr.
+</b>
+<p>
+This can be broken down into steps as follows:
+<p>
+1. Download
+the <a href="http://wiki.lxde.org/en/LXRandR"><b>lxrandr</b></a>
+package. E.g. in fedora do:
+<small>
+<pre>
+    yum install lxrandr
+</pre>
+</small>
+For Ubuntu use 'apt-get' instead of 'yum'.
+<p>
+2. Alter /etc/inittab to make the machine boot into runlevel 3.
+<br>
+Change
+<pre>
+    id:5:initdefault:
+</pre>
+to
+<pre>
+    id:3:initdefault:
+</pre>
+3. Then reboot, or as superuser, do this to switch to runlevel 3:
+<pre>
+    init 3
+</pre>
+<p>
+
+4. Login, in console mode (text only interface)
+<p>
+
+5. Use the 'startx' command to enter graphical mode, starting up X.
+<blockquote>
+The contents of your file: ~/.xinitrc can determine what starts up
+in graphical mode and which window manager you use.
+<br/>
+(I have tried both OpenBox and CTWM -- my favourite.)
+</blockquote>
+<p>
+6. Plug in your external monitor cable or projector cable -- ONLY
+when running in graphical mode, AFTER using 'startx'.
+<p>
+Plugging in
+earlier causes my machine to freeze, requiring a reboot.
+<br/>
+The xorg intel driver, which takes over when X starts up seems to
+manage fine, but so far only in runlevel 3 (or possibly when running
+the lxde or lxfe window manager).
+<p>
+7. Start an xterm or console window, and type:
+<pre>
+    lxrandr
+</pre>
+(Or add it to one of your mouse-activated menus.)
+<p>
+
+If an external monitor is already plugged in, the 'lxrandr' command
+brings up a panel with two buttons, one for choosing the resolution
+of your laptop display and one for choosing the resolution of the
+external monitor/projector. You can also enable or disable either
+display.
+<p>
+If no monitor is connected, lxrandr lets you change the resolution
+of your laptop display.
+<blockquote>
+<p>
+With my 1440x900 display on Dell E6410, lxrandr allows me to have
+the laptop at its own resolution and an external wide-screen LG
+monitor at 1920x1080, or an older monitor at 1280x1024.
+<p>
+So not everything that's visible on one screen is visible on the
+other. With the 1280x1024 monitor each display has visible portions
+not seen in the other.
+<p>
+The mouse cursor is visible on both, though it can be moved out of
+the visible area on one and remain visible on the other.
+<p>
+The result is quite impressive, but for the fact that the monitor
+must not be plugged in too early, and must be unplugged before
+the machine is shut down.
+<p>
+<small>
+I had previously been trying to use xrandr commands to connect to an
+external monitor, but did not understand the documentation well
+enough, and 'xrandr --auto' did not always give me an optimal
+result, though on my older Dell D610 it always enabled me to use the
+available projector.
+</small>
+<p>
+An alternative to using 'lxrandr' is to use
+'gnome-display-properties',  but that does not seem to work in as
+many contexts. Perhaps it requires runlevel 5?
+</blockquote>
+<a name="warnings"></a>
+<li>
+<b>Warnings about use of external monitor with new Intel Graphics [Fixed in Fedora 15]</b>
+<br/>
+<b>NB</b>
+<br/>
+Prior to F15, the external monitor must be connected <b>only</b> when
+the X window system is already running, and in my experience only
+using runlevel 3, not runlevel 5 (graphical login)
+otherwise linux crashes as soon as the monitor is plugged in.
+<blockquote>
+An exception to this rule occurred when I chose the lxde window
+manager instead of gnome or openbox during graphical login.
+<p>
+In that case I could plug in an
+external monitor after logging in, and use lxrandr to configure
+it. But I am not accustomed to lxde as window manager, and was not
+comfortable with its defaults. (I may explore it later).
+<br/>
+See <a href="http://lxde.org/">http://lxde.org/</a>
+</blockquote>
+<p>
+<hr/>
+<p>
+<b>UPDATE: 15 Jun 2010: Knoppix Live v6.2 does not work on my machine</b>
+<br/>
+I have found that the latest Knoppix live DVD doesn't work --
+the boot process does not complete, presumably because of the
+new intel graphic card. It produces a blank screen.
+<br/>
+Perhaps it needs new drivers to cope with the Intel
+1440x900 graphic card on the E6410?
+<p>
+There may be other distributions that will not work because they
+need newer drivers.
+
+<p>
+<li>
+<b>Problem with full-screen Flash, and a solution</b>
+<br/>
+The intel-graphic card works well, when it works!
+<p>
+When full-screen
+flash works it is very good -- videos are fast and smooth: much
+better than using linux on my Dell D610 with ATI Radeon graphic card,
+e.g. using BBC iPlayer; though not quite as smooth as my analogue
+22" Sony TV set!
+<p>
+However I found occasionally that switching to full screen flash
+produces a blank screen. It turns out that this is a known problem
+with a solution: The cure is
+<P>
+<ul>
+<li>
+If you have the blank screen,
+use ESC to leave flash full-screen mode.
+<li>
+    right-click on the flash panel,
+<li>
+    select 'settings' and disable 'hardware acceleration'.
+<li>
+    The tip was found <a href="http://forums.fedoraforum.org/showthread.php?t=245615">here</a>.
+</ul>
+<p>
+<p>
+<li>
+<b>Webcam</b>
+<br/>
+I was amazed to find that the installed webcam just works on Linux.
+E.g.
+using 'cheese' I was able to take pictures of various resolutions up
+to 2048x1536, like the one in
+<a href="http://www.cs.bham.ac.uk/~axs/pics/webcam/">this directory</a>
+(to which I may add
+more later, perhaps using lower resolution). 'xawtv' also works.
+<p>
+However, if I use those programs without running gnome I have to run
+them as root, e.g. using sudo. There are obviously effects of the
+graphical login process that I do not understand -- some good and
+some bad, the worst being the effect of plugging in external monitor
+mentioned above.
+<p>
+<li>
+<b>Touchpad: has middle mouse button -- excellent!</b>
+<br/>
+I often use middle button for 'paste' and on most laptops with
+only two buttons, I have to use both buttons simultaneously to
+emulate middle button click.
+<br/>
+This is tiresome and error prone.
+<p>
+The E6410 has three buttons above the touchpad and two buttons
+below. I now use the middle button above the pad very often (for
+pasting text) -- and don't need to use an external mouse so often.
+<p>
+There is also a trackpad/trackstick button between keys on the
+keyboard, which can be used to move the mouse cursor, as described
+<a href="http://en.wikipedia.org/wiki/Pointing_stick">here.</a>
+<br/>
+I don't like it and never use it. (It was also present on my older Dell D610, and
+never used.) Apparently some people really like it.
+<p>
+Linux driver for touchpad works, and supports 'tap to
+select', as well as horizontal and vertical scrolling.
+<p>
+I don't use windows much, but when I do I found the touchpad much
+too sensitive and frequently activate items when I intend merely
+to move the mouse cursor.
+<br/>
+For some reason I don't have that problem on linux.
+<p>
+<li>
+Several users have complained about the touchpad used on recent
+Dells, claiming that Alps models are inferior to Synaptics models.
+As far as I am concerned having a middle mouse button available
+makes this by far the best touchpad I have encountered on a laptop
+computer.
+<p>
+<li>
+<b>Selinux Problems</b>
+<br/>
+On both the laptop and my desktop PC running F13 I was getting
+lots of error messages and warning messages from selinux relating to
+wicd and other things. So I just disabled it in /etc/selinux/config,
+using
+<small>
+<pre>
+    SELINUX=disabled
+</pre>
+</small>
+I now think this should be the default, leaving it to experts who
+need Selinux to turn it on. It is disabled on linux machines in our
+department using CentOS, presumably because it causes more problems
+than it cures.
+<br>
+<b>NOTE added 4 Apr 2011:</b> I had to add "selinux=0" to the boot command in
+grub.conf otherwise when booting it would not mount the root directory.
+
+<p>
+<li>
+<b>Software/firmware updates installed :</b>
+<ul>
+<p>
+<li>
+While running Windows 7, I went to the Dell support web site fr the
+E6410 and fetched and installed a number of updates, including two
+bios updates.
+<p>
+I am not sure whether I got any benefits from the changes.
+<p>
+<li>
+I also installed a slightly newer version of the F13 kernel, which
+at first seemed to work OK, but after hibernating once or twice, I
+had trouble with hibernate. Attempting to hibernate (using
+'pm-hibernate') caused my machine to freeze, so I switched to using
+tuxonice (available <a href="http://mhensler.de/swsusp/download_en.php">here</a>)
+instead of the standard F13 kernel:
+<small>
+<pre>
+    2.6.33.5-112_1.cubbi_tuxonice.fc13.i686 #1 SMP Tue Jun 1 01:48:41 CEST 2010
+
+more recently switched to:
+    2.6.33.5-124_1.cubbi_tuxonice.fc13.i686 #1 SMP Tue Jun 22 14:49:14 CEST 2010
+</pre>
+</small>
+<b>Update: 2 Jul 2010</b> I am now using tuxonice on both machines.
+<br/>
+<p>
+A major reason for using tuxonice (with the 'hibernate' command) is
+that the hibernate/resume mechanism provided in the default fedora
+kernel is slower, does not display progress when suspending or
+resuming, and also seems to be less robust. The fedora people really
+should make tuxonice the default.
+<blockquote>
+UPDATE: 10 Jul 2010
+<br/>
+I have found, especially on the older, slower desktop PC, that
+sometimes hibernation does not complete, apparently because of lack
+of space.
+<p>
+Symptom:
+The hibernation process starts up and then fails, apparently because
+of a problem of space. The /var/log/hibernate.log file includes
+<a href="hibernate-log.txt">this report.</a>
+Sometimes if I give the command again after a few seconds it works.
+On other occasions, if I kill firefox hibernate works. Even when it
+works hibernate had been taking a much longer time than it used to
+before I increased the amount of memory (and the swap space).
+<p>
+Cure:
+The problem seems to have been
+removed by altering the file
+<pre>
+    /etc/hibernate/tuxonice.conf
+</pre>
+to include this line
+<pre>
+    ImageSizeLimit nocache
+</pre>
+as recommended in
+<a href="http://www.tuxonice.net/FAQ-5.html">http://www.tuxonice.net/FAQ-5.html</a>
+<p>
+I had not encountered this problem before I (a) doubled the amount
+of RAM on the PC from 1GB to 2GB, and (b) upgraded from Fedora 10 to
+Fedora 13, and (c) acquired a new monitor with much higher
+resolution (1920x1080) than my old one  (1280x1024).
+<p>
+I suspect that doubling the amount of physical memory and providing
+a large swap area caused linux to create far more disc caches than
+previously and when hibernate was writing them all to disc this took
+a very long time. Preventing the caches and buffers being written
+speeds up the hibernate process considerably, on my machine, and
+does not seem to add to the time taken to resume. More importantly
+it seems to solve the problem of hibernation failing because of
+insufficient space.
+<p>
+<small>
+There is not enough user documentation on how to tailor tuxonice.
+E.g. this web site
+<a href="http://www.tuxonice.net/HOWTO-4.html">http://www.tuxonice.net/HOWTO-4.html</a>
+seems to be written for experts. The 'man hibernate file' includes
+<small>
+<pre>
+   ProcSetting <entry name> <value> (requires UseTuxOnIce on)
+             Sets the value of /<entry_name> to <value> upon hibernating.
+             You can use this setting to set parameters that can't be con-
+             figured anywhere else in this script. This is executed  after
+             all other settings have been set.
+
+</pre>
+</small>
+But gives no information on where to find what parameters are
+relevant and how to decide what values to give them. Of course, all
+that should not be necessary: the system should figure things out
+for itself!
+</small>
+</blockquote>
+<p>
+<b>Swap sizes:</b>
+<br/>
+I have 4GB main memory on the E6410
+and  10GB swap area, possibly more than required.
+<br/>
+On the desktop PC the figures were 2GB RAM and 4GB Swap. I have
+now doubled the swap partition size to 8GB. This may be overkill, but
+allows for a possible further increase in memory size. On a 1 TB
+hard drive a few extra GB used for swap is not a great loss.
+</ul>
+<p>
+<li>
+<a name="mobile"></a>
+<b>Mobile Broadband Usb Dongle and Three Mifi</b>
+</a>
+<br/>
+The Tmobile 'web-and-walk' usb stick worked, as did the Three Huawei
+E586 Mifi device. (7 Mar 2012)
+<br/>
+The Tmobile 'web-and-walk' usb stick worked on the E6410 with my old
+scripts (developed when using older versions of Fedora on Dell D610),
+as described on <a href="huawei-220-linux.html">this web page</a>.
+<p>
+The Three Mifi device is even easier to use, though more expensive.
+Described on <a href="huawei-220-linux.html">the same web page</a>.
+<p>
+<a name="ambient"></a>
+<li>
+<b>Setting the display brightness and keyboard backlighting
+using the 'Fn' key</b>
+<blockquote>
+UPDATED: 13 Jul 2010
+<br/>
+There is an ambient light sensor on the E6410 which can control both
+screen brightness and the keyboard back-lighting.
+<p>
+It can be
+mystifying and annoying because the controls are not obvious and the
+bios setting can be overridden by use of special key combinations.
+<br/>
+Moreover, the linux implementation
+(at least on F13) seems to be buggy.
+<p>
+I have provided a summary of the current situation, with some information and
+<br/> corrections helpfully provided by Matthew Salzman, in <a href="dell-e6410-fn-keys.html">dell-e6410-fn-keys.html HERE,</a>
+<br/>
+Additions and corrections welcome.
+<br/>
+(Other corrections about replacing /proc/ACPI available in <a href="dell-e6410-fn-keys.htm">the same file.</a>
+<p>
+The Dell manual for users of the 'Dell Control Point' package is
+ <a href="http://support.dell.com/support/edocs/software/dcp/SysMgr.pdf">here
+(PDF).</a>
+</blockquote>
+<p>
+<li>
+<b>Mouse buttons and keyboard</b>
+<br/>
+I have always liked the feel and most of the layout of Dell latitude
+keyboards on my previous laptops. This is at least as good.
+<p>
+<b>However, it's a pity the PageUp/PageDown keys are not adjacent to
+the UpArrow
+key, where there are already two unused keys.</b>
+<p>
+Having a middle mouse button on touchpad is wonderful for many linux
+users: I use it a lot for pasting text, and the alternative (when a
+usb mouse is not available), as on most other laptops, is to press
+left and right buttons simultaneously: annoying and error-prone,
+or to use an external mouse -- not always convenient.
+<br/>
+On
+my previous Dell the upper mouse buttons were very sticky and
+unreliable. On the E6410 both upper and lower buttons feel ok and
+work ok.
+<p>
+<b>The back-lit keyboard is very useful for working in dim light.</b>
+<br/>
+The letter names are cut through the key caps allowing the light to
+be seen through gaps that show which key each one is.
+<p>
+
+<b>The audio volume up/down buttons work on F13, when running
+gnome (runlevel 5).</b>
+<br/>
+I have never had them working on linux previously. I must find a way
+to get them working at runlevel 3.
+<p>
+<li>
+<b>Unreadable keyboard labels</b>
+<br/>
+The 'alternative' (blue) labels
+on Function keys are too small and too
+faint to be read, except in bright light, peering close, preferably
+with a magnifying glass: why use dark blue paint on a very dark
+background?
+<p>
+<li>
+<b>No Manuals</b>
+<br/>
+The laptop came with no manual, especially no instructions on how to
+reinstall the OS: I had to guess not only what the blue labels are
+for: I also had to guess what to do with the Dell driver CD. It
+turns out that are online manuals
+<a href="http://support.euro.dell.com/support/edocs/systems/late6410/">here,</a>
+including instructions on the sequence to follow when
+(re-)installing the operating system.
+<br/>
+(Thanks to information from
+John Cordiner at Dell Support.)
+<p>
+There was no user manual for the installed operating system, but you
+can download a Windows 7 user manual
+<a href="http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=b3c68ec2-e726-4830-ac89-31c71d6be5f3">here.</a>
+(PDF version is about 62 MB.)
+From a quick search through the manual it seems Windows 7 has not
+addressed the problems that make me dislike using Windows,
+summarised
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/misc/windows-hates.html">here.</a>
+<p>
+<li>
+<b>Annoying flashing lights on Dell Latitude E6410</b>
+<br/>
+The constantly flashing bright blue lights at top left of keyboard
+(wireless, battery, hard drive), are a painful distraction when
+working in a dim light.
+<p>
+I would
+not mind if I could reduce their intensity. Likewise the intense
+power-button blue light, though at least that doesn't flash. I shall
+try find something to cover the lights while working -- perhaps a
+flap that I can lift when I want to know whether there is wireless
+activity or hard drive activity. It's a pity the battery warning
+light isn't separate instead of being in the middle:
+that should not be covered.
+<p>
+<a name="battery"></a>
+<li>
+<b>Battery Life (Updated: 2 Feb 2011)</b>
+<br/>
+The new (low power consumption) technology used on this machine
+allows the battery to last for much longer on a single charge than a
+comparable capacity battery would on older machines, though battery
+life depends, of course, on what you do, including whether wireless
+is on and whether the screen is bright or dim, whether hard drive is
+used a lot etc.
+<p>
+A few weeks after I acquired the E6410 I noticed that one of my two
+9-cell batteries seemed to have a higher capacity than the other.
+Further investigation and experimentation convinced me that one of
+the batteries (made by Simplo) was much inferior to the other (made
+by Samsung), in part because after dropping down from full charge a
+few percent the Simplo could not be recharged until it had dropped
+even further, to about 95% of full charge. This meant that before a
+long journey I could not ensure that that battery was fully charged
+simply by inserting the charger and waiting for the 'flashing'
+indicator to stop: if a few percent below full charge, it
+misleadingly did not flash at all, giving the false impression of
+being fully charged. Also, in that state, the bios battery display
+clearly indicated that the batter was not not fully charged, and was
+not charging. I first had to artificially discharge the battery to
+the level when it would again start charging: surely doing this
+often would shorten its life? The Samsung/Dell battery did not have
+this problem. Moreover, even when fully charged the Simplo had a
+lower capacity than the Samsung.
+<p>
+So I contacted Dell service, via their web site (filling in a form,
+which required me to have my order number). The response I got was
+friendly and helpful, but led to a long confusing saga, summarised
+<a href="dell-batts.html">here.</a>
+<p>
+NOTE 1:
+There are some web sites claiming that
+many owners of laptop computers have their batteries damaged by
+running Windows 7. Some of them say it's only the 64 bit Win 7
+(which I don't have) that damages batteries. Microsoft deny all the
+claims. See
+<a href="http://social.technet.microsoft.com/Forums/en/w7itprohardware/thread/8a74c53b-406f-4ce6-a1ae-da1dd11b8d1a">this microsoft forum
+page.</a>
+<br/>
+I hardly ever use Windows 7, since all my work is done on Linux, but
+this is still a worrying possibility.
+<p>
+NOTE 2: The latest Dell latitudes allow two rates of charging for
+the battery. You can select between them in the bios. The default is
+fast/express charge. Some months after acquiring this machine I read
+on a web site that batteries last longer if the fast charge mode is
+not used. Dell do not provide any information about this,
+unfortunately. Anyhow I re-set the bios option to normal charge
+rate.
+<p>
+<a name="weight"></a>
+<li>
+<b>Not really light-weight</b>
+<br/>
+I found that when travelling with the Latitude D610, with several
+hours a day out of reach of a power supply (e.g. on a long distance
+flight) I had to take one or more spare batteries in addition to
+using a battery to replace the DVD drive in the media bay on the
+D610. I think I shall have less weight to carry around, but not much
+less now. Using grotty inaccurate kitchen scale:
+<small>
+<pre>
+    D610 with two batteries     (5lb  8oz, 2.56Kg)
+    D610 with only main battery (4lb 13oz, 2.2Kg)
+        secondary battery       (12oz,     0.36Kg)
+
+    E6410 with 9cell battery    (4lb 14oz,  2.21 Kg)
+    E6410 with no battery       (3lb 14oz,  1.76 Kg)
+    9 Cell battery:             (1lb  0oz,  0.45 Kg)
+
+    [Please treat the numbers as very approximate.]
+</pre>
+</small>
+[To be extended]
+<p>
+<a name="wireless"></a>
+<li>
+<b>Wireless connections</b>
+<br/>
+The intel wireless adapter works fine. I previously used my own
+scripts to start and stop it in various contexts though wicd works
+so well I have switched to using that. As usual when I tried using
+NetworkManager, it just got in the way, so I removed it from the
+machine. My wireless router was recently upgraded from 802.11g to
+11n and the broadband cable download speed increased from 20 to
+30mb/s. The intel wireless card works perfectly and I get almost the
+same speed as with the ethernet connection to the router..
+<p>
+Information about how I connect to the Birmingham University wifi
+service, using wpa encryption is <a href="wpa/">here.</a>
+<br/>
+It explains, among other things, that I have to use 'dhclient -r'
+before trying to make a dhcp wireless connection. That is not a
+feature of this laptop.
+<p>
+Although wireless works, at first I had problems because the
+the label for the wireless device
+on Fedora has switched from 'eth1' to 'wlan0' causing problems for
+me, though probably not for most other linux users.
+<p>
+That's because
+I use home-grown scripts for setting up network connections in
+slightly different ways (e.g. different 'known hosts') in different
+contexts (e.g. home, office, visiting colleagues, at airports,
+hotels, etc.), and those scripts stopped working, and my scripts
+referred to 'eth1' not 'wlan0'.
+<p>
+NetworkManager could not cope and seemed to get in the way, so I
+removed it completely from the system.
+Installing 'wicd' gave me a working system. It should be part of the
+default Fedora distribution.
+<p>
+It took some time to sort out the changes needed to my scripts. Some
+involved checking all the files, including all the interface
+specifications for different sites, and making sure that I not only
+replaced 'eth1' with 'wlan0' throughout but also replaced old mac
+addresses with new ones, for both ethernet and wireless.
+<p>
+This demonstrated that my system (described <a href="wpa">here</a>)
+is not sufficiently modular and will need to switch to using
+dynamically generated scripts using an easily changeable set of
+parameters, when I have time. The scripts now work at home and for
+connection to UoBWifi on campus, so I don't need wicd, except for
+ad-hoc temporary connections at hotels, airports, etc.
+<p>
+I also had to add a new command to 'wake up' the
+wireless card, which can be switched off externally on Dell's latest
+Latitude series. When switched back on again, the current linux
+network software apparently does not notice automatically.
+While sorting out the scripts, I was able to use wicd to connect to
+a wireless service, until I had sorted out my scripts. The version
+that now works with Fedora 13 on
+the E6410 for connecting to my wpa-based wireless
+access point at home is <a href="wpa/nethome-wlan.txt">here.</a>
+<p>
+<li>
+<b>Problem turning Wireless on and off -- fixed</b>
+<br/>
+For a while I thought that on the E6410 the only way to turn
+wireless power off (very important for conserving battery power) is
+using the new (very convenient) switch on the edge of the case.
+<p>
+I found that switching wireless back on enabled windows 7 wireless
+connections to work, but not on linux, until I found these commands
+<small>
+<pre>
+    iwconfig eth0 txpower on
+    iwconfig eth0 txpower off
+</pre>
+</small>
+The first command restores power to the wireless card. I had to do
+that for wicd as well as for my own scripts.
+
+<p>
+<li>
+<b>Fan noise</b>
+<br/>
+I mostly don't hear sounds from the fan (though the CD/DVD drive is
+fairly noisy).
+<br/>
+The machine stays much cooler than the D610.
+<p>
+<li>
+<b>Power supplies/Chargers (Updated 24 Jun 2010)</b>
+<br>
+I ordered two extra chargers (90w AC Adapters). Of the three, two
+arrived with the little 'blobble' broken off the button used to hold
+the strap in place when wound round the cable. I asked Dell for
+replacement buttons. They should be easy to install.
+<p>
+However, Dell support said they would send me complete new chargers,
+not just the buttons, as compensation for inconvenience. They were
+very helpful, including checking that the new items had arrived (in
+particular
+Andrea Kromholcova, of
+<a href="http://www.dell.co.uk">Dell UK</a>
+Customer Care).
+<p>
+<b>Confusing web site information about Dell AC power supply/Charger</b>
+<br/>
+The online
+information about these chargers is somewhat confusing. It turns out
+there are two models. Both have cables about 2m long between the
+power supply and the laptop, but one version has a 1m cable to power
+socket and the other has a 2m cable. I previously found the 1+2m
+length available on the D610 charger too short, e.g. in badly
+designed seminar rooms. The extra metre will  be very useful.
+<p>
+Despite having a higher power rating the new power brick is thinner
+and also apparently lighter than the old 60 Watt one.
+<p>
+
+</ul>
+
+<hr/>
+<p>
+<h3><b>
+<b>Background</b>
+</b></h3>
+<blockquote>
+Before I bought this model of laptop I was considering using Fedora
+12 or 13 on the new machine.
+<p>
+I had already been using
+F12 on my older laptop (Dell D610),
+<a href="#F12-D610"> as described below, </a>
+but thought the new laptop might
+need a newer version of linux because it includes some new hardware.
+<p>
+In order to gain experience of F13 on familiar hardware, I therefore
+tried upgrading my 5 year old desktop PC (using AMD Athlon64), which
+was running Fedora 10, to F13, for practice. It was generally
+successful. For more details on that installation, which raised some
+problems which I had to solve, see <a href="#preparing">below.</a>
+</blockquote>
+<hr>
+
+<a name="installation"></a>
+<h3><b>
+Installation of Linux (Fedora 12/13)
+on E6410: Obstruction from Windows 7
+<br/>
+<small>
+<a href="#installing-E6410">
+See above for: Using
+linux (Fedora 13) on Dell Latitude E6410: and partial review of the laptop/notebook
+</a>
+</small>
+</b></h3>
+<ul>
+<li>
+<b>Obstructive Windows 7...</b>
+<blockquote>
+My first problem was that Dell had installed Windows 7 in such a way
+that it used up the whole drive and proved impossible to shrink
+leaving space for fedora -- including stupidly giving users only ONE
+usable windows partition, which I would think even Windows users
+would not wish on such a large drive.
+<p>
+In my frustration I accidentally deleted the Windows7 partition, so
+used Dell's 'recovery' CDs to reinstall it, That seemed to work,
+although one of the partitions that Dell had installed, a small one
+after the main Windows partition, did not re-appear. So Win7 now
+requires only two partitions instead of three, one of the two
+apparently being a small (100 MB) boot partition (?). Windows 7
+works fine as far as I can tell (I gave it 60 GB, and have kept a
+spare 40 GB ntfs partition unused in case I ever want more for
+windows (e.g. saved BBC iPlayer stuff?). I am not really a windows
+user, and I leave windows on my laptop because I have paid for it,
+I can spare the space I have given it, and it is sometimes useful
+for checking that hardware is not at fault. Dell service engineers
+may require it.
+<br/>
+<p>
+My accidental deletion occurred while using the Fedora 13 Live cd.
+The partition editor provided is not nearly as convenient as
+gparted. The latter should be standard for Fedora.
+<p>
+Dell's installation of Windows 7 on the 500GB hard drive is stupid
+and obstructive, (a) because they installed windows in one huge
+partition, which nobody is likely to want and (b) they made it
+impossible to shrink that partition and create new partitions.
+</blockquote>
+<p>
+<li>
+<b>Fedora 13 Pass 1 -- not quite right</b>
+<br/>
+My first installation of F13, carefully restricted to a subset of
+the remaining space on the drive, seemed to go very well. But when I
+later tried getting my networking scripts to work I met problems
+because I have been using 'eth1' for wireless and for some reason
+Fedora now have switched to 'wlan0', and simply editing my scripts
+did not work. I also failed to reinstate 'eth1' for wireless use.
+<p>
+I did manage later to sort out wireless for F13, as described
+<a href="#wireless">above.</a>
+<p>
+Since Fedora 12 (F12) had been working fine on my older laptop (Dell
+Latitude D610) I thought I would try that, using a new partition for
+root.
+<p>
+<li>
+<b>Trying F12 instead</b>
+<br/>
+Unfortunately I found that F12 has also switched from 'eth1' to
+'wlan0', and I could not get wireless networking to operate
+consistently, even though it works perfectly on my D610 using F12.
+I also could not get sound to work and was faced with the prospect
+of going through a tortuous process of removing all trace of
+pulseaudio (as on the D610) and getting alternative sound mechanisms
+to work,
+so instead of wasting more hours I decided to go back to F13.
+<p>
+I had noticed three other problems while using F12 which were
+presumably due to new hardware -- drivers not yet ready:
+<small>
+<pre>
+1. Attempting to attach an external monitor crashed Fedora, while
+    running gnome.
+
+2. The use of touch-pad (Alps) for scrolling did not work, even
+   though it had worked perfectly on F12 with the other laptop.
+
+3. Attaching a USB mouse worked fine,  but not a USB keyboard: no
+   characters were received, and worse, it made the internal keyboard
+   stop working also: reboot required.
+
+</pre>
+</small>
+So, back to Fedora 13, which cured point 3. As explained above I
+found that booting into run-level 3 cured point 1.
+I am hoping later
+releases will cure point 2.
+<p>
+<li>
+<b>F13 Pass 2, working after all (mostly)</b>
+<p>
+I reinstalled F13, using a new partition for root, in case I had to
+go back to F12, but using the same 'home' partition (which I had not
+encrypted, to allow it to be easily shared across versions of
+linux).
+<p>
+I tried gnome and kde for a while but disliked both intensely, in
+different ways, so went back to using Openbox, which loses some of
+the applets, but otherwise suits me (though not as well as CTWM did
+before its functionality proved limited -- it did not handle the
+full screen option in flash),
+<p>
+<li>
+<b>RTNETLINK Ethernet Problem in Fedora 13</b>
+<blockquote>
+UPDATED: 3 Jul 2010
+<br/>
+Since the original installation, I have not been using the Dell
+Laptop with cable, using only the wireless connection. The
+hibernate/resume process works fine, using a tuxonice kernel on the
+laptop and a wireless connection, using WPA. (I don't use
+NetworkManager, and I have shell scripts for starting the wireless
+connection in different locations, as described
+<a href="wpa">here.</a>)
+<p>
+However, on my desktop PC running F13, using a cable connection
+instead of wireless, and also running a tuxonice kernel, for a while
+I had problems with the ethernet connection after hibernate/resume.
+<p>
+The problem of not being able to reconnect has gone away now, using
+this kernel
+
+<pre>
+    2.6.33.5-124_1.cubbi_tuxonice.fc13.i686
+</pre>
+and giving the 'hibernate' command while at runlevel 3:
+<p>
+However, I now find that after resuming from hibernation, the
+machine displays this message in the xterm window in which I give
+the 'hibernate' command:
+
+<pre>
+    % sudo hibernate
+    Shutting down loopback interface:                          [  OK  ]
+    Shutting down loopback interface:                          [  OK  ]
+    Bringing up loopback interface:                            [  OK  ]
+    Bringing up loopback interface:                            [  OK  ]
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+    RTNETLINK answers: File exists
+</pre>
+
+However everything seems to work, provided I do it all at runlevel
+3. If I do the graphical login at runlevel 5, and try to hibernate
+it sometimes fails to complete the hibernation process, but without
+any explanation -- it just returns to the previous running state.
+<p>
+Despite the above message everything now works after resuming at
+runlevel 3, including automatic re-opening of the network
+connection.
+<p>
+<b>Earlier problem now gone:</b>
+<br/>
+At an earlier stage,
+when testing F13 on my desktop machine, with its
+ethernet connection, I found it difficult to get the ethernet
+connection to restart after hibernate/resume. This message used to
+appear.
+<small>
+<pre>
+    Bringing up interface eth0:  RTNETLINK answers: Cannot allocate memory
+</pre>
+</small>
+At that stage I could connect by rebooting the machine.
+Searching the internet, I found reports of
+several other users reporting this error message, but no definitive
+diagnosis or cure.
+If you have ideas about this, please email me (a.sloman @
+cs.bham.ac.uk).
+I shall post the answers, with acknowledgements.
+<p>
+<b>
+NOTE 28 Jun 2010: The problems went away while using a standard
+kernel and the 'pm-hibernate' command:
+<br/>
+    with kernel: 2.6.33.5-124.fc13.i686 #1 SMP Fri Jun 11 09:48:40 UTC 2010
+<br/>
+I later returned to using a tuxonice kernel, as I much prefer the
+interface while hibernating and resuming, and it is also faster.
+</b>
+</blockquote>
+
+</ul>
+
+</blockquote>
+
+<hr/>
+<a name="desktop"></a>
+<a name="preparing"></a>
+<h3><b>
+30 May 2010: Installing F13 on Desktop PC:
+<br/>
+Preparing for Fedora 13 on Dell Latitude 6410
+</b></h3>
+<small>
+I ordered the
+<a href="http://www1.euro.dell.com/content/products/featuresdetails.aspx/latitude-e6410?c=uk&l=en&cs=ukbsdt1">Dell 6410</a>
+to replace my aging and under-configured D610. Because of new
+graphics and other features I thought I should try Fedora 13,
+instead of F12, which I am using on the current laptop, though I
+would not normally install something so new. To check out the
+process I decided to upgrade my desktop machine from F10 to F13
+instead of F12. I encountered some problems, and solutions,
+described below, though basically the installation was successful.
+I then installed Linux on the E6410 laptop when it arrived. The
+process had ups and downs, but was over all successful eventually
+apart from two driver problems, one serious. To see a report on the
+laptop
+installation look <a href="#installing-E6410">here.</a> The rest of
+this section reports on experience with F13 on the desktop PC.
+<br/>
+</small>
+<blockquote>
+<b>Trying Fedora 13 on a desktop PC</b>
+<br/>
+I wanted to try this out on an older working machine first, so that
+I could easily revert to a previous working version if I had
+problems. In particular, I have never tried encrypting hard drives,
+which I know I should do on a machine that I take to meetings and
+conferences. So I decided to install F13 in an unused portion of a
+large 1TB Western Digital drive, using 4 new partitions: one for
+swap (and software suspend), one for /boot, one for root(/) and one
+for /home, knowing that I could go back to the working version of
+F10 using an older drive, if necessary.
+<p>
+<hr/>
+<b>Useful sites</b>
+<ul>
+<li>
+The F13 installation guide has a lot of useful information:
+<br/>
+<a href="http://docs.fedoraproject.org/en-US/Fedora/13/html/Installation_Guide/index.html">http://docs.fedoraproject.org/en-US/Fedora/13/html/Installation_Guide/index.html</a>
+<br/>
+including information
+<a href="http://docs.fedoraproject.org/en-US/Fedora/13/html/Installation_Guide/Disk_Encryption_Guide.html">about the encryption process.</a>
+<p>
+<li>
+<a href="http://www.mjmwired.net/resources/mjm-fedora-f13.html">http://www.mjmwired.net/resources/mjm-fedora-f13.html</a>
+<small>
+<pre>
+    * Installation Media
+    * Physical Installation
+    * Network Management
+    * Setup sudo
+    * Setup yum
+    * Install MP3 Players
+    * Install Media Players
+    * Install TrueType Fonts
+    * Modify Services/Daemons
+    * Adobe Flash Plugin
+    * Java Runtime Environment
+    * Install Adobe Acrobat
+    * Setup Samba
+    * More Information and Translations
+</pre>
+</small>
+
+<p>
+This and the next web site tell you what to do to extend information
+about repositories in /etc/yum.repos.d/
+<br/>
+Following that advice made it very easy to use yum and the
+corresponding graphical tool yumex to fetch or uninstall packages,
+with all dependencies automatically looked after. This seems to
+remove one of the previously important advantages of Ubuntu over
+Fedora.
+<p>
+(My main complaint about yumex is that there doesn't
+seem to be any documentation on what the peculiar symbols used to
+indicate status of packages mean: you have to guess. In general it
+needs tutorial documentation, which I could not find.
+<br/>
+Another problem is that there seems to be no way to mark something
+as 'I never want this', so that it is not included in future in
+update lists or available lists.
+<br/>
+Despite the annoyances I manage to use it for many things,
+especially uninstalling unwanted packages. I expect it would be
+much more frustrating to use if I did not have 20Mb cable
+broadband.)
+<li>
+<a href="http://www.hackourlives.com/perfect-desktop-using-fedora-13-goddard-post-install-guide/">http://www.hackourlives.com/perfect-desktop-using-fedora-13-goddard-post-install-guide/</a>
+<br/>
+Information on what to do to install lots of useful extras after the
+ main installation (including things not included in 'official'
+Fedora repositories) basic F13 installation.
+<p>
+</ul>
+<hr/>
+<p>
+<b>General first impressions of Fedora 13 on Desktop machine</b>
+<br/>
+It was in some ways the easiest Linux install I have ever done
+(although they still make the process of choosing packages to
+install very tedious: there should be away of asking for all
+packages containing e.g. 'font' and selecting a subset, or all
+packages concerning latex, etc.
+<p>
+Apart from that tedium everything worked at first (including
+pulseaudio for the first time ever for me, though I later had
+problems when I switched to booting into runlevel 3. The problems
+are now solved, <a href="#pulse-solved">as described above.</a>
+<p>
+But I had some problems with networking, because I had
+previously been using my own scripts and they no longer worked.
+However eventually I sorted out the problems. Nevertheless I had a
+usable system. The hibernate-restore mechanism in the standard linux
+distribution as usual gave problems, so once again I installed the
+'tuxonice' kernels: tuxonice is much more robust, faster, and has a
+nice display showing what is going on during hibernation and resume.
+WHY isn't that the default for linux???
+<p>
+<hr/>
+<p>
+<b>A problem caused by encrypting partitions</b>
+<br/>
+At one point during the process of configuring F13, I had corrupted
+my /etc/fstab which was on the root partition which was encrypted.
+The error prevented booting, and the encryption potentially made it
+difficult to get at the partition using a 'live cd', but fortunately
+the 'fedora13 live' cd enabled me to mount the encrypted root
+partition, and fix the problem with /etc/fstab.
+<p>
+After I had installed two versions of Fedora on the same machine,
+using encrypted file partitions I found that while running F13
+I could not access files on an encrypted partition installed with
+F12, and vice versa. Later I found how to put appropriate entries in
+/etc/fstab and /etc/crypttab, which I shall document later.
+<p>
+I think that on the new laptop I should restrict the use of
+encryption to one partition  and ensure that anything private is on
+that. Apart from the potential inconvenience of dealing with
+unnecessarily encrypted files if something goes wrong, reading and
+writing to encrypted files uses more cpu power, and
+could reduce battery time.
+<p>
+In spite of the extra load, Fedora 13  boots faster than any
+previous version of Linux I have used, and even gnome starts fairly
+quickly, though I switched to openbox which is faster, smaller and
+more configurable.
+<hr/>
+<p>
+<b>Dictatorial Gnome Developers</b>
+<br/>
+I searched for ages to find how to tell gnome that (for several
+reasons that have to do with working efficiently, not just personal
+taste) I want 'focus follows mouse', not 'click to focus', and
+failed.
+<p>
+Google told me that lots of other people were complaining about
+this. It turns out that the Gnome developers, apparently with the
+approval of Fedora people, decided not to include that even as an
+option in the default configuration: you have to find, fetch and
+load an extra package to convert your windows preferences menu to
+allow that. That sort of dictatorship by designers convinces me that
+I should never use Gnome for serious work. Anyhow, I did find two
+ways to fix this, one using the gconf-editor instead of the standard
+preferences menu:
+<small>
+<pre>
+    Run 'gconf-editor'.
+    Select Edit, then Find. Type in "metacity" (WITHOUT clicking on
+    either of the 2 tickboxes underneath).
+    Select 'general', then right click on 'focus mode', and
+    select 'edit'. You can choose "click" (the dictatorial default)
+    "mouse" for focus follows mouse, or "sloppy" which means windows
+    are focused when the mouse enters the window, so you won't lose
+    focus by moving mouse to root window.
+</pre>
+</small>
+The other option required an obscure extra package to be loaded to
+modify the gnome preferences menu. Both worked, but the decision to
+make the option so hard to find shows a terribly dictatorial and
+inconsiderate mind-set in the Gnome developers.
+<p>
+I have not had time to find out if KDE is any better, and in any
+case I want something smaller, simpler, cleaner, than either, e.g.
+openbox (which I am currently using or ctwm which I like even better
+but is no longer consistent with recent X window standards (e.g.
+supporting full screen flash). I much prefer a system like openbox
+or ctwm that allows me to set all my preferences in a text file,
+that can easily be copied from one machine to another (or
+reinstalled after an upgrad) instead of going through tedious and
+error prone procedures selecting menu options.
+
+<p>
+<hr/>
+<b>Java problems with browsers</b>
+<br/>
+The default installation of F13 gave me the JDK version of Java,
+which suffices for many purposes, but since I need Sun Java some of
+the time I fetched and installed the latest jre. Unfortunately that
+stopped firefox, seamonkey and opera working. They crashed with
+complaints like
+<small>
+<pre>
+    INTERNAL ERROR on Browser End: Could not get the plugin manager
+    System error?:: Success
+</pre>
+</small>
+Google soon showed me that many people have had this problem and
+there are many suggestions on mutual help files about what to do,
+most of which appear not to work. One that should have but did not
+is use of '/usr/sbin/alternatives' in something like this format:
+<pre>
+    /usr/sbin/alternatives --install /usr/bin/java java /usr/share/...java... 20000
+</pre>
+I could not get that to do the job.
+<p>
+Eventually I worked out that the problem was installing sun's java
+while the jdk system was installed, and as a result browsers were
+looking in the wrong places to find plugins. I have a directory
+(which I can retain across changes of linux versions):
+<pre>
+    /usr/local/mozilla.plugins
+</pre>
+in which I include links to plugins, including, for example,
+<ul>
+<li>
+nphelix.so, for realplay, provided in RealPlayer11GOLD.bin
+<li>
+libflashplayer.so, obtained from Adobe
+<li>
+libjavaplugin_oji.so, the old java plugin, available here on my
+machine:
+
+<pre>
+    /usr/local/src/java/jre1.6.0_20/plugin/i386/ns7/libjavaplugin_oji.so
+</pre>
+
+<li>
+libnpjp2.so, the newer plugin required for recent versions of
+Firefox, available here on my machine
+<pre>
+    /usr/local/src/java/jre1.6.0_20/lib/i386/libnpjp2.so
+</pre>
+</ul>
+The problem was where to put links to those plugins. Simply using
+<pre>
+    ~/.mozilla/plugins
+</pre>
+did not seem to work with current versions of web browsers, and did
+not get rid of the 'plugin manager error'. However I found various
+places where there seemed to be plugins, and inserted links to the
+links in my mozilla.plugins directory. I should have kept a list of
+all of them, but these are examples:
+<pre>
+    /usr/lib/mozilla/plugins/
+    /usr/lib/mozilla/plugins-wrapped/
+</pre>
+I am not sure the second one is needed. I also found some other
+directories containing browser plugins, which I suspect were
+spurious relics. I'll later collect a list and include them here,
+after doing experiments to see which ones are not needed.
+<p>
+I also found that after installing 'jre' from Sun, I had to do some
+editing of files in /etc/java, and /etc/alternatives/. I all
+links to jdk and java items in the jdk directories, and removed
+them.
+<p>
+Now, firefox, opera, and seamonkey all work ok with java and flash.
+<hr/>
+<p>
+<b>Pulseaudio works, at last</b>
+<br/>
+For the last few versions of Fedora, up to Fedora 12, I had to
+remove all trace of pulseaudio after installation in order to get
+sound working. However, after installing F13, sound worked after I
+ran alsamixer, pressed F6, which showed me the option of selecting
+the Nvida sound card, which I chose. Since then I have not had a
+problem with sound -- until I changed /etc/inittab to boot into
+runlevel 3, instead of runlevel 5, as I prefer running in the
+simpler environment. At first pulseaudio then would not work, but I
+eventually solved the problem <a href="#pulse-solved">as described above.</a>
+
+<hr/>
+<p>
+<b>X.org Nvidia graphic driver works</b>
+<br/>
+So far I have found no reason to go to the nvidia site to get their
+proprietary driver. The nvida graphics card was detected
+automatically during installation and seems to work very well,
+including running glxgears in the default configuration. However,
+switching the BBC iPlayer to full screen produces slightly jerky,
+slightly blurred results. I don't know if that's due to the age of
+the card or the use of the linux driver instead of Nvidia's. I don't
+play computer games and don't often watch full screen videos.
+<p>
+Previously the nvidia driver proved incompatible with software
+suspend (hibernate). I may try it with this new version of Fedora
+when I have time.
+<p>
+Both 'vlc' and 'smplayer' work ok, in addition to flash and java on
+web sites.
+<p>
+The <b>glxgears</b> program runs reasonably quickly and smoothly,
+printing out
+<small>
+<pre>
+    983 frames in 5.0 seconds = 196.594 FPS
+    940 frames in 5.0 seconds = 187.966 FPS
+    971 frames in 5.0 seconds = 194.111 FPS
+</pre>
+</small>
+
+<hr/>
+<p>
+<a name="xterm-font"></a>
+<b>Xterm and font problems</b>
+<br/>
+I use a programmable text editor (Ved) for all my work (even
+composing html like this, with edit commands inserting the more
+complex html tags). It has the great benefit of being just as easy
+to use on a remote machine accessed via ssh as on the local machine,
+provided the access is in an xterm window, or equivalent. The editor
+requires the window in which it is running to emulate full 'xterm'
+functionality (originally derived from the 'vt100' dumb terminal),
+e.g. inserting or deleting lines or changing highlighting on receipt
+of special control signals (preceded by ESC).
+<p>
+Unfortunately not all the terminals provided in linux nowadays have
+the full set of character control facilities provided by 'xterm',
+even if they have other fancy extras, like menus for setting
+preferences, etc. In particular 'gnome-terminal' can't handle all
+the screen control commands, though it comes close.
+<p>
+The KDE terminal invoked as 'konsole' is much better than
+gnome-terminal, insofar as it handles all the screen control signals
+properly, so that all the scrolling works as expected. However it is
+also much worse because the function keys do not work with the VT100
+or xterm functionality and apparently cannot be made to transmit
+anything but their inadequate defaults. This does however, mean that
+for users who are willing to do everything with the main keyboard,
+plus ESC and CTRL, the 'konsole' program is acceptable.
+<p>
+Anyhow xterm does what I need, but for many years I have used it
+with fonts specified as '10x20', '8x13bold', but the default set of
+fonts supplied by F13 did not include those. I've also found in the
+past that that 'legacy' fonts required by 'tgif' are not present.
+<br>
+This seemed to be connected with the fact that starting up 'xterm'
+caused this to be printed out, though it had no other effect:
+<small>
+<pre>
+    Warning: Cannot convert string "nil2" to type FontStruct
+</pre>
+</small>
+There are many other people reporting this problem on the internet,
+all apparently bemused by it. Something I did later, involving
+installation of additional fonts required by some package, caused
+that warning to disappear. I remain mystified.
+<p>
+I did some exploring and found that the following fonts were quite
+suitable for use with 'xterm', providing a range of font sizes:
+<small>
+<pre>
+     -b&h-*-medium-r-*-sans-8-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-10-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-12-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-14-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-17-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-18-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-20-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-26-*-*-*-m-*-*-*
+     -b&h-*-medium-r-*-sans-34-*-*-*-m-*-*-*
+</pre>
+</small>
+I used a subset of those in my .Xdefaults to specify fonts for the
+'xterm' font menu.
+<p>
+I shall also have to change the default fonts used in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">Poplog,</a>
+selected many years ago, to include only fonts likely to be used by
+most people, at least for English.
+<p>
+<b>FONTS UPDATE 1 Jun 2010:</b>
+<br/>
+Something I installed, and I did not notice at the time which
+package it was, also installed a required set of fonts. It turns out
+that these include the fonts that Pop-11 and Ved have been using.
+However it is useful to know the above can work as an alternative.
+For several days, instead of using '10x20' as my default font, I
+have been using
+
+<pre>
+    -b&h-*-medium-r-*-sans-18-*-*-*-m-*-*-*
+</pre>
+
+This is quite tolerable, and gets a few more lines per inch onto the
+screen, which can be useful, though it is slightly cramped.
+<hr/>
+<p>
+<b>Window managers: Gnome, Openbox, Ctwm</b>
+<br/>
+See above, and my <a href="openbox">Openbox web page</a>
+<hr/>
+<p>
+<b>Facilities for managing HP Deskjet D2360 were not available by default</b>
+<br/>
+It took quite a bit of messing around with yumex and
+system-config-printer before my printer would work after the
+upgrade. The HP printer libraries were not included in the initial
+selections I made when installing Fedora, and searching for them
+using 'yumex' did not at first get me all the required packages
+(e.g. hplip), which had not been a problem with previous versions of
+Fedora. But a bit more probing turned them up, and 'hp-levels' draws
+the cartridge ink levels using characters in an xterm window, like
+this (colours not included here):
+<small>
+<pre>
+    Black cartridge
+    Part No.: 21
+    Health: Good/OK
+    ------------------------------------------------------------------------
+    |///////////////////////////////////////////////////////////////////   | (approx. 94%)
+    ------------------------------------------------------------------------
+
+    Tri-color cartridge
+    Part No.: 22
+    Health: Good/OK
+    ------------------------------------------------------------------------
+    |////////////////////////////////////////////////////////////////      | (approx. 90%)
+    ------------------------------------------------------------------------
+</pre>
+</small>
+(The
+original cartridges for this printer were terribly expensive, but now the
+XL versions are much better value for money, and the printer has
+worked much better than my previous Lexmark and Epson printers,
+both of which stopped working after two or three years.)
+<hr/>
+<p>
+<b>The tedium of installing</b>
+<br/>
+It can be very time-consuming to get a new installation of Fedora to
+replicate all the previous functionality. I believe the 'preupgrade'
+facility automates the process of attempting to replicate the
+existing installation in a new installation of Fedora. This
+presumably does not help much if you wish to replicate it on a
+different machine. It would be useful if one option for preupgrade
+were to be production of a file or directory specifying everything
+that needs to be in the new version of Fedora. Then in principle,
+when the installer asks you to go through its terribly tedious menus
+trying to remember what you need, it should instead either allow you
+to plug in a USB memory stick with all the information in a standard
+form, or else allow the user to specify the location in a file
+system that is not being used for the new installation, or allow a
+URL to be given that points to the specification on a web site.
+<hr/>
+<p>
+<b>ADDED 1 Jun 2010: Hibernate and resume</b>
+<br/>
+I found that selecting hibernate from the gnome system menu (an
+option not provided in the OpenBox menus that I have found), worked
+fine. But not the pm-hibernate command: the hibernation failed and I
+had to power down and restart. However, this seems to be overcome by
+defining an alias (which I have defined as 'hib') for
+<small>
+<pre>
+    sudo pm-hibernate --auto-quirks
+</pre>
+</small>
+It seems to shut down and resume faster than when I was using Fedora
+10 with tuxonice (which I have so far not tried with F13, and may
+not need to if the default system works ok). It may be faster only
+because root and swap are now on my new WD 1 terabyte drive,
+instead of the older seagate.
+<blockquote>
+<b>UPDATE: 1 Jun 2010</b>
+<br/>
+Alas, after a while I discovered that pm-hibernate works only once
+or twice, after which it failed, and the machine had to be rebooted.
+<p>
+So I installed Tuxonice for F13. At first I could not get that to
+work, because the swap area was no longer accessible. Something had
+happened to its encryption, apparently. 'top' showed no swap space.
+I tried going back to the ordinary kernel (i.e. not Tuxonice) and
+when that ran it also had no swap area.
+<p>
+So I decided that encrypting the swap area had been a mistake and
+ran
+
+<pre>
+    mkswap /dev/sdc2
+</pre>
+    followed by
+
+<pre>
+    swapon -a
+</pre>
+then rebooted. At that stage 'top' showed that the swap area was
+being used. Since I had altered the entry for swap in /etc/fstab to
+reflect the new format I tried hibernate/resume (with tuxonice).
+That's what I now use after some ups and downs. (3 Jul 2010). I much
+prefer having the graphical display provided by tuxonice, showing
+the progress of suspend and resume, instead of having to sit and
+watch a blank screen wondering what is happening.
+</blockquote>
+<hr/>
+<p>
+<b>ADDED 1 Jun 2010: Selinux errors</b>
+<br/>
+I get lots of panels mentioning selinux errors that I don't
+understand. Some the options to submit reports don't work because I
+don't have an account at the receiving site. Some of the reports
+give me an 'authenticate' option, which I have selected, though the
+list of errors does not indicate that this has been done. I have the
+impression that for a desktop machine behind a firewall at home,
+selinux gives more trouble than  benefits.
+<br/>
+So I disabled selinux as many others have done. Alter /etc/selinux/config,
+to include
+<pre>
+    SELINUX=disabled
+</pre>
+</blockquote>
+<hr/>
+<h3><b>
+NEWS 26 Mar 2010:
+<br/>
+<a href="wpa/uobwifi.html">Introduction
+of new service UOBwifi with new certificate (March 2010)</a>
+<br>
+<small>
+NB The previous service UOBWLAN will be phased out in the summer of
+2010,
+<br/>
+when the existing security certificates will all expire.
+</small>
+</b></h3>
+<hr/>
+<a name="F12-D610"></a>
+<h3><b>
+THE REST OF THIS FILE IS CONCERNED WITH OLDER VERSIONS OF FEDORA
+(PRE 13)
+<br/>
+USED ON A DELL LATITUDE D610 (2005 -- 2010).
+<br/>
+INCLUDING MY SWITCH FROM USING THE CTWM WINDOW MANAGER TO USING OPENBOX
+<p>
+26 Mar 2010: Switched to running Fedora 12 on D610 (Mostly OK)
+</b></h3>
+<blockquote>
+Later I'll report on problems getting CapsLock and Ctrl Swapped: the
+old method stopped working.
+<p>
+Also had trouble with pulseaudio (like very many linux users using
+various distributions of Linux). I was forced to use yumex to
+uninstall everything that mentioned pulseaudio, which caused a host
+of other things to be uninstalled. I then reinstalled what I needed,
+and everything works except gnome-volume-control, which can't get a
+connection. But alsamixer works as does alsamixer-gui so I can do
+without gnome-volume-control. The best sounds (e.g. using BBC
+iPlayer) are surprisingly good in view of the small size of the
+speakers and the volume enclosing them. However, I think the D610
+had a fuller sound, though perhaps the treble is slightly better on
+the E6410. My main problem is that the general volume level too low
+on the E6410, and I can't a way to increase it (on linux).
+<p>
+The
+<p>
+Why don't linux developers either FIX pulseaudio or make it an
+optional extra for experts who want it, instead of screwing up
+everyone else and giving linux a bad name? Giving google "pulseaudio
+problems" to search for produces 111,000 results.
+</blockquote>
+<hr/>
+<h3><b>
+31 Jan 2010 Getting Java to work on Firefox 3.6, on Fedora 10
+</b></h3>
+<blockquote>
+The
+<a href="http://www.mozilla.com/en-US/firefox/personal.html">firefox web site telling you to upgrade</a>
+fails to warn you that linux users will need a different java plugin
+for Firefox 3.6. Fortunately, if you have a recent java installed
+you probably already have the plugin. Use this command to find out
+where it is:
+<pre>
+    locate libnpjp2.so
+</pre>
+E.g. I found it in
+<pre>
+    /usr/java/jre1.6.0_16/lib/i386/libnpjp2.so
+</pre>
+Then insert a link to that in your firefox plugins directory, e.g.
+
+<pre>
+    ln -s /usr/java/jre1.6.0_16/lib/i386/libnpjp2.so .../firefox3.6/plugins
+</pre>
+
+Then restart firefox. See also
+<a href="http://support.mozilla.com/nl/forum/1/554389">http://support.mozilla.com/nl/forum/1/554389</a>
+<p>
+Another problem I had was that firefox 3.6
+<pre>
+    tools --> add-ons --> plugins
+</pre>
+kept reporting the flash plugin as being version 9, even though I
+have version 10. I had to remove the pluginreg.dat file in the
+~/.mozilla/firefox/default.../ directory
+
+</blockquote>
+<p>
+<hr/>
+<h3><b>
+<b>Switched from using CTWM to using Openbox as window manager
+(Jan 2009)</b>
+<br/>
+Details <a href="openbox">here.</a>
+<p>
+Added
+<a href="openbox/ob-figs">some screenshots</a> 16 Feb 2009.
+<p>
+Sept 2009: Switched back to ctwm after a patch
+was announced on the ctwm mailing list.
+<br/>
+It now works with full
+screen flash.
+</b></h3>
+<hr/>
+<h3><b>
+<a href="huawei-220-linux.html">24 Oct 2009 Using Mobile Broadband Pay as you go USB stick</a>
+in Germany and France works!
+<br/>
+<small>
+But you have to ask them to set up the service.
+</small>
+</b></h3>
+<small>
+<pre>
+    It worked using both windows and linux, even on high speed train between
+    Paris and Saarbruecken (usable but variable quality).
+
+    Reasonably cheap for reading and sending email remotely via text-only interface.
+    (I log in via SSH and use Pine and a text editor):
+    Cost is 1.50 GBP per Mbyte transferred.
+
+    <a href="huawei-220-linux.html">This web page</a> gives further information about how I use the T-mobile web'n'walk
+    mobile broadband USB stick on a machine running Fedora 10.
+
+    It probably works with many different configurations of linux, though
+    I understand some Ubuntu users have found that recent (late 2009)
+    versions of the NetworkManager interface to mobile broadband is broken.
+
+    <b>WARNING:</b>
+    The t-mobile service has an under-18 lock which is turned on by default
+    to prevent access to 'social networks'. This even blocks google mail and
+    signing in to a google account, though not yahoo mail, which is
+    stupid and arbitrary (especially when they have the information that
+    I am over 70). The web site says you can remove the block interactively,
+    but that works only for phone users not mobile broadband users. I have
+    complained. Others should too!
+    After they removed the block I could access google mail when running the
+    t-mobile software on windows, but not when using linux. I don't know why.
+    It just hangs, with no explanation. <b>T-mobile need to fix their service.</b>
+</pre>
+</small>
+<p>
+<hr/>
+<a name="history"></a>
+<h3><b>
+Partial history of this web site
+</b></h3>
+<blockquote>
+
+<b>Linux on my Laptop:</b>
+<br/>
+<small>
+I had long been a unix/solaris
+`juser (starting using unix around 1976
+at Sussex University). Later, I began using various versions of
+RedHat Linux, starting with version 6, on a Dell Latitude (with
+400mhz celeron) in 1999 and ending with RedHat version 9 in 2003,
+<p>
+This website was started when I obtained the Dell Latitude D600 in
+2003. I started with RedHat 9 then switched to Fedora Core 3,
+then replaced the D600 with a D610 in October 2005, then later
+switched to Fedora Core 5, then Fedora 7 in July 2007, followed by
+Fedora 8 in 2008, and Fedora 10 in January 2009
+</small>
+
+<p>
+
+<b>Linux on my Desktop:</b>
+<br/>
+<small>
+<b>Departmental</b>
+<br>
+In our department (School of Computer Science, University of
+Birmingham) we started switching from using Suns to using PCs
+running linux (except for our central servers, which remained Suns
+for several years) around 2000. When we moved to a new building in
+2001 I was given a Pentium 4 PC running some version of Redhat,
+which was later replaced by Whitebox, then CentOS, and my machine
+was upgraded in 2007.
+<p>
+<b>Home</b>
+<br>
+In 2001 I finally started using a 1Ghz AMD Athlon PC running linux
+(RedHat) on my desktop at home, instead of a 10 year old Sun
+workstation. Later (around 2006) that was replaced by a 2Ghz AMD
+Athlon 64. I moved through various versions of linux (32 bit
+versions, since I had no need for 64 bit addresses), starting with
+Redhat 7 I think, then Redhat 9, then various versions of Fedora.
+<p>
+For the sake of continuity I don't upgrade my laptop and desktop at
+the same time e.g. I had fedora 4 and 6 and now 9 on my desktop and
+fedora 3, 5, 7 and 8 on my laptop. I tried Ubuntu temporarily on a
+spare machine, but found that it had no advantages (for me) over
+Fedora -- especially after a version of the 'synaptic' package
+manager became available for RedHat/Fedora.
+<p>
+Note added 1 Aug 2008:
+<br/>
+I've learnt that 'yumex' on Fedora provides what appears to be
+similar functionality to 'synaptic'. It may even be better -- I have
+not yet looked closely enough to decide.
+<br/>
+Note added 6 Jun 2009: I have been using yumex for several months
+and it is excellent, even though it displays icons that it does not
+explain!
+</small>
+<hr/>
+</blockquote>
+<a name="contents"></a>
+<h3><b>
+CONTENTS FOR USERS RUNNING FEDORA (5, 7, 8, 9, 10)
+(and possibly  others)
+</b>
+<br/>
+<small>
+(Latest first.)
+</small>
+</h3>
+<p>
+<ul>
+<li>
+<a href="old-updates.html">
+<b>14 May 2010: OLD UPDATES MOVED TO SEPARATE FILE</b>
+</a>
+<p>
+<li>
+<a href="wpa">
+<b>Connection to Campus Wireless Network using
+WPA_SUPPLICANT on Linux</b></a>
+<br/>
+(In separate file.) (Added note
+<a href="wpa/wicd.html">on using wicd with F10</a>, on
+2 Jun 2009).
+<p>
+<li>
+<b>
+<a href="#history">History: University and Home, Laptop and
+Desktop, all using Linux.
+</a>
+</b>
+<p>
+<li>
+<b>UPDATE 18 Jun 2009: Using Mobile Broadband USB stick</b>
+<br/>
+<a href="huawei-220-linux.html">This web page</a> gives information
+about how to use the T-mobile web'n'walk mobile broadband USB stick
+on a machine running Fedora 10. It probably works with many
+different configurations of linux. (See later update above.)
+<p>
+<li>
+<b>UPDATE 22 Feb 2009: Fedora 10 on my desktop</b>
+<br>
+I installed F10 on my desktop PC early in January, including
+'tuxonice' (Software Suspend 2), and everything seemed to
+work very well, as long as I avoided the Nvidia driver (which
+interfered with suspend/resume and used only 'nv'.
+<br/>
+However after a while I kept finding the graphical interface
+freezing, with Xorg taking up 99.8% of cpu time, and mouse and
+keyboard not working, though I could log in from my laptop. For a
+while I reverted to the 2.6.27.5-117 kernel (with tuxonice), and
+that seemed to work. However, a few days ago a new kernel became
+available, and since switching to that, the problem has gone
+away: <small>2.6.27.15-170.2.24_1.cubbi_tuxonice.fc10.i686
+</small>
+<p>
+After one of the kernel changes pulseaudio stopped working, which
+seems to be a problem
+<a href="http://blog.mrtomlinux.org/index.php?post/Pulseaudio-CPU-nightmare">for many linux users.</a>
+So I followed the advice
+of one of them and simply used 'yum remove...' to remove pulseaudio
+from my machine. After that audio worked as expected! I had to do
+the same on my laptop running F8. (I believe problems with
+pulseaudio are not restricted to Fedora. The people working on it
+seem to be trying to do something useful, but failing to accommodate
+all the different combinations of hardware and software. So probably
+it should never be installed by default on a linux system until
+all the problems have been fixed.)
+<p>
+Note, Fedora no longer uses /etc/sysconfig/harddisks, as explained
+<a href="#hdparm">below.</a>
+<p>
+<li>
+<a href="ati-graphic.html">
+<b>UPDATE 18 Oct 2008: Use of laptop with ATI Radeon X300 card and external
+display or projector</b>
+</a>
+<br/>
+Including how to use the 'xrandr' command to interrogate displays,
+to turn on a display, and to switch between different resolutions.
+<br/>
+(Updated 15 Jun 2009, regarding use of nomodeset at boot time.)
+<p>
+
+<hr>
+<li>
+<a href="#neutral">
+<b>Operating-system Neutral Items (realplayer, wpa, vpn, email)</b>
+</a>
+<ul>
+<li>
+<a href="#realplayer">
+UPDATE 25 Dec 2006: RealPlayer problem solved
+</a>
+<li>
+<a href="#vpn">
+How to get vpn running
+</a>
+<li><a href="#wpa">
+WPA_SUPPLICANT works on BHAM campus
+</a>
+<li><a href="#securityprobs">
+Using sysctl to overcome
+problems caused by Fedora/Redhat security defaults
+</a>
+<li><a href="#non-graphic">
+Booting up in non-graphic mode and using CTWM for window manager
+</a>
+<li>
+<a href="#dvdandcd">
+Playing DVDs and music CDs on D610 with FC5 (and others)
+</a>
+<li>
+<a href="#email">
+UPDATE 8 Feb 2007: fighting the university (Microsoft
+Exchange) email
+system
+</a>
+</ul>
+<hr>
+<li>
+<a href="old-updates.html#before-7">
+ITEMS PRIOR TO INSTALLING FEDORA 7: IN 'OLD' FILE
+</a>
+<hr>
+<p>
+<li><a href="old-updates.html#before-5">
+CONTENTS PRIOR TO INSTALLATION OF FEDORA CORE 5: IN 'OLD' FILE
+</a>
+</ul>
+
+</ul>
+<hr/>
+
+
+<hr>
+<a name="neutral"></a>
+<h2><b>
+Operating-system Neutral Items (realplayer, wpa, vpn, email)
+</b></h2>
+<blockquote>
+<HR>
+</blockquote>
+<a name="realplayer"></a>
+<h3><b>
+UPDATE 25 Dec 2006: RealPlayer problem solved
+</b></h3>
+<blockquote>
+Previously I wrote:
+<blockquote>
+<small>
+A mystifying problem remains. On the D610 if I try to run the BBC
+realplayer based video news player (http://news.bbc.co.uk/) it works
+fine, until I use xine or mplayer to display a video. After that nothing
+using realplayer works (apart from sound) until I restart the X window
+system. I don't have that problem on the D600. If anyone can tell me how
+to 'refresh' the video capability of realplayer without stopping and
+restarting X11 I'll be grateful. (At least it's not as bad as having to
+reboot). Merely switching to a text console (e.g. Fn+ALT+F2) and back
+does not work.
+</small>
+</blockquote>
+I discovered by accident how to solve this problem.
+<ul>
+<li>
+Run realplay.
+<li>
+Select tools --> preferences
+<li>
+Select Hardware
+<li>
+Under 'driver options', if Use Xvideo is selected, deselect it.
+<li>
+Apply
+</ul>
+I made this discover while
+running RealPlayer 10.0.8.805 (gold) (built July 2006).
+The problem had occurred both on my desktop PC running Fedora Core 6 and
+on my Dell D610 running Fedora Core 5. The above steps have fixed the
+problem on both. It also worked on F7.
+<hr>
+</blockquote>
+<p>
+<a name="vpn"></a>
+<h3><b>
+UPDATE 14 Nov 2006: ADDING VPN
+</b>
+</h3>
+A link to a separate file:
+<blockquote>
+o
+<a href="vpn">adding VPN software to access the School of Computer science</a>
+<hr>
+</blockquote>
+<p>
+
+<a name="wpa"></a>
+<H3><B>
+UPDATE 15 Aug 2006: WPA_SUPPLICANT WORKS ON BHAM CAMPUS
+</B></H3>
+<blockquote>
+After upgrading my Dell Latitude D610 (whose
+batteries have not exploded) to use Fedora Core 5, I have now at last
+overcome the problems of using wpa_supplicant to access the University
+of Birmingham wireless network.
+<br>
+Details <a href="wpa">here (separate file)</a>.
+<p>
+A simpler solution based on NetworkManager is provided by Martin Escado
+<a href="wpa/nm-applet.html">here</a> (specially useful for Ubuntu
+users).
+<p>
+Users of Palm pilot wishing to use the campus wireless network
+should see
+<a href="http://www.cs.bham.ac.uk/~tmw/uobwlan-palm/">these notes by Tim
+Williams</a>.
+<p>
+<hr>
+</blockquote>
+<a name="securityprobs"></a>
+<b>
+Using sysctl to overcome
+problems caused by Fedora/Redhat security defaults
+</b>
+<blockquote>
+Problems caused by security settings (Selinux) in RedHat and Fedora
+core (since FC4), and how to get round them using 'sysctl' are
+described
+<a href="fc4.html">here</a>.
+<hr>
+</blockquote>
+<p>
+<a name="non-graphic"></a>
+<b>
+Booting up in non-graphic mode and using CTWM for window manager
+</b>
+<blockquote>
+I don't like booting straight into graphic mode not least because that
+adds to the load on the machine and slows down booting. So I edited the
+file
+<pre>
+    /etc/inittab
+</pre>
+changing the line
+<pre>
+    id:5:initdefault:
+</pre>
+to make it boot into state 3 (full multi-user mode without
+graphics) rather than state 5 (multi-user mode with X11):
+<pre>
+    id:3:initdefault:
+</pre>
+<a name="ctwm2"></a>
+When it boots up I get a 'login' prompt on a text console, and after
+logging in I can run 'startx' to initiate the X window system. I control
+its behaviour using a file .xinitrc, which starts a clock, a couple of
+Xterm windows in different virtual desktops, and then run the small,
+fast, highly tailorable and extremely robust window manager ctwm
+(version 3.7). To show how small ctwm is, here is part of the output of
+'top', with ctwm running:
+
+<pre>
+  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+ 9758 axs       15   0  6456 2172 1692 S  0.0  0.2   0:00.11 ctwm
+</pre>
+<p>
+I use ctwm with 8 or 10 virtual desktops, and lots of keyboard
+bindings to reduce use of mouse, including going to next or previous
+virtual desktop.
+<blockquote>
+<small>
+Is ctwm the only window manager that
+supports the 'wrap' default when you cycle through virtual desktops:
+i.e. when I get to the last desktop, the 'next
+desktop' function takes
+me back to desktop 1, and likewise the 'previous desktop' when on
+desktop 1?
+<p>
+I expected this to work on gnome when I tried it, but the gnome
+designers do not seem to understand elegance: so, there's no
+wrapping.
+</small>
+</blockquote>
+<p>
+Use of mouse in the root window
+gives access to menus selected by all three buttons. E.g. a menu
+item invoking xvidmode enables instant switching of screen
+resolution instead of having to go through a tool to switch or
+cycling through resolutions using CTRL+ALT+PLUS/MINUS. I get a new
+xterm (console) window instantly by pressing key F1 with mouse
+cursor not in any application. etc. etc. (xvidtune can also be
+invoked).
+<p>
+The .ctwmrc file makes it possible to do many kinds of tailoring very
+easily, including specifying that some windows should be visible in all
+desktops, some should have no title bar, etc. etc. I used to find that
+ctwm always compiled easily from source. But it uses 'xmkmf' which is no
+longer included in FC5. So I untarred the ctwm-3.7.tar.gz file on a
+machine running FC4, followed the instructions up to xmkmf, which
+created a Makefile. I copied the whole lot to my laptop running FC5,
+then ran 'make', and 'make install', which gave me my much needed ctwm.
+<p>
+You can normally fetch the latest version of ctwm from
+<blockquote>
+    <a href="http://ctwm.free.lp.se/dist/">http://ctwm.free.lp.se/dist/</a>
+</blockquote>
+I have made available a version of the tar file that
+includes the Makefile created using the default settings for
+Imakefile.local. It can be fetched (about 1.1Mb)
+<a href="ctwm-3.7+Makefile.tar.gz">here</a>. If you untar it and type
+'make' it should produce a usable version of ctwm. Run 'make install'
+to install it. To make the man file available copy ctwm.man to
+/usr/local/man/man1.
+<p>
+There are many web sites giving sample versions of .ctwmrc to
+produce different sorts of 'Look and feel' with ctwm, e.g.
+<blockquote>
+<a href="http://www.thought.org/credits/ctwmrc.html">http://www.thought.org/credits/ctwmrc.html</a>
+<br>
+<a href="http://ctwm.free.lp.se/themes/mcrc">http://ctwm.free.lp.se/themes/mcrc</a>
+<br>
+<a href="http://www.cs.indiana.edu/~kinzler/home/etc/ctwmrc">http://www.cs.indiana.edu/~kinzler/home/etc/ctwmrc</a>
+<br>
+<a href="http://hobbit.ict.griffith.edu.au/~anthony/icons/appl/twm/CTwm_config_example">http://hobbit.ict.griffith.edu.au/~anthony/icons/appl/twm/CTwm_config_example</a>
+<p>
+Find more by giving ctwmrc to google.
+<p>
+</blockquote>
+Other window managers for X11 systems are listed here:
+<a href="http://fr.rpmfind.net/linux/RPM/X11_Window_Managers.html">http://fr.rpmfind.net/linux/RPM/X11_Window_Managers.html</a>
+<p>
+<hr>
+</blockquote>
+<a name="dvdandcd"></a>
+<h3><b>
+UPDATE 30 Aug 2006: Playing DVDs and Music CDs
+</b></h3>
+<blockquote>
+For some time I was not been able to play DVDs on my Dell D610,
+whether using FC3 or FC5. It turns out that that's because I had been using the command
+<pre>
+    gmplayer /dev/dvd
+</pre>
+
+which used to work on my old laptop. However, I've just looked at the
+mplayer man file and noticed for the first time that I was giving the
+wrong command! It should have been
+
+<pre>
+    gmplayer dvd://
+</pre>
+
+So I can play dvds OK -- Not that I need to often, but I had just got a
+dvd containing a video recording a lecture I wanted to listen to.
+<p>
+Like one of my colleagues I was not able to play music CDs using linux
+on the D610 or on my desktop machine using FC4, without first copying
+the files using cdparanoia and then using play, or gmplayer -- until I
+learnt about alsamixer !
+<p>
+When I ran it on my desktop pc I found far more options than I had
+previously thought existed and one of them seemed to toggle the CD
+input. That enabled me to use cdp to play a music CD.
+<p>
+Then I did more investigation and found that gnome-cd would play a cd.
+<p>
+On the Dell D610 I had more difficulty. alsamixer did not seem to do
+anything to make cds play, but I did some exploring and found kscd.
+<p>
+<blockquote>
+The kcsd tool has an 'Extras' button. One of the options it provides
+is 'configure kscd'.
+<p>
+One of the options that provides is "use direct digital
+playback".
+<p>
+I selected the 'alsa' backend, clicked on 'Apply' and after
+that CDs worked on my laptop with kscd.
+</blockquote>
+<p>
+It seems that cdplayers can use either the analog input from the cd
+device, using a cable that connects the device to the motherboard,
+or else play directly using the digital source. But apparently
+our linux systems were not set up to do the latter by default,
+which seems to be required now on the D610.
+<p>
+I learnt a bit more here
+    <a href="http://docs.kde.org/stable/en/kdemultimedia/kscd/ts-ddpback.html">http://docs.kde.org/stable/en/kdemultimedia/kscd/ts-ddpback.html</a>
+<p>
+Fortunately kscd works fine with ctwm: I don't need to run kde.
+<p>
+<hr>
+</blockquote>
+<a name="email"></a>
+<h3><b>
+UPDATE 8 Feb 2007: fighting the University (Microsoft Exchange) email system
+</b></h3>
+<blockquote>
+With help from Zeth Green, I've added information on accessing
+university email from a linux machine.
+<blockquote>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/university-email-settings.html">http://www.cs.bham.ac.uk/~axs/university-email-settings.html</a>
+</small>
+</blockquote>
+</blockquote>
+<hr>
+<P>
+This report is listed at
+<a href="http://tuxmobil.org/dell.html">TuxMobil
+- Linux on laptops, notebooks,
+PDAs, mobile phones</a>.
+<P>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+This web site was first created some time in 2003 soon after I
+acquired a Dell D600.
+<br>
+Last updated: 22 Feb 2009;  1 Jan 2010; 31 May 2010;1 Jun 2010; 12 Jun 2010; 15 Jun 2010;
+20 Jun 2010; 22 Jun 2010; 7 Jul 2010; 20 Jan 2011;  Feb 2011; 21 Mar 2011;15 Apr 2011;
+23 Apr 2011; 30 Apr 2011; 21 May 2011; 29 May 2011; 18 Sep 2011; 7 Mar
+2012; 23 Jul 2012; 2013, 2014; 2015; 30 Sep 2016;
+
+</div>
+</body></html>

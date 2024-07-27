@@ -1,0 +1,759 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>Huawei/T-mobile Mobile Broadband on
+linux </title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<p>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+</p>
+<H2><B>
+Using T-Mobile Mobile Broadband Huawei E160/E220 USB Stick
+<br/>
+And Three Huawei E586 Mifi device (added 7 Mar 2012)
+<br/>
+on a Dell Latitude D610 Laptop
+<br/>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs">Aaron Sloman</a>
+<br/>
+Running Fedora 8, Fedora 10. Fedora 12 ... Fedora 16 ... Fedora 24
+</small>
+<br>
+</B></H2>
+(This is a supplement to <a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on a Dell d600/d610 laptop</a>)</b>
+<br/>
+<a href="#contents">Skip News items and jump to CONTENTS</a>
+<hr/>
+<b>NEWS 23 Mar 2017: Using Moto G version 3 smartphone as an access point</b>
+<br/>
+I resisted buying a smart phone for many years -- eventually persuaded by
+colleagues that I was missing useful functionality in May 2016. Settled on Moto
+G3 on grounds of cost, functionality, reviews and a personal recommendation. I
+made the mistake of buying the 8GB model (unlocked, without sim, from John
+Lewis), not realising that adding extra SD memory is not analogous to adding an
+extra hard drive on linux or windows. I acquired a PAYG sim from EE who
+transferred my old mobile phone number (Orange) to the Sim.
+<p>
+For a while I had some problems with 64GB SD card, but later installed a 32GB
+faster SD card and that has worked perfectly.
+<p>
+This has made my T-mobile, and Three mifi devices redundant, because it works
+well on 3G 4G connections and can act as a wifi hot spot. I've used it on trains
+and at conferences where eduroam was not available.
+<p>
+I mostly use it with wifi at home or on campus so don't need the 4G service
+much, but when I do, e.g. when travelling, I find the &pound;1.00(GBP) PAYG
+Data Packs quite convenient: each lasts for 7 days and allows up to 100MB
+data and plus some minutes of phone calls and several texts -- and I hardly ever
+need it as a phone. A heavy user of phone, text and mobile wifi might find a
+more economical solution.
+<p>
+This mostly gives me better value than the Three Mifi device, as the minimum
+PAYG purchase from Three lasts only one day and costs a lot more, though it does
+include more data, which I don't normally need within a day.
+<hr/>
+<b>NEWS 23 Feb 2012</b>
+<br/>
+<a href="http://www.maths.qmul.ac.uk/~mm/">Malcolm MacCallum</a> reports
+that he has managed to get the Tmobile Huawei E173 (Tmobile USB 615
+Stick). His report is <a href="e173.html">here (slightly edited)</a> in
+case others need the information.
+<hr/>
+<b>NEWS 7 Mar 2012: Three Huawei E586 Mifi device</b>
+<br/>
+Partly because tmobile mobile broadband does not support Skype, I
+started enquiring about alternatives, and ended up, after much
+consultation and dither, with the Three Mifi device.
+<p>
+Someone wrote, in answer to my request for advice
+
+
+<small>
+<pre>
+> Slightly off-topic, I've been using a Huawei E583c mifi device in place
+> of an E172 usb stick for about 12 months now. I much prefer it, although
+> it might not be everyone's choice. Like the usb sticks it has a SIM in
+> it. It has an internal battery and can be charged from a mains adapter
+> or from the usb port on a laptop. It establishes the data connection and
+> then provides wifi to support up to 5 devices. That can be handy if you
+> wish to work with others who don't have connectivity. It can be placed
+> on a window cill to get a better signal
+</pre>
+</small>
+<p>
+After doing more research, and since I shall be doing more
+travelling than usual in the near future, I decided to try the
+latest version of this, the E586, available only from three at
+present (as far as I can tell).
+<p>
+<a href="http://store.three.co.uk/Mobile_Broadband/MiFi">http://store.three.co.uk/Mobile_Broadband/MiFi</a>
+<p>
+Sample review here (on dreadful website full of stupid moving
+adverts on both sides of text):
+<br/>
+<a href="http://www.techradar.com/reviews/pc-mac/networking-and-wi-fi/modem-routers/huawei-mifi-e586-1005060/review">http://www.techradar.com/reviews/pc-mac/networking-and-wi-fi/modem-routers/huawei-mifi-e586-1005060/review</a>
+<br/>
+(I must replace that review link with one that's less annoying.)
+<p>
+There are different price plans, and for someone in my position, not
+using the device except when travelling (which is why I used Pay As You
+Go for t-mobile -- which rules out use of skype), it turns out cheapest
+to go for a monthly contract, cancelled after one month, followed by
+purchase of sims as needed:
+
+<small>
+<pre>
+    MiFi 5GB per month
+    Price details. £15.99 a month for 5GB per month
+    49.99 upfront cost for device.
+    minimal contract 1 month.
+</pre>
+</small>
+
+So initial purchase, including 1 month+5GB, costs £66 (or a bit more
+if you start using the device before the official start date of the
+<p>
+contract).
+<p>
+[Starting then cancelling this was recommended by the person in the
+Three shop.]
+<p>
+You can cancel the contract with 1 month notice, and after that go
+for one of the cheaper 12 month 12GB three sims available on
+Ebay/Amazon.
+<p>
+I can report that the device is much simpler to use than a typical
+mobile broadband dongle. When switched on it makes its own
+connection and then provides a normal wireless router (wpa) service:
+so I used wicd to connect using the essid and password that comes
+with the sim.
+<p>
+You can then access the device in a browser, using 192.168.1.1 (I
+don't know if that can be changed), and get information about the
+connection, current usage total, and also a useful text-messaging
+interface in the browser (tested by sending messages to and from my
+orange mobile phone). Since all of that is operating system
+independent it works out of the box on linux. It supports up to 5
+connected devices.
+<p>
+Upstairs in my house download speeds were slightly better than
+tmobile, but very variable -- between about 600 and 1600 kb/s
+(mostly at the lower end), upload speeds faster: consistently
+between 1000 and 1500 kb/s.
+<p>
+Wireless signal strength enabled connection from first floor to
+hallway and rooms below, but using repeated pings to the device
+indicated that level dropped faster than when using my normal router
+Dlink DIR 615.
+<p>
+I don't know what would happen in trains, hotels, etc. if lots of
+people started using these devices -- would they interfere with one
+another?
+<p>
+I suspect our computer officers would not allow such devices to be
+used in our department.
+<p>
+Battery can be charged either via Usb socket or wall charger
+(includes a usb socket). I don't know how often I'll forget to
+switch off the device after use and drain the battery. The battery
+is replaceable, so I suppose that in principle one could have a
+spare.
+<p>
+If bought in shop you need a debit card for credit check.
+</p>
+
+
+
+<hr/>
+<b>NEWS 27 Jul 2011</b>
+<br/>
+Tmobile now have new options for travellers. If you try to connect in
+France, Germany and some other countries you have to run a browser and
+will get pre-pay options for various time-periods. If you are a
+'PayAsYouGo (PAYG) customer the cost of the chosen optoin is deducted
+from your current balance.
+<hr/>
+<b>NEWS 4 Apr 2010</b>
+<blockquote>
+Commands for sending text messages and interrogating the system from
+a text editor (the poplog editor Ved) are available. These commands
+are not required for using the USB stick to connect to the internet.
+They provide additional functionality, especially sending and
+reading text messages via the USB stick (assuming it is already
+connected as described below).
+<p>
+The commands
+are implemented in Pop-11, the core language of Poplog, but it
+should be possible for users of other programming languages to copy
+and edit them, since Pop-11 is quite readable.
+<small>
+<pre>
+    <a href="pop_mobile_connect/pop_mobile_connect.p">pop_mobile_connect.p program file</a>
+    <a href="pop_mobile_connect/pop_mobile_connect">pop_mobile_connect documentation</a>
+</pre>
+</small>
+</blockquote>
+<hr/>
+<b>NEWS 1 Jan 2010</b>
+<blockquote>
+    <b>WARNING 1:</b>
+    <br/>
+    The t-mobile service has an under-18 lock which is turned on by default
+    to prevent access to 'social networks'. This even blocks google mail and
+    signing in to a google account, though not yahoo mail.
+    Blocking google mail, which so many people use now, is stupid and arbitrary
+    (especially when they have the information that I am over 70).
+    <p>
+    The web site says you can remove the block interactively,
+    but that works only for phone users not mobile broadband users. I have
+    complained. Others should too!
+    <p>
+    After they removed the block I could access google mail when running the
+    t-mobile software on windows, but not when using linux. I don't know why.
+    It just hangs, with no explanation.
+    <br/>
+    <b>T-mobile need to fix their service.</b>
+<br/>
+    NOTE: some time after I wrote that (and complained to t-mobile)
+the fault disappeared and I can now connect to google mail, google
+groups. etc.
+    <p>
+    <b>WARNING 2:</b>
+    <br/>
+    I tried the linux mechanisms below with a newer t-mobile mobile
+broadband usb stick (model 150) bought for someone to use in
+hospital (3 months Mobile Broadband plus usb stick for
+&pound;44.03). This has the Huawei E1630 device (according to the
+label on the stick)
+<p>
+It worked on windows, though only with its own
+web'n'walk manager, not the older one.
+However, when I tried it on
+linux it did not work. I don't know why.
+It does not switch to modem mode, although the device is recognised.
+<pre>
+    lsusb
+</pre>
+produces (among other things)
+<pre>
+    Bus 001 Device 010: ID 12d1:1446 Huawei Technologies Co., Ltd.
+</pre>
+I tried running usb_modeswitch (using -W for 'verbose' output):
+<pre>
+    usb_modeswitch -H -p 1446 -v 12d1 -W
+</pre>
+It recognised the device but could not connect it as a modem.
+<p>
+If anyone reading this has
+information please email me. (A.Sloman[AT]cs.bham.ac.uk)
+</blockquote>
+
+<b>NEWS 25 Oct 2009: Use on the continent works</b>
+<blockquote>
+I wrote to t-mobile support (via their web site) and mentioned that
+I could not find any information on how to use my pay-as-you go
+t-mobile web-n-walk stick to access the internet outside the UK.
+<p>
+In response I got this:
+<small>
+<pre>
+   I'm pleased to hear that you're happy with the help we gave you. We
+   appreciate hearing comments like these and will keep working hard to
+   continue this high level of service.
+
+   I've activated the roaming service on your account, you'll now be
+   able to use your USB stick in Germany.
+
+   You'll be charged at international roaming rates for accessing
+   internet whilst abroad.
+
+   Accessing internet is charged &pound;1.50 (including VAT) per Mb in EU
+   countries and &pound;7.50 (including VAT) per Mb in rest of the world. To
+   see the list of our eligible EU countries click <a href="http://www.t-mobile.co.uk/services/going-abroad/using-the-internet-abroad/">here.</a>
+</pre>
+</small>
+I have now tried this on my t-mobile usb stick using my Dell Latitude
+D610.
+<ul>
+<li>
+In Germany it worked both on linux (using wvdial to connect, as
+described below, on Fedora 10) and on Windows XP using the t-mobile
+software.
+<li>
+The first time I tried it in France (in Paris), I could not get it
+to work on linux but it did connect using the t-mobile software.
+Later I tried again using linux and it worked.
+</ul>
+<p>
+I have found this service useful, but I wish T-Mobile would explain
+more clearly on their web site how a mobile-broadband pay-as-you go
+customer can set up the foreign service. I found nothing about this
+until I wrote to customer support.
+<p>
+Since I mostly read and send mail by logging through to our
+departmental network using ssh, and running pine, the amount of data
+transmitted in a couple of hours of use can be very low. On one
+journey in Germany I was connected on the train for about 2 hours
+and it cost me less than #0.50p. On a later date I was connected for
+longer and transmitted several files as well as reading mail. The
+cost over about 2.5 hours was about #1.15
+However, I have found that it is too easy to go over 1MB if I use
+a web browser, or if I transfer files, so it can be expensive,
+though very convenient for reading email on a train, via
+ssh and pine.
+<br/>
+(I don't often find that it works on UK trains: it depends on the
+route. It did not work on most of the Virgin line between Euston and
+Birmingham when I last tried, but it work well on the slower route
+from Marylebone to Birmingham.)
+<p>
+I think the service is getting better. When I first tried it in my
+study at home and for several months after, the connection never got
+above a few hundred Kbits/sec, whereas I have recently (December
+2009) found the speed going up to nearer a Mbit/sec.)
+<p>
+For pay-as-you-go users, it is necessary to top-up in advance and
+make sure your balance is adequate for your likely use abroad.
+</blockquote>
+<a name="contents"></a>
+<hr/>
+<h3><b>
+CONTENTS
+</b></h3>
+
+<ul>
+<li>
+<a href="#introduction">
+Using T-mobile web-n-walk Mobile Broadband USB stick
+</a>
+<li>
+<a href="#prelim1">
+Use on Linux - part 1 (using usb_modeswitch -- if necessary)
+</a>
+<li>
+<a href="#prelim2">
+Use on Linux - part 2 After the wireless device is recognized
+</a>
+<li>
+<a href="#vmc">
+Use on Linux - using VMC (Vodafone Mobile Connect)
+</a>
+<li>
+<a href="#wvdial">
+Use on Linux - using 'wvdial' command
+</a>
+</ul>
+
+<P>
+<a name="introduction"></a>
+<h3><b>
+Using T-mobile web-n-walk Mobile Broadband USB stick
+</b></h3>
+<blockquote>
+In October 2008 I bought a
+<a href="http://www.t-mobile.co.uk/shop/mobile-broadband/">T-Mobile web-n-walk mobile broadband USB stick</a>
+which identifies itself as Huawei E220/E270, though it is
+labelled Huawei Model E160 HSDPA USB Stick. I bought this for
+occasional use while travelling in the UK, or waiting at airports,
+since not all hotels provide wifi services and many of those that do
+charge a lot of money, as do airports, whereas T-Mobile has a flat
+rate charge of only &pound;2 for a day's use. That's high for
+regular use, but low for intermittent use.
+<p>
+<b>Update 1 Jan 2010:</b>
+<br/>
+They now have three pay-as-you-go options:
+<pre>
+    &pound;2 a day, &pound;7 a week or &pound;15 a month
+</pre>
+</blockquote>
+<a name="prelim1"></a>
+<h3><b>
+Use on Linux - part 1 (using usb_modeswitch -- if necessary)
+</b></h3>
+<blockquote>
+It seems that all recent versions of linux come with kernel support
+for these Huawei broadband devices, though some users find that
+because these sticks can function either as a USB memory device or
+as a wireless modem, some linux systems mount them as memory
+devices, and switching them into modem operation requires use of a
+utility usb_modeswitch, which may have to be installed. It is
+described
+<a href="http://www.draisberghof.de/usb_modeswitch/">here.</a>
+<p>
+I found that with Fedora 8 and Fedora 10, both running recent
+kernels, I did not need to use usb_modeswitch. Instead, after
+plugging the device in I waited some seconds and then found, using
+'lsusb' that it had been recognized as follows:
+<pre>
+   Bus 001 Device 004: ID 12d1:1003 Huawei Technologies Co., Ltd. E220 HSDPA Modem / E270 HSDPA/HSUPA Modem
+</pre>
+That output is an indication that usb_modeswitch has done its job.
+</blockquote>
+<a name="prelim2"></a>
+<h3><b>
+Use on Linux - part 2 After the wireless device is recognized
+</b></h3>
+<blockquote>
+Once the device has been recognized it can be used in one of two
+modes, namely either for connecting to a broadband transmitter,
+allowing normal internet access, or a text mode for sending SMS text
+messages.
+<p>
+If used with either Windows or Apple Mac the software supplied on
+the device is automatically installed and runs a graphical interface
+for connecting, switching modes, fetching or receiving text
+messages.
+<p>
+On linux there is no manufacturer supplied software for this
+purpose, though some users have found that NetworkManager recognises
+and supports the device (though I understand some users have had
+problems using NM with it), and as explained below there is a
+graphical software package (VMC) developed for use on linux with
+Vodafone mobile broadband sticks containing the same Huawei chip. It
+can also be made to work with the T-Mobile stick.
+<p>
+However if you are prepared to use the command line, no such
+graphical tool is needed: I found that the 'wvdial' command can be
+made to work after setting up a configuration file, as explained
+below.
+<p>
+A problem with wvdial as used in this context is that instead of
+locating the file resolv.conf, with DNS addresses in
+/etc/resolv.conf it puts the file in /var/run/ppp/resolv.conf
+<p>
+In consequence my script to run wvdial does
+
+<pre>
+    rm -f /etc/resolv.conf
+
+    ln -s /var/run/ppp/resolv.conf /etc
+</pre>
+
+also, before it shuts down it does
+
+<pre>
+    rm -f /etc/resolv.conf
+</pre>
+
+so that other wireless services can place information there.
+<p>
+<b>Files to download</b>
+
+<blockquote>
+My (once and maybe still current)
+version of /etc/wvdial.conf is <a href="huawei/wvdial.conf">here.</a>
+<blockquote>
+I am not sure it is all necessary. Also it needs to be changed when
+travelling abroad.
+<p>
+For your system you may be able to discover the
+required parameters by running the device on windows, and then
+displaying and saving its current settings.)
+</blockquote>
+<p>
+My script (as of July 2011) for starting up the mobile broadband
+connection is
+<a href="huawei/nethuawei">here</a>.
+<br/>
+Don't forget to make it executable after editing (chmod 755
+filename)
+</blockquote>
+<p>
+The rest of this document explains how to download, set up
+and use the Vodafone vodafone-mobile-connect (VMC) graphical tool on
+Fedora 10, and how to use the command line interface if you prefer
+that.
+</blockquote>
+<a name="vmc"></a>
+<h3><b>
+Use on Linux - using VMC (Vodafone Mobile Connect)
+</b></h3>
+<blockquote>
+The package can be downloaded from this web site
+<a href="https://forge.betavine.net/frs/?group_id=12">https://forge.betavine.net/frs/?group_id=12</a>
+<p>
+I fetched this version, listed under 'Fedora' on the above web site:
+<br/>
+<a href="https://forge.betavine.net/frs/download.php/543/vodafone-mobile-connect-svn20090615.noarch.rpm">https://forge.betavine.net/frs/download.php/543/vodafone-mobile-connect-svn20090615.noarch.rpm</a>
+<p>
+My attempt to use 'rpm -ivh' to install the package produced this
+complaint:
+<small>
+<pre>
+    pyserial is needed by vodafone-mobile-connect-2.10.01-1.noarch
+    python-twisted is needed by vodafone-mobile-connect-2.10.01-1.noarch
+    pytz is needed by vodafone-mobile-connect-2.10.01-1.noarch
+    usb_modeswitch >= 0.9.7 is needed by vodafone-mobile-connect-2.10.01-1.noarch
+</pre>
+</small>
+However 'yum' was able to fetch and install all those, updating some
+other packages in the process. The total download required was
+about 4.9MB.
+<p>
+After that I used 'rpm' to install the vodafone package -- this
+version: <pre>
+    vodafone-mobile-connect-2.10.01-521.noarch
+</pre>
+<b>WARNING:</b> I tried installing a later version, but it would not
+work on my machine: it gave error messages at startup.
+<p>
+I was able to run it logged in as root, or using 'sudo':
+<pre>
+    sudo vodafone-mobile-connect-card-driver-for-linux
+</pre>
+Even with use of TAB for file-name completion that's  a tedious
+command, so I made the abbreviated name 'vmc' a symbolic link to:
+<pre>
+    /usr/bin/vodafone-mobile-connect-card-driver-for-linux
+</pre>
+There is a variant of the command with suffix 'debug' which can used
+to get a lot of debug output.
+<p>
+When I gave the vmc command it instantly recognized the Huawei device
+and made it easy to send or receive SMS text messages. However I
+could not switch it into broadband mode by clicking on the
+'Connect' button.
+<p>
+It turned out that to enable that to work I had to edit this
+configuration file (template file):
+<pre>
+    /usr/share/vodafone-mobile-connect/resources/templates/wvdial.conf.tpl
+</pre>
+Since I had previously got the T-mobile stick to work using wvdial I
+copied relevant bits of <pre>/etc/wvdial.conf</pre> into the
+template file, producing this:
+<pre>
+    [Dialer Defaults]
+
+    Phone = *99#
+    Username = web
+    Password = web
+    Stupid Mode = 1
+    Dial Command = ATDT
+    Check Def Route = on
+    Auto DNS = $autodns
+    Dial Attempts = 3
+
+    [Dialer connect]
+
+    Modem = /dev/ttyUSB0
+    Baud = 460800
+    Init1 = ATZ
+    Init2 = ATZ
+    Init3 = ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0
+    Init4 = AT+CGDCONT=1,"IP" "T-Mobile"
+    ISDN = 0
+    Modem Type = Analog Modem
+</pre>
+At that point I had a directory ~/.vmc2 which had been created
+during my previous experiments, so I deleted that and once again
+tried the command. The graphical panel started up as  before, and I
+created a new profile using the menu command:
+<pre>
+    Using --> tools --> profile --> New
+</pre>
+
+I called the profile tmobile, with username and password 'web'
+selected '3G preferred' for the connection mode, 'Default' for
+authentication, and T-Mobile for APN host (the last was just a guess: it
+required me to insert something, but I don't know whether it used the
+information, since wvdial did not need it).
+<p>
+Later I found that I could save the profile from the Web'n'walk
+manager provided by t-mobile for Windows, and that gave me the
+following:
+<pre>
+    username = t-mobile
+    dns2 =
+    dns1 =
+    staticdns = no
+    dialer_profile = PAP
+    phone = *99***1#
+    connection = 3GPREF
+    apn = T-Mobile
+    password = tm
+</pre>
+
+After all that, starting up the package produced this display
+(though with my message 'Inbox' showing, which I have hidden by
+clicking on 'Draft'):
+<p>
+<img alt="vmc display" height="350"  src="vmc-running-huawei.png"/>
+<p>
+The 'inbox' tab shows messages received. Clicking on 'New' allows a
+new message to be composed and sent.
+<p>
+Clicking on 'Connect' switches the connection from text-mail mode to
+internet mode, allowing web browsing, sending and receiving email,
+remote logins, etc., using the device named 'ppp0' as the interface
+to the modem.
+<p>
+Clicking on 'Mail' invokes your default internet email tool, e.g.
+thunderbird. The 'Quit' button is under 'File'.
+<p>
+Clicking on 'Inbox' shows current text messages not yet deleted.
+<p>
+At the bottom is a handy little signal strength meter: at my home it
+was mostly on the smallest bar, though occasionally the second bar
+changed colour too. Despite that low signal level I was able to get
+internet files, and even play a BBC news video, with occasional
+pauses. (The speed seems to have increased considerably since I
+wrote that.)
+<p>
+Clicking on 'Usage' gives useful information about amounts
+downloaded and uploaded in the current session and the current
+month.
+<p>
+I have read in one of the forums that it may sometimes be better to
+switch the profile from '3G Preferred' to 'GPRS Preferred' when the
+signal strength is low. I have not yet experimented with that.
+</blockquote>
+
+<a name="wvdial"></a>
+<h3><b>
+Use on Linux - using 'wvdial' command
+</b></h3>
+<blockquote>
+Before I got the 'vmc' command working I used 'wvdial' as follows.
+<p>
+I created a file /etc/wvdial.conf containing this, based on
+information obtained on the internet.
+<pre>
+    [Dialer Defaults]
+    Init1 = ATZ
+    Init2 = ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0
+    Stupid Mode = 1
+    ISDN = 0
+    Modem Type = Analog Modem
+    Phone = *99#
+    Modem = /dev/ttyUSB0
+    Username = web
+    Dial Command = ATDT
+    Password = web
+    Baud = 9600
+
+    [Dialer tmobile]
+    Init1 = ATZ
+    Init2 = ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0
+    Init3 = AT+CGDCONT=1,"IP" "T-Mobile"
+    Stupid Mode = 1
+    ISDN = 0
+    Phone = *99#
+    Modem = /dev/ttyUSB0
+    Modem Type = Analog Modem
+    Username = web
+    Dial Command = ATDT
+    Password = web
+    Baud = 460800
+</pre>
+WARNING: keep a backup version of that file, as it can be changed,
+e.g. if you run the 'wvdialconf' program.
+<p>
+To switch from my normal wireless configuration to using the USB
+stick, I wrote a shell script that shuts down other network
+interfaces 'ifdown eth1' 'ifdown eth0', turns off the wpa_supplicant
+service, saves a copy of the file /etc/resolv.conf and replaced it
+with a symbolic link to
+<pre>/var/run/ppp/resolv.conf </pre>
+<pre>
+    ln -s /var/run/ppp/resolv.conf /etc
+</pre>
+Finally this command sets up and runs the connection:
+<pre>
+    wvdial tmobile
+</pre>
+That causes something like the following text to be printed out
+when the connection is made successfully:
+<small>
+<pre>
+    --> WvDial: Internet dialer version 1.60
+    --> Cannot get information for serial port.
+    --> Initializing modem.
+    --> Sending: ATZ
+    ATZ
+    OK
+    --> Sending: ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0
+    ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0
+    OK
+    --> Modem initialized.
+    --> Sending: ATDT*99#
+    --> Waiting for carrier.
+    ATDT*99#
+    CONNECT
+    --> Carrier detected.  Starting PPP immediately.
+    --> Starting pppd at Sun Jun 14 13:32:26 2009
+    --> Pid of pppd: 8273
+    --> Using interface ppp0
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> local  IP address 10.156.172.212
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> remote IP address 10.64.64.64
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> primary   DNS address 149.254.192.126
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+    --> secondary DNS address 149.254.201.126
+    --> pppd:  i
+    --> [08]@g
+    --> [08]
+</pre>
+</small>
+Where the reception is poor it can disconnect itself, but in some
+places, e.g. airports, I found the connection very good, even though
+it was never very fast.
+
+The only way to terminate the session launched by running wvdial
+seems to be to kill the wvdial process by typing 'Ctrl C' into the
+window. After that, it may be necessary to reinstate the saved
+version of /etc/resolv.conf (as my home-grown script does).
+<p>
+Before trying to run a broadband connection using the Huawei
+device remember first to shut down any alternative network
+interfaces, for everyone's sanity.
+</blockquote>
+<b>
+TO BE CONTINUED
+</b>
+<HR>
+<P>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+First Created: 18 Jun 2009
+<br>
+Last Updated: 14 Jul 2009; 25 Oct 2009; 1 Jan 2010
+<br>
+</body></html>

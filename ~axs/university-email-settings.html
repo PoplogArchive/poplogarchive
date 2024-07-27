@@ -1,0 +1,509 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Accessing Your Email @BHAM</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/ub4.png"/>
+</a>
+<h2><b>
+EMAIL MECHANISMS FOR LINUX/UNIX USERS
+<BR>
+AT THE UNIVERSITY OF BIRMINGHAM
+<br>
+<small>
+<br>
+Zeth Green
+<br>
+<small>
+(Institute for Textual Scholarship and Electronic Editing/Business School)
+</small>
+<br>
+and
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<small>
+(School of Computer Science)
+</small>
+<p>
+<small>
+Last updated: 8 Sep 2009
+<br/>
+Originally created:  Feb 2007 (or earlier)
+</small>
+<br>
+</small>
+<a name="warning"></a>
+<p>
+WARNING: IT IS VERY LIKELY THAT THIS FILE IS NOW OUT OF DATE
+<br/>
+Please see
+<a href="http://www.helpdesk.bham.ac.uk/email/">http://www.helpdesk.bham.ac.uk/email/</a>
+<br/>
+e.g.
+<small>
+<pre>
+    <a href="http://www.helpdesk.bham.ac.uk/email/set_up_email_programs.shtml">http://www.helpdesk.bham.ac.uk/email/set_up_email_programs.shtml</a>
+    <a href="http://www.helpdesk.bham.ac.uk/email/iPhone_Exchange_email_setup.pdf">http://www.helpdesk.bham.ac.uk/email/iPhone_Exchange_email_setup.pdf</a>
+</pre>
+</small>
+
+</b></h2>
+<hr/>
+<p>
+<small>
+<b>NOTE ON FORMATTING:</b>
+<br>
+Adjust the width of your browser window to make the lines the length you
+prefer.
+<br>
+This web site does not attempt to impose restrictions on line length or
+font size.
+<hr />
+<p>
+This is one of a collection of files for linux users at the University
+of Birmingham.
+<br>
+The others (including information about wireless connections and
+using vpn) can
+be accessed from:
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">here.</a>
+<br>
+Please send reports of bugs, inaccuracies, suggestions for improvement,
+to A.Sloman@cs.bham.ac.uk
+<hr />
+</small>
+
+<h3><b>
+CONTENTS
+</b></h3>
+<ul>
+<li>
+<a href="#warning">PLEASE SEE THE WARNING ABOVE</a>
+<li>
+<a href="#introduction">
+Introduction
+</a>
+<li>
+<a href="#security">
+Email and Security
+</a>
+<li>
+<a href="#redirecting">
+Redirecting ADF Email to another mail server
+</a>
+<li>
+<a href="#remoteaccess">
+Accessing your Email on the ADF Email Server from a remote machine
+</a>
+<small>
+<ul>
+<li>
+<a href="#imap">
+IMAP
+</a>
+<li>
+<a href="#pop3">
+POP3
+</a>
+<li>
+<a href="#exchange">
+Exchange
+</a>
+</ul>
+</small>
+<li>
+<a href="#mutt">
+Example - Fetchmail and Mutt
+</a>
+<small>
+<ul>
+<li>
+<a href="#fetchmail">
+Use fetchmail to get the mail to your unix/linux machine
+</a>
+<li>
+<a href="#usemutt">
+Use Authenticated SMTP and Mutt to send email.
+</a>
+</ul>
+</small>
+<li>
+<a href="#usinghtml">
+Note on using HTML in email
+</a>
+<li>
+<a href="#maintained">
+Maintained by
+</a>
+</ul>
+<hr>
+<p>
+<a name="introduction"></a>
+<h3><b>
+Introduction
+</b></h3>
+<blockquote>
+This is a first draft attempt to provide general information about
+accessing your email on campus if you are not a Windows user. These
+instructions were provided by Zeth Green and installed here after
+minor editing by Aaron Sloman.
+<p>
+It is assumed that you are a member of the University of Birmingham and
+have a central email account as a member of the University on the 'ADF
+server' (Active Directory Fsomethingorother server).
+The instructions below
+enable you to use central University email with any email
+setup on a machine on or off campus.
+<p>
+There are two options
+<ul>
+<li>
+Getting all your incoming mail redirected to another mail server as soon
+as it arrives.
+<li>
+Accessing your mail remotely using another machine, on campus or
+elsewhere.
+</ul>
+These two options are described in more detail below, after a note on
+security.
+<p>
+</blockquote>
+<hr>
+<a name="security"></a>
+<h3><b>
+Email and Security
+</b></h3>
+<blockquote>
+Most email is transmitted in a form that means that it can easily be
+read on any machine through which it passes, and it is usually the case
+that mail that you send or receive goes through several different
+machines on the internet between the sender's machine and the receiver's
+machine. A widely used protocol for sending email is SMTP (Simple Mail
+Transfer Protocol) described
+<a href="http://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">Here
+on Wikipedia
+</a>
+<p>
+The contents of a mail message can be made more secure by encrypting
+the contents, e.g. using 'Secure SMTP' as described in
+<a href="http://tools.ietf.org/html/rfc3207">this technical
+document.</a> A less technical document on authentication is
+<a href="http://en.wikipedia.org/wiki/E-mail_authentication">here
+in Wikipedia.</a>
+<p>
+Secure SMTP uses transport-layer security to provide private,
+authenticated communication over the Internet. This gives SMTP agents
+the ability to protect some or all of their communications from
+eavesdroppers and attackers.
+<p>
+If you don't know what that means see if
+<a href="http://www.cs.brown.edu/system/net_remote/smtp/">advice at
+Brown University</a> makes it any clearer.
+<p>
+Some additional information is provided
+<a
+href="http://www.helpdesk.bham.ac.uk/email/securesmtp.shtml">here.</a>
+<p>
+<b>Beware of false promises</b>
+<br>
+Neither government ministers nor internet services should be believed
+when they claim that total security can be provided.
+</blockquote>
+<hr>
+<a name="redirecting"></a>
+<h3><b>
+Redirecting ADF Email to another mail server
+</b></h3>
+This is the first option for reading your bham email somewhere
+other than on the central mail server.
+<p>
+<p>
+<blockquote>
+<b>Accessing or redirecting
+email from an address of the form NAME@bham.ac.uk</b>
+<p>
+If you are a computer scientist then you probably do not want to use the
+central email: instead you probably want to get your central email to be
+automatically redirected to your CS email. Similarly if you have email
+access in another school that runs its own email service.
+<p>
+There are two ways to do this
+<p>
+<ul>
+<li>
+You can redirect email sent to your central
+email account by using this form:
+<a href="http://www.mailhub.bham.ac.uk/exec/new_redirect.pl">http://www.mailhub.bham.ac.uk/exec/new_redirect.pl</a>
+<p>
+<li>
+Alternatively you can follow the instructions given here:
+<a href="http://www.email.bham.ac.uk/addresses_mrs.shtml">http://www.email.bham.ac.uk/addresses_mrs.shtml</a>
+<blockquote>
+<small>
+Send an email message to mail-request@bham.ac.uk
+with a message body containing the following two lines, the first
+specifying your current central email address (without 'bham.ac.uk') and
+the second specifying your new address:
+<p>
+<i>Mailname:</i> mailname
+<br>
+<i>Destination:</i> destination for electronic mail
+<p>
+You can give multiple 'Destination' lines if you wish mail to be
+forwarded to more than one place. There are examples on the web site.
+
+</small>
+
+</blockquote>
+
+</ul>
+
+<p>
+Unfortunately, as many have discovered, this will not direct all email,
+e.g. email from someone on campus who uses the microsoft exchange
+system.
+<br>
+Zeth has provided the following explanation:
+<blockquote>
+<small>
+As far as I know, it is caused mainly by people
+typing human names into Microsoft Outlook and expecting the global ADF
+address list to find them. This unfortunately sends email direct to
+the mailbox, i.e. blairt@adf.bham.ac.uk rather than to the mailname
+t.blair@bham.ac.uk. Thus bypassing any redirects that the recipient
+has set up and usually failing to get anyone who has an email address
+hosted outside the central ADF servers (e.g. computer science).
+</small>
+</blockquote>
+That sounds plausible. There is an equally bad fault in the system.
+Apparently if such a user sends a message to someone off campus,
+with a Cc to a person on campus, instead of putting the correct
+campus email address in the Cc list, it inserts the 'exchange'
+address. So that recipient may never see the message, and moreover, if
+there is a reply from the external user, will never see the reply
+either as it will go straight to the mailbox, bypassing any redirects
+set up.
+
+</blockquote>
+<hr>
+<a name="remoteaccess"></a>
+<h3><b>
+<a href="#warning">PLEASE SEE THE WARNING ABOVE</a>
+<p>
+Accessing your Email on the ADF Email Server from a remote machine
+</b></h3>
+Instead of redirecting mail to another mail service, you can read or
+fetch mail from the ADF server, while using a remote machine.
+<blockquote>
+There are three different protocols available.
+<ul>
+<a name="imap"></a>
+<li>
+<b>IMAP</b>
+<p>
+This is preferable if you want to leave your email on the server and not keep a local copy for offline reading.
+<p>
+Install the following settings on your local mail browser/reader, e.g.
+thunderbird.
+<p>
+<blockquote>
+<b>Incoming server :</b>
+imap4.bham.ac.uk
+<br>
+<b>Outgoing server :</b>
+smtp.bham.ac.uk
+<blockquote>
+Replace that with 'auth-smtp.bham.ac.uk'
+if you wish to use authenticated (secure) SMTP.
+</blockquote>
+<br>
+<b>Username :</b> your University username (e.g. smithj)
+<br>
+</blockquote>
+<p>
+<a name="pop3"></a>
+<li>
+<b>Pop3</b>
+<p>
+This is preferable if you want to download and keep the email locally.
+<p>
+Use these settings in your local mail client (e.g. Thunderbird).
+<p>
+<blockquote>
+<b>Incoming server :</b>
+pop3.bham.ac.uk
+<br>
+<b>Outgoing server :</b>
+smtp.bham.ac.uk
+<br>
+(or auth-smtp.bham.ac.uk if you wish to use authenticated SMTP)
+<br>
+<b>Username :</b>
+your University username
+<br>
+<b>Password :</b>
+your University password
+</blockquote>
+<p>
+<a name="exchange"></a>
+<li>
+<b>Exchange</b>
+<p>
+This can be used for Evolution and perhaps other graphical email clients. This is useful if you want to use the University calendar.
+<p>
+<b>Server name  :</b> one of:
+<blockquote>
+adf.bham.ac.uk (on campus),
+<br>
+ex1.bham.ac.uk (staff off campus),
+<br>
+ex2.bham.ac.uk (students off campus)
+</blockquote>
+<b>Username :</b>
+your University username
+<br>
+<b>Password:</b>
+your University password
+<p>
+<b>NOTES:</b>
+<br>
+1. Apparently the ex1 and ex2 mail servers can be accessed in a
+web browser, e.g. firefox.
+<br>
+2. Although (at present) you cannot get your 'exchange' email
+automatically redirected to another address, you can use the 'fetchmail'
+mechanism described below, to get it automatically fetched to a linux
+machine, so that you are not forced to use a graphical mail browser
+to read it.
+</ul>
+<p>
+</blockquote>
+<hr>
+<a name="mutt"></a>
+<h3><b>
+Example - Fetchmail and Mutt
+</b></h3>
+Zeth provided the following instructions for using The Mutt Mail User
+Agent to read and send mail.
+<blockquote>
+<p>
+I  set myself up to use Mutt for reading and sending mail on a
+linux machine.
+<p>
+(There are other possible programs for reading and sending, e.g. Pine.)
+<p>
+<a name="fetchmail"></a>
+<b>Use fetchmail to get the mail to your unix/linux machine</b>
+<br>
+Fetchmail periodically uses pop3 or some other specified protocol to
+download any new email.
+<p>
+You can control what fetchmail does by means of your ~/.fetchmailrc
+file.
+<p>
+E.g. start the .fetchmailrc file with the following,
+where the first line makes fetchmail run every 600 seconds (i.e. every
+10 minutes) and the second line specifies useful defaults for the 'poll'
+command, used below:
+<blockquote>
+<small>
+set daemon 600
+<br>
+defaults proto pop3 port 110 mimedecode
+</small>
+</blockquote>
+<p>
+Lines like the following (with appropriate user name and password) can
+then specify mail servers to fetch email from. In this case the
+'protocol pop3' information duplicates the specification above in the
+'defaults' line and could be removed.
+<p>
+<blockquote>
+<small>
+poll pop3.bham.ac.uk protocol pop3 user "USERNAME" password "PASSWORD"
+</small>
+</blockquote>
+Note: if you want to leave the mail on the remote server after copying
+it, you can add the word 'keep' at the end.
+<br>
+Fetchmail gives other options which are explained in its 'man' file.
+<p>
+<a name="usemutt"></a>
+<b>Use Authenticated SMTP and Mutt to send email.</b>
+<br>
+To allow mutt to send via the university auth-smtp service, add
+the following line to your ~/.muttrc file:
+<p>
+<blockquote>
+<small>
+set sendmail="/usr/bin/nbsmtp -D -s -U USERNAME -P PASSWORD -d bham.ac.uk -h auth-smtp.bham.ac.uk -f
+USERNAME@bham.ac.uk"
+</small>
+</blockquote>
+Replace 'nbsmtp' with the command for 'smtp' on your system.
+<p>
+<small>
+<b>NOTE:</b>
+<br>
+You can use 'fetchmail' as described above without using
+'mutt'.
+<br>
+The fetchmail program merely reads mail from the remote mail
+servers and puts it in your local incoming mail file (usually a file
+with your user name in '/var/spool/mail'. Then any linux mail reading
+program can access it, e.g. 'pine', 'elm' or even the very primitive
+and ancient 'mail' program
+(not really recommended, except as a last resort.)
+<p>
+This accords with the general unix/linux philosophy of not forcing you
+to use large multifunctional tools and instead providing smaller
+special-purpose tools that can work together and which can be combined
+into large multifunctional tools in different ways.
+</small>
+</blockquote>
+<p>
+<hr>
+<a name="usinghtml"></a>
+<h3><b>
+Note on using HTML in email
+</b></h3>
+<blockquote>
+For information on why you should turn off the default of sending
+email in HTML (especially the default of sending BOTH plain text
+and HTML), and information on how to turn it off, please
+see
+<blockquote>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/textmail.html">http://www.cs.bham.ac.uk/~axs/textmail.html</a>
+</small>
+</blockquote>
+Alas, it seems that users of the Exchange server are not able to turn it
+off!
+</blockquote>
+<p>
+<hr>
+<a name="maintained"></a>
+<small>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title> Aaron Sloman - XXXX</title>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/ub4.png"/>
+</a>
+<h2><b>
+Skype Echo Problem
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+Last updated: 3 Nov 2007
+<br>
+</small>
+</b></h2>
+<p>
+This file is an extension to my
+<a href="d600-linux.html">'Linux on Laptop' web site,</a>
+although it is not strictly a linux problem (Windows and Mac users
+also appear on web sites discussing Skype echo problems) nor a
+laptop problem.
+<p>
+It seems that many people have problems with audio echo when
+attempting to use Skype. This can have various causes and various
+cures. See
+<a href="http://www.skype.com/help/guides/soundsetup.html">http://www.skype.com/help/guides/soundsetup.html</a>
+However the
+<a href="http://www.skype.com/help/guides/soundsetup_linux.html">linux link from that page</a>
+does not have the important information I found elsewhere (at least
+it did not when I looked on 3 Nov 2007).
+<p>
+The most obvious cause of echo is a microphone picking up the sounds
+coming from a nearby speaker. This should not occur if you are using
+a headset. Other causes can be transmission problems on the
+internet.
+<p>
+The problem I had was that I could use the skype test call service
+and everything seemed fine. Other people I called said they had no
+problem communicating with other skype users, though when talking to
+me they kept hearing their own echo, and I found their sound levels
+going up and down making it difficult to hear what they were saying.
+<p>
+It was clear from all the facts that the problem had something to do
+with my audio settings. However when I ran alsamixer, kmix or
+gnome-volume-control I could not find anything that looked wrong.
+<p>
+Eventually I found the solution here:
+<a href="http://forum.skype.com/index.php?showtopic=23373">http://forum.skype.com/index.php?showtopic=23373</a>
+<br>
+The version of the solution for windows was:
+<pre>
+    1. Download the latest version of the realtek driver (important)
+    2. double click on the windows speaker icon
+    3. select playback properties
+    4. MUTE the microphone in the playback section
+    5. select recording properties
+    6. SELECT the microphone in the recording section
+</pre>
+
+So I translated that for my situation, as follows:
+
+
+<pre>
+    1. run alsamixer
+    2. set it to show playback
+    3. turn off mic
+    4. set it to show capture
+    5. turn on mic
+</pre>
+
+After that when I tried talking to a colleague the echo problem had
+gone. I hope this information is useful to others. I suspect the
+alterations can also be made using kmix or gnome-volume-control but
+have not checked.
+<hr>
+<small>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+</body>
+</html>

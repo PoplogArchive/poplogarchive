@@ -1,0 +1,2492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Wireless access using WPA and Eduroam</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+<h2><b>
+Using wpa_supplicant on Linux to Connect to
+<br>
+the University of Birmingham (Bham)
+<br>
+Campus (Enterprise) Wireless Network and
+<br>
+Eduroam -- the multi-site network.
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<p>
+(This is a supplement to my messy
+<a href="http://www.cs.bham.ac.uk/~axs/laptop"> web site on using Linux on laptops</a>
+<br/>
+mosly using various Dell Latitude laptops running various versions
+<br/>
+of Fedora, most recently Fedora 18 on a Dell latitude E6410)</b>
+</small>
+</b></h2>
+<b>__________________________________________________________________________________________</b><p>
+
+<b>Last updated:</b>
+<br/>
+18 Jul 2013; 1 Aug 2013; 19 Aug 2013; 10 Sep 2013 (<a href="#password">removed encrypted passwords</a>)
+<br/>
+17 Jul 2013: Upgraded from Fedora 17 to Fedora 18, mid June 2013.
+<br/><b>__________________________________________________________________________________________</b><p>
+
+<h3><b>
+<a href="#nm-fixed">Skip background and jump
+to information on making NetworkManager work in F18</a>
+</b></h3>
+<b>__________________________________________________________________________________________</b>
+
+<h3><b>
+17 Jul 2013; Installed Fedora 18 in June 2013
+<br/>
+Now using NetworkManager
+<br/>
+<small>
+For unknown reasons, Wicd would not work on my laptop after upgrading to Fedora 17.
+<br/>
+However, for the first time NetworkManager worked OK.
+<br/>
+Then new problems turned up in Fedora 18 -- password problems. These seem to be a
+<br/>
+result of complex changes in security mechanisms on linux systems as well as changes
+<br/>
+in NetworkManager.
+<br/>
+On my machine, everything now works, with fixes described <a href="#nm-fixed">below.</a>
+</small>
+</b></h3>
+
+<b>__________________________________________________________________________________________</b>
+<p>
+<b>Background:</b>
+<br/>
+When I first started using wireless on linux I simply used start-up scripts described
+<br/>
+elsewhere on this web site. As the systems became more complex, especially with use
+<br/>
+of WPA and WPA-enterprise, the configuration became more complex.
+<br/>
+
+<br/>
+Eventually I had to switch to using one of the graphical network tools and having
+<br/>
+found NetworkManager awful I used Wicd. That worked for some time, but from Fedora 17
+<br/>
+Wicd seemed to be unable to cope with recent changes to security mechanisms. I was
+<br/>
+unable to configure it so as to save settings. So I switched to NetworkManager
+<br/>
+because that worked.
+<br/>
+
+<br/>
+For a while NetworkManager worked, although I disliked its user interface: e.g. it
+<br/>
+gave no option to choose between access points with the same Essid, as Wicd does --
+<br/>
+sometimes useful at a location where loads on the access points differ.
+<br/>
+
+<br/>
+In May-June 2013 I started having problems connecting to our campus web site using
+<br/>
+NM, so I upgraded my operating system to Fedora 18. One immediate benefit was that
+<br/>
+resume (thaw) from pm-hibernate worked immediately, without requiring modifications
+<br/>
+to grub.cfg, which I had previously needed.
+<br/>
+
+<br/>
+However, recent versions of NetworkManager (e.g. NetworkManager-0.9.8.2-1.fc18.x86_64)
+<br/>
+interact badly with new (?) linux security mechanisms and this made it impossible for
+<br/>
+me to provide a stored password for accessing our campus enterprise wifi system
+<br/>
+(UOBwifi) or eduroam without typing in a password whenever I wanted to connect or
+<br/>
+reconnect, even though NM happily stored passwords for other WPA services, e.g. at home.
+<br/>
+
+<br/>
+Eventually I found a fix described <a href="#nm-fixed">below.</a> I hope this will help others.
+<br/>
+
+<br/>
+There are many web sites where users are now reporting problems with NetworkManager
+<br/>
+passwords and asking for help. I suspect this is a result of some major reorganisation
+<br/>
+of Linux, which may take some time to settle down. But at least for Fedora users who
+<br/>
+know how to edit text files as super-user, the following solution seems to work, for
+<br/>
+the latest version of NetworkManager. I have not tried it on earlier versions. See
+also
+<pre>
+    <a href="https://fedoraproject.org/wiki/Tools/NetworkManager#Known_problems">https://fedoraproject.org/wiki/Tools/NetworkManager#Known_problems</a>
+    <a href="https://wiki.archlinux.org/index.php/NetworkManager#Troubleshooting">https://wiki.archlinux.org/index.php/NetworkManager#Troubleshooting</a>
+</pre>
+<p>
+<b>NB:</b> The files and scripts needed for Redhat-like systems (e.g. Fedora) are
+<br/>
+different from those needed for Debian-based systems (e.g. Ubuntu). So these details
+<br/>
+will probably have to be varied for other versions of linux. If a user of another
+<br/>
+system wishes to send me either a pointer to a solution, or text to be added here,
+<br/>
+e.g. for Ubuntu users, I'll gladly help.
+<p>
+<b>__________________________________________________________________________________________</b>
+<a name="nm-fixed"></a>
+<h3><b>
+<b>Fix for NetworkManager Problems in Fedora 18 (and possibly others)</b>
+</b></h3>
+<a name="password"></a>
+<blockquote>
+<b>Note added 10 Sep 2013:</b> After following the recommendations below had
+<br/>
+worked for a couple of weeks, I found my laptop would, for no reason, connect
+<br/>
+with either eduroam or our local UOBwifi network, both using Enterprise wifi.
+<br/>
+Eventually I got it working again after re-creating the files below, using my
+<br/>
+password in plain text, rather than using the output of wpa_passphrase. So if
+<br/>
+you try using encrypted passwords in the keys_XXX files, without success, try
+<br/>
+inserting the password unencrypted.
+</blockquote>
+<b>Problem and solution:</b>
+<br/>
+After upgrading to F18. I was at first very annoyed that NetworkManager would not
+<br/>
+save passwords for Enterprise (MSCHAPV2) wifi connections, requiring me to type in
+<br/>
+the password whenever I wanted to connect or re-connect, even though passwords for
+<br/>
+home and other wifi connections using WPA worked fine with a stored password.
+<p>
+(Management of passwords for wifi connections seems to have become a problem in
+<br/>
+several versions of linux recently (mid 2013). I found many suggested solutions that
+<br/>
+did not work for me, before discovering the solution presented here, by chance,
+<br/>
+which may provide useful clues for users of other versions of Linux.)
+<br/>
+
+<br/>
+<b>SOLUTION:</b>
+<br/>
+For a given ESSID (XXXX) NetworkManager on Fedora now uses two files
+<br/>
+(whose names and directories may be different in other versions of linux).
+<pre>
+    /etc/sysconfig/network-scripts/ifcfg-XXXX
+        Specifies type of connection, e.g. level of security, along with Essid,
+        device Mac address, user identity and other features (see example below).
+
+    /etc/sysconfig/network-scripts/keys-XXXX
+        Includes stored (optionally encrypted) password for connection to XXXX
+</pre>
+Ideally nm-connection-editor should manage the contents of those files but I found
+<br/>
+that it could not deal properly with the files for enterprise wifi systems, e.g.
+<br/>
+'eduroam' or our campus system 'UOBwifi', both of which use PEAP and MSCHAPV2
+<br/>
+
+<br/>
+<b>Contents of /etc/sysconfig/network-scripts/ifcfg-XXXX for 'Enterprise' wifi (MSCHAPV2)</b>
+<br/>
+(Make sure you remove or comment out any line specifying 'USER' for the password source')
+<pre>
+   ## Template for file /etc/sysconfig/network-scripts/ifcfg-XXXX
+   ## For 'Enterprise' wifi
+   ## Much of this is set up automatically when you use nm-connection-editor
+   ## But I found the user name (identity) and password (in the keys file) had to be
+   ## added by hand
+
+   ## Here 'XXXX' is the ESSID.
+   NAME=XXXX
+   ESSID="XXXX"
+   BOOTPROTO=dhcp
+   DEFROUTE=yes
+   ## Insert MAC address for device in next  line
+   HWADDR="XX.XX.XX.XX.XX.XX"
+   ## uob_root_linux.pem certificate available from campus web site
+   ## This will be different for users of other sites
+   IEEE_8021X_CA_CERT=/etc/cert/uob_root_linux.pem
+   IEEE_8021X_EAP_METHODS=PEAP
+   ## Insert your 'identity' here (username@email.address for eduroam, or just username for UOBwifi)
+   IEEE_8021X_IDENTITY="username"
+   IEEE_8021X_INNER_AUTH_METHODS=MSCHAPV2
+   ##Next one is optional: can save time connecting on IPV4 network
+   IPV4_FAILURE_FATAL=yes
+   IPV6INIT=yes
+   IPV6_AUTOCONF=yes
+   IPV6_DEFROUTE=yes
+   IPV6_FAILURE_FATAL=no
+   IPV6_PEERDNS=yes
+   IPV6_PEERROUTES=yes
+   KEY_MGMT=WPA-EAP
+   MODE=Managed
+   ###Optional?
+   ONBOOT=yes
+   PEERDNS=yes
+   PEERROUTES=yes
+   TYPE=Wireless
+   ## The UUID was inserted by NetworkManager
+   UUID="UUID FOR DEVICE"
+</pre>
+<b>I had to delete this line previously inserted by nm-connection-editor:</b>
+<br/>
+<pre>
+    IEEE_8021X_PASSWORD_FLAGS=user
+</pre>
+Also remove any line of the following form: it should go into the 'keys-XXXX' file.
+<pre>
+    IEEE_8021X_PASSWORD=your-own-password
+</pre>
+
+<b>The 'keys' file (readable only by root -- and also non-writeable, as a precaution)</b>
+<br/>
+The second file has the name keys-XXXX
+<br/>
+(where XXXX, as before, is the Essid, e.g. eduroam or UOBwifi at Birmingham university)
+<pre>
+    ## Contents of file keys-XXXX
+    ## You can use either your actual password or the long encrypted version produced
+    ## by invoking wpa_passphrase:
+    ## insert here either your password in plain text or the long password produced
+    ## as psk=, using the command
+    ##      wpa_passphrase essid password
+    IEEE_8021X_PASSWORD="long encrypted password for the user at the service"
+
+    ## Warning: I've had to revert to using the unencrypted password, as noted <a href="#password">above.</a>
+</pre>
+
+So you end up with these two new files:
+<pre>
+    ifcfg-XXXX      (World-readable and root-writeable).
+    keys-XXXX       (Readable only by 'root')
+</pre>
+You can store the password in plain text in the keys-XXXX file. You may or may not
+<br/>
+find that the the encrypted form produced by wpa_passphrase works also.
+<br/>
+
+<br/>
+<b>Running nm-connection-editor not as root</b>
+<br/>
+The changes so far allowed me to run nm-connection-editor as root, but if I tried
+<br/>
+running it while logged in as myself, without 'sudo', I got an error message about a
+<br/>
+file being protected, namely
+
+<pre>
+** (nm-connection-editor:6176): CRITICAL **: unable to create file'
+        /run/user/1003/dconf/user': Permission denied.  dconf will not work properly.
+</pre>
+
+<br/>
+(I've given a fake user number here: 1003 should be your user id, as in the /etc/passwd file.)
+<br/>
+
+<br/>
+All I had to do then was 'chown -R xxxx /run/user/1003/' where 'xxxx' represents my user name.
+<br/>
+That made everything in /run/user/1003/ owned by me.
+<br/>
+
+<br/>
+After that I could run nm-connection-editor as myself and not get an error message.
+<p>
+If you know a better way to do this please email me with details: a.sloman[AT]cs.bham.ac.uk
+<p>
+<h3><b>
+Note added 19 Aug 2013
+<br/>
+The user interface provided by NetworkManager has improved recently, including a
+<br/>
+change to nm-applet that seems to allow users to select between different access
+<br/>
+points with the same Essid (as wicd did long ago).
+<br/>
+But I would still use the wicd interface if it could be made to work with the new
+<br/>
+security mechanisms, as it is much better designed than NetworkManager's.
+<br/>
+If anyone knows how to make wicd work on Fedora 18 without gnome please let me know.
+</b></h3>
+
+<b>__________________________________________________________________________________________</b><p>
+
+<b>NOTE: /etc/wpa_supplicant/wpa_supplicant.conf</b>
+<br/>
+As far as I can tell wpa_supplicant no longer looks in that wpa_supplicant.conf
+<br/>
+file for security information. I don't know whether the file is required at all. I
+<br/>
+have simply removed user names and passwords from it, leaving the rest for the time
+<br/>
+being.
+<p>
+<b>Fedora Bugzilla Discussions</b>
+<br/>
+Some users may find these useful:
+<pre>
+    <a href="https://bugzilla.redhat.com/show_bug.cgi?id=982429">https://bugzilla.redhat.com/show_bug.cgi?id=982429</a>
+    Bug 982429 - NetworkManager asks for wireless password every time when i try to connect
+
+    <a href="https://bugzilla.redhat.com/show_bug.cgi?id=974811">https://bugzilla.redhat.com/show_bug.cgi?id=974811</a>
+    Bug 974811 - NetworkManager dispatchers dbus services misconfiguration
+</pre>
+<b>__________________________________________________________________________________________</b><p>
+<h3><b>
+EVERYTHING BELOW THIS POINT IS OUT OF DATE.
+<br/>
+But some fragments may still be useful, so
+<br/>
+it will remain available for a while.
+<br/>
+Later it will be moved to a separate (history) file.
+<p>
+<small>
+Installed: Aug 2006
+<br/>
+Previous updates: 26 Mar 2010; 30 May 2010; 12 Jun 2010; 26 Jun 2010; 6 Aug
+2010; 15 Feb 2012; 12 Jun 2013
+</small>
+</b></h3>
+<blockquote>
+These notes assume that you already have a working wireless card, which you have
+<br/>
+tested on some other wireless network.
+<br/>
+
+<br/>
+If your wireless card is not working, try to configure it using 'system-config-network'
+<br/>
+or some other tool that works on your system, or ask a friend for help. Come back
+<br/>
+when the card works and has been tested on another more easily accessible wireless
+<br/>
+network, so that you are sure that you have the right drivers for your wireless card
+<br/>
+and it has been properly recognised by your operating system.
+</blockquote>
+
+<b>__________________________________________________________________________________________</b><p>
+<b>
+ERRONEOUS UPDATE 12 Jun 2013: new version of certificate.
+</b>
+<br/>
+<small>
+Correction 17 Jul 2013:
+<br/>
+This recommendation to convert .pem certificate to .der proved to be erroneous.
+<br/>
+</small>
+<hr/>
+
+<h3><b>
+UPDATE 26 Jun 2010: disable selinux
+<br/>
+<small>
+Like many other linux users, I have found that the Selinux security
+add-on causes too many problems,
+<br/>
+even if it is required on corporate computing
+services.
+<br/>
+So I now disable selinux completely in this file:
+<pre>
+    /etc/selinux/config
+by using
+    SELINUX=disabled
+</pre>
+
+</small>
+</b></h3>
+<hr/>
+<a name="uobwifi"></a>
+<h3><b>
+NEWS 26 Mar 2010:
+<br/>
+<a href="uobwifi.html">Introduction of new service UOBwifi with new certificate (March 2010)</a>
+<br>
+<small>
+NB The previous service UOBWLAN was phased out in the summer of
+2010,
+<br/>
+</small>
+</b></h3>
+<hr/>
+<a name="disclaimer"></a>
+<h3><b>
+NOTE:
+THIS IS NOT AN OFFICIAL DOCUMENT OF THE UNIVERSITY OF BIRMINGHAM
+OR THE SCHOOL OF COMPUTER SCIENCE. NEITHER THE UNIVERSITY NOR THE
+SCHOOL NOR THE AUTHOR OF THIS DOCUMENT CAN ACCEPT ANY RESPONSIBILITY
+FOR ANY CONSEQUENCES OF FOLLOWING THE ADVICE OFFERED HERE.
+<BR>
+(In other words: the normal conditions of mutual-help for Linux users
+apply!)
+</b>
+</h3>
+<blockquote>
+In addition, please note that some of the helpdesk staff in Information
+Services are able to help users who wish to use a linux laptop to access
+the campus wireless service, but they
+will not physically change settings on
+user machines. That is the responsibility of users.
+<p>
+However, the Information Services web site now does give advice for
+linux users, and you should try their instructions before trying
+mine. See:
+<ul>
+<li>
+<a href="http://www.wireless.bham.ac.uk/">http://www.wireless.bham.ac.uk/</a>
+<li>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/">http://www.wireless.bham.ac.uk/start/configuration/</a>
+<li>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/linux.shtml">http://www.wireless.bham.ac.uk/start/configuration/linux.shtml</a>
+<br/>
+(Includes information about getting the global root certificate for
+linux users.)
+<li>
+<a href="http://www.helpdesk.bham.ac.uk/laptopsurgery/linux.shtml">http://www.helpdesk.bham.ac.uk/laptopsurgery/linux.shtml</a>
+</ul>
+<p>
+If that does not work for you try my method below, after fetching
+and installing the certificate specified on the above web page in
+'/etc/cert'
+<p>
+Alternatively, use a modified version of
+<a href="wicd.html">my instructions for using wicd</a>, namely when
+setting up the connection to uobwifi make sure you specify the new
+certificate in /etc/cert/
+</blockquote>
+<hr/>
+<a href="#contents">Jump to Contents List, below.</a>
+<hr/>
+<h3><b>
+8 Jul 2009: Fedora 10, using WICD to connect to WPA service
+</b></h3>
+<b>I wrote on 2nd June 2009:</b>
+<blockquote>
+For unknown reasons I started having difficulty connecting to
+wireless networks after upgrading from F9 to F10.
+<br/>
+However, I have
+overcome the problems by installing 'wicd', described in
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/wpa/wicd.html">http://www.cs.bham.ac.uk/~axs/laptop/wpa/wicd.html</a>
+</blockquote>
+Later I discovered a way to make my old scripts, described below,
+work, with a minor change, so that I did not need to use wicd.
+<p>
+The old scripts were designed to set up the files appropriate for
+the wireless service I was trying to connect to at these locations,
+after which they restarted the wpa_supplicant service and attempted
+to restart the wireless interface eth1.
+<p>
+Starting wpa_supplicant
+caused the interface to connect with the wireless access point, as
+could be seen by giving this command, which displays an encryption
+key (among other things), if the association with the access
+point is successful.
+<pre>
+    iwconfig eth1
+
+## produces:
+    ...
+    Encryption key:CB08-BE5E-DD56-7E0C-.... etc. etc.
+    ...
+</pre>
+However, trying to make eth1 connect via dhcp, by giving
+the command
+<pre>
+    ifup eth1
+</pre>
+(or using 'dhclient'), caused the effect of wpa_supplicant to be
+turned off, i.e. losing the association with the access point,
+and that prevented the connection working.
+<p>
+<b>The solution (Revised 26 Mar 2010): Use dhclient with wpa_supplicant
+</b>
+<br>
+The solution was to make wpa_supplicant restart, wait a few seconds
+for the machine to associate with the access point, and then use
+dhclient in two steps (the -v is optional).
+<pre>
+    # release any current dhcp lease, and stop dhcp
+    dhclient -r
+
+    # try to connect eth1 using dhcp. (-v is optional, adds verbosity)
+    dhclient -v eth1
+
+    ## (Also works with 'wlan0' if you use that instead of 'eth1')
+
+   <small><a name="warning"></a><b>WARNING</b>
+    This does not provide any way of choosing between access points with
+    the same ESSID, but with different signal strengths: so if you do connect
+    successfully it may not select an optimal access point.
+    This is not a problem when all access points available are equally
+    good. However if some are much better than others, then you should
+    probably use a tool like 'wicd' that allows you to select a preferred
+    access point to connect to.</small>
+</pre>
+
+<p>
+Make sure these files are correct, as described below.
+<pre>
+    /etc/wpa_supplicant/wpa_supplicant.conf
+    /etc/hosts
+    /etc/resolv.conf
+        ## Unless running dhcp
+    /etc/sysconfig/network
+    /etc/sysconfig/network-scripts/ifcfg-eth1
+        ## this should include 'ONBOOT=no' so that it doesn't
+        ## immediately try to connect when the machine is booted or
+        ## the network service restarted.
+
+    <a name="convert-cert"></a>
+    ## Specify this certificate if you are using the uobwifi or eduroam connection
+    <a href="etc/cert/uob_root_linux.pem">etc/cert/uob_root_linux.pem</a>
+
+</pre>
+
+With thse files in place you can run a script with these commands.
+<pre>
+    ## restart network service
+    service network restart
+
+    ## restart firewall (optional)
+    service iptables restart
+
+    ## Start the wpa_supplicant service with a 6 second delay
+    ## this uses /etc/sysconfig/wpa_supplicant
+    service wpa_supplicant start
+
+    ## pause to allow association (experiment with the time needed)
+    ## I think 6 seconds is longer than needed on my machine.
+    sleep 6
+
+    ## Now restart eth1 (or replace with 'wlan0' if using that)
+    dhclient -r
+    dhclient -v eth1
+</pre>
+<p>
+That now works reliably for me, so I can once again start
+my wireless connection using a shell script, without using wicd,
+or network manager.
+<br/>
+Very much better -- as I can also use the script to do other things,
+e.g. alter security settings, host name, etc. depending on where I
+am.
+<br/>
+<b>NOTE:</b> I have switched to using wicd to set up the connection,
+partly because it allows global settings, e.g. dns servers, and works
+very reliabily. So my script changes things I want to change, then
+starts wicd.
+<p>
+<hr/>
+<a name="applet"></a>
+<h3><b>
+Using 'nm-applet' to connect to the campus wireless service.
+<br/>
+Out of date. Information removed.
+</b></h3>
+<blockquote>
+<b>13 Nov 2007</b>
+<blockquote>
+Zeth Green has also provided instructions, for Ubuntu users,
+here. Now out of date, and no longer needed.
+</blockquote>
+</blockquote>
+<hr/>
+<a name="updates"></a>
+<h3><b>
+NEWS AND UPDATES
+</b></h3>
+<blockquote>
+<p>
+<b>5 Apr 2009: Improving connection scripts </b>
+<br/>
+I have found for some time that I occasionally cannot start up the
+wireless connection without rebooting. This turned out to be due to
+some files left over in /var/run, so I wrote a short script to be
+run to clean things up, available
+<a href="netcleanup">here.</a>
+<br/>
+<b>8 Jul 2009: for some reason this is no longer needed.</b>
+
+<p>
+<hr/>
+
+<p>
+<b><a href="nokia.html">Updated 17 Feb 2009:
+Using Nokia handset on Campus Wifi network</a></b>
+<br/>
+Information provided by Emilis Prascienius
+<p>
+<hr/>
+
+<p>
+<b>4 Nov 2008: Peter Lewis' site on Archlinux
+</b>
+<blockquote>
+<a href="http://www.petesodyssey.org/">Peter Lewis</a> has
+a web page with instructions on how to access
+UOBWLAN and EDUROAM with ArchLinux.
+<br/>
+<a href="http://www.petesodyssey.org/hacking/archlinuxandeduroam">http://www.petesodyssey.org/hacking/archlinuxandeduroam</a>
+<p>
+He writes:
+"ArchLinux is a relatively new
+distribution which is very flexible and configurable, and easily
+allows source packages to be integrated in the same way as its own
+binary packages (and hence easily removable). I particularly like
+its network configuration system, which allows for scanning for a
+wireless network and subsequently connecting to what it finds -
+before being logged into X":
+<br/>
+<a href="http://www.archlinux.org/">http://www.archlinux.org/</a>
+</blockquote>
+<hr/>
+<b>30 Oct 2008: Partial Support for Linux from Birmingham University
+Information Services</b>
+<blockquote>
+There is now a web site maintained by IS that gives one solution to
+the problem of connecting to the campus WIFI system. It may help
+many users.
+<br/>
+<a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/networks/wireless/start/configuration/Linux.asp">https://intranet.birmingham.ac.uk/it/teams/infrastructure/networks/wireless/start/configuration/Linux.asp</a>
+<p>
+For people who do not wish to use NetworkManager or cannot get it to work, the
+<br/>
+mechanisms described below may work.
+However, since I started using Fedora 17 I have had to use NetworkManager.
+
+</blockquote>
+<hr/>
+<h3><b>
+NOTE: 17 Jul 2013
+<br/>
+Almost everything below this point is now probably out of date.
+</b></h3>
+<b>11 May 2008</b>
+<blockquote>
+Note on wlassistant now removed. I use 'wicd' instead.
+You can find information about wlassistant
+<a href="http://www.kde-apps.org/content/show.php?content=21832&forumpage=19&PHPSESSID=ad60910425a96e9bf82c4a7294ad4584">here.</a>
+</blockquote>
+<p>
+<hr/>
+<p>
+<b>25 Apr 2008</b>
+<br/>
+There is an excellent overview article on the Campus Wireless system
+on ZDNet <a href="http://resources.zdnet.co.uk/articles/casestudy/0,1000001994,39385207,00.htm">here.</a>
+
+<hr/>
+
+<b>6 Jan 2008: Wireless problems on Ubuntu Gutsy (version 7.10)
+and other recent Linux systems</b>
+<br/>
+<blockquote>
+In December 2007
+had some experience getting the latest Ubuntu to connect
+to a WPA network (in my home).
+The nature of the problem and some solutions
+are summarised <a href="../ubuntu.html">here.</a>
+This is probably out of date.
+</blockquote>
+<p>
+<hr/>
+<p>
+
+<a name="palm"></a>
+<b>
+13 Jul 2007:
+<a href="http://www.cs.bham.ac.uk/~tmw/uobwlan-palm/">
+Connection instructions for the Palm T|X</a>
+</b>
+<blockquote>
+<small>
+Notes provided by
+<a href="http://www.cs.bham.ac.uk/~tmw/">Tim Williams</a>.
+</small>
+<hr/>
+</blockquote>
+
+<a name="mandriva"></a>
+<b>
+12 Jul 2007:
+<a href="mandriva.html">Using the madwifi driver on Mandriva</a>
+</b>
+<blockquote>
+Notes provided by
+<a href="http://www.cs.bham.ac.uk/~tmw/">Tim Williams</a>.
+<hr/>
+</blockquote>
+<a name="newcert"></a>
+<b>
+19 Dec 2006 (Updated 9 Jul 2009): Wireless Network Certificate
+</b>
+<blockquote>
+There are two 'Authenticated Wireless Network Certificates' for
+linux users to download from the campus web site
+<a href="http://www.helpdesk.bham.ac.uk/laptopsurgery/linux.shtml">http://www.helpdesk.bham.ac.uk/laptopsurgery/linux.shtml</a>
+<p>
+Windows users should look at
+<a href="http://www.wireless.bham.ac.uk/Certs.htm">http://www.wireless.bham.ac.uk/Certs.htm</a>
+
+<hr/>
+</blockquote>
+
+</blockquote>
+<p>
+<hr/>
+<b>
+<a href="#intro">Jump to start of technical information,
+ignoring list of contents, notes
+etc.</a>
+<p>
+<a href="#experts">Linux experts can start here</a>
+</b>
+<hr>
+<a name="contents"></a>
+<h3><b>
+CONTENTS OF THIS FILE:
+<br/>
+<small>
+(Some above, some below.)
+</small>
+</b></h3>
+
+<ul>
+<li>
+<a href="#nm-fixed">
+<b>Fix for NetworkManager Problems in Fedora 18 (and possibly others)</b>
+<br/>
+(above)
+</a>
+<p>
+<li>
+<a href="#updates">
+NEWS AND UPDATES
+</a>
+<p>
+<li>
+<a href="#terminology">
+Notes on terminology used
+</a>
+<li>
+<a href="#revision">
+Revision notes
+</a>
+<li>
+<a href="#fileformat">
+Notes on the format of this file
+</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/~tmw/uobwlan-palm/"> Information
+on using Palm T|X
+</a>
+<li>
+<a href="mandriva.html">Using the UoBWLAN/EDUROAM service
+with the madwifi driver on Mandriva</a>
+</a>
+<li>
+<a href="#intro">Introduction: the problem of accessing the campus
+wireless service</a>
+<li>
+<a href="#prelim">Preliminary considerations and requirements</a>
+<li>
+<a href="#getfirmware">Getting firmware for Intel Wireless cards</a>
+<li>
+<a href="#wpasupp">Fetch and install wpa_supplicant if necessary</a>
+<li>
+<a href="#networkfiles">Where your network configuration files
+(probably) are
+</a>
+<li>
+<a href="#confignet">
+Files for configuring the wireless network
+</a>
+
+<ul>
+<li>
+<a href="#certificate">
+The Bham wireless certificate converted to linux
+</a>
+<li>
+<a href="#supplicantconfig">
+The file /etc/wpa_supplicant/wpa_supplicant.conf
+</a>
+<li>
+<a href="#supplicantserviceconfig">
+The file /etc/sysconfig/wpa_supplicant
+<br>
+Read by wpa_supplicant service script
+</a>
+<li>
+<a href="#otherfiles">
+Other files needed
+</a>
+</ul>
+<li>
+<a href="#controlinterface">
+Directory for control interface
+</a>
+<li>
+<a href="#firewallconfig">Firewall configuration</a>
+<li>
+<a href="#backingup">Backing up files before you start</a>
+<li>
+<a href="#switchprofiles">Switching networking profiles</a>
+<li>
+<a href="#experts"> EXPERTS CAN START HERE</a>
+<li>
+<a href="#fetchfiles">
+Fetch and install files for use with Bham Wireless network</a>
+<li>
+<a href="#testing">Testing the system</a>
+<li>
+<a href="#interactcli">
+Interacting with wpa_cli (Command Line Interface)
+</a>
+<li>
+<a href="#changeloc">
+Moving to a new location on campus without re-starting
+</a>
+<li>
+<a href="#otherusers">
+Comments from other users
+</a>
+<p>
+<li>
+<a href="#winmac">
+The Bham Campus Wireless Service: Information for Windows and Mac Users</a>
+</ul>
+<p>
+<hr>
+<a name="terminology"></a>
+<h3><b>
+Terminology
+</b></h3>
+When I write that something should be done "as super-user" or "as root"
+these are equivalent. You are advised to edit your /etc/sudoers file to
+enable you to use the 'sudo' command to avoid having to become
+super-user when you follow the instructions below. However, that topic
+lies beyond the scope of this file. Here is
+<a href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch09_:_Linux_Users_and_Sudo">
+an introductory overview</a> to 'sudo'
+and
+<a href="http://linuxhelp.blogspot.com/2005/06/sudo-give-selective-super-user-powers.html">another</a>
+and
+<a href="http://www.courtesan.com/sudo/intro.html">another</a>.
+<p>
+<hr>
+<a name="revision"></a>
+<h3><b>
+Revision notes
+</b></h3>
+<blockquote>
+<small>
+<b>
+13 Nov 2006
+</b>
+<blockquote>
+1. Started
+<a href="#otherusers">
+a section for comments from other users.
+</a>
+<p>
+2. Added <a href="#certificate">information about how to convert the campus wireless certificate for
+linux.</a>
+<p>
+3. Reorganised this file a bit and extended the table of contents.
+</blockquote>
+<b>
+21 Aug 2006
+</b>
+<br>
+Some more small changes clarifying things, including more information
+about the directory /etc/sysconfig/networking/profiles/.
+<p>
+<hr>
+<b>
+14 Aug 2006
+</b>
+<br>
+Various minor improvements and some re-ordering of information.
+<p>
+It turns out that if you run wpa_cli without having the
+username and password in the config file it does not ask you for them.
+However, if you use wpa_gui instead of wpa_cli for the interaction,
+everything works, and if you have not put user name and password in the
+config file, the graphical tool asks for them. I have edited the scripts
+and the documentation below accordingly. (Note: you need your
+university username and password, not your school login name and
+password.)
+<p>
+<hr>
+<b>
+13 Aug 2006
+</b>
+<br>
+Added reminder about switching on wireless card, and information about
+changing location without restarting.
+<br>
+Added various notes on the files in the tar package
+and reminders about editing some of them.
+</small>
+</blockquote>
+<hr>
+<b>
+<a href="#intro">Jump to start, ignoring my notes on web site
+formats.</a>
+</b>
+<br>
+<hr>
+<a name="fileformat"></a>
+<b>
+Notes on format of this file
+</b>
+<small>
+<blockquote>
+1. This is deliberately provided as one long file rather than several
+short files, so that it is easy to use your browser text search facility
+to find information. Otherwise you would have to tediously go up and
+down a tree-structured file system looking for things, as is required
+on far too many web sites because of the mistaken view that each web
+page should have only a tiny amount of information (perhaps a good idea
+in the days when most people used only slow dial-up lines and low
+resolution displays: but those days are long gone, though obviously
+very large sites need multiple files).
+<p>
+If you want the effect of several short files showing
+different bits of information you can
+<a href="wpa.html">reopen this file</a> in a new browser window or tab.
+(Easy with firefox.) You can do that for all the links below, even
+though most are links into this file.
+<p>
+2. This file is deliberately loosely formatted. I intensely dislike web
+sites that dictate how many pixels wide my text display should be. So
+this web site leaves it to you. If you want longer lines of text make
+the browser window wider. If you want shorter lines make it narrower. If
+you change font size the line breaks will adjust accordingly.
+<p>
+Compare fixed width <a href="http://www.bbc.co.uk">BBC web site</a>,
+which ignores the user's width preference and wastes screen space on a
+modern display. Contrast that with what
+<a href="http://news.google.com">google does</a> and also two of the UK
+research councils
+<a href="http://www.epsrc.ac.uk">EPSRC</a> and
+<a href="http://www.pparc.ac.uk">PPARC</a>
+(though some of the pages
+<a href="http://www.pparc.ac.uk/In/artcl/csindex.asp">fail</a> on this
+test).
+<a href="http://www.ecs.soton.ac.uk/news/">Another computer science department</a>
+avoids these annoying restrictions web sites.
+Even <a href="http://www.direct.gov.uk/">the Directgov web site</a> does
+it right, to my surprise, since I expect UK government sites to be very
+backward.
+<p>
+Unfortunately
+the
+<a href="http://www.cs.bham.ac.uk/">School of Computer science</a>
+also recently moved to the dreadful 'fixed-width' style, though
+fortunately <a href="http://www.cs.bham.ac.uk/research/labs/principles_of_programming/">
+not for all its
+web pages.
+</a>
+</blockquote>
+</small>
+<p>
+<hr>
+<a name="intro"></a>
+<h3><b>
+Introduction: The Problem
+</b></h3>
+<blockquote>
+The University of Birmingham has a campus wireless computing service
+(WIFI) described
+<a href="http://www.wireless.bham.ac.uk/">here</a>, providing a 802.11g
+(54Mb/s) service, at hotspots depicted
+<a href="http://www.wireless.bham.ac.uk/hotspots/">here.</a>
+<br>
+<a
+href="http://www.wireless.bham.ac.uk/hotspots/edgbaston.shtml">Hotspots
+on main campus.
+</a>
+<p>
+Because Information Services decided to go for a maximum security
+system, it has been very difficult for normal users (especially those
+with older wireless cards) to connect to it --- e.g.
+compared with using a hotel, or airport connection, or most connections
+I have experienced in
+other universities, e.g. for conferences.
+<p>
+Moreover there is no central support for Linux users, only Windows XP
+(Service Pack 2) users, and MAC OSX users. However, there are
+indications on some of the web pages that Linux support will be provided
+later. In the meantime Linux-users are on their own. So mutual support
+will be very important.
+<p>
+Because the campus wireless system adopted very new technology for
+maximum security as soon as it was installed, widely available software
+and hardware on laptops (not only on Linux) were not yet capable of
+coping with the requirements, though things have got much better thanks
+to Linux developments in the last few years.
+<p>
+Because of this, I struggled for over a year before I managed to get to
+the
+point where I can reliably connect to the campus wireless network. Using
+the latest linux tools, I find the connection process described here now
+works faster and more predictably than my previous attempts to use XP to
+connect to the wireless service following
+<a href="#winmac">IS instructions.</a> As explained below, it is also
+easier to make the connection work by giving a command to run a shell
+script, instead of laboriously going through the error-prone process of
+clicking on a sequence of graphical displays as Windows and Mac users
+have to.
+(However, if you are a linux user and prefer
+doing that, follow the
+<a href="wicd.html">'wicd' link.</a>)
+<p>
+<blockquote>
+<small>
+NOTE:
+<br>
+My experience is based on using a Dell Latitude D610 laptop computer,
+with Intel IPW2200 integrated wireless card, now running Fedora Core 5,
+automatically updated to kernel 2.6.17-1.2157_FC5 after installation
+(later upgraded by me to 2.6.17-1.2174_1.rhfc5.cubbi_suspend2 in order
+to be able to use Software Suspend 2).
+<p>
+If anyone has to
+modify these instructions for another configuration, I am happy to be
+informed, provided that I get enough information to specify exactly what
+text I should insert or modify.
+<p>
+This overview may include mistakes or recommend methods that are
+inferior to some alternatives. So please suggest improvements. I'll be
+happy to add them to this file.
+</small>
+</blockquote>
+<p>
+For the sake of completeness (and comparison) I provide
+pointers to information on the Bham IS web site for
+Windows XP and Mac OSX users,
+<a href="#winmac">at the end of this file</a>.
+<p>
+The rest of this file gives information for Linux users wishing to copy
+my method. I have tried to cover a lot of details that may be useful for
+people who are not familiar with the processes of accessing different
+wireless networks. Some of this will not be needed for experts (but I'd
+be grateful if some of them check for errors or infelicities). A
+starting point for Linux experts who already have wpa_supplicant
+installed is provided in <a href="#contents">the table of contents.</a>
+<p>
+<hr>
+
+</blockquote>
+<a name="prelim"></a>
+<b>
+Preliminary considerations and requirements
+</b>
+<br>
+You will need to have
+<small>
+<ul>
+<li>
+<b>ONE OF THE FOLLOWING</b>
+<ul>
+<li>
+A user name and password for the Bham campus Computing Service.
+<br>
+NB these are not the same as your school login name and password.
+<li>
+A user name and password for another UK site that is part of the
+'eduroam' network.
+<br>
+For the latter you should replace "UOBWLAN"
+with "EDUROAM" in all the following instructions, and interpret
+references to ADF user name and password as references to your
+username@xxxx.ac.uk and your password at xxxx campus.
+</ul>
+<p>
+Before using the UOBWLAN service, Birmingham users must be
+registered with Information Services and have a user name and
+password (sometimes referred to as 'ADF' user name, where 'AD'
+stands for 'Active Directory': and the 'F' is a mystery to me).
+<p>
+If you have not registered, but have a student or staff card, you can
+get a user name at one of the IS help desks, e.g. in the building
+opposite Computer Science.
+<p>
+You may be able to get a user name and
+temporary password yourself
+<a href="https://whois.bham.ac.uk/password/NewAccount.htm">here</a>.
+<p>
+<li>
+A wireless card that works with the network. You may need to test it
+on the campus network
+<a href="http:#winmac">using windows</a>
+if these instructions don't work for you on linux.
+<p>
+<li>
+A linux driver for your wireless card, which may or may not come with
+your version of linux.
+<p>
+E.g. recent versions of Linux include a driver for
+the Intel IPW2200 card I use, whereas earlier versions did not.
+<br>
+Some of the versions of linux that provide the driver also include
+the firmware files to go in /lib/firmware, while others require you
+to fetch the firmware files,
+as described <a href="#getfirmware">below.</a>
+<p>
+How to get a
+driver for your card depends on the card and on the version of linux.
+Use google, or friends who have been through the process.
+<p>
+<a name="getfirmware"></a>
+<li>
+In some cases you may need some 'firmware' files.
+<p>
+These don't change the
+firmware but interact with it. E.g. for Intel wireless cards
+this web site gives lots of useful information and pointers to firmware
+and drivers
+<blockquote>
+<a href="http://ipw2200.sourceforge.net/">http://ipw2200.sourceforge.net/</a>
+</blockquote>
+<p>
+<li>
+The wireless tools extension to linux.
+<br>
+This is now included with most
+linux distributions. If you have an old linux installation you may need
+a recent version of wireless tools.
+<br>
+See
+<a href="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html">http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html</a>
+<p>
+<a name="wpasupp"></a>
+<li>
+Wpa_supplicant: the software for accessing the secure wireless network.
+<br>
+This is not needed for ordinary wireless connections, e.g. the
+wireless network in the School of Computer Science, which uses a WEP key
+instead of WPA (still running 802.11b because it is an old network --
+probably one of the first wireless networks on campus).
+<p>
+It is also not needed for most wireless public access
+hot spots, e.g. in hotels, airports, etc.
+<p>
+That may change in the future,
+as the new technology is much more secure, as explained
+<a href="http://www.microsoft.com/windowsxp/using/networking/expert/bowman_03july28.mspx">
+here (microsoft site)</a> and
+<a href="http://www.wifialliance.org/opensection/white_papers/whitepaper-022705-deployingwpawpa2enterprise/">
+here (wifi alliance)</a>.
+<p>
+If you don't already have it on your linux system you can get
+wpa_supplicant from here, and follow instructions to compile and
+install it:
+<blockquote>
+<a href="http://hostap.epitest.fi/wpa_supplicant/">http://hostap.epitest.fi/wpa_supplicant/</a>
+<br>
+When I wrote these instructions I was using version 0.4.8, which
+came with FC5, but some older versions may also work. Newer versions
+are now included with many linux distributions.
+<p>
+If you install wpa_supplicant yourself make sure that you compile and
+install both wpa_supplicant and wpa_cli, since you'll need both,
+if you wish to do it 'my way', as explained below.
+<blockquote>
+<i>wpa_supplicant</i>
+<br>
+provides the extension to the linux wireless service that
+handles communication with the authentication service at the access
+point.
+<br>
+<i>wpa_cli</i>
+<br>
+provides an interactive text-based utility ('Command Line Interface')
+that reports what's going on and allows you to check the current status
+and if necessary give the 'reassociate' command.
+<br>
+<i>wpa_gui</i>
+<br>
+This is an optional extra. It provides a graphical interface tool that
+can be used as the last step in starting up instead of wpa_cli. If you
+have it you don't need to include your ADF username and password in the
+wpa_supplicant configuration file. wpa_gui is not included in FC5 for
+some reason, but if you get the sources for wpa_supplicant you can
+compile it with the 'make wpa_gui' command after doing everything else.
+</blockquote>
+
+</blockquote>
+<a name="networkfiles"></a>
+<p>
+<li>
+Where your network configuration files (probably) are.
+<br>
+It is useful to know where your system keeps information about network
+connections, IP addresses, hostnames, firewall, and the information
+about your network interfaces (e.g. ethernet card, wireless card) as
+these may need to change when you connect to a new network, such as the
+Bham wireless network.
+<p>
+So, before copying what I have done, you should save all your files
+listed below (or their equivalents on your Linux installation) in such a
+way that you can easily restore them. Your linux installation may
+already have tools for managing network profiles, possibly in this
+subdirectory:
+<pre>
+    /etc/sysconfig/networking/profiles/
+</pre>
+containing a directory for each profile with the files to be used for
+that profile. I don't like that because there is no indication of where
+the files go when the profile is selected -- that information is hidden
+the activation scripts. (That could be altered by using a local
+directory tree for a profile, or encoding directory names in pathnames.)
+<p>
+Also, as far as I know that profile mechanism does not support
+associating different firewall configurations or different
+wpa_supplicant configurations with different profiles, as mine does. But
+most people will prefer to use what is provided in which case you will
+need to edit my 'netuob' script.
+<blockquote>
+If requested I could try to produce a version of my script compatible
+with a standard profile mechanism. It would merely require collecting
+into a profile subdirectory, e.g.
+<pre>
+    /etc/sysconfig/networking/profiles/uob/
+</pre>
+all the files that I put in subdirectories called 'uob', apart from the
+firewall script and the /etc/sysconfig/wpa_supplicant file. Then the
+installation script would have to know where each file needs to be
+copied, whereas my script just copies each to its super-directory.
+</blockquote>
+<p>
+Even if old profiles have been saved in the profiles directory I still
+recommend saving all the files mentioned below, as a precaution. (You
+could simply make a tar file of your whole /etc directory, as I do
+after any significant change.)
+<p>
+The directory and file names given here correspond to what I have found
+on Redhat versions of linux and derived versions such as Fedora Core and
+Centos. Your network configuration files may be in different
+locations,e.g. if you use Debian, Ubuntu or some other versions of
+Linux. I believe SuSe and Debian store
+profile information in a directory tree
+in /etc/sysconfig/network/ rather than /etc/sysconfig/networking as in
+RedHat and Fedora.
+SuSE users may find this useful:
+<pre>
+    <a href="http://en.opensuse.org/System_Configuration_Profile_Management">http://en.opensuse.org/System_Configuration_Profile_Management</a>
+</pre>
+Users of other distributions
+may find this useful, though it looks quite old:
+<pre>
+    <a href="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/DISTRIBUTIONS.txt">http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/DISTRIBUTIONS.txt</a>
+</pre>
+
+<p>
+On RedHat-related systems, such as Fedora Core systems, the following
+directories and files may need to have their contents modified when you
+attach to a new network. So you will need to save their old values so
+that you can easily restore them, as is done by a profiles mechanism. On
+a different linux sustem you may have to modify these instructions.
+<br>
+How I run scripts to set up wireless network configurations using
+different subdirectories containing files for different network
+locations, is described later.
+<p>
+<a name="confignet"></a>
+<b>
+Files for configuring the wireless network
+</b>
+<br>
+The following files are used on my machine. The versions I use are all
+included in the tar file described in
+<a href="#fetchfiles">the section on fetching a tar file, below.</a>
+<p>
+In case you wish to install the files manually I specify their contents
+here.
+<ul>
+<a name="certificate"></a>
+<li>
+<b>MODIFIED 12 Jun 2013 (New Certificate Needed)</b>
+<br/>
+/etc/cert/uob_root_linux.der  (This may be needed for newer systems)
+<br/>
+OR
+<br/>
+/etc/cert/uob_root_linux.pem (This may be needed for older systems)
+<br/>
+This is a linux/unix version of the campus certificate available
+<a href="http://www.wireless.bham.ac.uk/Certs.htm">here for windows
+and Mac users</a>.
+<br>
+The linux version, derived from the windows version, can be copied from
+EITHER
+<a href="etc/cert/uob_root_linux.pem">here</a> (.pem version)
+OR
+<a href="etc/cert/uob_root_linux.der">here</a> (.der version)
+<br>
+(Save that to disk, and insert it in /etc/cert/)
+<br>
+<br>
+NOTE:
+<blockquote>
+If you have any reason to think that the central certificate has
+changed, you can fetch the latest .pem version from
+<blockquote>
+<a href="https://intranet.birmingham.ac.uk/it/teams/infrastructure/networks/wireless/start/configuration/Linux.aspx">https://intranet.birmingham.ac.uk/it/teams/infrastructure/networks/wireless/start/configuration/Linux.aspx</a>
+<br/>
+which includes a link at the end, to:
+<br/>
+https://universityofbirmingham.service-now.com/sys_attachment.do?sys_id=3981ee22fd776480e8ee68743023abdd
+
+</blockquote>
+In order to derive the .der version required for linux from the .pem version, you can use
+something like the following conversion command (modified to suit your local naming
+convention).
+
+<pre>
+ openssl x509 -inform  PEM -in /etc/cert/uob_root_linux.pem -outform DER -out /etc/cert/uob_root_linux.der
+</pre>
+
+<p>
+I shall endeavour to keep a copy of the latest certificate
+<a href="#newcert">here.</a> Please inform me
+(A.Sloman@cs.bham.ac.uk) if you think it needs to be updated.
+</blockquote>
+<p>
+<a name="supplicantconfig"></a>
+<li>
+/etc/wpa_supplicant/wpa_supplicant.conf
+<br>
+This configuration file will need to be set up to contain information
+specific to the connection to the campus network.
+<p>
+If you need to connect to different networks using wpa_supplicant you
+can have multiple entries in the file using the 'ssid' field for each
+entry to specify where it is relevant. In the case of the Bham wireless
+network it will be
+<blockquote>
+    ssid="UOBWLAN"  (or ssid="eduroam")
+</blockquote>
+<a name="wpa_gui"></a>
+You can copy the version from
+<a href="etc/wpa_supplicant/wpa_supplicant.conf">here</a>
+and insert your user name and password (where indicated in the file)
+then leave it. Alternatively remove all references to password and
+username and use the graphical interface to wpa_supplicant, namely
+wpa_gui, instead of the command line interface, as indicated below.
+<br>
+(Note the graphical interface does not come automatically with FC5 --
+probably an oversight in configuration of the distribution package that
+will be fixed later,
+so you may need to get sources for wpa_supplicant and compile it.
+If you don't wish to do that, or don't know how to, you can try using
+the version of wpa_gui
+which works on my FC5 system on the Dell D610.
+Fetch
+<a href="wpa_gui.tar.gz"> wpa_gui.tar.gz</a>
+Un-tar the file in /usr/local/bin/wpa_gui and make it executable using
+'chmod'.)
+<p>
+If you already have a wpa_supplicant.conf file set up for another
+context, you may be able simply to add a new network entry copied from
+<a href="etc/wpa_supplicant/wpa_supplicant.conf">this file.</a>
+<p>
+<a name="supplicantserviceconfig"></a>
+<li>
+/etc/sysconfig/wpa_supplicant
+<br>
+This file is read when the wpa_supplicant service is started up
+e.g. by the command
+<pre>
+    service wpa_supplicant restart
+</pre>
+It can
+tell the service which interface to use and where more detailed
+configuration files are.
+<p>
+I use
+<a href="etc/sysconfig/uob/wpa_supplicant">this file</a>, containing
+<pre>
+    INTERFACES="-ieth1"
+    # DRIVERS="-Dndiswrapper -Dprism"
+    DRIVERS="-Dwext"
+</pre>
+The commented out second line indicates some other options for drivers.
+Be prepared to edit this.
+<p>
+The '-Dwext' flag
+works with my Intel ipw2200 card, and with several other modern wireless
+cards.
+<br>
+(In older versions of wpa_supplicant I used -Dipw for the Intel
+wireless card, but that is now subsumed by the more general 'wext'
+(wireless extension) software.)
+<p>
+You may need to use a different driver if you use ndiswrapper or
+something else, e.g. "-Dmadwifi". For more details see the information
+about wpa_supplicant on its web site, or in the documentation that
+came with the version you are using. You can use google to search for
+wpa_supplicant plus the name of your card.
+<p>
+<a name="otherfiles"></a>
+<li>
+/etc/hosts
+<br>
+This contains computer names and ip addresses. Will almost certainly
+have to be changed if you normally use your computer with a static
+address on a home network. So save this file before it is modified
+for use with the campus network.
+<p>
+For connection to the Bham campus network
+it should suffice to use the following, with 'MACHINENAME' replaced:
+
+<pre>
+     # Contents of /etc/hosts
+     # Do not remove the following line, or various programs
+     # that require network functionality will fail.
+     127.0.0.1       MACHINENAME localhost.localdomain localhost
+</pre>
+
+<p>
+<li>
+/etc/resolv.conf
+<br>
+This contains IP addresses of domain name servers.  It is automatically
+changed when you connect to a new network (using dynamic addresses, i.e.
+via DHCP -- Dynamic Host Configuration Protocol -- the most common
+way to connect to a network).
+<br>
+This may have previously been configured manually if you use your
+computer on a home network with fixed IP addresses (a 'static' network).
+So save this file so that you can restore it later.
+<p>
+The following
+<a href="etc/uob/resolv.conf">contents</a>
+will probably be generated automatically if you manage to connect to the
+Bham wireless network
+<pre>
+    ; generated by /sbin/dhclient-script
+    search bham.ac.uk
+    nameserver 147.188.129.250
+    nameserver 147.188.128.2
+</pre>
+<p>
+<li>
+/etc/sysconfig/network
+<br>
+Summary information about your network. Save this file.
+<br>
+If it contains a specification of a static gateway address on your home
+network it will need to be altered for connection to the campus network.
+For that, it needs only two (uncommented) lines of this form (where you
+will need to edit second line).
+<blockquote>
+# contents of /etc/sysconfig/network
+<br>
+NETWORKING=yes
+<br>
+HOSTNAME=MACHINENAME
+</blockquote>
+<p>
+<li>
+/etc/sysconfig/network-scripts/ifcfg-eth1
+<br>
+File specifying details for the wireless card. This will
+definitely have to be changed for use with the campus network.
+<p>
+The contents required for access to the bham wireless network are
+in <a href="etc/sysconfig/network-scripts/uob/ifcfg-eth1">this file:</a>
+<pre>
+    # /etc/sysconfig/network-scripts/ifcfg-eth1
+    DEVICE=eth1
+    BOOTPROTO=dhcp
+    ONBOOT=no           ## you may find that 'yes' works for you
+    TYPE=Wireless
+    USERCTL=yes
+    ESSID="UOBWLAN"   (or ESSID "eduroam")
+    MODE=managed
+    HWADDR=<insert the mac address e.g. AA:BB:11:E0:88:D9>
+</pre>
+You will use different contents for that file in different contexts. So
+make sure you save your current contents (as indicated below) before
+installing my files for use on Bham campus.
+<p>
+<li>
+/etc/sysconfig/network-scripts/ifcfg-eth0
+<br>
+File specifying details for the ethernet card (i.e. for cable
+connection).
+<p>
+This will probably not have to be changed, but you may wish to save it
+anyway.
+<br>
+In particular, if it is configured to connect on booting, make sure
+before connecting to the campus wireless network that the file contains
+the following, to prevent it starting up when you are trying to connect
+to the wireless service:
+<blockquote>
+    ONBOOT=no
+</blockquote>
+Normally connecting to the same network both by
+wireless and by cable is not permitted.
+<p>
+<a name="controlinterface"></a>
+<li>
+Directory for control interface
+<br>
+The command line interface and graphical interface tools (wpa_cli and
+wpa_gui) both require the wpa_supplicant process to have a directory
+where they can communicate with it. The scripts provided assume you use
+the default directory, so please create it before attempting to use the
+facilities, as super-user:
+<pre>
+    mkdir /var/run/wpa_supplicant
+</pre>
+and make sure only super-user can access it:
+<pre>
+    chmod 700 /var/run/wpa_supplicant
+</pre>
+If you put the directory anywhere else you will have to alter the
+wpa_supplicant.conf file, which by default includes this:
+<pre>
+    ctrl_interface=/var/run/wpa_supplicant
+</pre>
+<b>NOTE</b>
+<br>
+In recent linux systems the /var/run/wpa_supplicant directory is
+created automatically. Its existence and other things in /var/run
+can cause problems when you try to start the network. So I have
+provided a short script to clean up the contents before starting or
+re-starting the network <a href="netcleanup">here.</a>
+</ul>
+<p>
+<a name="firewallconfig"></a>
+<li>
+<b>
+Firewall Configuration
+</b>
+<br>
+I suspect most Linux users will already have an adequate firewall
+running on their machines. So the mechanism described in this section
+is probably not needed.
+<p>
+It is important to run a firewall when connected to any public network.
+You may already be happy with the firewall you are currently using. If
+you sometimes connect using cable and sometimes using wireless, make
+sure in each context that the firewall knows which interface can be
+trusted. (Until we have intelligent laptops that do all this
+automatically.)
+<p>
+On recent Linux systems the firewall depends on the iptables service,
+which normally starts up when the machine boots up, but can be restarted
+if the configuration changes.
+<p>
+For people who do not have a firewall
+installed on their laptop I provide two files based on files originally
+supplied by Simon Thompson. which I have made available slightly
+modified and with additional comments
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/#firewall">here</a>. These
+files enable your machine to have two connections, one to an untrusted
+external network and one to a trusted local network. However you are
+unlikely to need both connections while using the Campus network.
+You might if, for example, you had a few machines in your office linked
+together by cable, with one of them providing a gateway to the internet
+via the campus wireless service. But if you know enough to set that up
+you probably don't need to read this document.
+<ul>
+<li>
+<a href="etc/rc.d/init.d/iptables">/etc/rc.d/init.d/iptables</a>
+<br>
+This script defines the iptables service, and allows it to be started,
+stopped or interrogated, e.g. using commands like this
+<pre>
+    service iptables status
+    service iptables stop
+    service iptables restart
+</pre>
+Before installing this save your old version of the iptables script, in
+case something goes wrong.
+The behaviour of Simon's script is controlled by a configuration file
+as follows.
+<p>
+<li>
+<a href="etc/sysconfig/uob/firewall">/etc/sysconfig/firewall</a>
+<br>
+It's a good idea to check this. For use with wireless it must make
+eth1 the 'dirty' interface. This file does that by default.
+
+<p>
+<b>
+NB:
+</b>
+If connecting to the campus network or any other public network, you
+should make your firewall treat the wireless card (eth1) as a
+non-trusted network interface.
+</ul>
+
+<p>
+<a name="backingup"></a>
+<li>
+<b>
+Backing up files before you start
+</b>
+<br>
+If you wish to create a backup tar file containing all the above files,
+in the super-user home directory, /root,
+<br>
+you can do this, as super-user using the following command (where
+'yymmdd' records the date). You
+should delete references to any files/directories that don't exist yet
+on your machine:
+<blockquote>
+<pre>
+cd /etc
+
+tar cfz /root/backupfiles-yymmd.tar.gz   \
+    cert                                 \ ## may not exist
+    hosts                                \
+    resolv.conf                          \
+    wpa_supplicant                      \ ## may not exist
+    sysconfig/network                    \
+    sysconfig/wpa_supplicant             \ ## may not exist
+    sysconfig/network-scripts/ifcfg-eth1 \
+    sysconfig/network-scripts/ifcfg-eth0 \
+    sysconfig/firewall                   \ ## may not exist
+    rc.d/init.d/iptables                 \
+</pre>
+Edit as required. E.g. you may prefer some other location, rather than
+/root to save the tarfile.
+<p>
+Those saved files can later be
+restored (over-writing all changes) by doing
+this:
+
+<pre>
+cd /etc
+
+tar xfz /root/backupfiles-yymmd.tar.gz
+</pre>
+
+</blockquote>
+
+<hr>
+</ul>
+</small>
+
+<p>
+<a name="switchprofiles"></a>
+<b>Switching networking profiles</b>
+<blockquote>
+Switching network profiles is handled via graphical tools
+available in recent versions of linux based on wicd.
+If you prefer that method follow
+<a href="wicd.html">these instructions.</a>
+<p>
+The following notes explain how I do it using shell scripts, which
+provide more fine-grained control, e.g. allowing different firewalls
+in different contexts.
+<p>
+
+<blockquote>
+<small>
+Different 'network profiles' may be required for connecting to
+different wireless or wired networks. Each profile records the contents
+of certain files used by the network software, including the files
+listed above, especially:
+<pre>
+    /etc/hosts
+    /etc/resolv.conf
+    /etc/sysconfig/network
+    /etc/sysconfig/network-scripts/ifcfg-eth0
+    /etc/sysconfig/network-scripts/ifcfg-eth1
+
+and possibly if you are using a new linux system:
+
+    /etc/sysconfig/network-scripts/keys-eth1
+</pre>
+
+Note that unlike my system described below, this does not cater for
+a firewall configuration to be associated with a network profile.
+<p>
+If you already have more than one networking profile you can probably
+use the mechanisms you are familiar with, perhaps storing different
+profiles as sub-directories of
+<pre>
+    /etc/sysconfig/networking/profiles/
+</pre>
+Then switching between profiles involves running tools that copy those
+files to their appropriate locations (possibly after saving the
+'current' profile). If you use such a system make sure you cover all the
+details given here.
+<p>
+My own 'home-grown' mechanism for handling different networking profiles
+for different contexts (developed before I knew about the above profiles
+directory) makes use of subdirectories.
+<p>
+E.g. in each of the directories containing files that need to change
+(/etc, /etc/sysconfig, /etc/sysconfig/network-scripts) I use one
+sub-directory for each profile, containing the files needed for that
+profile, e.g. directories called 'home/' 'school/' 'uob/' 'remote/'.
+The last one is for hotels, airports, etc. that simply allow a dhcp
+connection without any key etc.
+<p>
+Then activating a profile simply involves copying the files from each of
+the relevant subdirectories for that profile into its superdirectory, as
+is done in this script
+<a href="netuob">netuob</a>.
+<p>
+For example I have the following directories containing files for use
+when my laptop is at home.
+<pre>
+    /etc/home
+    /etc/sysconfig/home
+    /etc/sysconfig/network-scripts/home
+</pre>
+
+and the following for use when my laptop is connected to the Bham
+wireless network:
+<pre>
+    /etc/uob
+    /etc/sysconfig/uob
+    /etc/sysconfig/network-scripts/uob
+</pre>
+
+So after travelling, I get home and reconnect by running a script that
+does this as root (it could be compacted to a loop), which re-sets all
+the static addresses, re-inserts names of other machines in the
+/etc/hosts file, and restarts the network.
+
+<pre>
+    service network stop
+
+    cd /etc
+    cp -p home/* .
+
+    cd /etc/sysconfig/
+    cp -p home/* .
+
+    cd /etc/sysconfig/network-scripts/
+    cp -p home/* .
+
+    ## restart firewall
+    service iptables restart
+
+    ## restart network
+    service network start
+
+    ## Start the wpa_supplicant service with a 5 second delay
+    ## this uses /etc/sysconfig/wpa_supplicant
+    (sleep 5; service wpa_supplicant start) &
+
+    ## Now immediately restart eth1 and let it wait for wpa_supplicant
+
+    dhclient eth1
+</pre>
+
+Similar commands can be given with 'home' replaced by one of
+'school' 'uob' 'remote' etc. Obviously this can be done by
+a script that takes the profile name as an argument.
+
+<p>
+<hr>
+</small>
+</blockquote>
+</blockquote>
+<a name="experts"></a>
+<b>
+EXPERTS CAN START HERE
+</b>
+<blockquote>
+For Linux experts. If you don't already have wpa_supplicant you can
+probably get a package for your linux distribution. E.g. one of
+these commands should suffice
+<pre>
+Fedora:
+    yum install wpa_supplicant
+Ubuntu
+    apt-get wpa_supplicant
+etc
+    ....
+</pre>
+As a last resort, get
+it from
+<a href="http://hostap.epitest.fi/wpa_supplicant/">http://hostap.epitest.fi/wpa_supplicant/</a>
+<p>
+There are instructions for compiling and installing in the tar files.
+You should make sure you install wpa_supplicant, wpa_cli and, if you
+want a graphical interface, wpa_gui (this allows you to avoid putting
+username and password in the wpa_supplicant.conf file).
+<p>
+If you are a visitor to Birmingham using
+the "eduroam" service you'll need to
+replace "UOBWLAN" with "eduroam" in all the files provided. (Later
+I'll provide a set of files for visitors.) Alternatively use
+<a href="wicd.html">the wicd configuration tool</a> if you have
+it. Users of the eduroam service should probably read the details
+<a href="#intro">above.</a>
+</blockquote>
+<a name="fetchfiles"></a>
+<hr>
+<b>Fetch and install files for use with Bham Wireless network</b>
+<p>
+<small>
+<ul>
+<li>
+<b>Fetch configuration files</b>
+<blockquote>
+Backup your files as explained above and then
+fetch this tar file and save it somewhere
+<blockquote>
+<a
+href="etcfiles.tar.gz">http://www.cs.bham.ac.uk/~axs/laptop/wpa/etcfiles.tar.gz</a>
+<br/>
+<b>That tar file is probably out of date. Read relevant sections of
+this file and build your own scripts instead.
+<br/>
+Or use a package like
+'wicd'!
+</b>
+</blockquote>
+then unpack it into a temporary /etc directory as follows
+(where '...' names the directory where you put the tar file).
+<pre>
+    mkdir /tmp/etc
+    cd /tmp
+    tar xfz .../etcfiles.tar.gz
+</pre>
+Examine the contents and decide which bits you wish to use. The contents
+are these files.
+
+<pre>
+    etc/uob/hosts                                [*1]
+    etc/uob/resolv.conf
+    etc/cert/uob_root_linux.pem
+
+    etc/sysconfig/uob/firewall                   [*2]
+    etc/sysconfig/uob/network                    [*3]
+    etc/sysconfig/uob/wpa_supplicant             [*4]
+
+    etc/sysconfig/network-scripts/uob/ifcfg-eth1
+    #you could make a copy of your ifcfg-eth0 file here too
+
+    etc/wpa_supplicant/wpa_supplicant.conf       [*5]
+    etc/wpa_supplicant/start-wpa                 [*6]
+
+    etc/rc.d/init.d/iptables
+</pre>
+<b>
+NOTES
+</b>
+
+<pre>
+    [*1]    Edit 'hosts' file to include your machine name
+    [*2]    If 'firewall' file is used, check that eth1 is DIRTYIF
+    [*3]    Edit 'network' file to include your machine name
+    [*4]    Make sure that the driver for your wireless card is invoked
+                in -Dxxx parameter
+    [*5]    Make sure your ADF user name and password are included
+            unless you decide to use wpa_gui (graphical interface) instead of wpa_cli
+    [*6]    Optional script to start wpa_supplicant
+            if you use it edit to invoke driver for your wireless card
+</pre>
+
+The files that might overwrite files that you already have are
+in subdirectories called 'uob/' except for the iptables file and the
+wpa_supplicant.conf file. (If you already had the latter then you would
+probably not need my instructions.) So if you want to use Simon's
+firewall, save your existing iptables, and then copy his over to
+<pre>
+    etc/rc.d/init.d/iptables
+</pre>
+If you want to use your existing firewall then don't use this copy of
+'iptables' and remove this file from the tar file, as this is used
+only by simon's iptables file:
+<pre>
+    etc/sysconfig/uob/firewall
+</pre>
+
+</blockquote>
+<li>
+<b>
+Decide how you want to handle profiles
+</b>
+<br>
+As explained <a href="#backingup">above</a>, you should have
+already backed up the files in /etc that will be over-written, in
+a tar file of the form:
+<pre>
+    backupfiles-yymmd.tar.gz
+</pre>
+
+However it is a good idea to make sure you have copies of them in
+your /etc directory in a conveniently accessible place.
+<p>
+If you wish to
+copy my strategy you can do this as root, using 'home' as the label for
+your normal configuration, though you could choose another label:
+<pre>
+    cd /etc
+    # create directories for the 'home' profile
+    mkdir -p home sysconfig/home sysconfig/network-scripts/home
+
+    # Copy files in /etc to home/ directory
+    cp -p hosts resolv.conf home/
+
+
+    # Copy files in /etc/sysconfig to home/ directory
+    cd sysconfig
+    # then either
+    cp -p network firewall wpa_supplicant home
+    # or, if the other two files don't exist yet
+    cp -p network  home/
+
+
+    # Copy files in /etc/sysconfig/network-scripts to home/ directory
+    cd sysconfig/network-scripts
+    cp -p ifcfg-eth1  ifcfg-eth1 home/
+
+    # If using a new version of iptables save the old one
+    cd /etc/rc.d/init.d
+    mkdir home
+    cp -p iptables home
+</pre>
+
+You may not need to do all this if you already have a profile mechanism
+that has saved your normal profile.
+<p>
+If you have a recent version of Linux network tools which includes the
+following file, you may wish to save it too:
+<pre>
+    /etc/sysconfig/network-scripts/keys-eth1
+</pre>
+<p>
+
+<li>
+<b>
+Install required files unpacked from the tar file (above)
+</b>
+<br>
+First make sure you have saved all your normal files.
+<p>
+Having deleted the files from my tar file that you don't want (e.g.
+iptables and firewall), as explained above, and edited the ones that
+need to be changed (also as indicated above), copy all the other files
+over into the /etc directory. You can do this as follows:
+
+<p>
+As root change to the directory where you ran the 'tar xfz'
+command to unpack the tar file:
+<pre>
+    cd /tmp
+    # copy all the unpacked files to their appropriate places in the
+    # /etc directory tree
+    cp -a etc /etc
+</pre>
+The 'cp -a' copies in 'archive' mode, preserving all information,
+including symbolic links.
+<p>
+<b>
+NB
+</b>
+Don't forget to edit the file /etc/wpa_supplicant/wpa_supplicant.conf
+so that it contains your BHAM ADF
+user name and password (unless you decide
+to use the graphical interface wpa_gui instead of the command
+line interface wpa_cli).
+<p>
+
+Also if you have not yet created the control interface directory as
+explained <a href="#controlinterface">above</a> do that now, as super
+user:
+<pre>
+    # create the file
+    mkdir -p /var/run/wpa_supplicant
+    # protect it
+    chmod 700 /var/run/wpa_supplicant
+</pre>
+That directory is used by wpa_cli or wpa_gui to communicate with
+wpa_supplicant.
+<p>
+<a name="netuob"></a>
+<li>
+<b>
+Fetch and install<a href="netuob"> the file netuob</a> (the script to be run).
+</b>
+<br>
+Fetch, install and, if appropriate, edit this script in some place where
+it can be invoked to start up the Bham wireless connection.
+<br>
+E.g. put the file in /usr/local/bin/netuob and make sure
+it is executable
+<pre>
+    chmod 755 netuob
+</pre>
+Alternatively you may wish to give it a different name, e.g. 'startuob'
+<p>
+You are advised to read through it and check what it does before running
+it. If necessary you can delete or edit inappropriate bits, for instance
+if you do not wish to restart the firewall, delete the commands that
+refer to iptables.
+<p>
+If you have wpa_gui installed, and you wish to use it instead of
+wpa_cli, change the <i>last</i> call of wpa_cli to wpa_gui. You <i>must</i>
+do that if you don't wish to include your username and password in the
+wpa_supplicant.conf configuration file.
+
+<p>
+<b>
+Do you have the wpa_supplicant service script?
+</b>
+<br>
+The 'netuob' script assumes that you have the wpa_supplicant service
+script installed in /etc/rc.d/init.d so that this command will work when
+you run the script:
+<pre>
+   service wpa_supplicant restart
+</pre>
+This service script came with my Fedora Core 5 installation, but older
+versions of Linux will probably not have it.
+<p>
+If that is not available and you have installed wpa_supplicant
+as described <a href="#wpasupp">above</a>,
+you can instead change the 'netuob' script to
+make it run wpa_supplicant directly by replacing the above service
+command with this line, using the '-Bw' flag to run it as a 'daemon':
+<pre>
+    wpa_supplicant -Bw -c/etc/wpa_supplicant/wpa_supplicant.conf -ieth1 -Dwext
+</pre>
+You may have to change 'wext' to suit your wireless card, as explained
+above.
+<hr>
+<b>
+A precompiled wpa_gui (Removed 9 Jul 2009: out of date)
+</b>
+</ul>
+</small>
+
+<p>
+<hr>
+<a name="testing"></a>
+<h3><b>
+Testing the system
+</b></h3>
+<blockquote>
+<b>
+Make sure you have backed up over-writeable files
+</b>
+<br>
+Double check that you have done everything as above, including backing
+up all the files that will be overwritten, as explained
+<a href="#backingup">here</a>, and checking and if necessary editing
+the script 'netuob' described <a href="#netuob">above</a>.
+<p>
+<b>
+Find a hot spot
+</b>
+<br>
+Find a location on campus close to an access point, for testing.
+Possible locations are shown
+<a href="http://www.wireless.bham.ac.uk/Main%20Campus%20HotSpots.htm">here.</a>
+A good place is the basement of the building opposite Computer Science.
+<p>
+<b>
+Start up and switch on wireless card
+</b>
+<br>
+Start the computer. Make sure your wireless hardware is switched on.
+E.g. on the Dell D610 and others like it use FN+F2.
+<br>
+(People have
+reported problems because they forgot to turn this on.)
+<p>
+Start an xterm or your preferred console (command line) window into
+which you can type commands. Become super-user ('su root' or use sudo
+for the following). Check that your wireless card is on:
+<pre>
+    iwconfig eth1
+</pre>
+<p>
+The 'iwconfig' command will include 'radio off' in its output if the
+hardware is turned off.
+
+<p>
+<b>
+Run the 'netuob' script (i.e. /usr/local/bin/netuob)
+</b>
+<br>
+Run the 'netuob' script (after you have checked and
+possibly edited it, as described above).
+<p>
+Alternatively, if you prefer, go through all its commands yourself.
+<p>
+This script (if you have not edited it)
+will
+<small>
+<ul>
+<li>
+Turn off your existing network services,
+<li>
+copy files from /etc/uob to /etc/hosts and /etc/resolv.conf (though the
+latter will be overwritten again when the connection is made).
+<li>
+copy files from /etc/sysconfig/uob to /etc/sysconfig (e.g. 'network',
+and possibly also 'firewall' and
+'wpa_supplicant', if you have not removed them)
+<li>
+copy ifcfg-eth1 from /etc/sysconfig/network-scripts/uob to
+/etc/sysconfig/network-scripts
+<li>
+restart iptables (the firewall)
+<li>
+restart the network service
+<li>
+give a command to
+restart the wpa_supplicant service after a delay
+<li>
+run 'dhclient eth1'  which should start the connection going, though
+it will wait until the command to restart wpa_supplicant has run.
+<br>
+<b>
+NOTE
+</b>
+<br>
+If you removed your ADF user name and password from the
+wpa_supplicant.conf file then you can run wpa_gui (graphical
+interface)  to enable you to type them in. Or use 'wicd'
+or NetworkManager instead of
+my scripts.
+
+</ul>
+</small>
+If you have run
+wpa_gui, it will create a panel showing what is going on. The panel will
+indicate when the connection has been made by showing an IP address
+along with the other information displayed. The IP address will come
+last.
+<br>
+You can then try to get your web browser to connect to
+http://www.bham.ac.uk/
+<p>
+If that works, all is well.
+<p>
+If you cannot connect, use the browser configuration facility to make
+sure that it is not set up to use a different connection, e.g. for your
+home network. It may be that in your browser you have set
+the 'connection' option to go through the School's proxy server.
+If so, change it to use 'direct connection to internet'.
+<p>
+E.g. if you use 'Firefox' go to 'edit' then 'preferences'. Select the
+'General' tab. Then select 'Connection settings'. Then select 'Direct
+connection to the internet'. Then close the preferences panels.
+<p>
+If the connection is working you should also be able to use external
+links, e.g. news.bbc.co.uk, and you should be able to use 'ssh' to log
+in to a server in the School of computer science as you would from home.
+<p>
+<hr>
+</blockquote>
+<a name="interactcli"></a>
+<b>
+Interacting with wpa_cli (Command Line Interface)
+</b>
+<blockquote>
+The printout that I get after starting up is shown in this file:
+<br>
+<a href="cli_out">http://www.cs.bham.ac.uk/~axs/laptop/wpa/cli_out</a>
+<p>
+You may find it useful to save a copy on your machine to compare with
+the output you get.
+<p>
+As the output file shows, after getting [OK] I typed 'status', and it
+printed out the following:
+<small>
+<pre>
+    bssid=00:0c:db:8b:84:40
+    ssid=UOBWLAN
+    pairwise_cipher=TKIP
+    group_cipher=WEP-40
+    key_mgmt=WPA/IEEE 802.1X/EAP
+    wpa_state=COMPLETED
+    ip_address=192.168.30.87
+    Supplicant PAE state=AUTHENTICATED
+    suppPortStatus=Authorized
+    EAP state=SUCCESS
+    selectedMethod=25 (EAP-PEAP)
+    EAP TLS cipher=RC4-MD5
+    EAP-PEAPv0 Phase2 method=MSCHAPV2
+</pre>
+</small>
+<p>
+If you press the RETURN key you should get this prompt from wpa_cli
+<pre>
+    >
+</pre>
+You can type 'status' and it will indicate what the current state of the
+connection is, in the format shown above.
+<p>
+It should include an IP address of the form 192.168.xxx.yyy'
+<p>
+If there is no IP address after a minute or two, type 'reassociate'
+and wait and see what happens.
+<p>
+The man file for wpa_cli gives more information, or you can type
+'help' to the running process.
+<p>
+<hr>
+</blockquote>
+<a name="interactgui"></a>
+<b>
+Interacting with wpa_gui (Graphical Interface)
+</b>
+<blockquote>
+There are some screenshots showing how the wpa_gui can appear (depending
+on your window manager)
+<a href="http://hostap.epitest.fi/wpa_supplicant/wpa_gui.html">here</a>.
+The display is shown prior to completion of the connection: the IP
+address has not been provided yet.
+<p>
+Another example, with completed connection is shown
+<a href="http://www.fedoraforum.org/forum/attachment.php?attachmentid=7775">here</a>
+<p>
+Of course, if you use it to connect to the Bham wireless service the
+contents will be different, and will correspond to the output of the
+'status' command given to wpa_cli, shown above.
+<p>
+If you are a KDE user you may wish to consider
+<a href="http://linux.softpedia.com/get/System/Networking/KWlan-10972.shtml">this</a>
+<p>
+If you are having trouble there are many online forums including
+<a href="http://www.fedoraforum.org/forum/showthread.php?t=100788">this</a>
+and its latest page (as of 14 Aug 2006)
+<a
+href="http://www.fedoraforum.org/forum/showthread.php?t=100788&page=4">here.
+</a>
+<hr>
+</blockquote>
+<p>
+<a name="changeloc"></a>
+<b>
+Moving to a new location on campus without re-starting
+</b>
+<blockquote>
+I found that if I moved to another 'hot spot' (e.g. from one level of
+the Learning Centre to another, or to the School of Biosciences, or
+to Staff House),
+while
+leaving my laptop running, the connection was lost, but it could be
+regained without repeating the whole start-up rigmarole, simply by
+typing 'reassociate' to the wpa_cli prompt, as long as everything else
+has been left running.
+<p>
+Sometimes I find that after I move to a new location it reassociates
+automatically if I wait a short time, keeping the same IP address.
+<p>
+I have also found that if I put my computer to sleep using 'Software
+Suspend' (suspend to disc), then when it wakes up the wireless
+connection still works: it does not need to be re-started. I don't know
+how long a time gap this will tolerate.
+<p>
+On fedora core 5, the command to suspend to disc is 'pm-hibernate',
+requiring super-user privileges. If you have installed SWSUSP2
+(as I
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">recommend</a>) then
+the command is 'hibernate'.
+<p>
+(In FC 5 there is also a command to suspend to RAM, 'pm-suspend' which
+worked before I got my Intel wireless card working, but stopped working
+thereafter. However 'hibernate' is not much slower, and far
+more robust.)
+
+</blockquote>
+<hr>
+<a name="otherusers"></a>
+<p>
+<h3><b>
+Comments from other users
+</b></h3>
+<ul>
+<LI>
+13 Nov 2006:
+<br>
+Nik Hodges (Molecular Pathobiology, School of Biosciences), writes
+<blockquote>
+<small>
+like you I had been struggling with this on and off for a while now. Anyway
+with the documentation on your webpage I have now got it working and it seems
+really stable (my main problem was finding a linux version of the uob_root_linux.pem
+file so many thanks for the link to a linux version on your page), also your
+wpa_supplicant.conf configuration file was a great help.
+<p>
+for the sake of sharing info my computer is a sony vaio fe11h with an
+integrated network card, running kubuntu dapper-drake6.06, kde3.5.5. the
+easiest way for me to get it working was to run the following commands (as
+root), a bit of crude hack but it works...
+
+<pre>
+    1) wpa_supplicant -i eth1 -D wext  -c /etc/wpa_supplicant/wpa_supplicant.conf
+
+    2)  wpa_gui
+</pre>
+
+these 2 commands enabled a connection but not an assignment of an ip
+address so to get this I ran
+
+<pre>
+    3) dhclient eth1
+</pre>
+
+</small>
+</blockquote>
+
+</ul>
+
+<p>
+<hr>
+<hr>
+<a name="winmac"></a>
+<h3><b>
+The Bham Campus Wireless Service: Information for Windows and Mac Users
+</b></h3>
+<a href="http://www.wireless.bham.ac.uk/help/policy.shtml">General Information and Conditions of use.</a>
+
+<p>
+[NOTE Added 17 Apr 2007: Several of these links now produce random
+effects.
+<br>
+The University has yet again (like many others) reorganised
+its web pages in
+such a way as to clobber bookmarks. I'll try to fix the links soon.]
+<p>
+Finding out how to use the campus wireless network
+on Windows or Mac, requires looking at these
+web pages:
+<blockquote>
+<small>
+<a href="http://www.wireless.bham.ac.uk/index.shtml">http://www.wireless.bham.ac.uk/index.shtml</a>
+<br>
+Overview of campus wireless network service.
+<p>
+<a href="http://www.wireless.bham.ac.uk/start/">http://www.wireless.bham.ac.uk/start/</a>
+<br>
+The 'Getting Started' web site, which will eventually lead you through
+all the following:
+<p>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/">
+Configuring Wireless Access on Windows XP (SP2), Mac OSX and Linux
+</a>
+<br> The Linux link is to <a href="wpa.html">this page.</a>
+</blockquote>
+<ul>
+<li>
+<b>
+Configuring Windows XP2 Service Pack 2
+</b>
+<br>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/configuringXPSP2.shtml">http://www.wireless.bham.ac.uk/start/configuration/configuringXPSP2.shtml</a>
+<br>
+Configuring Windows XP Service Pack 2 (no support for earlier versions
+of windows).
+<p>
+If you use XP without 'service pack 2' installed, it will not work, and
+if you use an older version of windows you may or may not find useful
+information on how to connect. Further information on connection and
+checking below.
+<p>
+<hr>
+<li>
+<b>
+Configuring Apple Mac running OSX
+</b>
+<br>
+<a href="http://www.wireless.bham.ac.uk/start/configuration/configuringOSX.shtml">http://www.wireless.bham.ac.uk/start/configuration/configuringOSX.shtml</a>
+<br>
+Configuring OSX on Mac
+<hr>
+<p>
+<li>
+<a href="http://www.wireless.bham.ac.uk/start/connect.shtml">http://www.wireless.bham.ac.uk/start/connect.shtml</a>
+<br>
+Connecting to the Authenticated Wireless Network on Windows
+XP (after
+configuring).
+<p>
+<li>
+<a href="http://www.wireless.bham.ac.uk/start/checkconnection.shtml">http://www.wireless.bham.ac.uk/start/checkconnection.shtml</a>
+<br>
+Checking the connection (On Windows XP)
+<p>
+<li>
+<a href="http://www.wireless.bham.ac.uk/start/checktcpip.shtml">http://www.wireless.bham.ac.uk/start/checktcpip.shtml</a>
+<br>
+Checking TCP/IP settings (on Windows XP)
+</ul>
+</small>
+</blockquote>
+<p>
+<hr>
+<h3><b>
+Other resources on campus
+</b></h3>
+(To be extended)
+<ul>
+<li>
+<a href="http://www.theory.bham.ac.uk/staff/schofield/linux/index.htm">Andy Schofield's linux pages in physics</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">Linux on Dell D600 abd D610 laptops</a>
+<br>
+(With information on using Software Suspend 2 -- now called
+TuxOnIce.)
+</ul>
+<p>
+<hr/>
+<small>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+
+</BODY>
+</HTML>

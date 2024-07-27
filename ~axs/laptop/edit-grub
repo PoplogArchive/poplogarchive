@@ -1,0 +1,45 @@
+#!/bin/bash
+
+## edit-grub
+## Aaron Sloman http://www.cs.bham.ac.uk/~axs
+## 23 Sep 2012
+## Modified so as to insert 'maxcpus=1' instead of 'acpi=off' in boot
+## paramaters for use when resuming from hibernate.
+## The restriction to 1 cpu applies only to the resume/thaw process.
+## When the state is restored, the previous number of cpus becomes available
+## In my experiece so far, although this causes the decompression to use
+## only 1 cpu instead of 3 (on intel core i5 cpu), there is no noticable
+## difference in time taken to review. I have not done any measurements, however.
+##
+##
+## 31 May 2012
+## This is used after a new kernel is installed. Original version made a copy
+## of grub.cfg called grub.cfg-resume  edited so as to include 'acpi=off'
+## as a boot flag in the kernel line. Now (23 Sep 2012) changed to 'maxcpus=1'
+##
+## It also alters the menu heading to show RESUME so that after
+## hibernate when the machine is next booted there is a reminder that
+## hibernate, not shut-down, was used.
+##
+## This program uses 'ed'. It would probably be better to use 'sed',
+## but I am unfamiliar with it, and can't be bothered to learn just now.
+
+## go to directory containing grub.cfg
+cd /boot/grub2
+
+## save the old version of grub.cfg-resume
+mv grub.cfg-resume grub.cg-resume-bak
+
+## make a copy of the latest grub.cfg, called grub.cfg-resume
+## and edit it as described above.
+cp grub.cfg grub.cfg-resume
+
+ed grub.cfg-resume <<  \\\\
+1p
+/menuentry/p
+s/i686)/i686)RESUME/p
+/vmlinuz/p
+s/$/ maxcpus=1/p
+w
+q
+\\

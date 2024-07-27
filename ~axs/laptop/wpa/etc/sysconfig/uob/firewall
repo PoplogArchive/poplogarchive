@@ -1,0 +1,140 @@
+## Installed here by A.Sloman 30 Jul 2006
+## Originally by Simon Thompson. I've made a few changes.
+##
+## This firewall configuration file is accessed by an iptables file
+## which needs to be put in /etc/rc.d/init.d/
+## (with the usual links from other rc.d subdirectories, for starting
+## and stopping services.)
+
+## I put this file in /etc/sysconfig/firewall
+##
+## If it is located anywhere else, then the iptables file will need to
+## be edited.
+
+modprobe ip_tables
+modprobe ip_conntrack
+modprobe ip_conntrack_ftp
+
+## For use on a gateway machine where eth0 is the 'external' interface
+## e.g. to a broadband cable modem, and eth1 is the 'internal' interface
+## to a private network. Change if needed.
+## Make sure these two files have appropriate contents, especially the
+## mac address determining which has which function.
+##    /etc/sysconfig/network-scripts/ifcfg-eth0
+##    /etc/sysconfig/network-scripts/ifcfg-eth1
+##
+
+## Assume eth1 is wireless interface used for internet connection.
+
+DIRTYIF=eth1
+## in case eth0 is connected to a trusted local network, or disconnected
+CLEANIF=eth0
+
+## get the internet address of the external interface
+SNATIP=`/sbin/ifconfig eth0 | /bin/grep "inet addr" | /bin/awk -F: '{ print $2 }' | /bin/awk '{print $1}'`
+
+# Enable broadcast echo protection
+if [ -e /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts ] ; then
+    echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+fi
+
+# no source routing
+for f in /proc/sys/net/ipv4/conf/*/accept_source_route; do
+    echo 0 > $f
+done
+
+# TCP SYN cookies protection
+if [ -f /proc/sys/net/ipv4/tcp_syncookies ]; then
+    echo 1 > /proc/sys/net/ipv4/tcp_syncookies
+fi
+
+# ignore ICMP redirects
+for f in /proc/sys/net/ipv4/conf/*/accept_redirects; do
+    echo 0 > $f
+done
+# don't send redirects
+for f in /proc/sys/net/ipv4/conf/*/send_redirects; do
+    echo 0 > $f
+done
+
+# reverse path filtering (anti-spoofing)
+for f in /proc/sys/net/ipv4/conf/*/rp_filter; do
+    echo 1 > $f
+done
+
+## This may no longer be needed
+#drop packets with impossible address
+# try this to disable logging to terminal
+## Added by A.S.
+for f in /proc/sys/net/ipv4/conf/*/log_martians; do
+    echo 0 > $f
+done
+
+# allow related connections
+iptables -A INPUT -j ACCEPT -m state --state ESTABLISHED,RELATED
+
+# accept from lo
+iptables -A INPUT -i lo -j ACCEPT
+
+# now some paranioa
+# Kill malformed packets. Add logging here if you want
+
+# You can try replacing all these rules with the 'unclean' modules
+# iptables -A INPUT -m unclean -j DROP
+
+# Block NULL packets
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j LOG --log-level=debug --log-prefix "[***] NULL scan : "
+
+# SYN/FIN
+iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
+
+# SYN/RST
+iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+
+# FIN only bit set, with no accompanying ACK
+iptables -A INPUT -p tcp --tcp-flags ACK,FIN FIN -j DROP
+
+# PSH only bit set, with no accompanying ACK
+iptables -A INPUT -p tcp --tcp-flags ACK,PSH PSH -j DROP
+
+# XMAS scans are caught by the rules above
+
+# drop multicast traffic
+iptables -A INPUT -s 224.0.0.0/4 -j DROP
+
+# Allow SSH in from anywhere
+iptables -A INPUT -j LOG --log-level=debug -p tcp --dport ssh --log-prefix "[***] SSH accept: "
+iptables -A INPUT -j ACCEPT -p tcp --dport ssh
+
+# Allow DHCP to/from anywhere (so we can get our address)
+iptables -A INPUT -j ACCEPT -p udp --dport 68
+iptables -A INPUT -j ACCEPT -p udp --dport 67
+
+# REJECT auth, don't drop it (keeps mail quick, otherwise we wait for a
+# TCP timeout before the mail will be sent)
+iptables -A INPUT -j REJECT -p tcp --dport 113
+
+# Drop all the nasty Windows broadcasty things that will try to get out.
+# SMB/CIFS/NMB
+iptables -A FORWARD -p tcp --sport 135:139 -j DROP
+iptables -A FORWARD -p udp --sport 135:139 -j DROP
+iptables -A FORWARD -p tcp --dport 135:139 -j DROP
+iptables -A FORWARD -p udp --dport 135:139 -j DROP
+
+# and for W2K/XP
+iptables -A FORWARD -p tcp --sport 445 -j DROP
+iptables -A FORWARD -p udp --sport 445 -j DROP
+iptables -A FORWARD -p tcp --dport 445 -j DROP
+iptables -A FORWARD -p udp --dport 445 -j DROP
+
+# DROP RIP silently
+iptables -A INPUT -j DROP -p udp --dport 520
+
+# Allow anything that gets here in from our private network
+iptables -A INPUT -i ${CLEANIF} -j ACCEPT
+#iptables -t nat -A POSTROUTING -o ${DIRTYIF} -j SNAT --to-source ${SNATIP}
+
+# Set our default policy to drop
+iptables -P INPUT DROP
+# and add a rule at the end to default drop input
+iptables -A INPUT -j DROP

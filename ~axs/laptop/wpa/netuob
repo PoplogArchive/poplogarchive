@@ -1,0 +1,111 @@
+#!/bin/sh
+## Updated 9 Jul 2009 to match hte wpa.html file.
+## Script for running wpa_supplicant daemon,
+## after installing previously set up files to connect to
+## bham wireless network.
+## This script ends with two steps
+##    1. it invokes wpa_cli reassociate
+##    2. it runs wpa_cli in interactive mode
+## Step 2 can be replaced by running wpa_gui (graphical interface)
+## if you have that. (See comment at end of file)
+## It will provide a graphical tool, which some users may prefer.
+## It also allows you to omit user name and password from the
+## file /etc/wpa_supplicant/wpa_supplicant.conf
+## If you leave them out then wpa_gui can ask you to type them
+## into windows that it will pop up. That may be more secure than
+## leaving them in a file in a laptop computer that might be lost or
+## stolen
+##
+## NB before running this script you should have saved the files that
+## it overwrites as explained in
+## http://www.cs.bham.ac.uk/~axs/laptop/wpa/
+## Aaron Sloman
+## http://www.cs.bham.ac.uk/~axs/
+## 14 Aug 2006
+
+# Bring down existing network connections
+echo 're-setting remote network connection'
+
+echo 'disabling eth0 eth1'
+ifdown eth0
+ifdown eth1
+
+# Go to the /etc/ directory and start inserting files that are need
+# for connecting to BHAM via wpa
+
+cd /etc
+
+# replace /etc/hosts and /etc/resolv.conf
+rm resolv.conf
+rm hosts
+
+echo setting /etc/hosts and /etc/resolv.conf
+
+/bin/cp -p uob/* .
+
+cd /etc/sysconfig
+
+## You may not need all of these to be overwritten.
+## See the documentation on the web site
+echo set /etc/sysconfig/network /etc/sysconfig/firewall /etc/sysconfig/wpa_supplicant
+
+/bin/cp -p uob/* .
+
+cd /etc/sysconfig/network-scripts
+
+## This is the most important item. It specifies the configuration
+## of the wireless interface for use with the UoB wireless network
+echo setting /etc/sysconfig/network-scripts/ifcfg-eth1
+
+# could also re-set ifcfg-eth0 if appropriate.
+
+/bin/cp -p uob/* .
+
+## You may want to leave your firewall alone. See the web site
+## for details
+echo restarting firewall
+
+service iptables restart
+
+## Now restart the networ
+echo restarting network
+
+service network restart &
+
+## Start the wpa_supplicant service. If you prefer you can
+# give the command in etc/wpa_supplicant/start-wpa
+echo restarting wpa_supplicant
+
+service wpa_supplicant restart start
+##      this uses /etc/sysconfig/wpa_supplicant
+##      which specifies
+##          which interface you use (e.g. eth1)
+##          where the config file is (e.g. etc/wpa_supplicant/wpa_supplicant.conf )
+##          which driver to use, default wext
+
+## Pause to allow time to associate
+sleep 6
+
+## Now immediately restart eth1
+dhclient -r
+
+## restart eth1 verbosely
+dhclient -v eth1
+
+## remainder no longer needed
+## sleep 2
+##
+## echo starting wpa_cli: give it command 'reassociate'
+##
+## echo ""
+## echo run wpa_cli with 'reassociate' command
+##
+## wpa_cli reassociate
+##
+## echo starting wpa_cli. Wait for '[OK]' Then hit return and type: status
+##
+## wpa_cli
+## If you prefer a graphical interface, and if you have wpa_gui
+## installed, then comment out the last two lines and instead
+## uncomment this
+#  wpa_gui

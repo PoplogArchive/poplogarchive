@@ -1,0 +1,75 @@
+<HTML>
+THIS IS http://www.cs.bham.ac.uk/~axs/laptop/updates.html
+<BR>
+It is part of
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">this web site</a>
+reporting my experiences with linux and
+software suspend (SWSUSP) on a Dell Latitude D600 notebook/laptop
+computer.
+
+<P>
+
+
+<H3><B>
+UPDATE 27 Jun 2004 (Problems mentioned here now fixed)
+</B></H3>
+I find that after suspend+resume I am sometimes forced to kill X
+if I had displayed movies or a dvd (using gxine or gmplayer) before
+suspending. (Not always, only sometimes.)
+<BR>
+<B> NB The problems listed in this section appear to have disappeared
+since I installed version 4.4 of XFree86</B>
+
+<blockquote>
+<B> Previous symptoms, apparently now cured</B>
+<UL>
+<LI>
+If I suspend after displaying a video file, then sometimes playing
+a video file shows no picture, though sound is fine. Restarting X
+without rebooting fixes that however. It does not always
+happen after resume, and I can't see what the pattern is.
+<LI>
+Sometimes after resume, the X display is badly corrupted and I cannot
+kill X, so I have to reboot. Also if I go to a login console (CTRL+ALT
+F2) the screen is completely black.
+<B>
+This seems to be a consequence of resuming with the lid shut.
+</B>
+When that happens I can log in remotely, and top shows X using up 99% of
+the cpu. However if I try to kill the X process everything freezes and I
+have to use the power key to switch off (hold it down for several
+seconds). This does not happen if I boot without having suspended, and
+leave the lid down.
+<BR>
+So my happy report (below) on software suspend working after upgrading
+to 2.4.26 was premature. It MOSTLY works, and works perfectly if I don't
+display videos and don't resume with the lid down!
+</UL>
+</blockquote>
+<P>
+<HR>
+<H3><B>
+UPDATE 18 Jun 2004
+</B></H3>
+Had to remove radeon patches from Volker Braun's site mentioned in the
+main web page: they apparently cause xine and mplayer to crash X.
+<br>
+So I am back to incomplete screenblank (later fixed
+in X11 version 4.4, as
+described
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">on main web page</a>).
+<HR>
+<H3><B>
+UPDATE 13 Jun 2004
+</B></H3>
+It is now working with a 2.4.26 Kernel with the CPUFREQ and SWSUSP
+patches added. Almost everything seems fine. Details
+in
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">the main file</a>.
+<P>
+<B>
+Last Updated: 7 Oct 2004
+</B>
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+</HTML>

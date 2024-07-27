@@ -1,0 +1,158 @@
+#-*-mode: sh-*-
+# Configuration of software suspension
+#
+
+# If your graphic device is not able to return properly from suspend
+# you can switch to textconsole before suspend and return to your
+# X-console after resume.
+# If you use an nvidia card, you can set this to nvidia. This
+# will try to restore your 3D upon resume. This trick may be useful
+# for other cards.
+# Default: "no"
+#SWSUSP_LEAVE_X_BEFORE_SUSPEND="no"
+SWSUSP_LEAVE_X_BEFORE_SUSPEND="yes"
+
+# Some services (e.g. network) may cause some hangs if they are not
+# stopped before a suspend/resume cycle. You can set
+# SWSUSP_RESTART_SERVICES to a list of services to stop before suspend
+# and automatically restart after resume.
+# If suspending results in killing some application because of lack
+# of memory, you may also add here some of your launched services,
+# so as to save memory. Good candidates are httpd, nfsserver, sendmail, etc.
+# Default: " ntpd xinetd nfs network pcmcia irda gpm"
+#SWSUSP_RESTART_SERVICES=" ntpd xinetd nfs network pcmcia irda gpm"
+#SWSUSP_RESTART_SERVICES="sendmail ntpd xinetd network pcmcia gpm "
+#SWSUSP_RESTART_SERVICES="ntpd xinetd network pcmcia gpm "
+SWSUSP_RESTART_SERVICES="ntpd xinetd network  gpm "
+
+# Some services may need to be stopped before a suspend/resume cycle.
+# You can set STOP_SERVICES_BEFORE_SUSPEND to a list of services to stop
+# before suspend. These services will NOT automatically be restarted after
+# the resume, use SWSUSP_RESTART_SERVICES instead if you want this
+# behaviour.
+# Default: ""
+SWSUSP_STOP_SERVICES_BEFORE_SUSPEND="network"
+
+# Conversely, you can set START_SERVICES_AFTER_RESUME to a list
+# of services to start after resuming.
+# Default: ""
+SWSUSP_START_SERVICES_AFTER_RESUME=""
+
+# Those are programs that prevent from suspending. If they are
+# running and --force or --kill option aren't used, suspension
+# is aborted.
+# Default: ""
+SWSUSP_NON_COMPATIBLE_PROGS=""
+
+# You can ask to killall these applications before suspend.
+# Default: none
+SWSUSP_STOP_PROGS_BEFORE_SUSPEND=""
+
+# You can ask to run some applications before suspend using this variable.
+# For instance, it may stop your VPN.
+# Default: none
+SWSUSP_START_PROGS_BEFORE_SUSPEND=""
+
+# You can ask to run some applications after resume using this variable.
+# For instance, it may restart your ADSL connection.
+# Default: none
+SWSUSP_START_PROGS_AFTER_RESUME=""
+
+# If the following mount points cannot be unmounted,
+# then suspension is aborted unless --force or --kill
+# option is used on command line
+# Default: "/mnt/floppy /mnt/cdrom"
+# SWSUSP_UMOUNTS="/mnt/floppy /mnt/cdrom"
+SWSUSP_UMOUNTS="/mnt/mema1 /mnt/memb1 /mnt/cdrom"
+
+# These mount points should be mounted after suspend
+# They should appear in /etc/fstab
+# Default: none
+SWSUSP_REMOUNTS=""
+
+# If the following interfaces cannot be stopped,
+# then suspension is aborted unless --force or --kill
+# option is used on command line
+# Default: "eth0"
+#SWSUSP_DOWNIFS="eth0"
+SWSUSP_DOWNIFS="eth0 eth1"
+
+# These interfaces should be started after suspend
+# With "auto" the interfaces stopped before suspension
+# will be started in reverse order.
+# Default: "auto"
+SWSUSP_UPIFS="auto"
+#SWSUSP_UPIFS="eth0"
+
+# Some modules should be unloaded before a suspend/resume cycle. You
+# can set UNLOAD_MODULES_BEFORE_SUSPEND to "yes" if you want
+# unused modules to be removed from kernel space before suspend.
+# This will be done after stopping services.
+# With "no", nothing will be done before suspension.
+# With "auto", it only does "rmmod -a" to clean modules
+# which are marked "(autoclean)" in lsmod.
+#
+# Default: "yes"
+SWSUSP_UNLOAD_MODULES_BEFORE_SUSPEND="yes"
+
+# These modules should be unloaded after stopping services but
+# before suspending.
+# Default:
+# SWSUSP_REMOVEMODS=""
+SWSUSP_REMOVEMODS="i810_audio  soundcore "
+
+# These modules should be loaded after suspend
+# Gentoo users can use "modules.autoload" here to read modules out of
+# /etc/modules.autoload (this requires other Gentoo-specific scripts)
+# Default:
+#SWSUSP_INSERTMODS=""
+SWSUSP_INSERTMODS="scsi_mod usbcore usb-uhci hid ehci-hcd usb-storage sd_mod agpgart keybdev mousedev soundcore i810_audio"
+# hsfserial hsfengine hsfosspec hsfsoar
+# driverloader
+
+# Use SWSUSP_FORCE_SUSPEND_MODE to reset the behaviour of
+# suspension. If empty, this let the suspension
+# behaviour unchanged. Otherwise, these values will cause:
+#   echo "0 $SWSUSP_FORCE_SUSPEND_MODE" > /proc/swsusp/all_settings"
+#
+# This is simply a quick way of setting your favourite swsusp
+# parameters. To determine the value of SWSUSP_FORCE_SUSPEND_MODE,
+# tweak the files in /proc/swsusp to your heart's content, and then
+# use 0 0 0 0 0 32. The value of
+# SWSUSP_FORCE_SUSPEND_MODE will be all but the first number. eg,
+#     # cat /proc/swsusp/all_settings
+#     0 2048 0 100
+# means you should have SWSUSP_FORCE_SUSPEND_MODE="2048 0 100"
+#
+# Alternatively, you can use the keyword "acpi" to use the
+# /proc/acpi/sleep interface in place of /proc/swsusp/all_settings
+#
+# Default: "0", i.e. halt, escape disabled. extra settings are untouched
+SWSUSP_FORCE_SUSPEND_MODE="0"
+#SWSUSP_FORCE_SUSPEND_MODE="0 acpi"
+
+# If you have problems with hardware clock drift amplified by
+# suspension, try to set SAVE_CLOCK_ON_SUSPEND to "yes". The
+# kerneltime will being saved before suspending. If you have
+# network access, best is to set this variable to yes and add
+# xntpd in services to start/stop below. If you haven't such
+# a service permanently available, it is better to leave it
+# to no, so that hardware clock remains as a reference for
+# the system.
+# Default: "no"
+SWSUSP_SAVE_CLOCK_ON_SUSPEND="no"
+
+# On some hardware, the power is cut off before the disk has
+# flushed his own hardware cache. Insert the device of your
+# swap partition here (e.g. /dev/hda) if you want to issue
+# hdparm -W 0 <device>
+# before suspension.
+# Default: none
+SWSUSP_DISABLE_HW_DISK_CACHE=""
+
+# This specifies the VT on which logging will occur if --silent
+# is not enabled. This is also the VT which will be switched to
+# if SWSUSP_LEAVE_X_BEFORE_SUSPEND is enabled.
+# Default: 9
+#SWSUSP_VT="9"
+SWSUSP_VT="3"

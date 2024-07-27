@@ -1,0 +1,486 @@
+
+From Aaron Sloman Fri May 10 08:38:48 BST 1996
+To: adrienne@dvir.weizmann.ac.il
+Subject: Classical physics and determinism
+
+Dear Adrienne,
+
+I've been having some inconclusive discussion with Henry Stapp about the
+differences between classical physics and quantum physics, and one of
+your recent comments seems to me to be relevant to the point I am
+groping to make:
+
+   To me (working on turbulence) the behaviour of the cup of coffee is
+   complicated but not so very complex: we have its equation of motion,
+   and believe it to be fully specified by a few parameters and the
+   initial conditions, and in the stirred case the functional form of
+   the stirring.
+   The only problem is that the equation of motion is non-linear and so
+   the specification of the initial conditions to sufficient accuracy is
+   impossible.
+
+I've been trying to extend that notion to show that classical mechanics
+has two lives,
+(a) one, the "official theory" which is deterministic and
+(b) implicit actual theory that physicists and engineers use
+    which was not deterministic (because it was "obvious"(?) that
+    reality could not be, because of the nature of initial conditions.)
+
+Here's the argument, which is part of a larger exercise attempting to
+understand the role of ideas about possibility in our thoughts about
+mechanisms of many kinds:
+
+=======================================================================
+Statistical mechanics has been important in classical physics
+as I understand it (remember I'm very much an amateur) for at least
+about 100 years. Now one way of looking at that is to say that that's
+just because we don't know enough, and if we had truly exact measures of
+everything then we could feed them into our equations and everything
+would be completely deterministic (even if not all the equations could
+be solved analytically....)
+
+I'd like to offer an alternative view, namely that the very notion of
+infinite precision of measurement is a sort of *metaphysical* ideal for
+which there is no scientific basis and never has been.
+
+In particular a complete specification of a point on the real continuum
+in some sense requires (in general) an infinite amount of information
+(except for the tiny subset of points that can be determined
+algorithmically).
+
+(E.g. there are infinitely many points in the real unit interval whose
+infinite binary representation is non-computable, i.e. not definable by
+a Turing machine. In fact, far more are non-computable than are
+computable: only countably many are computable.)
+
+Why should we assume that there is anything in the physical universe
+that has an infinite amount of information embodied in it, such as the
+size or position of a particle?
+
+Of course classical mechanics uses equations such that *if* you had the
+information then *in principle* you can feed it into the equations, and
+get infinitely precise results. But since no classical physicist ever
+had access to any measuring device with infinite precision, it is
+arguable that in a sense they never really assumed or even needed the
+availability of such information, except in their philosophical moments
+(e.g. Pascal).
+
+Moreover it was commonplace in physics labs to play with devices that
+demonstrated the statistical nature of reality. One I remember first
+seeing as an undergraduate in the 50's was an array of pins on a
+vertical panel, above a row of vertical tubes, and a sort of funnel
+above the pins through which a lot of ping-pong balls could be dropped
+onto the pins. It's impossible to ensure that one drops a ball through
+the funnel in such a way that it lands in a designated tube after
+hitting various pins on the way down. And yet if you pour a lot of balls
+through the funnel, without taking much care, they always form the same
+shaped histogram in the tubes (corresponding to a certain probability
+distribution).
+
+Do you recognize this familiar teaching toy from my description?
+
+I don't think I have heard ANY good argument in support of the claim
+that, in a device like that, every individual ball has a set of
+properties when it goes through the funnel that determines precisely
+which tube it will end up in. (More precisely the claim would be that
+the combination of ball and array of pins and tubes has an initial set
+of properties that determines the precise outcome. I am saying there has
+never been any justification for such a claim - only philosophical
+prejudice.)
+
+Admittedly, the array of pins through which the ball falls is such as to
+enormously amplify slight differences in initial conditions, but why
+should we believe that two balls that follow different paths really did
+have different initial states if we have no hope of being able to
+measure such differences?
+
+(Similar comments can be made about chaotic systems, which can appear to
+be indistinguishable at a particular time and yet behave very
+differently a short time later.)
+
+If the state of a ball coming down the funnel is not determined with
+infinite precision, then instead of saying that the array of pins
+determines the consequences of the initial state, we could say that the
+ball has an *indeterminate* initial state, which is equally compatible
+with ending up in a number of different tubes, and the geometry of the
+array of pins together with gravity (along with thermal and other
+motions that prevent a ball sitting forever on a pin or bouncing up and
+down indefinitely on the same pin) "forces a selection".
+
+What I am trying to do is suggest that the notion of infinitely precise
+state may not have been an essential feature of classical physics,
+just a philosophical interpretation favoured by deterministic
+philosophers. Once the idea is abandoned, we have the alternative view
+that mechanisms known long before quantum mechanics can force selections
+between possibilities that are not predetermined. (I would claim that
+gambling casinos contain many such devices.)
+
+Does that make any sense?
+
+I wonder if it is possible to start from a view of classical physics
+which is like the one I've sketched (i.e. objects have states whose
+precision is limited, so that in some experimental situations their
+future possibilities are not determined, and yet physical apparatus can
+force a selection to be made, but only in a statistical fashion, not a
+deterministic fashion), and then go on to say exactly what quantum
+mechanics adds to that? (Maybe that would enable me to understand
+quantum mechanics at last?)
+
+Or is my picture of classical physics already inherently quantum
+mechanical? I suspect not, since, for example, it has no notion of
+quanta: it says precision is not unlimited, but it does not specify any
+bounds to the precision. The lack of definite bounds might be another
+example of something that has no precise measure. However, in quantum
+mechanics there are precise laws regarding uncertainty of measurement.
+
+So that might be a difference: i.e. QM adds some determinism to
+classical mechanics conceived my way ????
+
+Henry's answer is that I am just wrong about classical physics. But even
+if that is the case, then it still leaves open the question whether
+there is a view of physics which is intermediate between classical and
+quantum physics. My suspicion is that many people working with classical
+physics must implicitly have had such a view. I think it was implicit in
+the way I was taught physics many years ago.
+
+Aaron
+=======================================================================
+From Aaron Sloman Fri May 10 09:56:30 BST 1996
+To: adrienne@dvir.weizmann.ac.il
+Subject: Re: Classical physics and determinism
+
+Dear Adrienne,
+Isn't email amazing? Thanks for such a rapid response.
+
+Just one further comment to feed your weekend ponderings:
+
+> ....there IS
+> inherent imprecision at the smallest scales due to thermal vibrations,
+
+This assumes that there is a perfectly precise value for relevant
+physical variables (e.g. position, velocity, mass, diameter, etc. of
+particles) but that these are changing too fast or too irregularly to be
+capable of precise measurement. I want to consider an alternative,
+namely that there's nothing precise to be blurred by motion.
+
+I am wondering about the implications of giving up the idea of perfect
+precision. So even if we ignore thermal vibrations and the like is there
+any reason to believe in these infinitely precise values? One answer is
+that the equations of classical physics presuppose their existence. But
+I wonder whether that's actually so. The equations can propagate ranges
+of imprecision as well as perfect values, and that's how they have to be
+used in practice, which works very well for engineering desing, and much
+useful prediction till you get non-linear feedback loops and chaos, etc.
+
+On this view we get various kinds of small scale and large scale
+indeterminism out of something close to classical physics, but without
+any of the mysteries of quantum mechanics, no consciousness making
+choices, etc., just things like the geometry of a configuration allowing
+only N possible outcomes with nothing in between, etc.
+
+I guess if there is a residual mystery it's where the regularities in
+the distributions of outcomes come from. Why don't you ever get 100
+balls falling into one column and none in the rest? Or do you believe
+that if you try often enough you eventually will? Could it be a brute
+physical fact that that's just impossible given the way decision-forcing
+mechanisms interact with inherently imprecise values? (I have to confess
+that I don't know whether I'm talking complete nonsense!)
+
+Cheers.
+Aaron
+=======================================================================
+
+From Aaron Sloman Thu May  9 19:30:19 BST 1996
+To: STAPP@theorm.lbl.gov
+Subject: Re: Comments on your paper.
+Henry,
+Thanks for the comments.
+
+> The idea that possibilities are actualities in classical mechanics
+> sounds odd, but may be sensible in some way: it brings us closer.
+
+that's what I felt -- but I wasn't sure whether it was illusory,
+for the reasons you mention.
+
+> But choices seem to have no ontological status: everything just
+> automatically unfolds, and the possibilities, considered as things like
+> elasticity, just feed into this automatic continuous process. The
+> experiential qualities still seem to be a superfluous add-on.
+
+I think that's an "official theory" of classical physics. The reality
+may be different, for the following (possibly weak??) reasons.
+
+Statistical mechanics has been important in classical physics
+as I understand it (remember I'm very much an amateur) for at least
+about 100 years. Now one way of looking at that is to say that that's
+just because we don't know enough, and if we had truly exact measures of
+everything then we could feed them into our equations and everything
+would be completely deterministic (even if not all the equations could
+be solved analytically....)
+
+I'd like to offer an alternative view, namely that the very notion of
+infinite precision of measurement is a sort of *metaphysical* ideal for
+which there is no scientific basis and never has been.
+
+In particular a complete specification of a point on the real continuum
+in some sense requires (in general) an infinite amount of information
+(except for the tiny subset of points that can be determined
+algorithmically).
+
+(E.g. there are infinitely many points in the real unit interval whose
+infinite binary representation is non-computable, i.e. not definable by
+a Turing machine. In fact, far more are non-computable than are
+computable: only countably many are computable.)
+
+Why should we assume that there is anything in the physical universe
+that has an infinite amount of information embodied in it, such as the
+size or position of a particle?
+
+Of course classical mechanics uses equations such that *if* you had the
+information then *in principle* you can feed it into the equations, and
+get infinitely precise results. But since no classical physicist ever
+had access to any measuring device with infinite precision, it is
+arguable that in a sense they never really assumed or even needed the
+availability of such information, except in their philosophical moments
+(e.g. Pascal).
+
+Moreover it was commonplace in physics labs to play with devices that
+demonstrated the statistical nature of reality. One I remember first
+seeing as an undergraduate in the 50's was an array of pins on a
+vertical panel, above a row of vertical tubes, and a sort of funnel
+above the pins through which a lot of ping-pong balls could be dropped
+onto the pins. It's impossible to ensure that one drops a ball through
+the funnel in such a way that it lands in a designated tube after
+hitting various pins on the way down. And yet if you pour a lot of balls
+through the funnel, without taking much care, they always form the same
+shaped histogram in the tubes (corresponding to a certain probability
+distribution).
+
+Do you recognize this familiar teaching toy from my description?
+
+I don't think I have heard ANY good argument in support of the claim
+that, in a device like that, every individual ball has a set of
+properties when it goes through the funnel that determines precisely
+which tube it will end up in. (More precisely the claim would be that
+the combination of ball and array of pins and tubes has an initial set
+of properties that determines the precise outcome. I am saying there has
+never been any justification for such a claim - only philosophical
+prejudice.)
+
+Admittedly, the array of pins through which the ball falls is such as to
+enormously amplify slight differences in initial conditions, but why
+should we believe that two balls that follow different paths really did
+have different initial states if we have no hope of being able to
+measure such differences?
+
+(Similar comments can be made about chaotic systems, which can appear to
+be indistinguishable at a particular time and yet behave very
+differently a short time later.)
+
+If the state of a ball coming down the funnel is not determined with
+infinite precision, then instead of saying that the array of pins
+determines the consequences of the initial state, we could say that the
+ball has an *indeterminate* initial state, which is equally compatible
+with ending up in a number of different tubes, and the geometry of the
+array of pins together with gravity (along with thermal and other
+motions that prevent a ball sitting forever on a pin or bouncing up and
+down indefinitely on the same pin) "forces a selection".
+
+What I am trying to do is suggest that the notion of infinitely precise
+state may not have been an essential feature of classical physics,
+just a philosophical interpretation favoured by deterministic
+philosophers. Once the idea is abandoned, we have the alternative view
+that mechanisms known long before quantum mechanics can force selections
+between possibilities that are not predetermined. (I would claim that
+gambling casinos contain many such devices.)
+
+Does that make any sense?
+
+I wonder if it is possible to start from a view of classical physics
+which is like the one I've sketched (i.e. objects have states whose
+precision is limited, so that in some experimental situations their
+future possibilities are not determined, and yet physical apparatus can
+force a selection to be made, but only in a statistical fashion, not a
+deterministic fashion), and then go on to say exactly what quantum
+mechanics adds to that? (Maybe that would enable me to understand
+quantum mechanics at last?)
+
+Or is my picture of classical physics already inherently quantum
+mechanical? I suspect not, since, for example, it has no notion of
+quanta: it says precision is not unlimited, but it does not specify any
+bounds to the precision. The lack of definite bounds might be another
+example of something that has no precise measure. However, in quantum
+mechanics there are precise laws regarding uncertainty of measurement.
+
+So that might be a difference: i.e. QM adds some determinism to
+classical mechanics conceived my way ????
+
+> Yes, in my picture conscious experiences are a very high-level form of a
+> general type of beingness that is associated with the reduction of wave
+> function, generally.
+
+I would like to see that notion explained without making any assumptions
+about our ordinary notion of consciousness, experience, perception,
+thinking, etc. being brought in, i.e. it should be explained at a level
+at which the dynamics could operate in the physical world without any
+human beings or other experiencers like them.
+
+Then, when the two different notions have been separately defined, it
+might be possible to show how there's some deep affinity. Otherwise it
+looks like sleight of hand, importing a familiar concept into territory
+where it's application is totally unjustified.
+
+>....
+If it is agreed that states are not infinitely precise, then there can
+be differences not entailed by the actual.
+
+>....
+
+
+
+=======================================================================
+From Aaron Sloman Thu May 16 00:15:27 BST 1996
+To: STAPP@theorm.lbl.gov
+Subject: Re: Comments on your paper.
+Dear Henry,
+
+Thanks for your comments received a few days ago.
+
+> I think we must realize that we cannot speak with much precision or authority
+> or knowledge about the world itself: we can debate endlessly. But we can speak
+> of our theories about nature in precise terms.
+
+Up to a point I agree, though there are often degrees of imprecision in
+the theories themselves (even in pure mathematical theorems and proofs,
+as was shown very nicely by Imre Lakatos' work in the 1960s (Proofs and
+Refuations -- including a detailed analysis of Euler's theorem regarding
+relations between number of vertices, edges and faces of polyhedra).).
+
+Scientific theories are subject to even more imprecision since they
+refer to entities that cannot be fully defined in mathematical terms.
+
+Of course I assume you are not claiming that scientists can talk only
+about theories, for unless the theories referred to somthing there would
+be nothing to disagree about, no point in observing reality to settle
+disputes, and all theories would be equally good candidates for truth.
+
+I have the impression that some of the people you quote in your paper
+did not grasp this matter.(E.g. Bohr?)
+
+> Classical theory, as a theory,
+> has certain mathematical properties, and determinism etc. are among
+> them.
+
+The equations are deterministic, I agree. But what I was suggesting
+was that the inputs (boundary conditions, measurements) etc. may never
+have been sufficiently determinate for the equations to have fully
+deterministic consequences.
+
+Moreover, I suspect that that is exactly how physicists and engineers
+applied and thought about classical physics whether they acknowledged
+the fact explicity or not.
+
+The discovery of chaotic systems, where the deterministic equations can
+amplify indeterminacy of initial states to an extraordinary degree,
+eventually forced the realisation on them.
+
+....
+
+My point was mainly about the nature of the classical theory.
+I.e. it is normally presented as being fully deterministic when perhaps
+it wasn't, and I think that was brought out in part by some of the
+experiments with "toys" that amplified the indeterminacy.
+
+
+Aaron
+
+
+From Aaron Sloman Thu May 16 00:25:28 BST 1996
+To: STAPP@theorm.lbl.gov,adrienne@dvir.weizmann.ac.il
+Subject: Indeterminism in classical physics
+
+Dear Henry and Adrienne,
+
+By a strange coincidence I have recently stumbled across an article
+pointing out that there's a history of attempts to bring out the
+interminism in classical physics.
+
+The article, in Mind Vo,105, no 417, Jan 1996 (pages 80--83) is by
+Jon Perez  Laraudogoitia,
+
+He refers to earlier work by J. Earman, a book A Primer on Determinism,
+Reidel 1986, which I have not read.
+
+I am still trying to recall what it was that I was taught about this in
+the 50s when I was a physics undergraduate in Cape Town, but the
+memories are too vague, except that I have vague recollections that
+statistical mechanics could not really work properly without an
+assumption that at some level of detail reality was inherently
+probabilistic rather than deterministic.
+
+Maybe I should become a physics student again and try to catch up.
+
+cheers.
+
+Aaron
+
+=======================================================================
+
+From A.Sloman@cs.bham.ac.uk Thu May 16 08:15 BST 1996
+Date: Thu, 16 May 1996 08:14:58 +0100
+From: A.Sloman
+To: STAPP@theorm.lbl.gov
+Cc: A.Sloman
+Subject: Re: Comments
+Henry,
+
+Quick greetings thanks an a short response before I have to
+rush off
+
+> It has always seemed to me that trying to make classical mechanics seem
+> nondeterministic by talking about the fact that we cannot measure things
+> accurately and hence cannot have exact knowledge about initial conditions
+> is a muddying of the waters.
+
+That could be so,  though the heart of my argument was not just a point
+about what we can measure but a suggestion that infinite precision is
+something for which there may actually be no room in reality.
+
+That's a very old idea and one of the roots of atomic theory, back in
+ancient Greece I think.
+
+So if some  classical physicists had that idea then there could be
+a variant of classical physics wthout one of the components
+that make the other variants deterministic.
+
+
+The important question then is whether that could be a coherent theory,
+whether it is better or worse supported by evidence than the fully
+deterministic classical physics, and how such a theory might cope with
+the removal of indeterminism of end states in some of the experimental
+situations like the balls and tubes experiment.
+
+But I accept that such questions may be of little interest to someone
+who believes that all forms of Co are false anyway.
+
+I guess my interest in it is connected with trying to understand the
+nature of the processes of science. What kinds of conceptual apparatus
+are available physicists to build theories that have or might have had
+in the past at least  a prima facie case for being taken seriously
+and what are the alternatives to full determinism outside the QM
+context, and whether those alternatives have been fully considered in
+the context of QM.
+
+My recollections of a talk given by Roger Penrose a couple of years ago
+suggests that he may be thinking along similar lines, in claiming that
+it's the interaction of large scale and small scale phenomena that
+causes the collapse.
+
+Anyhow, ignore my ramblings I need to do more studying of physics,
+though whether I'll ever find the time, is another matter
+
+Thanks for your patience.
+Aaron
+
+See also
+    http://www.cs.bham.ac.uk/~axs/misc/real.possibility.html

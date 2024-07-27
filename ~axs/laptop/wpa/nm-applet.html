@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Accessing UoBWlan using nm-applet</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+
+
+<h3><b>
+11 Jun 2009: This file is now completely out of date - please ignore
+</b></h3>
+
+Please see <a href="wicd.html">this file (about wicd)</a>
+for more up to date information about connecting to the Birmingham
+University UOBWLAN network.
+<p>
+
+<hr>
+<hr>
+
+<h3><b>
+This file was part of Aaron Sloman's linux on a Dell Laptop site
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">here</a>
+<br>
+which includes more detailed information on using wpa_supplicant <a href="wpa.html">here</a>.
+<br>
+Please see <a href="wpa.html#disclaimer">the disclaimer.</a>
+</b></h3>
+The instructions given here have been tested on Ubuntu, but may work
+<br>
+    on other recent versions of linux that include network-manager-gnome
+<br>
+or network-manager-kde and the nm-applet (which shows as a little icon
+<br>
+indicating wireless signal strength on your task bar).
+<p>
+<hr/>
+<h2><b>
+Using network-manager and nm-applet (and since June 2009 'wicd')
+<br>
+to access the Bham Campus Wireless Network
+<br>
+and the 'eduroam' service
+<br>
+</b></h2>
+
+<small>
+(Information provided by <a href="http://www.cs.bham.ac.uk/~mhe/">Martin Escardo</a>)
+</small>
+
+<h3><b>
+NEWS 3 Jun 2009 (Use 'wicd' instead of NetworkManager.)
+</b></h3>
+<blockquote>
+It seems that many people have found that in very recent versions of
+linux (including Fedora 10 and recent versions of Ubuntu),
+NetworkManager no longer works as expected. In that case 'wicd'
+provides a good alternative. I have added information about how to
+install and use it with the secure bham campus wireless network,
+at least on my machine running Fedora 10,
+<a href="wicd.html">here.</a> I suspect the instructions work as
+well on Ubuntu and other versions of Linux.
+</blockquote>
+
+<h3><b>
+NEWS 13 Nov 2007
+</b></h3>
+Zeth Green has also provided instructions, for Ubuntu linux users,
+here
+<a href="http://zeth.net/Uobwlan">http://zeth.net/Uobwlan</a>
+<h3><b>
+NEWS 19 Dec 2006
+</b></h3>
+<blockquote>
+There is a new 'Authenticated Wireless Network Certificate' for Windows
+users to download from the campus web site
+<a href="http://www.wireless.bham.ac.uk/Certs.htm">here.</a>
+Thanks to
+Nik Hodges I have installed a linux version of this here
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/wpa/newcert.pem">http://www.cs.bham.ac.uk/~axs/laptop/wpa/newcert.pem</a>
+</blockquote>
+<h3><b>
+Update: 30 Nov 2006
+<br>
+<blockquote>
+Network-manager can also be used for vpn.
+See  <a href="../vpn/">this file.</a>
+</blockquote>
+</b></h3>
+<h3><b>
+Update: 14 Nov 2006
+<br>
+<blockquote>
+Added more information for Ubuntu users, and added a section on using
+eduroam, and a section on hibernate/suspend also provided by Martin.
+</blockquote>
+</b></h3>
+
+<h3><b>
+Contents
+</b></h3>
+
+<ul>
+<li>
+<a href="#uobwlan">
+How to connect to UOBWLAN using network-manager under linux.
+</a>
+<li>
+<a href="#eduroam">
+Using the 'eduroam' service (e.g. when visiting another UK University)
+</a>
+<li>
+<a href="#hibernate">
+Using the nm-applet with 'hibernate' or 'suspend'
+</a>
+</ul>
+
+<hr>
+<PRE>
+From: Martin Escardo
+
+I would like to share some information that might be useful for linux
+users wishing to connect easily to the university wireless network.
+
+Please feel free to use/modify/distribute the information enclosed
+below. I tried to make this as concise as I could.
+
+Best regards,
+Martin
+--
+<a href="http://www.cs.bham.ac.uk/~mhe/">http://www.cs.bham.ac.uk/~mhe/</a>
+--
+</pre>
+
+<hr>
+
+<a name="uobwlan"></a>
+<h3><b>
+How to connect to UOBWLAN using network-manager under linux.
+</b></h3>
+
+<pre>
+(Slightly edited by A.S.)
+
+This works for linux under the gnome and kde desktop managers. I have
+tested it under ubuntu/debian linux using gnome in a Dell D410 laptop,
+but it should work for other linux distributions and machines, and
+other desktop managers.
+
+1. First make sure you have a university login name and password.
+
+2. Download the file
+
+        <a href="http://www.wireless.bham.ac.uk/certs/bhamuni.der">http://www.wireless.bham.ac.uk/certs/bhamuni.der</a>
+
+   to your machine. This file is needed in step 6 below.
+
+3. Make sure you have suitable wireless hardware.
+
+4. Make sure you have either "network-manager-gnome" or
+   "network-manager-kde" installed.
+
+   To install it in debian systems, including ubuntu, run from a
+   terminal:
+
+       $ sudo apt-get update
+       $ sudo apt-get install network-manager-gnome
+
+   If you are a kde user, replace "-gnome" by "-kde".
+
+   This will install any drivers needed for your wireless hardware
+   automatically, if it is not already installed.
+
+   For more information on using NetworkManager on Ubuntu see
+   <a href="https://help.ubuntu.com/community/WifiDocs/NetworkManager">https://help.ubuntu.com/community/WifiDocs/NetworkManager</a>
+
+   Information relevant to other distributions of linux, can be found here:
+   <a href="http://www.gnome.org/projects/NetworkManager/">http://www.gnome.org/projects/NetworkManager/</a>
+     (though this is yet another web site that is not designed
+     for users who wish to increase font size: [A.S])
+
+
+5. After this, the "nm-applet" should be running in your taskbar. If
+   not, run "nm-applet &" from a terminal (without su).
+
+6. Last step: enter the correct information in the nm-applet.
+
+   * Left-click the applet.
+
+   * Select "Connect to Other Wireless Network...".
+
+   * Enter network name "UOBWLAN"
+
+   * Select Wireless Security "WPA enterprise".
+
+   * Select Key Type "TKIP".
+
+   * Select identity (enter your university user name).
+
+   * Enter your password.
+
+   * Click "CA Certificate file", and then navigate your file
+   system to find "bhamuni.der" that you downloaded in step (2).
+
+   * Leave all other fields unchanged, including the blank ones.
+
+   * Click connect.
+
+That's it; after a minute or so you should be connected provided you
+are in a hotspot.
+
+
+</PRE>
+<hr>
+
+<a name="eduroam"></a>
+<h3><b>
+Using the 'eduroam' service (e.g. when visiting another UK University)
+</b></h3>
+
+<pre>
+You can also, with your uni bham credentials
+
+    (a) connect to other universities in the UK, Europe and other
+        countries when you are travelling,
+
+    (b) have guests from these universities to connect to our network.
+        (Provided that the guests already have accounts at a
+        participating university: they must use their own credentials
+        when connecting to eduroam while visiting here.)
+
+For linux users, just follow <a href="#uobwlan">the previous instructions</a> with the
+following modification:
+
+    (i) Use network name "eduroam" (instead of "uobwlan")
+
+    (ii) Your user name should be "user@realm" where "realm" depends
+    on your institution. For us, it is "bham.ac.uk", so that your full
+    user name happens to coincide with your university email address,
+    but this is not always the case for other institutions, and so
+    guests should check in advance with their institutions. So you
+    should warn your guests before they visit you.
+
+The list of universities is available at
+
+    <a href="http://www.ja.net/roaming/#Where_available">http://www.ja.net/roaming/#Where_available</a>
+
+I have checked that I can connect to our university wireless using
+this instead. The security and the speed are the same, and so I don't
+see why not to use always use "eduroam" and the full user name, but
+there may be reasons I don't know.
+
+For more information, see
+
+    <a href="http://www.wireless.bham.ac.uk/JRS.htm">http://www.wireless.bham.ac.uk/JRS.htm</a>
+
+Once you have logged to the network, all the information provided to
+the nm-applet gets remembered, so that you don't need to supply it
+again when you connect next time here or outside.
+
+However, I haven't yet tested it in other universities.
+
+</pre>
+<hr>
+
+<a name="hibernate"></a>
+<h3><b>
+Using the nm-applet with 'hibernate' or 'suspend'
+</b></h3>
+
+<pre>
+Another thing: when you hibernate or suspend to ram and then wake up,
+it takes a while for the nm-applet to start working again, but it
+eventually connects again in an available network. Once the nm-applet
+is up and running, if you left click it you'll see a list of available
+networks, provided these networks broadcast their names or you have
+already connected to them at least once.
+</pre>
+
+
+
+<p>
+<hr>
+<small>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+
+</BODY>
+</HTML>

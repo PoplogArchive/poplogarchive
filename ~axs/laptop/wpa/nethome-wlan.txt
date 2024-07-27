@@ -1,0 +1,128 @@
+#!/bin/sh
+## Script for restarting wireless connection to WPA access point
+## running Fedora 13 on my Dell Latitude E6410
+## Aaron Sloman 12 Jun 2010
+## http://www.cs.bham.ac.uk/~axs
+
+## Slightly different versions of this needed for connecting to
+## different networks, e.g. at work, travelling etc.
+
+## The home dependent files are stored in these directories
+
+#   /etc/home
+#   contains versions of these files in /etc for use at home:
+#       hosts
+#       hosts.allow
+#       hosts.deny
+#       resolv.conf   (not really needed with dhcp connection)
+#
+#   /etc/wpa_supplicant/home
+#   contains
+#       wpa_supplicant.conf
+#
+#       (It may be possible to use one version of that file with
+#       different entries for different access points. The version
+#       for use on campus or with eduroam requires passwords, so the /etc
+#       directory should really be on an encrypted disk partition)
+#
+#   /etc/sysconfig/home
+#   contains versions of these files in /etc/sysconfig for use at home:
+#       network
+#       wpa_supplicant
+#
+#   /etc/sysconfig/network-scripts/home
+#   contains versions of these files in /etc/sysconfig/network-scripts
+#   for use at home:
+#       ifcfg-eth0
+#       ifcfg-wlan0
+
+## For other versions of this script, for use in other contexts,
+## replace 'home' with a different label. This is clumsy and will be
+## replaced by something more structured.
+
+
+## Start by turning things off.
+
+cd /root
+
+echo 're-setting nethome network connection'
+
+echo 'disabling eth0 wlan0'
+
+/sbin/ifdown eth0
+
+/sbin/ifdown wlan0
+
+/sbin/service network stop
+
+/sbin/service wpa_supplicant stop
+
+## Now go to /etc/ and fix files there
+
+cd /etc
+
+rm -f resolv.conf hosts
+
+cp -p home/* .
+
+cd /etc/wpa_supplicant
+
+cp -p home/* .
+
+
+## Now go to /etc/sysconfig and fix files there
+cd /etc/sysconfig
+
+cp -p home/* .
+
+
+## Now go to /etc/sysconfig/network-scriipts and fix files there
+
+cd /etc/sysconfig/network-scripts
+
+rm -f ifcfg-eth0 ifcfg-wlan0
+
+cp -p home/* .
+
+
+## Now restart network service, power up wireless, etc.
+
+/sbin/service network restart
+
+/sbin/ifdown wlan0
+
+echo "Power up wlan0"
+
+/sbin/iwconfig wlan0 txpower on
+
+echo "restart wpa_supplicant"
+
+/sbin/service wpa_supplicant start;
+
+## Allow time to associate with wpa access point
+
+echo "sleep 6"
+sleep 6
+
+## display status:
+echo "iwconfig wlan0"
+
+/sbin/iwconfig wlan0
+
+## dhcp will provide /etc/resolve.conf so remove old one
+
+cd /etc
+
+rm -f resolv.conf
+
+echo "restarting dhclient"
+
+## clear any old dhcp receipt
+/sbin/dhclient wlan0  -r
+
+## try to get IP address for wireless connection,
+# using -v to display progress.
+/sbin/dhclient -v -I lape  wlan0
+
+## Print out status. Will show IP address if successful
+/sbin/ifconfig wlan0

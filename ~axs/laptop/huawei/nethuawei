@@ -1,0 +1,43 @@
+#echo wvdialconf
+#wvdialconf
+## Altered 30 Jan 2011
+
+service wicd stop
+
+ifdown wlan0
+ifdown em1
+
+service wpa_supplicant stop
+service wicd stop
+
+
+echo " mv /etc/resolv.conf /etc/hosts /etc/hosts.deny /etc/wvdial.conf /etc/tmob-saved"
+mv /etc/resolv.conf /etc/hosts /etc/hosts.deny /etc/wvdial.conf /etc/tmob-saved
+
+
+##cp -p /etc/tmob/wvdial.conf /etc
+
+cp -p /etc/tmob/* /etc
+
+ln -s /var/run/ppp/resolv.conf /etc
+ls -l /etc/resolv.conf
+
+
+rm -f /etc/sysconfig/network
+
+cp -p /etc/sysconfig/tmob/network /etc/sysconfig
+
+echo starting wvdial
+wvdial tmobile
+
+## when that ends, restore everything
+
+echo "restore old /etc/resolv.conf /etc/hosts /etc/hosts.deny /etc/wvdial.conf"
+rm -f /etc/resolv.conf /etc/hosts /etc/hosts.deny /etc/wvdial.conf
+
+cd /etc/tmob-saved
+mv resolv.conf hosts hosts.deny wvdial.conf ..
+
+service wpa_supplicant start
+service wicd start
+#xmessage 'WVDIAL TERMINATED'&

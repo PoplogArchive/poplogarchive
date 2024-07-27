@@ -1,0 +1,363 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN"><html><head><title>FC3 ON DELL LATITUDE D600
+LAPTOP</title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"></head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+
+<H1><B>
+FEDORA CORE 3 AND SOFTWARE SUSPEND
+<BR>ON DELL LATITUDE D600 LAPTOP
+</B></H1>
+
+This is an addendum (30th May 2005, further modified 5th and 7th
+Jun 2005, then 1st July 2005) to my notes on
+<a href="d600-linux.html">Linux on my D600</a>
+<P>
+<H2><B>
+BACKGROUND
+</B></H2>
+In August 2003 I installed RedHat 9 on my Dell D600, and over a period
+of several months gradually found how to get software suspend (<a
+href="http://www.suspend2.net/">SWSUSP</a>) working to my satisfaction
+as described <a href="d600-linux.html">here</a>, eventually using
+an upgraded
+kernel (version 2.4.26) and upgraded XFree86 installation (version 4.4)
+which overcame various problems related to the radeon graphic card.
+<P>
+I was then reluctant to upgrade to a 2.6 kernel until I was certain that
+SWSUSP was working on 2.6, as I used suspend all the time, hardly ever
+rebooting the laptop since it was so much more convenient and
+time-saving to suspend and resume without losing state.
+<P>
+I finally decided in May 2005 to upgrade to Fedora Core 3 partly because
+I found that some software I needed (e.g. the new 'pwc' driver for
+Philips webcam and related cameras required a 2.6 kernel), and partly
+because the information at
+<a href="http://mhensler.de/swsusp/download_en.php">Matthias Hensler's web site</a>
+made it look easy and safe to do. I now have a very satisfactory
+configuration running Fedora Core 3, with upgrades described below.
+<P>
+<H2><B>
+Installing FC 3: If possible avoid 'upgrade' option
+</B></H2>
+The FC 3 installation CD gave me the option of an upgrade or a fresh
+install. I decided to try the upgrade, though on reflection a fresh
+install would have saved a number of minor problems. The upgrade went
+very quickly because I was asked no questions about required packages:
+the installation program merely decided what to install on the basis of
+what had previously been installed, which I think is a bad design
+decision. E.g. as a result it wasted my time installing an out of date
+version of OpenOffice which I later removed, and I still do not know if
+there were any new packages that I would have selected had I seen the
+list.
+<P>
+Nevertheless the installation gave me a mostly working FC 3 installation
+in about an hour. Even the linuxant driverloader package made my
+built-in wireless card work with the new kernel to my surprise, because
+linuxant had installed a boot script which checked whether the module
+needed to be rebuilt for the current kernel. It slowed down the first
+boot a little, but then just worked.
+<P>
+The new installation only 'mostly' worked, because a number of things no
+longer worked (including pine, man, xine, mplayer, and a few others)
+which I had to fix by removing things that had been left
+by the `upgrade' installation and then install new versions. I think
+this arose because I did not have a pure RedHat 9 installation: I had
+been installing various things which I guess the FC 3 CD could not
+upgrade to the new environment. Next time I'll do a fresh install, not
+an upgrade.
+<P>
+Fixing problems was was simplified after I installed
+<a href="http://rpmfind.net/linux/RPM/dag/fedora/3/i386/apt-0.5.15cnc6-4.1.fc3.rf.i386.html">the 'apt-get' utility.</a>
+This made installing and upgrading many things much easier than I had
+ever found it before. Not everything is available that way, as there are
+still things that have to be fetched and installed 'manually'.
+<P>
+<H2><B>
+Getting SWSUSP to work on FC 3
+</B></H2>
+After solving the problems of upgrading to FC 3, getting sofware suspend
+to work was very much easier than it had been with RH 9 and the 2.4
+kernels. I did not even need the kernel source, because a pre-built
+kernel available in rpm format, along with a few other utilities, could
+be downloaded and installed from
+<a href="http://mhensler.de/swsusp/download_en.php">Matthias Hensler's web
+site</a>.
+<P>
+
+In particular installing SWSUSP is dead easy now. I used 'wget' to fetch
+the files listed, as follows (thanks to the instructions on
+<a href="http://mhensler.de/swsusp/index_en.php">http://mhensler.de/swsusp/index_en.php</a>
+
+<UL>
+<LI>
+<B>The 'hibernate' script for suspending</B>
+<br>
+<a href="http://mhensler.de/swsusp/download/hibernate-1.08-1.i386.rpm">http://mhensler.de/swsusp/download/hibernate-1.08-1.i386.rpm</a>
+<br> NOW UPGRADED TO:
+<a href="http://mhensler.de/swsusp/download/hibernate-1.09-1.i386.rpm">http://mhensler.de/swsusp/download/hibernate-1.09-1.i386.rpm</a>
+<P>
+Install using 'rpm -i', to make the 'hibernate' command available.
+<P>
+<LI>
+<B>Edit the /etc/hibernate/hibernate.conf</B>
+<BR>
+Run 'hibernate -h' to get information on the options available then edit
+the hibernate.conf file.
+<BR>
+You may find it easiest to copy
+<a href="http://mhensler.de/swsusp/download/hibernate.conf">this
+version</a>
+-- which is worth reading,though you could try just using
+it
+<P>
+
+<LI>
+<B>Fetch and install a prebuilt FC kernel including SWSUSP</B>
+<br>
+The pre-built kernels available
+<a href="http://mhensler.de/swsusp/download_en.php">here</a>
+are updated from time to time. The one I am currently using is
+a kernel
+package including SWSUSP version 2.1.9, namely
+<BR>
+<a href="http://mhensler.de/swsusp/download/kernel-2.6.11-1.27_FC3_cubbi3_swsusp2.i686.rpm">
+http://mhensler.de/swsusp/download/kernel-2.6.11-1.27_FC3_cubbi3_swsusp2.i686.rpm
+</a>
+
+<P>
+As instructed on the download page, install (as root) with the
+appropriate command of the form
+<PRE>
+    'rpm -ivh XXXXXXXXX.rpm'
+</PRE>
+The download page states:
+<blockquote>
+Please install the kernels with 'rpm -ivh kernel_version.rpm'. This will
+install the kernel without deleting the old one, so you can go back to a
+working kernel in case of problems.
+</blockquote>
+<P>
+After installing you'll see the new kernel along with older ones, in the
+'/boot directory. You should also check the contents of your grub.conf
+file (see below);
+<PRE>
+    /boot/grub/grub.conf
+</PRE>
+<P>
+<LI>
+<B>Fix bootloader (grub or lilo) config file.</B>
+<BR>
+Check which device is your swapdevice. It should be specified in
+/etc/fstab. E.g. it could be something like /dev/hda6
+<P>
+If you use grub (as I do) edit /boot/grub/grub.conf, adding
+<PRE>
+    resume2=swap:/dev/???
+</PRE>
+to the kernel command line, where ??? is the name of your swapdevice.
+<P>
+If you use lilo, edit /etc/lilo.conf in the same way and then run lilo.
+<P>
+See below for further modifications to grub.conf
+<P>
+<LI>
+<B>Get the text UI for displaying progress during suspend/resume </B>
+<BR>
+<a href="http://mhensler.de/swsusp/download/swsusp2-userui-0.3.1-0.cubbi3.i386.rpm">http://mhensler.de/swsusp/download/swsusp2-userui-0.3.1-0.cubbi3.i386.rpm</a>
+<P>
+Install using 'rpm -i'
+<P>
+<LI>
+<B>Get the shell script to modify the 'initrd' file</B>
+<br>
+Download
+<a href="http://mhensler.de/swsusp/download/swsusp2initrd.sh">the script
+provided</a>.
+and make it executable.
+<P>
+As instructed in
+<a href="http://mhensler.de/swsusp/index_en.php">the SWSUSP 'Setup' page</a>
+you can either modify the appropriate initrd img file in your /boot
+directory 'by hand' or do it by running the above script with the initrd
+path name as parameter, e.g.
+<PRE>
+   ./swsusp2initrd.sh  /boot/initrd-KERNEL_VERSION.img
+</PRE>
+As a precaution you could save the initrd file first. But in my
+experience so far the shell script just works.
+
+<P>
+<B>ALTERNATIVELY:</B>
+fetch and install the modified mkinitrd now available on
+<a href="http://mhensler.de/swsusp/">http://mhensler.de/swsusp/</a>
+</UL>
+
+<H2><B>
+Test it
+</B></H2>
+After all that you should be able to shut down and reboot, then
+test the above by running the 'hibernate' command on the console, or
+in an xterm window. In case of problems restoring X, you may prefer
+the first time to test this in a plain text console. E.g. if you
+are running X log in on console 2, by doing this to get the console
+login prompt:
+
+<PRE>
+    CTRL+ALT+F2
+</PRE>
+
+You can then log in and run 'hibernate'. You should get what looks like
+the beginning of a normal shutdown, followed by a display of progress
+writing to the swap device. Then the machine shuts down. This is much
+faster than a normal shutdown.
+<P>
+Then when you reboot, if you run the new kernel it should detected the
+saved state on the swap device, and go into resume mode, including
+showing the progress.
+<P>
+
+Warning: if you hibernate using one kernel, then later try to reboot
+another kernel, then the next time you try to run the first kernel
+it will complain about a corrupt file store.
+<P>
+So if you wish to run another kernel, do not hibernate: use the normal
+shut down procedure.
+<P>
+However if you have windows installed, you can hiberate while running
+linux, then run windows, then later reboot and resume the suspended
+linux process.
+<P>
+
+<H2><B>
+My experience so far: Fixing two minor annoyances
+</B></H2>
+After doing the above, everything seemed to work fine: after suspend and
+resume USB devices including a mouse, external memory devices, and web
+cams just worked as expected.
+<P>
+When running a 2.4 kernel (based on Redhat 9) I sometimes found that if
+I tried to play a video file after resuming with the external power
+supply disconnected, sound and video did not work properly. I then had
+to suspend again, connect the charger, then resume. But I no longer have
+that problem.
+<P>
+Two annoyances remained, that were easily overcome, though finding out
+how took a bit of time. First of all the text displayed during boot and
+resume was unreadable: something was corrupting the display during most
+of the process. I tracked that down to this entry in the
+/boot/grub/grub.conf file:
+<PRE>
+    splashimage=(hd0,5)/boot/grub/splash.xpm.gz
+</PRE>
+
+I don't know how it got there but after I removed it booting and
+resuming worked without problems. I could see all the text displayed.
+<P>
+The second annoyance was font size in the text console. The screen is
+capable of 1400x1050 resolution and when I ran 2.4.26, that resolution
+had been used when rebooting or resuming, giving me many more lines of
+text when working in console mode. With the help of google I found that
+I could tell the boot process to use that resolution by adding
+<PRE>
+    vga=834
+</PRE>
+
+at the end of the 'kernel' line. So I now have the following
+
+<PRE>
+    kernel /boot/vmlinuz-2.6.11-1.27_FC3_cubbi3_swsusp2 ro root=LABEL=/12 resume2=swap:/dev/hda3 pci=noacpi vga=834
+</PRE>
+
+and everything is fine.
+<P>
+I think resuming is a little faster since the upgrade to FC3, but it is
+hard to be sure, as I don't have a test configuration that could be
+timed using 2.4.6 and the new kernel.
+<P>
+<FONT SIZE="+2"><B>
+NOTE ADDED 26 Jun 2005 [UPDATED 1 Jul 2005]
+</B></FONT><BR>
+The fault reported in this section has disappeared. At first I thought
+it was because I upgraded
+the linuxant.com driverloader
+(<a href="http://www.linuxant.com/driverloader">www.linuxant.com/driverloader</a>)
+but I now think there is a different explanation, below.
+<P>
+<B>
+This following paragraph is now out of date:
+</B>
+<br>
+Since the upgrade mentioned below on 5th June 2005, everything works
+perfectly except for one small irritation. Whenever it resumes, the
+wireless card (Dell Trumobile 1300, using linuxant driverloader)
+switches between eth0 and eth1. If before suspend eth1 was the wireless
+interface, then after resume eth0 is and vice versa. Since I am not
+using the ethernet interface I have made these two files identical:
+<PRE>
+    /etc/sysconfig/network-scripts/ifcfg-eth0
+    /etc/sysconfig/network-scripts/ifcfg-eth1
+</PRE>
+My conjecture is that the cause of this was having the line
+<PRE>    DownInterfaces eth0 eth1</PRE>
+in /etc/hibernate/hibernate.conf
+<br>
+I now have only
+<PRE>    DownInterfaces eth1</PRE>
+
+<P>
+
+<HR>
+<H3><B>
+Note on upgrade on 5th June 2005
+</B></H3>
+I originally fetched the kernel package including SWSUSP
+version 2.1.8.9
+<BR>
+<a href="http://mhensler.de/swsusp/download/kernel-2.6.11-1.27_FC3_cubbi1_swsusp2.src.rpm">http://mhensler.de/swsusp/download/kernel-2.6.11-1.27_FC3_cubbi1_swsusp2.src.rpm</a>
+<P>
+This mostly worked, but I had noticed a couple of times that there was a
+problem with resume, though sometimes a failed resume could be repeated
+successfully. However  noticed that there was an upgraded kernel package
+dated 2005/06/02  for kernel 2.6.11-1.27_FC3 including SWSUSP version
+2.1.9, with the comment:
+<P>
+<blockquote>
+"This new kernel fixes some security issues and includes recent software
+suspend with fbsplash patch. It also should fix the issue with a panic
+on resume some reported for the previous kernel."
+</blockquote>
+So I downloaded and installed it as above and so far (7 Jun 2005)
+everything seems to be OK.
+<P>
+<H3><B>
+NOTE on Philips Web Cam (pwc) driver
+</B></H3>
+After installing a 2.6.11 kernel I had to fetch a new version of the
+philips web cam driver (PWC) as described in
+<a
+href="http://www.cs.bham.ac.uk/~axs/threecams">http://www.cs.bham.ac.uk/~axs/threecams</a>.
+<P>
+<HR>
+<P>
+I hope this information is of use to someone.
+<P>
+I am very grateful to all the people who have done the work from which I
+can now benefit. Every time I struggle to help my wife extricate herself
+from a mess on her Windows PC I wish she could migrate to linux.
+Unfortunately she uses a superb orienteering map-making package (OCAD)
+which (at present) runs only on windows.
+<HR>
+<P>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+
+<img alt="Frames-free web site" width="120"
+src="http://www.cs.bham.ac.uk/%7Eaxs/fig/noframes.gif">
+<br>
+Last updated: 1 Jul 2005
+<br>
+</body></html>

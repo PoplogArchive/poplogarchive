@@ -1,0 +1,1785 @@
+http://www.cs.bham.ac.uk/~axs/misc/supervenience
+This file last updated 19 Nov 1999
+
+=======================================================================
+NB
+The notes on supervenience and implementation below are now partly out
+of date, though some of the ideas are still waiting to be developed
+fully, when I have time.
+
+I have some shorter papers written in Jan 1998 and more recently,
+developing some of the points below, in various contexts. These papers
+are available in postscript format (or PDF on request) in the Cognition
+and Affect project directory, whose full contents are listed, with
+abstracts, in
+    http://www.cs.bham.ac.uk/research/cogaff/
+
+The newer papers and discussion notes are:
+
+11. Correspondence with Henry Stapp on quantum mechanics, classical
+    mechanics, supervenience, etc.
+    http://www.cs.bham.ac.uk/~axs/misc/classicalphysics-and-mind.txt
+
+10. Architecture based conceptions of mind
+    http://www.cs.bham.ac.uk/research/cogaff/Sloman.cracow.slides.2page.ps
+        Slides for an invited talk at LMPS99, Cracow, August 1999
+
+9. Architectural Requirements for Human-like Agents Both Natural and
+        Artificial. (What sorts of machines can love?)
+    To appear in Human Cognition And Social Agent Technology
+    Ed. Kerstin Dautenhahn, in the "Advances in Consciousness Research"
+    series, John Benjamins Publishing
+
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.kd.ps
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.kd.pdf
+
+8. The ``Semantics'' of Evolution: Trajectories and Trade-offs in
+    Design Space and Niche Space.
+
+    Invited talk for IBERAMIA-98 Lisbon, October 1998
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman_iberamia.ps
+
+7. What sorts of brains can support what sorts of minds?
+    Slidely extended version of slides prepared for an invited talk at
+    the DIGITAL BIOTA 2 Conference, Cambridge September 1998.
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.biota.slides.ps
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.biota.slides.pdf
+        (See http://www.cyberbiology.org for conference details)
+
+6. Supervenience and Implementation: Virtual and Physical Machines
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.supervenience.and.implementation.ps
+    Draft paper, January 1998
+
+5. Design Spaces, Niche Spaces and the ``Hard'' Problem
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.design.and.niche.spaces.ps
+    Draft paper, January 1998
+
+4. The evolution of what?
+    (A LONG INCOMPLETE DRAFT paper on consciousness and its evolution --
+    likely to be updated, and maybe turned into a book one day).
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.consciousness.evolution.ps
+
+3. Architectures and types of consciousnes (Oct 1997),
+    Abstract for paper presented at Tucson3 conference (May 1998)
+    http://www.cs.bham.ac.uk/~axs/misc/tucson3.abstract
+
+2. Beyond Turing Equivalence,
+    in Machines and Thought: The Legacy of Alan Turing (vol I),
+        eds P.J.R. Millican and A. Clark, 1996,
+        The Clarendon Press, Oxford, pp179--219,
+    (Presented at Turing90 Colloquium, Sussex University, April 1990)
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/Sloman.turing90.ps.gz
+
+1. There are also many discussion notes in the directory containing
+this file:
+
+    http://www.cs.bham.ac.uk/~axs/misc/
+    The file names should facilitate browsing.
+
+=======================================================================
+
+INCOMPLETE DRAFT NOTES FOLLOW: WILL BE UPDATED FROM TIME TO TIME
+MAJOR REORGANISATION WILL OCCUR AT SOME LATER TIME
+
+    SUPERVENIENCE AND IMPLEMENTATION
+    Aaron Sloman
+    School of Computer Science
+    The University of Birmingham
+    http://www.cs.bham.ac.uk/~axs
+    A.Sloman@cs.bham.ac.uk
+
+Last modified: 1 Dec 1997
+[Note: the (draft) table of contents appears after this preface.]
+
+-- Preface ------------------------------------------------------------
+
+This draft, evolving, paper is in part about the relation between mind
+and brain, and in part about the more general question of how high level
+abstract kinds of structures, processes and mechanisms can depend for
+the existence on lower level, more concrete kinds. Philosophers often
+refer to the relation between levels as "supervenience" (e.g. asking
+whether mental states and processes are supervenient on brain
+processes). Engineers tend to discuss the relation in terms of
+"implementation" (e.g. asking which sorts of physical mechanisms could
+implement certain kinds of perceptual processes). The paper is about how
+to link these notions, which I believe, come to the same thing, in a
+certain class of cases.
+
+By thinking about various relatively simple, well-understood, kinds of
+implementations, and extrapolating from them, we may be able to develop
+better ways of thinking about far more complex kinds, including the
+implementation of human minds in brains, and the implementation of robot
+minds in other kinds of mechanisms.
+
+Several papers on related topics are in the Birmingham Cognition and
+Affect project directory:
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect
+
+
+Various less formal discussion notes, correspondence with colleagues,
+usenet postings are in this directory
+    http://www.cs.bham.ac.uk/~axs/misc/
+
+which also includes the paper you are now reading.
+
+CONTENTS
+
+ -- Preface
+ -- INTRODUCTION
+ -- Some of the main questions
+ -- Some notes
+ -- IMPLEMENTATION AND SUPERVENIENCE
+ -- -- Mechanism supervenience
+ -- -- Property supervenience
+ -- -- Pattern supervenience
+ -- -- Pattern in feedback systems
+ -- -- Not all the patterns need be physically describable
+ -- -- Suppose the machine develops without external training?
+ -- -- The irrelevance of QM CM distinctions
+ -- SUMMARY SO FAR:
+ -- INSTANTIATION VS IMPLEMENTATION
+ -- MATHEMATICAL IMPLEMENTATIONS
+ -- DOES CORRECT TIME-KEEPING SUPERVENE ON PHYSICAL PROPERTIES
+ -- WHAT SORT OF THEORY DO WE NEED?
+ -- TEMPTING BUT INADQUATE VIEWS ON IMPLEMENTATION
+ -- TOWARDS A THEORY OF TYPES OF IMPLEMENTATION
+ -- -- Not all mathematically equivalent implementations are equivalent
+ -- -- Reliability
+ -- -- Some causal properties matter only in a context
+ -- -- What we do and don't understand already
+ -- LINKS WITH OTHER HARD CONCEPTUAL PROBLEMS
+ -- IMPLEMENTATION (SUPERVENIENCE) VS CORRELATION
+ -- IT'S NOT JUST A MATTER OF SUBJECTIVE INTERPRETATION OF Y AS X
+ -- A SIMPLE EXAMPLE: A MECHANICAL CLOCK
+ -- -- A clock's implementation machine includes the environment
+ -- -- Is being an implementation of a clock an objective property?
+ -- To be done (1)
+ -- To be done (2) Dynamical systems
+ -- To be done (3)  Nothing buttery
+
+-- INTRODUCTION -------------------------------------------------------
+
+These notes on how one sort of machine can be implemented in another
+sort arise in part out of correspondence with Henry Stapp, whose
+comments and objections have helped me to clarify things, and in part
+out of an invitation to give a talk on "Bridging the Explanatory Gap" at
+the workshop on "The Brain and Self Workshop: Toward a Science of
+Consciousness" to be held at Elsinore, Denmark, August 21-24, 1997 (See
+http://www.zynet.co.uk/imprint/elsinore )
+
+Henry's papers are accessible at
+
+    http://www-physics.lbl.gov/~stapp/stappfiles.html
+
+I have also benefited from email discussions with Pat Hayes, Stan Klein,
+Bill Robinson, Jeff Dalton, Kevin Korb, Roz Picard, Greg Mulhauser,
+usenet discussions with Jim Balter, Neil Rickert, Anders Weinstein, Pete
+Lupton (who died alas, early in 1997), and face to face discussions
+with Inman Harvey, Andy Clark, Mike Morris, Brian Logan and many others.
+
+I have no doubt also been influenced in the longer term by the writings
+of many others, and conversations with several of them, including Maggie
+Boden, Dave Chalmers, Dan Dennett, Doug Hofstadter, Terry Horgan, John
+McCarthy, Marvin Minsky. Brian Smith and Gerd Sommerhoff. I've never met
+Norbert Wiener, though I think he had some of the key ideas. I apologise
+if I have pinched anyone's ideas without acknowledgement: I am not
+interested in where ideas come from, only whether they are right or
+wrong.
+
+[Henry wrote, on 15th May 1997, in response to a message of mine, about
+how a virtual machine X can be implemented in a physical machine Y]
+
+> Our interest is in the relationship between a certain (high-level) level
+> of causality X that has a structure that somewhat resembles psychological
+> process, with conscious and unconscious parts, and a lower level of
+> causality Y that might be called physical brain process (neuron
+> firings etc.)
+
+And I am interested in how actual psychological processes (X), including
+conscious and unconscious parts, can be implemented in physical brains
+of various kinds and possibly also computers and other future types of
+machines (Y).
+
+We cannot understand the conscious subset of mentality on its own. It
+has to be seen as a tiny, ill defined, and rather diverse, subset of a
+much larger (virtual) machine, which has a rich functional architecture
+whose full complexity we can barely discern at present (though I think
+it's clear that the super algorithm of intelligence which Searle and
+Penrose claim AI researchers seek is irrelevant: the architecture will
+inevitably involve not one algorithm but large numbers of concurrent,
+persistent, asynchronously interacting, functionally distinct
+components. Whether those components can be built out of algorithms
+{i.e. computer programs} is a separate question, which is not the
+main topic of this paper).
+
+I.e. conscious mental phenomena are necessarily the tiny tip of an
+enormous iceberg of interacting mechanisms, and cannot exist without the
+iceberg. (However, as Brian Logan commented: it's not the same portion
+that is "visible" at all times. Think of a roughly spherical rotating,
+or oscillating, iceberg, for instance.)
+
+Moreover, clarifying what we understand by "consciousness",
+"experience", "subjective awareness", "qualia", and so on, requires
+clarifying how what we are talking about relates to the rest of the
+(submerged) system in terms of which its existence is defined.
+
+This larger mental machine, a multi-faceted information processing
+engine, is in turn implemented, possibly via several different levels of
+implementation, in physiological and physical machines in the brain
+(though some aspects of the mental are implemented in the surrounding
+physical and cultural environment.)
+
+However the situation is even more complicated in that there are
+different kinds of mental machines and different kinds of implementation
+machines, e.g. in different sorts of animals and in humans in different
+cultures or different stages of development, or suffering from different
+types of brain injury or disease or degeneration.
+
+Any good theory has to encompass all of this diversity, and perhaps show
+to what extent new forms of consciousness can or cannot be implemented
+in totally different mechanisms, e.g. in computer-based robots.
+
+[I've sketched some ideas about the kinds of diversity of information
+processing control architectures to be found in various kinds of
+organisms in various papers and lecture notes. One is the paper on
+evolution of conciousness in the file
+
+    ftp://ftp.cs.bham.ac.uk/pub/groups/cog_affect/
+
+]
+
+For now I am going to try to put to one side the excessively complex
+task of analysing the relation between mind and matter, and between
+conscious and non-conscious aspects of mind, and instead try to get an
+overview of the sorts of relationships that we already understand can
+hold between different sorts of machines, including abstract or virtual
+machines implemented in physical machines.
+
+In particular I want to ask: What does it mean for X to be implemented
+in (or realized in) Y? What does it mean for X to supervene on Y?
+
+My conjecture is that the former concept (implementation) which has wide
+currency among engineers and the latter concept (supervenience) much
+discussed by philosophers, are the same concept. Or rather there are
+many cases of supervenience discussed by philosophes where the
+relationship amounts to the same thing as what an engineer might call
+implementation. Since there need not be any implementor (e.g. when
+perceptual functions or memory functions are implemented in certain
+neurones) some people might prefer to call this "realization".
+
+However we can abstract from origins, and just as it is commonplace to
+talk about spaces of possible designs independently of whether any
+designer is involved, similarly we can consider a relation of
+implementation between two sorts of machines independently of whether
+someone produced the implementation, or it happened via growth, or
+learning, or evolution, or by chance.
+
+(Arguing over whether origins make a difference seems to me to be a
+complete waste of time since clearly it's a purely definitional issue
+which addresses no point of substance, though certain philosophers think
+it important. My guess is that they are clutching at straws trying to
+distinguish humans from robots, or animals from machines, for no other
+reason than a desire to keep humans, or some broader class as special.)
+
+I've claimed that philosophers who discuss certain types of
+supervenience are investigating the same relation as engineers who study
+types of implementation.
+
+However, while engineers have a deep and rich intuitive grasp of
+implementation they have not yet articulated explicitly all the implicit
+knowledge that they have and use when then design, implement, debug, and
+maintain systems.
+
+By contrast philosophers have put a huge amount of effort into
+articulating what they mean by supervenience, but their actual knowledge
+and experience of the variety of types of cases is very limited, and as
+a result their analyses are too restrictive, and consequently their
+reasoning about what is possible is often flawed. These notes attempt to
+bring the two together.
+
+
+-- Some of the main questions
+
+On the way I want to address the following questions:
+
+1. If X is implemented in Y and Y is causally complete does that mean
+that X has no causal powers, i.e. it is pure epiphenomenon? Which other
+sorts of causal relationships can hold between X and Y?
+
+2. What sorts of differences can be made to X if it is implemented in
+different ways? E.g. are there any virtual machines that can be
+implemented perfectly either in biological neurons or in
+silicon computers? Are there some sorts of virtual machines that cannot
+be implemented in computers, and if so why not?
+
+3. How are the engineer's notions of implementation related to purely
+mathematical notions of implementation concerned with relations between
+abstract structures (e.g. sequences of formulae), not necessarily
+involving time or causality?
+
+4. If machine X is implemented in machine Y what sorts of relations can
+or must hold between events and processes in X and those in Y. In
+particular, must there be observable correlations? Must there be
+structural correspondences? Must the laws and features of X be logically
+or mathematically derivable from those of Y?
+
+5. Under what conditions are features of the environment of machine X
+crucial to its being an implementation of Y. I.e. which states of Y
+supervene not only on X but also the environment in which X is embedded?
+
+6. Can a machine with mental states and processes be implemented in a
+purely physical machine? Are there any constraints on the type of
+physical machines that are capable of providing an implementation?
+
+7. Can a deeper understanding of these matters help us understand any of
+the old problems about the mind-body relation, or problems about the
+nature of consciousness?
+
+During the course of writing these notes I have learnt much, and my
+views are still evolving, so who knows what will be here in a few months
+time.
+
+-- Some notes ---------------------------------------------------------
+
+Note 1: Brian C Smith's book: On the Origin of Objects (MIT Press 1996)
+addresses many of these issues in considerable detail: it's one of the
+few things that do. However, I find it very hard to read, and I don't
+agree with everything, though a high proportion of what he writes is
+both true and important. He apparently thinks there is a notion of
+"computation" which is narrower than the totally general notions of
+"mechanism" and "process" yet different from the totally syntactic,
+mathematical notion of computation. I used to think that also, but no
+longer do: the only precise notion of computation is the subject matter
+of the mathematical theory of computation, which is purely structural,
+and does not involve any real notion of causation or time (as opposed to
+mathematical sequences).
+
+Note 2: I assume that physics is the science that explores the
+fundamentals of the material world, and that ultimately all sorts of
+mechanisms are implemented in (realized in) physical mechanisms.
+
+However, I do not assume that physics has already found the ultimate
+nature of reality nor that it ever will. In fact I have tried to assume
+as little as possible about what physicists now or in the future tell
+us.
+
+Thus in what follows there is no commitment either to classical
+mechanics or to quantum mechanics, though I hope that everything I write
+will turn out to be consistent with the best physical theories available
+at present, or in the indefinite future. Likewise, success in this
+project requires compatibility with good theories about the evolution of
+human capabilities, theories about the development of individual minds
+from early infancy to maturity and beyond, theories about how various
+aspects of mentality can be damaged or destroyed through injury,
+disease, effects of ageing, or congenital defect.
+
+Too many theories of consciousness focus on only a tiny subset of the
+relevant phenomena. If that's all they explain, then they explain
+nothing.
+
+Note 3:
+One thing I see no basis for is the fairly common assumption that the
+only {\em real} kind of causality is physical causality. In fact it is
+not at all clear what sort of role causality plays in modern physics: in
+some ways our ordinary notions of causality seem to break down in the
+framework of quantum mechanics.
+
+Our ordinary notions of causation get a grip only at {\em intermediate}
+levels in the implementation layers of the universe, including most of
+the levels that have been studied by scientists of all sorts, with the
+possible exception of quantum physicists. For instance there are
+economic causes, social causes, mental causes, as well as physical
+causes, and we make use of all of these types of causation in our
+everyday life.
+
+I shall simply be assuming something like our ordinary notion of
+causation, without attempting to analyse it, except to say that it is
+intimately bound up with the notion of "what would have happened if",
+i.e. with the truth of many types of conditional statements. Making that
+precise is far beyond the scope of this paper, though eventually an
+analysis of causation will be required for completeness.
+
+Note 4:
+To me one of the most striking presentations at the Brain and Self
+Workshop: Towards a Science of Consciousness, held at Elsinore, Denmark
+August 21-24 (http://www.zynet.co.uk/imprint/elsinore) was a talk by
+Prof Hermann Haken of Stuttgart University about his "synergetic" theory
+which explores, from a mathematical and physical standpoint, different
+levels of process which can arise in complex dynamical systems,
+including the emergence of structured forms of turbulence and coherence.
+
+His emphasis on the fact that causation goes in both directions, between
+lower and higher levels, is very close to the viewpoint expressed here,
+though I was previously not aware of his work, and I cannot yet say that
+I understand it.
+
+Note: 5
+I think some cases of interactions between levels are simpler than
+others. The kind of case I am particularly trying to get a grip on is
+one that "bootstraps" its own semantics.
+
+I.e. we all agree that a social community can interpret something as
+being a game played according to the rules of chess or text written in
+English. I want to try to characterise what it is about a self-contained
+machine (or animal) that would enable it to do for some of its own
+states what a social community can do. I don't believe that societies
+of interacting complete agents are inherently necessary for this, only
+some of their features.
+
+E.g. a primitive kind of self-interpreting is already found in computers
+which sometimes use bit patterns as pointers into their own (virtual)
+memory, sometimes use them as instructions to be obeyed, sometimes use
+them as numerals, e.g. when counting elements in a stored list or file.
+
+So far I don't think we have understood what sort of architecture might
+suffice for bootstrapping all the varieties of self interpretation found
+in humans or even some other animals, though various gropings in
+relevant directions are to be found in the work of people like Dennett
+(in his book Kinds of Minds) and people talking about autopoeisis (on
+which I've not read enough), and various people thinking about the
+evolution of intelligence, and maybe Brian C Smith's book.
+
+Note 6:
+This paper may seem long and tortuous. That's because the subject matter
+is extremely complex. Must dispute goes on at cross purposes because
+disputants unwittingly focus only on small portions of a complex tangle
+of concepts, often not appreciating that they have focused on different
+subsets.
+
+
+-- IMPLEMENTATION AND SUPERVENIENCE
+
+[Henry]
+> You suggest that `X is implemented in Y', and sort of identify that with
+> `X supervenes on Y'.
+
+My claim (conjecture?) is that the concept referred to by philosophers
+using the words "supervenient", "supervenience" is the very same concept
+as that referred to by engineers using "implementation".
+
+I.e. X is supervenient on Y if and only if X is implemented in Y
+
+However, this equivalence applies only to the sort of case where X is a
+type of {\em mechanism} in which processes and causal connections occur.
+Philosophers actually use the notion of "supervenience" for some other
+cases, which I'll mention later.
+
+-- -- Mechanism supervenience
+
+Let's call the type of supervenience where mechanisms are involved,
+"mechanism supervenience". I.e. X (as a mechanism) supervenes on Y if
+and only if X is implemented in Y.
+
+People who are worried about using "implemented in" to refer to cases
+where there is no implementor, can substitute "realized in".
+
+This is the concept I wish to analyse.
+
+Being a mechanism involves having components and states and processes
+that interact {\em causally}.
+
+The concept "interacting causally" is an intuitive concept that pervades
+all our thinking about processes, and I shall not attempt to analyse it
+here. Examples of causal interaction include
+
+
+    poverty causing crime,
+
+    illiteracy causing poverty,
+
+    getting married or having children causing new legal obligations to
+        arise,
+
+    insertion of a word in a wordprocessor causing a line, and possibly
+        a page to overflow
+
+    a syntactic error in a program causing compilation to abort
+
+    a faulty algorithm causing a piece of software to crash while
+        running
+
+    overloading an operating system causing it to thrash (too much
+        paging and swapping)
+
+    feedback in a circuit causing distortion to be reduced
+
+    evolutionary pressures causing a gene pool to change
+
+    remembering something causing a new desire to arise
+
+    a desire and a belief causing an emotion
+
+    an intention causing a physical action to occur
+
+    a change in temperature causing a change in electrical resistance
+
+and many more. To what extent these are all parts of mechanisms which
+supervene on or are implemented in physical mechanisms is a topic for
+further discussion, but only after we have clarified what implementation
+is.
+
+
+[henry]
+> But as regards our differences everything seems to
+> hang on exactly what your definition of "implementation" is: What is
+> the connection between these two levels of causal description?
+> ... You words are unclear on this point.
+
+I'm getting there slowly. Some preliminary comments first.
+
+First let me say that I do not think anything here is simple or clear.
+
+We are dealing with some of the most complex concepts that form part of
+our everyday life, including a host of concepts linked to the notions of
+"causation", "mechanism", "what would happen if", "control",
+"existence', etc. which philosophers have been attempting to analyse for
+centuries, and I don't think the work is done yet.
+
+Second although there are many cases of X being implemented as Y that we
+partially understand very well, insofar as we know how to create those
+cases (e.g. we implement a software virtual machine in a computing
+system), and we know how to use them, predict their behaviour, debug
+them when they go wrong, and apply them in solving real practical
+problems, nevertheless we don't yet fully understand what's going on.
+
+That is so despite the fact that we know how to predict the behaviour of
+X (within limits) and know how to change things to produce extended
+functionality e.g. so as to replace X with X', and we know how to debug
+an implementation when something goes wrong i.e. what's implemented
+turns out to be something other than X, etc., and we often find out how
+to produce a new implementation of X in another machine Y' which is
+cheaper, or faster, or more widely used, etc.
+
+I.e. as engineers we have a very good implicit grasp of what's happening
+in many cases where X is implemented in (supervenient on) Y, but that's
+a *practical* grasp based in a host of design and implementation skills.
+
+It is not an *analytical* grasp which would enable us to answer a host
+of philosophical questions about the nature of the relationship between
+X and Y, and the general conditions under which it is possible.
+
+
+
+-- -- Property supervenience
+
+A counter example: there's another kind of supervenience, which I'll
+call "property supervenience", which I seem to recall was discussed by
+the philosopher G.E.Moore early this century which is applicable to
+ethical and aesthetic properties. These are said to supervene on the
+non-ethical or non-aesthetic properties. (E.g. the claim is that the
+aesthetic merits of a painting cannot change unless some physical part
+or feature of the painting changes.)
+
+But these ethical and aesthetic qualities do not involve processes and
+causation, so they are different from the cases where a type of machine
+and processes in the machine, including cause-effect relationships, are
+supervenient on something else. I.e. this is not mechanism
+supervenience.
+
+There are two interpretations of property supervenience dependent on
+whether the properties are thought to inhere in the objects that have
+them or whether they are merely expressions of judgements of others.
+
+For example, describing a meal as "pleasant" or "nice" is typically an
+expression of the speaker's judgement, which need not be shared by
+others with different gastronomic tastes.
+
+Whether aesthetic properties are like that or not is a topic of
+philosophical dispute.
+
+A philosopher who believes that aesthetic properties of a painting or
+sculpture are inherent in the painting or sculpture is likely to
+believe that aesthetic properties supervene on physical properties.
+
+However, a philosopher who thinks that aesthetic properties are merely
+expressions of aesthetic judgements of viewers, like the pleasantness of
+a meal, may not believe that aesthetic properties supervene on physical
+properties.
+
+This is an empirical issue. For instance if there are some people who
+judge an {\em original} painting or sculpture to be more aesthetically
+more valuable than a totally indistinguishable copy, because of the
+original's causal links with the author, then for that person the
+aesthetic properties do not supervene on the physical properties, for
+physically indistinguishable objects would be evaluated differently
+aesthetically.
+
+However, even someone who believes that aesthetic goodness or badness
+are purely "subjective" matters of judgement that do not necessarily
+supervene on physical properties, may still think that there are also
+some aesthetic properties that do supervene on physical properties, e.g.
+symmetry, harmony, elegance, grace.
+
+(Incidentally G.E.Moore had a very mysterious notion of ethical goodness
+as an ontologically distinct, non-subjective, property of certain
+actions which only certain people could perceive, but which nevertheless
+supervened on non-ethical properties. I shall not discuss this
+possibility further.)
+
+-- -- Pattern supervenience
+
+A special kind of property supervenience may be described as pattern
+supervenience. It occurs when there are observable patterns in a
+physical system. For instance the few people who are still sometimes
+able to look at the stars on a clear moonless night unpolluted by
+artificial light will often see patterns in the stars. They may be
+patterns they have been taught to see (e.g. the southern cross) or
+patterns they notice spontaneously, which will often shift as their
+visual systems impose different segmentations and switch between
+highlighting different features.
+
+These are patterns which emerge from the physical structure of the
+system being observed. They have no causal powers. They are not part of
+any mechanism within the system being observed. So this is not a case of
+mechanism supervenience. Nothing is {\em implemented} in something else.
+
+These patterns can be described as epiphenomenal: they are produced by
+the underlying structures, but they have no influence on those
+structures except insofar as they summarise features of the underlying
+structures which do have causal powers. There's nothing {\em new} going
+on at the level of those patterns which is different from what would
+happen if those patterns were not there. For example if there's a large
+globular cluster of stars then that is a sort of 3-D pattern and the
+fact that it exists will alter the gravitational and other influences on
+other stars. This is a merely cumulative effect.
+
+Note that insofar as the patterns are recognised and classified by
+observers there is something different happening. E.g. the observer may
+be able to see and learn some patterns but not others. But that does not
+mean the patterns have causal powers in the system being observed.
+
+But patterns do sometimes have causal powers, and form part of a system
+that depends on those causal powers.
+
+-- -- Pattern in feedback systems
+
+Consider a new case, where the observer and the observed pattern are
+part of the same mechanism.
+
+Suppose the pattern is in an array of lights controlled by some machine.
+Another part of the same machine includes two TV cameras, one aimed at
+the array of lights and another aimed at something else in the
+environment. In both cases the images are analysed, parsed, classified,
+or whatever (e.g. using neural nets and other AI techniques, or new
+techniques to be discovered in the future), and the results fed into the
+subsystem that actually controls the array of lights.
+
+Suppose that not only the patterns in the light array LA, but also
+the environment ENV keeps changing.
+
+Suppose the analysis sub-mechanism describes the patterns in both of
+them using a particular form of classification (e.g. searching for
+polygons of various shapes and sizes, or searching for axes of symmetry,
+or searching for the occurrence of what we would call letters of the
+alphabet).
+
+Finally suppose the whole system continually adapts itself so as to
+maximise the similarity (at some level of description) between the
+patterns that it produces in LA and the patterns it finds in ENV
+immediately after.
+
+We could say that it is continually attempting to predict what is about
+to happen in the environment. This may or may not be possible, for
+instance if patterns in ENV are generated by some random process, or by
+some very complex physical system whose behaviour cannot be modelled by
+the mechanisms available in the machine.
+
+However, whether it is or is not successful it remains true that the
+patterns in the light array are no longer merely patterns without any
+causal powers. On the contrary those patterns control the processes of
+analysis and abstraction going on in the machine and also the processes
+generating the new patterns.
+
+We now have a new high level machine, in which patterns are produced
+detected, analysed, classified, stored (perhaps), compared and which
+cause new patterns to occur in a systematic way (which changes as the
+machine "learns").
+
+So here we definitely have a mechanism which can be described at one
+level in terms of patterns and their effects and interactions, which is
+implemented in a lower level machine which may be described in terms of
+its physical construction. But now, unlike observable but unobserved
+patterns in the night sky the patterns have {\em new} causal powers.
+I.e. new types of causal statements about how the machine works are true
+and useful in explaining and predicting its behaviour. This is true even
+if at the level of its physical construction the machine is causally
+complete: i.e. no physical laws are violated when it performs its tasks.
+
+This is a case of mechanism supervenience.
+
+-- -- Not all the patterns need be physically describable
+
+Notice also that some of the patterns may not be describable in the
+language of physics. What makes something a letter of our alphabet is in
+part a feature what we regard as a font, and that can change over time
+without the laws of physics changing. For instance, there is nothing
+{\em physical} that is common between all the 2-D patterns that we call
+instances of the letter "a", including upper and lower case, printed and
+handwritten text.
+
+So if such patterns are somehow learnt by the machine and it learns that
+what's going on in ENV is that the letters form a cyclic sequence, are
+always two letters visible and the one on the left is constantly
+replaced by its successor in the sequence and the one on the right is
+replaced by its predecessor, e.g. BA, CZ, DY, EX etc. then there may not
+be any way of describing the high level behaviour of the system that
+uses only concepts of physics and concepts definable in terms of logical
+combinations of the concepts of physics.
+
+This is unlike the case where the patterns are simply made of polygons
+and a purely geometric law describes the sequence of patterns.
+
+-- -- Suppose the machine develops without external training?
+
+We can now extend the example to cover the case where there is no
+external social system but the machine has somehow developed categories
+of its own, for its own reasons, e.g. guided by some principles of
+cognitive elegance, or perspicacity, or explanatory power. Note that
+these are not concepts of physics.
+
+If a machine, like a human being, can somehow absorb systems of
+segmentation and classification used in a pre-existing social system,
+then in principle it might (with suitable additional adaptive
+mechanisms) be able to devise a way of categorising (chunking) reality
+which it doesn't get from other intelligent agents, but merely finds
+useful in achieving its goals. For instance there are indefinitely many
+ways of carving up structures and processes in the environment, but, as
+Nelson Goodman showed dramatically with the example of objects described
+as "grue" and "bleen" if they switch from blue to green or green to blue
+on a certain date, many segmentations of reality are not particularly
+useful (they are not "projectible").
+
+Of course, it is often much easier for an individual to absorb these
+discoveries from others instead of inventing them. However, the human
+social system is a sort of machine that was capable of inventing them,
+and so it is at least possible that they may also be capable of being
+invented by a sufficiently complex individual trying to solve the same
+problems of predicting and explaining phenomena.
+
+We have here the germs of an idea which I'll summarise as follows:
+
+    Some machines may be capable of bootstrapping themselves so that
+    they implement new forms of virtual machine, not definable in
+    terms of the concepts that were previously adequate.
+
+In particular this pressure to categorise, albeit in somewhat fuzzy
+ways, arises out of the process of moving from a purely reactive type of
+architecture towards a deliberative architecture that can construct and
+evaluate plans for future action. The requirements of such deliberations
+will include categorising reality into chunks that can enter into learnt
+associations that can be used in planning (if I do A then B will follow
+whereas if I do A' them B' will follow, etc.).
+
+In the work to be done below we'll have to explain how the high level
+virtual machine can have real causal powers, whether or not the
+underlying physical implementation mechanism is causally complete. If
+that is correct then it completely undermines some of the arguments that
+make a strong link between mentality (or consciousness) and differences
+between classical and quantum mechanics.
+
+-- -- The irrelevance of QM CM distinctions
+
+I think that the temptation to look for a causal role for mentality in
+the indeterminacy of quantum mechanics is
+
+    (a) unnecessary since causal gaps at a lower level are not
+    required for real causal powers at higher levels (and the belief
+    that they are required simply manifests a lack of understanding
+    regarding the relation between causation and counterfactual
+    conditionals)
+
+    (b) inadequate as a basis for really efficacious mentality.
+    (I want my decisions to operate directly on mental states and
+    processes rather than the states of sub-atomic particles)
+
+    (c) only useful as a one-way explanation: even if it does show
+    show how certain mental process can close causal gaps in physical
+    processes (of which I am not convinced), it still leaves mysterious
+    how the reverse can occur: why do you have a pain when you sit on
+    a pin, or see a beautiful rose when millions of photons hit your
+    retina?
+
+-- SUMMARY SO FAR:
+
+Mechanism supervenience may be distinguished from property
+supervenience, and property supervenience may be concerned with
+judgemental or intrinsic properties.
+
+A special case of property supervenience is pattern supervenience.
+Pattern supervenience may be purely epiphenomenal if the occurrence of
+the patterns is not part of any control mechanism. However, if the
+patterns in a machine are detected and used by the machine to produce
+new patterns, we may have an example of a high level virtual machine
+with causal powers. In some cases that machine will be definable purely
+in terms of geometrical and physical concepts and in others not. This is
+independent of whether or not the high level machine is implemented in a
+causally complete physical substratum.
+
+Some cases of property supervenience, e.g. some aesthetic cases, are
+essentially cases where the perceiver is forming a preference or like or
+dislike. This can be "subjective supervenience".
+
+We shall later ask whether all cases of mechanism supervenience are also
+in some sense judgemental and "subjective" or whether some of them can
+be somehow intrinsic and objective.
+
+
+-- INSTANTIATION VS IMPLEMENTATION
+
+It is important not to confuse implementation with the theoretical
+computer science notion of "instantiation", a relationship that can hold
+between a program or algorithm and a sequence of states involved in the
+execution of the program. This is a relationship between two structures,
+the structure of the algorithm and the structure of a process that can
+be generated by the algorithm.
+
+Consider the standard algorithm for identifying the greatest common
+divisor of two numbers, which involves repeatedly dividing the smaller
+of two numbers into the larger, and then starting again with the smaller
+number and the remainder. We can express it recursively in Pop-11 thus
+
+define gcd(n1, n2);
+    if n1 == 1 then 1
+    elseif n2 == 1 then 1
+    elseif n1 == 0 then n2
+    elseif n2 == 0 then n1
+    else
+        if n1 > n2 then
+            gcd( n1 mod n2, n2 )
+        else
+            gcd( n2 mod n1, n1 )
+        endif
+    endif
+enddefine;
+
+
+This has a fixed number of steps including a loop or recursive call.
+When the algorith is applied to different pairs of numbers, to
+produce an instantiation, which includes a succession of intermediate
+states (a succession of values for n1 and n2 in the above version) it
+is necessary to recurse or go round the loop varying numbers of times,
+depending on the relationship between the numbers. So there are
+infinitely many different instantiations of the algorithm of varying
+lengths.
+
+These instantiations, like the original algorithm are themselves all
+abstract sequences of structures, which need not occur in time, nor
+involve any causation. For example, this sequence of symbols can be
+taken to be an instantiation of the algorithm, when it is applied to the
+numbers 264 and 768:
+
+    > gcd 264 768
+    !> gcd 240 264
+    !!> gcd 24 240
+    !!!> gcd 0 24
+    24
+
+Similarly a G\"odel number for a sequence of formulae is a static
+structure which can be interpreted as an instantiation of the algorithm.
+No implementation needs to be involved in the instantiation relation,
+i.e. no machinery that makes things happen, no causation. So
+instantiation is not the same as implementation. The actual
+implementation I used to test the procedure and produce the above
+tracing used a compiler for Pop-11 running on a Sun Computer, but that's
+irrelevant to whether the sequence of states is or is not an
+instantiation of the algorithm. (That's a point on which I think John
+Searle got very confused.)
+
+Many of the theorems of computer science are about algorithms and
+properties of their instantiations (e.g. theorems about complexity,
+solvability, correctness of algorithms, etc.) and have {\em nothing} to
+do with time or causation.
+
+
+-- MATHEMATICAL IMPLEMENTATIONS
+
+There is a kind of concept of implementation used by some theoretical
+computer scientists who will describe two types of machine M1 and M2 in
+a formal mathematical way and ask whether machines of type M1 can be
+implemented in a machine of type M2.
+
+Here a machine is a structure that determines in a principled way
+possible sequences of structures (which can be called computations). In
+other words, this mathematical notion of implementation involves a
+relationship between two algorithms.
+
+The question whether M2 implements M1 may be answered by showing that
+there is a way of constraining a machine of type M2 in such a way that
+it defines sequences of structures (instantiations) that have a suitable
+mathematically definable relation to sequences (instantiations) that are
+generated by M1.
+
+E.g. if inst(M) is the set of all instantiations of M, i.e. all the
+sequences (possibly infinite) that M can generate, then we can say that
+M2 provides, in the mathematical sense, an implementation of M1 if
+inst(M1) can be modelled in a systematic way inside inst(M2). I.e. there
+is a matheamtically definable function "model" (whose precise definition
+we can ignore for now) such that
+
+    for every sequence s in inst(M1), model(s) is in inst(M2)
+
+We can then say
+
+    implements(M1, M2)
+
+(Full details require the function model to be recursively decomposed so
+that the structural richness and diversity of sequences produced by M1
+is mirrored in the appropriate subset of inst(M2))
+
+Various different forms of this relation are possible. In some cases it
+may go both ways, in which case we have a {\em bisimulation} relation
+between M1 and M2: each can model the other, or each is capable of
+implementing the other.
+
+This is the sort of thing that is involved in saying that a particular
+turing machine can model all other turing machines, or that turing
+machines, recursive functions, production systems, and various other
+classes of mathematical objects are equivalent to one another.
+
+All of this is concerned with mappings between and properties of
+mathematically definable structures and sequences of structures. It has
+nothing to do with processes occurring in time, nor with causal powers.
+Thus although this branch of mathematics may be useful in helping us
+understand the kind of thing that occurs when one {\em mechanism} is
+implemented in another, they are two different concepts of
+implementation and should not be confused.
+
+-- DOES CORRECT TIME-KEEPING SUPERVENE ON PHYSICAL PROPERTIES
+
+We have the notion of a special sort of virtual machine which is a
+time-keeper. In our ordinary thinking the notion of a "clock" typically
+combines the notion of both this virtual machine and the underlying
+physical implementation. Depending on the sort of clock it is the
+virtual machine may be more or less complex: e.g. showing the day of the
+week, the month and the year adds to the requirement of showing the time
+(in hours, minutes and seconds).
+
+What exactly is the relationship between the construction of the clock
+and its time-keeping capabilities? It is not merely an observed
+unexplained correlation. We understand why it is an accurate
+time-keeper. However, we cannot prove that using purely physical laws
+and physical descriptions of the clock, for concepts are involved in the
+notion of the time at a particular location that cannot be defined in
+terms of concepts of physics.
+
+Certainly the physical specification of the clock mechanism can provide
+a logical basis for concluding that the clock is capable of measuring
+time, since that is a physical notion. In fact all we need is a
+demonstration that certain changes in the mechanism occur at regular
+time intervals.
+
+By contrast demonstrating that the machine is not just a potential clock
+but that it tells the correct time where it is, has to go beyond physics
+because it is to some extent a {\em political} matter. For it depends on
+which time zone the clock is in, and that in turn can depend on
+political changes. If national boundaries change and a town that was
+previously in one country changes so that it is in another, then a clock
+that previously told the correct time could suddenly be an hour slow, or
+fast, if the two countries (or states, or, ...) are in different time
+zones.
+
+Thus physical facts and laws cannot logically entail that a particular
+mechanism tells the correct time unless they can also entail facts about
+where time zones are.
+
+There are similar points about the numbers shown on a clock
+corresponding to socially agreed ways of dividing up the day into hours
+minutes and seconds. The situation is still more complex if the clock
+also mentions days of the week, months and the year.
+
+The physical design may indeed entail that the clock is capable of
+supporting a particular {\em class} of ways of dividing up time
+intervals whose mathematical properties can be specified (e.g. there are
+seven weekdays, twelve months, etc. etc.). But that a particular
+physical mechanism fits the requirements for a calendar clock in its
+environment is not a physical fact.
+
+However, it is not a simple contingent fact either. If we have a full
+specification of the relevant social and political conventions, then
+that, together with, the description of the physical properties and the
+current state of the clock will entail that the clock tells the time,
+the date, the day of the week etc. correctly for its present location.
+
+This entailment requires some non-physical premises. From physics alone
+one cannot infer the time-keeping conventions or the time zone
+boundaries. For example, the concept of a calendar month or the day of
+the week cannot be defined in physical terms.
+
+Nevertheless in this case it might be possible to find minimal versions
+of the concepts of week, month and year, stripped of all their social
+connotations, and defined entirely in terms of the sequence of 24 hour
+intervals starting from some particular time point. This purely physical
+description and logical (mathematical) inference might then be regarded
+as a complete account of the underlying explanation for the clock's
+being correct.
+
+However, even this would be subject to a sort of social/political
+stability. If for any reason the nations of the world so decided they
+could decide that the year 2000 should start three days later, with
+three un-named holidays following after 31st December 1999. From then on
+the clock that previously had been accurate would no longer be accurate
+without extraneous intervention. In fact during the three extra days
+there would not be any question of its specification of the day of the
+week as being accurate or inaccurate.
+
+The clock example is relatively simple. In particular, all the
+non-physical facts that play a role are fairly simply understood social
+and political facts. Some of our examples are far more complex. In
+particular, ultimately we want to look at examples where rules and
+conventions analogous to social ones play a role, but without involving
+any {\em external} social system: the entire system is {\em within} the
+mechanism itself. For instance, it may make use of a useful
+self-regulation system that developed through a process of learning or
+adaptation, in an animal or a robot.
+
+-- WHAT SORT OF THEORY DO WE NEED?
+
+What we lack is a good systematic theoretical/analytical overview of the
+variety of types of implementation (supervenience) relations, in natural
+systems, in artefacts, in biological systems, in non-living systems
+etc., including what (if anything) they have in common, how they differ,
+what the implications of the differences are, etc.
+
+My reading in philosophy has been pretty thin in the last thirty years
+partly because I've felt that most of it has simply ignored important
+new developments coming from outside philosophy. But in what I have read
+(e.g. intermittent sampling of articles in the journal Mind and other
+things) I have not seen signs that philosophers are really addressing
+this problem adequately.
+
+One recent attempt is Brian Smith's book "On the origin of objects",
+which I have not yet finished. It tries hard to come to grips with the
+sorts of problems I am referring to, but I think he gets various things
+wrong, partly because he fails to distinguish two different concepts of
+computation: (a) the subject matter of the mathematical theory of
+computer science and (b) what computing machines do.
+
+The two are deeply related, but fundamentally different, in part because
+(a) has nothing to do with time or causation, whereas (b) is above all
+about causation and control of events happening in time.
+
+Many critics of AI also get confused about this (e.g. Lucas, Searle,
+Penrose) but unfortunately AI defenders often misdiagnose the sources of
+the confusion and their replies to the critics are therefore
+unsatisfactory.
+
+I've been struggling with the issues for about 12 years -- ever since I
+discovered, around 1984, when trying to write a sequel to my first book
+"The computer revolution in philosophy"(1978), that I did not know what
+I meant by "computation". I don't claim to have complete answers yet.
+
+-- TEMPTING BUT INADQUATE VIEWS ON IMPLEMENTATION
+
+The obvious way to try to analyse implementation is in terms of some
+structural mapping between elements of X and those of Y, possibly even
+isomorphism. However what APPEARS obvious doesn't work in this case.
+
+1. For example the techniques of lazy evaluation (which allows a list
+processing language to have infinite lists) and sparse arrays show that
+X cannot be isomorphic with Y. It could even have far more components
+than Y.
+
+2. Another common assumption is that there needs to be constant
+correlations between components of X and components of Y. But that is
+refuted by virtual memory systems and systems with dynamic memory
+allocation or compacting garbage collectors, which, in their own
+separate ways, constantly change the mapping between components of X
+and components of Y.
+
+3. Yet another common assumption is that the even if there's no simple
+isomorphism or constant correlation, at least part-whole relationships
+between X must map into those of Y. But that is refuted by languages
+with high level data structures such as lists. E.g. list A can be an
+element of list B, while list B is an element of list A. But it is not
+possible for two physical components each to be a part of the other.
+
+4. People sometimes assume that if X is implemented in Y then key
+features of Y should be inherited by X. E.g. is it the case that if Y is
+essentially detterministic, then X should also be? No, for it is
+commonplace for a non-deterministic virtual machine to be implemented in
+a deterministic computer.
+
+This usually requires the inclusion in the implementation of some sort
+of randomising element, which could be a random number generator set by
+some feature of the universe other than the state of Y, when X starts
+up. E.g. if X is a software system it could initialise the randomiser on
+the basis of the user's name, or the time at which the user logged in.
+Even if in that particular situation once X has started running its
+behaviour is determined, that does not make it deterministic because the
+behaviour is not determined by the states of X and the laws of X. They
+allow a selection from a set of options. If something other than X
+determines the options that does not make X deterministic. However the
+combination of X some feature of the implementation may be.
+
+5. Another common error is to assume that if an implementation machine Y
+is based entirely on binary elements then any virtual machine X
+implemented in it must also have only binary elements, which are on or
+off, true or false, 1 or 0. But every computer programmer knows that
+that is not so for the variables in a programming language can have all
+sorts of non-binary ranges of values, e.g. the integers, the real
+numbers, functions, etc.
+
+The point is that collections of binary units can be used to implement
+things that are not themselves binary units. It is even possible to
+implement a continuous virtual machine essentially by sampling its
+states at regular intervals and treating those states as instantaneous
+snapshots of a continuously varying system. (Of course in some contexts
+this can introduce errors in the implementation, referred to as
+"rounding errors". In some cases these errors do not matter or can be
+reduced if necessary by increasing the precision of the representation
+(e.g. using more bits per number). In other cases, if the system is
+chaotic, the usefulness of this implementation of X, may be seriously
+impaired, e.g. as a tool for predicting the behaviour of a really
+continuous system,
+
+6. It is sometimes thought that if X is implemented in Y and Y is {\em
+causally complete} in that at every moment of time the state of any part
+of Y is determined by and can be predicted from the preceding states of
+Y, then X is {\m causally redundant}, i.e. it has no causal powers. Some
+of the people who believe this seem to think that the indeterminacy of
+quantum mechanics is a requiremen for mental processes to have a causal
+role in human brains because mental events can then close causal gaps.
+This is incorrect.
+
+Part of the point of imposing higher level organisation on a system is
+to give a new emergent virtual machine causal powers, even if the
+original system was causally complete. This applies both to many
+naturally occurring systems and to systems designed by humans. In fact
+many of our ordinary uses of concepts of causation are in connection
+with such systems, for instance when we say that poverty causes crime,
+that feedback causes noise suppression, that bad management causes
+worker discontent, that a good transport policy reduces traffic
+congestion, that programming errors cause faulty output in a computer,
+etc.
+
+If real, non-redundant, causation can operate {\em only} at the bottom
+level of physical reality then since we can never tell whether
+physicists have found a bottom level or even whether there is one, then
+we can never know that any causal relation is non-redundant.
+
+I think the whole idea that all the non physical levels of causation are
+redundant is basically incoherent because it is based on an incorrect
+analysis of our ordinary notion of causation, but that's something that
+would take too long to explain here. Suffice it to say that the
+existence of true counterfactual conditional statements concerning the
+virtual machine X is perfectly consistent with Y being causally
+complete. It's not clear that anything more than the truth of a complex
+collection of counterfactuals is involved in asserting a causal
+connection.
+
+7. It may be tempting to think that if X is implemented in Y then the
+criteria for identity of X must be tied to identity of the components of
+Y. This is false, for as even ancient philosophers noticed, you can step
+into the same river twice even though the water has changed, and you can
+own the same axe over many years even though its blade is replaced
+and then later on its handle.
+
+Many more examples of different kinds have been discovered over the
+years. Animals and plants constantly replace some of their component
+atoms. Ocean waves move in one direction whereas the water molecules in
+them oscillate around a fixed location. Nations and species survive the
+individuals that compose them, and so on. Computer data structures that
+are relocated by a memory management system are a more recent example.
+
+8. It may be assumed that for X to be implemented in Y the causal laws
+inherent in X should be derivable from those of Y. However, that cannot
+be so in general. If X is a chess playing machine then its laws will be
+those of chess. However it is trivial to change the laws in X, e.g. so
+as to allow pawns to move backwards under some conditions, without
+changing the laws of physics. Therefore the laws of physics do not
+determine the laws of virtual machines implemented in physical systems.
+
+9. What about requiring the laws of X to be derivable from those of Y
+together with facts about Y, e.g. facts about the actual structure of
+the machine Y? That is also too strong, for the concepts of chess (e.g.
+"pawn") do not stand in any definable relationship to those of physics,
+so no set of sentences describing laws of physics together with the
+physical structure of a physical machine Y can entail a statement such
+as
+    "pawns can never move backwards"
+
+which should be a law-like true description of any chess-playing virtual
+machine. This notion of ``definitional disconnection'' is very
+important: in general different virtual machines have ontologies that
+cannot be defined in terms of those of other virtual machines, including
+those in which they are implemented.
+
+However, this suggestion that somehow the combination of the structure
+of the machine Y, plus the laws of the domain Y (i.e. ``boundary
+conditions'' plus laws), should determine whether an implementation of X
+exists or not is along the right lines, and I'll return to it later.
+However, the determination cannot be logical, or mathematical, at least
+not when the ontologies of X and of Y are definitionally disconnected.
+That's what the notion of "emergence" is about.
+
+
+-- TOWARDS A THEORY OF TYPES OF IMPLEMENTATION
+
+Here's an indication of some of the problems that have to be addressed
+in a complete overview of types of implementation/supervenience of
+machines:
+
+-- -- Not all mathematically equivalent implementations are equivalent
+
+1. The relationship between X and Y when Y is an implementation of X is
+not a mathematical or logical or purely structural one.
+
+For instance, we know that from a theoretical/mathematical point of view
+there's no difference between
+    (a) N programs running (synchronised) in parallel on N computers
+and
+    (b) a simulation of the N programs running in one program on one
+    computer.
+
+No mathematical or logical problem can be solved by the multi CPU system
+that cannot be solved by the single CPU system. I.e. their mathematical
+properties are identical.
+
+Yet any engineer knows that sometimes you can get greater *reliability*
+by having multiple CPUs, even if they are doing exactly the same thing,
+and therefore the difference could be crucial in a plant-control system
+or shuttle control system.
+
+-- -- Reliability
+
+What exactly is reliability, and what difference does it make to the
+ways we should describe a virtual machine implemented in a particular
+way?
+
+Partial answer: it has to do with what goes wrong when some of the
+assumptions underlying the implementation are violated. Any actual
+implementation machine Y will be causally embedded within the whole
+universe and is therefore liable to an indefinite range of possible
+external intrusions as well as internal component failures, etc. that
+might change the nature of Y, and thereby alter X.
+
+Thus we need to consider the extent to which the implementation of X in
+Y takes account of the possibility of Y ceasing to be exactly Y:
+sometimes the implementation can survive such changes, e.g. when error
+correcting memory is used.
+
+So an actual implementation as designed by an engineer may include
+self-correcting mechanisms that essentially cater for X standing in
+multiple supervenience relations between different variants of Y. What
+does this do to the causal powers of X?
+
+Well, it can strengthen them, making X more robust than Y. How many
+philosophical theories of supervenience explain how X can supervene on Y
+in such a way as to be more robust than Y, e.g. surviving Y's being
+damaged or transformed into something else?
+
+This is connected with the previous point about identity criteria for X
+(and its components) not requiring identity at the level of components
+of Y. In an extreme case Y may be semi-immortal, as when species,
+ecological systems, or nations ride like waves on the backs of ever
+changing physical implementations.
+
+Could it be that much of the design of the brain is concerned with a
+form of implementation that supports such robustness/reliability?
+(The widspread delusion of immortality may be based on a dim
+intuitive understanding of this point.)
+
+-- -- Some causal properties matter only in a context
+
+2. Two implementations of the same virtual machine X may differ in some
+of their causal properties and whether this matters or not may depend on
+the larger context in which X operates.
+
+For instance, we know that many forms of neural nets can be implemented
+on conventional computers: it happens all the time and Hans Moravec has
+even claimed (probably with some exaggeration) that the growing speed of
+computers and falling cost and size of memory will eventually lead to
+single cpu machines that can run as fast as neural nets with as many
+nodes as there are neurons in a human brain.
+
+But consider a virtual neural machine X implemented in two ways
+
+Y1: highly parallel multi-cpu physical network of N linked processors,
+changing their state in parallel K times a second
+
+Y2: an implementation on a single very fast CPU with N memory locations,
+where the CPU performs N*K changes to data structures each second.
+
+From a mathematical point of view, viewed as input output devices these
+two implementations may be identical and even their speed of operation
+would be identical. Yet there are deep differences in how they can
+relate to the rest of the world.
+
+Obviously one of the differences, mentioned above, has to do with the
+comparative reliability or robustness of N processors against 1
+processor when the neural net architecture has some redundancy.
+
+But there's a more subtle difference: Y1, like X, goes through K states
+per second and Y2 goes through N*K states (ignoring lower level
+electronic detail).
+
+In particular Y2 has all sorts of intermediate states that cannot arise
+in the first, i.e. states where only a subset of the neurons have been
+updated from one state to the next.
+
+This means that if Y2 is is embedded in a physical environment which
+need not respect the machine's internal clock there are more possible
+forms of interaction with the environment if the machine can be in more
+possible states. Under what circumstances does that matter?
+
+For instance it might matter if the network were part of a still larger
+system which can inspect the state of the network or modify the state of
+the network: it might have to take account of different sets of
+intermediate possibilities in the two cases.
+
+Via feedback loops, that difference might then affect the processing of
+the original network.
+
+Of course, this is a situation where the virtual machine X which
+performs some particular task also has some other functionality, such as
+allowing another part of a larger virtual machine to monitor and perhaps
+modulate its performance. My point is that in many contexts there is no
+uniquely correct description of a particular virtual machine. If you
+think of some aspect of functionality e.g. the ability of a speech
+production module to produce correctly formed sentences which express
+the right semantic contents, you can then specify a type of machine that
+can perform that functionality. However in a human like system you might
+want that functionality to be modifiable in such a way that intonation
+contours, stress patterns, etc. also communicate current emotional
+state. Some implementations will allow the additional functionality and
+some will not.
+
+In the attempt to replicate human-like functionality the problem of
+specifying the virtual machines corresponding to sub-mechanisms is very
+difficult if most of the components within the architecture have
+multiple functions involving multiple forms of interaction. Some
+implementations may support this multi-functionality better than others.
+
+Thus two forms of supervenience/implementation can have subtly different
+implications for embedability in a larger context, even if it's the same
+thing that's implemented.
+
+Searle has repeatedly insisted that not just any implementation of a
+model of a mind will do, since it must have the right causal powers. I
+suspect this is based on a partly correct but ill informed and confused
+intuition about the importance of distinguishing different
+implementations of the same abstract high level virtual machine.
+
+But we don't have a good overview of the different ways in which
+differences in implementation of the same virtual machine can matter.
+
+To summarise: the same abstract virtual machine X, when implemented in
+different ways, may then become significantly different slightly more
+specific abstract virtual machines X1 implemented in Y1, X2 implemented
+in Y2, X3 implemented in Y3, .... with different causal properties.
+We need some sort of high level overview of the kinds of ways in which
+this can happen, and under what conditions it matters.
+
+As I have tried to indicate, some of the differences matter only insofar
+as a system can be buffetted in unexpected ways by a larger extraneous
+environment, whereas others affect the potential role of X in a larger
+integrated functional architecture.
+
+-- -- What we do and don't understand already
+
+There are many special cases that are well understood: e.g. any well
+trained computer scientist should be able to say lots of useful things
+about the difference it makes whether the virtual machine for a high
+level language is implemented via a compiler or an interpreter.
+
+Similarly anyone trying to optimise database access by building an index
+will learn to take account of whether the programs are running on
+virtual memory system or not (since the extra size of the index, can
+lead to extra paging on the VM system which more than compensates for
+the extra speed gained by using the index).
+
+A case where I think we understand very little at present is the role of
+chemical processes in the information processing virtual machines in
+brains. They are turning out to be far more important and more diverse
+than we thought 10 or 20 years ago and may, for instance, end up making
+some of the recent disputes between symbolic AI and connectionist AI
+look very silly.
+
+Summary: the space of possible implementation relations (= supervenience
+relations) is *vast* and we grasp its structure only very dimly at
+present, though we have a clear view of some aspects of a few fragments
+of the space, and we have a lot more practical know-how than theoretical
+understanding.
+
+(Craft often precedes science.)
+
+-- LINKS WITH OTHER HARD CONCEPTUAL PROBLEMS
+
+Part of the reason why our grasp of varieties of types of implementation
+is unclear is that the analysis of the concept of causation is so
+difficult, even though we are constantly embedded in many causal
+networks and we use the concept all the time, in our thinking, decision
+making, social interaction, and even implicitly in the fine grained
+control of physical movements.
+
+We also use the concept of causation implicitly and pervasively in our
+concepts of experience, consciousness, etc. e.g. two ways of
+experiencing the ambiguous duck-rabbit picture involve two collections
+of potential causal relations being turned on or off. But that's a topic
+for another time.
+
+-- IMPLEMENTATION (SUPERVENIENCE) VS CORRELATION
+
+The notion of implementation that I am referring to requires deep links
+between states and processes in the machine that's implemented and the
+machine in which it is implemented. It's not just a case of there being
+some correlation between them, like the correlation between the cyclic
+motion of the hour hand on an old clock and the diurnal changes in the
+leaves of a tree. We are talking about a deeper, more intimate relation.
+
+But it cannot be logical or mathematical relation, of the sort some
+scientists seek. (Ref Henry Stapp)
+
+The concepts used to specify a virtual machine X may simply not be
+definable in terms of the concepts used to specify the virtual machine
+Y, nor vice versa. A person who fully understands the concepts for Y may
+totally lack the concepts for X. When concepts are so disconnected (e.g.
+the concepts required to describe a game of chess and the concepts of
+physics, or digital electronics) there's no way you can build a
+mathematical or logical bridge between them.
+
+
+-- IT'S NOT JUST A MATTER OF SUBJECTIVE INTERPRETATION OF Y AS X
+
+Some people conclude that attribution of virtual machine X to physical
+machine Y is then entirely in the eye of the beholder: it is just a
+matter of subjective interpretation not a matter of fact that machine X
+exists.
+
+I think this confuses two points:
+
+1. If someone lacks the concepts of X they cannot recognize an
+implementation of X in Y. But that's not true only of virtual machines:
+someone who lacks the concepts of physics may be incapable of
+recognising instances of various physical phenomena, e.g. the
+photoelectric effect. That does not make physics something subjective,
+purely in the eye of the beholder. It just means that having the right
+concepts is a necessary condition for seeing, understanding, learning
+various things.
+
+The fact that having concepts related to the ontology of X is required
+for recognizing cases of X does not imply that there's anything
+subjective about X. If it did, everything would be subjective, and the
+subjective/objective experience would be vacuuous.
+
+2. If I look at an abstract painting P all sorts of associations may be
+generated because of the interactions between information stored in my
+brain and the patterns generated by my visual system driven by the
+photons bouncing off the surface of the painting. This produces an
+interpretation I of P.
+
+Thus one person looking at P can produce an interpretation I1, involving
+faces, moods, historical allusions or whatever in the painting, whilst
+another person sees interpretation I2 involving only 3-D shapes. In fact
+each may have all the concepts required for either interpretation I1 or
+I2, though because of different personal histories the structures in P
+do not generate the same set of "reminders" and chains of association in
+both viewers.
+
+Here the interpretation I of the painting P is mediated by causal
+connections in a third engine: the viewer's brain. The relationship
+between written words and their meanings is also like that as we are
+often reminded when we read typos and perhaps don't even notice them, as
+in "THE CAT SAT ON THE MHT".
+
+The crucial difference between cases 1 and 2 is that in case 1 we are
+talking about relationships between two active machines one of which is
+implemented in the other, a relationship that can hold independently of
+any perceiver, whereas in case 2 we are talking about relationships
+between two information structures and a perceiver, who regards one
+structure as the interpretation of the other. In the case of
+interpreting a picture or a map, both structures are purely passive:
+neither is a actually doing anything, and they are not composed of
+causally interacting components working together via a rich web of
+mutual change, so as to preserve or achieve or prevent certain states or
+processes.
+
+
+The existence of a network of causal relationships within both the high
+level abstract machine and within the implementation machine is
+characteristic of implementations. And those causal relationships are
+real: it's not just a matter of some arbitrary interpretation.
+
+-- A SIMPLE EXAMPLE: A MECHANICAL CLOCK
+
+To understand why the relationship of implementation is neither logical
+nor arbitary, and how the environment can be part of the implementation,
+we can return to our previous discussion of clocks.
+
+Consider, for example, an old mechanical clock which shows not only time
+of day but also day of the week, month, and maybe also the year, and
+which has clever combinations of gears, levers, springs, etc.
+
+There's no way any description including the words "monday", "tuesday",
+"march", "april", "week", "month" can be derived by logic or mathematics
+from a purely physical description of the clock using names of the
+chemical elements and physical descriptions of length, angle, angular
+velocity, torsion, compression, etc., since physics does not determine
+the laws according to which our calendar works, e.g. the number of days
+in a week, the number of months in a year, etc. These are social
+concepts, though the concepts of a day and a year are related to
+astronomical concepts.
+
+Now suppose someone gives an abstract logical or mathematical
+specification of a calendar clock virtual machine, making use of the
+above non-physical concepts. This specification will include
+descriptions of the laws of the machine such as
+
+    If the day indication changes to "monday" then after the passing of
+    24 hours has been indicated the day indication changes to "tuesday".
+
+Moreover, it is intended that this is a description of a *causal*
+mechanism. It must not *just* happen by chance, as could occur if a
+roulette wheel marked with days of the week and spun a million times
+just happened to show the right succession of days, or a bunch of leaves
+in the forest, blown about by the wind, just happened to produce what
+looked like successive names of days of the week.
+
+-- -- A clock's implementation machine includes the environment
+
+There's an important qualification to the notion that the clock's time
+telling capabilities are implemented in the physical machine. That's
+because whatever the mechanical/electrical (etc) properties of the
+physical machine happen to be they cannot suffice for it to be telling
+the *correct* time. For a clock in London that tells the correct time
+could be flown to New York and then no longer be telling the correct
+time even though it's physical properties are unchanged. To be telling
+the correct time in a particular location the clock needs to be adjusted
+to that location.
+
+So, although the general time-telling capabilities of the clock are
+implemented in its physical mechanisms the ability to get the time
+*right* requires a particular relationship to the clock's environment.
+
+I.e. the virtual machine for a clock telling the correct time in london
+is supervenient not only on the clock's internal mechanisms but also on
+its environment.
+
+If the clock tells not only hours and minutes, but day of the week,
+month, date, etc. then more relationships to the environment have to be
+set correctly.
+
+(Similarly, many human mental states, e.g. referring to the Eiffel
+Tower, involve a relationship with the environment, and therefore cannot
+be implemented solely in brain mechanisms.)
+
+-- -- Is being an implementation of a clock an objective property?
+
+Suppose we had two people P1 and P2 who both understood the
+concepts used in the description of the calendar machine, and knew all
+the laws and causal relationships, and also knew all the physical
+properties of a machine used to implement such a clock, and P1 claimed
+that the object was a clock whereas P2 denied this. Could anything be
+done to show that P1 was right and P2 wrong?
+
+Well, it might turn out that P2 just did not notice some of the
+properties of the clock. E.g. perhaps it was a really huge clock,
+thousands of feet high, and he merely saw small parts of it at a time,
+like the proverbial blind men trying to identify an elephant. Then he
+might simply not be in a position to check that the clock was actually
+indicating hours and days and months, etc. and doing so correctly.
+
+That problem could be solved by giving him a different view of the
+clock. Then suppose that after he had checked out that it went through
+the right sequences of days, months etc. over a period of two years he
+still queried whether it would always get everything right. E.g. it
+might have cunning mechanics which made it suddenly start reversing days
+of the week, and the sequence of months after seven years.
+
+In that case it might be possible to show the sceptic the detailed
+blueprint for the clock and convince him that something built according
+to the blueprint would not have the causal powers to produce the bizarre
+behaviour, and then we could show him how the actual clock fits the
+specifications in the blueprint, and even allow him to check the
+materials used, examine Xray photographs to make sure there are no
+hidden mechanisms, etc.
+
+What exactly is involved in convincing someone? Does showing the
+sceptic the blueprint and allowing him to inspect the actual machine
+give him information which could be expressed in a collection of
+propositions consisting of three sets:
+
+    1. propositions specifying the design
+    2. propositions about this machine fitting the design specification
+    3. propositions about the relationship between the machine and its
+       environment
+
+Is it the case that these sets of propositions, combined with the laws
+of physics, could enable him to deduce logically that the machine was a
+proper calendar clock, telling the time correctly?
+
+However, it is not obviously possible to do this in general, for the
+reasons given previously: namely some of the conditions are social,
+political, etc. using concepts not definable in terms of those of
+physics.
+
+But we can explore the idea that with more detailed and wide ranging
+premisses we can logically or mathematically deduce the appropriate set
+of statements about the clock.
+
+    1. propositions about the requirements to be met by the design
+    2. propositions specifying the design
+    3. propositions about this machine fitting the design specification
+        I.e. propositions about the particular implementation used
+    4. propositions about the relationship between the machine and its
+        physical environment
+    5. propositions about the relevant non-physical environment, e.g.
+        the social, political environment
+    6. propositions about the relations between the non-physical and
+        the physical environemnt.
+
+Anything else?
+
+NOTES:
+
+1. these propositions will range over different ontologies: not
+just the ontology of physics.
+
+2. In some cases the relevant ontologies will be determined by the
+system being studied: it has its own viewpoint, which may be different
+from ours, and that includes how it carves up reality.
+
+3. I talk about propositions. But I don't really want to be committed to
+the idea that all factual information and all reasoning is best done
+using logic. We may have to explore many different forms of
+representation, e.g. including making essential use of diagrams and the
+like. (I've been writing about this since my 1971 IJCAI paper.)
+=======================================================================
+
+-- To be done (1)
+
+Further discussion of these cases
+
+An implementation of X, one feature of which is a design that allows
+part of the implementation (Y) to be replaced when better technology
+occurs.
+
+E.g. the special case where Y is designed to allow X to decide when to
+modify Y (e.g. microcode that allows high level programs dynamically to
+change the microcode).
+
+Automatic run time debugging:
+What's the relationship between X and Y when X is implemented in Y but
+the implementation of Y has bugs at its own level, and maybe X has
+mechanisms to detect the occurrence of such bugs and work round them?
+
+Explicitness of X in the system (interpreters vs compilers):
+What's the difference between the cases where the abstract specification
+of X remains explicitly causally active in the working implementation
+and the cases where it is 'compiled away' and the X-ness is distributed
+over myriad unidentifiable features?
+
+More on the environment:
+How much of the implementation of X is implicit not in Y but in the
+environment, etc. There's an interesting relevant article by Peter
+Wegner in Communications of the ACM May 1997, pp 80-91, where he
+contrasts algorithms with interfaces.)
+
+
+=======================================================================
+
+-- To be done (2) Dynamical systems
+
+What's right and what's wrong with the dynamical systems approach?
+
+Of course *everything* (well every machine anyway) is a dynamical
+system, including a computer. But some dynamical systems theories appear
+not to grasp the significance of the notion of a functionally
+differentiated architecture: where there are many different dynamical
+systems interacting and performing different functions.
+=======================================================================
+
+-- To be done (3)  Nothing buttery
+
+I need to include an extended comment on "nothing buttery" arguments of
+the form
+
+    "This system is nothing but P Q and R,
+    and therefore it is not S"
+
+There are many variants. E.g. one variant argues that a computer is
+nothing but a machine that manipulates bit patterns and therefore it
+cannot ever process meanings. (Compare Searle's argument that
+computation is nothing but syntactic processing and therefore cannot
+produce semantic states.) Another variant is that a brain is nothing but
+an assemblage of atoms all interacting in very complex ways, and
+therefore it cannot include or explain thoughts, emotions, percepts,
+etc.
+
+"Nothing buttery" arguments are very slippery and seductive, often
+looking compelling to the philosophically innocent, even when the
+statements they involve turn out to be incoherent, or radically
+ambiguous, on closer examination.
+
+In general statements of the form
+
+    X is nothing but Y
+
+are either incoherent, or trivially false, or ambiguous, possibly
+including an uninteresting interpretation in which it is trivially true
+because it amounts to saying
+
+    X is nothing but X,
+
+but lacks further content.
+
+=======================================================================
+
+Some relevant refs
+
+B C Smith
+    On the Origin of Objects
+
+Peter Wegner
+    Why interaction is more powerful than algorithms
+    CACM May 1997 Vol 40 No 5 pp 80-91
+
+and many many more.
+
+TO BE CONTINUED, AND REORGANISED.
+
+
+TO BE DISCUSSED
+[HS]
+> One crucial question, as I see it, is whether the level of description X
+> associated with our conscious thoughts is, really, just as causally complete as
+> a computer program, or whether, on the other hand, when all of the unconscious
+> processing with which it is entwined is taken into consideration, it becomes
+> not exactly isolatable, logically and causally, from the chemical and physical
+> processes upon which it rides.
+>
+> The other crucial question is whether, conversely, the micro-level is
+> dynamically complete, and if not, how it could depend, logically, rationally,
+> and causally, on the higher level.
+>
+> This question does seem to me to tie into the basic issue before us.
+> You say:
+>
+> "In the expanded paper I show how qualia (at least typical human sorts
+> of qualia) come into existence where metamangement exists."
+>
+> This is the basic question referred to in your title:
+> `Bridging the Explanatory Gap".
+>
+> It is not hard to believe that you can envision a brain architecture
+> that would implement a metamanagement that would have a functional
+> correspondence to our conscious experiences. But this is less than showing
+> that the conscious experiences "comes into existence" when this
+> brain activity occurs. The latter is what you must show to bridge the
+> explanatory gap. It seems to me that you cannot just define away the
+> possible difference between a brain activity and a conscious experience,
+> no matter how functionally similiar the brain activity is to the
+> conscious experience. The possibility that the monitoring and processing
+> could construct an image of either a purported outer world or a visual
+> sensation of a purported outer world is certainly a requirement in the
+> functional capacities of the metamanaging brain, but that does not seem to
+> get us from brain process to consciousness.
+>
+> Of course, this problem has been much debated. But I am adding that it
+> is easier to give to conscious thoughts the property of "existing" if
+> they do something that is not done already by the particles and fields
+> alone: i.e., if they fix or specify something that is not already fixed
+> and specified by the particles and fields acting alone. And I am showing
+> how that is possible to give conscious thoughts this power within the
+> quantum framework, WITHOUT DISRUPTING THE QUANTUM STATISTICAL RULES.
+>

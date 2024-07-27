@@ -1,0 +1,169 @@
+<HTML> <HEAD> <TITLE> BROWSER INFORMATION</TITLE> </HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<FONT  color="#000000">
+<H2><B>
+HOW TO READ PAPERS AND SLIDES IN POSTSCRIPT AND PDF FORMAT
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+School of Computer Science, The University of Birmingham, UK.
+<p>
+This file is now probably dispensable since almost everything I
+produce is available in either plain text, html, or pdf, and
+nobody should have problems reading any of these, given the
+capabilities of widely availabel internet browsers (e.g.
+<a href="http://en.www.mozilla.com/en/firefox/">Firefox</a>)
+and PDF viewers, including Acrobat reader, xpdf, kpdf,
+okular,
+<a href="http://www.gnome.org/projects/evince/">evince,</a>
+and others.
+<p>
+This page is not regularly maintained. If any of the links here fail to
+work please use a search engine to look for more up to date links.
+</B></H2>
+<h3><B>
+DOWNLOADABLE VIEWERS
+</B></h3>
+Most of my papers and slide presentations accessible through the
+Cognition and Affect project directory
+    <a href="http://www.cs.bham.ac.uk/research/cogaff/">http://www.cs.bham.ac.uk/research/cogaff/</a>
+or through my talks/presentations directory
+ <a href="http://www.cs.bham.ac.uk/~axs/misc/talks/">http://www.cs.bham.ac.uk/~axs/misc/talks/</a>
+are available on the web in PDF format, and some of the older ones
+are also in Postscript.
+<P>
+These are formats which are publicly specified and for which there are
+freely available readers which work on many types of computers and
+operating systems. (I use only Unix and Linux operating systems
+running on Suns and PCs). Some governments have introduced
+legislation requiring publicly funded organisations to use only public,
+open formats for documents. (I believe Peru led the way, years ago.)
+All governments should do the same.
+<P>
+<h3><B>
+Unix and linux users
+</B></h3>
+Most unix and linux users will already have "gv" for reading postscript,
+and some versions of "gv" can also display PDF. Another useful reader
+for PDF (on linux/unix systems) is <B>xpdf</B> (small and fast):
+<a href="http://www.foolabs.com/xpdf/">http://www.foolabs.com/xpdf/</a>
+<P>
+<h3><B>
+PDF Viewer from Adobe (for all platforms)
+</B></h3>
+<B>Acrobat  reader</B>
+is available for reading PDF from Adobe. This link worked in 2012:
+<a href="http://get.adobe.com/uk/reader/">http://get.adobe.com/uk/reader/</a>
+<br/>
+If it fails, use a search engine.
+<P>
+This can be used on linux, a variety of unix platforms, windows, and
+macs.
+<P>
+<h3><B>
+PC+Windows Users
+</B></h3>
+For reading and printing postscript files, PC+Windows users can obtain
+"ghostview" from
+<a href="http://www.cs.wisc.edu/~ghost/">http://www.cs.wisc.edu/~ghost/</a>
+<P>
+<h3><B>
+Mac Users
+</B></h3>
+Mac users can try this
+<a href="http://www.kiffe.com/macghostview.html">http://www.kiffe.com/macghostview.html</a>
+<P>
+<h3><B>
+How my papers and presentation slides are produced.
+</B></h3>
+Many of my papers, discussion notes,
+and tutorial materialas are plain text or html.
+<p>
+However, most of them are produced in
+<a href="http://www.latex-project.org/intro.html">Latex</a>. This
+has faclities for producing both postscript and PDF files. In the
+past I produced
+postscript which I converted to PDF
+using ps2pdf or distill. Nowadays I simply use
+<a href="http://www.eecs.harvard.edu/~mdw/proj/texslides/">pdflatex</a>
+to produce papers and presentations in PDF format, and do not
+produce a postscript version. Occasionally I also use
+<a href="http://www.openoffice.org">OpenOffice</a>, e.g. to convert
+html to PDF, or in some cases to produce PDF from a word file
+created by a collaborator. (Now superseded by LibreOffice available from
+<a href="http://www.libreoffice.org/">http://www.libreoffice.org/</a>)
+<P>
+<H3><B>
+TGIF
+</B></H3>
+The diagrams are all produced using the tgif package, a small, fast,
+versatile, user-friendly and FREE package which runs under the X window
+system. (Many people use xfig for this. It's a matter of personal
+preference.).
+<br>
+Tgif can be
+used for preparing diagrams, for capturing screen images to be inserted
+in diagrams, and also for
+preparing and presenting slide presentations with "active" regions,
+and more besides. (I.e. it has much of the functionality of powerpoint.)
+It can save diagrams in many formats, including "eps"
+for inclusion in other documents. Tgif is freely available
+for linux and unix systems from these sites:
+<UL>
+<LI>
+<a href="http://bourbon.cs.umd.edu:8001/tgif/">http://bourbon.cs.umd.edu:8001/tgif/</a>
+<LI>
+<a href="ftp://ftp.cs.ucla.edu/pub/tgif/">ftp://ftp.cs.ucla.edu/pub/tgif/</a>
+<br>(Older versions only)
+</UL>
+However, I am likely to start using
+<a href="http://www.inkscape.org/">Inkscape</a>
+for diagrams in future, as that provides a much wider rang of
+facilities than TGIF, and also provides much more convenient
+text-formatting capabilities for annotated diagrams.
+<P>
+<H3><B>
+LaTeX
+</B></H3>
+My slides and papers are all composed in a plain text editor (I use Ved,
+the programmable editor provided in
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">Poplog,</a>
+but any editor can be used) using Latex formatting commands. For my
+slides I use home-grown macros. The output of latex can be displayed
+on unix and linux systems using xdvi (though older versions of xdvi
+do not handle colours). I use dvips to transform the dvi format to
+postscript, which is suitable both for displaying and for printing.
+The pdflatex command goes straight to pdf, without producing dvi
+files.
+<P>
+Most of the papers and older presentations are in A4 Portrait format
+(long edge vertical). Since about May 2001, have prepared slide
+presentations in the landscape format, which is more suited to fill
+a typical computer screen which is wider than it is tall. These need
+to be viewed in "Landscape" or "Seascape" mode (rotated 90 degrees
+to the left). Your browser should either automatically detect the
+orientation and show it correctly, or provide a mechanism for
+rotating 90 degrees left or right. If you are using "gv" it may show
+the slides in landscape format but upside down. In that case select
+"seascape". On some displays you may have problems with slides that
+use colour, if you have anti-aliasing turned on in "gv". You can
+solve this by turning it off, though the text will then look
+slightly poorer.
+<P>
+If anyone would like a copy of my latex style file used to produce
+<a href="http://www.cs.bham.ac.uk/~axs/misc/talks/">the slide
+presentations</a>, just
+ask. (Email: A.Sloman AT cs.bham.ac.uk).
+<P>
+28 Jan 2006: I found a web page commenting on the quirky style of a
+presentation I gave in 2002, so I wrote a little response
+<a
+href="http://www.cs.bham.ac.uk/research/cogaff/talks/quirky.html">here,
+</a> explaining why I do what I do and why I don't like flashy gimmicky
+presentations.
+
+<HR>
+Last updated: 18 Aug 2009; 5 Nov 2012
+</BODY>
+</HTML>

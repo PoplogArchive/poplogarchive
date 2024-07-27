@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN">
+<html><head><title>Fedora vs Ubuntu </title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+</head>
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<p>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+<img alt="Frames-free web site" height="90"
+src="http://www.cs.bham.ac.uk/%7Eaxs/fig/noframes.gif">
+<a href="http://tuxmobil.org/dell.html">
+<img alt="tuxmobil"
+src="http://www.cs.bham.ac.uk/~axs/images/tuxmobil_sticker.png"/>
+</a>
+</p>
+<h2><b>
+Fedora vs Ubuntu: A partial Answer
+</b></h2>
+<h3><b>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+</b></h3>
+
+<small>
+This is a Supplement to
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on Dell d600/d610 laptop</a>
+</small>
+
+<h3><b>
+Background
+</b></h3>
+<blockquote>
+I was recently asked about differences between Ubuntu and Fedora.
+<p>
+A quick look on the internet revealed a number of more or less
+shallow and inaccurate comparisons, but I felt there were some
+missing items.
+<p>
+This file was the result.
+<p>
+I may try to improve formatting (and content) later.
+<p>
+Feel free to submit corrections or additions.
+</blockquote>
+
+<h3><b>
+Update: 20 Sep 2008
+</b></h3>
+<pre>
+One of the differences in recent years has been that getting hold of
+things like mplayer, which include some non-open source code, was
+more hassle on Fedora than Ubuntu. That became easier as new
+repositories were added for Fedora.
+
+I recently discovered vlc, and so far my impression is that it is
+excellent and may make xine and mplayer redundant for someone with
+my limited needs for playing video and audio files.
+
+There are pre-built systems for various linux distributions
+    <a href="http://www.videolan.org/vlc/">http://www.videolan.org/vlc/</a>
+</pre>
+
+<h3><b>
+Answers to some questions about the differences
+</b></h3>
+<blockquote>
+<pre>
+> Also, I have a question that you may be able to help me with (and
+> I'm asking out of ignorance). What IS the difference between Fedora
+> and Ubuntu?
+
+There are many small differences and some big differences. The three
+biggest differences I encountered are more differences between
+Fedora and Debian (on which Ubuntu is based).
+
+(a) The installation package for Ubuntu is quite small, and you need
+a network connection immediately to download lots of extra stuff
+(this uses apt-get and synaptic, an excellent tool).
+
+The installation package for Fedora is much larger with far more
+options to choose from on the DVD (or collection of CDs). You can
+usually build a complete system without a network connection, and
+then have the option to use a network connection to update things
+that have recently changed -- using 'yum' and 'up2date'.
+You can use apt-get on Fedora but mixing it with 'yum' is not
+recommended.
+
+There is now a version of synaptic for Fedora, integrated with 'yum'
+(i.e. they use the same records) and that removed what for me was
+the strongest advantage of Ubuntu.
+
+    <b>Update 22 Feb 2009:</b>Since writing the above I have found that
+    'yumex' on Fedora provides similar functionality to 'synaptic' on
+    Debian/Ubuntu. There is no 'man' file unfortunately, but it is
+    mostly intuitive.
+
+Oh, fedora uses rpm packages for distributing self-installing
+software and Ubuntu uses deb packages. I have no idea how they
+compare, since I've not used Ubuntu enough.
+
+(b) Ubuntu (and Debian) provide better support for users who want a
+mixture of proprietary and non-proprietary stuff: the majority of
+users don't care anyway -- they just want things that provide the
+required functionality.
+
+Fedora cannot include proprietary stuff that Redhat cannot
+distribute freely. However, they have started providing repositories
+from which it is easy to get the non-proprietary stuff, and made it
+easy to add the repositories to the local files used by 'yum' and
+related packages. I don't know how the repositories compare.
+
+One site that for me is very important supports only fedora:
+    <a href="http://mhensler.de/swsusp/download_en.php">http://mhensler.de/swsusp/download_en.php</a>
+
+It provides pre-built kernels in which the swsusp2 package (now
+called TuxOnIce) is installed (and also, I think, some useful stuff
+for throttling cpu on a laptop with battery).
+
+The TuxOnIce/SWSUSP2 tools make software suspend/resume using a swap
+area much faster than the standard 'hibernate' that comes with
+linux. (There has been a long battle over this. I have no idea why
+the better faster system is not the default.)
+
+I hardly ever reboot either my laptop (F8) or my desktop (F9). I
+just hibernate, saving to swap partition, and resume. It keeps all
+my windows, firefox tabs, etc. and other things as they were. Last
+week one of our collaborators from who uses ubuntu saw me do that,
+and because it was so fast decided to investigate getting TuxOnIce
+for Ubuntu (which should be possible, though I don't know how).
+
+I don't know if he will consider switching to Fedora.
+
+Incidentally TuxOnIce seems to have got significantly faster with
+the latest version I installed (using 'yum update') from the Hensler
+site. Maybe they have changed the compression algorithm.
+
+(c) A big difference is the way networking is set up. I can't
+remember all the details, but as I recall, Ubuntu, like Debian, puts
+everything specifying all the interfaces in one file, something like
+/etc/networks (I forget its actual name), whereas Fedora, like
+RedHat has a collection of interface specifications, e.g.
+
+    /etc/sysconfig/network
+        sets some global stuff
+
+    /etc/sysconfig/network-scripts/ifcfg-eth0
+    /etc/sysconfig/network-scripts/ifcfg-eth1
+        etc.
+    Plus a file with keys for WEP.
+
+I have been using that for ages and have a lot of scripts for
+changing contexts as I move my laptop around -- as described in
+    <a href="http://www.cs.bham.ac.uk/~axs/laptop/wpa/">http://www.cs.bham.ac.uk/~axs/laptop/wpa/</a>
+
+E.g. in various directories I have sub-directories called
+    home/
+        for my home wireless setup
+    uob/
+        for the campus wifi
+    eduroam/
+        for eduroam connections
+    remote/
+        default for hotels airports, etc.
+
+in which I have definitions of various files, e.g. /etc/hosts
+/etc/resolv.conf and the ifcfg-eth1 wireless interface.
+
+I used to have one for the school network, before that was replaced
+by uobwlan.
+
+Then, depending where I am, as root I can run a script that copies
+the appropriate files into the standard location and restarts the
+network. For me that works very well.
+
+If I were using ubuntu/debian I would have to rewrite the scripts to
+edit files, I think. There may be alternatives.
+
+Both Ubuntu and Fedora have gui tools for managing networking
+profiles. I prefer just giving a command to run a script. Also that
+way I can mix different things in a profile, e.g. different firewall
+specifications can also be included, altering things like:
+
+    /etc/sysconfig/iptables-config
+
+and
+    /etc/hosts.deny
+
+whereas the standard profile-managing tools just alter interface
+settings, not the firewalls, etc.
+
+I don't know anyone in the world who does things my way, though a
+few people have told me they copied my scripts in order to get their
+laptops to work with uobwlan.
+
+I think there may be small differences in the way Fedora and Ubuntu
+(RedHat and Debian) manage services including con, and the start and
+stop scripts in
+    /etc/rc?.d
+
+Again, I don't use gui tools: I just move the scripts in and out of
+those directories (to backup directories) to enable or disable
+services. That way I can quickly check which services I have
+disabled, for example: their startup scripts are in the backup
+directory.
+
+> Fedora seems to look better (its font rendering is MUCH better than
+> Ubuntu's in my opinion),
+
+I did play with Ubuntu for a while, but I don't recall noticing
+that. You may simply have installed different fonts somehow. I think
+they both use X.org stuff.
+
+Fedora recently stopped including 75dpi fonts needed for tgif (my
+favourite for simple 2-D graphics) and xpdf. But once I found out
+the cause of the problems I was able to get rpms to install them.
+
+> fedora.... uses yum
+> instead of apt. Is there anything that can be done in one and not the
+> other?
+
+I doubt it.
+
+> Does Ubuntu, being more common, have better hardware support for
+> example?
+
+It varies. E.g. at one point when I was testing Ubuntu I found that
+wireless was dreadful because they were halfway between two ways of
+supporting wireless and my netgear card was not properly supported
+by the then current version of Ubuntu (gutsy, I think). At that time
+it worked better with Fedora, which had a more consistent set of
+drivers.
+
+There used to be a difference in that Ubuntu included firmware
+for intel wireless cards and fedora users had to fetch the firmware,
+but that's no longer the case, even though the intel drivers are not
+open source. (Intel is very keen to support linux).
+
+As regards graphic cards: with Fedora I have been able to download
+and install the 'native' drivers for both Nvidia (on my PC) and
+Radeon/ATI (on my laptop) cards instead of using the default
+linux drivers for those cards (which don't support the glxgears demo
+for example).
+
+I just fetch the files and run them and they install drivers. I
+assume that would work on Ubuntu, but I don't know. In any case the
+default drivers that come with X.org should be the same on both.
+
+There may also be a difference in support for 64 bit linux. I see
+lots of fedora packages offered in 32-bit and 64-bit versions, but
+don't know if the same is true for Ubuntu.
+
+Since I don't need 64-bit linux (except for testing 64 bit poplog) I
+don't bother.
+
+> Or is Fedora faster because it's not as bloated as Ubuntu?
+
+Both by default provide kernels with lots of stuff that you may not
+need (some of it as modules that are only loaded if needed).
+
+Whether one is more bloated than the other I don't know. My current
+(recently installed) kernel+boot files in /boot are:
+
+-rw-r--r-- 1 root root   89628 Sep 12 15:33 config-2.6.26.3-29_1.cubbi_tuxonice.fc9.i686
+-rw------- 1 root root 2981328 Sep 14 11:22 initrd-2.6.26.3-29_1.cubbi_tuxonice.fc9.i686.img
+-rw-r--r-- 1 root root  937458 Sep 12 15:33 System.map-2.6.26.3-29_1.cubbi_tuxonice.fc9.i686
+-rwxr-xr-x 1 root root 2175328 Sep 12 15:33 vmlinuz-2.6.26.3-29_1.cubbi_tuxonice.fc9.i686
+
+(That includes SWSUSP2.)
+
+There's a rather shallow and partly out of date comparison web site
+here:
+
+    <a href="http://news.helpero.com/article/UBUNTU-vs-SUSE-vs-FEDORA_20.html">http://news.helpero.com/article/UBUNTU-vs-SUSE-vs-FEDORA_20.html</a>
+
+Another one, a year old is
+
+    <a href="http://www.romow.com/computer-blog/the-linux-battle-ubuntu-vs-fedora/">http://www.romow.com/computer-blog/the-linux-battle-ubuntu-vs-fedora/</a>
+
+There may be others that are better and more up to date.
+
+The single main difference is probably that Ubuntu aims to be easy
+for beginners and non-experts, whereas Fedora aims to support
+experts and developers while trying to be nice to beginners.
+
+That may lead to various subtle differences which matter more to
+some people than others.
+
+</pre>
+</blockquote>
+
+
+<hr>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+This web site was first created on 17 Sep 2008
+<br>
+Last updated: 22 Feb 2009
+<br>
+</body></html>

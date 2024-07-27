@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN">
+<html>
+<head>
+<title>Gparted-live/Fedora-live on usb stick </title>
+
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+</head>
+
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:650px">
+
+<center>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+
+<h3><b>
+Running Linux: Install Gparted Live or Fedora Live on USB Stick
+</b></h3>
+This is part of my information about use of linux, especially on my Dell laptop:
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">http://www.cs.bham.ac.uk/~axs/laptop/</a>
+</center>
+<hr>
+<b>Instructions</b>
+<br>
+I wrote this document after using these steps to get Gparted Live onto a USB
+stick successfully. Shortly afterwards I tried the same procedure with Fedora
+Live (XFCE version)
+<p>
+<b>Creating Gparted-Live drive</b>
+<br>
+Get the latest ISO file from Sourceforge. E.g. on 5 Apr 2017,
+the latest file was available here:
+<br>
+<a href="https://sourceforge.net/projects/gparted/files/gparted-live-stable/0.28.1-1/">https://sourceforge.net/projects/gparted/files/gparted-live-stable/0.28.1-1/</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Looking for the latest version?
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Download gparted-live-0.28.1-1-i686.iso (287.3 MB)
+<br>
+Simply click on the required Download link and go through the usual procedures
+to save the downloaded file.
+<p>
+If necessary create a directory in which to install the iso file
+<br>
+<pre>
+   mkdir .../gparted
+</pre>
+Then move the saved iso file into that directory.
+<p>
+I then followed instructions under "GNU/Linux Method D: Manual - Overwrite",
+here:
+<br>
+<a href="http://gparted.org/liveusb.php#linux-method-d">http://gparted.org/liveusb.php#linux-method-d</a>
+<br>
+Insert the USB flash drive your Linux computer and wait a few seconds. Next,
+from a terminal window run the command:
+
+<pre>
+    dmesg | tail -2
+</pre>
+You should be able to work out from that where your new usb device is. E.g. on
+my machine I got this:
+<pre>
+    [1248567.503788]  sdc: sdc1 sdc2
+    [1248567.506501] sd 8:0:0:0: [sdc] Attached SCSI removable disk
+</pre>
+
+So my device was mounted as device sdc: with two partitions: sdc1 and sdc2
+<p>
+Using gparted, which is already part of my Fedora system, I then ran, as root,
+
+<pre>
+    gparted /dev/sdc
+</pre>
+
+I then used gparted to remove the two (empty) partitions that I had on that
+drive, though I am not sure that is necessary.
+<p>
+After exiting gparted, give the next command, taking great care to specify the
+input file (after 'if=') and the output device (after 'of=') without any errors.
+<p>
+<font color="blue">
+An error can destroy the contents of one of your drives.
+</font>
+<p>
+Enter the following command using the gparted .iso file name and USB device path
+discovered in the previous steps, e.g. /dev/sdc in the example above:
+
+<pre>
+    dd if=gparted-live-0.28.1-1-i686.iso of=/dev/sdc bs=4M; sync
+</pre>
+
+Take <b>great care</b> to get the command EXACTLY right.
+<p>
+If you have a newer iso file the name after 'if=' will be different. Likewise
+your usb device may be something other than /dev/sdc. E.g. if you have only one
+hard drive in your machine, that hard drive is likely to be /dev/sda, and then
+the usb device will be /dev/sdb. In my case (Desktop PC running Fedora 24,
+with two hard drives, sda and sdb)
+the usb stick was assigned name /dev/sdc, as above.
+<p>
+Make sure you wait for the "sync" command to complete before removing the usb
+stick. You can then test it by inserting it in a usb slot in a machine that has
+been shut down and set to boot from usb if available (that could be the machine
+you have just used to create the new gparted usb stick) and power up the
+machine.
+
+<p>
+It worked on my Dell Latitude E6410 though while booting from the drive I
+obtained a message
+
+<pre>
+    "failed to find cpu0 device node error"
+</pre>
+
+But a short time later gparted started up, giving me the option to specify the
+type and language of my keyboard (qwerty, uk), and options for graphical mode.
+I chose the default.
+<p>
+When gparted started up in graphical mode, there was a button that allowed me to
+select the drive to be examined.
+<p>
+Look elsewhere for information on what you can do with gparted. I assume anyone
+reading this document already knows about gparted.
+<hr>
+<b>Creating Fedora-Live USB Stick</b>
+<br>
+The procedure is exactly the same, except that I downloaded the Fedora iso file
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Fedora-Xfce-Live-x86_64-25-1.3.iso
+<br>
+from here
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://dl.fedoraproject.org/pub/fedora/linux/releases/25/Spins/x86_64/iso/">https://dl.fedoraproject.org/pub/fedora/linux/releases/25/Spins/x86_64/iso/</a>
+<br>
+and altered the 'dd' command to use the fedora iso file.
+
+<pre>
+    dd if=Fedora-Xfce-Live-x86_64-25-1.3.iso of=/dev/sdc bs=4M; sync
+</pre>
+<p>
+For Fedora Live I used a newer 32GB USB 3 stick. It booted perfectly both on my
+ancient Dell E6410 laptop and on a newer desktop PC.
+<hr>
+<p>
+Maintained by
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+A.Sloman@cs.bham.ac.uk
+<br>
+First Created: 5 Apr 2017
+<br>
+Last Updated: 8 Apr 2017
+</div>
+
+</body></html>

@@ -1,0 +1,18 @@
+#!/bin/bash
+## clean up old network stuff before starting wireless network connection
+## Aaron Sloman
+## 5 Apr 2009
+## http://www.cs.bham.ac.uk/~axs/laptop/wpa
+##
+## disconnect ethernet and wireless connections
+ifdown eth1
+ifdown eth0
+##
+## stop the network service and wpa_supplicant service
+service network stop
+service wpa_supplicant stop
+##
+## Clean up contents of /var/run
+cd /var/run
+rm -f dhclient*
+rm -rf wpa_supplicant

@@ -1,0 +1,96 @@
+#!/bin/sh
+## Aaron Sloman 26 Mar 2010
+## Probably overkill
+## Connect to Birmingham Universith UOBwifi network
+## Needs to be run by root, or use sudo
+
+#killall wpa_gui
+
+echo 're-setting uobwifi network connection'
+
+echo 'disabling eth0 eth1'
+
+/sbin/ifdown eth0
+
+/sbin/ifdown eth1
+
+cd /etc
+
+rm resolv.conf hosts
+
+echo setting /etc/hosts and /etc/resolv.conf
+
+## assumes default files are in /etc/uobwifi
+/bin/cp -p uobwifi/* .
+
+cd /etc/wpa_supplicant
+
+echo setting wpa_supplicant.conf
+
+## assumes default wpa_supplicant.conf file is in /etc/wpa_supplicant/uobwifi
+/bin/cp -p uobwifi/* .
+
+cd /etc/sysconfig
+
+echo set /etc/sysconfig/network
+
+## assumes default network file is in /etc/sysconfig/uobwifi
+/bin/cp -p uobwifi/* .
+
+cd /etc/sysconfig/network-scripts
+
+echo setting /etc/sysconfig/network-scripts/ifcfg-eth1
+
+rm -f ifcfg-eth1 ifcfg-eth0 keys-eth1
+
+
+## assumes default ifcfg-eth1 file is in /etc/sysconfig/network-scripts/uobwifi
+/bin/cp -p uobwifi/* .
+
+##Files now all set up. Restart everything.
+
+## this is optional
+## echo restarting firewall
+## service iptables restart
+
+echo restarting network
+
+## bring down wireless connection
+ifdown eth1
+
+echo restarting wpa_supplicant
+
+# this uses /etc/sysconfig/wpa_supplicant
+service wpa_supplicant restart
+
+## Leave time to associate with access point.
+sleep 5;
+
+## This command should show association with OUBwifi and also
+## access key set up
+iwconfig eth1
+
+echo "restarting dhclient"
+
+/sbin/dhclient -r
+
+/sbin/dhclient -v   eth1
+
+## if dhcp connection has worked, this command will show
+## ip address allocated:
+
+/sbin/ifconfig eth1
+
+
+## OPTIONAL STUFF
+#echo ""
+#echo run wpa_cli with 'reassociate' command
+
+#wpa_cli reassociate
+
+#echo starting wpa_cli. Wait for '[OK]' Then hit return and type: status
+
+#wpa_cli
+
+## If wpa_gui available
+#wpa_gui -geometry +30+20 &

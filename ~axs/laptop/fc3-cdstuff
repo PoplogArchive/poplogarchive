@@ -1,0 +1,102 @@
+<HTML>
+<BODY>
+THIS IS
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/fc3-cdstuff/">http://www.cs.bham.ac.uk/~axs/laptop/fc3-cdstuff/</a>
+<P>
+This directory is an appendage to my directory with information about
+unsing linux on my
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">Dell Latitude D600 Laptop</a>
+<P>
+After I installed Fedora core 3 I started having trouble reading,
+writing, copying, and doing MD5 checksums on downloaded iso CD files,
+because I prefer using shell scripts and shell commands to running
+graphical tools. (I presume that for users of gnome and kde there are
+graphical tools that remove the problems because they are regularly
+updated, but I have not checked. In any case I use neither of them,
+only the small, fast, robust, and tailorable ctwm window manager.)
+<P>
+I found an explanation of my problems and solutions that worked for me
+at these two web sites:
+
+<P>
+<blockquote>
+<a
+href="https://www.redhat.com/archives/fedora-test-list/2005-January/msg00454.html">https://www.redhat.com/archives/fedora-test-list/2005-January/msg00454.html</a>
+<BR>
+Discussions on the fedora-test-list
+<P>
+<a
+href="http://www.troubleshooters.com/linux/coasterless.htm">http://www.troubleshooters.com/linux/coasterless.htm</a>
+<BR>
+Troubleshooters.Com and T.C Linux Library Present
+<BR>
+Coasterless CD Burning
+<BR>
+Copyright (C) 2002, 2003, 2004 by Steve Litt
+</blockquote>
+The information provided there, including the shell scripts are
+enormously helpful. However I have slightly modified the examples to
+produce my own scripts, namely
+
+
+<UL>
+<LI>    <a href="rawread">rawread</a> device
+<br> Reads in the contents of the device (e.g. /dev/cdrom, or
+/dev/hdc) and copies all the data to the standard output. You can then
+feed the output into a file, or a program.
+
+This is from
+<a href="http://www.troubleshooters.com/linux/coasterless.htm#rawread">http://www.troubleshooters.com/linux/coasterless.htm#rawread</a>
+<P>
+I had thought that the code in there could be simplified to something
+like this
+
+<PRE>
+    #!/bin/sh
+    device=$1
+
+    count=$(isosize -d 2048 $device)
+
+    echo num of blocks = $count
+
+    command="dd if=$device bs=2048 count=$count conv=notrunc,noerror"
+
+    echo "$command" >&2
+
+    $command
+</PRE>
+
+But something stops that working.
+
+<P>
+<LI>    <a href="copy-cd-to-iso">copy-cd-to-iso</a> device file
+<BR>
+Copy a CD to a file. e.g.
+<PRE>    copy-cd-to-iso /dev/cdrom file.iso </PRE>
+<P>
+<LI>    <a href="check-cd-md5">check-cd-md5</a> device
+<br>
+Trivial script to run md5sum on a CD after writing it, using rawread.
+<BR>
+The output can be directed to a file e.g.
+<PRE>    check-cd-md5 /dev/cdrom > file </PRE>
+<P>
+<LI>    <a href="copy-iso-to-iso">copy-iso-to-iso</a> file1 file2
+<br>
+Make a copy of an iso file, e.g. if you want to move it from one
+partition to another.
+<P>
+<LI>    <a href="record-iso">record-iso</a> file device
+<br>
+Make a CD from an ISO file. E.g.
+<PRE>     record-iso file.iso /dev/cdrom</PRE>
+<P>
+<LI>    <a href="mount-iso">mount-iso</a> isofile directory
+<br>
+Mount ISO image file.iso in directory (which must exist)
+</UL>
+
+<HR>
+Last updated: 19 Jun 2005
+</BODY>
+</HTML>

@@ -1,0 +1,151 @@
+#!/bin/sh
+# example SysV init script for iptables
+#
+# largely ripped off from the default RH one
+
+## Originally provided by Simon Thompson
+## Slightly modified by A.Sloman (with his help)
+## Installed here 30 Jul 2006
+##
+# Insert this in /etc/rc.d/init.d/iptables, replacing the original
+#There should be links to it from other rc.d directories.
+
+## The main firewall specification is in a script located in
+## /etc/sysconfig/firewall, which is read by this file.
+
+#
+# chkconfig: 2345 05 91
+# description: Start/stop firewall
+
+IPTABLES_CONFIG=/etc/sysconfig/firewall
+
+if [ ! -x /sbin/iptables ]; then
+        exit 0
+fi
+
+# an aliases for iptable that only does things if the specified chain exists
+iftable() {
+        if fgrep -qsx $1 /proc/net/ip_tables_names; then
+                iptables -t "$@"
+        fi
+}
+
+start(){
+    echo "Starting firewall"
+
+    if [ -f $FWCONFIG ]; then
+        # ditch any old rules, including deleting any user-defined chains
+        iptables -F
+        iptables -X
+        chains=`cat /proc/net/ip_tables_names 2>/dev/null`
+        for i in $chains; do iptables -t $i -F; done && \
+          echo $"Flushing all current rules and user defined chains" || \
+          echo $"Failure flushing all current rules and user defined chains"
+        for i in $chains; do iptables -t $i -X; done && \
+                echo $"Clearing all current rules and user defined chains" || \
+                echo $"Failure clearing all current rules and user defined chains"
+
+        # zero all counters
+              for i in $chains; do iptables -t $i -Z; done
+
+        # source new firewall rules
+              # could use iptables-restore here, but I prefer to have all FW config
+              # (including /proc settings) in $IPTABLES_CONFIG, which means we have to
+              # execute it
+        /bin/sh $IPTABLES_CONFIG && \
+          echo $"Applying iptables firewall rules" || \
+          echo $"Failure applying iptables firewall rules"
+
+          ## Added by A.S. 29 Jul 2006
+          echo "Turning on IP forwarding"
+          echo "1" > /proc/sys/net/ipv4/ip_forward
+
+        return 0
+    fi
+}
+
+stop(){
+        chains=`cat /proc/net/ip_tables_names 2>/dev/null`
+        for i in $chains; do iptables -t $i -F; done && \
+                echo $"Flushing all chains" || \
+                echo $"Failure flushing all chains"
+        for i in $chains; do iptables -t $i -X; done && \
+                echo $"Removing user defined chains" || \
+                echo $"Failure removing user defined chains"
+        iftable   filter -P INPUT ACCEPT && \
+           iftable   filter -P OUTPUT ACCEPT && \
+           iftable   filter -P FORWARD ACCEPT && \
+           iftable   nat -P PREROUTING ACCEPT && \
+           iftable   nat -P POSTROUTING ACCEPT && \
+           iftable   nat -P OUTPUT ACCEPT && \
+           iftable   mangle -P PREROUTING ACCEPT && \
+           iftable   mangle -P OUTPUT ACCEPT && \
+           echo $"Resetting built-in chains to the default ACCEPT policy" || \
+           echo $"Failure resetting built-in chains to the default ACCEPT policy"
+        # switch off forwarding
+        echo 0 > /proc/sys/net/ipv4/ip_forward
+    return 0
+}
+
+panic(){
+        echo -n $"Changing target policies to ACCEPT: "
+        iftable filter -P INPUT ACCEPT && \
+            iftable filter -P FORWARD ACCEPT && \
+            iftable filter -P OUTPUT ACCEPT && \
+            iftable nat -P PREROUTING ACCEPT && \
+            iftable nat -P POSTROUTING ACCEPT && \
+            iftable nat -P OUTPUT ACCEPT && \
+            iftable mangle -P PREROUTING ACCEPT && \
+            iftable mangle -P OUTPUT ACCEPT && \
+            echo $"Changing target policies to ACCEPT" || \
+            echo $"Failure changing target policies to ACCEPT"
+        echo
+        iftable filter -F INPUT && \
+                iftable filter -F FORWARD && \
+                iftable filter -F OUTPUT && \
+                iftable nat -F PREROUTING && \
+                iftable nat -F POSTROUTING && \
+                iftable nat -F OUTPUT && \
+                iftable mangle -F PREROUTING && \
+                iftable mangle -F OUTPUT && \
+                echo $"Flushing all chains" || \
+                echo $"Failure flushing all chains"
+        iftable filter -X INPUT && \
+                iftable filter -X FORWARD && \
+                iftable filter -X OUTPUT && \
+                iftable nat -X PREROUTING && \
+                iftable nat -X POSTROUTING && \
+                iftable nat -X OUTPUT && \
+                iftable mangle -X PREROUTING && \
+                iftable mangle -X OUTPUT && \
+                echo $"Removing user defined chains" || \
+                echo $"Failure removing user defined chains"
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        # not a deamon, so nothing to kill, just re-start
+        start
+    ;;
+    panic)
+        panic
+    ;;
+   status)
+        tables=`cat /proc/net/ip_tables_names 2>/dev/null`
+        for table in $tables; do
+                echo $"Table: $table"
+                iptables -t $table --list
+        done
+        ;;
+    *)
+        echo "Usage: iptables {start|stop|restart|panic|status}"
+        exit 1
+esac
+
+exit 0

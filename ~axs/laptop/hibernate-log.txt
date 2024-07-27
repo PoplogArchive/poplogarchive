@@ -1,0 +1,131 @@
+Resumed at Sat Jul 10 01:01:13 BST 2010
+Starting suspend at Sat Jul 10 01:01:22 BST 2010
+hibernate: [01] Executing CheckLastResume ...
+hibernate: [01] Executing CheckRunlevel ...
+hibernate: [01] Executing LockFileGet ...
+hibernate: [01] Executing NewKernelFileCheck ...
+hibernate: [10] Executing EnsureTuxOnIceCapable ...
+hibernate: [11] Executing ChangeGrubMenu ...
+hibernate: [11] Executing XHacksSuspendHook1 ...
+hibernate: [30] Executing ServicesStop ...
+Shutting down loopback interface:  [60G[[0;32m  OK  [0;39m]
+Shutting down loopback interface:  [60G[[0;32m  OK  [0;39m]
+hibernate: [59] Executing RemountXFSBootRO ...
+hibernate: [89] Executing SaveKernelModprobe ...
+hibernate: [91] Executing ModulesUnloadBlacklist ...
+hibernate: [95] Executing XHacksSuspendHook2 ...
+hibernate: [97] Executing ChangeToTuxOnIceVT ...
+hibernate: [98] Executing CheckRunlevel ...
+hibernate: [98] Executing FullSpeedCPUSuspend ...
+hibernate: [98] Executing TuxOnIceConfigSet ...
+hibernate: [99] Executing DoTuxOnIce ...
+hibernate: Activating TuxOnIce ...
+hibernate: TuxOnIce reported the following errors:
+ - TuxOnIce was aborted (see dmesg).
+ - Unable to free enough memory.
+ - Failed to initialise all modules.
+---- Output from dmesg: ----
+ TuxOnIce 3.1.1, with support for usm, compression, block i/o, swap storage, file storage, userui.
+ Initiating a hibernation cycle.
+ Stopping fuse filesystems.
+ Freezing user space processes ... (elapsed 0.01 seconds) done.
+ Stopping normal filesystems.
+ Freezing remaining freezable tasks ... (elapsed 0.01 seconds) done.
+ Restarting normal filesystems.
+ Asked shrink_all_memory for 766 low pages & 0 pages from anywhere, got 520.
+ Stopping fuse filesystems.
+ Freezing user space processes ... (elapsed 0.00 seconds) done.
+ Stopping normal filesystems.
+ Freezing remaining freezable tasks ... (elapsed 0.01 seconds) done.
+ Restarting normal filesystems.
+ Stopping fuse filesystems.
+ Freezing user space processes ... (elapsed 0.00 seconds) done.
+ Stopping normal filesystems.
+ Freezing remaining freezable tasks ... (elapsed 0.01 seconds) done.
+ Restarting normal filesystems.
+ Asked shrink_all_memory for 236 low pages & 0 pages from anywhere, got 171.
+ Stopping fuse filesystems.
+ Freezing user space processes ... (elapsed 0.00 seconds) done.
+ Stopping normal filesystems.
+ Freezing remaining freezable tasks ... (elapsed 0.01 seconds) done.
+ Restarting normal filesystems.
+ Stopping fuse filesystems.
+ Freezing user space processes ... (elapsed 0.00 seconds) done.
+ Stopping normal filesystems.
+ Freezing remaining freezable tasks ... (elapsed 0.01 seconds) done.
+ Free:157572(41294). Sets:77049(73980),289537(110914). Nosave:98-0=98. Storage:386888/1112317(193293=>183293). Needed:0,0,62(100,1256,20000,0) (PS2:no)
+ Failed to prepare the image because...
+ - The maximum number of iterations was reached without successfully preparing the image.
+  - We need 62 more free pages of low memory.
+      Minimum free     :      100
+    + Reqd. by modules :     1256
+    + 2 * extra allow  :    40000
+    - Currently free   :    41294
+    - Pages allocd     :        0
+                       : ========
+      Still needed     :       62
+ Memory for modules:
+ ===================
+     131072 bytes (   32 pages) for module 'usm'.
+       8192 bytes (    2 pages) for module 'compression'.
+    4476928 bytes ( 1093 pages) for module 'block i/o'.
+          1 bytes (    1 pages) for module 'swap storage'.
+     524288 bytes (  128 pages) for module 'userui'.
+  => 5140481 bytes, 1256 pages.
+ Restarting all filesystems ...
+ Restarting tasks ... Restarting tasks ... done.
+ TuxOnIce debugging info:
+ - TuxOnIce core  : 3.1.1
+ - Kernel Version : 2.6.33.5-124_1.cubbi_tuxonice.fc13.i686
+ - Compiler vers. : 4.4
+ - Attempt number : 19
+ - Parameters     : 4225 663560 0 1 0 5
+ - Overall expected compression percentage: 50.
+ - Compressor is 'lzo'.
+ - Block I/O active.
+   Used 0 pages from swap on /dev/sdc2.
+ - Max outstanding reads 1. Max writes 0.
+   Memory_needed: 1024 x (4096 + 200 + 76) = 4476928 bytes.
+   Free mem throttle point reached 1098.
+ - Swap Allocator enabled.
+   Swap available for image: 1114508 pages.
+ - File Allocator active.
+   Storage available for image: 0 pages.
+ - No I/O speed stats available.
+ - Extra pages    : 263 used/20000.
+ - Result         : Hibernation was aborted.
+                  : Unable to free enough memory to hibernate.
+                  : We were unable to successfully prepare an image.
+ Pid: 2420, comm: dash Not tainted 2.6.33.5-124_1.cubbi_tuxonice.fc13.i686 #1
+ Call Trace:
+  [<c0460ee1>] free_update_stats+0x37/0x65
+  [<c0461028>] toi_free_page+0x20/0x3a
+  [<c046bc92>] forget_signature_page+0x4b/0x9f
+  [<c0468e43>] toi_bio_cleanup+0x2a/0x60
+  [<c0460664>] toi_cleanup_modules+0x26/0x46
+  [<c0461fa5>] toi_finish_anything+0xb/0x61
+  [<c0461582>] toi_attr_store+0x1f0/0x20d
+  [<c05170a4>] sysfs_write_file+0xbc/0xe7
+  [<c0516fe8>] ? sysfs_write_file+0x0/0xe7
+  [<c04d64b0>] vfs_write+0x80/0xdf
+  [<c04d65a3>] sys_write+0x3b/0x5d
+  [<c07816e4>] syscall_call+0x7/0xb
+ Idx  Allocs   Frees   Tests   Fails     Max Description
+  38       0       1       0       0       0 setting swap signature
+---- End of dmesg output ----
+hibernate: [98] Executing FullSpeedCPUResume ...
+hibernate: [97] Executing ChangeFromTuxOnIceVT ...
+hibernate: [90] Executing ModulesLoad ...
+hibernate: [89] Executing RestoreKernelModprobe ...
+hibernate: [85] Executing XHacksResumeHook2 ...
+hibernate: [70] Executing ClockRestore ...
+hibernate: [59] Executing RemountXFSBootRW ...
+hibernate: [30] Executing ServicesStart ...
+Bringing up loopback interface:  [60G[[0;32m  OK  [0;39m]
+Bringing up loopback interface:  [60G[[0;32m  OK  [0;39m]
+hibernate: [11] Executing XHacksResumeHook1 ...
+hibernate: [11] Executing RestoreGrubMenu ...
+hibernate: [01] Executing NoteLastResume ...
+hibernate: [01] Executing LockFilePut ...
+hibernate: [00] Executing RemoveTuxOnIceProcCruft ...
+Resumed at Sat Jul 10 01:01:28 BST 2010

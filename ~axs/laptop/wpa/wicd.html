@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>Wireless access using WICD on Fedora 10</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../../fig/ub4.png"/>
+</a>
+
+<p>
+<b>(This is a supplement my web site
+to <a href="http://www.cs.bham.ac.uk/~axs/laptop"> on using Linux on laptops</a>,
+<br/>
+and to my web page on accessing the campus wireless system
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/wpa/">http://www.cs.bham.ac.uk/~axs/laptop/wpa/</a>.)</b>
+
+<h2><b>
+Using 'wicd' to connect to the secure campus wireless service at
+<br>the University of Birmingham (UOBWLAN)
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+</small>
+</b></h2>
+<HR/>
+<hr/>
+<b>20 Jun 2009: Problem with wicd and selinux on Fedora 10</b>
+<br/>
+After a recent kernel update I started having problems: wicd would
+no longer connect to wireless networks and I was getting error
+messages from dhclient in /var/log/messages.
+<p>
+I solved the problem by running system-config-selinux and setting
+permissive mode.
+<blockquote>
+<small>
+For a more complete discussion see:
+<br/>
+<a href="http://majblog.wordpress.com/2009/01/26/wicd-se-linux-policy-fix-for-fedora-10/">http://majblog.wordpress.com/2009/01/26/wicd-se-linux-policy-fix-for-fedora-10/</a>
+<p>
+It is possible to reset selinux to the secure mode after a
+connection has been made.
+<p>
+NOTE ADDED 26 Jun 2010: I now disable selinux completely in
+<pre>
+    /etc/selinux/config
+by using
+    SELINUX=disabled
+</pre>
+</small>
+</blockquote>
+<p>
+<hr/>
+<p>
+<b>2 Jun 2009: Fedora 10, using wcid</b>
+<br/>
+For unknown reasons I started having difficulty connecting to
+wireless networks after upgrading my three and a half year old Dell
+latitude D610 from F9 to F10. My old scripts using wpa_supplicant
+did not connect as reliably as they used to, and I could not get
+NetworkManager to do anything useful. I had previously, when using
+Fedora 9, found that for connection to public services, e.g. at
+airports, 'wlassistant' worked well, but I found even that
+failing to connect after recent upgrades of the kernel.
+<p>
+However I have now discovered that 'wicd' (pronounced 'Wicked'?)
+works very well, although it means I have to stifle my dislike of
+graphical interfaces. I would much prefer to find a way to get my
+old scripts working. But for now 'wicd' works instead, as described
+below. My thanks to
+<a href="http://www.cs.bham.ac.uk/~djd/">Damien Duff</a>
+for advice when I first started it up.
+<blockquote>
+<b>NOTE ADDED 26 Jun 2010: need to run 'dhclient -r'</b>
+<br/>
+I later found a web site suggesting that there was a problem with
+dhclient not releasing connections properly.
+<br/>
+I was then able to get my scripts working again, by doing the
+following after starting wpa supplicant (run either as root, or
+using 'sudo'):
+<pre>
+    # release any previous dhcp lease
+    dhclient -r
+
+    # start up a new dhcp connection using eth1
+    dhclient eth1 -v
+
+    ###(also works with 'wlan0' instead of 'eth1' on Fedora 13)
+</pre>
+The '-v' flag is not necessary but provides useful information about
+how the connection process is proceeding, and when it has succeeded.
+</blockquote>
+<p>
+<b>Wicd on Ubuntu Intrepid</b>
+<br/>
+It seems that some users of Ubuntu Intrepid who were having trouble
+with NetworkManager find that 'wicd' works fine.
+<br/>
+E.g. see
+<a href="http://ubuntuforums.org/showthread.php?t=872701">http://ubuntuforums.org/showthread.php?t=872701</a>
+<br/>
+Entry for December 5th, 2008, 12:17 PM (Gaccm).
+
+<p>
+<b>Installing wicd on Fedora 10</b>
+<br/>
+I fetched the latest stable version (wicd-1.5.9) from here:
+<pre>
+    <a href="http://sourceforge.net/project/showfiles.php?group_id=194573">http://sourceforge.net/project/showfiles.php?group_id=194573</a>
+</pre>
+and followed the instructions here:
+<pre>
+    <a href="http://wicd.net/moinmoin/Wicd%20on%20FC9">http://wicd.net/moinmoin/Wicd%20on%20FC9</a>.
+</pre>
+(apart from changing the 'wget'
+command to fetch a more recent version, 1.5.9, selected from the
+sourceforge web site.)
+I did not have the problems with selinux mentioned in the moinmoin
+message.
+<p>
+<b>Using wicd on Fedora 10</b>
+<br/>
+Wicd has two components, a server and a client. After installation I
+ran 'system-config-services'. I used that to disable NetworkManager,
+and to ensure that the 'wicd' service was running.
+<p>
+Then to get the client running I typed, in an xterm window:
+<pre>
+    wicd-client -n
+</pre>
+That brought up a panel showing available networks. See the
+image below (shown after connection was completed):
+<p>
+<img alt="wicd" src="wicd-0.png"/>
+<p>
+In some parts of the building it showed more options, including
+UOBGuest.
+<p>
+In principle it would be possible to invoke wicd via a mouse menu,
+or have it launched automatically when X11 starts up. For now I am
+happy to give the above command to start it up.
+
+<p>
+To configure a
+network (eg. UOBWLAN) click on the white right-pointing triangle
+next to the name.   That brings in two more buttons labelled
+'Scripts' and 'Advanced settings'.
+<p>
+<img alt="wicd" src="wicd-1.png"/>
+<p>
+<ul>
+<li>
+Click on the Advanced settings. That brings up a smaller panel:
+<li>
+Select 'Use encryption'. That will make the panel expand to display
+a pull-down menu and some text input windows (that will depend on
+which menu option you choose).
+<p>
+<img alt="wicd" src="wicd-2.png"/>
+<p>
+<li>
+From the menu choose 'PEAP with GTC' ('Generic Token Card'?) if you
+don't want to specify a certificate, or 'PEAP with TKIP' if you want
+to specify a certificate that you have downloaded. (I used the
+former, as shown in the snapshot).
+<p>
+<b>NB 26 Jun 2010: a certificate is required for the new service: uobwifi.</b>
+<br/>
+So choose 'PEAP with TKIP'.
+<br/>
+See
+<a href="http://www.wireless.bham.ac.uk/start/configuration/linux.shtml">http://www.wireless.bham.ac.uk/start/configuration/linux.shtml</a>
+<br/>
+(Shows how to connect using NetworkManager applet.)
+<br/>
+My instructions for using the uobwifi connection on linux are
+<a href="uobwifi.html">here</a>.
+<br/>
+The new certificate (required from summer 2010) is here
+<a href="http://webdev1.bham.ac.uk/uob_root_linux.pem">http://webdev1.bham.ac.uk/uob_root_linux.pem</a>
+<br/>
+Place it in /etc/cert or wherever you keep certificates. (You may
+have to create the directory, as superuser.)
+<p>
+
+<li>
+Type in your user name (identity) and
+password. If you select the boxes on the
+right the text will be visible.
+<br/>
+NB: If you use the 'eduroam' service you will need to type in
+username followed by '@bham.ac.uk' (you can't use
+your 'cs.bham.ac.uk' user name.)
+<p>
+<li>
+Then click on 'OK'
+<p>
+<li>
+Click on 'Connect'. After a delay during which the connection is
+attempted, you should get success indicated at the bottom of the
+panel, showing 'Connected to UOBWLAN at 80%', and the IP address.
+(See the first image above).
+</ul>
+<p>
+I have found that once the connection has been made I can click on
+'quit' to get rid of the wicd window, and the connection goes on
+working.
+<p>
+It also connects with my wireless access point at home using
+WPA-PSK+TKIP.
+<p>
+
+<hr/>
+<small>
+Installed: 2 Jun 2009
+<br/>
+Last updated: 2 Jun 2009; 26 Jun 2010
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+
+</BODY>
+</HTML>

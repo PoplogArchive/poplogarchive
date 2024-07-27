@@ -1,0 +1,458 @@
+DRAFT
+last update 11 Oct 1997
+
+                   DESIGN SPACE(S) AND NICHE SPACE(S).
+                              Aaron Sloman
+     School of Computer Science & Cognitive Science Research Centre
+                      The University of Birmingham
+
+This is an attempt to characterise a new unifying generalisation of the
+practice of software engineers, AI designers, developers of evolutionary
+forms of computation, etc. This topic overlaps with theoretical biology,
+developmental psychology and perhaps some aspects of social theory (yet
+to be developed perhaps).
+
+Just as much of theoretical computer science follows the lead of
+engineering intuitions and tries to formalise them (Milner 1996), I
+think there are some important emerging high level cross disciplinary
+ideas about processes and architectures that can be unified and
+formalised, though this discussion note reports only preliminary work on
+this task.
+
+The key idea is that there are two linked spaces inhabited by behaving
+systems. One is the fairly familiar space of possible designs ("design
+space", where the notion of "design" does not presuppose any designer: a
+design is simply an abstract specification which can be instantiated in
+working systems that fit the design).
+
+The other key idea refers to the space of sets of requirements, which I
+call "niche space", since I've come to view the biologist's notion of a
+niche as more or less the same thing as the engineer's notion of a set
+of requirements and constraints. (Both are abstract spaces. E.g. two
+insects or two plants in the same physical location can be in totally
+different niches, so niches are not determined by physical location.)
+
+Just as designs don't presuppose a designer, so in principle
+requirements (niches) don't presuppose a requirer. However there are
+different ways actual requirements can be generated: e.g. engineering
+goals vs biological needs.
+
+Both spaces have very complex topologies, including many
+discontinuities, some small (e.g. adding a bit more memory to a design)
+some large (adding a new architectural layer, or a new formalism).
+
+E.g. I suspect a major discontinuity in niche space occurs somewhere
+between systems that are able merely to perform certain tasks, and
+others which are also able to state how they did it, or why they did it,
+or why they used a particular method.
+
+(How the latter sort of niche evolves in nature is an interesting
+biological question.)
+
+Both are inhomogeneous spaces: i.e. the local topology varies depending
+on the location in the space: e.g. the minimal changes possible at
+various locations in the same space can be very different in type and
+number. This is partly a function of complexity. Designs of different
+complexity may be in the same space, but there are typically more ways
+and more complex ways, of altering a complex design than a simple
+design. By contrast, in most multi-dimensional spaces considered by
+scientists and engineers, each point has the same number of dimensions,
+i.e. the same number and the same types of changes are possible at all
+points. (Sometimes equations defining permitted trajectories in a phase
+space make the space inhomogeneous.)
+
+Both design space and niche space are "layered" in that regions within
+then can be described at different levels of abstraction and for each
+such region significantly different less abstract "specialisations"
+exist. Some specialisations of designs are called implementations.
+(The philosopher's notion of "supervenience" and the engineer's notion
+of "implementation" seem to me to be closely linked, if not identical.
+See http://www.cs.bham.ac.uk/~axs/misc/supervenience )
+
+Niche space has the further complication that two (or more) niches in
+different sub-spaces can be combined to yield a niche in a more complex
+space. E.g. requirements for editing programs and requirements for
+editing latex source files can be combined with each other and with
+requirements for reading and posting email and net news. Some designs
+for text editors (especially programmable editors like Emacs and Ved)
+can satisfy the composite niche, others not.
+
+It is not in general necessary to combine two separate designs to get a
+new design that satisfies two separate niches. Often designs have
+intrinsic generality or multi-functionality: a powerful example is a
+typical modern CPU.
+
+I don't yet know whether it's best to think of one niche-space with
+enormous internal complexity or a collection of different niche-spaces,
+some of which are compositions of others. (Cross product may not be a
+rich enough notion to capture this.)
+
+Relationships between a design space and a niche space also have a very
+complex form: e.g. two regions of design space may be mapped to the same
+region of niche space, via a "satisfaction" mapping with different
+dimensions, and different degrees of satisfaction in those dimensions.
+(i.e. trade-offs.).
+
+Similarly two different niches may be satisfied (to some extent) by the
+same design. (E.g. providing shelter from cold and protection from
+predators.) When that happens the design also satisfies a composite
+niche, as mentioned above.
+
+Satisfaction thus described is a relation not a function. But even the
+notion of a relation is not general enough, for a relation either holds
+or does not hold between two things. It would be more accurate to regard
+satisfaction as a function from a design and a niche to a partially
+ordered set of descriptions of the type and kind of satisfaction. Like
+designs and niches, these descriptions of "fitness" can vary in
+complexity, and their partial ordering will correspond to the notion of
+one design being "better" than another, which is generally a partial
+ordering (Sloman 1969).
+
+(Genetic algorithms and other forms of evolutionary computation normally
+assume the "fitness function" produces a simple numerical measure of
+goodness, i.e. a total ordering with a metric. But that's a special
+case.)
+
+Moreover, design space and niche space seem to "include" parts of each
+other insofar as a design may include a complex architecture where part
+of the architecture is a sub-architecture which "inhabits" a niche
+determined in part by the requirement to fit in with the rest of the
+architecture, and serve its needs.
+
+Likewise a complex niche may include as one of its sub-requirements, a
+requirement to accommodate something with a particular architecture,
+e.g. provide maintenance for it. So a niche, i.e. a set of requirements
+can include reference to a design.
+
+We can also talk about processes involving trajectories in both spaces:
+i.e. there's a dynamics of niches and designs.
+
+E.g. besides the behaviours of a particular design instance when it does
+its job, there are also more far reaching behaviours (self-modifying
+behaviours) which involve following a trajectory in design space.
+
+E.g. a system which learns or adapts can change its design. The most
+dramatic examples are biological: e.g. a fertilized egg transforming
+itself into an embryo and then a neonate, though other examples are
+self-adapting communication networks, or adaptive interfaces and other
+AI "learning" systems.
+
+In many animals, including humans, I think the information processing
+architecture continues to be dramatically transformed long after birth,
+and after the main physiological structures have been established. I.e.
+humans follow a very complex trajectory in design space throughout their
+lives.
+
+In general following a trajectory in design space also involves a
+trajectory in niche space: the niches for an unborn foetus, for a
+newborn infant, a schoolchild, a parent, a professor, etc. are all
+different.
+
+(An instance can instantiate more than one design, satisfying more than
+one niche: e.g. parent and professor.)
+
+Niches can interact with one another by influencing designs satisfying
+those niches, e.g. as in co-evolution of organisms. (Part of the task of
+an educational system is to provide a trajectory through niche space
+which will induce a trajectory in design space in a certain sort of
+self-modifying system, a brain.)
+
+Thus there are many different sorts of causal relations: within an
+architecture, between architectures, between architectures and niches,
+between niches.
+
+(A niche that influences a design can be thought of as bit like an
+attractor in a phase space. That's a special case insofar as phase
+spaces typically have a uniform topology, e.g. fixed dimensionality.)
+
+There are questions about which trajectories are and which are not
+possible for an individual. An acorn can transform itself into an oak
+tree, and by controlling its environment you can slightly modify what
+sort of oak tree (e.g. how big). But no matter how you try to train or
+coax it by modifying the environment, it will never grow into a giraffe.
+
+Trajectories that can be followed by a self-modifying individual can be
+called i-trajectories.
+
+If two designs that cannot be part of the same i-trajectory,
+are instantiated in a larger ecology including darwinian reproductive
+mechanisms operating on collections of designs, then trajectories may be
+possible over generations of individuals that are not possible within an
+individual.
+
+Trajectories in design space that are not i-trajectories but are
+possible via evolutionary processes (e.g. genetic algorithms modifying
+software) can be called e-trajectories.
+
+Are there some trajectories that are impossible both for individual
+development and for darwinian evolution, but can be achieved only by
+external intervention via non-darwinian mechanisms of change?
+
+Example: repairing certain kinds of physically damaged system, fixing
+certain kinds of bugs in software?
+
+Whether a similar distinction between i-trajectories and e-trajectories
+can be made for individuals inhabiting software virtual machines I am
+not sure. It depends on whether the impossibility of certain
+trajectories depends on the individuals being implemented in physics or
+whether they are logical impossibilities. E.g. the acorn
+    1. lacks information needed by a giraffe
+    2. lacks the architecture to absorb the information, no matter how
+       the information is presented by the environment
+    3. lacks the architecture required to modify itself into an
+       architecture that can absorb the information).
+
+Anyhow, the burgeoning interest in evolutionary computation to solve
+hard problems that seem to be resistant to other methods (e.g. AI
+problem solving, connectionist learning, etc.) suggests that there may
+be a general distinction here.
+
+I see the discussion in Milner's paper as leading towards an important
+concept in design space, namely "architecture" not in the sense often
+used by computer scientists when they use the word to refer to the
+underlying physical machine, but the broader sense in which software, or
+a sonnet, or a sonata, or a house, or a commercial organisation can have
+an architecture. A system with an architecture is "nearly decomposable"
+into a collection of coexisting smaller interacting systems. In
+particular, networks of coexisting interacting processes form
+architectures.
+
+Milner's PI calculus (sketched in Milner 1996) points towards systems
+with changing architectures, described in terms of processing nodes and
+the links between them. There are many examples of architectures which
+change at run time. E.g. Unix and other operating systems allow the
+creation of new processes and killing of old ones, and also creation of
+entirely new links and deletion of old ones (e.g. sockets). But normally
+these are mostly functionally separate processes, performing diverse
+unrelated tasks for different users at different times.
+
+In order to describe regions of design space containing architectures
+for integrated intelligent systems we'll need to use a collection of
+higher order architectural concepts, including concepts concerned with
+high level self-modification (e.g. developing the ability to remember
+and return to unfinished tasks, seems to be something that happens in
+human children). Some of these higher order architectural concepts may
+be close to those an experienced software engineer learns about over
+many years.
+
+Many of them refer to functional roles relevant to the description of
+control systems of many types, e.g. monitoring, positive and negative
+feedback, adaptation, growth, record keeping, sensing the environment,
+repair, extension of functionality, etc. We may need to enhance these
+ideas to include things like motive generation, motive evaluation,
+motive selection (intention formation).
+
+For example, one of the issues I've been worrying about is how to think
+about the architecture of a human mind, which seems to me to have a
+number of different sorts of coexisting layers with importantly
+different properties. In particular there's a "reactive" layer full of
+dedicated highly parallel mechanisms each of which responds in a
+relatively fixed way to its inputs, which may come from outside or from
+other components, and its outputs may go to motors or other internal
+components. This sort of system has a relatively fixed architecture
+except insofar weights on links change through processes like
+reinforcement learning. (This requires components which not only
+transmit information but change themselves in doing so.)
+
+By contrast a "deliberative" layer includes the ability to create new
+temporary structures (temporary extensions to its architecture??)
+representing alternative possibilities for more or less complex future
+actions, which it can then compare and evaluate (which requires creating
+further temporary "descriptive" structures). The deliberative system may
+choose one of the structures, execute it as a plan, and then discard it
+(or modify itself permanently by saving some or all of the structure for
+future re-use).
+
+For several reasons which I won't go into now, a deliberative mechanism
+will (normally) be discrete, serial, and therefore relatively slow,
+whereas a reactive mechanism can be highly parallel and therefore very
+fast, and may include some continuous (analog) mechanisms, possibly
+using thresholds. (I am not ruling out the use of reactive mechanisms to
+implement deliberative mechanisms: merely commenting on the logic of
+deliberative architectures, however implemented.)
+
+[NOTE: the general notion of a reactive system can be implemented in
+many different ways. E.g. both neural nets and parallel condition-action
+rules can both be seen as reactive systems. In fact a neural net, with
+or without feedback, can be viewed as a highly parallel collection of
+condition-action rules where the conditions are some function of the
+inputs (e.g. a thresholded, weighted, sum) and the actions involve
+simultaneous broadcasts to other nodes in the network. Likewise there
+are many ways of implementing deliberative mechanisms, including neural
+nets with an appropriate architecture. As many philosophers have pointed
+out, at the lowest level, even deliberative architectures must have
+mechanisms that do not deliberate, but simply act.]
+
+By understanding the tradeoffs involved we may be able to understand the
+niche-pressures that led to the development of combined deliberative and
+reactive architectures in organisms.
+
+Everything that can be done by a hybrid architecture could in principle
+be done by a suitably complex reactive architecture (e.g. a huge,
+pre-compiled lookup table matching every possible history of inputs to
+an agent with a particular combination of outputs (perhaps a
+probabilistically weighted selection from a set of possibilities).
+However, some of the pre-requisites for such an implementation are very
+different: much longer evolution to pre-program all the reactive
+behaviours, and far more storage to contain them, etc. For certain
+agents the universe may be neither old enough for the evolutionary
+time required nor big enough to store all the combinations.
+
+There's lots more to be said about this, e.g. how the requirements of a
+deliberative mechanism change the "niche" for perceptual mechanisms
+generating pressures for them to develop new layers of abstraction, and
+similar pressures on motor mechanisms, and how the development of new,
+higher level, abstractions in perceptual and motor systems change the
+niche for more central mechanisms, e.g. providing new opportunities for
+learning, and for control.
+
+The need for self-monitoring, self evaluation, etc. has other
+interesting architectural implications, some of which may form the basis
+of human abilities not only to perceive the environment but also some
+aspects of their own internal states.
+
+(I think the need to support non-intrusive observation of part of a
+system by another part is likely to lead to new developments in hardware
+and operating system features.)
+
+It gets even more interesting if each such system (with a combination of
+reactive, deliberative and self-management sub-architectures) is itself
+part of a larger social system with many such agents. We can again ask
+about trajectories in design space and niche space for social systems,
+and interactions between the design spaces and niche spaces for various
+types of mechanisms (genetic mechanisms, individual organisms, social
+systems, etc.)
+
+All this seems to point to a type of theory which unifies computer
+science, theoretical biology, AI, some aspects of psychology, brain
+science, etc.
+
+It's still all very vague, and may be too complex to reason about
+precisely. Yet I think the best software engineers have developed lots
+of intuitions about these things and it must be possible to find
+mathematical constructs that capture those intuitions. It seems to me
+that that will be not unlike the development of theoretical concepts
+from programming intuitions described in Milner's paper.
+
+FURTHER WORK
+
+We need to find ways of describing both architectures and niches which
+correspond to the high level concepts used intuitively by very
+experienced designers. This requires investigation of ways of
+abstracting from domain specific details, so as to replace empirical
+concepts with mathematical concepts. This is a prerequisite for
+mathematical analysis of relations between designs and niches.
+
+For example, at present the requirement that a system be "user-friendly"
+uses an inherently empirical concept defined in terms of how humans
+(typical humans? all humans? humans in a particular culture? novices?
+experienced users?) react to a system.
+
+In order to replace this with a non-empirical concept of
+user-friendliness we'll have to identify a class of agents with various
+perceptual, cognitive, and motivational capabilities. We can then define
+the various types of load a system imposes on that sort of agent, e.g.
+learning time required, short term memory problems, visual parsing
+problems, planning problems, attention control problems, etc.
+
+Only when we have such a structural and functional characterisation of
+user-friendliness for a class of agents is there any hope of a deep
+theoretical analysis of the sort of architecture for a system that will
+make it user-friendly for that class of agents.
+
+Similar comments can be made about many other concepts used in
+specifying requirements for a design. Similar ideas would enable the
+notion of a niche in biology to be made sufficiently precise to enable
+us to understand precisely the relationships between niches and designs
+for organisms, and perhaps give a better understanding of the dynamics
+of niches and designs in biological evolution.
+
+
+-----------------------------------------------------------------------
+
+References:
+
+Robin Milner
+    Semantic ideas in computing
+    in Computing Tomorrow: Future research directions in computer
+    science, ed. Ian Wand and Robin Milner
+    Cambridge University Press, 1996, pp246-283
+
+Aaron Sloman,
+    How to derive ``Better'' from ``is'',
+    American Philosophical Quarterly,
+    vol. 6 pp. 43-52, Jan 1969.
+    Now online:
+        http://www.cs.bham.ac.uk/research/cogaff/0-INDEX00-02.html#88
+
+Some older papers reporting earlier versions of these ideas:
+
+sloman84,
+  author = "A. Sloman",
+  title = "The structure of the space of possible minds'",
+  booktitle = "The Mind and the Machine: philosophical aspects of
+    Artificial Intelligence",
+  editor = "S. Torrance",
+  publisher = "Ellis Horwood",
+  year = "1984",
+  address = "Chichester",
+
+
+sloman94a,
+ author = "A. Sloman",
+ title = "Explorations in Design Space",
+ booktitle = "Proceedings 11th European Conference on AI",
+ year = 1994,
+ address = "Amsterdam"
+
+sloman93a,
+ author = "A. Sloman",
+ title = "The mind as a control system",
+ booktitle = "Philosophy and the Cognitive Sciences",
+ publisher = "Cambridge University Press",
+ year      = "1993",
+ editor = "C. Hookway and D. Peterson",
+ pages = "69--110"
+
+
+sloman94c,
+ author = "A. Sloman",
+ title = "Semantics in an intelligent control system",
+ year = 1994,
+ journal = "Philosophical Transactions of the Royal Society: Physical
+ Sciences and Engineering",
+ volume = 349,
+ number = 1689,
+ pages = "43--58"
+
+
+ author = "A. Sloman and R. Poli",
+ title = "SIM\_AGENT: A toolkit for exploring agent designs",
+ booktitle = "Intelligent Agents Vol II (ATAL-95)",
+ publisher = "Springer-Verlag",
+ pages = "392--407",
+ year      = "1996",
+ editor = "Mike~Wooldridge and Joerg~Mueller and Milind~Tambe",
+
+
+  author = "A. Sloman",
+  title = "Towards a general theory of representations",
+  editor = "D.M.Peterson",
+  booktitle = "Forms of representation: an interdisciplinary theme for
+    cognitive science",
+  publisher = "Intellect Books",
+  address = "Exeter, U.K.",
+  year = "1996",
+  note = "ISBN: 1-871516-34-X",
+
+
+  author = "A. Sloman",
+  title = "What sort of architecture is required for a human-like agent?",
+  booktitle = "Foundations of Rational Agency",
+  editor = "Michael Wooldridge and Anand Rao",
+  publisher = "Kluwer Academic",
+  year = "1997",
+  note = "(Expanded version of invited talk at Cognitive Modeling Workshop, AAAI96
+    Portland, Oregon, August 1996)",
+
+http://www.cs.bham.ac.uk/~axs/misc/supervenience

@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2
+Final//EN">
+<html><head><title>External display with ATI Mobile X300</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+</head>
+<body vlink="#000080" alink="#0000ff" link="#000080" text="#000000" bgcolor="#ffffff">
+<p>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science" height="90"
+    src="../fig/cs2.png"
+/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="90"
+   src="../fig/ub4.png"/>
+</a>
+<h2><b>
+Connecting to an external projector or display
+<br/>
+Using Linux (Fedora 8 or later) on Dell D610 Laptop
+<br>
+With ATI Radeon X300 (M22) graphic card.
+</b></h2>
+<h3><b>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+Last updated: 14 Jun 2009
+<br>
+Previously updated: 18 Oct 2008
+</b></h3>
+<hr/>
+This is a Supplement to
+<a href="http://www.cs.bham.ac.uk/~axs/laptop">my
+web site on using Linux on Dell d600/d610 laptop</a>
+<hr/>
+<h3><b>
+Update 6 Jun 2009: xrandr on Fedora 10
+<br/>
+Revised: 14 Jun 2009
+</b></h3>
+<blockquote>
+Some time after I installed Fedora 10 on my laptop I started
+noticing that if I tried to use an external projector the only
+resolution I could get is 800x600, which was a pain. However, I
+recently discovered that there is a grub boot option 'nomodeset'.
+That seems to have fixed the problem.
+<p>
+Previously I wrote that I have tested it only on my Belinea monitor
+not on a projector. However, last week I gave two talks in different
+places and the xrandr command allowed me to use a resolution of
+approximately 1200x1024 on two different projectors.
+<p>
+Unfortunately, however, the use of 'nomodeset' in the grub file
+appears to have stopped 'vlc' showing videos through a projector.
+So I have been suing gmplayer, which works except that I cannot
+change the size of display, as I could with vlc.
+<p>
+If anyone knows how
+to get vlc to display videos on an external projector, with
+the 'nomodeset' option in the grub boot file, please let me know.
+<p>
+However the problem that vlc does not display videos on the external
+screen remains, even though mplayer does display them. There should
+be a simple fix?
+<hr/>
+</blockquote>
+<h3><b>
+The Original problem
+</b></h3>
+<blockquote>
+At first when I installed Fedora 8 on my laptop, it was somehow
+configured to use a 'radeon' driver. I don't know where that came
+from. As I was having problems with that, especially using
+projectors connected to the laptop, I installed the proprietary
+self-installing fglrx driver from the ATI linux web site as
+described
+<a href="d600-linux.html#install-ati">here (beware of possibly
+out of
+date instructions)</a>.
+<p>
+The fglrx driver worked very well for most purposes (including
+running the 'glxgears' demo much more quickly than the previous
+driver. However I continued having trouble getting it to work with
+external displays or projectors. In particular, I typically could
+not get the laptop to drive an external display unless I aborted the
+running X11 system and restarted it with the VGA graphic
+cable connected. Having to restart X was a serious nuisance after I
+had prepared multiple desktops including demonstrations and videos
+for a presentation.
+<p>
+I struggled to find a way to set up X11 so that I could connect an
+external display without restarting X11. I eventually found that I
+could meet various subsets of these conditions:
+<ol>
+<li>
+with the X window system running I should be able to connect an
+external monitor or projector.
+<li>
+the external display should be a 'clone' of what is on the screen,
+as opposed to extending the screen with a separate display area.
+<li>
+the resolution of the external display should be 1280x1024 (which is
+what my laptop is set to, though it can do 1400x1050).
+<li>
+I should not have to restart X after connecting, in order to get the
+external display working.
+</ol>
+I seemed to be able to get any three of those conditions satisfied,
+but never all of them!
+<p>
+I had heard about the wonders of xrandr, e.g.
+<a href="http://www.x.org/wiki/Projects/XRandR">here</a>, and
+found I had it installed, and tried using it to fix my external
+display problems. However with the ATI fglrx driver the xrandr
+commands did not seem to do everything they were supposed to do.
+<p>
+So I decided to go back to a driver packaged by Fedora developers.
+
+
+</blockquote>
+<hr/>
+<p>
+<h3><b>
+Solution using X.org ati driver and 'xrandr' utility.
+</b></h3>
+<blockquote>
+After much struggling with solutions found on the internet which may
+have worked for other systems but did not work for mine,
+I stumbled on a reference to the 'ati' driver
+that is available for Fedora, and works with the 'xrandr' utility
+for manipulating internal and external displays when using X11.
+<p>
+It turned out that my Fedora 8 dvd had
+this version of the ati driver:
+<pre>
+    xorg-x11-drv-ati-6.7.195-3.fc8.i386
+</pre>
+So I installed that (I am not sure why it was not included in my
+original installation). After finding that it did the main things I
+wanted and also seemed to be compatible with Software Suspend 2
+(SWSUSP2, now called Tuxonice) described in
+<a href="d600-linux.html">my main laptop web page</a>, I used
+<pre>
+    yum update xorg-x11-drv-ati
+</pre>
+to install the latest version, which turned out to be this:
+<pre>
+    xorg-x11-drv-ati-6.8.0-4.fc8
+</pre>
+<p>
+I now find that I can set up my computer without connecting it to a
+display, and when ready connect it to an external display, which now
+works.
+<p>
+The command
+<pre>
+    xrandr -q
+</pre>
+prints out information about available displays and their available
+resolutions.
+<p>
+I can also give this command (after connecting the graphic cable
+from the projector):
+<pre>
+    xrandr --auto
+</pre>
+After that the display/projector works: no rebooting needed, and no
+restarting of X11. It also clones the display at the right
+resolution.
+<p>
+So far I have only tested this on an external LCD monitor.
+I shall have the chance to test it with an external projector when I
+give a
+<a href="http://thegreatdebate.org.uk/UnnoticedConnections.html">talk in Newcastle</a>
+on 21st October. After that event I'll report problems, if any.
+<p>
+</blockquote>
+<hr/>
+<p>
+<h3><b>
+Using xrandr to change screen resolution quickly
+</b></h3>
+<blockquote>
+There is a simple tutorial on xrandr in
+<a href="http://www.cyberciti.biz/tips/linux-resize-screen-size-quickly.html">http://www.cyberciti.biz/tips/linux-resize-screen-size-quickly.html</a>
+<p>
+E.g if you use the 'xrandr' command to find out the available
+resolutions for your display, you can number them starting from 0
+(corresponding to the default resolution), and use the number as a
+parameter to specify the resolution to switch to.
+<p>
+E.g. this command will restore the default resolution
+<pre>
+    xrandr -s 0
+</pre>
+and if 1024x768 is the 5th resolution in the list then that can be
+selected using
+<pre>
+    xrandr -s 5
+</pre>
+Note that it can take a second or two for the resolution to change.
+<p>
+If you choose a resolution that for some reason does not work, you
+will have to type in the dark to get back to the original.
+<p>
+More details in this tutorial
+<a href="http://wiki.debian.org/XStrikeForce/HowToRandR12">http://wiki.debian.org/XStrikeForce/HowToRandR12</a>
+</blockquote>
+<hr/>
+<p>
+<h3><b>
+Problem showing videos with the 'ati' driver.
+</b></h3>
+<blockquote>
+There is an exception to my claim that 'xrandr' makes everything
+work with the 'ati' driver, though not with the 'fglrx' driver.
+<p>
+The exception is that when I try using 'vlc' to display
+movies/videos, they show up fine on my laptop screen, but the
+display is blank (i.e. black) on the external screen.
+<p>
+Fortunately the problem goes away if I use 'gmplayer' instead of
+'vlc'. I suspect that means that vlc can somehow be altered to do
+the same as gmplayer.
+</blockquote>
+<hr/>
+<p>
+<h3><b>
+Sample xorg.conf file for Dell Latitude D610 with Fedora 8
+<br/>
+And ATI Mobile radeon graphic card X300, M22
+</b></h3>
+<blockquote>
+My version of /etc/X11/xorg.conf is available with some annotation
+here
+<a href="xorg.conf-ati.txt">here</a>, as it was on 18 Oct 2008
+<p>
+It also includes the output of
+<a href="http://www.x.org/wiki/Projects/XRandR">'xrandr'</a>
+as a comment at the end.
+</blockquote>
+
+
+
+<p>
+<hr/>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+A.Sloman@cs.bham.ac.uk
+<br>
+This web site was first created 18 Oct 2008
+<br>
+</body></html>

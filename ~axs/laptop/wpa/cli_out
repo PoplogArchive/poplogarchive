@@ -1,0 +1,61 @@
+etc/sysconfig/wpa_supplicant
+setting /etc/sysconfig/network-scripts/ifcfg-eth1
+restarting firewall
+Starting firewall
+Flushing all current rules and user defined chains
+Clearing all current rules and user defined chains
+Applying iptables firewall rules
+Turning on IP forwarding
+restarting network
+restarting wpa_supplicant
+Stopping wpa_supplicant: Shutting down loopback interface: [  OK  ]
+Starting wpa_supplicant:                                   [  OK  ]
+[  OK  ]
+Disabling IPv4 packet forwarding:  net.ipv4.ip_forward = 0
+[  OK  ]
+Bringing up loopback interface:  [  OK  ]
+Bringing up interface eth1:
+Determining IP information for eth1...starting wpa_cli: give it command reassociate
+run wpa_cli with reassociate command
+Selected interface 'eth1'
+OK
+starting wpa_cli. Wait for [OK] Then hit return and type: status
+wpa_cli v0.4.8
+Copyright (c) 2004-2005, Jouni Malinen <jkmaline@cc.hut.fi> and contributors
+
+This program is free software. You can distribute it and/or modify it
+under the terms of the GNU General Public License version 2.
+
+Alternatively, this software may be distributed under the terms of the
+BSD license. See README and COPYING for more details.
+
+
+Selected interface 'eth1'
+
+Interactive mode
+
+> <2>Trying to associate with 00:0c:db:8b:84:40 (SSID='UOBWLAN' freq=0 MHz)
+<2>Associated with 00:0c:db:8b:84:40
+<2>CTRL-EVENT-EAP-STARTED EAP authentication started
+<2>CTRL-EVENT-EAP-METHOD EAP method 25 (PEAP) selected
+<2>CTRL-EVENT-EAP-SUCCESS EAP authentication completed successfully
+<2>WPA: Key negotiation completed with 00:0c:db:8b:84:40 [PTK=TKIP GTK=WEP-40]
+<2>CTRL-EVENT-CONNECTED - Connection to 00:0c:db:8b:84:40 completed (auth)
+ done.
+[  OK  ]
+
+> status
+bssid=00:0c:db:8b:84:40
+ssid=UOBWLAN
+pairwise_cipher=TKIP
+group_cipher=WEP-40
+key_mgmt=WPA/IEEE 802.1X/EAP
+wpa_state=COMPLETED
+ip_address=192.168.30.87
+Supplicant PAE state=AUTHENTICATED
+suppPortStatus=Authorized
+EAP state=SUCCESS
+selectedMethod=25 (EAP-PEAP)
+EAP TLS cipher=RC4-MD5
+EAP-PEAPv0 Phase2 method=MSCHAPV2
+>

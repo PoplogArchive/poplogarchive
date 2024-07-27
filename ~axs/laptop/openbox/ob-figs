@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Openbox screenshots</title>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="90" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.png" />
+</a>
+<h2><b>
+Openbox Screenshots
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+Last updated: 16 Feb 2009
+<br/>
+Installed: 14 Feb 2009
+<br>
+</small>
+</b></h2>
+<hr/>
+This is part of
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/openbox">my
+OpenBox area,</a>
+which is part of my web area for
+
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">linux on my
+laptop and related topics.</a>
+<p>
+<b>Screenshots of my OpenBox layout taken using 'xv'</b>
+<p>
+The screenshots below are all shown reduced in size. To see larger
+view right click and view image, if using firefox, or do the
+equivalent to view image in your browser. Even after looking at the
+larger view the fonts will not look very good, because I slightly
+reduced the size of the images to save space and time.
+<p>
+The windows with 'decorations' have a row of buttons on top right,
+namely:
+<ul>
+<li>
+Minimise
+<li>
+Toggle maximise
+<li>
+Toggle roll up (into title bar)
+<li>
+Toggle display in all desktops.
+<li>
+Close window
+</ul>
+<p>
+<hr/>
+<p>
+<ul>
+<li>
+This is my preferred 'minimalist' default layout -- very little
+clutter: no icons for minimised windows, no file manager etc.,
+mainly because I use the 'ls' command in xterm windows. But you can
+invoke 'pcmanfm' from a menu, a keyboard combination or a command if
+you want a file manager.
+<br>
+I like a uniform pale gray background so as not have distractions,
+and also to make it easy to see the mouse cursor. (Sometimes I would
+prefer a bolder cursor than the simple arrow.)
+<br>
+The screenshot shows the digital clock ('xclock') with seconds and
+date, and 'xdaliclock' without seconds, for quick checks, and
+'xload' showing CPU load on my PC.
+<br/>
+To see this enlarged use 'view image' in your browser.
+<br>
+<img alt="blank screen"
+width ="500" src="ob-empty-desktop.png"/>
+<p>
+<hr/>
+<p>
+<li>
+A desktop with one xterm window logged through (via an intermediate
+linux server) from my home to the linux desktop PC in my office in
+the School of computer science, using ssh (secure shell).
+<br/>
+The digital clock beeps
+gently on the hour and half-hour.
+<br/>
+To see enlarged use 'view image'.
+<br>
+<img alt="screen with xterm logged in remotely"
+width ="500" src="ob-screen-xterm-ssh.png"/>
+<p>
+In the 'CLO' theme mentioned in <a href="../openbox.html">here</a> I
+changed the default left, right and bottom border width of windows
+from 0 to 4 pixels, for easier grabbing to re-size. It's easy to
+make them narrower or thicker, as desired, by changing settings in
+the themerc file.
+<p>
+<hr/>
+<p>
+<li>
+It is possible to add a panel showing all the desktops, applications
+in current desktop and some shortcuts to various useful things, e.g.
+console terminal, firefox, etc.
+<br/>
+One way to do that is to use 'fbpanel'. It is highly configurable
+using the file ~/.fbpanel/default. For an example
+<a href="../openbox.html#fbpanel">look here.</a>
+My default configuration produces the following at the bottom of the
+screen, though it disappears shortly after the mouse leaves it, so I
+go back to a nice uncluttered desktop, though even when it is
+visible it is quite thin. (I have not found a way to make 'xv' grab
+the whole screen when 'temporary' objects are visible.)
+<br/>
+To see enlarged use 'view image'.
+<p>
+<img alt="fbpanel" width ="750" src="ob-fbpanel.png"/>
+<p>
+Mostly I don't have a panel. I thought I would use it a lot, but I
+didn't, so I don't run  it by default.
+<br/>
+But it can be invoked either by giving the command
+'fbpanel' or using the openbox Desktop menu to start it up.
+<p>
+<hr/>
+<p>
+<li>
+If you click on the 'f' at the left of fbpanel it brings up this
+menu, which provides a useful tool for configuring fbpanel and many
+sub-menus.
+<br/>
+To see enlarged use 'view image'.
+<p>
+<img alt="main menu from fbpanel" width="100"
+src="ob-fbpanel-menu.png"/>
+<p>
+<hr/>
+<p>
+<li>
+Clicking on the 'System' button on the fbpanel menu brings up this
+menu next to it. Apparently when fbpanel starts up it looks to see
+what you have installed e.g. in /usr/bin and compiles sorted lists
+of things it recognizes.
+<br/>
+To see enlarged use 'view image'.
+<p>
+<img alt="'system' menu from fbpanel" width="150"
+src="ob-fbpanel-menu-system.png"/>
+<p>
+<hr/>
+<p>
+<li>
+This shows part of the 'Desktop' menu brought up by middle click on
+root window.
+<br/>
+Each Desktop is shown with its contents (including minimised
+contents that would not be visible).
+<br/>
+You can go to a desktop and
+one of its applications by clicking on the name.
+(Use 'view image' to see full size.)
+<br>
+<img alt="Showing most of desktop menu"
+width="100" src="ob-showing-desktops.png"/>
+<p>
+<hr/>
+<p>
+<li>
+This is the rest of the menu, which comes up for the remaining
+desktops if you click on the 'more' at the bottom of the
+previous display.
+<br/>
+Window D10 contains many firefox windows, each of which has several
+tabs.
+<br/>
+This menu panel and the one above are shown side by side, but 'xv'
+is not able to grab both at once. (Use 'view image' to see full
+size.)
+<br/>
+<img alt="rest of desktop menu"
+width="100" src="ob-showing-extra-desktops.png"/>
+<p>
+<hr/>
+<p>
+<li>
+This shows an Openbox desktop containing on left an xterm window in
+which a text editor (Ved, the Poplog editor) is being used to edit a
+latex file for a presentation. I have used Ved in split-window mode,
+so the output of latex is shown in the upper window, and the input
+file below.
+<br/>
+On the right of the screen 'xdvi' is being used to display the
+preview.
+<br/>
+To see enlarged use 'view image'.
+<p>
+<img alt="latex slide presentation being edited in text editor
+window (using Ved) and previewed using xdvi"
+width="600" src="ob-showing-ved-dvi.png"/>
+<p>
+I generally prefer to have only one thing on a desktop,
+using large enough fonts for easy reading, and large enough windows
+to minimise the amount of scrolling required.
+<br/>
+So normally I would put the preview display on the next desktop and
+switch between the two using CTRL+Right and CTRL+Left -- very much
+better than sliding things round and raising and lowering them to
+make things visible (one of the reasons I hate having to use
+Microsoft Windows, as explained
+<a href="http://www.cs.bham.ac.uk/~axs#whyput">here</a>).
+<p>
+Using tiny fonts to get multiple windows visible on one desktop is
+not an option at my age!
+<p>
+<hr/>
+<p>
+<li>
+This shows the Desktop on which I normally keep several firefox
+windows going, each with several tabs. This acts as an extension to
+my short and medium term memory, reminding me of various things I
+have been looking at and some I still have to do (in addition to use
+of calendar in thunderbird, to give me reminders when I have to
+start doing something).
+<p>
+The picture below shows this file displayed in firefox, before I
+added the firefox screenshot!
+<br/>
+To see enlarged use 'view image'.
+If you are viewing this using
+firefox the resulting display may be very confusing.
+<p>
+<img alt="Deskto with Firefox"
+width="700" src="ob-firefox-windows.png"/>
+<p>
+<hr/>
+<p>
+<li>
+I do sometimes need a cluttered desktop. Here is an xterm window in
+which a demo is being run built on the
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/packages/simagent.html">SimAgent</a>
+toolkit (using
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">Poplog</a>.
+<br/>
+To see enlarged use 'view image'.
+<p>
+<img alt="Desktop with Simagent and xv"
+width="700" src="ob-showing-poplog.png"/>
+<p>
+When the demo runs it opens a graphical control panel top left, a
+graphical panel top right showing a plan view of a world in which
+two simple agents (red and blue) move towards their desired targets
+(of the same colour) sometimes encountering obstacles or each other
+before getting to the target. Their "emotional" states are shown by
+the changing face pictures on right, and text generated in the xterm
+window gives a running commentary on everything going on. The
+picture also shows the 'xv' control panel, used to grab screenshots,
+on the bottom right.
+On that occasion I forgot to set it to disappear while grabbing.
+<p>
+<hr/>
+<p>
+</ul>
+
+<p>
+<hr>
+<small>
+<p>
+Maintained by
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/">School of Computer Science</a>
+<br>
+<a href="http://www.bham.ac.uk/">The University of Birmingham</a>
+</small>
+
+</body>
+</html>

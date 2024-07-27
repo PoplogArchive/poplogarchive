@@ -1,0 +1,79 @@
+<html>
+Date: Tue, 08 Nov 2005 22:44:15 -0600
+<BR>
+From: Elizabeth Hays (liz.hays at gmail.com)
+<P>
+Hi,
+<P>
+Thanks for posting your
+<a href="http://www.cs.bham.ac.uk/~axs/laptop/">notes on getting hibernate to work on the Dell</a>
+600!
+This was
+really great.  I found your site extremely helpful and
+thought I'd emphasize a couple small tweaks I had to apply for my system
+in case it might help someone else - I didn't find specific information
+relating to these problems.  I also have a Dell 600 and have recently
+done a fresh install of FC3.
+<P>
+After the base FC3 install (from scratch) I installed the prebuilt
+2.6.12-1.1380_FC3 build for the 2.6.12.6pre kernel from Matthias
+Hensler's site for SWSUSP version 2.1.9.9 following your and his
+directions, but when I returned from hibernate my pointer failed and
+additionally the wireless wouldn't load properly.
+<P>
+My pointer disappearance problem was solved by adding options to the
+video section of my xorg.conf file.  I borrowed these from
+<a href="http://www.hep.phy.cam.ac.uk/~andersen/fedora2latitude600.html">http://www.hep.phy.cam.ac.uk/~andersen/fedora2latitude600.html</a>
+
+<PRE>
+# original xorg.conf entry
+Section "Device"
+        Identifier  "Videocard0"
+        Driver      "radeon"
+        VendorName  "Videocard vendor"
+        BoardName   "ATI Radeon Mobility M9"
+# added the following
+        Option      "AGPMode" "4"
+        Option      "EnablePageFlip" "on"
+</PRE>
+
+The wireless issue gave me the following messages on resume:
+<PRE>
+Nov  8 19:51:20 localhost kernel: ipw2200: Intel(R) PRO/Wireless
+    2200/2915 Network Driver, 1.0.0
+Nov  8 19:51:20 localhost kernel: ipw2200: Copyright(c) 2003-2004 Intel
+    Corporation
+Nov  8 19:51:20 localhost kernel: ACPI: PCI Interrupt 0000:02:03.0[A] ->
+    Link [LNKB] -> GSI 5 (level, low) -> IRQ 5
+Nov  8 19:51:20 localhost kernel: ipw2200: Detected Intel PRO/Wireless
+    2200BG Network Connection
+Nov  8 19:51:22 localhost kernel: ipw2200: failed to send TX_POWER command
+Nov  8 19:51:26 localhost last message repeated 4 times
+Nov  8 19:51:26 localhost kernel: ipw2200: Unable to initialize device
+    after 5 attempts.
+Nov  8 19:51:26 localhost kernel: ipw2200: failed to register network device
+Nov  8 19:51:26 localhost kernel: ACPI: PCI interrupt for device
+    0000:02:03.0 disabled
+Nov  8 19:51:26 localhost kernel: ipw2200: probe of 0000:02:03.0 failed
+    with error -5
+</PRE>
+
+It was an interrupt problem that was resolved by adding the following
+option to my grub.conf:
+<PRE>
+    acpi=noirq
+</PRE>
+
+Here's my current full kernel line:
+<PRE>
+      kernel /vmlinuz-2.6.12-1.1380_FC3_cubbi1_swsusp2 ro
+        root=LABEL=/1 rhgb=off quiet resume2=swap:/dev/hda5 vga=834 acpi=noirq
+</PRE>
+
+Anyway, I wasn't sure where to send this since I didn't find many sites
+relating to hibernate on the Dell 600 for FC3 specifically.  If you know
+of somewhere else that it might be helpful for me to post this, let me know.
+<P>
+-Liz Hays
+
+</html>
