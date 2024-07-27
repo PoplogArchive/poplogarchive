@@ -1,0 +1,10 @@
+-rw-r--r-- 1 axs staff   20899 May  5 10:12 ved_latex/auto/findcite.p
+-rwxrwxr-x 1 axs staff    2476 May  5 10:00 ved_latex/com/findcites
+-rw-r--r-- 1 axs staff  181870 Feb 10 23:53 ved_latex/help/latex
+-rw-r--r-- 1 axs staff   12462 Feb 10 23:44 ved_latex/teach/latex.tex
+-rw-r--r-- 1 axs staff   11495 Feb 10 23:38 ved_latex/teach/latex
+-rw-r--r-- 1 axs staff   23519 Feb 10 23:24 ved_latex/help/ved_latex
+-rw-r--r-- 1 axs staff    5815 Jan  8 21:12 ved_latex/help/findcite
+lrwxrwxrwx 1 axs poplog     11 Jul 12  2007 ved_latex/auto/ved_latex2.p -> ved_latex.p
+lrwxrwxrwx 1 axs poplog     11 Jul 12  2007 ved_latex/auto/ved_dobib.p -> ved_latex.p
+-rw-r--r-- 1 axs staff   19471 Aug 11  2004 ved_latex/auto/ved_latex.p

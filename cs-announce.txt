@@ -1,0 +1,165 @@
+
+From Aaron Sloman Fri Aug  7 11:26:34 BST 2009
+To: all-users
+Subject: Changes to Linux Poplog/Pop-11 imminent
+
+This message is available here:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/cs-announce.txt
+
+CONTENTS
+
+ -- NEW VERSION OF POPLOG/POP-11
+ -- ABOUT POPLOG/POP-11
+ -- CHANGES
+ -- EXISTING USERS
+ -- TRYING THE NEW VERSION IN ADVANCE
+ -- IF YOU ARE A POPLOG USER AND DON'T WANT TO CHANGE
+ -- Unix/Linux MAN (manual) files
+
+-- NEW VERSION OF POPLOG/POP-11
+
+There is now a new version of 32-bit Linux Poplog (v15.6301) on the
+school's linux systems.
+
+Anyone using Poplog/Pop-11 for a summer project, who does not wish
+to risk the upgrade, see below.
+
+    (Poplog is a free, open source, multi-language teaching,
+    research, and development package including incremental compilers
+    for Pop-11, Prolog, Lisp, and ML, used mainly, but not
+    exclusively, for AI. It was developed mainly at Sussex
+    University, and used to be an expensive commercial package.
+    It is used here in AI teaching and some research.)
+
+Anyone wanting to download the new version to a private machine
+running linux (with 32 bit libraries, etc.) can get it here (use the
+get-and-install script):
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/
+
+It should take less than two minutes (much less on a new machine!)
+plus time to download a 17MB file.
+
+If you don't care about poplog or pop-11 you can ignore the rest of
+this message.
+
+-- ABOUT POPLOG/POP-11
+
+If you want to know more about it try the overview:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#whatspoplog
+
+Or, for information about the teaching facilities, including list
+processing, logic programming, turtle graphics, expert systems,
+object oriented programming, natural language, vision, etc.:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#teaching
+
+-- CHANGES
+
+The latest version has some minor bug fixes, and some new
+documentation.
+
+The most important difference is that all the documentation files
+are now in plain text and can be read in any editor or browser,
+whereas previously many of them required either the Poplog editor
+Ved/XVed, or an extension to Emacs, vedemacs.
+
+Recent changes are described here:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/CHANGES.txt
+        main system
+    http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/CHANGES-PACKAGES.txt
+        included packages
+
+The latest version is already installed as the 'new' version, not
+the 'current' version, on our linux machines, but will become the
+current version some time on Sunday. It currently identifies itself
+as
+    Sussex Poplog (Version 15.6301 Fri Aug  7 09:23:28 BST 2009)
+    Copyright (c) 1982-2009 University of Sussex. All rights reserved.
+
+but the date may change. The copyright is very liberal:
+    http://www.cs.bham.ac.uk/research/projects/poplog/copyright.html
+
+-- EXISTING USERS
+
+If you are a Poplog/Pop-11 user and you think this change could
+disrupt your work, e.g. on a summer project, you can use the 'old'
+version, as described below. Anyone who was using the *previous*
+old version can still set it up by using this 'tcsh' command:
+
+    source /bham/common/com/packages/poplog/Login/poplogin.veryold
+
+It sets up poplog version 15.61, April 2007.
+
+Let me know if this causes problems.
+
+-- TRYING THE NEW VERSION IN ADVANCE
+
+Anyone who wants to try using the new version before it becomes
+current can alter the setup command in this file if you have it:
+
+    ~/.SetupPoplog
+
+or in
+    ~/.login
+
+from
+    setup Poplog
+to
+    setup Poplog.new
+
+then start a new login shell.
+
+Alternatively, if you don't normally have poplog set up just give
+this command in a tcsh shell.
+
+    setup Poplog.new
+
+then run pop11, ved, xved, prolog, clisp, pml as usual, or
+
+    pop11 +eliza
+
+for free therapy.
+
+If you are a bash user try:
+
+    exec tcsh
+    setup Poplog.new
+    exec bash
+
+then the new version, and the above commands should work.
+
+If you don't do anything, then, by Monday, unless some serious
+problem turns up, 'setup Poplog' will get the new version.
+
+-- IF YOU ARE A POPLOG USER AND DON'T WANT TO CHANGE
+
+This tcsh command has already been altered to run the current
+version (v15.62):
+
+    setup Poplog.old
+
+So, if that is in your login script (~/.login or ~/.SetupPoplog)
+then the change over the weekend will not affect you. You can remove
+the .old later.
+
+-- Unix/Linux MAN (manual) files
+
+Some more documentation is accessible on linux for UMS users using
+this 'man' command
+
+    man poplog
+
+Some of the information may be more relevant to poplog on a private
+linux machine than on our system, because installation directories
+are different.
+
+Let me know if you have problems, or join the poplog-users email
+list here
+    https://mailman.cs.bham.ac.uk/mailman/listinfo
+
+Aaron
+http://www.cs.bham.ac.uk/~axs

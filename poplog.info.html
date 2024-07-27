@@ -1,0 +1,548 @@
+<HTML><HEAD> <TITLE>INFORMATION ABOUT POPLOG AND POP11</TITLE> </HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:720px">
+
+<FONT color="#000000">
+<CENTER>
+<h2>
+<a href="http://www.cs.bham.ac.uk/"> School of Computer Science</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/"> The University of Birmingham</a>
+<br>
+In collaboration with
+<br>
+<a href="http://www.cogs.sussex.ac.uk">School of Cognitive and Computing
+Sciences,</a>
+<br>
+The University of Sussex.
+<br>
+</h2>
+</CENTER>
+<h2>INFORMATION ABOUT POPLOG AND POP-11</h2>
+<pre> This file is
+        <a href="http://www.cs.bham.ac.uk/research/poplog/poplog.info.html">http://www.cs.bham.ac.uk/research/poplog/poplog.info.html</a>
+</pre>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;
+Note: "POPLOG" is a trade mark of the University of Sussex.
+<p>
+<h3>
+ NEWS: 4 Dec 2019
+ <br>
+ A new 64 bit version of Linux poplog for AMD64/X86-64 architectures based
+ on a major rewrite of Poplog internals by Waldek Hebisch is now available as
+ Poplog Version 16.
+ <br>
+ For further details see:
+ <br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+ <p>
+</h3>
+
+
+
+<hr>
+<h2><b>What is POPLOG?</b></h2>
+POPLOG is a free, open source, multi-language software development
+environment providing incremental compilers for a number of interactive
+programming languages, notably:
+<blockquote>
+    <UL>
+    <LI><a href="primer/index.html">Pop-11</a>
+        <BR>
+            (the core language of Poplog, derived from
+            <a href="http://en.wikipedia.org/wiki/POP-2">Pop2,</a> the
+            Edinburgh AI language developed in the 60s and 70s
+            and extended at Sussex University in the 80s and 90s,
+            including a rich interface to the X window system and
+            a powerful Object Oriented programming extension,
+            Objectclass, developed by Steve Leach now a standard part of
+            the language (comparable to CLOS as an extension of LISP).)
+    <LI><a href="http://en.wikipedia.org/wiki/Prolog">Prolog</a>
+        <BR>
+            Standard prolog with the "Edinburgh" syntax.
+
+    <LI><a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>
+        <BR>
+            (Compatible with most of
+            <a href="http://www-2.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html">CLTL2
+            (Common Lisp the language, 2nd Edition)</a> by G.L. Steele
+            <BR>
+            For further information on compatibility, see
+            <a href="doc/lisphelp/bugs">
+                http://www.cs.bham.ac.uk/research/poplog/doc/lisphelp/bugs
+            </a>
+            <BR>
+            or
+            <BR>
+            <a href="doc/lisphelp/bugs">
+                http://www.cs.bham.ac.uk/research/poplog/doc/lisphelp/bugs
+            </a>
+
+    <LI>
+    <a href="http://www.smlnj.org/sml.html">Standard ML</a>
+            <BR>
+        A powerful, strongly typed, polymorphic, functional language.
+    </UL>
+</blockquote>
+<p>
+There is also a partial
+implementation of Scheme in Poplog available at the
+FreePoplog Site
+<a href="freepoplog.html">
+http://www.cs.bham.ac.uk/research/poplog/freepoplog.html</a>
+<BR>
+This was developed by
+Robin Popplestone, at
+the University of Massachusetts, Amherst, USA.
+<br>
+<blockquote>
+<small>
+Alas Robin died in 2004. See
+<br>
+<a href="http://www.cs.umass.edu/csinfo/announce/robinpopplestone.html">http://www.cs.umass.edu/csinfo/announce/robinpopplestone.html</a>
+<br>
+<a href="http://www.cs.umass.edu/csinfo/announce/popplestone_endowment.html">http://www.cs.umass.edu/csinfo/announce/popplestone_endowment.html</a>
+<br>
+<a href="http://www.cs.umass.edu/csinfo/announce/popplestonefellow2006.html">http://www.cs.umass.edu/csinfo/announce/popplestonefellow2006.html</a>
+<br>
+THE NEXT TWO NO LONGER WORK:
+<blockquote>
+<a href="http://www-robotics.cs.umass.edu/Popplestone/home.html">http://www-robotics.cs.umass.edu/Popplestone/home.html</a>
+<br>
+<a href="http://www-robotics.cs.umass.edu/remembrance.html">http://www-robotics.cs.umass.edu/remembrance.html</a>
+</blockquote>
+
+
+</small>
+</blockquote>
+<hr/>
+<p>
+<h3><b>
+Getting Poplog
+</b></h3>
+A list of versions of Poplog is <a href="poplog-versions.html">here.</a>
+<br>
+More information about varieties of Poplog and the various packages
+associated with it:
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">Free
+Poplog Web Site</a>
+<P>
+<HR>
+<P>
+Poplog provides support for multi-paradigm software development in a
+rapid prototyping environment, because of the use of (fast) incremental
+compilers for all the languages.
+<p>
+In Poplog, all the above languages compile to a common virtual machine,
+which is then compiled (incrementally) to the current host machine
+language. Users can add new languages or extend the existing languages
+because the compiler development tools are made available (in the form
+of Pop-11 procedures, as explained in the Primer
+<a href="cas-ai/pop11-primer.html">HTML</a> or <a href="cas-ai/pop11-primer.pdf">PDF</a> version).
+<p>
+Poplog also includes a lot of X related facilities, an integrated
+multi-window programmable text editor (VED), and a host of teaching
+material and libraries provided in source. The system was developed
+mainly at Sussex University, but also at
+Integral Solutions Ltd (ISL) between 1988 and 1998. ISL was bought by
+<a href="http://www.spss.com">SPSS</a>
+(who sell the
+<a href="http://www.spss.com/clementine/">Clementine data-mining system</a>
+originally developed in Poplog by ISL).
+<HR>
+<H2><B>
+Getting Poplog and add-ons
+</B></H2>
+The main distribution site for poplog is
+<br>
+<a href="freepoplog.html">http://www.cs.bham.ac.uk/research/poplog/freepoplog.html</a>
+<br>
+This may change if Poplog development moves on to github where Waldek Hebisch
+has developed 64 bit Linux poplog (available since 2019)
+<a href="https://github.com/hebisch/poplog">https://github.com/hebisch/poplog</a>
+available packaged differently also at Birmingham <a href="V16/AREADME.html">Birmingham</a>.
+<br>
+Warning The www.poplog.org web site is defunct (June 2009)
+<BR>
+This includes a number of packaged versions of Poplog of which the most
+popular is the version for linux+PC with extensions from Birmingham, in
+an easy-install bundle.
+<P>
+There are also various library extensions including
+
+<UL>
+<LI>
+The Popvision library
+    (
+<a
+href="help/popvision.help
+">http://www.cs.bham.ac.uk/research/poplog/help/popvision.help
+</a>
+)
+developed by David Young at Sussex University, with many useful
+libraries and tutorial files for work on vision and image processing and
+display,
+<LI>
+RCLIB, the graphical interface library, briefly demonstrated here
+<a href="figs/rclib">http://www.cs.bham.ac.uk/research/poplog/figs/rclib</a>
+based on the X window interface and the Objectclass extension to Pop-11
+<LI>
+Poprulebase, a very flexible and general forward-chaining production
+system interpreter described here
+<a href="prb/help/poprulebase">http://www.cs.bham.ac.uk/research/poplog/prb/help/poprulebase</a>
+heavily used in the SimAgent toolkit
+<LI>
+The SimAgent toolkit, built on Pop-11, Objectclass, RCLIB, and
+Poprulebase, a toolkit supporting teaching and exploratory research in
+architectures for intelligent agents, described in more detail in
+<UL>
+<LI>
+<a href="packages/simagent.html">http://www.cs.bham.ac.uk/research/poplog/packages/simagent.html</a>
+<LI>
+<a href="http://www.cs.bham.ac.uk/research/cogaff/talks/#simagent">http://www.cs.bham.ac.uk/research/cogaff/talks/#simagent</a>
+</UL>
+and demonstrated in some movies here:
+<UL>
+<LI>
+<a href="figs/simagent">http://www.cs.bham.ac.uk/research/poplog/figs/simagent</a>
+</UL>
+</UL>
+<P>
+<HR>
+
+<H2><B>
+Some Poplog/Pop-11 History
+</B></H2>
+<p>
+Poplog grew out of the Pop-11 language produced at Sussex University
+building on the many excellent ideas in the Pop2 language, originally
+developed by Robin Popplestone (see below) and others at Edinburgh
+University in the late 1960s and early 1970s.
+<p>
+At Sussex Pop-11 was implemented (mainly by Steve Hardy) to run on a
+PDP11/40 computer running Unix, round about 1976. It was later ported to
+a VAX running VMS, and John Gibson was the main architect thereafter.
+Around 1981-2 Chris Mellish implemented a version of Prolog in Pop-11,
+and the combined system was then called Poplog. A few years later a
+"toy" Lisp system was added by Jonathan Cunningham, and after that a
+full Common Lisp was implemented by John Williams, with supporting
+changes to the Poplog virtual machine produced by John Gibson. Later
+Robert Duncan and Simon Nichols added an implementation of Standard ML.
+<p>
+One of the key features originally in Pop-11 and later in Poplog was
+support for e-learning. An overview of the philosophy and history of
+some of the features developed from 1976 at Sussex University can be
+found
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/poplog-learning-environment.html">
+here.</a> A central theme in all the computer-based learning techniques
+developed in Pop-11 and Poplog was always leaving the learner in total
+control.
+<p>
+Poplog was originally sold to commercial and academic users (at very
+different prices!) by Sussex University (starting around 1982), when it
+contained only Pop-11 and Prolog (hence the name.)
+<p>
+SDL (Systems Designers Ltd) took over marketing in 1983 (and had
+a Poplog stand at IJCAI83 in Karlsruhe). Later, following a merger, SDL
+grew into SD-Scicon, one of the largest software companies in the UK,
+which later changed its name to SD, and then became
+<a href="http://www.eds.co.uk">EDS</a>
+<p>
+In 1989 SD decided to pull out of the AI tools market and a small group
+of people in the company (about 6) who had been associated with Poplog
+bought out the Poplog business (and also the SD-prolog business) and
+started ISL. At first their business was mainly selling and supporting
+Poplog (while Sussex University remained closely involved in
+development). They also provided AI services, developed various kinds of
+AI software.
+<p>
+During the 1990s ISL developed and diversified, including producing the
+prize winning <a href="http://www.spss.com/clementine/">
+Clementine Data Mining System,</a> which was originally implemented
+mainly in Pop-11, making considerable use of Pop-11 (as did
+other systems produced by clients of ISL, e.g.
+<a href="http://www.cogsys.co.uk"> COGSYS</a>), and some products of
+<a href="http://www.praxis-cs.co.uk">Praxis</a>.
+<p>
+In December 1998
+<a href="http://www.spss.com">SPSS</a> bought ISL (a friendly takeover)
+and following that, discussions began with Sussex regarding the future
+of Poplog. This eventually led to the Free Poplog site.
+<p>
+<H2><B>FREE POPLOG ONLINE</B></H2>
+In July 1999 it was decided that the latest version of Poplog (V15.53)
+including sources for all supported hardware/operating system
+combinations, should be made available free of charge. For information
+about this see
+<a href="freepoplog.html">
+http://www.cs.bham.ac.uk/research/poplog/freepoplog.html</a>
+<p>
+There is a smaller out of date free version of Poplog (Version 15.01),
+which apparently still works on SUSE Linux, though not on other recent
+versions of Linux. It is available by ftp from Sussex University in the
+Sussex Linux Poplog distribution directory: <a
+href="ftp://ftp.cogs.susx.ac.uk/pub/poplog/poplog15.0">
+ftp://ftp.cogs.susx.ac.uk/pub/poplog/poplog15.0 </a>
+<br>
+This old version has some restrictions: it is memory-limited and you
+cannot create saved images. But most of the teaching material in
+older books on pop-11 can be used on it, though not the newer facilities
+at the Birmingham Poplog ftp site.
+<p>
+<h2><B>Platforms</B></h2>
+Poplog has, at various times, run on a variety of Unix and VMS machines,
+including Sun, HP, SGI, DEC Alpha, DEC Vax, Sequent Symmetry, Apollo Unix, and
+PC running Redhat Linux v5.2 (and maybe other versions of Linux). There was also
+a Windows NT version of Poplog produced by ISL (e.g. used in Clementine on PCs)
+but without graphics, unless you purchase an X window system emulator for NT.
+As far as I know that system has not been available since SPSS were purchased
+ISL.
+<h2><b>Sources of information about Poplog</b></h2>
+<h3><b>
+Poplog/Pop-11 History Directory
+</b></h3>
+<blockquote>
+Started 15 Feb 2007 here:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/history/">http://www.cs.bham.ac.uk/research/projects/poplog/history/</a>
+<br>
+Any contributions to that directory gratefully received.
+</blockquote>
+<H3><B>
+Information at Sussex University
+</B></H3>
+More detailed information about Pop-11, Poplog and the Poplog
+development team was previously available at Sussex, but appears to
+have been removed, unfortunately:
+<small>
+<ul>
+<li>
+<A HREF="http://www.cogs.susx.ac.uk/users/adrianh/poplog.html">
+Poplog Information.</A>
+<li>
+<A HREF="http://www.cogs.susx.ac.uk/users/adrianh/pop11.html">
+Pop-11 information.</A>
+</ul>
+</small>
+<p>
+
+<H3><B>
+Robin Popplestone's Poplog-based work at University of Massachusetts at
+Amherst
+</B></H3>
+Many of the key ideas in Pop-11 were developed in the late 1960s by
+Robin Popplestone, first at Manchester University, then Edinburgh
+University. He moved to the University of Massachusetts at Amherst
+in 1986. Unfortunately he died in 2004. See:
+<br>
+<a href="http://www.cs.umass.edu/csinfo/announce/robinpopplestone.html">
+In Memoriam
+Professor Emeritus Robin Popplestone, 1938 - 2004
+</a>
+<br/>
+His web page included several papers relevant to the design
+of pop-11 and its
+history, especially
+
+<blockquote>
+Early development of the POP language
+<br/>
+<small>
+Now available here:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/history/popplestone/pop_development.html">http://www.cs.bham.ac.uk/research/projects/poplog/history/popplestone/pop_development.html</a>
+</small>
+</blockquote>
+and
+
+<blockquote>
+Functional and Interactive Computer Language Design
+<br>
+Now available here:
+<br>
+<small>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/history/popplestone/functional.html">http://www.cs.bham.ac.uk/research/projects/poplog/history/popplestone/functional.html</a>
+</small>
+</blockquote>
+<p>
+<H3><B>
+The WWW.POPLOG.ORG site
+</B></H3>
+Graham Higgins and Steve Knight Leach, who both previously
+used Poplog while working at HP research labs, set up
+    <a href="http://www.poplog.org/">http://www.poplog.org/</a> (now
+defunct unfortunately),
+a Poplog information site, which included poplog-related and
+Pop-11-related information, including archives of postings to
+comp.lang.pop going back to about 1992, and some useful pop-11 utility
+libraries. Most of the material has been transferred to and absorbed into
+the Birmingham site.
+<P>
+There is a
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/comp.lang.pop.faq.html">Poplog/Pop-11 FAQ</a>
+and a port of the Babylon AI development
+environment to Poplog Common Lisp.
+<p>
+Steve Leach <sfkleach@gmail.com> while working at HP research laps
+in Bristol, contributed many ideas to Poplog development and designed and
+implemented the first version of Objectclass the most sophisticated Object
+Oriented extension to Pop-11 (there were several others). See the teach, help,
+and ref files in this directory:
+<a href="http://www.cs.bham.ac.uk/research/poplog/src/master/C.all/lib/objectclass">
+http://www.cs.bham.ac.uk/research/poplog/src/master/C.all/lib/objectclass</a>.
+This has been a standard part of poplog since then. The web site
+at www.poplog.org has been defunct since 2009.
+<H3><B>
+Information at Reading University
+</B></H3>
+Another source of information about Poplog can be found at
+<a href="http://www.poplog.cs.reading.ac.uk/poplog/">
+Reading University
+</a>
+<p>
+<H3><B>
+The comp.lang.pop newsgroup
+</B></H3>
+There was formerly an internet news group to which questions and comments about
+Pop-11, Poplog and the Poplog languages could be posted: comp.lang.pop.
+Information about what was in the news group is available at
+<a href="comp.lang.pop.faq.html">http://www.cs.bham.ac.uk/research/poplog/comp.lang.pop.faq.html</a>
+<p>
+The news group is gatewayed to an email list currently maintained at the
+University of Birmingham. If you wish to join the pop-forum email list,
+write to A.Sloman@cs.bham.ac.uk
+<p>
+<h2><b>The FreePoplog Directory at the University of Birmingham</b></h2>
+can be examined at:
+<a href="http://www.cs.bham.ac.uk/research/poplog/">
+http://www.cs.bham.ac.uk/research/poplog/
+</a>.
+<br/>
+Poplog is no longer accessible by ftp.
+<br>
+Most of the contents of the directory are described below and in
+<a href="http://www.cs.bham.ac.uk/research/poplog/freepoplog.html">
+http://www.cs.bham.ac.uk/research/poplog/freepoplog.html</a>
+There may be some additional historical information in <a href="README">the
+README file.</a>
+<p>
+The directory contains code and documentation (mainly Pop-11) for use
+with Poplog developed at Birmingham (some of it extending work done at
+Sussex).
+<p>
+Detailed system documentation for Poplog, Pop-11 and the other Poplog
+languages (Prolog, Common Lisp, and Standard ML) can be found in
+<a href="doc/"> the doc/ subdirectory.</a>
+<p>
+<H3><B>
+Poplog/Pop-11 related code and documentation
+</B></H3>
+The Birmingham local directories included in the FreePoplog directory
+contain a lot of online teaching material for an introductory AI
+programming course, a Ved-based net news reader, using the Pop-11 socket
+library, extensions to the Pop-11 RC_GRAPHIC library, and two libraries
+for design and development of "intelligent" agents. POPRULEBASE and
+SIM_AGENT. For an overview and demonstration (with movies) of the
+latter, see
+<a href="http://www.cs.bham.ac.uk/~axs/cog_affect/sim_agent.html">
+http://www.cs.bham.ac.uk/~axs/cog_affect/sim_agent.html </a>
+<P>
+Examples of displays produced by the
+"RCLIB" (relative coordinates) Graphic Library can be
+found in
+    <a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib/">http://www.cs.bham.ac.uk/research/poplog/figs/rclib/</a>
+<BR>
+An overview (plain text) file is here:
+    <a href="http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib">http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib</a>
+<p>
+<H3><B>
+Fetching Birmingham utilities and teaching materials
+</B></H3>
+Some of the Birmingham Pop-11 and AI teach files can be found in a
+convenient compressed tar file in
+<a href="bhamteach.tar.gz">
+http://www.cs.bham.ac.uk/research/poplog/bhamteach.tar.gz </a>
+<p>
+
+<H3><B>
+The Pop-11 primer
+</B></H3>
+There is a Primer of pop-11 for experienced programmers now available
+in various formats in the
+<a href="http://www.cs.bham.ac.uk/research/poplog/">FreePoplog directory</a>
+including <a href="primer/START.html">a version of the Primer in html.
+</a>
+<p>
+The HTML version can be fetched in a tar file and unpacked for local
+use:
+
+<a href="pophtmlprimer.tar.gz">
+http://www.cs.bham.ac.uk/research/poplog/pophtmlprimer.tar.gz</a>
+<br>
+        (The graphical symbols won't work, but they are inessential.)
+<P>
+<a name="ctbook"></a>
+<HR>
+<P>
+<H3><B>
+The Computers and Thought book available online
+</B></H3>
+An effective introductory book for absolute beginners in AI and Cognitive
+science is
+<B>Computers and Thought</B>
+by M.Sharples,
+D. Hogg, C. Hutchison, S. Torrance, D. Young,
+MIT Press (1989). This book relates AI to philosophy, psychology and linguistics,
+and includes programming examples in Pop-11,
+<P>
+It is available online (though without any of the diagrams alas) at
+
+<UL>
+<LI><a href="http://www.cs.bham.ac.uk/research/poplog/computers-and-thought/">http://www.cs.bham.ac.uk/research/poplog/computers-and-thought/</a>
+<LI><a href="http://www.cs.bham.ac.uk/research/poplog/computers-and-thought.tar.gz">http://www.cs.bham.ac.uk/research/poplog/computers-and-thought.tar.gz</a>
+<LI><a href="http://www.cs.bham.ac.uk/research/poplog/computers-and-thought.zip">http://www.cs.bham.ac.uk/research/poplog/computers-and-thought.zip</a>
+<LI>
+<a href="http://www.cogs.susx.ac.uk/local/books/computers-and-thought/">http://www.cogs.susx.ac.uk/local/books/computers-and-thought/
+(may be defunct now)</a>
+</UL>
+
+<P>
+<H3><B>
+Natural language processing in Pop-11 available online
+</B></H3>
+This book by Gerald Gazdar and Chris Mellish, originally published in 1989 by Addison Wesley,
+is available online here:
+<a href="http://www.cogs.susx.ac.uk/local/books/">http://www.cogs.susx.ac.uk/local/books</a>
+<P>
+<HR>
+<P>
+<H3><B>
+OpenPoplog development project at Sourceforge
+</B></H3>
+
+For further information see:
+<BR>
+<a href="openpoplog.html">http://www.cs.bham.ac.uk/research/poplog/openpoplog.html</a>
+
+<P>
+<HR>
+This file (no longer maintained) was originally created and maintained by:
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs">
+Aaron Sloman,
+</a>
+<br>
+School of Computer Science,
+<br>
+The University of Birmingham
+<br>
+Email: A.Sloman@cs.bham.ac.uk
+
+<p>
+Last updated: 6 Jul 2009; 3 Dec 2010; 17 Dec 2019
+</BODY>
+</FONT>
+</div>
+</HTML>

@@ -1,0 +1,1042 @@
+<html>
+<head>
+<title>POPLOG V16 (64-bit)</title>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+blockquote {
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+p {
+    text-indent: 0px;
+}
+</style>
+</head>
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:740px">
+<hr>
+<center>
+<h2><b>
+STILL UNDER CONSTRUCTION
+<p>
+Linux Poplog Version 16 is ready for testing:
+<br>
+After required linux libraries have been installed<a href="#prerequisites">[*]</a>,
+<br>
+a single script fetches and installs Poplog V16<a href="#installation-process">[*]</a>
+</b></h2>
+
+<h4><b>
+SEE ALSO: <a href="NEWS-poplog16.html">POPLOG V16 NEWS FILE</a>
+<br>
+News and bugreports/fixes
+<br>
+(Installed 6 Jan 2020 -- last updated 24 Aug 2020)
+<br>
+New install script 20 Aug 2020
+</b></h4>
+
+<h4><b>
+64 BIT (AMD64/X86-64) LINUX POPLOG
+<br>
+Overview, downloadable packages and set-up scripts
+<br>
+<a name="installed"></a>
+<b>Originally Installed here: 6 Dec 2019</b>
+<br>
+<font color="blue">This is still a DRAFT version, with too much repetition -- to be fixed later!</font>
+</b></h4>
+
+</center>
+<hr>
+<p>
+<b>
+WARNING THIS VERSION DOES NOT WORK WITH LINUX KERNELS 5.8
+<br>
+(ON ACCOUNT OF NEW SECURITY MECHANISMS IN THE KERNEL)
+<br>
+(THERE IS ALSO A LESS SERIOUS PROBLEM WITH 5.7)
+<br>
+Combined effors of several members of the pop-forum list have produced a
+diagnosis and a fix, enabling poplog to run. However, the fix has not yet been
+included in the standard download/install system. For temporary instructions see
+the warning <a href="#getpoplog">below.
+</a>
+</b>
+<hr>
+<p>
+Please report errors, omissions, duplications and other infelicities to the
+pop-forum email list (see above).
+<br>
+<a href="tested.txt">List of linux systems on which this has been tested so far.</a>
+<p>
+# DRAFT ** WORK IN PROGRESS ** DRAFT
+<br>
+NOTE added: 14 Mar 2023
+The list below is likely to be out of date. Join the pop-forum list if you have
+questions.
+<br>
+Core content for 64-bit Poplog (Poplog V16) was provided on Github by
+<br>&nbsp;&nbsp;
+    Waldek Hebisch (Mathematical Institute, University of Wroclaw, Poland)
+<br>&nbsp;&nbsp;
+    <a href="http://www.math.uni.wroc.pl/~hebisch">http://www.math.uni.wroc.pl/~hebisch</a>
+<br>&nbsp;&nbsp;
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/V16/hebisch-on-poplog.html">https://www.cs.bham.ac.uk/research/projects/poplog/V16/hebisch-on-poplog.html</a>
+<br>&nbsp;&nbsp;
+    <a href="https://github.com/hebisch/poplog">https://github.com/hebisch/poplog</a>
+<br>&nbsp;&nbsp; Older information about his Poplog related information is at:
+<br>&nbsp;&nbsp;
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#hebisch">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#hebisch</a>
+<p>
+V16 is packaged for easy download and installation, including additional
+documentation, teaching and application packages,
+<br>&nbsp;&nbsp;
+by Aaron Sloman, School of Computer Science, University of Birmingham
+<br>&nbsp;&nbsp;
+<a href="http://www.cs.bham.ac.uk/~axs">http://www.cs.bham.ac.uk/~axs</a>
+<br>&nbsp;&nbsp;
+(email: a.sloman[At]cs.bham.ac.uk)
+<p>
+Information about downloading and installing Poplog V16 is <a href="#installation-process">below</a>.
+<br>
+Older Poplog related information is at:
+<br>&nbsp;&nbsp;
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+<p>
+This document is: <a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+<br>
+Including some information for curious experts -- that can be ignored by most
+users.
+<br>
+(Location and format may change later.)
+<hr>
+<a name="contents"></a>
+<b>CONTENTS</b>
+<br>
+<a href="#installed">Date installed (above)</a>
+<br>
+<a href="#contents">This contents list</a>
+<br>
+<a href="#first-time">Background -- For first time viewers</a>
+<br>
+<a href="#preamble">PREAMBLE: WHAT IS POPLOG?</a>
+<br>
+<a href="#core-language">
+POP11/POP-11: The core language of Poplog, used to implement the other languages
+</a>
+<br>
+<a href="#64-bit-poplog">New 64 bit Linux Poplog: Version 16</a>
+<br>
+<a href="#latest">The latest version of Poplog: Poplog version 16 (64 bit) 2019</a>
+<br>
+<a href="#install-poplog64">Getting and installing Poplog V16</a>
+<br>
+<a href="#space-needed">Space required for Poplog</a>
+<br>
+<a href="#installers">Installers vs Users</a>
+<br>
+<a href="#prerequisites">Prerequisites: Install required Linux libraries/Packages</a>
+<br>
+<a href="#installation-summary">Installation/Setup Summary</a>
+<br>
+<a href="#shared">On a shared workstation or server</a>
+<br>
+<a href="#installation-process"><b>Installing Poplog using 'getpoplog.sh'</b></a>
+<br>
+&nbsp;&nbsp;
+<a href="#USEPOP">A file USEPOP in the poplog_base directory.</a>
+<br>
+&nbsp;&nbsp;
+<a href="#additional-scripts">Additional scripts</a>
+<br>
+&nbsp;&nbsp;
+<a href="#testing">Brief tests after installation</a>
+<br>
+&nbsp;&nbsp;
+<a href="#popsitename">Alter Popsitename if Ved is to be use for mail</a>
+<br>
+<a href="#vision-neural">Vision and Neural Packages</a>
+<br>
+<a href="#user-initialisation-directory">Poplog user initialisation directory $poplib</a>
+<br>
+<a href="#online-docs">More online information</a>
+<br>
+<a href="#sample-defaults">SAMPLE SETUP DEFAULTS</a>
+<br>
+<a href="#testing-default">Testing the default installed saved images</a>
+<br>
+<a href="#other-online">A subset of online Poplog information sources</a>
+<br>
+<a href="#Ramsay-1984">Allan Ramsay's overview in 1984</a>
+<br>
+<a href="#Worrall-help">Anthony Worrall's Poplog help site (Reading University)</a>
+<br>
+<a href="#Popplestone">Contributions by Robin Popplestone</a>
+<br>
+<a href="#background">BACKGROUND</a>
+<br>
+<a href="#system-docs">System Documentation (e.g. porting or rebuilding Poplog)
+</a>
+<br>
+<a href="#pop-forum">Joining Pop-forum</a>
+<hr>
+<h4><b>
+<a name="smart"></a>
+<a name="first-time"></a>
+<b>BACKGROUND -- FOR FIRST TIME VIEWERS</b>
+<br>
+A taste of the history of Poplog</b>
+<br>
+<table style="width: 80%; height: 0px; text-align: left; margin-left:55px: auto;
+    margin-right: auto;" cellpadding="0" cellspacing="10">
+<tbody>
+<tr>
+<td>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/figs/jpg/smart-poplog-5million.jpg">
+        <img alt="Poplog Plaque" width="230" border="1"
+            src="http://www.cs.bham.ac.uk/research/projects/poplog/figs/jpg/smart-poplog-5million.jpg">
+</a>
+</td>
+<td>
+<div style="margin-left:20px; margin-top:3px; margin-bottom:0px; width:495px">
+Integral Solutions Ltd (ISL -- Managing Director Alan Montgomery) and Sussex
+University won this ICP award in 1992, for having achieved Poplog sales of five
+million dollars. It was associated with a UK Government
+<a href="http://www.ft.com/cms/s/2/3233daaa-2189-11e1-a19f-00144feabdc0.html#axzz26N58lLms">SMART award.</a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</b></h4>
+<a name="preamble"></a>
+<b>PREAMBLE: WHAT IS POPLOG?</b>
+<br>
+From <a href="https://en.wikipedia.org/wiki/Poplog">https://en.wikipedia.org/wiki/Poplog</a>:
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px;">
+"Poplog is an Open Source, reflective, incrementally compiled software
+development environment for the programming languages POP-11, Common Lisp,
+Prolog, and Standard ML, originally created in the UK for teaching and research
+in Artificial Intelligence at the University of Sussex, and later marketed as a
+commercial package for software development as well as for teaching and
+research. It was one of the initiatives supported for a while by the UK
+government-funded Alvey Programme."
+</div>
+See also:
+    <a href="https://en.wikipedia.org/wiki/POP-11">https://en.wikipedia.org/wiki/POP-11</a>
+<pre>
+<b>More detailed, but partly out of date descriptions at the University of Birmingham:</b>
+    <a href="https://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">https://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html</a>
+
+Steven Leach, who had previously used Poplog while working as a software engineer
+at GEC UK then HP research, and had also made significant contributions to Poplog,
+gave an invited talk on Poplog at ECOOP in London in July 2019
+<a href="https://2019.ecoop.org/details/ecoop-2019-summer-school/3/POPLOG-a-pioneering-multi-language-multi-paradigm-development-toolkit-born-in-the-">ECOOP: POPLOG-a-pioneering-multi-language-multi-paradigm-development-toolkit</a>
+(The web site wrongly mentions Reims: It was in London!)
+<a name="core-language"></a>
+<b>POP11/POP-11, the core language of Poplog, was used to implement the other languages</b>
+For more information on Pop-11, the core language of Poplog:
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">Waldek Hebisch on Pop-11:
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.math.uni.wroc.pl/~p-wyk4/pop11_en/">http://www.math.uni.wroc.pl/~p-wyk4/pop11_en/</a>
+&nbsp;&nbsp;&nbsp;&nbsp;The Pop-11 Primer (produced at Sussex and Birmingham Universities)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.cs.bham.ac.uk/research/projects/poplog/primer/">https://www.cs.bham.ac.uk/research/projects/poplog/primer/</a>
+</font>
+Hakan Kjellerstrand also has online information about Poplog, especially Pop-11, including tutorials.
+See
+      <a href="http://www.hakank.org/poplog/">http://www.hakank.org/poplog/</a> (Includes Pop-11 examples.)
+      "The Pop-11 programming language and Poplog environment"
+      <a href="http://www.hakank.org/webblogg/archives/001320.html">http://www.hakank.org/webblogg/archives/001320.html</a>
+      "Off topic: The Pop-11 programming language and Poplog environment"
+      <a href="http://www.hakank.org/constraint_programming_blog/2009/08/off_topic_the_pop11_programmin_1.html">http://www.hakank.org/constraint_programming_blog/2009/08/off_topic_the_pop11_programmin_1.html</a>
+
+For a technical overview of Poplog's internals (mainly designed by John Gibson). See
+  Robert Smith, Aaron Sloman, John Gibson,
+  POPLOG's two-level virtual machine support for interactive languages,
+  <i>Research Directions in Cognitive Science Volume 5: Artificial Intelligence,</i>
+  Eds. D. Sleeman and N. Bernsen, Lawrence Erlbaum Associates, pp. 203--231, 1992,
+  <a href="http://www.cs.bham.ac.uk/research/projects/cogaff/81-95.html#65">http://www.cs.bham.ac.uk/research/projects/cogaff/81-95.html#65</a>
+
+There is a considerable amount of information about Poplog and Pop-11 included
+in the Poplog package, including many Programming and AI tutorials.
+
+<a name="popbooks"></a><b>Books on Pop-11</b>
+Ben du Boulay, at Sussex University has a list of books on Pop-11 (mostly aimed at
+students learning AI) <a href="http://users.sussex.ac.uk/~bend/aiprog/outlinenode14.html">http://users.sussex.ac.uk/~bend/aiprog/outlinenode14.html</a>
+This is his list:
+
+BARRETT, R., RAMSAY, A. AND SLOMAN, A. (1985) POP-11: A practical language for Artificial
+Intelligence, Ellis Horwood and Wiley. (QE 1690 Pop). The first book ever written on
+POP-11. It is especially useful on the more advanced features of the language, but is not
+as systematic as Laventhol.
+
+BURTON, M and SHADBOLT, N. (1987) POP-11 programming for Artificial Intelligence,
+Addison-Wesley. (QE 1690 Pop). More of an introductory textbook in style, concerned to
+teach AI rather than Pop-11. But some absolute beginners find it helpful.
+
+COGNITIVE APPLICATIONS (1987) AlphaPop POP-11 Language Guide and Reference Manual,
+Cognitive Applications Ltd. A very clear textbook and separate guide to the main functions
+originally provided with the AlphaPop version of POP-11 for Macs.
+
+GAZDAR, G. and MELLISH, C. (1989) Natural Language Processing in POP-11: an Introduction
+to Computational Linguistics. Addison-Wesley. (P 98 Gaz). A textbook with extensive
+natural language processing examples.
+
+LAVENTHOL, J. (1987) Programming in POP-11, Blackwell. (QZ 1345 Pop). A textbook covering
+POP-11 from scratch, with good suggestions regarding programming style. Some parts may be
+difficult for beginners.
+
+SHARPLES, M. et al. (1989) Computers and Thought, MIT Press. (QZ 1250 Com) An introductory
+textbook on AI and cognitive science, based largely on POP-11. Also available at
+http://www.informatics.sussex.ac.uk/local/books/computers-and-thought/index.html
+
+RAMSAY, A. and BARRETT, R.(1987) Artificial Intelligence in practice: examples in POP-11
+Ellis Horwood and John Wiley, 1987. This is a more advanced book on AI and Pop-11, and is
+probably only of interest once you already know Pop-11 pretty well, and are quite skilled
+in it.
+
+THORNTON, C. and DU BOULAY, B. (1992) Artificial Intelligence Through Search, Intellect.
+(QZ 1250 Tho). A textbook introduction basic AI through POP11 and through Prolog programs.
+Also available at
+http://www.informatics.sussex.ac.uk/local/books/ai-through-search/index.html
+
+<b>(END OF BACKGROUND)</b>
+</pre>
+<hr>
+<a name="64-bit-poplog"></a><b>New 64 BIT LINUX POPLOG: Version 16</b>
+<br>
+December 2019
+<pre>
+Thanks to a massive effort by
+    Waldek Hebisch (Mathematical Institute, University of Wroclaw, Poland)
+    <a href="http://www.math.uni.wroc.pl/~hebisch">http://www.math.uni.wroc.pl/~hebisch</a>
+Poplog V16 is the first 'solid/complete' 64 bit Poplog for linux on PC hardware.
+It can also be installed on shared linux servers based on AMD64/X86-64 processors.
+(Installation instructions are <a href="#install-poplog64">below</a>.)
+
+In 2005 he had produced a 64 bit version of Poplog that some people found
+useful, but there were some loose ends. It was announced here:
+<a href="http://www.math.uni.wroc.pl/~hebisch/poplog/amd64-poplog.html">http://www.math.uni.wroc.pl/~hebisch/poplog/amd64-poplog.html</a>
+but is superseded by Poplog V16.
+
+He also has a draft port of Poplog to 32-bit Arm available here:
+    <a href="http://www.math.uni.wroc.pl/~hebisch/poplog/">http://www.math.uni.wroc.pl/~hebisch/poplog/</a>
+
+<b>BACKGROUND (not essential reading):
+Commercially available Poplog sold by Sussex University and ISL</b>
+Between 1981 and the late 1990s Poplog (initially only Pop11, then Pop11+Prolog, with
+Common Lisp, and ML added later) was produced mainly at Sussex and distributed and
+supported by ISL. That included previously available implementations for 64
+bit SPARC, Dec-Alpha, MIPS, IBM servers, HP workstations, Apollo servers, Sequent
+Symmetry, and a few others, were produced by Sussex University in collaboration with <a href="https://www.cs.bham.ac.uk/research/projects/poplog/isl-docs">ISL</a>,
+who marketed Poplog, supported customers and helped with development of Poplog for several
+years. Unfortunately those machines, though powerful, were too expensive for individuals
+to buy.
+
+The low cost, low functionality, IBM PC, appeared in the early 1980s and was sold very widely
+because of its low price and association with IBM. This lost Poplog many academic users
+who could not afford to buy the better equipped machines required to run Poplog.
+
+Later, PC hardware improved and the development of Linux on PCs led to the development of
+Linux Poplog (running on 32 bit linux), which became available after ISL were were bought
+by SPSS, and stopped selling poplog. Linux poplog helped to keep poplog alive, though only
+in a small number of places. 64-bit Linux Poplog V16 is potentially usable for many more
+applications.
+
+There was also a Port of Pop-11 to Apple hardware, called Alphapop, sold by Cognitive
+Applications Ltd.
+<hr>
+<a name="latest"></a><b>THE LATEST VERSION OF POPLOG: POPLOG VERSION 16 (64 bit) 2019</b>
+32-bit linux Poplog re-implemented for 64-bit (AMD64 / X86-64) architectures.
+
+The core of 64 bit Poplog is available for expert users on Github, here:
+    <a href="https://github.com/hebisch/poplog">https://github.com/hebisch/poplog</a>
+This document extends that version with extra documentation and code libraries at the
+University of Birmingham Poplog site, to produce a "full" Poplog V16, with a simple to
+use installation script, after installing the prerequisite linux libraries, listed in:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/required-packages.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/required-packages.html</a>.
+Also summarised <a href="#prerequisites">below</a>).
+<a name="install-poplog64"></a>
+<b>GETTING AND INSTALLING POPLOG V16</b>
+    The Birmingham version of Poplog V16 is based on the Hebisch implementation,
+    packaged here for non-expert users to download and install, as explained below.
+
+    It also includes additional demonstration and tutorial materials, and toolkits
+    implemented in Poplog, including the Birmingham SimAgent Toolkit
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/packages/simagent.html">http://www.cs.bham.ac.uk/research/projects/poplog/packages/simagent.html</a>
+    and other packages previously available with 32 bit poplog, almost all of
+    which can be used unchanged with V16. The exceptions are the vision and
+    neural libraries by David Young, which need to be changed to use 64 bit
+    versions of linux linear algebra packages (Blas and Lapack).
+
+At present the installation is, by default, linked without access to motif
+graphical libraries. If you wish to use motif (e.g. to run the Poplog_UI
+interface toolkit, then you make sure motif is installed on your system (as
+explained in the <a href="#prerequisites">Prequisites</a> section below and then after installing
+Poplog relink it to access motif using the <a href="#use-motif">command given below</a>,
+(also printed out when the initial installation is complete).
+
+
+Re-linking and rebuilding saved images should take at most a few seconds on a
+modern machine.
+
+Instructions follow for downloading and installing 64 bit Poplog and the linux
+libraries that it requires.
+(To be revised or extended later. Suggestions for improvement are welcome.)
+
+<a name="space-needed"></a><b>SPACE REQUIRED FOR POPLOG</b>
+Depending on whether all or some of the Poplog system is installed, and which
+additional linux libraries are required, the space required for a working Poplog
+development environment on Linux may be somewhere between 100MB (after removal
+of downloaded tar files) and 200MB (or more, e.g. depending on how many
+different linux system libraries are added, and how many 'saved images' are
+built, ready to run without compiling sources).
+
+My current Poplog V16 directory tree (starting at poplog_base without the files
+used to generate it) has size 105MB (shown by 'du -sh'). That doesn't include
+the linux (in this case Fedora) libraries installed earlier to support Poplog.
+(See the "Prerequisites" listed below.)
+
+The size includes various *.o and *.w files in pop11 src directories created
+during system construction that could be deleted. Deleting the *.o and *.w files
+saves about 8MB.
+
+Installations with additional optional linux libraries may have significant
+additional file store requirements. E.g. the linux lapack and blas linear
+algebra libraries are required by the Poplog vision package summarised here:
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/packages/packages/popvision/">https://www.cs.bham.ac.uk/research/projects/poplog/packages/packages/popvision/</a>
+(The documentation included in the 64 bit Poplog system may eventually be more
+up to date.)
+<a name="installers"></a>
+<b>INSTALLERS VS USERS</b>
+After Poplog has been installed on a local machine or network with shared
+filestore, individual users will need only startup scripts, not installation
+scripts.
+
+The following instructions are for a local Poplog system manager. They are also
+relevant to users who manage personal machines and are both installers and users.
+
+<a href="#end-users">INFORMATION FOR END-USERS</a>
+Instructions for users after a full Poplog has been installed are <a href="#end-users">below</a>.
+<a name="prerequisites"></a>
+<font color="red"><b>PREREQUISITES: INSTALL REQUIRED LINUX LIBRARIES/PACKAGES</b></font>
+Before installing Poplog, install linux libraries required as instructed in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/required-packages.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/required-packages.html</a>
+
+The instructions vary according to which version of Linux is being used.
+The instructions also provide scripts to perform installation of linux libraries
+required (which differ for different versions of linux/unix) before installing
+Poplog.
+
+For Poplog V16 there are also "combined" scripts, to (a) fetch and install
+required linux libraries and then (b) download and install Poplog. This has not
+yet been done for all versions of linux. (See the required packages above.)
+
+Please send information about how to install the corresponding linux
+packages on versions of linux not mentioned there to the pop-forum email list.
+
+If you manage to get this running on a Windows PC with linux support please
+consider submitting advice for others to follow.
+
+<a name="installation-summary"></a><b>INSTALLATION/SETUP SUMMARY</b>
+Poplog is location independent, e.g. it does not need to be installed in
+standard linux directories, such as /usr/lib, /usr/lib64, /usr/bin etc., though
+users may make use of those directories if they wish.
+
+The instructions below assume that Poplog is installed in the directory
+    <font color="blue">/usr/local/poplog/V16</font>
+and 'unpacked' there.
+
+If another directory is to be used (e.g. a user's own login directory) change
+path names appropriately.
+
+A linux (bash) script (getpoplog.sh, <a href="#getpoplog">below</a>) is provided that can be downloaded by
+users and installed in any directory on the local machine.
+
+When the script is run, it creates a new directory <font color="blue">poplog_base</font> and installs
+poplog there.
+
+The path name of that poplog_base directory will later be held in the linux
+environment variable <font color="blue">$usepop</font>, from which all other pathnames required
+for running Poplog can be derived.
+<a name="shared"></a>
+<b>On a shared workstation or server</b>
+Different users sharing the same machine can install Poplog at different locations,
+though it is more efficient to share one installation of the Poplog system and have
+different local libraries for each user. Different users will then use different lists
+of path names for various parts of Poplog, e.g. different 'teach', 'help', 'ref' and
+code library search lists, and different collections of saved images.
+<a name="installation-process"></a>
+<b>INSTALLING POPLOG using 'getpoplog.sh'</b>
+The installation process has several phases, previously requiring different user
+actions, but now performed first by installing required linux libraries as specified
+<a href="#prerequisites">above</a>, then fetching and running a single script, getpoplog.sh, which performs the Poplog
+installation by downloading and running other scripts as needed.
+
+There are also scripts to combine the two stages, on common versions of linux,
+though not yet all.
+<a name="getpoplog"></a>
+GETPOPLOG.SH
+The installation script 'getpoplog.sh' makes installing Poplog very simple (after the
+system library requirements (<a href="#prerequisites">above</a>) have been satisfied).
+
+<font color="blue">
+
+WARNING (Modified 11 Mar 2023):
+
+If you plan to install poplog on a version of linux with a kernel version that
+is later than V5.6, please join the <pop-forum@cs.bham.ac.uk> mailing list and
+send a message asking for help, referring to this note, and requesting advice
+about how to modify the installation instructions, or whether modification is no
+longer needed because the files and installation mechanisms have been updated.
+
+You can get instructions for joining the mailing list by sending a message
+to:
+
+    pop-forum-request@cs.bham.ac.uk
+
+Containing just one word:
+
+    help
+
+After joining the mailing list write to it (i.e. to <pop-forum@cs.bham.ac.uk>
+quoting the warning, message above (if its still relevant), and ask for
+advice. You can also use the list for making suggestions, responding to posts
+by others, etc. At present (March 2023) traffic on the list is very low.
+
+</font>
+
+After installing OS-dependent packages, install Poplog thus:
+
+-- Decide in which directory (private or shared) you would like to install Poplog,
+e.g. in a shared directory such as
+&nbsp;&nbsp;&nbsp;&nbsp; /usr/local/poplog
+or in a personal, private directory.
+
+Download and run the getpoplog.sh script in that installation directory, to fetch
+program and documentation files and then complete the installation, as explained
+below. <font color="blue">(But note the warning about kernel changes, in blue, above.)</font>
+
+-- Fetch the getpoplog.sh script (below) and make it executable (chmod)
+
+(Note the point about the -nopie flag)
+
+The 'master' installation script is available for download here:
+
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/getpoplog.sh">http://www.cs.bham.ac.uk/research/projects/poplog/V16/getpoplog.sh</a>
+
+The script can be viewed in a web browser here:
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/getpoplog">http://www.cs.bham.ac.uk/research/projects/poplog/V16/getpoplog</a>
+    (Suggestions for improvement are welcome.)
+
+To download it, do this in the chosen installation directory:
+    wget http://www.cs.bham.ac.uk/research/projects/poplog/V16/getpoplog.sh
+
+and make it executable, e.g.
+    chmod 755 getpoplog.sh
+<b>
+NB
+[These installation instructions may be revised later.]
+
+Run it with or without the flag -nopie, depending whether you use a recent version of
+linux, e.g. Arch, or recent ubuntu or debian, that does not allow "position independent
+execution" (PIE). I.e.
+
+    ./getpoplog.sh -nopie
+or
+    ./getpoplog.sh
+
+If you don't know which one to use try the first version, which seems to be
+what most recent versions of linux require, or tolerate.
+
+If it reports a failure, delete the downloaded files and try the second version,
+which is required for some of the newer linux releases. On Fedora it doesn't
+seem to matter whether the flag is set or not.
+</b>
+Depending on your internet speed and the speed of your machine, the process may
+take less than a minute, or a few minutes.
+
+When it has completed it prints out the instructions below to set up local
+search paths, etc.
+
+Expert programmers should read the script first and report any obvious errors,
+or lack of clarity!
+
+   At present, the getpoplog.sh script fetches four installation files with
+   different functions:
+
+   -- http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/latest_poplog_base.tar.bz2
+        (Provides the core Poplog files and installation scripts, mostly derived from
+        the github Poplog site of Waldek Hebisch.)
+   -- http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/docs.tar.bz2
+        Essential Poplog user documentation not yet in the github package,
+        copied from the Birmingham (UK!) Poplog installation.
+   -- http://www.cs.bham.ac.uk/research/projects/poplog/packages-v16.tgz
+        Various tutorial and application packages and additional documentation
+        provided by past users and collected at Birmingham University.
+   -- http://www.cs.bham.ac.uk/research/projects/poplog/V16/build_all.sh
+        A script to use all the downloaded files to build a new Poplog installation.
+        Previously build_all.csh.
+        Now replaced by build_all.sh after correction of faulty version by Waldek Hebisch
+
+-- getpoplog.sh downloads the above files to the current location, then creates the main
+   installation directory <font color="blue">poplog_base</font> by untarring:
+    http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/latest_poplog_base.tar.bz2
+   The script continues by running build_all.sh in the poplog_base directory.
+   It rebuilds the Poplog system downloaded from github, then uses the other tar
+   files to install documentation files, the packages directory, and 'startup'
+   information for local Poplog users (specifying the $usepop environment
+   variable, and additional environment variables and local directories to be
+   accessed by Poplog users.
+<a name="USEPOP"></a>
+-- A file USEPOP in poplog_base is created containing the main pathname needed later for the
+   run_time environment variable $usepop, which specifies the root of the directory tree
+   containing all the core Poplog program libraries, the editor, documentation files,
+   executables, saved images. etc.
+   The file is created by the installation process, in the poplog_base directory, by doing:
+
+        cd poplog_base
+        pwd > USEPOP
+
+    If you use sh or bash you can later set $usepop with this command run in the
+    poplog_base directory:
+        export usepop=`cat USEPOP`
+
+    csh/tcsh users can do this instead:
+        setenv usepop `cat USEPOP`
+
+    In both cases this should print out the full path name:
+        echo $usepop
+
+    If Poplog is installed at
+
+        /usr/local/poplog/V16/
+
+    then the 'echo $usepop' command, performed anywhere should
+    print out
+        /usr/local/poplog/v16/poplog_base
+
+-- Once everything has been installed and $usepop set, a collection of required
+   environment variables can be set up as follows (e.g. in the user's login script
+   if Poplog is used regularly):
+
+    sh/bash users
+        source $usepop/pop/com/poplog.sh
+
+    csh/tcsh users can do:
+        source $usepop/pop/com/poplog.csh
+<a name="use-motif"></a>
+<b>IF YOU WISH TO USE POPLOG WITH MOTIF</b>
+Then make sure you have the linux motif (developer) libraries installed, included
+in the <a href="#prerequisites">prerequisite lists</a>.
+
+Then, after the above installation has been completed and you have set up the
+$usepop environment variable, you can relink poplog with motif, using this
+command:
+
+    $usepop/pop/src/newpop -link -x=-xm -norsv
+
+On a modern machine it should not take more than a few seconds.
+
+<b>HOW INSTALLATION WORKS:</b>
+
+-- After downloading the above 'install' script, build_all.sh, the installation
+   script (getpoplog.sh) unpacks this previously downloaded file:
+
+      http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/latest_poplog_base.tar.bz
+
+   which prepares the system installation directory poplog_base described above,
+   including Waldek's code for generating a working Poplog system.
+
+-- To complete the installation, getpoplog.sh changes directory to poplog_base
+    and in there runs the above build_all.sh script, which can be inspected in a web
+    browser here:
+     <a href="https://www.cs.bham.ac.uk/research/projects/poplog/V16/build_all">https://www.cs.bham.ac.uk/research/projects/poplog/V16/build_all</a>
+
+   The downloaded script must be run in the poplog_base directory.
+
+   It first uses the Poplog program sources in a two stage process:
+
+        build_pop0
+
+   to create the 'bootstrap' <font color="blue">corepop</font> executable, which is then used in
+        build_pop1
+
+   to set up the rest of the core Poplog system, including creating the saved
+   images that enable pop11, prolog, standard ML (pml), and Common Lisp (clisp)
+   to be invoked by users.
+
+   Then build_all creates two 'trace' files buildout1 and buildout2 recording all
+   output created by running the build_pop0 and build_pop1 scripts. The trace files
+   can be ignored, unless the installation does not work, in which case the files
+   may provide essential clues regarding what went wrong.
+
+   (These mechanisms were designed by Waldek Hebisch -- I have merely packaged
+   them for users wanting a complete system.)
+
+NOTE: Waldek provided user instructions for the final stage in a bash
+build_all.sh script which I found could not be run by the main install script.
+
+Neither could I run it manually after running getpoplog.sh. Instead I had to
+'source' it when the getpoplog.sh had finished. I then found that if it was
+translated to a .csh script, build_all.csh, mentioned above I could run that
+script instead of sourcing it. The build_all.csh script is now run by the main
+install script, getpoplog.sh, to automate the whole installation process.
+
+<b>Summary:</b>
+When run, the top-level 'getpoplog.sh' script, with or without '-nopie', downloads
+several compressed tar files, including a core Poplog installation package
+provided by Waldek Hebisch, based on his github site, plus several extensions
+providing documentation and additional libraries, downloaded from the Birmingham
+Poplog repository. Later it may be possible to fetch everything from github.
+
+A directory <b>poplog_base</b> is created in the directory in which the download
+script is run.
+
+After installation (unpacking source files and running installation scripts) that
+directory's path name must be assigned to the environment variable <b>usepop</b>
+by all users wishing to run Poplog programs.
+
+(Start-up scripts to be sourced by users can later do that assignment.)
+
+Poplog experts with specific needs may wish to modify the commands suggested or
+scripts provided, above.
+
+<b>NOTE:</b>
+Part of the download and installation will need to be repeated if a new version
+of core Poplog with corrections or additions becomes available. It will be
+available from github, for expert users. Others may wish to repeat this complete
+installation with the new version, after saving any local additions.
+<b>------------------------------------------------------------------------------</b>
+
+<b>FURTHER INFORMATION ABOUT THE INSTALLED FILES</b>
+(For experts, local system-managers, or curious users.)
+
+Reminder: the installation must be preceded by ensuring that required linux packages
+are installed, namely those listed here:
+    https://www.cs.bham.ac.uk/research/projects/poplog/V16/required-packages.html
+
+The above installation instructions will download and use or install the
+following Poplog files and installation scripts.
+
+<b>Poplog-specific tar files used for installation, downloaded by the above script are:</b>
+    The latest core Poplog package provided by Waldek Hebisch, currently:
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/latest_poplog_base.tar.bz2">http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/latest_poplog_base.tar.bz2</a>
+
+    Includes a recent fix to sys_host_name.p (December 2019)
+
+<b>-</b> Poplog documentation and tutorial files from Birmingham (and Sussex, earlier):
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/docs.tar.bz2">http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/docs.tar.bz2</a>
+    (Later these may be included in an integrated package, perhaps on Github,
+    simplifying installation.)
+
+<b>-</b> The Poplog "packages" system from Birmingham, designed to be added to an
+    installation of the core Poplog system, providing a collection of
+    packages with teaching materials, utilities, specialist program
+    libraries, and demonstrations.
+    <font color="blue">http://www.cs.bham.ac.uk/research/projects/poplog/packages-v16.tgz</font>
+    (Unwanted packages can be removed later. Users can add locally developed packages
+    to the $usepop/pop/packages directory tree, following instructions included
+    in the packages directory.
+
+    This provides additional teaching and demonstration materials and task-specific
+    libraries extending Poplog, organised as a collection of packages linked in a
+    'super-package'. It may require reorganisation (and pruning?) later.
+
+<b>-</b> The Poplog bash installation script with instructions provided by Waldek:
+    <font color="blue">https://www.cs.bham.ac.uk/research/projects/poplog/V16/build_pop.sh</font>
+    For some reason that script can only be 'sourced' not 'run' (on my machines),
+    so it has been translated into a tcsh version
+    <font color="blue">https://www.cs.bham.ac.uk/research/projects/poplog/V16/build_pop.csh</font>
+    which is run by the main installation script 'getpoplog.sh'.
+
+<b>-</b> Setup user environment variables
+    Users of Poplog will need to define the environment variable
+    <b>usepop</b> used during installation or when running of Poplog programs.
+    Two shell scripts will be provided for that purpose, one for bash/sh users
+    and one for tcsh/csh users.
+
+    <font color="blue">$usepop</font> specifies the local path name of the top-level directory of a
+    running Poplog system.
+    E.g. if the instructions for download here are followed without change, $usepop
+    could be
+        /usr/local/poplog/V16/poplog_base
+
+    Several other environment variables and commands used during installation
+    and use of Poplog are based on $usepop, some explained below.
+
+    There are also 'setup' commands including scripts setting up environment
+    variables and path names used by  various portions of Poplog. Users need not
+    know about them: they will be sourced by Poplog setup scripts.
+    [NOTE THE NEED FOR SECURITY PRECAUTIONS, ESPECIALLY ON SHARED MACHINES
+    Poplog probably needs a security project]
+
+<b>------------------------------------------------------------------------------</b>
+<a name="end-users"></a>
+<b>INFORMATION FOR END-USERS</b>
+Once the environment variable $usepop bas been set up, using the file USEPOP,
+all the derived environment variables can be set up in the individual's working
+environment, as follows:
+
+For bash or sh users:
+    source $usepop/pop/com/poplog.sh
+
+For tcsh or csh users:
+    source $usepop/pop/com/poplog.csh
+
+After that, Poplog commands will work from any directory (during that session),
+e.g.
+
+    pop11
+
+    prolog
+
+    clisp
+
+    pml
+
+and commands to create and use new Poplog saved images (in $usepop/pop/lib/psv
+or a user directory) that can then be run by commands like
+    pop11 +my-image
+
+<a name="additional-scripts"></a>
+<b>ADDITIONAL SCRIPTS:</b>
+There are additional scripts for building saved images, in the pop/com
+subdirectory, starting with 'mk'. Please read them carefully before running them
+to make sure you are getting what you want.
+
+<b>------------------------------------------------------------------------------</b>
+
+<a name="testing"></a> <b>BRIEF TESTS AFTER INSTALLATION:</b>
+
+Try running
+
+    basepop11
+
+It should print out something like:
+
+    Sussex Poplog (Version 16.0 Tue  3 Dec 00:31:55 GMT 2019)
+    Copyright (c) 1982-1999 University of Sussex. All rights reserved.
+
+Try:
+
+    3 + 6 =>
+
+    sqrt(2) =>
+
+(The numerical resolution used, and the printing resolution can be
+changed.)
+
+    vars list;
+    [The girl had learnt Pop11] matches [The girl ??list] =>
+
+should print out
+    ** &lt;true&gt;
+
+    list =>
+
+should print out
+    ** [had learnt Pop11]
+
+Exit Poplog using CTRL-D
+
+<a name="popsitename"></a>
+<b>ALTER POPSITENAME IF VED IS TO BE USE FOR MAIL</b>
+Change the pop11 variable popsitename if you expect to use the Poplog editor Ved
+to read and send email message.
+
+After the packages directory has been installed as above, this file should be
+edited, or a local version provided in a local library that will take precedence
+over the shared libraries:
+
+In this file (or a 'local' copy):
+
+        $usepop/pop/packages/vedmail/auto/popsitename.p
+
+    Replace the line
+
+        popsitename = '@cs.bham.ac.uk';
+
+    with the domain of your email address, e.g. if you intend to use Ved the
+    Poplog editor to insert the address automatically, e.g. when composing email messages.
+
+<a name="vision-neural"></a><b>Vision and Neural Packages</b>
+    NB the Vision and Neural packages contain C code libraries that will
+    need to be rebuilt for 64 bit Poplog. Waldek Hebisch has provided
+    instructions that are included in README files for each of those
+    packages.
+    <a href="notes-on-neural-and-vision-libraries.html">notes-on-neural-and-vision-libraries.html</a>
+
+<a name="user-initialisation-directory"></a><b>POPLOG USER INITIALISATION DIRECTORY $poplib</b>
+
+Users can create their own Poplog-startup files in a directory whose name is assigned
+to the environment variable $poplib (which can be different for different users, or
+different projects using Poplog).
+
+If you have set up a Poplog initialisation directory in your home directory,
+e.g.
+    ~/Poplib/
+    containing files:
+        init.p (for setting up libraries to be used)
+        vedinit.p (for setting up ved/xved editor preferences
+
+    They will be compiled when basepop11 (or one of its derivatives
+    e.g. pop11, prolog, clisp, pml) starts up
+
+    You can now try giving pop11 commands, or running the editor Ved.
+
+<b>Learning Pop11</b>
+
+    People who are unfamiliar with Pop11 should read the Primer:
+
+    <a href="https://www.cs.bham.ac.uk/research/projects/poplog/primer/">https://www.cs.bham.ac.uk/research/projects/poplog/primer/</a>
+
+There are also some online pop11 tutorials some mentioned above, including
+    <a href="http://www.math.uni.wroc.pl/~p-wyk4/pop11_en/">http://www.math.uni.wroc.pl/~p-wyk4/pop11_en/</a>
+
+<a name="online-docs"></a><b>More online information</b>
+
+Experts can do a lot of tailoring and 'setting up' in the initialisation
+files for the editor and sub-languages.
+
+<a name="sample-defaults"></a><b>SAMPLE SETUP DEFAULTS</b>
+Sample (possibly out of date, alas) setup defaults can be found in
+
+    $usepop/pop/packages/setup/Poplib
+
+More information (partly out of date in Poplog V16) is in
+
+    $usepop/pop/packages/setup/AREADME
+Internet searches will provide additional Pop11 tutorial information, including:
+
+<a name="testing-default"></a><b>TESTING THE DEFAULT INSTALLED SAVED IMAGES</b>
+
+Try these one word linux commands to invoke Poplog in different ways:
+
+    pop11
+    ved
+        (starts pop11 in the editor, ved)
+    prolog
+    clisp
+        (common lisp)
+    pml
+        (poplog standard ml)
+
+Warning: if you are already a Poplog user and have a startup directory
+    $poplib
+    (e.g. ~/Poplib)
+
+the relevant files in there will be compiled, e.g. init.p vedinit.p
+
+More detailed documentation is part of the Birmingham Poplog web site:
+
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html</a>
+
+and additional files referenced in those. All of this needs to be
+cleaned up and brought up to date.
+
+In order to ask for help, or report problems (or successes) you can join the
+pop-forum email list, as explained <a href="#pop-forum">below</a>.
+
+<b>------------------------------------------------------------------------------</b>
+<a name="other-online"></a>
+<b>A SUBSET OF ONLINE POPLOG INFORMATION SOURCES</b>
+<a name="Ramsay-1984"></a>
+Alan Ramsay (1984)
+The POPLOG program development system, in <i>Microprocessors and Microsystems</i>, Vol 8, Issue 7,
+September 1984, Pages 368-373
+    Allan Ramsay describes an AI programming environment that supports
+    three different languages with almost equal commitment
+    <a href="https://doi.org/10.1016/0141-9331(84)90253-9">https://doi.org/10.1016/0141-9331(84)90253-9</a>
+    (Written before ML was added to Poplog)
+<a name="Worrall-help"></a>
+<b>Anthony Worrall's Poplog help site</b>
+Anthony Worrall has an online Poplog help directory at Reading University:
+    <a href="http://www.poplog.cs.reading.ac.uk/popbook/">http://www.poplog.cs.reading.ac.uk/popbook/</a>
+
+<a name="Popplestone"></a><b>Contributions by Robin Popplestone</b>
+    Added: 10 Dec 2019 (Updated 4 Jan 2020)
+Robin Popplestone developed some of the key ideas in Poplog in his early work, described in
+<a href="http://www-robotics.cs.umass.edu/Popplestone/pop_development.html">http://www-robotics.cs.umass.edu/Popplestone/pop_development.html</a>
+    <font color="blue">The Early Development of POP</font>
+
+The ideas were later expanded while he was in Edinburgh, and implemented in the Edinburgh AI
+language Pop-2.
+    <a href="https://www.cs.utexas.edu/~moore/best-ideas/pltp/POP-2-Reference-Manual.pdf">https://www.cs.utexas.edu/~moore/best-ideas/pltp/POP-2-Reference-Manual.pdf</a>
+    R.M. Burstall, R.J. Popplestone
+After he moved to the University of Massachusetts at Amherst he continued contributing
+ideas and code to the developers at Sussex University, including his implementation of
+Scheme in Pop-11, available here in two formats, one for Linux and one for Windows:
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/Scheme.tar.gz">http://www.cs.bham.ac.uk/research/projects/poplog/Scheme.tar.gz</a>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/Scheme.zip">http://www.cs.bham.ac.uk/research/projects/poplog/Scheme.zip</a>
+    [I don't know when they were last tested.]
+
+His online (unfinished) book describing programming paradigms, using examples
+from Pop-11 is available here:
+
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/popbook">http://www.cs.bham.ac.uk/research/projects/poplog/popbook</a>
+     Paradigms of Programming
+
+For more information on some of the teaching materials and demos in Poplog
+search:
+
+   <a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+   <a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html</a>
+
+David Young has provided the following reference:
+R. J. Popplestone: The Design Philosophy of POP-2. in: D. Michie:
+<i>Machine Intelligence 3</i> Edinburgh University Press, 1968
+Cited <a href="https://en.wikipedia.org/wiki/First-class_citizen">https://en.wikipedia.org/wiki/First-class_citizen</a>
+which contains this excerpt:
+
+    * All items can be the actual parameters of functions
+    * All items can be returned as results of functions
+    * All items can be the subject of assignment statements
+    * All items can be tested for equality.
+
+<b>------------------------------------------------------------------------------</b>
+
+<b>TO BE ADDED:</b>
+    Comments on Poplog graphical facilities
+    Links to more examples/demonstrations
+<b>------------------------------------------------------------------------------</b>
+
+<a name="history"></a><b>PARTIAL HISTORY OF POPLOG</b>
+Background information on Poplog and its history can be found in these
+messy, partly out of date, files:
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/history/">https://www.cs.bham.ac.uk/research/projects/poplog/history/</a>
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/isl-docs">https://www.cs.bham.ac.uk/research/projects/poplog/isl-docs</a>
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">https://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html">https://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html</a>
+
+<a name="system-docs"></a><b>SYSTEM DOCUMENTATION (e.g. porting or rebuilding Poplog)</b>
+<a href="https://www.cs.bham.ac.uk/research/projects/poplog/sysdoc">https://www.cs.bham.ac.uk/research/projects/poplog/sysdoc</a>
+
+<b>------------------------------------------------------------------------------</b>
+
+<a name="pop-forum"></a><b>JOINING POP-FORUM</b>
+Anyone wishing to ask questions or contribute additional material should
+join the pop-forum mailing list:
+
+     mailto:pop-forum-request@cs.bham.ac.uk?subject=subscribe
+
+Additional information may be provided here later about Github-based work
+on porting or extending Poplog. (Poplog on ARM could be particularly
+valuable in education. )
+
+<b>------------------------------------------------------------------------------</b>
+
+Please report problems to the pop_forum list, or, as a last resort, to:
+   Aaron Sloman
+   a.sloman[at]cs.bham.ac.uk
+   <a href="http://www.cs.bham.ac.uk/~axs">http://www.cs.bham.ac.uk/~axs</a>
+   (who may or may not still be available to answer questions)
+<b>------------------------------------------------------------------------------</b>
+</pre>
+</div>
+</html>

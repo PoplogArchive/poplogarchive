@@ -1,13 +1,24 @@
 # Sub-repositories
 **/.git/
 
+# Large files that I am unsure about ...
+*.zip
+*.examples
+*.pdf
+*.zip
+*.tgz
+*.ogv
+*.eps
+
 # Books
 computers-and-thought/
 history/
 popbook/
 teachpop/
+papers/
 # Maybe also ...
 popplestone/
+umass-files/
 
 
 # Projects
@@ -32,6 +43,16 @@ rcmenu/
 emacs/
 lisp-mods/
 poponline/
+logicdemo/
+PlayMateGram/
+xml-dist/
+dirutils/
+isard-chartparser/
+eliza/
+brait/
+simworld/
+screamer.tar.gz
+popsh/
 
 # Packages
 packages/
@@ -46,6 +67,7 @@ usenet/
 cas-ai/
 
 # Poplog versions
+osx-poplog/
 hp-poplog/
 winpop/
 osx/
@@ -57,10 +79,20 @@ darwin+pc/
 new/
 prelinked*
 bham-linux*.gz*
-amd64/
+amd64*/
 CD/
 poplog*.deb
 debian/
+latest-poplog/
+mini-linux-pop/
+livecd/
+src-iris-*/
+ubuntu/
+vaxvms/
+corepop-only/
+nico*
+v16*.*
+src.systems/
 
 # Random unpacked poplog version
 auto/
@@ -77,6 +109,10 @@ prolog/
 lib/
 pop/
 sysdoc/
+setup/
+docs/
+sysinit/
+
 
 # "Old" stuff
 old/
@@ -91,6 +127,7 @@ primer.old/
 packages/OLD/
 previous-poplog/
 discarded/
+sysdoc-old/
 
 # Unclassified
 retrieved/
@@ -99,3 +136,18 @@ robot-club/
 gz/
 docs.*
 abbott/
+isl-docs/
+leach-utils/
+linuxterm/
+newc_dec/
+ova/
+bugfixes/
+primer/
+scheutz*/
+slax.d/
+tools/
+attach/
+unstripped-docs/
+sussex/
+freebsd/
+poplog16/

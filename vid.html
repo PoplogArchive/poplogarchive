@@ -1,0 +1,1285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Video Tutorials: CAS-AI</title>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<div style="margin-left:5px; margin-top:0px; margin-bottom:0px; width:710px">
+
+<a href="http://www.computingatschool.org.uk/">
+<img alt="Computing At School"
+height="60" src="http://www.cs.bham.ac.uk/research/projects/poplog/ova/images/student-squaresSmall.jpg"/>
+<font size=4><b>Computing At School</b></font>
+</a>
+<a href="http://www.cs.bham.ac.uk/">
+    <img alt="School of Computer Science"
+    height="60" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/cs2.jpg"/>
+</a>
+<a href="http://www.bham.ac.uk/">
+<img alt="THE UNIVERSITY OF BIRMINGHAM"
+    height="60" border="0"
+    src="http://www.cs.bham.ac.uk/~axs/fig/ub4.jpg"/>
+</a>
+<hr/>
+<h3><b>
+Video Tutorials on Youtube
+<br/>
+Introduction to Artificial Intelligence Programming
+<br>
+in a powerful AI language, Pop11.
+<br/>
+(Symbolic AI Programming for Beginners.)
+<p>
+<small>
+This file is
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/vid.html">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/vid.html</a>
+<p>
+This is
+part of the
+CAS-AI web site:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai</a>
+
+<p>
+This is part of The Free Poplog Portal
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+
+<p>
+Liberal copyright conditions for everything on this web site
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/copyright.html">http://www.cs.bham.ac.uk/research/projects/poplog/copyright.html</a>
+
+</small>
+</b></h3>
+
+Web page on thinky programming (among other kinds of programming):
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/thinky.html">http://www.cs.bham.ac.uk/research/projects/poplog/examples/thinky.html</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/#thinky">http://www.cs.bham.ac.uk/research/projects/poplog/examples/#thinky</a>
+<br>
+
+<a href="http://tinyurl.com/thinky-ex">http://tinyurl.com/thinky-ex</a>
+<br/>
+Tips on how to teach thinky programming:
+<a href="http://tinyurl.com/thinkyprog">http://tinyurl.com/thinkyprog</a>
+
+<hr/>
+<small>
+<b>DISCLAIMER</b>
+<blockquote>
+THIS IS NOT AN OFFICIAL DOCUMENT OF THE UNIVERSITY OF BIRMINGHAM
+OR THE SCHOOL OF COMPUTER SCIENCE.
+<br/>
+NEITHER THE UNIVERSITY NOR THE SCHOOL HAS ENDORSED THE OPINIONS
+EXPRESSED HERE.
+</blockquote>
+</small>
+<hr/>
+<br/>
+
+<a name="contents"></a>
+<h3><b>
+CONTENTS
+</b></h3>
+<ol>
+<li>
+<a href="#installation">
+Installing and Testing Poplog on Linux
+</a>
+<li>
+<a href="#pop-espeak">
+Demo of linux, Pop11 and Espeak, looping
+</a>
+
+<li>
+<a href="#haikus">
+A grammar to generate haikus, spoken by &#39;espeak&#39;
+</a>
+
+<li>
+<a href="#number-rulebase.ogv">
+Modelling number competences
+</a>
+
+<li>
+<a href="#pop11-graphics-demo.ogv">
+A demo of pop11 2-D graphics commands with faces and random walks
+</a>
+
+<li>
+<a href="#match_sorted.ogv">
+A tutorial comparing pattern-matching and other paradigms
+</a>
+
+<li>
+
+<a href="#river-intro.ogv">
+Pop11 Basics: introduction to interactive programming, including lists
+</a>
+
+<li>
+<a href="#riverworld"> (For Teachers):
+Using pop11 to create a microworld for student programs to operate on</a>
+
+<li>
+<a href="#river-teach.ogv">
+Using the river-crossing microworld to learn programming and AI -- first steps (river-teach.ogv)
+</a>
+
+<li>
+<a href="#pop-basics">
+Introduction to Pop11 basics
+</a>
+<p>
+<hr>
+<li>
+<a href="#pythag">
+A Video demonstration of a program showing a proof of Pythagoras' Theorem.
+</a>
+<br/>
+(Added 30 Mar 2014 to demonstrate pop11's graphics, and how some graphical proofs can
+work.)
+<p>
+<hr>
+<li>
+<a href="#editor">
+TUTORIALS ON THE EDITOR VED/XVED
+</a>
+<ul>
+<li>
+<a href="#ved-xved.ogv">
+Very Rapid High Level Overview of Some Features of Xved/Ved the
+Poplog editor
+</a>
+
+<li>
+<a href="#vedkeys">
+Using the Poplog/Pop11 editor Ved with minimal keyboard keys
+</a>
+<li>
+<a href="#functionkeys">
+Using the Poplog/Pop11 editor Ved with keyboard function keys -- top
+middle and right.
+</a>
+<li>
+<a href="#loadrange">
+Using Numeric Keyboard to Compile a Range
+(load-marked-range: Correcting previous error)
+</a>
+</ul>
+</ol>
+<hr>
+
+<a href="#contents">Jump to CONTENTS List </a>
+<hr/>
+
+<h3><b>
+Video tutorials available
+</b></h3>
+<ol>
+<hr>
+<a name="installation"></a>
+<li>
+<h4>
+<img alt="installation" border="1" width="110"
+src="http://i.ytimg.com/vi/PglYnQr85S8/2.jpg?1325014176349"/>
+<a class="title" href="http://youtu.be/PglYnQr85S8" dir="ltr">
+Installing and Testing Poplog on Linux
+</a>
+<br/>
+About 41 minutes.
+<br/>
+Available at: <a href="http://youtu.be/PglYnQr85S8">http://youtu.be/PglYnQr85S8</a>
+</h4>
+The programs demonstrated in these videos all use parts of the
+Poplog system. In particular I have created several demonstrations
+using Pop11, the core language of the poplog system, and the editor
+Ved/XVed which is implemented in Pop11. This tutorial shows how to
+install 32-bit linux poplog version 15.65 (the latest version,
+assembled in December 2011) on a linux system.
+<p>
+The demonstration uses Fedora version 15, but the same procedure
+will work on other versions of linux including for example Ubuntu
+and Arch linux. There are slight differences in the preparation
+needed for different versions of linux, as pointed out in the video,
+and also in the installation instructions here:
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/#installing">http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/#installing</a>.
+<p>
+<b>N.B.</b>
+Since the video was made, two simplified installation scripts have been
+provided, one for users of linux based on 'rpm' packages (e.g. Fedora,
+Redhat, Scientific Linux, CentOS) and one for users of linux based on
+'deb' packages (e.g. Debian, Ubuntu, and some others). Those scripts
+simplify the installation, as just one script has to be downloaded, made
+executable and run. The methods shown in the video will work on other
+versions of linux.
+<br/>
+Script for Ubuntu and other systems using 'apt-get install':
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/#ubuntu">Fetch and install 32-bit Poplog on Ubuntu</a>
+<br/>
+Script for Fedora and other systems using 'yum install':
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/#fedora">Fetch and install 32-bit Poplog on Fedora</a>
+</a>
+<p>
+
+The installation process requires some preparation of the linux
+system to ensure that it has the graphical libraries and also the
+usual compiling and linking tools (gcc). A shell script can be
+downloaded that will check whether you have the required graphical
+libraries.
+<p>
+Then, to do the actual installation,
+a short shell script
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/get-and-install-v15.65-poplog">http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/get-and-install-v15.65-poplog</a>
+can be downloaded, and made executable and then run. This is all done
+automatically in the new scripts for rpm and deb package users mentioned
+above.
+<p>
+<b>NOTE:</b>
+In the video all the installation commands are given without using
+the 'sudo COMMAND' format normally required when altering protected
+files or directories. That is because I had previously given myself
+full read- and write-access to everything in the /usr/local
+directory, using this command as super-user:
+<pre>
+    chown -R XXX /usr/local
+</pre>
+replacing XXX with my login name on the machine. If you don't want to do
+that, you can either prefix all the installation commands with 'sudo',
+or first become super-user, e.g. 'sudo su'. Then all installed files
+will be owned by the super-user and only super-user can change them.
+(There are useful online tutorials on linux/unix giving more
+information, e.g.
+<a href="http://linuxcommand.org/lts0070.php">http://linuxcommand.org/lts0070.php</a>)
+
+<p>
+When the 'get-and-install-v15.65-poplog' script is run, it fetches
+a compressed 'tar' file (size about 16.5MB), as shown in the
+video, and also fetches another shell script to install the contents
+of the tar file. The video shows what the installation process looks
+like, and how fast it goes (especially when using a 30Mb/sec cable
+broadband connection to do the download). On a slower internet link,
+and a slower PC than the one I used the process would take longer,
+but on  modern machines it should be at most a minute or two. It
+unpacks the tar file into a new directory at the default location
+/usr/local/poplog (though you can change that) and after re-linking
+the core of poplog, and building saved images to run Pop11, the
+editor, Common Lisp, Prolog, and Standard ML it ends up using less
+than 80MB for the whole installation.
+<p>
+Quite a lot of that can be deleted if you don't want all the four
+languages and if you don't want to be able to look at the system
+source code.
+<p>
+The tutorial then shows how some demonstrations that are scripted in
+the directory
+/usr/local/poplog/current-poplog/bin/demos
+can be run
+to test the installation. In the video, I demonstrate the Pop-11
+eliza chatbot, with and without audio output, then a toy simulation
+of some simple 'emotional' agents (not really emotional) moving
+around and reacting to what happens to them. I also show how some of
+David Young's popvision system can be run to do image processing
+using tutorials supplied in the popvision library
+whose files are also available for browsing here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/popvision/">http://www.cs.bham.ac.uk/research/projects/poplog/popvision/</a>
+<p>
+The tutorial ends by showing how, in addition to the saved images
+created to support the different poplog languages a shell script
+provided can be used to create another little demonstration of a
+very simple interactive simulated conversational robot inspired by
+the work of Terry Winograd on his SHRDLU system around 1971. The
+pop11 version is simpler than Shrdlu mainly because its natural
+language capabilities are very much simpler, but also because the
+world it talks about is simpler.)
+<p>
+All the demos shown (and many more) are implemented using programs
+that students or teachers can copy and edit in order to produce new
+versions with different capabilities. Some of them can be used by
+novices (e.g. starting with a very simple chatbot) whereas others
+will stretch advanced students, e.g. the Shrdlu example.
+With a development environment like Poplog it is possible for the
+teacher to isolate a small
+part of a complex package and invite students to modify or extend
+that small part, while using the rest as a 'black box', defining an
+experimental 'microworld', as a rewarding and challenging learning
+experience. (For an example see the
+<a href="#riverworld">riverworld tutorial</a> below.)
+<p>
+<b>NOTE:</b>
+Supplying poplog using a tar file and an install script, rather than
+a typical linux package (e.g. deb or rpm), gives the user a lot of
+choice as to where and how it will be installed, compared with
+installation using a standard linux package in Ubuntu, Fedora, etc.
+It also allows the same system to be installed in two (or more)
+different places, so that one is for regular use while experimenting
+with modifying or extending another version.
+
+<p>
+Please send comments and questions to Aaron Sloman at Birmingham
+(preferably using normal email not social web sites).
+
+<p>
+The poplog system, used for this tutorial is described with examples
+of teaching materials here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">http://www.cs.bham.ac.uk/research/projects/poplog/examples/</a>
+<p>
+NOTE: because these
+tutorials are unscripted, they include errors and moments of
+confusion!
+
+<p>
+Uploaded: 27 Dec 2011
+<hr/>
+<p>
+<a name="pop-espeak1.ogv"></a>
+<a name="pop-espeak"></a>
+<li>
+<h4>
+<img alt="pop-espeak" border="1" width="110"
+src="http://i2.ytimg.com/vi/y1syZ-Sl8ZY/hqdefault.jpg"/>
+<a class="title" href="http://www.youtube.com/watch?v=y1syZ-Sl8ZY" dir="ltr">
+Demo of linux, Pop11 and Espeak, looping
+(pop-espeak1.ogv)
+</a>
+<br/>
+Available at:
+<a href="http://www.youtube.com/watch?v=y1syZ-Sl8ZY">http://www.youtube.com/watch?v=y1syZ-Sl8ZY</a>
+</h4>
+<div class="description" dir="ltr">
+<p>
+This is part of a planned series of video tutorials introducing some
+of the features of Pop-11, an AI programming language (part of the
+Poplog system).
+
+<p>
+
+More information about the language and its environment, and ways in
+which AI programming is relevant to science and philosophy as well
+as engineering, can be found here
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/</a>
+<p>
+The original tutorials are hosted here in .ogv format:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/tutorials">http://www.cs.bham.ac.uk/research/projects/cogaff/tutorials</a>
+<p>
+The next tutorial shows how to use a grammar, and a Pop11 library, to generate haikus, which are then read out by espeak:
+<a href="http://www.youtube.com/watch?v=j0oaK59SSM0">http://www.youtube.com/watch?v=j0oaK59SSM0</a>
+<p>
+
+I am not an expert pod-caster, so there will be many flaws. I hope
+to learn from experience and from feedback from users.
+<p>
+I am contributing this as part of the UK ComputingAtSchool (CAS) initiative,
+described here:
+<a href="http://www.computingatschool.org.uk">www.computingatschool.org.uk</a>
+<p>
+Uploaded: 15 Nov 2011
+<br/>
+</p>
+</div>
+<a href="#contents">Jump to CONTENTS List </a>
+<p>
+<hr>
+<p>
+<a name="pop-espeak2.ogv"></a>
+<a name="haikus"></a>
+<li>
+<h4>
+<img alt="pop-espeak2" border="1" width="110" src="http://i3.ytimg.com/vi/j0oaK59SSM0/hqdefault.jpg"/>
+<a class="title" href="http://www.youtube.com/watch?v=j0oaK59SSM0" dir="ltr">
+A grammar to generate haikus, spoken by &#39;espeak&#39;
+(pop-espeak2.ogv)
+</a>
+<br/>
+Available at:
+<a href="http://www.youtube.com/watch?v=j0oaK59SSM0">http://www.youtube.com/watch?v=j0oaK59SSM0</a>
+</h4>
+This is a sequel to my previous tutorial (pop-espeak).
+<br/>
+The code examples in this video can be found here:
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/haiku-examples.txt">http://www.cs.bham.ac.uk/research/projects/poplog/teach/haiku-examples.txt</a>
+<p>
+There are many more examples of the kinds of things that can be done
+in Pop11 (especially "thinky programming" examples) in this file
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">http://www.cs.bham.ac.uk/research/projects/poplog/examples/</a>
+<p>
+People who are not familiar with the idea of a grammar, as used here, may find
+this short tutorial by 'drewmfisher' on the idea of a grammar useful:
+<br>
+<a href="https://www.youtube.com/channel/UCZ3sx1PFJ6ImyqwC9RRb8JA">https://www.youtube.com/channel/UCZ3sx1PFJ6ImyqwC9RRb8JA</a>
+<br>
+Anyone familiar with search engines may be able to find additional introductory
+presentations on grammars. A 'teach' file that can be used with pop11 in Poplog
+is here:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/grammar">http://www.cs.bham.ac.uk/research/projects/poplog/teach/grammar</a>
+
+<p>
+This is part of a planned series of video tutorials introducing some
+of the features of Pop-11, an AI programming language (part of the
+Poplog system).
+<p>
+More information about the language and its environment, and ways in
+which AI programming is relevant to science and philosophy as well
+as engineering, can be found here
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples">http://www.cs.bham.ac.uk/research/projects/poplog/examples</a>
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/</a>
+<p>
+I am not an expert pod-caster, so there will be many flaws. I hope
+to learn from experience and from feedback from users.
+<p>
+I am contributing this as part of the UK ComputingAtSchool (CAS)
+initiative, described here:
+<br>
+<a href="http://www.computingatschool.org.uk">www.computingatschool.org.uk</a>
+<p>
+Uploaded: 15 Nov 2011;
+<br/>
+Modified 11 Dec 2011; 14 Oct 2015
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<hr>
+<a name="number-rulebase.ogv"></a>
+<li>
+<h4>
+<img alt="number-rulebase" border="1" width="110" src="http://i2.ytimg.com/vi/9TAQoRpvLFE/hqdefault.jpg"/>
+<a class="title"
+href="http://www.youtube.com/watch?v=9TAQoRpvLFE" dir="ltr">
+Modelling number competences
+(number-rulebase.ogv)
+</a>
+<br/>
+Available at:
+<a href="http://www.youtube.com/watch?v=9TAQoRpvLFE">http://www.youtube.com/watch?v=9TAQoRpvLFE</a>
+</h4>
+This is a sequel to my previous tutorial (pop-espeak2.ogv)
+<p>
+This is part of a planned series of video tutorials introducing some of the features of Pop-11, an AI programming language (part of the Poplog system).
+<p>
+Unlike the previous tutorials this one makes use of Poprulebase, an extension to Pop11 designed for construction of rule-based systems and used in the SimAgent toolkit.
+<p>
+This tutorial does not claim to show how to model what goes on in the mind of a child learning about numbers but does aim to show how one's scientific understanding of the nature of the process can be enhanced by trying to build models of various aspects of the competences. This could help to guide both experimental and modelling research investigating how the learning and development processes occur in children. It could also be a precursor to the design of future robots with human-like intelligence (still a very long way to go).
+The tutorial uses some of the ideas in Chapter 8 of "The Computer Revolution in Philosophy"
+(1978).
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/crp/chap8.html">http://www.cs.bham.ac.uk/research/projects/cogaff/crp/chap8.html</a>
+<br/>
+"On learning about numbers: Problems and Speculations"
+The chapter (like <a href="http://www.cs.bham.ac.uk/research/projects/cogaff/crp/">the whole book</a>)
+is on-line.
+<p>
+
+I also believe that using computers to model some of the processes
+by which animals reason and human children acquire and extend their
+mathematical knowledge and competence is relevant to Philosophy of
+mathematics as illustrated in these talks:
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/talks/">http://www.cs.bham.ac.uk/research/projects/cogaff/talks/</a>
+
+<p>
+The demo uses a text file including comments and code, end ends with some suggestions for project work extending the demo in various ways. The text file is available online here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/number-rulebase.txt">http://www.cs.bham.ac.uk/research/projects/poplog/teach/number-rulebase.txt</a>
+
+<p>
+Since this video was made several of the rules in that file have had comments added to the code.
+<p>
+The video was unscripted and there are at least two mistakes in portions of the presentation relating the program's demonstrated behaviour to the code. One mistake was to use a version of the code that included an unnecessary local variable. Another mistake was to choose the wrong rule to illustrate how one of the replies had been generated, because there are a number of slightly different rules.
+<p>
+More information about the Pop11 language and its environment, and ways in which AI programming is relevant to science and philosophy as well as engineering, can be found here
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/</a>
+<p>
+The original tutorial recordings are hosted here (in .ogv format):
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/tutorials">http://www.cs.bham.ac.uk/research/projects/cogaff/tutorials</a>
+<p>
+I am not an expert pod-caster, so there will be many flaws. I hope to learn from experience and from feedback from users.
+<p>
+I am contributing this as part of the UK ComputingAtSchool (CAS) initiative, described here:
+<a href="http://www.computingatschool.org.uk">www.computingatschool.org.uk</a>
+<p>
+Uploaded: 25 Nov 2011
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<p>
+<hr>
+<a name="pop11-graphics-demo.ogv"></a>
+<li>
+<h4>
+<img alt="pop11-graphics" border="1" width="110" src="http://i3.ytimg.com/vi/jsCINKXK6ek/hqdefault.jpg"/>
+<a class="title"
+href="http://www.youtube.com/watch?v=jsCINKXK6ek" dir="ltr">
+A demo of pop11 2-D graphics commands with faces and random walks
+(pop11-graphics-demo.ogv)
+</a>
+<br/>
+Available at:
+<a href="http://www.youtube.com/watch?v=jsCINKXK6ek">http://www.youtube.com/watch?v=jsCINKXK6ek</a>
+</h4>
+This tutorial makes use of a pop11 teach file available here
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/random_walk">http://www.cs.bham.ac.uk/research/projects/poplog/teach/random_walk</a>
+to demonstrate some features of the 2-D graphical libraries
+available in Pop11, as well as the use of the Poplog editor Ved as
+an interactive learning, programming, testing and demonstration
+tool.
+<p>
+The tutorial introduces a small subset of the RCLIB
+extension to Pop11, providing a 'Relative Coordinates' graphical
+package, which allows the frame of reference to be altered (e.g.
+moved, stretched or rotated) so that the same graphical command has
+different effects. However that feature is not demonstrated here.
+
+<p>
+
+Instead the tutorial shows how an existing library program can
+be used to draw very simple faces with different expressions (e.g.
+happy, sad) and different colours, simply using circular blobs. The
+details, which are not explained or demonstrated in the tutorial can
+all be found in the file:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/faces">http://www.cs.bham.ac.uk/research/projects/poplog/teach/faces</a>
+<br/>
+A learner trying various parameters for the face-drawing procedures
+should be able to work out what the parameters do, as part of
+learning how coordinates work.
+<p>
+
+After that introduction the tutorial shows how Pop11 and its
+graphical command rc_drawby(X, Y), which draws to a location
+specified relative to the previous location, can be used to explore
+different sorts of random walk. For example, this command randomly
+selects one element from a four-element list of pairs of coordinates
+to be given to rc_draw_by:
+
+<pre>
+    rc_drawby( explode( oneof( [ [20 20] [-20 20] [-20 -20] [20 -20] ] ) ) );
+</pre>
+
+ The key features of a random walk are demonstrated
+manually, and then put together in a little procedure that allows
+various kinds of random walk to be demonstrated and displayed
+graphically. This shows how, by playing with such a program, a
+learner can begin to get an intuitive feeling for the ways in which
+random walks can vary.
+<p>
+ The tutorial ends by mentioning that the
+program can be extended to collect different sorts of statistics
+about the random walks, which could be used as input for the Pop11
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/figs/rclib/graphplot/">RC_GRAPHPLOT</a>
+library, which draws graphs of mathematical functions
+or, of empirical data.
+<p>
+ So although Pop11 was designed for
+teaching and research in Artificial Intelligence (and cognitive
+science) it can also be used as a tool for doing research in
+mathematics, especially gaining an intuitive understanding of some
+features of a mathematical domain.
+<p>
+ The talk was unscripted and
+may have a number of errors. One that I've noticed is that on more
+than one occasion I referred to a delay as one second rather than
+one hundredth of a second (the unit for the syssleep function).
+<p>
+
+There may be problems of synchronisation of voice and video because
+the recording was done with some compression, to save file space and
+download time.
+I use 'recordmydesktop' on linux (Fedora 15) on a
+desktop PC. Youtube kindly converts the .ogv format to flash. The
+original version is available, with other .ogv files, here:
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/tutorials/">http://www.cs.bham.ac.uk/research/projects/cogaff/tutorials/</a>
+<p>
+
+Please email comments and suggestions to me
+<a href="http://www.cs.bham.ac.uk/~axs/">http://www.cs.bham.ac.uk/~axs/</a>
+<p>
+Originally Uploaded: 1 Dec 2011. Revised version: 6 May 2012
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<hr>
+<a name="match_sorted.ogv"></a>
+<li>
+<h4>
+<img alt="match-sorted" border="1" width="110" src="http://i3.ytimg.com/vi/fpomSHwuE9c/hqdefault.jpg"/>
+<a class="title" href="http://youtu.be/RvpK7RgWmoE" dir="ltr">
+A tutorial comparing pattern-matching and other paradigms
+(match_sorted.ogv)
+</a>
+<br/>
+<a href="http://www.youtube.com/watch?v=fpomSHwuE9c"">Old Version (installed Dec 2011)</a>
+<br/>
+Available at:
+<a href="http://youtu.be/RvpK7RgWmoE">http://youtu.be/RvpK7RgWmoE</a>
+</h4>
+
+<p>
+
+This is one of a collection of tutorials demonstrating Pop11, a
+language with some of the features of Lisp, Scheme, and Prolog,
+developed for teaching and research in AI and Cognitive Science.
+<p>
+
+This unscripted tutorial turned out longer than intended. It is
+based on this file, showing the program text demonstrated in the
+tutorial
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/match_sorted">http://www.cs.bham.ac.uk/research/projects/poplog/teach/match_sorted</a>
+<p>
+Most people think of pattern matching as an operation performed on
+strings (e.g. 'grep' in unix/linux). The matching here is on
+structures, including lists of items, lists of lists, etc. So the
+functions of matching in this context can be thought of as searching
+in and extracting information from a database of knowledge rather
+than finding and manipulating bits of text.
+<p>
+Because the tutorial was unscripted there are some bloopers -- e.g.
+where I temporarily switched my brain into the wrong context -- e.g.
+attempting to trace "matches" in an example that used "doesmatch",
+not "matches".
+<p>
+The tutorial presents a fairly standard recursive algorithm for
+checking whether a list of numbers is sorted, then shows how that
+can be replaced by a non-recursive definition using the pop11
+pattern matcher, which allows you to specify a sort of abstract
+picture of what is not allowed in a sorted list. The pop11 matcher
+compares that picture with an input list, and if it matches, the
+list is not sorted.
+<p>
+This naive use of the matcher is shown to work, but with
+considerable inefficiency. So a Pop11 library is compiled which
+allows, instead of the format
+<pre>
+    DATUM matches PATTERN
+</pre>
+the format
+<pre>
+    DATUM doesmatch PATTERN where CONDITION
+</pre>
+Using the second format, the pictorial specification of what a
+non-sorted list is like is somewhat clearer and its use is also much
+more efficient, since the search for an unsorted fragment of the
+list is more controlled.
+<p>
+The tutorial then shows how the procedure can be generalised to test
+a variety of types of list, including lists with mixed types of
+components (e.g. words and numbers) by allowing the test for
+unordered elements instead of being frozen in the code to be passed
+as a second parameter to the procedure. Then by using the same
+procedure with different 'unordered' tests we can produce a variety
+of tests for different kinds of ordering, all using the same generic
+procedure.
+<p>
+Finally the tutorial shows how the generic procedure can be
+partially applied to different specific tests (forming Pop11
+closures) to create different procedures, testing for different
+things.
+<p>
+In retrospect I think the example may be confusing for some viewers
+because the task of checking whether a list satisfies a condition
+(e.g. containing numbers in ascending order) requires using a test
+that indicates a failure to satisfy that condition, e.g. a test for
+an adjacent pair of numbers being in descending order. That implies
+that a true result for the test implies a false result for the main
+procedure. This complexity is a consequence of the example shown
+being for something being true of ALL parts of a list, which is
+equivalent to non-existence of ANY part of the list for which it is
+not true. Some human brains find this hard to grasp.
+<p>
+The process of generalisation or abstraction from a few examples of
+testing a list, then creating a new "generic" version of the test,
+by abstraction, which can then be instantiated to produce new
+examples,
+illustrates the ability of humans to learn different competences,
+then discover that those competences share some structure, and then
+use the shared structure with additional parameters to cope with
+novel situations.
+<p>
+That is a common process in mathematical discovery and in becoming
+more competent at programming. It is often confused with
+metaphorical thinking (which requires continued reference to the
+original examples, whereas abstraction does not).
+<p>
+I think it is an example of the notion of "Representational
+Redescription" presented by Annette Karmiloff-Smith in her 1992 book
+"Beyond modularity". Implementing representational redescription in
+a program is an ambitious task for Artificial Intelligence. This
+tutorial does not go into that.
+
+<p>
+Uploaded: 3 Dec 2011
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<p>
+<hr>
+<a name="river-intro.ogv"></a>
+<li>
+<h4>
+<img alt="river-intro" border="1" width="110"
+    src="http://i1.ytimg.com/vi/xfGv9xfqDxU/hqdefault.jpg"/>
+<a class="title"
+href="http://www.youtube.com/watch?v=xfGv9xfqDxU" dir="ltr">
+Pop11 Basics: introduction to interactive programming, including
+lists
+</a>
+<br/>
+Available at:
+<a href="http://www.youtube.com/watch?v=xfGv9xfqDxU">http://www.youtube.com/watch?v=xfGv9xfqDxU</a>
+<br/>
+About 7.5 minutes.
+</h4>
+<p>
+Originally this was a 19 minute demo, illustrating some features of
+Pop11, then going on to present the Riverworld tutorial. Instead
+that is now done in a separate video <a
+href="http://youtu.be/RrT9DUyg88M">http://youtu.be/RrT9DUyg88M</a>.
+This tutorial has been shrunk to the first 7.5 minutes of the
+original.
+<p>
+This video is now a (mostly unscripted) tutorial presentation of
+some of the arithmetical and list processing facilities in Pop11,
+and the interactive mode of developing and testing programs, using
+the poplog editor as a development tool.
+<p>
+A feature of this and other pop11 tutorials is that it can be used
+on very low cost interfaces, since it uses only a textual display to
+paint schematic one-dimensional pictures of the state of the world
+as it changes.
+<p>
+Among the many tutorial files teaching aspects of Pop11 and AI that
+are included in the Poplog system, one that has been found very
+useful for teaching absolute beginners some of the key ideas of
+programming, including sequences of instructions, grouping of
+instructions into named procedures, procedures with input
+parameters, and the use of error messages is the TEACH RIVER
+file,log/t based on an earlier version by Max Clowes around 1978,
+now online here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/river">http://www.cs.bham.ac.uk/research/projects/poplog/teach/river</a>
+<br/>
+The
+mechanisms used in that file are built on lower level abilities of
+pop11 including list processing mechanisms. This teach file is an
+introduction to a small subset of the more primitive mechanisms in
+pop11.
+<p>
+This video is an unscripted tutorial presentation of some of the
+arithmetical and list processing facilities and the interactive mode
+of developing and testing programs, using the poplog editor as a
+development tool.
+<p>
+A feature of this tutorial is that it can be used on very low cost
+interfaces, since it uses only a textual display to paint schematic
+one-dimensional pictures of the state of the world as it changes.
+<p>
+Aaron Sloman
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">http://www.cs.bham.ac.uk/~axs/</a>
+<br>
+School of Computer Science,
+<br>
+University of Birmingham, UK
+<p>
+Uploaded: 11 Dec 2011, Modified: 10 Jan 2012
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<p>
+<hr>
+<a name="riverworld"></a>
+<li>
+<h4>
+<img alt="riverworld" border="1" width="110" src="http://i2.ytimg.com/vi/M-NPoGCb0q8/default.jpg"/>
+<a class="title"
+href="http://youtu.be/M-NPoGCb0q8" dir="ltr">
+(For teachers)
+Using pop11 to create a microworld for student programs to operate on (riverworld)</a>
+<p>
+<small>
+An earlier version of this tutorial wasted about a minute on a
+presentation error. That version is no longer available, so please
+don't save links to it.
+</small>
+<br/>
+Available at:
+<a href="http://youtu.be/M-NPoGCb0q8">http://youtu.be/M-NPoGCb0q8</a>
+<br>
+About 55 Minutes
+</h4>
+
+<p>
+A separate tutorial file
+<a href="http://youtu.be/RrT9DUyg88M">Riverworld in Pop11: introduction to programming</a>
+also listed <a href="#river-teach.ogv">
+below</a>,
+demonstrates how a micro-world involving a man, fox, chicken and
+grain with a boat that holds two items and a river to cross could
+get across the river, subject to the constraints that the boat can
+hold only the man and one other item at a time, and the fox should
+never be left on a bank with the chicken if the man is not there,
+and the chicken should not be left alone with the grain if the man
+is not there.
+<p>
+That tutorial demonstrates that the river-crossing microworld could
+be used to teach absolute beginners some of the elementary aspects
+of programming, in an intuitive setting.
+<p>
+In contrast, this new unscripted tutorial
+(<a href="http://youtu.be/M-NPoGCb0q8">http://youtu.be/M-NPoGCb0q8</a>)
+aims at showing teachers how to create such a microworld using
+features in Pop11 that allow programs to create, interrogate and
+alter a simple database, implemented as a list of lists. Procedures
+can be written that simulate perceiving the state of the world and
+acting on the world, and some of the manipulation procedures can be
+used to encode the causal laws and constraints of the world.
+<p>
+Such a world can then be used in a variety of contexts for student
+exercises, e.g. natural language interaction relating to the world,
+planning, problem solving, reasoning, etc. The tutorial is merely an
+introduction. There are many directions that can be taken, depending
+on the educational goals, the background and interests of the
+students and their abilities.
+<p>
+The poplog system, used for this tutorial is described with examples
+of teaching materials here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">http://www.cs.bham.ac.uk/research/projects/poplog/examples/</a>
+<p>
+NOTE: because this tutorial was unscripted, I made some minor errors
+wasted about a minute in the original version. I later was able to
+edit it on Fedora 15 using PiTiVi, to remove the unwanted episode.
+So a new version has been uploaded. Youtube does not allow an old
+faulty video to be replaced, so the new version had to go to a
+different location.
+
+<p>
+Uploaded: Original version 11 Dec 2011; Revised version 13 dec 2011
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<p>
+<a name="river-teach.ogv"></a>
+<li>
+<h4>
+<img alt="River Teach" border="1" width="110"
+src="http://i.ytimg.com/vi/RrT9DUyg88M/3.jpg?1326169168694"/>
+<a class="title" href="http://youtu.be/RrT9DUyg88M">
+Using the river-crossing microworld to learn programming and AI -- first steps (river-teach.ogv)</a>
+<br/>
+Available at: <a href="http://youtu.be/RrT9DUyg88M">http://youtu.be/RrT9DUyg88M</a>
+<br/>
+About 40 minutes.
+</h4>
+<p>
+Among the many tutorial files teaching aspects of Pop11 and AI that are included in the Poplog system, one that has been found very useful for teaching absolute beginners some of the key ideas of programming, including sequences of instructions,
+grouping of instructions into named procedures, procedures with input parameters, and the use of error messages is the TEACH RIVER file, based on an earlier version by Max Clowes around 1978, now online here:
+http://www.cs.bham.ac.uk/research/projects/poplog/teach/river
+<p>
+This video is a tutorial presentation of some of the key ideas in that teach file, while also introducing the use of the poplog editor Ved as a programming environment, and some of the ways of using pop11 for interactive programming.
+<p>
+This teach file introduces the river-crossing puzzle: get man, fox, chicken, and grain, across a river using a boat that can old only the man and one other item, without ever leaving the fox with the chicken, or the chicken with the grain,
+on a bank without the man present to prevent a vulnerable item from being eaten. Students are first asked to work out a solution away from the computer and then they try to express their solution using a specially developed 'micro-language'
+for the river world, with commands like putin(fox), takeout(chicken), getin(), getout(), crossriver(). When a sequence of instructions solving the problem has been found it can be made much shorter and clearer by defining new procedures for
+invoking frequently used sequences of instructions.
+<p>
+A feature of this tutorial is that it can be used on very low cost interfaces, since it uses only a textual display to paint schematic one-dimensional pictures of the state of the world as it changes.
+<p>
+Teachers can, of course, copy and edit the library program, the teach files, or other files that are used by this one, or which build on it.
+<p>
+Several other teach files in the Pop11 library develop this micro-world, e.g. by allowing students to design their own implementation for the world representation and the actions that change the world, or by adding a chatbot-like natural language
+interface to the program, or by using the poprulebase system (for rule-based programming) to get the computer to find a sequence of moves that solves the problem, using breadth first or depth first search. for example the addition of a natural
+language interface is the subject of this teach file
+http://www.cs.bham.ac.uk/research/projects/poplog/teach/riverchat
+<p>
+This illustrates the use of microworlds for teaching important concepts and techniques, especially in symbolic Artificial Intelligence.
+<p>
+This is one of several
+tutorials based on the river world. An earlier tutorial showed how a teacher could use the list processing and pattern-matching features of pop11 to set up a
+microworld like the riverworld, which could the be used
+as a basis for a number of different learning scenarios for beginner or more advanced programmers.
+<p>
+The poplog system, used for this tutorial is described with examples
+of teaching materials here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">http://www.cs.bham.ac.uk/research/projects/poplog/examples/</a>
+<p>
+NOTE: because these
+tutorials are unscripted, they include errors and moments of
+confusion!
+
+<p>
+Uploaded: 10 Jan 2012
+<hr>
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<p>
+<hr>
+<a name="pop-basics"></a>
+<li>
+<h4>
+<img alt="POP11-Basics"
+border="1" width="110"
+src="http://i.ytimg.com/vi/WeYsG8TkNIY/1.jpg?1324806648320"/>
+<a class="title" href="http://youtu.be/WeYsG8TkNIY
+" dir="ltr">
+Introduction to Pop11 basics
+</a>
+<br/>
+About 62 minutes.
+<br/>
+Available at: <a href="http://youtu.be/oFq1s2ul-Jw">http://youtu.be/oFq1s2ul-Jw</a>
+<p>
+(Replaces
+this one <a href="http://youtu.be/oFq1s2ul-Jw">http://youtu.be/oFq1s2ul-Jw</a>
+<br/> Please do not save links to the older version.)
+</h4>
+<P>
+Pop11 is an AI language with a general purpose-core that is in some
+ways like Scheme, in other ways like Forth (use of an open stack).
+<p>
+This tutorial demonstrates some of the main "built-in" data-types
+(integers, decimals, complex/imaginary numbers, strings, words,
+lists, vectors, properties
+and procedures),
+some of the kinds of programming
+constructs, for referring to entities (expression formats),
+including expressions for referring to or constructing examples of
+all the above entities,
+the use of the poplog open stack,
+and some of the control constructs provided,
+including use of nested loops vs use of parallel loops. The latter
+is an unusual, but very useful feature.
+<p>
+Nested loops can be used for doing something to all possible
+combinations of items from several different lists.
+<p>
+Parallel loops repeatedly do something to a group of items, one selected
+from each of several different lists, so that each list item is used
+only once. The loop stops after all members of the
+shortest list have been used.
+<blockquote>
+<pre>
+<b>Two "nested" loops</b>
+
+    vars item1, item2;
+
+    ;;; Outer loop iterates over items in list of words
+    for item1 in [a b c d e] do
+
+        ;;; Inner loop iterates over items in list of words
+        for item2 in [1 2 3 4 5] do
+
+            [^item1 ^item2 ]
+
+        endfor
+
+    endfor =>
+
+;;; That prints out:
+** [a 1] [a 2] [a 3] [a 4] [a 5] [b 1] [b 2] [b 3] [b 4] [b 5] [c 1] [c 2] [c 3] [c 4]
+    [c 5] [d 1] [d 2] [d 3] [d 4] [d 5] [e 1] [e 2] [e 3] [e 4] [e 5]
+
+
+<b>Two "parallel" loops</b>
+
+    vars item1, item2;
+
+    ;;; One loop, with two loop variables, one iterating over a list of words
+    ;;; the other iterating over a list of numbers:
+
+    for item1, item2 in [a b c d e], [1 2 3 4 5] do
+
+            [^item1 ^item2 ]
+
+    endfor =>
+
+</pre>
+</blockquote>
+
+;;; that prints out:
+** [a 1] [b 2] [c 3] [d 4] [e 5]
+<p>
+See also HELP LOOPS
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/help/loops">http://www.cs.bham.ac.uk/research/projects/poplog/help/loops</a>
+<p>
+The Pop11 language used for this tutorial is described with a wider
+variety of examples of teaching materials here:
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">http://www.cs.bham.ac.uk/research/projects/poplog/examples/</a>
+<p>
+A large amount of documentation is provided with the poplog system
+when downloaded. Some of the teaching documentation is also
+available online here:
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/">http://www.cs.bham.ac.uk/research/projects/poplog/teach/</a>
+<p>
+Uploaded: 24 Dec 2011; Revised version 25 Dec 2011
+<hr>
+<p>
+<a name="pythag"></a>
+<li>
+<img alt="Pythag" border="1" height="60" src="https://i1.ytimg.com/vi/0ZbB_-ip9VU/mqdefault.jpg"/>
+<a href="http://youtu.be/0ZbB_-ip9VU">http://youtu.be/0ZbB_-ip9VU</a>
+<br/>
+<b>A Pop-11 program demonstrating a proof of Pythagoras theorem</b>
+<br/>
+Just under 4 minutes.
+<br/>
+(Added 30 Mar 2014 to demonstrate pop11's graphics, and how some graphical proofs can
+work.)
+
+<br/>
+
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<hr>
+<a name="editor"></a>
+<li>
+<h3><b>
+TUTORIALS ON THE EDITOR VED/XVED
+</b></h3>
+<ul>
+<a name="ved-xved.ogv"></a>
+<li>
+<h4>
+<img alt="ved-xved.ogv" border="1" width="110" src="http://i2.ytimg.com/vi/Athf7cFbk3E/hqdefault.jpg"/>
+<a class="title" href="http://youtu.be/Athf7cFbk3E" dir="ltr">
+Very Rapid High Level Overview of Some Features of Xved/Ved the
+Poplog editor
+</a>
+<br/>
+About 9.5 minutes.
+<br/>
+Available at: <a href="http://youtu.be/Athf7cFbk3E">http://youtu.be/Athf7cFbk3E</a>
+</h4>
+
+Most of the tutorials on this web site make use of the Poplog editor
+Ved, or its multi-window version XVed, to demonstrate features of AI
+programming, testing of programs, searching for documentation,
+editing program code, etc. This short video (just over 9 minutes)
+illustrates uses of Xved and Ved that invoke some of Pop11's 2-D
+graphics capabilities, including handling multiple text windows,
+using  (user definable) graphical menus, and running programs that
+invoke graphical displays. It was originally intended as an
+introduction to a longer tutorial on the uses of the editor.
+However, it made the tutorial too long, so I separated this from the
+main tutorial which is the video that will be uploaded after this
+(Essentials of Ved, the Poplog Editor
+at: <a href="http://youtu.be/h8zv_un5k3k">http://youtu.be/h8zv_un5k3k</a>)
+and
+<a href="#vedkeys">the Ved Keys tutorial, below.</a>
+<p>
+The video quality of this tutorial is very poor for some reason. So
+I may replace it later.
+<p>
+The next tutorial, will show the Ved editor being used in single
+window mode, and will present the most commonly used keyboard
+commands for getting things done.
+<p>
+The poplog system, used for this tutorial is described with examples
+of teaching materials here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">http://www.cs.bham.ac.uk/research/projects/poplog/examples/</a>
+<p>
+NOTE: because these
+tutorials are unscripted, they include errors and moments of
+confusion!
+
+<p>
+Uploaded: 16 Dec 2011
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+
+<hr>
+<a name="vedkeys"></a>
+<li>
+<h4>
+<img alt="vedkeys" border="1" width="110"
+src="http://i.ytimg.com/vi/h8zv_un5k3k/3.jpg"/>
+<a class="title" href="http://youtu.be/h8zv_un5k3k" dir="ltr">
+Using the Poplog/Pop11 editor Ved with minimal keyboard keys
+</a>
+<br/>
+About 47 minutes.
+<br/>
+Available at: <a href="http://youtu.be/h8zv_un5k3k">http://youtu.be/h8zv_un5k3k</a>
+</h4>
+ The previous tutorial
+(<a
+href="http://youtu.be/Athf7cFbk3E">http://youtu.be/Athf7cFbk3E</a>(
+rapidly ran through some of the things that
+can be done with the Poplog editor XVed, using its 2-D graphical
+capabilities. including use of multiple windows and mouse drive menu
+panels. This tutorial goes to the opposite extreme to show how Ved
+can be used not only without 2-D graphics, but also without any
+function keys, so that it has to be driven only by normal
+alphanumeric keyboard keys, along with CTRL, ESC, RETURN, and
+Backspace.
+<p>
+This situation can arise when either there is something wrong with a
+keyboard, or the keyboard is small and lacks function keys (e.g. on
+a laptop), or the use of the function keys is not available to Ved
+because they are 'grabbed' by the operating system or graphical
+desktop interface.
+<p>
+In such a situation it is possible to drive Ved and do normal
+programming, development, testing, and reading of documentation,
+using only a minimal set of keyboard keys, namely all the
+alphanumeric keys plus the CTRL and ESC keys.
+<p>
+This tutorial explains how to move the Ved cursor around, how to
+delete text, how to mark portions of a file, how to mark and compile
+portions of a file, and how to switch between different files, while
+using nothing but the minimal set of keyboard keys. There are other
+help files that explain additional actions that can be performed
+using the keyboard, and without a mouse or 2-D graphical facilities.
+<p>
+The 'teach file' used for this tutorial is available as part of
+poplog, and also available online here:
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/teach/essentialkeys">http://www.cs.bham.ac.uk/research/projects/poplog/teach/essentialkeys</a>
+
+<p>
+NOTE: because these tutorials are unscripted, they include some
+minor errors and moments of confusion!
+<p>
+For additional tutorials see
+
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/vid.html">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/vid.html</a>
+
+<p>
+Uploaded: 16 Dec 2011
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+
+<hr/>
+
+<a name="functionkeys"></a>
+<li>
+<h4>
+<img alt="functionkeys" border="1" width="110"
+src="http://i.ytimg.com/vi/vXpjnqzTZIU/3.jpg?1324438342269"/>
+<a class="title" href="http://http://youtu.be/vXpjnqzTZIU" dir="ltr">
+Using the Poplog/Pop11 editor Ved with keyboard function keys -- top
+middle and right.
+</a>
+<br/>
+About 35 minutes.
+<br/>
+Available at:
+<a href="http://youtu.be/vXpjnqzTZIU">http://youtu.be/vXpjnqzTZIU</a>
+
+</h4>
+
+The previous tutorial demonstrated some of the things that can be
+done with the Poplog editor Ved/XVed without using any function
+keys, only normal keyboard keys and the ESC and CTRL keys. This
+tutorial goes beyond that to show how many of the operations can be
+performed more economically using function keys on a standard PC
+keyboard.
+<p>
+The keyboard layout is shown in this diagram
+<br/>
+<img alt="vedkeys" border="1" width="700" src="http://www.cs.bham.ac.uk/research/projects/poplog/help/vedkeys.jpg"/>
+<p>
+Near the end of the tutorial I tried to demonstrate the use of the
+numeric keypad to compile a marked range, but forgot to precede the
+key with ESC. So instead of compiling the whole range it compiled
+only the last line of the marked range, and reported a syntax error,
+because it found the 'endrepeat' syntax word without first finding
+the 'repeat'. If I had pressed ESC first, the demonstration would
+have worked, as you can confirm if you have poplog. (The correct
+behaviour is demonstrated in the next tutorial
+<a
+href="http://youtu.be/giEhHIN8z6I">http://youtu.be/giEhHIN8z6I</a>)
+<p>
+In fact, as shown in the demo, the marked range can be compiled
+using CTRL D, which is probably more convenient for most people than
+ESC followed by keypad '*' key.
+<p>
+Uploaded: 21 Dec 2011
+<p>
+<a href="#contents">Jump to CONTENTS List </a>
+<hr>
+<p>
+<a name="loadrange"></a>
+<li>
+<h4>
+<img alt="functionkeys" border="1" width="110"
+src="http://i.ytimg.com/vi/giEhHIN8z6I/1.jpg?1324466210781"/>
+<a class="title" href="http://youtu.be/giEhHIN8z6I" dir="ltr">
+Using Numeric Keyboard to Compile a Range
+(load-marked-range: Correcting
+previous error)
+</a>
+<br/>
+About 9 minutes.
+<br/>
+Available at:
+<a href="http://youtu.be/giEhHIN8z6I">http://youtu.be/giEhHIN8z6I</a>
+</h4>
+In the previous tutorial, while demonstrating the use of numeric
+keypad keys in the poplog editor, I attempted to demonstrate the use
+of the '*' key on the keypad to compile a number of lines of Pop-11
+code, which had previously been marked, using the Mark Start and
+Mark End function keys.
+<p>
+Unfortunately I forgot to press the ESC key before pressing the '*'
+key, so instead of compiling a range it attempted to compile only
+one line, and that line had 'endrepeat', which is not legal Pop11
+unless preceded by 'repeat'. The result was an error message which,
+at the time, mystified me. See the last few minutes of this video
+<a href="http://youtu.be/vXpjnqzTZIU">http://youtu.be/vXpjnqzTZIU</a>
+<p>
+Later I realised what I should have done,
+and so this tutorial is a supplement to the previous one, partly
+repeating the previous one and also correcting the mistake at the
+end of the previous one.
+<p>
+Uploaded: 21 Dec 2011
+</ul>
+</ol>
+<hr/>
+<small>
+INSTALLED: 12 Dec 2011
+<br/>
+UPDATED: 16 Dec 2011; 21 Dec 2011; 30 Mar 2014 (added pythagoras demo)
+<br>
+Maintained by: <a href="http://www.cs.bham.ac.uk/~axs">Aaron Sloman</a>
+<br>
+Email: a.sloman@cs.bham.ac.uk
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/packages/simagent.html">http://www.cs.bham.ac.uk/research/projects/poplog/packages/simagent.html</a>
+</small>
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+<p>
+-
+</div>
+</body>
+</html>

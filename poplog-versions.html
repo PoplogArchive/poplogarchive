@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>PoplogVersions</title>
+    <link href="cascade2.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="Cascade2.js"></script>
+</head>
+
+<body marginwidth="0" marginheight="0" style="margin: 0" onLoad="writeMenus()"
+    onResize="if (isNS4) nsResizeHandler()" bgcolor="lightblue">
+<br>
+<h1>Poplog Versions</h1>
+<p>
+<h3><b>
+NB: This file is of date, please check the the <a href="freepoplog.html">Free
+Poplog Portal</a> for latest versions of Poplog, and also the announcement of 64
+bit Poplog V16 at
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+</b></h3>
+This web page is based on a table on the
+<a href="http://openpoplog.sourceforge.net/">Open Poplog web site on
+sourceforge</a>.
+<br>
+<a href="http://openpoplog.sourceforge.net/versions.html">
+That table,</a> originally based on information on
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">The Free Poplog Portal</a>
+had become out of date. So this one is offered as a replacement.
+<h3><b>
+Last updated: 11 Jul 2019
+<br>
+INTRODUCED POPLOG VERSION 16(64-bit)
+</b></h3>
+Thanks to massive conversion of poplog to 64bit by
+Waldek Hebisch.
+<br>
+Temporary location:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16</a>
+<br>
+This will eventually be available on github.
+<P>
+<b>Previous updates:</b> 5 Jul 2009; 12 Aug 2010; 27 Dec 2011
+<p>
+<b>Previous versions:
+<ul>
+<li>
+<a href="v15.65">v15.65</a> (32-bit) (Installed December 27 2011)
+<li>
+<a href="v15.62-amd64">v15.62-amd64</a> (64-bit, but out of date),
+</ul>
+<p>Versions of Poplog exist for the platforms listed below.
+Most of the versions have been frozen for some time because the
+people who have been involved in supporting poplog have only had
+access to Linux versions, and therefore only the linux versions (32
+bit and 64 bit) are kept up to date at present.
+<p>
+Some of the older (32-bit) versions should still be perfectly usable, including
+the Windows version (v15.5, used in
+<a href="http://www.j-paine.org/dobbs/poplog.html">the demo by Jocelyn Paine</a>
+in Dr. Dobbs Journal, March 2009.
+</p>
+<hr/>
+<h3><b>
+OLD Poplog Sources
+</b></h3>
+There is a poplog source tree located at
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/src/">http://www.cs.bham.ac.uk/research/projects/poplog/src/</a>
+<p>
+This was a dump of the sources as developed by Sussex University and
+ISL
+around 1999. It should NOT be regarded as up to date. It was built and
+maintained using special tools (a mixture of shell scripts and pop11
+programs) which have not been installed at this site.
+<p>
+The latest sources are included in the distribution tarballs. So anyone
+considering a new port should start from the latest linux sources.
+Other machine-specific and OS-specific sources can be extracted from the
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/src/master">Sussex/ISL source tree,</a>
+but may need minor or major enhancements to bring them up to date.
+<hr/>
+<h3><b>
+Poplog Package System
+</b></h3>
+There was a major reorganisation, including introduction of a more
+modular 'PopPackage' system, in version 15.6, 2005, described
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#poppackages">here,</a>
+using the subdirectory <a href="packages">$usepop/pop/packages</a>.
+</p>
+<p>
+</p>
+<hr/>
+<h3><b>
+Poplog Versions
+</b></h3>
+Versions known to the maintainer of this site are listed below.
+<br/>
+(Though there may be some unknown to the site maintainer!).
+<p>
+Note that although there is a version listed for Mac OSX on PPC,
+there isn't one for Intel-based Macs. For those, the best way to run
+poplog is now to install a version of linux (e.g. some have used
+'archlinux because it is small) in a virtual operating system (e.g.
+using VMWare) and then to install and run the latest 32-bit
+Linux poplog.
+<p>
+For information about downloading, see
+<a href="freepoplog.html#downloadversions">The Free Poplog page.</a>
+<p>
+</p>
+<hr/>
+<h3><b>
+Installation Options
+</b></h3>
+Both the 32-bit script and the 64-bit fetch-and-install script
+give you the option of installing in a default location
+<pre>
+    /usr/local/
+</pre>
+or in the same directory as the shell script, or in some specified
+location, depending which of the 'get-and-install' scripts you
+download. The scripts are very small, but they will fetch a few
+additional scripts required for installation and testing, and also a
+tar ball, which is about 19MB for the 32-bit version of Poplog and a
+little larger for the 64-bit version. They also untar the tar-ball
+into the specified location, and then relink poplog either with or
+without motif/lestif, depending on whether the libraries are
+available or the instruction to include or omit motif has been
+given.
+<p>
+The use of motif is not essential, but it slightly improves
+the interfaces facilities available, especially for the integrated
+editor XVed.
+<p>
+</p>
+<hr/>
+<h2><b>
+POPLOG VERSIONS
+</b></h2>
+<table border="1">
+ <caption align="center"><b>POPLOG PLATFORM SUPPORT</b></caption>
+ <thead>
+  <th>Processor</th>
+  <th>Operating System</th>
+  <th>Poplog<br>Version</th>
+  <th>Download (old versions may no longer work)</th>
+ </thead>
+ <tbody>
+  <tr>
+   <td>AMD64/Intel-EM64T</td>
+   <td>Linux (64-bit)</td>
+   <td>V16</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">Instructions for 64-bit Linux poplog V16</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.65</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/">Instructions
+for Linux Poplog v15.65 (about 17MB download)</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.6.4</td>
+   <td><a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.6.4/">Instructions
+for Linux Poplog v15.6.4 (about 16.5MB download)</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.63</td>
+   <td><a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.63/">Instructions
+for Linux Poplog v15.63 (about 16.5MB download)</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.62</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.62/">Instructions
+for Linux Poplog v15.62 (19MB download)</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.61</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.61/">Instructions
+for Linux Poplog v15.61 (18MB)</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.6</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.6/">Instructions for Linux Poplog v15.6 (18MB)</a></td>
+  </tr>
+  <tr>
+    <td><hr></td>
+    <td><hr></td>
+    <td><hr></td>
+    <td><hr></td>
+  </tr>
+  <tr>
+   <td>Alpha</td>
+   <td>Digital Unix (64-bit)</td>
+   <td>15.53</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/alphaunix-15.53.tar.gz">Poplog v15.53 for Digital Unix on Alpha (64-bit)</a></td>
+  </tr>
+  <tr>
+   <td>Alpha</td>
+   <td>Digital Unix (64-bit)</td>
+   <td>15.50</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/alphaunix1550.tar.gz">Poplog v15.50 for Digital Unix on Alpha (64-bit)</a></td>
+  </tr>
+  <tr>
+   <td>HP Architecture</td>
+   <td>HP-UX 9.05</td>
+   <td>15.53</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/hp-poplog/hp-poplog.html">Poplog v15.53 for FP Architecture running HP Unix, i.e. HP 712 + HP-UX 9.05</a> </td>
+  <tr>
+   <td>PowerPC</td>
+   <td>AIX</td>
+   <td>15.52</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/powaix-15.52.tar.gz">Poplog v15.52 for AIX on PowerPC</a></td>
+  </tr>
+  <tr>
+   <td>PowerPC</td>
+   <td>Macintosh OSX</td>
+   <td>15.53</td>
+   <td> <a href="http://www.cs.bham.ac.uk/research/projects/poplog/osx/AREADME.txt">Usable partial port</a>
+</td>
+  </tr>
+  <tr>
+   <td>SPARC</td>
+   <td>Solaris (2.6, 7 and 8)</td>
+   <td>15.53</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/solaris1553.tar.gz">Poplog v15.53 (32-bit addressing) for Solaris on SPARC</a></td>
+  </tr>
+  <tr>
+   <td>x86</td>
+   <td>Mini-Linux (Using libc5; No X-Window facilities)</td>
+   <td>15.53</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/mini-linux-pop/">Mini-Poplog for Mini-Linux using libc5</a></td>
+  </tr>
+  <tr>
+   <td>x86(Intel/AMD)32-bit</td>
+   <td>Linux</td>
+   <td>15.53f</td>
+   <td> The most recent of the legacy packages:
+    <br>
+        <a href="http://www.cs.bham.ac.uk/research/projects/poplog/bham-linux-poplog.tar.gz">Birmingham Linux Poplog v15.53f (19MB)</a></td>
+  </tr>
+  <tr>
+   <td>x86</td>
+   <td>Linux</td>
+   <td>15.53</td>
+   <td> 'Legacy' Linux Poplog Packages. (No longer recommended).
+    <br>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/bham-linux-poplog.tar.gz">Birmingham Linux Poplog v15.53 (21 MB)</a>
+   <br><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/linux-pc-1553.tar.gz">
+Core PC Linux Poplog v15.53 (9.8 MB)</a>
+   <br><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/linux-poplog.tar.gz">Minimal PC Poplog v15.53 (12.4 MB - Core + Extras)</a>
+   <br><a href="http://www.cs.bham.ac.uk/research/projects/poplog/linux-cd/AREADME.motifcheck.txt">Advice for (would-be) Motif users</a>
+   </td>
+  </tr>
+  <tr>
+   <td>x86</td>
+   <td>Solaris</td>
+   <td>15.52</td>
+   <td><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/pcsolaris1552.tar.gz">
+Poplog v15.52 for Solaris on Intel</a>
+    </td>
+  </tr>
+  <tr>
+   <td>x86</td>
+   <td>Windows (95, 98, ME), NT4, 2000, XP</td>
+   <td>15.53</td>
+   <td>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/winpop/AREADME.html">Instructions for Windows Users</a>
+    <br>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/winpop/pop15-53.zip">Poplog v15.53 for Windows NT</a>
+   <br><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/pcwin15.5.zip">Poplog v15.50 for Windows</a>
+   <br><a href="http://www.cs.bham.ac.uk/research/projects/poplog/new/pcwnt-sources.tar.gz">Poplog Source v15.50 for Windows</a>
+   </td>
+  </tr>
+ </tbody>
+</table>
+<p>
+<b>NOTE</b>
+<br>
+Although Poplog comes with incremental compilers (not interpreters) for four languages:
+Pop-11, Common Lisp, Prolog, and Standard ML, the core language is Pop-11, used for implementing
+the main features of poplog, the windows interface, etc. For this reason users who are
+unfamiliar with Pop-11 are likely to find the online Pop-11 primer useful.
+<br>
+It is available
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#primer">here,
+in various formats.</a>
+<br>
+This merely gives an introduction to the language (for experienced programmers).
+For more documentation is available as part of poplog in the form of TEACH files,
+HELP files, and REF files, often with supporting tutorial libraries. Most of the
+documentation can be browsed online here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/doc/">http://www.cs.bham.ac.uk/research/projects/poplog/doc/</a>
+
+<hr>
+<p><a href="http://www.evrsoft.com/1stpage/"><img src="http://www.evrsoft.com/1stpage/1st-now.gif" border="0" alt="Made with 1st Page 2000 - Professional tools for real minds."></a>
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=76639&amp;type=7" width="210" height="62" border="0" alt="SourceForge.net Logo" /></a>
+<p>
+<script language="JavaScript" type="text/javascript">
+<!--
+
+         document.write("Last Modified " + document.lastModified);
+
+// -->
+</script>
+ Please report errors and/or omissions to
+<a href="mailto:A.Sloman@cs.bham.ac.uk">Aaron Sloman</a>.
+</body>
+</html>

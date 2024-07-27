@@ -1,0 +1,246 @@
+<HTML><HEAD> <TITLE>POPLOG/POP-11 TEACHING MATERIALS</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<FONT color="#000000">
+<CENTER>
+<h3>
+<a href="http://www.cs.bham.ac.uk/"> School of Computer Science</a>
+--
+<a href="http://www.cs.bham.ac.uk/"> The University of Birmingham</a>
+<br>
+<br>
+In collaboration with
+The University of Sussex:
+<br>
+<a href="http://www.sussex.ac.uk/informatics/">Informatics Department</a>
+and <a href="http://www.sussex.ac.uk/cogs">Centre for Research in Cognitive Science</a>
+
+</h3>
+</CENTER>
+<hr/>
+<CENTER>
+<h2>
+<B>
+Teaching Documentation and Libraries in Pop-11
+<br/>
+Pop-11 packages
+<br/>
+And Other Poplog Languages (Prolog, Lisp, ML)
+</B>
+</h2>
+<h3>
+<P>
+This is part of the
+<a href="freepoplog.html">Free Poplog Portal</a>
+</h3>
+Warning The www.poplog.org web site seems to be defunct (June 2009)
+</CENTER>
+<hr/>
+<h3><b>
+Teaching materials for Poplog/Pop-11/AI/General programming
+</b></h3>
+The Pop-11 teaching materials provided in Poplog allow students at
+all levels to learn about many aspects of both general programming
+and Artificial Intelligence and Cognitive Science, by designing,
+implementing, testing, documenting their own programs and using,
+testing, extending, and analysing working programs provided.
+<p>
+The core language, Pop-11, in some ways like Python, in other ways
+like Lisp, can also be used to introduce a variety of common
+programming paradigms, including use of loops, recursion,
+co-routines, rule-based programming, event-driven programming, list
+processing, pattern matching for structure manipulation, numerical
+programming, array programming, use of object oriented programming
+with multiple inheritance, and uses of higher order functions and
+closures (as in Scheme). A linear algebra package based on
+<a href="http://www.netlib.org/lapack/">Lapack</a>
+and
+<a href="http://www.netlib.org/blas/">BLAS</a> is described
+<a href="doc/popvision/help/popmatlab">here,</a>
+<a href="doc/popvision/help/lapop">here,</a> and
+<a href="doc/popvision/help/lapack">here.</a>
+<p>
+A subset of Pop-11 with graphical facilities provides the
+functionality of the LOGO Turtle, but with many additional features
+available, illustrated
+<a href="figs/rclib/">here</a> and in this tutorial introduction
+to making
+<a href="teach/faces">pictures of faces</a>, and combining
+graphical commands with loops, and list processing.
+<p>
+There are many 'teach' files developed at Sussex University,
+Birmingham University and elsewhere,
+introducing concepts and techniques, with exercises ranging from
+simple program completion to development of whole systems, some of
+them making use of packages provided by tutors to hide details for
+beginners:
+e.g.
+some basic programming and AI teach files
+<a href="doc/popteach">here</a> and
+<a href="doc/bhamteach">here</a>, including a tutorial on building
+a simple
+<a href="doc/bhamteach/respond">chatbot based on pattern matching</a>
+an
+introduction to
+<a href="doc/bhamteach/grammar.txt">grammars, parsing. sentence
+generation</a>,
+<a href="doc/bhamteach/storygrammar">generation of stories and
+haikus
+<a/>;
+some general programming including recursion and list-processing
+<a href="doc/popteach/sets">here</a> and
+<a href="doc/popteach/sets2">here</a> (with answers available);
+some rule-based programming
+examples
+<a href="newkit/prb/teach">here</a>,
+the use of the
+<a href="packages/simagent.html">SimAgent</a> Toolkit
+<a href="newkit/sim/teach">here</a> and The Sussex
+University Popvision tutorials
+<a href="doc/popvision/teach">here</a>, and a book, originally
+published by MIT Press, though now out of print, providing an
+introduction to Cognitive Science/AI using Pop-11 is
+<a href="computers-and-thought">here</a>. It uses an older
+version of the Pop-11 syntax, which is still supported in Poplog.
+A Pop-11 programming primer for people with previous programming
+experience, using the current syntax is
+<a href="primer">here.</a>
+<br/>
+See also:
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/81-95.html#45"><i>Beginners need powerful systems</i></a>
+<p>
+<b>Editor, documentation and libraries</b>
+<br/>
+The environment has many of the interactive features of interpreted
+languages, though the Poplog languages are all incrementally
+compiled to machine code for efficiency. The 'TEACH' files, and
+other documentation files, are accessible through an integrated
+visual editor (Ved, also usable as
+<a href="figs/rclib/index.html#xved">XVed, in multi-window mode</a>),
+which 'knows about' the compilers, the program libraries and the
+documentation libraries, and is extendable since it is implemented
+in Pop-11. E.g. a tutorial file can have a hypertext link to other
+documentation or to program libraries. Programming examples can be
+run from inside the editor, then modified and run again, without
+restarting the editor or Poplog.
+<blockquote>
+<small>
+For Emacs users there is <a href="#emacsstuff">a conversion
+package</a> that extends Emacs to support integration with the
+Pop-11 compiler. Another option, for people who do not wish to use a
+new editor is to type commands into the Pop-11 (or Prolog, or Lisp,
+or ML) prompt in a shell command line, while editing and reading
+documentation quite separate editor. This will add some
+inconvenience and slow down development a little. (To a 'normal'
+edit/compile/test loop.)
+</small>
+</blockquote>
+<p>
+There are many libraries extending the core system to support various
+kinds of programming tasks. For example
+<a href="packages/simagent.html">the SimAgent toolkit</a>
+supports exploration of architectures for more or
+less intelligent agents. The library and documentation system make
+use of search lists, allowing packages and teaching materials
+developed by different teachers, students and researchers to be
+combined flexibly, strongly encouraging team teaching.
+(Used for many years at Sussex University.)
+<p>
+There is also a collection of libraries and tutorials related to
+computer vision, i.e. image analysis and interpretation, in
+<a href="#popvision">David Young's "Popvision" Library</a>
+including
+neural net, array manipulation, and linear algebra utilities.
+<p>
+Some of the Poplog/Pop11 graphical facilities are illustrated
+<a href="figs/rclib">here</a>, and there are
+<a href="figs/simagent">movies</a> showing some student AI projects,
+based on the the SimAgent toolkit.
+<p>
+For more information on Poplog and its history see
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html</a>
+<br>
+A history of developments in e-learning using Pop-11 and Poplog,
+starting at Sussex University in 1976 can be found
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/poplog-learning-environment.html">here</a>.
+<p>
+For many years Poplog was an expensive commercial product, first
+sold commercially by Sussex University for use on VAX+VMS (for
+UK&pound;3,000, and much less for academics)
+in 1982, and then continually developed, ported to other platforms, and
+commercially supported up to 1998, first by Systems Designers (from
+1983) and later by a spin-off, Integral Solutions Ltd (founded in 1989).
+<p>
+At one stage the commercial price was UK&pound;7,500 (+VAT) for
+workstations, though the educational price was always much lower.
+Poplog was a solid, reliable, commercial product, used mainly,
+though not entirely, for AI and Software Engineering research,
+development and teaching. By about 1992 sales had exceeded
+$5,000,000.
+<p>
+The most famous product implemented in Poplog (mainly Pop-11) was
+the
+<a href="http://www.spss.com/software/modeling/modeler/">Clementine Data Mining system,</a>
+developed by ISL, as a result of which they were bought by SPSS, so
+that Clementine (now called "PASW modeller"), could be integrated
+with their other data-mining tools (after re-writing in Java and
+C++, with some loss of functionality). Another product based on
+Poplog was a software validation toolkit produced by Praxis.
+<p>
+Further information is available on Wikipedia and other sites:
+<ul>
+<li>
+<a href="http://en.wikipedia.org/wiki/Poplog">http://en.wikipedia.org/wiki/Poplog</a>
+<li>
+<a href="http://en.wikipedia.org/wiki/POP-2">http://en.wikipedia.org/wiki/POP-2</a>
+<li>
+<a href="http://en.wikipedia.org/wiki/POP-11">http://en.wikipedia.org/wiki/POP-11</a>
+<li>
+<a href="http://en.wikipedia.org/wiki/COWSEL">http://en.wikipedia.org/wiki/COWSEL</a>
+<li>
+<a href="primer">Online Pop-11 primer</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/poplog-learning-environment.html">
+Poplog as a Learning Environment
+</a>
+<li>
+<a
+href="http://en.wikipedia.org/wiki/History_of_virtual_learning_environments#1976">1976
+computer-based learning environments.</a>
+<li>
+<a href="http://www.greenteapress.com/thinkapjava/">Draft Pop-11
+version of
+<i>How to think like a computer scientist</i></a>
+written by Allen B. Downey.
+<li>
+<a href="http://www.math.uni.wroc.pl/~p-wyk4/pop11_en/">Pop-11
+programming examples by Waldek Hebisch</a>
+<li>
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/packages/current/popvision/">
+David Young's popvision library</a>
+<br/>
+(WARNING: not all the popvision documentation files will be readable
+in a web browser, because they use a special character encoding
+to make the files more attractive in Ved.)
+</ul>
+</blockquote>
+
+<hr>
+<p>
+<h3><B>
+Suggestions for improvement are welcome.
+</B></h3>
+<p>
+This file maintained by:
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+http://www.cs.bham.ac.uk/~axs/
+<br>
+Last Updated: 26 Jun 2009
+
+</FONT>
+</BODY>
+</HTML>

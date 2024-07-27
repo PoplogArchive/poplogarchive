@@ -1,0 +1,573 @@
+Subject: FAQ for comp.lang.pop
+Newsgroups: comp.lang.pop
+From: Aaron.Sloman.XX@cs.bham.ac.uk
+X-Relay-Info: Relayed through cs.bham.ac.uk MAIL->NEWS gateway
+
+[PLEASE NOTE To reply to me replace "Aaron.Sloman.XX" with "A.Sloman"]
+
+This file is available at
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/comp.lang.pop.faq.html
+
+Subject: FAQ The role of this newsgroup
+
+(Barely)Maintained by Aaron Sloman
+Last updated: 20 Aug 2000
+
+See also:
+    http://www.poplog.org   [NOW DEFUNCT]
+        A "mirror" site maintained by Steve Leach and Graham Higgins,
+        with a growing collection of donated pop-11 packages and
+        utilities.
+
+    CONTENTS
+
+ -- INTRODUCTION: WHAT IS COMP.LANG.POP FOR?
+ -- WHAT IS THE "POP" FAMILY OF LANGUAGES?
+ -- THE MOST SOPHISTICATED VERSION
+ -- EXTENDABILITY USING INCREMENTAL COMPILATION
+ -- COMMERCIAL DISTRIBUTION
+ -- SOME HISTORY
+ -- ALPHAPOP ON MAC
+ -- BOOK ON POP-11, AND A PRIMER
+ -- WHAT DOES POP11 LOOK LIKE?
+ -- THE POPLOG VIRTUAL MACHINE AND TWO LEVEL COMPILER
+ -- ONLINE INFORMATION
+ -- POP-FORUM EMAIL LIST
+ -- AVAILABILITY
+
+-- INTRODUCTION: WHAT IS COMP.LANG.POP FOR?
+
+The newsgroup comp.lang.pop was set up for discussion of the programming
+language Pop-11 and other languages in the pop family (pop2, pop10,
+wpop, alphapop) and the other languages in the Poplog system, namely
+Prolog, Common Lisp and ML.
+
+There is an associated email list "pop-forum", described below.
+
+From time to time people post queries to this news group concerning
+email (POP3 protocols) because they misinterpret the name of the
+group. comp.lang.pop has nothing to do with email software, or the Post
+office protocol.
+
+People wishing to discuss that sort of thing should post to a news
+group that is more directly relevant, e.g.
+
+    comp.mail.misc
+
+or one of the other comp.mail groups. Their questions and answers
+are then more likely to be read by people with relevant knowledge
+and interests.
+
+
+-- WHAT IS THE "POP" FAMILY OF LANGUAGES?
+
+The "pop" family of languages, all have an open stack (like Forth),
+incremental compilers (like Basic, Prolog, etc.) rich support for list
+processing (like Lisp), procedures as first class objects (like Scheme),
+and the compiler as a procedure which can be accessed at run time by
+users.
+
+They  vary in other details, e.g.:
+
+o the syntax used for function definitions and other things. E.g.
+
+    pop2 used
+        function f x y => z; ... end;
+        with a generally rather terse syntax
+
+    pop-11 uses
+        define f(x,y) -> z; .... enddefine;
+        with a more verbose syntax (e.g. multiple closing brackets)
+
+    pop2 used this for multiple assignment, i.e. take the last three
+        results produced by foo(a, b, c) and assign them to x, y, z:
+            foo(a, b, c) -> z -> y -> x;
+
+    pop-11 allows both that syntax and also this:
+            foo(a, b, c) -> (x, y, z);
+
+o whether there is support for full lexical scoping or only dynamic
+scoping of local variables (like old Lisp systems),
+
+o whether there is an integrated editor (VED, the pop-11 based
+programmable editor in poplog is comparable in power to Emacs, but
+differs in its style, parly because it was from the beginning aimed at
+novice students and secretaries as well as expert users),
+
+o whether there is a built in pattern matcher (e.g. for rule-based
+programming and clearer list-processing code),
+
+o whether autoloading and library search lists are supported
+
+o whether there is support for external languages and callbacks, and
+    what sort of support. E.g. the latest version supports a rich
+    interface to C and the X window system, including automatic
+    converters between C and Pop-11 datatypes and support for callbacks
+    and structures shared between C and Pop-11 (which therefore must not
+    be moved by the garbage collector).
+
+o whether there is an interface to the X window system
+
+o whether there are tools for building incremental compilers,
+
+o whether there is a light-weight process mechanism,
+
+o whether there is support for object oriented programming (as in the
+latest version of pop-11 which includes Objectclass, an extension to
+Pop-11 similar in power to Lisp's CLOS).
+
+o whether there is support for asynchronous event handling (e.g. mouse
+or keyboard events which occur while programs are running).
+
+
+-- THE MOST SOPHISTICATED VERSION IN THE POP FAMILY
+
+The most sophisticated version of the pop language family is Pop-11,
+developed since about 1975 at Sussex University. It was initially
+implemented by Steve Hardy on a Digital Equipment PDP11/40 computer,
+at first running the RSX11D operating system, which we later replaced
+with Unix in 1976.
+
+From about 1981, when it was ported to a VAX running VMS John Gibson
+took over as the chief architect, though many others made important
+contributions. After Chris Mellish implemented Prolog in Pop-11 (later
+much improved by John Gibson with low level support in the Poplog
+Virtual machine), it became known as Poplog, from about 1982. The Pop-11
+language remained the core of Poplog and continued being developed until
+around 1988 when commercial sales ended and Poplog became available free
+of charge. It is hoped that future development will be done by a
+consortium of expert users. If you are interested in joining a
+developer's discussion list email A.Sloman AT cs.bham.ac.uk
+
+Pop-11 includes all the features listed above (and many more!)
+
+
+-- EXTENDABILITY USING INCREMENTAL COMPILATION
+
+Because Poplog incremental compiler facilities are available in a
+suite of pop11 procedures which compile code incrementally to a
+powerful general purpose virtual machine, it is not hard to develop new
+languages or extensions to old ones. This is how Common Lisp, Prolog and
+ML are implemented in Poplog, and many people have implemented various
+extensions to Pop-11 and other languages based on Pop-11.
+
+E.g. Robin Popplestone, at the University of Massachusetts, Amherst has
+implemented a version of scheme in Pop-11. It can be used in the Poplog
+environment (supported by Ved) and will be automatically ported to new
+hardware/software platforms whenever poplog is ported. The scheme
+package is included among those listed at
+    http://www.cs.bham.ac.uk/research/poplog/freepoplog.html
+
+Other examples include various types of Object Oriented extensions to
+Pop-11, including the Flavours package implemented in the mid 1980s, and
+the Objectclass extension (similar in many ways to CLOS) added to Pop-11
+in the mid 1990s.
+
+Another example: Pop-11 has been extended with new syntax in
+Poprulebase, a sophisticated forward chaining rule based system for
+building expert systems, cognitive models, etc. described in
+    http://www.cs.bham.ac.uk/research/poplog/prb/help/poprulebase
+
+That in turn is the heart of the sim_agent toolkit for exploring
+architectures for interacting intelligent agents, summarised in
+    http://www.cs.bham.ac.uk/~axs/cog_affect/sim_agent.html
+    http://www.cs.bham.ac.uk/research/poplog/sim/help/sim_agent
+        (Overview files)
+    http://www.cs.bham.ac.uk/research/poplog/sim/teach/sim_feelings
+        (Tutorial introduction)
+
+    The system is still being actively developed. Its philosophy and
+    some uses are outlined in
+        A Sloman & B Logan, Building cognitively rich agents using the
+        Sim_agent toolkit,
+        Communications of the Association of Computing Machinery,
+        42, 3, pp. 71--77 March, 1999
+
+    Changes to support agents with greater self-monitoring capabilities
+    introduced in July 1999 are described in
+        http://www.cs.bham.ac.uk/research/poplog/help/newkit
+
+Other users have at various times used pop-11 (and other Poplog
+languages) to develop various systems either for research purposes or
+as products or tools used in-house. E.g. I believe the company COGSYS
+sells a package based on Pop-11 for developing process control systems.
+Pop-11 is also at the heart of the prize-winning Clementine data mining
+system marketed world wide by ISL (Integral Solutions Ltd., address
+below).
+
+
+-- COMMERCIAL DISTRIBUTION
+
+Poplog was sold commercially between around 1982 and 1998. Initially
+it ran on a VAX under VMS and supported only pop-11 and prolog, along
+with a very simple lisp system. Common Lisp was added a few years later,
+followed by Standard ML. It was later ported to many Unix platforms as
+well as VMS on DEC Alpha, and linux on a PC. Until late 1998, it was
+marketed commercially world wide by ISL. Following the take-over of ISL
+by SPSS in December 1998, Poplog has been made available free of charge,
+from the Birmingham Poplog FTP directory, including sources.
+Details are in
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html
+
+A mirror site is at
+    http://www.poplog.org
+
+All this should help revive interest especially in Pop-11, which many
+users think is far better for teaching AI to novices than Java or
+Prolog, and probably more approachable to many (ordinary) people than
+Lisp, though lisp has many of the same benefits.
+
+See the discussion in:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/primer/START.html
+
+Among the free poplogs is a version which runs under windows95/98/NT,
+though without the X-based graphical facilities. That has never been
+sold separately by ISL though they use it for Clementine on PCs under
+NT.
+
+Perhaps with the sources available someone will port Poplog's graphical
+tools to the Windows environment. (ISL use a commercial package which
+emulates X on a PC, but that is out of the question for most users
+because of costs.)
+
+-- SOME HISTORY
+
+The first of the Pop family of languages was originally developed in the
+late 1960s by Robin Popplestone. After some evolution (and re-naming) it
+was used for research in Artificial Intelligence at Edinburgh University
+throughout most of the 1970s and beyond, though other languages (e.g.
+Prolog, Common Lisp, ML) were favoured by some of the AI research
+groups.
+
+I learnt Pop2 there running on an Elliot 4130 computer in 1972-3. Most
+of the multi-user operating system was implemented in pop2. (There was a
+single heap shared by all users!) A Pop2 manual ("the silver book") was
+published by Edinburgh University Press sin 1972 or 1973, but has long
+been out of print.
+
+The other Pop languages grew out of pop2, with the usual divergence as
+languages evolve, but the only version that has survived as far as I
+know is Pop-11 in the Poplog environment.
+
+-- ALPHAPOP ON MAC
+
+Alphapop was a Mac based version of a subset of pop-11 (e.g. not
+including lexically scoped variables), developed and sold by Cognitive
+Applications in the late 1980s, but has not been updated for the latest
+versions of the Mac operating system and used an out of date C compiler.
+If they put the sources in the public domain perhaps someone will bring
+it up to date.
+
+-- BOOK ON POP-11, AND A PRIMER
+
+There is a book that provides more information about the history of
+Pop-11 and Poplog up to the late 1980s, though I don't know whether it
+is still in print.
+
+    POP-11 Comes of Age: The Advancement of an AI Programming Language,
+    1989, Ed. J.A.D.W. Anderson,
+    Ellis Horwood, Chichester
+
+The occasion was the 21st birthday of Popplestone's original language.
+
+My chapter in that book, written when I was at Sussex, can be found in
+
+
+    http://www.cs.bham.ac.uk/research/projects/cogaff/sussex-pop11.html
+
+(It is hoped to include additional papers on Poplog and Pop-11 there
+later on.)
+
+A fairly detailed introduction to a subset of Pop-11 can be found in the
+Pop-11 Primer available in various formats (plain text, latex source,
+postscript, html) from the Birmingham Poplog ftp directory
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/
+
+A browsable version of the primer (with one postscript figure), produced
+using LaTex2html is in:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/primer/START.html
+
+The html version can be fetched in a tar file and unpacked for local
+use:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/primerhtml.tar.gz
+
+        (The graphical symbols won't work, but they are inessential.)
+
+The most complete specification of the latest version of Pop-11 is
+available only in the REF and HELP directories that come with the poplog
+system. This has all been made available stripped of the special
+graphical characters for use when the documentation is read in the
+Poplog editor Ved:
+    http://www.cs.bham.ac.uk/research/poplog/doc
+
+There is quite a lot of browsable Pop-11 teaching material in these
+directories:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/examples/
+    http://www.cs.bham.ac.uk/research/projects/poplog/teach/
+    http://www.cs.bham.ac.uk/research/projects/poplog/rclib/teach/
+    http://www.cs.bham.ac.uk/research/projects/poplog/newkit/prb/teach/
+    http://www.cs.bham.ac.uk/research/projects/poplog/newkit/sim/teach/
+
+David Young's popvision library, developed at Sussex University has a
+number of utilities for image analysis and neural nets, with a lot of
+teaching material for vision. It is available in a browsable form here:
+
+    http://www.cs.bham.ac.uk/research/poplog/popvision/
+
+The whole package is available in a gzipped tar file:
+    http://www.cs.bham.ac.uk/research/poplog/popvision.tar.gz
+
+(NOTE: it was designed for use with an 8-bit graphic display. If used on
+a machine with 16 or 24 bit "Truecolour" you will need to start X up in
+8 bit mode to use the display facilities in popvision. It is hoped that
+the relevant procedures will be generalised later.)
+
+There is also a lot of teaching material based on Poplog and Pop-11 at
+Sussex University and in other places, though not yet made accessible
+externally.
+
+
+-- WHAT DOES POP11 LOOK LIKE?
+
+Pop-11 is an incrementally compiled language with power comparable
+to Common Lisp but with a syntax closer to more conventional
+languages.  E.g. here is a typical procedure definition in Pop-11,
+for testing whether an item is in a list (equivalent to the built in
+pop-11 procedure member):
+
+    define is_in(item, list) -> result;
+        ;;; Return true if item is in the list, otherwise false
+
+        lvars thing;
+        for thing in list do
+            if thing = item then
+                true -> result; return();
+            endif
+        endfor;
+
+        ;;; not found, so
+        false -> result;
+    enddefine;
+
+    ;;; Test it: the result is left on the stack. Stack contents are
+    ;;; printed out using the "=>" operator:
+    is_in(3, [2 3 5 8])=>
+    ** <true>
+
+    is_in(3, [one two three]) =>
+    ** <false>
+
+The same thing can be defined recursively, in a more familiar functional
+style as often used in Lisp or Scheme, and without using an output
+variable in the header (unused results are left on the "user stack" in
+any case).
+
+    define is_in(item, list);
+        if null(list) then false
+        elseif item = hd(list) then true
+        else is_in(item, tl(list))
+        endif
+    enddefine;
+
+    ;;; Test it:
+    is_in("cat", [bat cat dog elephant])=>
+    ** <true>
+
+    is_in(3, [one two three])=>
+    ** <false>
+
+Compare a Lisp (or Scheme?) equivalent:
+
+    (defun is_in(item list)
+        (cond
+            ((null list) nil)
+            ((equal item (car list)) t)
+            (t (is_in item (cdr list)))))
+
+    ; Test it
+    (is_in `cat `(bat cat dog elephant))
+    T
+
+[NOTE: in Pop-11, the infix operator "=" corresponds to "EQUAL"
+in Lisp, whereas "==" corresponds to "EQ".]
+
+Pop-11 also has pattern matching built in, support for developing new
+incrementally compiled languages, an object oriented subsystem similar
+to CLOS, an interface to the X window system, and many other features.
+
+This is how the pattern matcher could be used to define is_in:
+
+    define is_in(item, list) -> result;
+        list matches [== ^item == ] -> result;
+    enddefine;
+
+Where "==" matches arbitrary segments of a list. The use of a pattern
+matcher makes it much easier to develop knowledge-based systems.
+
+Lots more examples of Pop-11 code can be found in the Primer and online
+teach files, described above, and in source code libraries in the Poplog
+directory:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/
+
+See especially the documentation directories in
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/doc/
+
+    The most detailed documentation on Pop-11 (written for experts)
+    is in the files in
+        http://www.cs.bham.ac.uk/research/projects/poplog/doc/popref/
+
+    supplemented by these
+
+        http://www.cs.bham.ac.uk/research/projects/poplog/doc/pophelp/
+
+    (Unfortunately, many of the files in the distributed documentation
+    directories have special character codes for reading in the VED
+    editor. I have produced "stripped" versions in the above
+    directories.)
+
+See also the FAQ assembled by Steve Leach and Graham Higgins:
+   http://www.poplog.org/about/faq-list.html
+
+
+-- THE POPLOG VIRTUAL MACHINE AND TWO LEVEL COMPILER
+
+Poplog is a multi-language Artificial Intelligence development
+environment, in which Pop-11 is the core language and Prolog, Common
+Lisp, and Standard ML are also supported in any combination.
+
+The implementation of Pop-11 and all the other language is based on
+pop-11 tools for developing incremental compilers that can also be used
+to implement other languages which will then run wherever Poplog does.
+
+Poplog provides a high level language-independent and machine-
+independent virtual machine (the Poplog Virtual Machine) which is rich
+enough to support a wide range of languages. There are Pop-11 procedures
+for planting instructions for this virtual machine. When the
+instructions reach the end of a procedure definition, the high level PVM
+instructions are compined in a machine independent fashion to a low
+level Poplog Implementation Machine. The instructions at that level are
+then compiled incrementally (a procedure at a time) using a machine
+dependent "back end" compiler to instructions for the current machine.
+This two level incremental compiler is used by all the Poplog languages.
+
+Poplog compiled procedurs are data-structures in the heap and can be
+garbage collected, unlike compiled procedures in some other AI
+languages.
+
+
+During system development and porting to a new machine a different back
+end is used which produces files of assembler for the target machine
+(and other information required during the linking phase).
+
+Because of all this most of the core of the poplog system is implemented
+in Pop-11 (in a special dialect with some C-like extensions to provide
+more efficient low level mechanism.) Building a new version therefore
+always requires access to a running Poplog. The advantage of using
+Pop-11 as the main implementation language rather than C or C++ is that
+Pop-11 (like Lisp) is a higher level language making system development
+much easier and more reliable. Also new features can be developed as
+Pop-11 code in libraries available to users, and then after thorough
+testing can later be incorporated into the system.
+
+-- ONLINE INFORMATION
+
+For more information on Pop-11 and Poplog, and a collection of AI
+teaching material in Pop-11, see the Birmingham ftp poplog directory
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/
+
+including the README file, and
+    http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html
+
+Further information is available in:
+   http://www.cogs.susx.ac.uk/users/adrianh/poplog.html
+   http://www.cogs.susx.ac.uk/users/adrianh/pop11.html
+   http://www.cvg.cs.reading.ac.uk/poplog/
+
+Detailed documentation can be accessed through the doc/ subdirectory
+mentioned above:
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/doc/
+
+This also all available in a tar file docdirs.tar.gz
+
+The sysdoc directory is available in sysdoc.tar.gz
+
+
+-- POP-FORUM EMAIL LIST
+
+There is an email list gatewayed to the comp.lang.pop news group. It is
+currently maintained at the University of Birmingham. If you wish to
+join the pop-forum email list please send a message to
+
+    majordomo       AT    cs.bham.ac.uk
+
+containing just one line
+
+    subscribe pop-forum
+
+The address from which you send that message will be added to the
+pop-forum email list. You can remove it later by sending a message
+containing
+
+    unsubscribe pop-forum
+
+If you join, you will automatically receive all messages posted to
+comp.lang.pop. Likewise if you send any messags to pop-forum they
+will also be posted to the comp.lang.pop newsgroup.
+
+
+-- AVAILABILITY
+
+Poplog is now available free of charge. Information is available at
+
+    http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html
+
+Poplog was developed mainly at Sussex University, and was previously
+marketed by ISL, who used Pop-11 in their Clementine data-mining system.
+ISL were bought in 1998 by SPSS, which was later bought by IBM.
+Clementine is now part of IBM's business systems software.
+
+[Old addresses, now possibly defunct]
+    SPSS (UK) Ltd.
+    1st Floor
+    St. Andrew's House
+    West Street, Woking
+    Surrey GU21 1EB
+
+    Telephone: +44.1483.719200
+    Fax: +44.1483.719290
+    E-mail: sales@spss.co.uk
+    E-mail/training: training@spss.co.uk
+    E-mail/Technical support: support@spss.co.uk
+    WEB http://www.isl.co.uk
+        http://www.spss.com/
+
+
+There was an online web site devoted to Poplog and Pop-11:
+
+    http://www.poplog.org/
+    [DEFUNCT, but may one day be resurrected]
+
+although this news group has nothing to do with Post Office Protocol or
+POP3,  as it happens a precursor of pop-11, developed in Edinburgh
+University and used for much of their research in AI in the 1970s and
+after, was known as POP2.
+
+
+Aaron
+===
+Aaron Sloman, ( http://www.cs.bham.ac.uk/~axs/ )
+School of Computer Science, The University of Birmingham, B15 2TT, UK
+EMAIL A.Sloman AT cs.bham.ac.uk   (ReadATas@please !)
+PAPERS: http://www.cs.bham.ac.uk/research/projects/cogaff/
+TOOLS: http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html

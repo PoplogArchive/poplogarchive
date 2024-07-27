@@ -1,0 +1,130 @@
+BUGFORM.TXT
+
+BUG REPORTS
+
+This file is accessible as
+    http://www.cs.bham.ac.uk/research/poplog/BUGFORM.txt
+or
+    ftp://ftp.cs.bham.ac.uk/pub/dist/poplog/BUGFORM.txt
+
+It is based on the Bug Report form which used to be distributed with
+Poplog.
+
+Since Poplog is no longer sold as a commercial product there is no
+longer an "official" form for reporting bugs or for making enhancement
+requests.
+
+However, it is possible to ask the user community for help by posting a
+request to the comp.lang.pop news group.
+
+There may be additional mechanisms for finding help available through
+the Poplog WEB site:
+
+    http://www.poplog.org
+
+If you do wish to post a request for help, you can make the task of
+helpers as easy as possible by using the rest of this file as a
+framework for your request.
+
+Please edit the file as appropriate, then post it WITHOUT this
+explanatory header.
+
+Note: If you have recently acquired a new version of the operating
+system, and the bug manifests itself ONLY on the new version, then it
+MAY be the case that some of the libraries have changed and your problem
+will go away if you re-link Poplog, as described in HELP NEWPOP.
+
+You can expect more helpful replies from other users if you follow these
+guidelines:
+
+1. In the case of bugs, please keep original code/saved images, etc.,
+   manifesting the bug available in case required for testing.
+
+2. Please always mention which make and model of computer you are using,
+   which operating system and version it is running and the version of
+   Poplog you are using.
+
+3. Please give a precise description, including sufficient code to
+   reproduce undesired behaviour.
+
+4. Include a record of interaction if possible.
+
+5. Please do not use vague statements such as:
+    "There's something wrong with procedure FOO"
+    "If I do X the results are bizarre"
+    "I can't get X to work"
+    "X doesn't seem able to handle big lists"
+    "X doesn't work inside the editor..."
+
+6. If the problem is a discrepancy between documentation and observed
+   behaviour please specify which documentation file or manual.
+
+
+TO POST A REQUEST FOR HELP:
+
+1. Delete everything up to and including the dashed line, below;
+2. fill in the form, deleting any irrelevant headings, etc.,
+3. post the form to the comp.lang.pop newsgoup or by email to
+    pop-forum AT cs.bham.ac.uk
+
+If you don't know how to post or read news, please consult local
+experts. See HELP VED_POSTNEWS HELP VED_NET. There are more recent
+versions of those utilities available at:
+    http://www.cs.bham.ac.uk/research/poplog/vedgn.tar.gz
+    ftp://ftp.cs.bham.ac.uk/pub/dist/poplog/vedgn.tar.gz
+------------------------------------------------------------------------
+
+FORM FOR POSTING REQUESTS FOR HELP
+
+Subject: Help: <state your problem>
+Newsgroups: comp.lang.pop
+Distribution: world
+Summary: <summarise your problem>
+From: <give your email address>
+Keywords: <give keywords or delete this line>
+
+<Ensure that you leave a blank line after the header>
+
+Date:
+Your Name:
+Your Address:
+
+Your Email Address:
+Your Telephone No.:
+Your Fax No.:
+
+========================================================================
+
+Documentation Problem
+
+Document name:
+
+Issue/date:
+
+------------------------------------------------------------------------
+
+Software Problem
+
+Poplog Version:
+Host Platform:
+
+Operating System/Version:
+Windowing System/Version:
+
+Is the problem reproducible?
+
+Has the machine been upgraded recently (e.g. OS)?
+
+Problem occurs in: Pop11 / Lisp / Prolog / PML / Ved / Library
+
+Evidence Enclosed
+    Included in this message
+    Available on request
+
+========================================================================
+
+Description
+(Give as much detail as necessary for others to replicate the problem)
+
+
+========================================================================

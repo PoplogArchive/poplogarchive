@@ -1,0 +1,1212 @@
+<html>
+<head><title> The SIM_AGENT Package</title> </head>
+<body bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<div style="margin-left:10px; margin-top:0px; margin-bottom:0px; width:700px">
+<font color="#000000">
+<center>
+<a href="http://www.bham.ac.uk/">THE UNIVERSITY OF BIRMINGHAM</a>
+<br/>
+<a href="http://www.cs.bham.ac.uk/">SCHOOL OF COMPUTER SCIENCE</a>
+<h3>
+<a href="http://www.cs.bham.ac.uk/research/cogaff/cogaff.html">The Cognition and Affect Project</a>
+</h3>
+<h2><b>
+The SimAgent TOOLKIT
+<br/>
+For Philosophers and Engineers
+<br>
+<small>
+(And Some Biologists, Psychologists
+<br/>
+and Social Scientists)
+<br>
+(Previously known as SIM_AGENT)
+</small>
+</b></h2>
+<h3><b>
+<A href="http://www.cs.bham.ac.uk/~axs">Aaron Sloman</A>
+<p>
+<a href="http://www.cs.bham.ac.uk/research/cogaff/talks/#simagent">Slide
+Presentation on SimAgent</a>
+</b></h3>
+
+<b><a
+href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent">Demonstration movies</a>
+</b>
+<p>
+Apologies for some broken links:
+<br/>
+we failed to ensure that some files whose
+owners left had been preserved.
+</center>
+
+<p>
+<hr />
+<blockquote>
+<h3><b>
+Some External Pointers to the Toolkit
+</b></h3>
+This toolkit is referenced at various web sites.
+<br>
+A sample found with the help of google is
+<a href="sim/sim-referrers.html">listed here.</a>
+<br/>
+(Apologies for broken links: Probably quite out of date now.)
+</blockquote>
+<hr />
+<a name="contents"></a>
+<h3><b>
+CONTENTS
+</b></h3>
+
+<li>
+<a href="#introduction">
+INTRODUCTION
+</a>
+<li>
+<a href="#cogaff-schema-blank">
+The CogAff schema
+</a>
+<li>
+<a href="#cogaff-overlap">
+Overlapping CogAff components
+</a>
+<li>
+<a href="#h-cogaff">
+The H-Cogaff Conjecture
+</a>
+<li>
+<a href="#toolkit">
+The SimAgent toolkit
+</a>
+<li>
+<a href="#background">
+Some Background
+</a>
+<li>
+<a href="#movies">
+Movie Demos
+</a>
+<li>
+<a href="#objectives">
+Objectives and design philosophy
+</a>
+<li>
+<a href="#paradigms">
+Programming Paradigms Used In SimAgent
+</a>
+<li>
+<a href="#pop11">
+Pop-11 and Poplog
+</a>
+<li>
+<a href="#contributors">
+Some Birmingham users of SimAgent</b>
+</a>
+<li>
+<a href="#documentation">
+Documentation And Publications
+</a>
+<li>
+<a href="#code">
+Program Code
+</a>
+<li>
+<a href="#tutorial">
+Tutorial
+</a>
+<li>
+<a href="#components">
+The Sim_agent Toolkit Has Three Main Components
+</a>
+<li>
+<a href="#code-docs">
+Code and Documentation
+</a>
+<li>
+<a href="#poprulebase">
+1. Poprulebase
+</a>
+<li>
+<a href="#simagent">
+2.  Sim_agent
+</a>
+<li>
+<a href="#rclib">
+3. The RCLIB graphical library
+</a>
+<li>
+<a href="#acknowledge">
+Acknowledgements
+</a>
+<li>
+<a href="#funding">Funding
+</a>
+<li>
+<a href="#disclaimer">
+Disclaimer
+</a>
+
+</ul>
+
+<hr />
+<a name="introduction"></a>
+<h3><b>
+INTRODUCTION
+</b></h3>
+The SimAgent toolkit (originally called SIM_AGENT) provides a range of
+resources for research and teaching related to the development of
+interacting agents in environments of various degrees and kinds of
+complexity. It can be run as a pure simulation tool, or installed in a
+robot with a sufficiently powerful on-board computer, e.g. running
+linux. It was originally developed to support exploratory research on
+human-like intelligent agents, but has also been used for student
+projects developing a variety of interactive games and simulations.
+<p>
+Unlike many so-called 'agent toolkits', like PRS/Jack, Mozart, Alice,
+and several more, that are aimed mainly at development of systems
+involving large numbers of highly distributed fairly homogeneous
+relatively 'small' agents, SimAgent can be used for such purposes (and
+was used in that way for a while by Matthias Scheutz at Notre Dame
+University) but (like ACT-R, COGENT, and the original SOAR) SimAgent is
+primarily designed to support design and implementation of very complex
+agents, each composed of very different interacting components (like a
+human mind) where the whole thing is embedded in an environment that
+could be a mixture of physical objects and other agents of many sorts,
+as half-jokingly depicted here:
+<p>
+
+<center>
+<img alt="arch1" border="1" width="300"
+src="http://www.cs.bham.ac.uk/~axs/fig/arch1.jpg"/>
+</center>
+<p>
+
+For example the main motivation behind the development of SimAgent was
+originally to support research on an increasingly complex sequence of agent
+types, that led to the development of the biologically inspired CogAff
+architecture Schema depicted in the images below, showing layers of
+sophistication superimposed on different types of functionality represented by
+the columns:
+<p>
+<a name="cogaff-schema-blank"></a>
+<h3><b>
+The CogAff schema
+</b></h3>
+<center>
+<img alt="cogaff" border="1" width="300"
+src="http://www.cs.bham.ac.uk/~axs/fig/gridblank.jpg"/>
+<p>
+<i>The CogAff Architecture Schema</i>
+<br>
+</center>
+
+<p>
+That schema accommodates a wide variety of specific architecture types,
+which differ according to which mechanisms and information structures
+occur in which boxes, and how they are connected to one another and to
+the environment, as described in
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/#overview">this
+overview.</a>
+<p>
+The simplest architectures (e.g. microbe-like or insect-like agents) use
+only the bottom (purely reactive) layer of the CogAff schema, whereas
+more sophisticated architectures use all the layers (the top ones are
+the ones that evolved latest).
+<p>
+The above diagram is misleading in various ways because it suggest that the
+perception mechanisms and action mechanisms are separate from each other and can
+only communicate via the 'central' mechanisms, whereas it is clear (as James
+Gibson pointed out in his 1966 book <i>The Senses Considered as Perceptual
+Systems</i>) action and perception are deeply integrated, e.g. the constant use
+of saccades, changes of vergence, changes of focus in vision, and the need to
+move your hand when it is used to perceive shape, texture, weight, flexibility,
+hardness, etc. of objects.
+<p>
+So a more accurate, but less clear depiction of the ideas in the CogAff
+architecture schema is the following (with thanks to Dean Petters, for help with
+this diagram, indicating that action and perception mechanisms overlap, as
+pointed out by J.J.Gibson in 1966(Referenced above).
+<p>
+<a name="cogaff-overlap"></a>
+<h3><b>
+Overlapping CogAff components
+</b></h3>
+
+
+
+<a name="cogaff-schema-new"></a>
+<center>
+<img alt="New-Cogaff" border="1" width="400"
+src="http://www.cs.bham.ac.uk/~axs/fig/new-cogaff.jpg"/>
+<p>
+<i>Revised, more realistic  CogAff Architecture Schema,
+<br>
+e.g. with deeper integration between action and perception</i>
+<br>
+The horizontal discs represent (usually "fuzzy" boundaries between
+<br>
+different levels of functionality.  It is possible for some of the
+<br>
+information-processing mechanisms to straddle two or more layers.
+</center>
+<p>
+<a name="simplified"></a>
+<h3><b>
+A slightly simplified view of the CogAff schema.
+</b></h3>
+<p>
+<a name="simplified"></a>
+<center>
+<img alt="New grid" border="1" width="430"
+src="http://www.cs.bham.ac.uk/~axs/fig/newgrid-alarms.jpg"/>
+<p>
+A slightly different, possibly clearer presentation of the same ideas as above.
+</center>
+<p>
+The above diagrams are not intended to present a specific architecture, but a
+space of types of components of an architecture leaving open many different
+routes in which the components can communicate, some of which may grow during
+development and learning.
+<hr/>
+
+<p>
+<a name="h-cogaff"></a>
+<h3><b>
+The H-Cogaff Conjecture
+</b></h3>
+A special case is the conjectured human-like H-CogAff architecture depicted in a
+sketchy manner below, with components described in more detail in the
+overview and in papers and presentations on the CogAff web site:
+<p>
+<center>
+<img alt="h-cogaff" border="1" width="450"
+src="http://www.cs.bham.ac.uk/~axs/fig/hcogaff.jpg"/>
+</center>
+<p>
+
+<p>
+So far nothing as complex as that has been implemented, though various
+fragments have been, by collaborators, research fellows and PhD students.
+<p>
+Some of our undergraduates and MSc students have
+also used various parts of the toolkit, e.g. the 'Popracer' undergraduate
+project:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/popracer/">http://www.cs.bham.ac.uk/research/projects/poplog/popracer/</a>
+<p>
+There are some overlaps between these ideas and the architectural ideas in
+Marvin Minsky's 2006 book <i>The Emotion Machine</i>. The main difference is
+that he was proposing a theory about the information-processing architecture of
+a typical human whereas our CogAff project was attempting to uderstand a space
+of possible information-processing architectures that might be found in various
+kinds of organism. He was also interested in non-human information processing
+and was aware that many of his ideas were relevant to other intelligent animals.
+But I don't think he was interested in the sort of generative approach to
+information-processing architectures adopted in the CogAff project, and our work
+on interactions between trajectories in design space and trajectories in niche
+space (the space of sets of requirements).
+<hr/>
+<a name="toolkit"></a>
+<h3><b>
+The SimAgent toolkit
+</b></h3>
+The toolkit was developed between 1993 and around 2004 (with occasiontal
+bug-fixing or enhancements since then) for use by students, post-doctoral
+researchers, other colleagues and external collaborators to explore various
+aspects of the space of possible sets of requirements for intelligent agents
+(Niche Space) and the space of possible designs for meeting those requirements
+(Design Space).
+
+<blockquote>
+<small>
+Examples of the 2-D graphical interface tools available can be found
+here
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib/">http://www.cs.bham.ac.uk/research/poplog/figs/rclib/</a>
+<br>
+Examples of movies demonstrating the toolkit can be found here:
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent">http://www.cs.bham.ac.uk/research/poplog/figs/simagent</a>.
+</small>
+</blockquote>
+<a name="mechanisms"></a>
+<h3><b>
+MECHANISMS AND DESIGN PHILOSOPHY
+</b></h3>
+The mechanisms are described in detail in the online documents and slide
+presentations listed below.
+<p>
+<a name="availability"></a>
+<h3><b>
+AVAILABILITY AND RESOURCES REQUIRED
+</b></h3>
+<p>
+The toolkit is available as part of Poplog in the FreePoplog
+directory
+<a href="http://www.cs.bham.ac.uk/research/poplog/freepoplog.html">
+http://www.cs.bham.ac.uk/research/poplog/freepoplog.html
+</a>
+<br/>
+The most widely used version is for 32-bit Linux (though there is also a
+64 bit version).
+<blockquote>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog">http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog</a>
+<br/>
+(includes download instructions).
+<p>
+Also available for non-linux users (e.g. MSWindows, or Mac) in a Virtual
+Box Package
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/ova">http://www.cs.bham.ac.uk/research/projects/poplog/ova</a>
+<p>
+Because of its implementation using Pop11 in Poplog it is relatively
+light weight, and teaching demos and student projects have been run on
+linux machines with only 64MB RAM. Of course, the amount of memory
+required at run time depends on what is built with it.
+<p>
+The download
+package is under 20MB and when installed occupies a directory of less
+than 90MB -- the exact size depending on the number and type of saved
+images created. (The defaults include images for running Prolog, Common
+Lisp, and Standard ML.)
+<p>
+The total size can be much smaller, if unwanted languages in Poplog, the
+system sources, and documentation are removed, e.g. for running on a
+small robot.
+<p>
+External libraries, e.g. for vision, or for speech generation (e.g.
+using 'espeak' on linux) can add to the size required.
+</blockquote>
+<br>
+Like everything else in Poplog, SimAgent is free of charge
+with open source, including tutorial examples and documentation. It
+runs in the Poplog multi-language environment, on a variety of unix
+and linux systems. A version without graphics will work on Windows
+PCs. The full system can run on Windows using VirtualBox.
+<p>
+The <a href="../openpoplog.html">OpenPoplog project</a> aims to port the
+full functionality to Windows+PC. However, with the use of
+virtualisation, e.g. using the <a href="http://www.vmware.com/">VmWare
+environment</a> or <a
+href="http://www.vmware.com/products/fusion/">VMFusion</a> or
+VirtualBox, full Linux Poplog, including SimAgent with graphics, can run
+under both Windows and Apple OSX (on Intel-based Macs), as illustrated
+here:
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/ova/">http://www.cs.bham.ac.uk/research/projects/poplog/ova/</a>
+
+<a name="background"></a>
+<h3><b>
+SOME BACKGROUND
+</b></h3>
+The toolkit was developed within the
+<a href="http://www.cs.bham.ac.uk/~axs/cogaff.html">
+Cognition and Affect project,</a>
+at the University of Birmingham, partly in collaboration with users at
+DERA Malvern (especially Jeremy Baxter and Richard Hepplewhite),
+who made significant suggestions for improvements during
+the early stages. Some of the ideas were inspired by Jonathan
+Cunningham, with whom I interacted on a user-interface design tools
+project circa 1991-1993. Many others have contributed since then.
+<a href="#contributors">The list of users, below,</a> includes
+contributors.
+<p>
+The
+<a href="http://www.cs.bham.ac.uk/research/cogaff/">
+CogAff project paper directory
+</a>
+includes papers reporting on theoretical work and preliminary designs.
+There are also
+<a href="http://www.cs.bham.ac.uk/research/cogaff/talks/">slide presentations</a>
+(in PDF and Postscript) presenting the theoretical ideas including a
+slide presentation on the SimAgent toolkit:
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/talks/#simagent">http://www.cs.bham.ac.uk/~axs/misc/talks#simagent</a>
+<p>
+<a name="movies"></a>
+<b>MOVIE DEMOS</b>
+<br/>
+Some mpeg movies illustrating simple uses of the toolkit can be
+found here
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent/">http://www.cs.bham.ac.uk/research/poplog/figs/simagent/</a>
+
+<p>
+Although SimAgent was originally developed to simulate multiple agents
+and/or individual agents with multiple concurrently active interacting
+sub-mechanisms, it was mainly used on a single CPU (although some users
+haVE distributed processes communicating via sockets). More recently
+there have been two developments supporting distributed versions of
+SimAgent
+
+<ul>
+<li>
+<a href="http://www.sisostds.org/conference/View_Public_Document_Info.cfm?Document_Num=03E-SIW-076&Phase_ID=2">
+A paper on the use of HLA to distribute
+SimAgent,</a>by Mike Lees, and Brian Logan (University of Nottingham)
+and Georgios Theodoropoulos and Ton Oguara (University of Birmingham),
+was voted 8th best out of 78 at
+<a href="http://www.sisostds.org/conference/index.cfm?conf=03euro">the 2003 Euro-SIW conference.</a>
+<p>
+<li>
+<a href="http://www.nd.edu/~airolab/software/index.html">the SWAGES
+package</a>, developed at the University of Notre Dame by
+<a href="http://hrilab.cs.tufts.edu/people/matthias.php">Matthias Scheutz</a>
+(now at Tufts University) and students allowed SimAgent to be distributed over
+different computers and interfaced with other packages.
+</ul>
+<p>
+
+<a name="objectives"></a>
+<h3><b>OBJECTIVES AND DESIGN PHILOSOPHY</b></h3>
+For our work exploring architectural design requirements for intelligent
+human-like agents, and other kinds, we need a facility for rapidly
+implementing and testing out different agent architectures, including
+scenarios where each agent is composed of several different sorts of
+concurrent interacting sub-systems, in an environment where there are
+other agents and objects. Some agents should have sensors and effectors,
+and some should be allowed to communicate with others. Some agents
+should have hybrid architectures including, for example, symbolic
+mechanisms communicating with neural nets. We also wanted to be able to
+use the toolkit for exploring evolutionary processes, as in the "Blind
+and Lazy" scenario mentioned below.
+<p>
+It was important for us that the toolkit did not embody a commitment
+to a particular type of agent architecture, since the whole point was to
+support exploration of a variety of architectures.
+<p>
+We also required a development environment supporting rapid prototyping
+(to help with clarifying ill-defined problems), incremental compilation,
+changes to code without having to restart a process, support for a wide
+variety of AI techniques and programming styles, and tools for graphical
+tracing via
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent">displays of a running simulation,</a>
+and graphical interaction
+via a mouse -- sometimes described as "direct manipulation".
+<p>
+We wanted it to be easy to do fairly simple things, while also
+supporting more complex and difficult programming tasks.
+<p>
+As a result of analysing requirements implicit in some of our
+theoretical work (described in papers in the
+<a href="http://www.cs.bham.ac.uk/research/cogaff/">
+"Cogaff" project directory</a>, and in some of our
+<a href="http://www.cs.bham.ac.uk/research/cogaff/talks/">conference and seminar presentations</a>)
+a set of ideas for a toolkit emerged.
+The first draft was made available in October 1994, and a paper about it
+presented at ATAL95. Since then there have been several extensions. Some
+of these arose from suggestions made by Jeremy Baxter and Richard
+Hepplewhite who were using the toolkit for their work on simulated army
+agents at DERA Malvern. Their work is briefly summarised in a panel
+alongside a paper on Sim_agent, in <I>Communications of the ACM,</I>
+March 1999.
+<p>
+
+<a name="paradigms"></a>
+<h3><b>
+PROGRAMMING PARADIGMS USED IN SIM_AGENT
+</b></h3>
+It was found useful to combine a variety of programming paradigms
+and mechanisms within the toolkit. This is why
+<a href="http://www.cs.bham.ac.uk/research/poplog/primer/START.html">Pop-11</a>
+in the
+<a href="http://www.cs.bham.ac.uk/research/poplog/poplog.info.html">Poplog</a>
+multi-language environment was chosen as
+the core implementation language.
+<p>
+Pop-11 is a multi-paradigm, extendable, incrementally compiled language,
+very similar in power and diversity to Common Lisp, but with a more
+conventional syntax and some other differences. E.g. it has no
+interpreter, only an incremental compiler.
+<p>
+Here are some of the programming paradigms we felt were necessary for
+our architectural explorations:
+
+<ul>
+<li> Object oriented programming
+        (including generic functions and multiple inheritance)
+<br>
+Based on the ObjectClass extension to Pop-11 (similar to CLOS).
+<p>
+
+<li> Rule-based programming and pattern matching
+<br>
+Based on the Pop-11
+<a href="http://www.cs.bham.ac.uk/research/poplog/doc/pophelp/matches">pattern matcher</a>
+and the
+<a href="http://www.cs.bham.ac.uk/research/poplog/prb/help/poprulebase">Poprulebase library</a>
+<p>
+
+<li> Concurrent processes (threads)
+<br>
+Based on a rule interpreter that runs for a given number of "cycles"
+then suspends itself.
+<p>
+
+<li> List processing
+(as provided in Pop-11 -- similar to Common Lisp lists),
+<p>
+
+<li> Event driven programming (e.g. handling mouse events, or new
+percepts)
+<br>
+Based on the rich interface between Pop-11 and the X window system, e.g.
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib">http://www.cs.bham.ac.uk/research/poplog/figs/rclib</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/doc/popref/x">http://www.cs.bham.ac.uk/research/poplog/doc/popref/x</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/doc/popxref/xtoolkit">http://www.cs.bham.ac.uk/research/poplog/doc/popxref/xtoolkit</a>
+<p>
+
+<li> Conventional procedural and functional programming
+(provided in Pop-11)
+<p>
+
+<li> Reflection and meta-management,
+allowing programs to have easy
+access to their own rules and to monitor and alter their own internal
+processing.
+<br>
+In particular, an agent's mental mechanisms may use rules that are
+in one of the agent's databases on which rules operate. This was
+used by
+<a href="http://www.cs.bham.ac.uk/~cmk">Catriona Kennedy</a> in
+her work
+on architectures for collaborative intrusion-detection agents.
+<p>
+Allowing rules that operate on internal databases within agents to
+be <I>contained in</I> those databases also makes it easier to design
+agents that develop new capabilities, or agents which can be
+dynamically extended via new "plug-ins").
+<p>
+
+<li> Other computational paradigms needed for particular applications,
+<br>
+e.g.
+    neural nets, logic programming
+<br>
+(Using the ability of Poprulebase conditions or actions to invoke
+arbitrary mechanisms, and the fact that Poplog supports an
+implementation of Prolog.)
+<p>
+
+<li> Extendable syntax and semantics (macros and beyond)
+<br>
+Using Pop-11's powerful syntactic extension facilities, possible because
+the compiler sub-routines are all available at run time.
+<p>
+
+<li> Incremental compilation with dynamic replacement of modules
+<br>
+(essential for rapid prototyping and interactive testing and debugging).
+<p>
+
+<li> Automatic store management and garbage collection.
+(particularly fast in Pop-11).
+</ul>
+<p>
+
+The use of the language Pop-11 makes it far easier to combine all these
+paradigms than if we had used any other language, apart from Common
+Lisp.
+<p>
+The current version of the toolkit is very general and flexible, though
+perhaps not as easy to use as a toolkit dedicated to a particular type
+of architecture.
+<p>
+For applications requiring a graphical interface, e.g. displaying moving
+simulated agents, or with
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib">buttons, sliders, menus,
+control-panels,</a> etc.
+the
+<a href="http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib">RCLIB</a>
+package is available. There is a library which links RCLIB to Sim_agent,
+called
+<a href="http://www.cs.bham.ac.uk/research/poplog/sim/help/sim_picagent">SIM_PICAGENT</a>.
+<p>
+(Note: RCLIB is an object-oriented extension of the old RC_GRAPHIC
+package providing 'Relative Coordinate' Graphical facilities. All
+drawing is relative to a changeable coordinate frame, allowing
+scale-changes, zooming in and out, moving windows into a simulation,
+etc.)
+<p>
+By default sim_agent runs as a single process within which
+multiple "threads" manage different objects and agents and also
+different components within the "minds" of individual agents. It can
+also be used in distributed mode,
+using the Pop-11 socket mechanism to
+support communication between instances of sim_agent.
+
+<p>
+<a name="pop11"></a>
+<h3><b>
+Pop-11 and Poplog
+</b></h3>
+The toolkit uses the
+<a href="http://www.cs.bham.ac.uk/research/poplog/primer/START.html">
+Pop-11 language</a>
+in the
+<a href="http://www.cs.bham.ac.uk/research/poplog/poplog.info.html">
+Poplog software development
+</a>
+environment. Pop-11, like Common Lisp, is a powerful extendable
+multi-purpose programming language supporting multiple paradigms. Within
+the Poplog environment Pop-11 also supports programs written in Prolog,
+Common Lisp or Standard ML.
+<p>
+Poplog and Pop-11 previously formed part of an expensive commercial
+product, but they are now available,
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html"> free of
+charge</a>,
+with full sources, courtesy of the Sussex University.
+Sim_agent is available at the same site.
+<br>
+Information about teaching materials for programming and AI in
+Poplog can be found
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/examples/">here</a>.
+("Poplog" is a trade mark of the University of Sussex.)
+
+<p>
+
+<a name="contributors"></a>
+<h3><b>
+Some Birmingham users of SimAgent</b>
+<br>
+(Also contributors)
+</h3>
+
+<ul>
+<li>
+<a href="http://www2.dcs.hull.ac.uk/NEAT/dnd/">Darryl Davis,</a>
+ who worked
+with A.Sloman during 1994-5 has been using the toolkit to explore more
+complex hierarchical agent architectures, also including mixtures of
+reactive and deliberative components.
+<li>
+<a href="http://www.cs.nott.ac.uk/~bsl/">Brian Logan</a> used and contributed to
+SimAgent while he was at Birmingham, and continued using it for research and
+teaching after moving to Nottingham University, including linking SimAgent to
+the MASSIV Virtual Reality system, and investigating distribution mechanisms in
+the PDES-MAS project.
+<li>
+After spending a year here, and contributing ideas to the toolkit,
+<a href="http://mypage.iu.edu/~mscheutz/">Matthias
+Scheutz</a> used it for teaching and research at The University of Notre Dame
+(USA). (He is now at Indiana University). His
+<a href="http://hri.cogs.indiana.edu/publications/scheutzetal06alifeswages.pdf">Simworld
+package,</a>
+used, for example, in
+<a href="http://jasss.soc.surrey.ac.uk/7/1/4.html">this online paper</a>
+(The Role of Signaling Action Tendencies in Conflict Resolution, in
+<i>Journal of Artificial Societies and Social Simulation</i>
+vol. 7, no. 1)
+is
+    <a href="http://www.cs.bham.ac.uk/research/poplog/simworld.tar.gz">available
+at the Poplog web site.</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/~cmk">Catriona Kennedy</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/~nah">Nick Hawes</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/~mxv">Manuela Viezzer</a>
+<li>
+<a href="http://www.cs.bham.ac.uk/~ddp">Dean Petters</a>
+</ul>
+<p>
+Other users include undergraduates doing AI projects, MSc students
+and
+<a href="http://www.cs.bham.ac.uk/research/cogaff/phd-theses.html">PhD
+students,</a> including contributions demonstrated in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/figs/simagent">SimAgent movies.</a>
+<p>
+There are additional users in the
+<a href="sim/sim-referrers.html">list of referrers to SimAgent</a>
+<p>
+
+<a name="documentation"></a>
+<h3><b>
+DOCUMENTATION AND PUBLICATIONS
+</b></h3>
+
+Descriptions of the motivation for the toolkit, some uses of the
+toolkit, and the toolkit itself, can be found in the following
+documents:
+<p>
+<ol>
+
+<li> <a href="http://www.cs.bham.ac.uk/research/poplog/sim/help/sim_agent"> A detailed (long) plain text description of
+the Pop-11 sim_agent library.</a>
+
+<p>
+<li> <a href="http://www.cs.bham.ac.uk/research/poplog/prb/help/rulesystems">A
+(long) plain text overview
+</a>
+of the "rulesystems" mechanisms available for specifying internal agent
+architectures (which we have plans to modify extensively in order to
+increase flexibility including self-monitoring and self-control by
+agents),
+<p>
+
+<li> <a href="http://www.cs.bham.ac.uk/research/poplog/prb/help/poprulebase">
+A (long) plain text overview
+</a>
+of the Poprulebase library, which implements a very flexible and
+extendable forward chaining production system language, for specifying
+condition action rules in symbolic or hybrid architectures.
+<p>
+
+<li>
+<a href="http://www.cs.bham.ac.uk/research/poplog/newkit/sim/help/newkit">
+http://www.cs.bham.ac.uk/research/poplog/newkit/sim/help/newkit</a>
+This gives an overview of the changes introduced in July 1999 to allow
+greater self-reference (reflective capabilities) in agents. I.e. they
+can now more easily monitor and change their own processing
+architecture.
+<p>
+The news files report extensions and bug-fixes.
+<p>
+E.g. extensions in July 1999 made it easier to use the toolkit to create
+agents which can observe and alter their own processing architecture.
+These changes are described in the NEWKIT document listed below.
+<p>
+More recent extensions proposed partly by
+<a href="http://www.cs.bham.ac.uk/~sra">Steve Allen</a>
+and
+<a href="http://www.cs.bham.ac.uk/~cmk">Catriona Kennedy</a>
+allowed rules more easily to access databases of other agents,
+and extended the facilities for self-monitoring. See the NEWS files
+listed below.
+
+<li>
+<a href="http://www.cs.bham.ac.uk/research/poplog/newkit/sim/help/sim_agent_news">
+http://www.cs.bham.ac.uk/research/poplog/newkit/sim/help/sim_agent_news
+</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/newkit/prb/help/prb_news">
+http://www.cs.bham.ac.uk/research/poplog/newkit/prb/help/prb_news
+</a>
+<br>
+These two files give information about the latest changes to Sim_agent
+and Poprulebase
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib_news">http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib_news</a>
+<br>
+gives information about changes to the graphical subset of the toolkit,
+<a href="http://www.cs.bham.ac.uk/research/poplog/help/rclib">RCLIB</a>.
+<p>
+
+<li>
+<a href="http://www.cs.bham.ac.uk/research/cogaff/0-INDEX96-99.html#49">
+Building cognitively rich agents using the SIM_AGENT toolkit,
+</a>
+<br/>
+(in <b>Communications of the Association of Computing
+Machinery</b>, March 1999, vol 43, no 2, pp. 71-77)
+by Aaron Sloman and Brian Logan.
+<p>
+
+<li> <a href="http://www.cs.bham.ac.uk/~bsl/aaai98">
+Three papers by Jeremy Baxter and Richard Hepplewhite, Brian Logan and
+Aaron Sloman
+</a>
+presented at the AAAI-98 Workshop on Software Tools for Developing
+Agents at AAAI-98 Madison, Wisconsin, July, 1998
+<p>
+
+<li>
+<a href="http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib">The RCLIB 2-D graphical toolkit</a>
+used for control panels and interactive graphical
+displays of simulated agents. Examples of RCLIB displays can be found in
+    <a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib/">http://www.cs.bham.ac.uk/research/poplog/figs/rclib/</a>
+<p>
+
+<br> <b>Some older documents:</b>
+<p>
+<li>
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/sim_agent.pdf">A set
+of seminar slides, presented in 1994, (PDF)</a>
+<p>
+<li> <a href="http://www.cs.bham.ac.uk/research/projects/cogaff/Aaron.Sloman_Riccardo.Poli_sim_agent_toolkit.pdf"> A
+PDF version  </a> of a conference paper on the
+toolkit, by Aaron Sloman and Riccardo Poli, presented at
+the ATAL-95, Workshop on Agent Theories, Architectures, and Languages,
+IJCAI-95, Montreal, August 1995. The final version appeared
+in: Sloman, A and Poli R, (1996) SIM_AGENT: A toolkit for exploring
+agent designs, in
+<b> Intelligent Agents Vol II (ATAL-95) </b>, Eds.
+Mike Wooldridge, Joerg Mueller, Milind Tambe, Springer-Verlag pp
+392--407
+<p>
+<li>
+One of the early examples </a> of the use of the toolkit: the "Blind and Lazy"
+robot scenario, an experiment in co-evolution, by
+<a href="http://cswww.essex.ac.uk/staff/poli/">Riccardo Poli</a> (now at Essex
+University). See
+<div style="margin-left:15px; margin-top:5px; margin-bottom:0px; width:599px">
+Aaron Sloman and Riccardo Poli, (1996)
+<br/>
+SIM_AGENT: A toolkit for exploring agent designs, in
+<i>Intelligent Agents Vol II (ATAL-95)</i>,
+Eds. M. Wooldridge and J. Mueller and M. Tambe,
+Springer-Verlag,
+pp. 392--407,
+<a href="http://www.cs.bham.ac.uk/research/projects/cogaff/Aaron.Sloman_Riccardo.Poli_sim_agent_toolkit.pdf">(PDF)</a>
+</div>
+</ol>
+
+<hr>
+<a name="code"></a>
+<h3><b>
+PROGRAM CODE
+</b></h3>
+The program code, including a great deal of online documentation is
+available in the
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">
+FreePoplog ftp directory,
+</a> at the University of Birmingham, both in browsable directories and
+in compressed tar files. See below for more information.
+
+<p>
+
+<hr>
+<p>
+<a name="tutorial"></a>
+<h3><b>Tutorial file</b></h3>
+
+A tutorial introduction to the SIM_AGENT toolkit is provided in
+<a href="http://www.cs.bham.ac.uk/research/poplog/sim/teach/sim_feelings">
+the SIM_FEELINGS teach file,</a>
+which is part of the online documentation included in the package.
+This file is an executable tutorial demonstration of the use of the
+toolkit in a simple scenario involving (very shallow) "emotional"
+agents with a simple architecture, moving around in a 2-D world
+containing other immobile objects.
+
+<p>
+It is a plain text file, designed for viewing in the Poplog
+editor VED. It includes code that can be copied and run, if you have a
+Poplog system and have fetched the toolkit from the Birmingham Poplog
+ftp site.
+<p>
+A different tutorial, the
+<a href="http://www.cs.bham.ac.uk/research/poplog/sim/teach/sim_demo">
+the TEACH SIM_DEMO
+</a>
+code produced some of the demonstration "movies", described below.
+
+<p>
+<a name="components"></a>
+<h3><b>
+THE SIM_AGENT TOOLKIT HAS THREE MAIN COMPONENTS
+</b></h3>
+The components are the rule interpreter, the sim_agent library and the
+rclib graphical package. The first and third can be used independently
+of sim_agent.
+
+<p>
+<b>
+<a name="poprulebase"></a>
+<a href="http://www.cs.bham.ac.uk/research/poplog/prb/help/poprulebase">
+1. Poprulebase:
+</a>
+</b>
+<br>
+a very general, flexible and extendable interpreter for condition-action
+rules, written in Pop-11. It is based on the idea of a forward-chaining
+production system interpreter, but provides a collection of unusual
+facilities, including a smooth interface to neural net or other
+"sub-symbolic" mechanisms, through so-called "filter" conditions, a
+wide variety of condition types and action types (both user-extendable),
+and a variety of control options and higher level structuring
+facilities.
+<p>
+
+Poprulebase allows rulesets to be combined into rulefamilies. Within a
+rulefamily, control can be transferred between rulesystems as the
+context changes. This also allows SOAR-like pushing and popping of
+contexts, as well as other sorts of transitions. Rulefamilies can be
+combined into rulesystems. Each agent has a rulesystem, which may be an
+arbitrarily complex collection of interacting rulesets and rulefamilies,
+with associated databases providing memory stores and communication
+channels.
+
+<p>
+
+<b>
+<a name="library"></a>
+<a href="http://www.cs.bham.ac.uk/research/poplog/sim/help/sim_agent">
+2. The Sim_agent library
+</a>
+</b>
+<br>
+
+provides a set of base classes and scheduling mechanisms for
+running simulations involving a number of objects and agents whose
+internal mechanisms are implemented as multiple rulesets or
+rulefamilies, using Poprulebase. Sim_agent also makes use of the
+<a href="http://www.cs.bham.ac.uk/research/poplog/teach/oop">object
+oriented
+</a>
+facilities provided in the
+<a href="http://www.cs.bham.ac.uk/research/poplog/teach/objectclass_example">
+Pop-11 Objectclass package,
+</a>
+a CLOS-like extension to Pop-11 providing multiple-inheritance, generic
+functions, etc. Objectclass, which was designed and implemented by Steve
+Knight at HP Research Labs, Bristol, turns Pop-11 into a powerful
+language for designing re-usable extendable software modules, as CLOS
+does for Lisp.
+<p>
+
+In sim_agent, each agent has its own rulesystem which may consist of a
+collection of rulesets and rulefamilies implementing a variety of
+mechanisms (perception, memory, motive generation, planning,
+self-monitoring, etc.). A feature of the toolkit is provision for
+differing resource allocation between components of an agent, and
+between agents. E.g. some agents may plan quickly relative to their
+perceptual processes, others slowly.
+
+<p>
+<a name="rclib"></a>
+<a href="http://www.cs.bham.ac.uk/research/poplog/rclib/help/rclib">
+3. The RCLIB package:
+</a>
+This extends the Pop-11 RC_GRAPHIC facility and provides flexible new
+tools for building graphical demonstrations and complex
+graphical control panels.
+<p>
+    Examples of displays produced by the "RCLIB" Graphic Library can be
+    found in
+    <a href="http://www.cs.bham.ac.uk/research/poplog/figs/rclib/">http://www.cs.bham.ac.uk/research/poplog/figs/rclib/</a>
+
+<p>
+<h3><b>MPEG MOVIES PRODUCED BY TOOLKIT USERS</b></h3>
+A collection of Mpeg movie demonstrations
+showing some of the features of SimAgent
+can be found here (with
+thanks to Mike Lees at Nottingham University for
+the Boids and Tileworld examples):
+<a href="http://www.cs.bham.ac.uk/research/poplog/figs/simagent/">http://www.cs.bham.ac.uk/research/poplog/figs/simagent/</a>
+<p>
+
+<a name="running"></a>
+<h3><b>RUNNING THE TOOLKIT</b></h3>
+
+The packages can be run only in a Poplog Pop-11 environment, though
+anyone who has Poplog may freely copy and use the code (but please let
+me know if you do). It requires Poplog Version 15.0 or later.
+
+<p>
+
+For more information on Pop-11 and Poplog see:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/primer">
+    http://www.cs.bham.ac.uk/research/poplog/primer</a>
+</a>
+<br>
+<a href="http://www.cogs.susx.ac.uk/users/adrianh/pop11.html">
+    http://www.cogs.susx.ac.uk/users/adrianh/pop11.html
+</a>
+<br>
+<a href="http://www.cogs.susx.ac.uk/users/adrianh/poplog.html">
+    http://www.cogs.susx.ac.uk/users/adrianh/poplog.html
+</a>
+<br>
+<a href="http://www.cs.bham.ac.uk/research/poplog/poplog.info.html">
+http://www.cs.bham.ac.uk/research/poplog/poplog.info.html
+</a>
+<p>
+<h3><b>Downloadable versions of Poplog and the toolkit</b></h3>
+are available here:
+<a href="http://www.cs.bham.ac.uk/research/poplog/freepoplog.html">http://www.cs.bham.ac.uk/research/poplog/freepoplog.html</a>
+<p>
+A user of linux on a PC (x86 or x86_64) can fetch everything required from
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog">here.</a>
+
+
+<p>
+<a name="code-docs"></a>
+<h3><b>
+CODE AND DOCUMENTATION
+</b></h3>
+In order to run SimAgent you need to have poplog, various extensions to
+Poplog produced in Birmingham (e.g. extending the Pop11 pattern
+matcher), the Poprulebase package and the SimAgent package. Use of the
+graphical features of SimAgent and the ability to run the graphical
+demos also requires the RCLIB package. The simplest way to get
+everything if you are using a PC running linux is to download the
+whole Birmingham Linux poplog tar file mentioned above and described in
+<a href="http://www.cs.bham.ac.uk/research/poplog/freepoplog.html#pclinuxversions">http://www.cs.bham.ac.uk/research/poplog/freepoplog.html#pclinuxversions</a>
+The toolkit is now included in the linux poplog package by default, in the
+$usepop/pop/packages/newkit library.
+<p>
+The following sub-packages are available for download separately.
+<p>
+<a name="poprulebase"></a>
+<b> 1. Poprulebase </b>
+<br>
+Code and documentation for the Poprulebase package can be found
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/prb"> in a browsable
+directory.</a>.
+<p>
+The main documentation files for Poprulebase (in plain ascii text) are
+in <a href="http://www.cs.bham.ac.uk/research/projects/poplog/prb/help">
+the PRB/HELP sub-directory.</a>
+<p>
+The tutorial documentation (in plain ascii text) is in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/prb/teach"> the
+PRB/TEACH sub-directory.</a>
+<p>
+There is also
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/prb.tar.gz">
+a compressed tar file </a> for Poprulebase.
+<p>
+Most of poprulebase can be used without SimAgent or RCLIB.
+<p>
+<a name="simagent"></a>
+<b>2.  Sim_agent </b>
+<br>
+Code and documentation for SIM_AGENT is in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/sim"> a browsable
+directory, </a> and also in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/sim.tar.gz">
+a compressed tar file. </a> This cannot be used without Poprulebase.
+Some of the examples with graphical interfaces also require RCLIB.
+<p>
+The main overview documentation for SIM_AGENT (in plain ascii text) is
+in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/sim/help"> the
+SIM/HELP sub-directory.</a>
+<p>
+The tutorial documentation (in plain ascii text) is in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/sim/teach"> the
+SIM/TEACH sub-directory.</a>
+
+<p>
+<a name="rclib"></a>
+<b>3. The RCLIB graphical library
+</b>
+<br>
+The graphical libraries used in some of the demonstration code
+can be found in the "rclib" extension to Pop-11's rc_graphic library,
+which provides a sophisticated object oriented graphical extension to
+Pop-11 including 2-D drawing, movable objects, buttons, sliders (not
+just horizontal and vertical) etc.
+<p>
+Code and documentation for RCLIB can be found in
+<a
+href="http://www.cs.bham.ac.uk/research/projects/poplog/rclib"> a browsable
+directory, </a> and also in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/rctar.gz">
+a compressed tar file. </a>
+<p>
+The main overview documentation for RCLIB (in plain ascii text) is in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/rclib/help"> the
+RCLIB/HELP
+sub-directory</a>, especially
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/rclib/help/rclib">
+the HELP RCLIB file.</a>
+<p>
+The tutorial documentation for RCLIB (in plain ascii text) is in
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/rclib/teach"> the
+RCLIB/TEACH sub-directory,</a>
+especially
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/rclib/teach/rclib_demo.p">
+the introductory overview tutorial.
+</a>
+<p>
+<a name="acknowledge"></a>
+<h3><b>
+ACKNOWLEDGEMENTS
+</b></h3>
+
+The bulk of the design and implementation was done by Aaron Sloman who
+is also responsible for any major design flaws. However, many
+individuals contributed ideas, code, demonstrations, etc., including Luc
+Beaudoin and Tim Read who suffered from the lack of something like this
+when they were doing their PhDs and (roughly in chronological order)
+Riccardo Poli, Jeremy Baxter, Richard Hepplewhite, Darryl Davis, Ian
+Wright, Brian Logan, Peter Waudby, Tom Carter, Catriona Kennedy, and
+other users at the University of Birmingham, where it is
+used for undergraduate and MSc student projects as well as for research.
+<p>
+The Pop-11 Objectclass system was crucial for the development of both
+RCLIB and the SIM_AGENT mechanisms. Objectclass provides multiple
+inheritance and generic functions, extending Pop-11 roughly as CLOS
+extends Common Lisp. It was originally designed and implemented
+by Steve Leach when he was at Hewlett Packard research labs. He is
+now a freelance software engineer.
+He made many other contributions to the design as a user,
+while at Hewlett Packard, some of which are part of poplog, others in libraries
+at the
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/">Poplog web site.</a>
+<p>
+Objectclass makes it easy to introduce new types of agents sharing
+some default methods with the top level agent class while providing
+their own extensions. This was also a requirement for the graphical
+tools. Objectclass also made it easy to combine agent classes with
+graphical object classes to produce agents which both act in a
+simulated world and also display their activity in a 2-D
+graphical display, where they can be manipulated with the mouse.
+<p>
+Code and documentation for objectclass are part of the Poplog
+system.
+<p>
+Thanks to Chris Glur for pointing out typos.
+<hr>
+<p>
+<a name="funding"></a>
+<h3> <b>FUNDING</b>
+</h3>
+Some of the early work on the toolkit was funded by a grant from the UK
+Joint Research Council Initiative on HCI and Cognitive Science (1992-5)
+<p>
+Additional funding came from the University of Birmingham (1994-5).
+<p>
+Our collaborators at DERA provided funding which partly
+contributed to development of the toolkit between 1994 and 1998.
+<hr>
+<p>
+disclaimer
+<h3><b>Disclaimer
+</b>
+</h3>
+Poprulebase and Sim_agent form part of the
+<a href="http://www.cs.bham.ac.uk/~axs/cog_affect/COGAFF-PROJECT.html">
+Cognition and Affect Project.</a>
+<p>
+While the package continued to improve (partly on the basis of
+suggestions from users), every effort was made to retain
+`backward compatibility'.
+<p>
+Comments and criticisms are
+welcome and may be addressed to me.
+<p>
+<a href="http://www.cs.bham.ac.uk/~axs"> Aaron Sloman
+</a>
+<br>
+School of Computer Science, The University of Birmingham,
+<br>
+Birmingham, B15 2TT,
+<br>
+England
+<p>
+EMAIL: A.Sloman AT cs.bham.ac.uk
+<p>
+<HR>
+<p>
+This file is maintained by:
+<br>
+<A href="http://www.cs.bham.ac.uk/~axs"> Aaron Sloman. </A>
+<br>
+Last updated:
+<br>
+30 Jan 2016: After Minsky's death added a comment on how our work relates to
+his.
+<br>
+31 Aug 2014 (reformat, and some minor corrections and additions.)
+<br>
+30 May 2005; 27 Jan 2010;
+</div>
+</font>
+</body>
+</html>

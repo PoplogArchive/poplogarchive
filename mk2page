@@ -1,0 +1,3 @@
+psnup -2 -m.8cm primer.ps > ! primer2.ps
+
+ps2pdf primer2.ps ; xpdf primer2.pdf

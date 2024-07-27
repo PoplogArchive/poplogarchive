@@ -1,0 +1,464 @@
+<HTML><HEAD> <TITLE>POPLOG EDITOR VED/XVED</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<FONT color="#000000">
+<h3>
+<a href="http://www.cs.bham.ac.uk/"> School of Computer Science</a>
+--
+<a href="http://www.cs.bham.ac.uk/"> The University of Birmingham</a>
+<br>
+<br>
+In collaboration with
+The University of Sussex:
+<br>
+<a href="http://www.sussex.ac.uk/informatics/">Informatics Department</a>
+and <a href="http://www.sussex.ac.uk/cogs">Centre for Research in Cognitive Science</a>
+</h3>
+<hr>
+<h2>
+<B>
+Introduction to the Poplog editor Ved/XVed
+<p>
+Editor Commands and Keyboard Map
+<p>
+<small>
+This is part of the
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html">Free
+Poplog Portal</a>
+</small>
+</B>
+</h2>
+<hr>
+<blockquote>
+<pre>
+DRAFT PROVISIONAL ANSWER TO:
+    WHAT ARE THE KEYBOARD FUNCTIONS FOR THE POPLOG EDITOR VED?
+
+</pre>
+<b>CONTENTS</b>
+<ul>
+<li>
+<a href="#introduction">
+<b>Introduction</b>
+</a>
+<li>
+<a href="#using">
+<b>Using Ved/XVed</b>
+</a>
+<li>
+<a href="#commands">
+<b>VED COMMANDS</b>
+</a>
+<li>
+<a href="#keyboard">
+<b>VED KEYBOARD MAP</b>
+</a>
+<li>
+<a href="#toprow">
+<b>Function Keys on the top row</b>
+</a>
+<li>
+<a href="#rightkeys">
+<b>Named and Arrow Keys to right of alphabetic keys</b>
+</a>
+<li>
+<a href="#numeric">
+<b>Numeric Keypad Keys</b>
+</a>
+<li>
+<a href="#additional">
+<b>Additional functions</b>
+</a>
+<li>
+<a href="#rcmenu">
+<b>The RCMENU System: Recursive HyperMenu Extension to Ved</b>
+</a>
+</ul>
+
+<hr/>
+
+<pre>
+<a name="introduction"></a>
+<b>Introduction</b>
+
+Anyone starting to use Poplog on Linux/Unix has three options
+regarding writing and running programs in one of the poplog
+languages (Pop-11, Prolog, Common Lisp, Standard ML) or producing
+documentation.
+
+    1. Learn to use the Poplog Editor in one of its two forms:
+
+       Ved:
+        Must be used in an 'xterm' window (other available console packages such
+        as 'gnome-terminal' do not handle some of the VT100 emulation
+        requirements properly). Ved can be used in split-window mode with a
+        horizontal division into two halves. E.g. you can type commands in one
+        half and get output in another, or write code in one half while reading
+        documentation in the other.
+
+       XVed:
+        This is a multi-window version of the editor, with one window per file
+        edited or viewed, and also (if you have motif or lesstif installed) it
+        provides menu buttons at the top and a scroll bar on the side.
+
+        (Screenshots to be added).
+
+        Using Ved or XVed provides many advantages for Poplog users because
+        the editor 'knows about' poplog documentation and libraries and allows
+        easy compilation and recompilation of code fragments while developing
+        and testing programs. Also putting the cursor next to a program
+        identifier and typing 'ESC h' provides help documentation on the
+        identifier. The 'showlib' command enables you to look at program
+        code in libraries provided for teaching, or as utilities.
+
+    2. Learn to use the Emacs interface to Poplog, which provides some of
+        of the functionality of Ved though it is not as closely integrated
+        with the poplog compiler mechanism.
+
+        If you already have poplog you can find the emacs interface in this
+        directory
+
+            $usepop/pop/packages/emacs
+
+        Otherwise look at this web site for information:
+            <a href="http://www.cs.bham.ac.uk/research/projects/poplog/emacs/">http://www.cs.bham.ac.uk/research/projects/poplog/emacs/</a>
+            including the help file
+            <a href="http://www.cs.bham.ac.uk/research/projects/poplog/emacs/emacs">http://www.cs.bham.ac.uk/research/projects/poplog/emacs/emacs</a>
+
+    3. Run pop11 (or prolog, or clisp, or pml) by giving the command to the
+        shell prompt in any console window (xterm, gnome-terminal, etc.)
+
+       Use some other text editor that you are familiar with, and paste code
+        written in your editor into into the pop-11 (or lisp, or prolog, or ML)
+        command prompt. You can also use your editor to compose files then
+        save them to disk, then type commands on the command line to read and
+        compile those files.
+
+        If output is produced it till be printed in the console window, so
+        if you wish to save it you can select and paste it into an editor
+        window, whereas if you use Ved/XVed or the Emacs interface, command
+        output is normally printed directly into an 'output' window of the
+        editor, where it can easily be edited and saved.
+
+<hr/>
+<a name="using"></a>
+<b>Using Ved/XVed</b>
+
+The rest of this file assumes you wish to try using option 1. Initially you will
+need to learn the main commands in Ved and the keyboard short cuts available.
+
+There is a default keyboard map described below, which should work on normal PC
+keyboards, but if you have a non-standard keyboard (e.g. a laptop keyboard) you
+may have to do some experimenting to find how best to use it.
+
+<hr/>
+<a name="commands"></a>
+<b>VED COMMANDS</b>
+
+(In need of better organisation)
+
+Ved is a very rich editor with many commands available. For beginners, a quick
+tutorial is available in
+
+    <a href="teach/quickved">The TEACH QUICKVED file</a>
+        (The table of contents is at the end of the file)
+
+More systematic introductory presentations of Ved and XVed commands
+
+    <a href="help/ved">The HELP VED file</a>
+    <a href="teach/xved">The TEACH XVED file</a>
+    <a href="help/xved">The HELP XVED file</a>
+    <a href="ref/xved">The REF XVED file</a>
+    <a href="ref/xvedmouse">The REF XVEDMOUSE file</a>
+
+    <a href="help">vedcomms The HELP VEDCOMMS file</a>
+        introduction to commands in Ved
+    <a href="ref/vedcomms">The REF VEDCOMMS file</a>
+        commands available in Ved
+
+    <a href="ref/vedprocs">REF VEDPROCS</a>
+        built in commands for operating on Ved buffers and their
+        contents. These can be used as subroutines by users who
+        wish to extend the editor.
+
+    <a href="ref/vedvars">REF VEDVARS</a>
+        global variables that control the behaviour of Ved/
+
+    <a href="help/vedfiletypes">HELP VEDFILETYPES</a>
+        explains how Ved treats files differently depending on
+        the file suffix, and how you can modify the default
+        behaviour
+
+    <a href="teach">Other teach files</a>
+    <a href="help">Other help files</a>
+    <a href="ref">Other ref files</a>
+
+It is possible to define new Ved ENTER commands yourself, once you are familiar
+with Pop-11.
+
+<hr/>
+<a name="keyboard"></a>
+<b>VED KEYBOARD MAP</b>
+
+The details of the keyboard map can depend on which keyboard, or which sort of
+terminal you are using. E.g. laptop (notebook) keyboards, and some others
+vary).
+
+Also, none of the readily available console windows will work properly except
+xterm, which you should be able to get for your linux distribution if it is not
+already in your system. E.g.
+
+    Ubuntu
+        apt-get xterm
+
+    Fedora
+        yum install xterm
+
+Because Ved is implemented in the core poplog language Pop-11, its keyboard
+mappings can be changed by the user, by editing a startup file, as explained
+below.
+
+The default mappings are here in the HELP VEDKEYS file,
+
+    <a href="help/vedkeys">HELP VEDKEYS on the internet</a>
+
+or in a local poplog system, in this file:
+
+    $usepop/pop/help/vedkeys
+
+readable into Ved or XVed using the command
+
+    ENTER help vedkeys RETURN
+
+    (ctrl-G is a substitute for ENTER)
+
+If you are familiar  with Emacs, you'll notice an overlap, and some
+differences.
+
+There are also default bindings to keyboard function keys in this file, which
+also includes a keyboard map (copied below)
+
+    <a href="help/vedxtermkeys">HELP VEDXTERMKEYS</a>
+
+or in this local Poplog file:
+
+    $usepop/pop/help/vedxtermkeys
+
+The keyboard functions depend on your using the file
+
+    $usepop/Poplib/Xdefaults.poplog
+
+You can either merge that with your ~/.Xdefaults, or load it
+explicitly when needed, by doing:
+
+    xrdb -merge $usepop/Poplib/Xdefaults.poplog
+
+(This alters the X server controlling your terminal and handling
+your keyboard actions).
+
+You can alter the keyboard settings by copying and editing
+
+    LIB vedxtermkeys
+    $usepop/pop/lib/ved/term/vedxtermkeys.p
+
+and for Xved
+
+    LIB vedxvedkeys
+    $usepop/pop/x/ved/lib/vedxvedkeys.p
+
+In Ved you can read these files:
+
+    ENTER showlib vedxtermkeys RETURN
+or
+    ENTER showlib vedxvedkeys RETURN
+
+They are pop-11 files, most of which should be very readable.
+
+You can create your own libraries to tailor things if you start
+using poplog a lot. In particular, you can copy the directory
+
+    $usepop/Poplib
+
+to your login directory and edit the vedinit.p file if you wish.
+It should then be compiled whenever you start up Ved or Xved.
+
+Default Keyboard Map for Ved
+
+<small>
+It is assumed that the keyboard as a whole has this layout:
+
+        ----------------------------------------  ----------
+        |    1. Function keys                  |  |not used|
+        ----------------------------------------  ----------
+
+        ----------------------------------------  --------- -----------
+        |                                      |  | keypad| |         |
+        |    2. Main key board                 |  --------- |4.numeric|
+        |                                      |     3.     |  keypad |
+        |                                      |  --------- |         |
+        |                                      |  | arrows| |         |
+        ----------------------------------------  --------- -----------
+
+<a name="toprow"></a>
+<b>Function Keys on the top row</b>
+
+The lower line gives the functions associated with each key on its
+own. The upper line gives the functions associated with ESC followed by
+the key.
+
+     (Note: "linepart" means most recently deleted part line segment.)
+
+        F1       F2       F3       F4       F5        F6       F7
+     +--------+--------+--------+--------+--------+--------+--------+
+ Esc | mk top | mk end | yank   | yank   | yank   | yank   | yank   |
++Key | file   | file   |linepart| line   |linepart|linepart|linepart|
+-----+--------+--------+--------+--------+--------+--------+--------+
+ KEY | MARK   | MARK   | DELETE | DELETE | DELETE | DELETE | DELETE |
+     | BEGIN  | END    | LINE <-| LINE   | LINE-> | WORD <-| WORD-> |
+     +--------+--------+--------+--------+--------+--------+--------+
+
+         F8       F9      F10      F11      F12
+     +--------+--------+--------+--------+--------+
+ Esc | move   | copy   | move   | POP    |Clear   |   The last two
++Key | in     | in     | out    |        | Mark   |   may be different
+-----+--------+--------+--------+--------+--------+   on some
+ KEY | MOVE   | COPY   |XREFRESH| PUSH   | XCHANGE|   keyboards.
+     | RANGE  | RANGE  |(file?) |        | POSN.  |
+     +--------+--------+--------+--------+--------+
+NOTE: In XVED F10 will set up "File" options, so it cannot be used.
+
+
+<a name="rightkeys"></a>
+<b>Named and Arrow Keys to right of alphabetic keys</b>
+
+       KEY                                 Esc+Key
+
+    +--------+--------+--------+       +--------+--------+--------+
+    |TOGGLE  | TOP OF | LAST   |       | line   |go start| xup    |
+    | STATIC | FILE   | WINDOW |       | above  |of range|        |
+    +--------+--------+--------+       +--------+--------+--------+
+    | DELETE | END OF | NEXT   |       |        |goto end| xdn    |
+    | CHAR < | FILE   | WINDOW |       |        |of range|        |
+    +--------+--------+--------+       +--------+--------+--------+
+
+
+             +--------+                         +--------+
+             | CHAR   |                         | Up     |
+             | UP     |                         | lots   |
+    +--------+--------+--------+       +--------+--------+--------+
+    | CHAR   | CHAR   | CHAR   |       | Left   | Down   | Right  |
+    | LEFT   | DOWN   | RIGHT  |       | Lots   | Lots   | Lots   |
+    +--------+--------+--------+       +--------+--------+--------+
+
+Sometimes ESC followed by arrow may have a different effect, depending on the
+keyboard: try it out.
+
+
+<a name="numeric"></a>
+<b>Numeric Keypad Keys</b>
+
+Note "<" means "left" and ">" means "right"
+
+       KEY                                     Preceded by ESC
+                                             (first three columns only)
+    +--------+--------+--------+--------+   +--------+--------+--------+
+    |        | HELP   | LOAD   | REDO   |   |        | help   | load   |
+    |        |XTRMKEYS| LINE   |        |   |        | on key | range  |
+    +--------+--------+--------+--------+   +--------+--------+--------+
+    | CHAR   | CHAR   | CHAR   |        |   | up     | up     | up     |
+    | UP <   | UP     | UP >   | SWITCH |   | < lots | lots   | > lots |
+    +--------+--------+--------+ STATUS |   +--------+--------+--------+
+    | CHAR   | 5      | CHAR   |        |   | left   | 5      | right  |
+    | LEFT   |        | RIGHT  |        |   | lots   |        | lots   |
+    +--------+--------+--------+--------+   +--------+--------+--------+
+    | CHAR   | CHAR   | CHAR   |        |   | down   | down   | down   |
+    | DOWN < | DOWN   | DOWN > |        |   | < lots | lots   | > lots |
+    +--------+--------+--------| ENTER  |   +--------+--------+--------+
+    | WORD LEFT       | WORD   |        |
+    |                 | RIGHT  |        |  (NB. lots = a third of window)
+    +-----------------+--------+--------+
+
+The 5 key may be given a function in some keyboard configurations and not in
+others. Try it. It should normally default to vedmidwindow, which moves
+the current line (where the ved cursor is) to the middle of the window,
+showing context above and below.
+</small>
+
+<a name="additional"></a>
+<b>Additional functions</b>
+
+Some additional functions are provided in LIB * VEDXTERMKEYS
+
+These two make it easy to move or copy the marked range in the current
+file (the mnemonic should be obvious);
+
+    ESC -
+        keep one copy of marked range and move it here
+
+    ESC =
+        make two copies, by copying to here
+
+<hr/>
+<a name="rcmenu"></a>
+<b>The RCMENU System: Recursive HyperMenu Extension to Ved</b>
+
+If poplog is linked with the Motif or Lesstif library, then when XVed is run it
+provides four menu buttons at the top
+
+    File Edit View Compile
+
+There is a much larger, more extendable mechanism available that does not depend
+on Motif, and is available in both Ved and XVed, namely the RCMENU package.
+
+This is invoked by giving the "ENTER menu" command in Ved or Xved.
+
+That command brings up a menu on the bottom right of the screen. Some of the
+menu buttons fetch documentation, or move the visible portion of the file up or
+down the screen, or move the editor cursor. Other buttons, indicated by '...'
+invoke additional menus. There is a picture of menus invoked from XVed <a href="http://www.cs.bham.ac.uk/research/projects/poplog/figs/rclib/#rcmenu">here.</a>
+
+These menus are all defined in a high level language extension to Pop-11.
+Each menu is defined in a separate file and the files are compiled only when the
+menu is invoked. This means that there is not a fixed menu tree always
+precompiled. It also allows menus to invoke one another. The initially provided
+set of menu-definition files can be inspected here:
+
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/rcmenu/menus">http://www.cs.bham.ac.uk/research/projects/poplog/rcmenu/menus</a>
+
+or in a local version of Poplog here
+
+    $usepop/pop/packages/rcmenu/menus/
+
+An introduction to the package is <a href="rcmenu/teach/ved_menu">here</a>.
+
+A sample showing how to create a menu that produces various graphical displays
+<a href="rcmenu/teach/menu_demo.p">here</a>
+
+or in a local version of Poplog
+
+    $usepop/pop/packages/rcmenu/teach/menu_demo.p
+
+The RCMENU package is built on top of <a href="http://www.cs.bham.ac.uk/research/projects/poplog/figs/rclib">the RCLIB</a> package.
+
+<hr/>
+
+TO BE EXTENDED
+
+</pre>
+</blockquote>
+
+<hr>
+<p>
+<h3><B>
+This file maintained by:
+</B></h3>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+http://www.cs.bham.ac.uk/~axs/
+<br>
+Installed: 29 Sep 2010
+<br>
+Last Updated:
+</FONT>
+</BODY>
+</HTML>
