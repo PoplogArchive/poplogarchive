@@ -1,0 +1,310 @@
+http://www.cs.bham.ac.uk/research/poplog/linux-cd/INSTALL-OPTIONS.txt
+17 Feb 2003
+
+WHEN YOU HAVE COMPLETED THE INSTALLATION OF THE REQUIRED FILES
+
+There are optional packages available that you may decide to install.
+
+You can then go back to the directory
+    /usr/local/poplog/src/linux-poplog/
+
+If you obtained the poplog system via the CD, you will find
+several optional extra packages are there waiting for you to install
+them if you wish, e.g.
+    newkit.tar.gz
+        (The sim_agent toolkit)
+    brait.tar.gz
+        (A braitenberg vehicle demo which requires sim_agent)
+    popvision.tar.gz
+        (David Young's sussex vision library and teaching files)
+    neural.tar.gz
+        (An introduction to neural nets)
+    vedgn.tar.gz
+        (Pop-11 programs for reading and posting news via VED.
+        This assumes that you have access to a news server.)
+
+Alternatively if you have not used the CD but fetched poplog from the
+Web site, you can also fetch the above files from this directory:
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd/
+
+
+You can use the install_package script to install the optional extras:
+
+E.g. if, after running the INSTALL_LIKE_BHAM script, you wish to
+install the popvision.tar.gz package, fetch it and install it
+in the same directory as the other files you unpacked from the tar
+file, then do:
+
+    ./install_package popvision
+
+i.e. in the directory containing popvision.tar.gz
+(You may wish to read the install_package script and modify it.)
+
+Other files not installed automatically, which can be installed
+like this are listed below
+
+
+The packages provided are:
+
+    bham.tar.gz
+        a collection of local teaching programs and documentation,
+        in regular use in Birmingham. This is used by some of the other
+        packages. This is installed by the INSTALL_LIKE_BHAM script,
+        which is automatically invoked.
+
+        This includes, among other things:
+            A collection of utilities making it easy to run Poplog
+            programs, e.g. pop-11, Ved, XVed, prolog, clisp, pml, etc.
+            without editing your login files or .Xdefault file, included
+            in this directory
+                $poploca/local/setup
+            with some important files for starting up poplog, along with
+            "man" files and a brief introductory userguide.
+
+        For details see setup/AREADME after you have installed it.
+
+
+
+    emacs.tar.gz
+        If you are an emacs user you may find this useful, if you want
+        to run pop11 etc. from emacs rather than from Ved/Xved
+        If you have any questions about this post them to the
+        comp.lang.pop news group or to the emacs-users email list
+        (if you are at Birmingham University).
+        NOT installed automatically, but included in the bham.tar.gz
+        file.
+
+    install_package
+        This is a shell script that can be used to install the packages
+        that are not installed automatically after you have run the
+        INSTALL_LIKE_BHAM script described above.
+
+    mklinks.afs
+        Need only if you have errors about not being able to create
+        hard links. Very unlikely unless you are using the Andrew File
+        System.
+
+    newc_dec.tar.gz
+        Needed only if you are an expert wishing to link in external
+        programs written in C. This provides support for ANSI and
+        K&R C.
+        NOT installed automatically
+
+
+    pophtmlprimer.tar.gz
+        HTML version of the pop-11 primer.
+        If you unpack this you can read the pop11 primer using
+        netscape or lynx. The contents are the same as the
+        teach file which can be read in Ved:
+            TEACH primer
+        except for some extra diagrams. Some people find the HTML
+        version easier to read because of the cross-links.
+
+        The master version of the primer is here:
+            http://www.cs.bham.ac.uk/research/poplog/primer/
+            http://www.cs.bham.ac.uk/research/poplog/pophtmlprimer.tar.gz
+
+        Postscript and latex versions are also available for formatted
+        printing, at
+            http://www.cs.bham.ac.uk/research/poplog/freepoplog.html
+        NOT installed automatically
+
+    rclib.tar.gz
+        The RCLIB library with extensions to RC_GRAPHIC. Needed for the
+        menus and control panels used in Birmingham.
+        Installed by default. Included in the saved images created by
+        INSTALL_LIKE_BHAM
+
+    rcmenu.tar.gz
+        The Pop-11/VED "menu" package. This can work ONLY if you have
+        RCLIB installed (i.e. needs rclib.tar.gz)
+        Installed by default (needed for Ved's control menus).
+
+    ved_latex.embedded.tar.gz
+        Facilities for running latex from inside the editor. Includes
+        tutorial introductions.
+
+        Installed by default, by INSTALL_LIKE_BHAM
+
+
+    vedmail.tar.gz
+        Sending and reading email in Ved
+            (requires a suitable internet connection).
+        NOT installed automatically.
+            Latest version can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd
+
+
+
+
+Installing the packages:
+You can use the format
+
+    ./install_package <package name>
+
+(do not include the .tar.gz bit)
+
+For example, to install the vedmail.tar.gz package
+
+    cd /usr/local/poplog/src/linux-poplog/
+
+    ./install_package vedmail
+
+
+These files are included in the CD tar file or can be fetched from
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd
+
+    Suse-Readme.txt
+        Information about installing termcap librares in SuSe linux.
+
+
+    contrib.tar.gz
+        a collection of code and documentation contributed before
+        about 1993. Includes all the code for some books on pop11,
+        natural language processing, and Standard ML, e.g. the
+        Gazdar and Mellish books on Natural Language Processing, in
+        Pop-11, Prolog and Common Lisp, and the code for Larry Paulson's
+        textbook on Standard ML.
+        Can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd
+
+    ctwm-window-manager.tar.gz
+        This  includes information on installing the CTWM
+        window manager, which is the one we use by default in
+        Birminhgam. It is small fast and moderately flexible compared
+        with gnome and KDE, the new more fancy linux desktop systems
+        which attempt to provide Windows-like facilities for linux.
+        Instructions are included in the README-ctwm.txt file in the
+        sub-directory.
+        NOT installed automatically. Can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd
+
+
+    popvision.tar.gz
+        David Young's vision library (from Sussex University)
+        includes some tutorial files on vision and multi-layer
+        perceptrons. Also includes some very useful graphical
+        extensions to pop-11 (LIB rc_array). There are
+        image-manipulating procedures written in C for speed, but
+        invoked from Pop-11, for convenience.
+        NOT installed automatically
+        Can be obtained from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd/
+
+
+    newkit.tar.gz
+        Includes newkit/prb/ and newkit/sim/ subdirectories
+        The Poprulebase library and the SIM_AGENT library
+        Described here:
+            http://www.cs.bham.ac.uk/~axs/cogaff/simagent.html
+        (needs rclib.tar.gz)
+        Not installed automatically.
+        Latest version can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd/
+
+    brait.tar.gz
+        A draft package produced by a student, Duncan Fewkes, supervised
+        by Jeremy Wyatt, showing how to use the sim_agent toolkit (see
+        newkit.tar.gz) to implemented simulated versions of the vehicles
+        described by Valentino in his book: Vehicles.
+        Requires newkit.tar.gz
+        Latest version can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd/
+
+    simworld.tar.gz
+        A demonstration package produced by Matthias Scheutz introducing
+        the use of sim_agent to explore evolutionary processes in a
+        small region of design space.
+        Requires newkit.tar.gz
+        Latest version can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd/
+
+
+    neural.tar.gz
+        Some simple and useful neural net packages and tutorials.
+        A package of programs and code produced by David Young at
+        the University of Sussex and Julian Clinton at ISL. It is made
+        available subject to the conditions of the Free Poplog system
+        system as expressed in the INSTALL.TXT file in this directory.
+        NOT installed automatically
+        Latest version can be fetched from
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd/
+
+    vedgn.tar.gz
+        Ved based news reader and news poster
+            (requires a suitable internet connection).
+        NOT installed automatically
+            Latest verion can be fetched from the web site.
+            http://www.cs.bham.ac.uk/research/poplog/linux-cd
+
+=======================================================================
+
+HTML INFORMATION FILES
+    poplog.info.html
+        This html file can be viewed using a web browsers such as
+        netscape or lynx or links.
+        It provides general information about poplog. The master version
+        is here:
+            http://www.cs.bham.ac.uk/research/poplog/poplog.info.html
+
+    comp.lang.pop.faq.html
+        This provides information about the comp.lang.pop news group
+        and the pop-forum email list. The master version is here:
+            http://www.cs.bham.ac.uk/research/poplog/poplog.info.html
+
+    freepoplog.html
+         An overview of the free poplog web site and some information
+        about poplog
+
+    userguide.html
+        This is also in
+            $poplocal/local/setup/man/man1/poplog.html
+
+        The master version is
+            http://www.cs.bham.ac.uk/research/poplog/userguide.html
+
+
+There may be additional files added to
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd
+at a later date.
+
+=======================================================================
+NB
+If trying to run poplog produces an error message mentioning
+    libXm.so
+please re-read the section above regarding installing openmotif,
+and especially this bit:
+
+    CHECK MOTIF LINKS
+
+IF YOU NEED FURTHER HELP OR ADVICE:
+    Post your questions to the
+        comp.lang.pop news group or to
+        pop-forum@cs.bham.ac.uk
+
+Be as specific as possible. In particular state what sort of computer
+you are using, which operating system, which version of poplog, and
+exactly what you did, what (if anything) was printed out, and what you
+expected to happen. Helpers are not mind-readers, though they are
+willing to help if the task is not too hard.
+
+[end]
+=======================================================================
+For more information on available packages see
+    linuxstuff.html
+
+OPTIONAL: DELETING THE MASTER TAR FILE
+The master tar file
+    bham-linux-poplog.tar.gz
+    which will be in the directory /usr/local/poplog/src
+
+can safely be deleted after installation is complete.
+
+It is just a copy of what is on the CD. Moreover, you will have
+all of its contents unpacked in the sub-directory linux-poplog.
+
+But you may wish to make a backup copy of that before deletion and
+also of the contents of
+    /usr/local/poplog/
+
+after deletion of that file.

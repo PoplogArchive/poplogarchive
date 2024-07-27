@@ -1,0 +1,163 @@
+INSTALL-INFO.txt
+9 Mar 2003
+Aaron Sloman
+http://www.cs.bham.ac.uk/~axs/
+------------------------------
+
+This file is based on:
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd/INSTALL-FROM-WEB-FILES.txt
+
+Instructions for using the files available on the web at
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd
+
+CONTENTS
+
+ -- Step 1 Do some preliminary checks
+ -- STEP 2: Create directory in which to install files
+ -- STEP 3. Relink Poplog and build saved images
+ -- Testing step 1: setup environment
+ -- Testing step 2: run pop11 and Eliza
+ -- Testing step 3: learn to use the editor
+ -- Using Emacs and getting additional libraries and packages
+ -- Asking for help
+
+-- Step 1 Do some preliminary checks
+
+Look at the file
+
+    AREADME.txt
+
+and go through preliminary steps 1, 2, 3, 4 specified in there.
+(Some of that file is not relevant if you are installing a minimal
+linux poplog system).
+
+This involves reading these two files which you should have in this
+directory:
+
+    AREADME.motifcheck.txt
+
+    Suse-Readme.txt
+        (If you are using Suse Linux or any other that does not
+        include termcap).
+
+
+-- STEP 2: Create directory in which to install files
+
+Recommended location: /usr/local/poplog/v15.53a
+
+If you are reading this you have already untarred it somewhere. You can
+either make a symbolic link from where you untarred it to
+/usr/local/poplog/v15.53a
+
+    mkdir /usr/local/poplog
+    ln -s <directory> /usr/local/poplog/v15.53a
+
+or move the files you have untarred into /usr/local/poplog
+
+    mkdir -p /usr/local/poplog/V15.53a
+
+Untar the tar ball in there.
+
+Create a directory for local extensions to poplog (packages you can
+download and install, or your own extensions)
+
+    mkdir /usr/local/poplog/local
+
+-- STEP 3. Relink Poplog and build saved images
+
+If you want to use poplog with motif (recommended) then run this
+script
+    ./LINK_MOTIF_POPLOG
+
+If you want to use it without motif, then run this:
+
+    ./LINK_NOMOTIF_POPLOG
+
+Both of those will rebuild binaries and some system saved images in
+    /usr/local/poplog/v15.53a/pop/pop
+
+and create saved images for pop11 (startup.psv), lisp, prolog ML and
+Xved in
+
+    /usr/local/poplog/v15.53a/pop/lib/psv/
+
+For more information see
+
+    /usr/local/poplog/v15.53a/userguide.html
+
+You can check out that pop11 works by giving the following commands:
+
+-- Testing step 1: setup environment ----------------------------------
+
+First make sure that you have set up environment variables, with these
+commands, which can put in your .login or .bashrc file
+
+(a) If your shell is tcsh or csh do
+
+    setenv usepop /usr/local/poplog/v15.53a
+    source $usepop/pop/com/poplog
+    rehash
+
+(b) If your shell bash, or ksh, or sh do this instead:
+
+    usepop=/usr/local/poplog/v15.53a
+    export usepop
+    # note the dot in the next line:
+    . $usepop/pop/com/poplog.sh
+
+
+-- Testing step 2: run pop11 and Eliza --------------------------------
+
+This command will work after the above:
+
+    pop11
+
+then when you get the colon prompt ":"
+
+    : eliza();
+
+Read the instructions printed out and treat yourself to a free
+psychotherapy session.
+
+
+-- Testing step 3: learn to use the editor ----------------------------
+
+To run the poplog editor ved, do
+    poplog ved
+
+To run the multi-window version (recommended) do
+
+    poplog xved
+
+When ved is running, type ^G (the ENTER command) then
+
+    teach quickved
+
+Then press the RETURN key (below backspace).
+
+This will give you a tutorial on using Ved.
+
+If you master Ved or XVed, that will make everything else
+easier.
+
+-- Using Emacs and getting additional libraries and packages ----------
+
+For people who prefer to use Emacs, fetch and untar:
+    http://www.cs.bham.ac.uk/research/poplog/emacs.tar.gz
+
+There are additional utilities and packages described here
+
+    http://www.cs.bham.ac.uk/research/poplog/freepoplog.html
+
+-- Asking for help ----------------------------------------------------
+
+You can ask for help via the comp.lang.pop newsgroup or the pop-forum
+email list (they are linked). It is best to join the list, at least for
+a while.
+
+See
+    http://www.cs.bham.ac.uk/research/poplog/comp.lang.pop.faq.html
+
+Aaron Sloman
+9 Mar 2003
+[end]

@@ -1,0 +1,157 @@
+http://www.cs.bham.ac.uk/research/poplog/linux-cd/INSTALL-FINAL.txt
+10 Jan 2003
+
+(Still being revised)
+
+Before this, read
+    AREADME.txt
+
+and the files referred to therein.
+
+
+MAIN POPLOG INSTALLATION SCRIPT
+
+This script will unpack the compressed tar file in the /usr/local/poplog
+directory. It then runs some programs to build certain core saved images
+used by Poplog for system purposes, and also builds the default versions
+of pop-11, common lisp, prolog and ml, as provided in the version of
+Poplog that used to be distributed by ISL. Those saved images will go
+into the directory $usepop/pop/lib/psv/
+
+The script then goes on to run INSTALL_LIKE_BHAM, which unpacks some
+additional tar files containing facilities developed at Birmingham,
+storing them in /usr/local/poplog/local, and uses them to create a new
+set of saved images for pop-11, prolog, common lisp, and ML, stored in
+$usepop/poplocalbin
+
+NOTE:
+    There are two versions of the main installation script, one for
+    installation with motif and one for installation without.
+
+    With motif:
+        Run the script
+            INSTALL_MOTIF_POPLOG
+        in the final stage.
+        (You may have to edit out the poplink command if that fails, as
+         it apparently does on Mandrake 8.2)
+
+    Without motif:
+        Use
+            INSTALL_NOMOTIF
+
+
+    All the scripts install the Poplog system in /usr/local/poplog
+    as described above. You can edit the scripts use a different
+    location if you wish.
+
+    (See instructions above about choosing a disk partition.)
+
+    INSTALL_MOTIF_POPLOG
+        This will install the main poplog system, linked
+        to run with motif.
+
+    INSTALL_NOMOTIF
+
+        This will install the main poplog system, linked
+        to run without motif. It does this by obeying the same
+        instructions as the first script except that at one point
+        it runs this command
+            $usepop/pop/src/newpop -link -x=-xt
+
+        which re-links the core image basepop11 to remove reliance on
+        motif.
+
+    When you are ready to install poplog type one of the following
+    two commands, using the second option if you do not have
+    motif installed:
+
+        Option 1: with motif
+
+            ./INSTALL_MOTIF_POPLOG | tee  install.log | more
+
+                This can be abbreviated as
+                ./run_install
+
+        Option 2: without motif
+            ./INSTALL_NOMOTIF | tee  install.log | more
+
+                This can be abbreviated as
+                ./run_install_nomotif
+
+        The script will untar the pclinux poplog file and install it in
+        /usr/local/poplog, and will then run the script
+
+            INSTALL_LIKE_BHAM
+
+        as described below. Note that the above commands use the "more"
+        utility which will show you a screen at a time of output, and
+        then pause. When it pauses and prints "--More--" at the  bottom
+        of the screen, press the space bar to continue.
+
+    If you wish to change anything, e.g. the location where poplog is
+    installed, you can edit the appropriate install script before
+    running it.
+
+    When installation is complete, the contents of the file
+        checkout.txt
+    will be printed out. You can also read it in an editor or
+    do this to read it:
+
+        more checkout.txt
+
+    It gives some examples of things you can try to check that the
+    installation has worked.
+
+    After installation make sure you read the install.log file to check
+    what has happened. There are several warning messages printed out
+    during rebuilding of the common lisp saved image. These can be
+    ignored.
+
+    Other warning messages may be serious.
+
+    There will be a number of packages which are not automatically
+    installed. You can choose to install them, as described in the file
+
+        INSTALL-OPTIONS.txt
+
+=======================================================================
+
+
+    INSTALL_LIKE_BHAM
+
+        This is a shell script which installs a collection of packages
+        from Birmingham and Sussex.
+
+        It is automatically run by the INSTALL_MOTIF_POPLOG script,
+        and also the INSTALL_NOMOTIF script, so you do not need to run
+        it.
+
+        If, for any reason, you have to run it on its own later,
+        e.g. after re-installing poplog, you run it, with the command
+
+            ./INSTALL_LIKE_BHAM >  installbham.log
+
+        You can then read the install.log file to see what it has
+        and has not done and follow any remaining isntructions.
+
+
+NB
+If trying to run poplog produces an error message mentioning
+    libXm.so  or just Xm
+
+then please re-read the file
+    AREADME.motifcheck.txt
+
+IF YOU NEED FURTHER HELP OR ADVICE:
+    Post your questions to the
+        comp.lang.pop news group
+    or to
+        pop-forum@cs.bham.ac.uk
+
+Be as specific as possible. In particular state what sort of computer
+you are using, which operating system, which version of poplog, and
+exactly what you did, what (if anything) was printed out, and what you
+expected to happen. Helpers are not mind-readers, though they are
+willing to help if the task is not too hard.
+
+[end]

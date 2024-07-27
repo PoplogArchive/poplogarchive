@@ -1,0 +1,202 @@
+INSTALL-FROM-CD.txt
+14 Sep 2002
+Aaron Sloman
+http://www.cs.bham.ac.uk/~axs/
+------------------------------
+
+This file is
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd/INSTALL-FROM-CD.txt
+
+These instructions assume you have followed preliminary steps 1 to 4 in
+the file
+
+    AREADME.txt
+
+available online as
+    http://www.cs.bham.ac.uk/research/poplog/linux-cd/AREADME.txt
+and included in the CD.
+
+So the directory /usr/local/poplog is assumed to exist though it may
+actually be a link to a directory on a different partition.
+
+
+CONTENTS
+
+ -- INSTALLING FROM BIRMINGHAM POPLOG CD
+ -- STEP 1: Create "source" directory into which to copy tar file from CD
+ -- STEP 2: Copy the file from the CD to your hard drive:
+ -- STEP 3. Change to the source directory
+ -- STEP 4. Extract files from the main poplog tar file,
+ -- Step 5: untar the linux-poplog.tar.gz file
+ -- Step 6: Change to the linux-poplog sub-directory
+ -- Step 7. READ INSTALL-FINAL.txt and follow instructins
+
+-- INSTALLING FROM BIRMINGHAM POPLOG CD
+
+If you have a copy of a poplog CD from the University of Birmingham
+made later than 01 Sept 2002 it will have all of the required
+files in a single tar file:
+    bham-linux-poplog.tar.gz
+    (about 20 Mbytes)
+Including a copy of this file.
+
+If you mount the CD it should make the file accessible as something
+like this:
+    /mnt/cdrom/bham-linux-poplog.tar.gz
+
+I'll assume you already have the CD mounted so that that file exists
+or something like it, e.g. perhaps
+
+    /cdrom/bham-linux-poplog.tar.gz
+
+(The exact file location will depend on your version of linux).
+
+Modify the instructions below to correspond to the location of the file
+on your CD.
+
+-- STEP 1: Create "source" directory into which to copy tar file from CD
+Recommended location: /usr/local/poplog/src/
+
+You need to copy the file from the CD and install it
+somewhere.
+
+Make a new directory for poplog SOURCE files copied from the CD, to be
+used for installation.
+
+Create directory for the source files.
+
+    mkdir -p /usr/local/poplog/src
+
+[Note for experts: you can choose a different location, but will then
+have to alter some of the other instructions below.]
+
+
+-- STEP 2: Copy the file from the CD to your hard drive:
+
+Use 'cp -p' to preserve date information when copying:
+
+    cp -p /mnt/cdrom/bham-linux-poplog.tar.gz /usr/local/poplog/src/
+
+(you may have to alter that command if your CD is not mounted as
+/mnt/cdrom/ )
+
+Check that the new file exists, using this command:
+
+    ls -l /usr/local/poplog/src
+
+It should show you that you have a file about 20 million bytes in size
+with this name:
+
+    /usr/local/poplog/src/bham-linux-poplog.tar.gz
+
+Later on you can delete that file after you have successfully extracted
+its contents.
+
+
+-- STEP 3. Change to the source directory
+
+Change to the new directory -- i.e. make it your current working
+directory:
+
+    cd /usr/local/poplog/src
+
+(This is NOT where poplog will be installed: it is merely a place to
+hold the files used to install poplog. By default the installation will
+be in the directory /usr/local/poplog, though you can choose another
+place by editing the installation scripts if you wish).
+
+You are now ready to extract the files from the tar file.
+After that you can use them to install poplog
+
+
+-- STEP 4. Extract files from the main poplog tar file,
+
+(assuming you are in the directory to which you have copied it
+e.g. /usr/local/poplog/src)
+
+    zcat bham-linux-poplog.tar.gz | tar xf -
+
+This will create a new sub-directory called "linux-poplog"
+containing the extracted files, i.e.
+
+    /usr/local/poplog/src/linux-poplog/
+
+It will also create a file something like this, which you can ignore
+
+    AATARBUILD-Sun Sep  1 17:32:55 BST 2002
+
+and this file a bit over 12 mbytes in size:
+    linux-poplog.tar.gz
+
+-- Step 5: untar the linux-poplog.tar.gz file
+
+The next thing to do is untar that file which will put more things in
+the linux-poplog sub-directory.
+
+    zcat linux-poplog/linux-poplog.tar.gz | tar xf -
+
+-- Step 6: Change to the linux-poplog sub-directory
+
+    cd linux-poplog
+
+List its contents:
+
+    ls -l
+
+This should list over 30 files. The number may change from
+time to time, depending on how poplog is packaged. It should include
+this file. The files whose names end '.txt' are instruction
+files. See what's there:
+
+    ls -l *.txt
+
+
+The files whose names start 'INSTALL' but do not end in '.txt' are shell
+scripts that you can run to do the installation, as described below.
+
+List them:
+
+    ls -l INSTALL* | grep -v txt
+
+There should be at least three of them. (The number may change.)
+
+Some of the other files are essential for poplog in any form. Some are
+essential for the core Birmingham poplog setup.
+
+The files linuxstuff.html and linuxstuff.txt give descriptions of the
+various files.
+
+Check where you are, by giving the print working directory command:
+
+    pwd
+
+That should print out something like:
+
+    /usr/local/poplog/src/linux-poplog
+
+you should find a file called
+    INSTALL-FINAL.txt
+
+check with this command
+    ls -l INSTALL-FINAL.txt
+
+That is the basic instruction file for installing poplog after you have
+extracted all the required files from the CD and unpacked the main
+tar files.
+
+The instructions may change as new versions of Poplog are produced.
+
+-- Step 7. READ INSTALL-FINAL.txt and follow instructins
+
+You can read the file online with the command
+
+    more INSTALL-FINAL.txt
+
+(press space bar to get another page, press "b" to go back to previous
+page). You may find it helpful to print that file before proceeding.
+You can then make notes of the steps you go through and what happens,
+in case there is a problem and you have to ask for help.
+
+If you are happy to proceed with installation, follow the instructions
+in there.
+[end]

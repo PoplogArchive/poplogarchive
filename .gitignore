@@ -1,8 +1,101 @@
 # Sub-repositories
 **/.git/
 
+# Books
+computers-and-thought/
+history/
+popbook/
+teachpop/
+# Maybe also ...
+popplestone/
+
+
 # Projects
+neural/
+newkit*/
+nonlin/
 examples/
 paradigms_lectures/
 popracer/
 Scheme/
+gospl/
+popvision*/
+prb/
+objectclass*/
+hebisch/
+sim/
+haiku/
+rcmenus/
+figs/
+rclib/
+rcmenu/
+emacs/
+lisp-mods/
+poponline/
+
+# Packages
+packages/
+poplog-packages/
+newpackages/
+contrib/
+packages-*
+
+# Major sections
+cogaff/
+usenet/
+cas-ai/
+
+# Poplog versions
+hp-poplog/
+winpop/
+osx/
+v15*/
+V16/
+v16-*/
+fixed/
+darwin+pc/
+new/
+prelinked*
+bham-linux*.gz*
+amd64/
+CD/
+poplog*.deb
+debian/
+
+# Random unpacked poplog version
+auto/
+bin/
+com/
+c_core/
+src/
+doc/
+man/
+teach/
+ref/
+help/
+prolog/
+lib/
+pop/
+sysdoc/
+
+# "Old" stuff
+old/
+oldcontents.html
+oldcorepop-32bit/
+oldcorepop-amd64/
+oldgz/
+oldprb/
+oldsim/
+oldsrc/
+primer.old/
+packages/OLD/
+previous-poplog/
+discarded/
+
+# Unclassified
+retrieved/
+github/
+robot-club/
+gz/
+docs.*
+abbott/
