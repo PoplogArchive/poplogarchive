@@ -83,7 +83,6 @@ amd64*/
 CD/
 poplog*.deb
 debian/
-latest-poplog/
 mini-linux-pop/
 livecd/
 src-iris-*/
