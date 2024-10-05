@@ -1,0 +1,127 @@
+#!/bin/bash
+## Get and install Arch poplog
+## Aaron Sloman (http://www.cs.bham.ac.uk/~axs)
+## Based on advice from Peter Lewis
+## 3 May 2012
+
+
+## echo "getting/checking linux basics needed or useful for poplog users"
+## echo "'espeak' is not essential but included for Eliza demo"
+##
+## ## NEEDS TO BE CHANGED FOR ARCH
+## echo "Getting: gcc  tcsh  libxext libx11 libxt lesstif xterm wget espeak"
+##
+## sleep 2
+## Needs to be changed for Arch ??
+##
+## apt-get install gcc build-essential tcsh  \
+##          libxext6 libxext-dev libx11-6 libx11-dev libxt-dev \
+##             lesstif2-dev xterm wget espeak
+
+##pacman -S gcc tcsh libxext libx11 libxt lesstif xterm wget espeak
+
+## check inserted 29 Apr 2012
+
+## echo "If you wish you can abort now to install packages then"
+## echo "redo this command"
+## echo ""
+
+
+while :
+do
+
+  ## clear
+
+  echo "Continue installing Poplog?"
+  read -t 30 -p [y/n] ANS
+
+  echo $ANS
+
+  case $ANS in
+    "y")
+
+        echo "Installation will continue"
+        break
+
+      ;;
+
+    "n")
+        echo "Aborting installation"
+        exit
+      ;;
+
+    "")
+
+    echo "No answer, so aboritng. Redo the command if necessary."
+
+    exit
+
+      ;;
+    *)
+        echo "Please answer 'y' or 'n'"
+
+      ;;
+  esac
+
+done
+
+echo "Create Poplog download directory /usr/local/poplog-download"
+
+mkdir /usr/local/poplog-download
+
+cd /usr/local/poplog-download
+
+echo "fetch a small file that will get all the rest"
+
+## NOTE: optionally remove all occurrences of '-in-user' to get the
+## version that installs poplog in /usr/local
+
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-v15.65-poplog-in-usr"
+
+## get rid of old version if present
+rm -f get-and-install-v15.65-poplog-in-usr
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-v15.65-poplog-in-usr
+
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-v15.65-poplog"
+
+## get rid of old version if present
+rm -f get-and-install-v15.65-poplog
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-v15.65-poplog
+
+echo "change that file to be executable using chmod"
+echo "chmod 755 get-and-install-v15.65-poplog"
+
+chmod 755 get-and-install-v15.65-poplog
+
+sleep 2
+
+echo "Run that file to download and install the poplog tar file"
+
+echo "./get-and-install-v15.65-poplog "
+
+./get-and-install-v15.65-poplog
+
+echo "change that file to be executable using chmod"
+
+## echo "chmod 755 get-and-install-v15.65-poplog-in-usr"
+##
+## chmod 755 get-and-install-v15.65-poplog-in-usr
+##
+## sleep 2
+##
+## echo "Run that file to download and install the poplog tar file"
+##
+## echo "./get-and-install-v15.65-poplog-in-usr "
+##
+## ./get-and-install-v15.65-poplog-in-usr
+
+echo "Try the demos in /usr/poplog/current-poplog/bin/demos"
+
+echo "Report problems, INCLUDING install.log file, to a.sloman@cs.bham.ac.uk"
+echo "See /usr/local/poplog-download/v15.65/install.log "
+
+## THIS needs to be checked for Arch
+echo "If you want to try the linear algebra packages included in the popvision library"
+echo "do 'pacman -S libblas liblapack' "

@@ -1,0 +1,305 @@
+<HTML><HEAD> <TITLE>32-bit LINUX POPLOG VERSION 15.65 News and Changes</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#000080" alink="#0000FF" vlink="#000080">
+<FONT color="#000000">
+
+<H3><B>
+15 Dec 2019: There is now a fully working 64-bit version of Linux Poplog for
+AMD64/X86-64 machines, named Poplog Version 16, with new instructions for
+downloading and installing on several versions of linux, available here:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html">http://www.cs.bham.ac.uk/research/projects/poplog/V16/AREADME.html</a>
+<hr>
+THIS IS THE LATEST VERSION OF 32-BIT POPLOG FOR LINUX ON PC (As of 19 Feb 2012)
+<br>
+<small>
+(Unfortunately this file has not been regularly updated. So see the main
+'latest-poplog' file for information about what is currently available.)
+</small>
+<p>
+<small>
+This file is
+<a href="http://www.cs.bham.ac.uk/research/poplog/latest-poplog/news-and-changes.html">http://www.cs.bham.ac.uk/research/poplog/latest-poplog/news-and-changes.html</a>
+<br>
+For information about downloading and prerequisites see
+<a
+href="http://www.cs.bham.ac.uk/research/poplog/latest-poplog/">http://www.cs.bham.ac.uk/research/poplog/latest-poplog/</a>
+</small>
+</B></H3>
+
+This is part of
+<a href="http://www.cs.bham.ac.uk/research/poplog/freepoplog.html">The Free Poplog Web Site</a>
+<br/>
+Information on the contents of poplog and the teaching materials
+included is <a href="../freepoplog.html#whatspoplog">here.</a>
+<p>
+For information on other versions of poplog available see:
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#contents">http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html#contents</a>
+<p>
+Further information on Poplog and its history is available:
+<br>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html">http://www.cs.bham.ac.uk/research/projects/poplog/poplog.info.html</a>
+<hr>
+
+<p>
+<h3><b>
+NEWS ABOUT CHANGES TO LINUX POPLOG
+<br/>
+(Latest first.)
+</b></h3>
+Most of the information below was previously part of
+<a
+href="http://www.cs.bham.ac.uk/research/poplog/latest-poplog/">http://www.cs.bham.ac.uk/research/poplog/latest-poplog/</a>
+<ul>
+<li>
+<h4><b>
+19 Feb 2012: Slight change to version 15.65. pop_internal_version 156500
+<br/>
+Default commands would not link motif on new version of Ubuntu. This
+turned out to be due to new linker default on Ubuntu but not included in Fedora.
+<br/>
+A fix was added to $usepop/pop/src/syscomp/asmout.p to produce a
+slightly different shell script to link a new poplog.
+</b></h4>
+<li>
+<h4><b>
+27 Dec 2011 Video tutorials on Poplog/Pop11/Ved available on Youtube
+</b></h4>
+For details see
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/video-tutorials.html">http://www.cs.bham.ac.uk/research/projects/poplog/cas-ai/video-tutorials.html</a>
+<br/>
+The list is expected to grow.
+<p>
+<li>
+<h4>
+<b>
+27 Dec 2011: Version 15.65 now available. pop_internal_version 156500
+<br/>
+<small>
+Reverted to old decimal format (v15.65, not v15.6.5, to avoid internal
+complications).
+</small>
+<br/>
+A major change to Ved: the code for optimising screen refreshing during
+scrolling part of the screen has been disabled.
+<br/>
+It worked properly only in xterm windows. Various other console windows did not
+support the optimisation properly,
+<br/>
+e.g. urxvt (and its variants), and this caused
+corruption of the editor window.
+<br/>
+(Thanks to Will Price for pointing out the urgent need, and for help
+testing the changes.)
+<br/>
+Installation procedure unchanged.
+<br/>
+See
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.65">http://www.cs.bham.ac.uk/research/projects/poplog/v15.65</a>
+</b></h4>
+Latest instructions for DOWNLOADING linux poplog.
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog#installing">http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog#installing</a>
+<p>
+<li>
+<h4><b>
+<a href="CHANGES.txt">CHANGES.txt</a>
+<br>
+Changes to the main poplog system.
+<br>
+(In a separate text file: included as part of poplog.)
+</b></h4>
+
+<li>
+<h4><b>
+<a href="CHANGES-PACKAGES.txt">CHANGES-PACKAGES.txt</a>
+<br/>
+Changes to Package subsystems.
+<br/>
+(In a separate text file: included as part of poplog.)
+<br>
+<small>
+(E.g. Eliza can now speak her answers. Some extensions to poprulebase.)
+</small>
+</b></h4>
+<p>
+<li>
+<h4><b>
+NEWS 12 Aug 2010: Version 15.63 out of date, replaced by V15.6.4
+<br/>
+pop_internal_version 156400
+<br/>
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.6.4">http://www.cs.bham.ac.uk/research/projects/poplog/v15.6.4</a>
+<br>
+<small>
+ALTERATIONS TO POPLOG COMMON LISP:
+<br/>
+    Replaced some Poplog common lisp files with new files, provided
+    by Waldek Hebisch, as described in
+<br/>
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/lisp-mods">http://www.cs.bham.ac.uk/research/projects/poplog/lisp-mods</a>
+</small>
+</blockquote>
+</b></h4>
+<p>
+<li>
+<h4><b>
+NEWS 5 Aug 2009: Version 15.6301 (pop_internal_version 156301)
+</b></h4>
+<pre>
+    Installation scripts simplified ('bham' parameter no longer needed)
+    Error handling in Ved improved (thanks to help from Steve Isard)
+    see
+        <a href="CHANGES.txt">CHANGES.txt</a>
+</pre>
+<p>
+<li>
+<h4><b>
+NEWS 29 Jun 2009: Version 15.63 (pop_internal_version 156300)
+<pre>
+    Removed special Ved characters from all the documentation files to make
+    things easy for people who don't wish to learn to use Ved or XVed.
+</pre>
+</b></h4>
+The main difference between this version (v15.63) and the previous
+version
+<a href="../v15.62">v15.62</a> is that in V15.63 version all the
+Poplog documentation files were converted so that they can now be
+read in any text editor or web browser. Previously the files
+included special graphical characters for use with the Poplog editor
+Ved/XVed. This was a disadvantage for users who did not wish to
+switch to a new editor, even though the poplog editor has many
+convenient built in links with the rest of poplog, including the
+compilers, the documentation directories and the library
+directories.
+<p>
+<p>
+<li>
+<h4><b>
+NEWS 20 Feb 2009:
+Changes to Popvision
+<a href="http://www.cs.bham.ac.uk/research/projects/poplog/popvision/">http://www.cs.bham.ac.uk/research/projects/poplog/popvision/</a>
+</b></h4>
+<pre>
+    Two changes to the Sussex popvision library, described in
+        $usepop/pop/packages/popvision/README.bham
+
+        1. popvision/lib/Xcolour_to_rgb.p
+            added directory '/usr/share/X11/rgb.txt'
+            to  Xcolour_to_rgb_filelist
+
+        2. popvision/lib/sunrasterfile.p
+            Installed fix by Jack Hollingworth (Reading University) for
+            updater of sunrasterfile for use on little-endian machines.
+</pre>
+<p>
+<li>
+<h4>
+<b>NEWS 4 Dec 2008: Version 15.62</b>
+</h4>
+<pre>
+    This version makes it unnecessary to use 'setarch', thanks to
+    code supported by Waldek Hebisch
+    For more detailed changes see
+    <a href="CHANGES.txt">http://www.cs.bham.ac.uk/research/projects/poplog/v15.63/CHANGES.txt</a>
+</pre>
+<li>
+<h4><b>
+NEWS: 31st March 2008
+</b></h4>
+<pre>
+    A problem in the editor that made it produce multiple copies of
+    the same file (especially output.p) has been identified and removed.
+</pre>
+<li>
+<h4><b>
+NEWS 25 Dec 2007
+</b></h4>
+<pre>
+    Expanded the <a href="index.html#ubuntu">instructions for Ubuntu users,</a> which turned out to
+    be incomplete.
+
+    Also modified several of the Poplog scripts to invoke 'bash' instead of 'sh',
+    as it turns out that these two are not equivalent on all systems.
+    (Ubuntu Gutsy links 'sh' to 'dash', not 'bash')
+</pre>
+<li>
+<h4><b>
+NEWS 23 Nov 2007: New highlighting command for editor
+</b></h4>
+<pre>
+    Added simple pop-11 syntax highlighting command for VED, in
+        $usepop/pop/lib/ved/ved_highlight.p
+
+    The command
+        ENTER highlight
+    will underline all syntax words, apart from those included in
+    the list assigned to global variable
+        highlight_exceptions
+
+    To see what the exceptions are do
+        ENTER showlib highlight_exceptions
+
+    If you don't want to fetch a complete poplog system, the file
+    can be downloaded on its own from
+        <a href="http://www.cs.bham.ac.uk/research/projects/poplog/v15.62/v15.62/pop/lib/ved/ved_highlight.p">http://www.cs.bham.ac.uk/research/projects/poplog/v15.62/v15.62/pop/lib/ved/ved_highlight.p</a>
+    Simply install it in the directory $usepop/pop/lib/ved/ in your
+    current poplog system. It will then be autoloadable.
+    Undo highlighting with ENTER strip
+</pre>
+<li>
+<h4><b>
+NEWS 5 Oct 2007:
+    New version of Poplog v15.61: pop_internal_version 156101
+</b></h4>
+<pre>
+    The most important change is that the problem described in Bug 32
+    in here (originally reported by Steve Leach):
+
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/bugfixes/BUGREPORTS">http://www.cs.bham.ac.uk/research/projects/poplog/bugfixes/BUGREPORTS</a>
+
+     -- 32. (18 Feb 2004) Bug in current_directory under Linux (and Unix?)
+
+    has started causing serious problems with new releases of Linux
+    installed with enhanced security settings. This was reported
+    recently to the poplog-dev list by Stephen Isard.
+
+    The problem was fixed by changing the pop-11 mechanism for
+    getting at the current directory, provided by Waldek Hebisch
+    and described in the BUGREPORTS file as item 66:
+
+     -- 66. 29 Sep 2007 New version of unix_dir.p
+
+    There are a few other minor improvements to the installation
+    process. The easiest way to fetch and install 32 bit Linux
+    Poplog remains the use of one of
+    <a href="index.html#get-install">the get-and-install scripts</a> described below.
+</pre>
+<li>
+<h4><b>
+NEWS 11 Sep 2007: Poplog version 15.61
+</b></h4>
+<pre>
+    New version of Poplog v15.61 available, with minor fixes and
+    revamped scripts to overcome the problems caused by Linux
+    security settings. Most easily installed by running one of
+    <a href="#get-install">the get-and-install scripts</a> described below.
+
+    There is a new file that gives an overview of what happens when
+    the poplog installation script is run. It is available as
+    <a href="http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/INSTALLATION-OVERVIEW.txt">http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/INSTALLATION-OVERVIEW.txt</a>
+</pre>
+</ul>
+<hr/>
+<P>
+This file maintained by:
+<br>
+<a href="http://www.cs.bham.ac.uk/~axs/">Aaron Sloman</a>
+<br>
+http://www.cs.bham.ac.uk/~axs/
+<br>
+Last Updated: 5 Aug 2009;22 Jan 2010;12 Aug 2010; 27 Dec 2011; 8 Jan 2020
+
+</BODY>
+</HTML>

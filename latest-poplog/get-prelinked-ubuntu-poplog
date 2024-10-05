@@ -1,0 +1,163 @@
+#!/bin/bash
+## Get and install PRELINKED Ubuntu poplog
+## Aaron Sloman (http://www.cs.bham.ac.uk/~axs)
+## 10 Dec 2016; Slightly modified 28 Apr 2017
+
+## With help, gratefully acknowledged, from Jack Hargreaves
+## 12 Oct 2015
+
+####  Added -dev suffixes
+
+if [[ $EUID -ne 0 ]]
+then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+echo ""
+echo ""
+
+echo "getting/checking linux basics needed or useful for poplog users"
+echo "'espeak' is not essential but included for Eliza demo"
+
+echo ""
+echo "Install required 32-bit libraries:"
+echo "libc6:i386 libncurses5:i386 libstdc++6:i386"
+echo "gcc build-essential tcsh  libxext6:i386 libxext-dev:i386 libx11-6:i386"
+echo "libx11-dev:i386 libxt-dev:i386 libmotif-dev:i386 ncurses5-dev:i386 xterm wget espeak"
+
+sleep 2
+
+echo ""
+echo ""
+
+apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+apt-get install gcc build-essential tcsh  \
+         libxext6:i386 libxext-dev:i386 libx11-6:i386 libx11-dev:i386 \
+         libxt-dev:i386 libmotif-dev:i386 libncurses5-dev:i386 xterm wget \
+         espeak
+
+echo ""
+echo ""
+sleep 2
+## check inserted 29 Apr 2012
+
+echo "If you wish you can abort now to install missing packages"
+echo "then redo this command later."
+echo ""
+
+sleep 2
+echo ""
+
+while :
+do
+
+  ## clear
+
+  echo "Continue installing Poplog?"
+  read -t 30 -p [y/n] ANS
+
+  echo $ANS
+
+  case $ANS in
+    "y")
+
+        echo "Installation will continue"
+        break
+
+      ;;
+
+    "n")
+        echo "Aborting installation"
+        exit
+      ;;
+
+    "")
+
+    echo "No answer, so aboritng. Redo the command if necessary."
+
+    exit
+
+      ;;
+    *)
+        echo "Please answer 'y' or 'n'"
+
+      ;;
+  esac
+
+done
+
+echo ""
+echo "Packages installed -- hopefully"
+sleep 2
+echo ""
+
+echo ""
+
+echo "Now fetch another file that will get all the rest of Poplog."
+echo "And install the program and documentatin in"
+echo "/usr/local/poplog/"
+echo ""
+
+
+## get rid of old version if present
+rm -f get-and-install-prelinked-v15.65-poplog
+
+echo "Using current directory to unpack tar file and run install scripts"
+
+echo "fetch a small file that will get all the rest"
+
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-prelinked-v15.65-poplog"
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-prelinked-v15.65-poplog
+
+echo ""
+
+echo "change that file to be executable using chmod"
+echo "chmod 755 get-and-install-prelinked-v15.65-poplog"
+
+chmod 755 get-and-install-prelinked-v15.65-poplog
+
+sleep 2
+
+echo ""
+echo "Run that file to download and install the poplog tar file"
+
+echo "./get-and-install-prelinked-v15.65-poplog "
+
+./get-and-install-prelinked-v15.65-poplog
+
+echo "########### INSTALLATION SHOULD BE COMPLETE ###########"
+echo "Look in /usr/local/poplog "
+echo "######## Look for install.log file if there are problems #######"
+echo ""
+echo ""
+
+sleep 3
+echo ""
+echo ""
+
+echo "You may be able to tell whether the installation completed successfully
+echo from mesages printed."
+echo ""
+echo ""
+echo "Try the demos in /usr/local/poplog/current-poplog/bin/demos"
+echo ""
+echo ""
+
+echo "Report problems, INCLUDING install.log file, to a.sloman@cs.bham.ac.uk"
+
+echo ""
+echo ""
+
+echo "If you want to try the linear algebra packages included in the popvision library"
+echo "developed by David Young at Sussex university (A sort of 'matlab in poplog')"
+
+echo ""
+echo "do: 'apt-get install libblas-dev liblapack-dev' "
+echo ""
+echo ""
+
+echo "#############################################"
+echo ""
+echo ""

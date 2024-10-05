@@ -1,0 +1,184 @@
+#!/bin/bash
+## Get and install PRELINKED Fedora poplog
+## Aaron Sloman (http://www.cs.bham.ac.uk/~axs)
+## 10 Dec 2016; Slightly modified 28 Apr 2017
+
+## This file is available from:
+## http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-prelinked-fedora-poplog
+
+## 11 Oct 2015  REVISED FOR PRELINKED POPLOG
+## 12 Oct 2015  Replaced lesstif with motif
+
+## Edited 30 Jan 2014: added ncurses-devel.i686
+##                     removed some spurious occurrences of .i686
+## Edited 19 Jun 2013; 19 Dec 2013
+##    Added .i686 to all 32-bit library names except gcc
+
+echo "=================================================================="
+echo "This script uses the Fedora 'yum' command for installing packages"
+echo "Please note that 'yum' is being replaced by 'dnf'."
+echo " See: http://dnf.baseurl.org/2015/05/11/yum-is-dead-long-live-dnf/ "
+echo "This may be done automatically on your version of Fedora. Otherwise"
+echo "if this file aborts with complaints about use of 'yum' try editing it"
+echo "to use 'dnf' instead."
+echo "Or define 'yum' as an alias for 'dnf'"
+echo "=================================================================="
+
+echo ""
+echo ""
+echo ""
+sleep 3
+
+echo "getting/checking linux basics needed or useful for poplog users"
+echo "NOTE: 'espeak' is not essential, but is included for Eliza demo:"
+
+echo ""
+echo ""
+sleep 3
+
+### ENSURE POPLOG PRE-REQUISITES INSTALLED, WHETHER ON 32-BIT OR 64-BIT LINUX
+### THIS MUST BE RUN AS ROOT
+
+echo "gcc glibc-devel.i686 libXext-devel.i686 libX11-devel.i686 libXt-devel.i686 "
+echo " motif-devel.i686 tcsh ncurses-devel.i686 xterm wget espeak"
+
+echo ""
+echo ""
+sleep 3
+
+### In recent versions 'yum' invokes 'dnf'
+### If motif-devel is not available replace with lesstif-devel
+
+yum install gcc glibc-devel.i686 libXext-devel.i686 libX11-devel.i686 libXt-devel.i686 \
+    motif-devel.i686 tcsh ncurses-devel.i686 xterm wget espeak
+
+sleep 3
+
+echo ""
+echo ""
+echo ""
+
+echo "If you wish you can abort now to install missing packages then"
+echo "redo this command later."
+echo ""
+
+echo ""
+echo ""
+
+
+sleep 2
+
+while :
+do
+
+  ## clear
+
+  echo "Continue installing Poplog?"
+  read -t 30 -p [y/n] ANS
+
+  echo $ANS
+
+  case $ANS in
+    "y")
+
+        echo "Installation will continue"
+        break
+
+      ;;
+
+    "n")
+        echo "Aborting installation"
+        exit
+      ;;
+
+    "")
+
+    echo "No answer, so aboritng. Redo the command if necessary."
+
+    exit
+
+      ;;
+    *)
+        echo "Please answer 'y' or 'n'"
+
+      ;;
+  esac
+
+done
+
+echo ""
+echo "Packages installed -- hopefully"
+sleep 2
+echo ""
+
+echo "Now fetch another file that will get all the rest of Poplog."
+echo "And install the program and documentation in"
+echo "/usr/local/poplog/"
+echo ""
+
+## get rid of old version of poplog install script if present
+## then install latest version:
+
+rm -f get-and-install-prelinked-v15.65-poplog
+
+echo "Using current directory to unpack tar file and run install scripts"
+
+echo "fetch a file that will get all the rest"
+
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-prelinked-v15.65-poplog"
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/latest-poplog/get-and-install-prelinked-v15.65-poplog
+
+echo ""
+
+echo "change that file to be executable using chmod"
+echo "chmod 755 get-and-install-prelinked-v15.65-poplog"
+
+chmod 755 get-and-install-prelinked-v15.65-poplog
+
+sleep 2
+
+echo ""
+
+echo "Run that file to download and install the poplog tar file"
+
+echo "./get-and-install-prelinked-v15.65-poplog "
+
+./get-and-install-prelinked-v15.65-poplog
+
+sleep 4
+echo ""
+echo ""
+
+echo "You may be able to tell whether the installation completed successfully
+echo from mesages printed."
+echo ""
+echo ""
+
+echo "########### INSTALLATION SHOULD BE COMPLETE ###########"
+echo "Look in /usr/local/poplog "
+
+echo "######## Also look here for install.log file if there are problems #######"
+
+echo "Try the demos in /usr/local/poplog/current-poplog/bin/demos"
+
+echo ""
+echo ""
+
+echo "Report problems, INCLUDING install.log file, to a.sloman@cs.bham.ac.uk"
+
+echo ""
+echo ""
+echo "If you want to try the linear algebra packages included in the popvision library"
+echo "developed by David Young at Sussex university (A sort of 'matlab in poplog')"
+echo ""
+echo "do:   'yum install blas-devel.i686 lapack-devel.i686' "
+echo ""
+
+
+echo "Last edited: 10 Dec 2016"
+
+echo ""
+echo "#############################################"
+echo ""
+echo ""
