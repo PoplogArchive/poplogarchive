@@ -1,0 +1,163 @@
+#!/bin/sh
+# http://www.cs.bham.ac.uk/research/projects/poplog/v15.65/get-and-install-v15.65-poplog-in-usr
+# Aaron Sloman
+# http://www.cs.bham.ac.uk/~axs/
+# 3 May 2012
+#   Version for v15.65 modified to use /usr/bin /usr/man/man1 and /usr/lib/poplog
+# instead of /usr/local/bin /usr/local/man/man1 and /usr/local/poplog
+# 11 Aug 2010
+#   Version for v15.6.4
+# 5 Aug 2009
+#   Version for v15.6301
+# 29 Jun 2009
+#   Version for v15.63
+# 3 Dec 2008
+# Altered for poplog version 15.62 ('setarch' no longer needed)
+# 7 Jun 2008
+# Altered to redirect all error output to install.log
+# 11 Apr 2007
+# Either run this script or run the steps separately. It should
+# fetch and install poplog in /usr/local/poplog, and put some
+# easily removable links in /usr/local/bin and /usr/local/man
+# so you need write access to those two directories (or you
+# can run this as super user).
+
+## CHANGE THIS FOR NEW VERSIONS
+popversion=v15.65
+export popversion
+
+popversionmajor=v15.65
+export popversionmajor
+
+
+# Find a suitable place to download stuff from the free poplog site
+# when you run this it will create a sub-directory $popversionmajor and put
+# the downloaded files in there, then run them.
+
+echo ""
+echo ""
+
+echo "Remove old version if present"
+rm -rf $popversionmajor
+
+echo "mkdir $popversionmajor"
+mkdir $popversionmajor
+
+echo "cd $popversionmajor"
+cd $popversionmajor
+echo "`pwd`"
+
+echo ""
+echo ""
+
+echo "Fetching documentation file"
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/$popversionmajor/AREADME.txt"
+
+## remove old version if present
+rm -f AREADME.txt
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/$popversionmajor/AREADME.txt
+
+echo ""
+echo ""
+
+echo "Fetching two shell scripts"
+
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/$popversionmajor/CHECK_LINUX_FACILITIES"
+
+## remove old version if present
+rm -f CHECK_LINUX_FACILITIES
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/$popversionmajor/CHECK_LINUX_FACILITIES
+
+sleep 3
+
+echo ""
+echo ""
+echo "wget http://www.cs.bham.ac.uk/research/projects/poplog/$popversionmajor/INSTALL_BHAM_LINUX_POPLOG"
+
+## remove old version if present
+rm -f INSTALL_BHAM_LINUX_POPLOG
+
+wget http://www.cs.bham.ac.uk/research/projects/poplog/$popversionmajor/INSTALL_BHAM_LINUX_POPLOG
+
+sleep 3
+
+echo ""
+echo "Making those two executable"
+echo "chmod 755 CHECK_LINUX_FACILITIES INSTALL_BHAM_LINUX_POPLOG"
+chmod 755 CHECK_LINUX_FACILITIES INSTALL_BHAM_LINUX_POPLOG
+
+sleep 3
+
+echo ""
+echo ""
+echo "Fetching tar file. About 18 Mbytes. May take some time."
+echo "wget http://www.cs.bham.ac.uk/research/poplog/bham-linux-poplog-$popversion.tar.gz"
+
+## remove old version if present
+rm -f bham-linux-poplog-$popversion.tar.gz
+
+wget http://www.cs.bham.ac.uk/research/poplog/bham-linux-poplog-$popversion.tar.gz
+
+echo ""
+echo ""
+echo "Run the install script without arguments to get instructions"
+echo "./INSTALL_BHAM_LINUX_POPLOG"
+./INSTALL_BHAM_LINUX_POPLOG
+echo "(pausing 3 seconds)"
+
+sleep 3
+
+echo ""
+echo "Run the install script with arguments to install poplog"
+echo "./INSTALL_BHAM_LINUX_POPLOG motif /usr/lib/poplog nolinks 1> install.log 2>&1"
+echo "(May take some time, depending on speed of your machine)"
+sleep 3
+
+## Don't install the usual links. Done below instead
+echo "Installing in /usr/lib/poplog"
+./INSTALL_BHAM_LINUX_POPLOG motif /usr/lib/poplog nolinks 1> install.log 2>&1
+
+## Now install links
+echo "Adding links to /usr/bin and /usr/man/man1"
+
+ln -s /usr/lib/poplog/current-poplog/bin/poplog.sh /usr/bin/poplog
+
+ln -s /usr/lib/poplog/current-poplog/man/man1/* /usr/man/man1
+
+echo ""
+echo ""
+echo "FINISHED!"
+echo ""
+echo "Look in subdirectory $popversionmajor and $popversionmajor/pop"
+echo ""
+echo "You can read the install.log file if you are curious."
+echo "PLEASE SEND THE install.log file IF REPORTING INSTALLATION PROBLEMS"
+echo "====="
+echo "There are lots of warning messages printed while compiling"
+echo "common lisp, prolog and pml which you can ignore."
+echo "You can email the install.log file to A.Sloman if you have"
+echo "problems with installation. But please include details of hardware"
+echo "and operating system, including version."
+echo "(pausing)"
+echo ""
+echo ""
+echo ""
+
+echo "NB NB NB The file 'install.log' is in the directory BELOW this one"
+
+echo ""
+echo ""
+echo ""
+sleep 5
+
+echo ""
+echo "You can can now 'cd /usr/local/poplog/current-poplog/bin/demos' "
+echo "then read the file AREADME-DEMOS.txt to see  how to test poplog"
+echo "E.g. run eliza, or run a graphical pop11 demo."
+echo ""
+
+echo ""
+echo "Report Problems learning/using pop11 to pop-forum@cs.bham.ac.uk"
+echo ""
